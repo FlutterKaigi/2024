@@ -1,0 +1,12 @@
+name: conference_2024
+
+sdkPath: .fvm/flutter_sdk
+
+packages:
+  - apps/*
+
+ide:
+  intellij:
+    # Disabling IntelliJ's automatic configuration.
+    # This is to support different build configurations for environments.
+    enabled: false

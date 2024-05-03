@@ -1,0 +1,6 @@
+name: conference_2024_workspace
+
+environment:
+  sdk: '>=3.3.4 <4.0.0'
+dev_dependencies:
+  melos: ^6.0.0

@@ -1,0 +1,21 @@
+// https://github.com/DavidAnson/markdownlint-cli2?tab=readme-ov-file#markdownlint-cli2jsonc
+{
+  // https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD033": false,
+    "MD036": false,
+    "MD041": false,
+    "MD045": false
+  },
+  "globs": ["**/*.md"],
+  "ignores": [
+    ".fvm/**/*.md",
+    ".idea/**/*.md",
+    "**/.dart_tool/**/*.md",
+    "**/ios/.symlinks/**/*.md",
+    "**/ios/Pods/**/*.md",
+    "**/ios/Runner/**/*.md"
+  ]
+}
