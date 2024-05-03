@@ -15,6 +15,11 @@ jobs:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
 
       # https://github.com/DavidAnson/markdownlint-cli2-action
       - name: Check markdownlint
