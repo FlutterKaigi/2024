@@ -1,0 +1,21 @@
+name: Check markdownlint
+
+on:
+  pull_request:
+    paths:
+      - "**.md"
+
+jobs:
+  check-markdownlint:
+    runs-on: ubuntu-24.04
+
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+
+      # https://github.com/DavidAnson/markdownlint-cli2-action
+      - name: Check markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
