@@ -1,0 +1,25 @@
+name: Check Prettier
+
+on:
+  pull_request:
+    paths:
+      - "**.json"
+      - "**.jsonc"
+      - "**.yaml"
+
+jobs:
+  check-markdown:
+    runs-on: ubuntu-24.04
+
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+
+      # https://github.com/creyD/prettier_action
+      - name: Check Prettier
+        uses: creyD/prettier_action@31355f8eef017f8aeba2e0bc09d8502b13dbbad1 # v4.3
+        with:
+          dry: true
