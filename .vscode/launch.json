@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "app-debug",
+      "cwd": "apps/app",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart"
+    },
+    {
+      "name": "website-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart"
+    }
+  ]
+}
