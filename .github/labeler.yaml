@@ -1,0 +1,36 @@
+app:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "apps/app/**"
+          - "packages/app/**"
+website:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "apps/website/**"
+          - "packages/website/**"
+test:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "apps/**/test/**"
+          - "packages/**/test/**"
+github:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**"
+          - "**/*.md"
+feature:
+  - head-branch:
+      - "feature/*"
+bug:
+  - head-branch:
+      - "fix/*"
+improvement:
+  - head-branch:
+      - "improvement/*"
+release:
+  - head-branch:
+      - "release/*"
