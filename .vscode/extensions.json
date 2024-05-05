@@ -5,6 +5,7 @@
     "blaugold.melos-code",
     "djbkwon.flutter-dependency-docs",
     "esbenp.prettier-vscode",
-    "DavidAnson.vscode-markdownlint"
+    "DavidAnson.vscode-markdownlint",
+    "bierner.markdown-mermaid"
   ]
 }
