@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/data_base.dart';
+export 'src/common_data_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.
