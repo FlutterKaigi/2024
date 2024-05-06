@@ -7,7 +7,7 @@ on:
 
 jobs:
   check-markdownlint:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
 
     timeout-minutes: 10
 
