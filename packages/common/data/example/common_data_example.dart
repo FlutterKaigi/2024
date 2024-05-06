@@ -1,6 +1,7 @@
 import 'package:common_data/common_data.dart';
 
 void main() {
-  var awesome = Awesome();
+  final awesome = Awesome();
+  // ignore: avoid_print
   print('awesome: ${awesome.isAwesome}');
 }
