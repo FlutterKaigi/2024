@@ -1,0 +1,19 @@
+name: FlutterKaigi ウェブサイトスタッフのタスク
+description: FlutterKaigi ウェブサイトスタッフのタスクを作成する
+title: "[Website-Staff]: "
+labels: ["website", "staff"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: このタスクの目的や背景について簡潔に記述してください。
+    validations:
+      required: false
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考文献
+      description: このタスクに関連する参考文献やリソースを記載してください。
+    validations:
+      required: false
