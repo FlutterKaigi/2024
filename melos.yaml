@@ -4,6 +4,7 @@ sdkPath: .fvm/flutter_sdk
 
 packages:
   - apps/*
+  - packages/**
 
 ide:
   intellij:
