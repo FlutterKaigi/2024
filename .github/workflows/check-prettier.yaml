@@ -8,7 +8,7 @@ on:
       - "**.yaml"
 
 jobs:
-  check-markdown:
+  check-prettier:
     runs-on: ubuntu-22.04
 
     timeout-minutes: 10
