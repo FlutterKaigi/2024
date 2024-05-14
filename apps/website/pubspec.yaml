@@ -1,6 +1,6 @@
 name: conference_2024_website
 description: "FlutterKaigi 2024 official website."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:

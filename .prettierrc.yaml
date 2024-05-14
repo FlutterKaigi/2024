@@ -1,1 +1,2 @@
 # https://prettier.io/docs/en/configuration.html
+trailingComma: "all"

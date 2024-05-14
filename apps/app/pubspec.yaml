@@ -1,6 +1,6 @@
 name: conference_2024_app
 description: "FlutterKaigi 2024 official application."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
