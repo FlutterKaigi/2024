@@ -1,8 +1,16 @@
 name: Deploy Web on PR
 
 on:
+  workflow_dispatch: 
   pull_request:
-    types: [opened, synchronize]
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths-ignore:
+      - docs/
+      - apps/app
+      - **/*.md
 
 jobs:
   deploy:
