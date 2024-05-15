@@ -8,9 +8,9 @@ on:
       - synchronize
       - reopened
     paths-ignore:
-      - 'docs/**'
-      - 'apps/app/**'
-      - '**/*.md'
+      - "docs/**"
+      - "apps/app/**"
+      - "**/*.md"
 
 jobs:
   deploy:
