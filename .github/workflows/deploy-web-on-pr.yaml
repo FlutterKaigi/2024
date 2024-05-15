@@ -22,8 +22,10 @@ jobs:
             --wasm
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy apps/website/build/web --project-name=website-2024-preview
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: website-2024-preview
+          directory: apps/website/build/web
