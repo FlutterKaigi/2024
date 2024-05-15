@@ -15,7 +15,7 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build Web
-        working-directory: packages/website
+        working-directory: apps/website
         run: |
           flutter build web \
             --release \
