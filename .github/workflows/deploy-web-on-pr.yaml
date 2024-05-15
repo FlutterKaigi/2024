@@ -1,0 +1,29 @@
+name: Deploy Web on PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Build Web
+        working-directory: packages/website
+        run: |
+          flutter build web \
+            --release \
+            --wasm
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy build/web --project-name=website-2024-preview
