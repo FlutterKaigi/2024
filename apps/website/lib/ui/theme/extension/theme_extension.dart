@@ -33,16 +33,17 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
     required this.body,
     required this.headline,
     required this.label,
+    required this.availableFonts,
   });
 
   factory TextThemeExtension.light() {
-    final availableFonts = _AvailableFonts();
+    final availableFonts = AvailableFonts();
     final colorTheme = ColorThemeExtension.light();
 
     final grey = colorTheme.grey;
     return TextThemeExtension(
       headline: availableFonts.poppins.bold.copyWith(
-        fontSize: 36,
+        fontSize: 48,
         color: Colors.black,
       ),
       label: availableFonts.notoSansJp.medium.copyWith(
@@ -55,6 +56,7 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
         color: grey,
         height: 1.8,
       ),
+      availableFonts: AvailableFonts(),
     );
   }
 
@@ -66,6 +68,8 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
 
   /// ボタンなど
   final TextStyle label;
+
+  final AvailableFonts availableFonts;
 }
 
 @tailorMixinComponent
@@ -84,8 +88,8 @@ class ColorThemeExtension extends ThemeExtension<ColorThemeExtension>
   final Color grey;
 }
 
-class _AvailableFonts {
-  _AvailableFonts()
+class AvailableFonts {
+  AvailableFonts()
       : notoSansJp = (
           regular: GoogleFonts.notoSans(fontWeight: FontWeight.w400),
           medium: GoogleFonts.notoSans(fontWeight: FontWeight.w500),
@@ -111,7 +115,7 @@ class _AvailableFonts {
 }
 
 List<String> get allFonts {
-  final availableFonts = _AvailableFonts();
+  final availableFonts = AvailableFonts();
   return [
     availableFonts.notoSansJp.regular.fontFamily,
     availableFonts.notoSansJp.medium.fontFamily,
