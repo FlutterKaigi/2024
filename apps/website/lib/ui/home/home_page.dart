@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -37,9 +38,25 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    return Text(
-      'Hello, World!',
-      style: textTheme.headline,
+    return Column(
+      children: [
+        Text(
+          'Hello, World!',
+          style: textTheme.headline,
+        ),
+        const SizedBox(height: 16),
+        AppButton.primaryLink(
+          label: const Text('Click me!'),
+          link: Uri.parse('/sample-1'),
+          leading: const Icon(Icons.link),
+        ),
+        const SizedBox(height: 16),
+        AppButton.secondaryLink(
+          label: const Text('Click me!'),
+          link: Uri.parse('/sample-2'),
+          leading: const Icon(Icons.link),
+        ),
+      ],
     );
   }
 }
