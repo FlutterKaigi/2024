@@ -1,6 +1,6 @@
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
-import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
+import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
 
 final class HomePage extends StatelessWidget {
@@ -35,11 +35,10 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.customThemeExtension.textTheme;
-    return Text(
-      'Hello, World!',
-      style: textTheme.headline,
+    return const Column(
+      children: [
+        TitleAndLogo(),
+      ],
     );
   }
 }
