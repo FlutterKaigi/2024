@@ -15,7 +15,7 @@
       "program": "lib/main.dart",
       "args": [
         "--web-port",
-        "8080",
+        "8080"
       ],
       "type": "dart"
     }
