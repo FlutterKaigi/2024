@@ -25,5 +25,4 @@ dev_dependencies:
   build_runner: ^2.4.7
 
 flutter:
-  generate: true
   uses-material-design: true
