@@ -13,6 +13,10 @@
       "cwd": "apps/website",
       "request": "launch",
       "program": "lib/main.dart",
+      "args": [
+        "--web-port",
+        "8080",
+      ],
       "type": "dart"
     }
   ]
