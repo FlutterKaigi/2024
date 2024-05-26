@@ -35,3 +35,4 @@ flutter:
     - path: assets/svg/
       transformers:
         - package: vector_graphics_compiler
+    - assets/images/
