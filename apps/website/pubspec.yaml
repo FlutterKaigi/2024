@@ -27,5 +27,4 @@ dev_dependencies:
   theme_tailor: ^3.0.1
 
 flutter:
-  generate: true
   uses-material-design: true
