@@ -114,14 +114,14 @@ class AvailableFonts {
   }) poppins;
 }
 
-List<String> get allFonts {
+List<TextStyle> get allFonts {
   final availableFonts = AvailableFonts();
   return [
-    availableFonts.notoSansJp.regular.fontFamily,
-    availableFonts.notoSansJp.medium.fontFamily,
-    availableFonts.notoSansJp.bold.fontFamily,
-    availableFonts.poppins.regular.fontFamily,
-    availableFonts.poppins.medium.fontFamily,
-    availableFonts.poppins.bold.fontFamily,
-  ].whereNotNull().toList();
+    availableFonts.notoSansJp.regular,
+    availableFonts.notoSansJp.medium,
+    availableFonts.notoSansJp.bold,
+    availableFonts.poppins.regular,
+    availableFonts.poppins.medium,
+    availableFonts.poppins.bold,
+  ].toList();
 }
