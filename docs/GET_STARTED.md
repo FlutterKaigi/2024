@@ -17,8 +17,7 @@
   - 以下のコマンドを実行して、melos コマンドをグローバルに有効にしてください。
 
     ```shell
-    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
-    fvm dart pub global activate melos $MELOS_VERSION
+    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && fvm dart pub global activate melos $MELOS_VERSION
     ```
 
 
