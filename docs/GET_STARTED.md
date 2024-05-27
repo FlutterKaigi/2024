@@ -75,6 +75,4 @@ IntelliJ IDEA または Android Studio を使用している場合:
 
 [melos]: https://melos.invertase.dev/
 
-[mason_cli]: https://pub.dev/packages/mason_cli
-
 [yq]: https://github.com/mikefarah/yq
