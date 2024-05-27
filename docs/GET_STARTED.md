@@ -33,9 +33,12 @@ fvm use --force
 
 [Visual Studio Code]を使う場合、ウィンドウをリロードしてください。
 
-[IntelliJ IDEA] や [Android Studio]を使う場合、以下のドキュメントを参照してください。
+[IntelliJ IDEA] や [Android Studio] を使う場合、次のように設定してください。
 
-<https://fvm.app/docs/getting_started/configuration#android-studio>
+1. 「Languages & Frameworks」 > 「Flutter」に移動するか、「Flutter」を検索して、Flutter SDK のパスを変更します。
+2. プロジェクトのルートディレクトリにあるシンボリックリンクの絶対パスをコピーします。例: `/absolute-project-path/.fvm/flutter_sdk`
+3. 変更を適用します。
+4. 新しい設定が反映されるようにエディタを再起動します。
 
 ### ライブラリのインストール
 
