@@ -4,10 +4,8 @@
 
 まず、開発に必要なツールをインストールしましょう。
 
-- 開発環境 (IDE)
-  - [Visual Studio Code]
-  - [IntelliJ IDEA]
-  - [Android Studio]  
+- 統合開発環境(IDE)をインストールしてください
+  - [Visual Studio Code], [Android Studio] または [IntelliJ IDEA]
   - [Xcode]
 
 - [fvm] コマンドを有効にしてください
