@@ -21,7 +21,6 @@
     fvm dart pub global activate melos $MELOS_VERSION
     ```
 
-- [mason_cli] コマンドを有効にしてください
 
 ### Flutter SDK の設定
 
