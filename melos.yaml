@@ -2,6 +2,12 @@ name: conference_2024
 
 sdkPath: .fvm/flutter_sdk
 
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.5.0-191.0.dev
+      flutter: ^3.23.0-9.0.pre
+
 packages:
   - apps/*
   - packages/**
