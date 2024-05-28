@@ -18,7 +18,6 @@
     MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && fvm dart pub global activate melos $MELOS_VERSION
     ```
 
-
 ### Flutter SDK の設定
 
 ```shell
@@ -55,10 +54,6 @@ melos bootstrap
 Visual Studio Code を使用している場合:
 
 - `.vscode/launch.json` ファイルを確認してください。
-
-IntelliJ IDEA または Android Studio を使用している場合:
-
-- `.idea/runConfigurations/~.xml` ファイルを確認してください。
 
 <!-- Links -->
 
