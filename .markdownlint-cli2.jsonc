@@ -11,6 +11,7 @@
   },
   "globs": ["**/*.md"],
   "ignores": [
+    ".git/**/*.md",
     ".fvm/**/*.md",
     ".idea/**/*.md",
     "**/.dart_tool/**/*.md",
