@@ -13,15 +13,18 @@ class CustomThemeExtension extends ThemeExtension<CustomThemeExtension>
   CustomThemeExtension({
     required this.textTheme,
     required this.colorTheme,
+    required this.gradientTheme,
   });
 
   factory CustomThemeExtension.light() => CustomThemeExtension(
         textTheme: TextThemeExtension.light(),
         colorTheme: ColorThemeExtension.light(),
+        gradientTheme: GradientThemeExtension.light(),
       );
 
   final TextThemeExtension textTheme;
   final ColorThemeExtension colorTheme;
+  final GradientThemeExtension gradientTheme;
 }
 
 @tailorMixinComponent
@@ -44,7 +47,7 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
         color: Colors.black,
       ),
       label: availableFonts.notoSansJp.medium.copyWith(
-        fontSize: 16,
+        fontSize: 18,
         color: Colors.black,
         height: 1.8,
       ),
@@ -80,6 +83,33 @@ class ColorThemeExtension extends ThemeExtension<ColorThemeExtension>
   }
 
   final Color grey;
+}
+
+@tailorMixinComponent
+class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
+    with _$GradientThemeExtensionTailorMixin {
+  GradientThemeExtension({
+    required this.primary,
+    required this.secondary,
+  });
+
+  factory GradientThemeExtension.light() => GradientThemeExtension(
+        primary: const LinearGradient(
+          colors: [
+            Color(0xFF00F5A0),
+            Color(0xFF00D9F5),
+          ],
+        ),
+        secondary: const LinearGradient(
+          colors: [
+            Color(0xFFEECDA3),
+            Color(0xFFEF629F),
+          ],
+        ),
+      );
+
+  final LinearGradient primary;
+  final LinearGradient secondary;
 }
 
 class _AvailableFonts {
