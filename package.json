@@ -1,0 +1,12 @@
+{
+  "name": "2024",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "danger": "^12.3.0",
+    "textlint": "^14.0.4",
+    "textlint-rule-preset-jtf-style": "^2.3.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

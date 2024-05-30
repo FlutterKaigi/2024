@@ -1,0 +1,36 @@
+name: Check Textlint
+
+on:
+  pull_request:
+
+# https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+permissions:
+  pull-requests: write
+  statuses: write
+
+jobs:
+  check-textlint:
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
+
+      # https://github.com/oven-sh/setup-bun
+      - uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1.2.1
+        with:
+          bun-version: latest
+      - run: bun install
+
+      # https://github.com/danger/danger-js/blob/main/source/ci_source/providers/GitHubActions.ts
+      - run: bun danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

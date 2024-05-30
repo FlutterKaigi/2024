@@ -4,3 +4,6 @@
 
 # Melos related
 pubspec_overrides.yaml
+
+# bun related
+/node_modules
