@@ -71,14 +71,14 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
   TextStyle get headline;
   TextStyle get body;
   TextStyle get label;
-  InvalidType get availableFonts;
+  AvailableFonts get availableFonts;
 
   @override
   TextThemeExtension copyWith({
     TextStyle? headline,
     TextStyle? body,
     TextStyle? label,
-    InvalidType? availableFonts,
+    AvailableFonts? availableFonts,
   }) {
     return TextThemeExtension(
       headline: headline ?? this.headline,
