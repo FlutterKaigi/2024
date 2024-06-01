@@ -29,6 +29,7 @@ dev_dependencies:
   vector_graphics_compiler: ^1.1.11+1
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:

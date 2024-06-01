@@ -4,6 +4,8 @@ import 'package:conference_2024_website/ui/home/components/background/background
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 final class HomePage extends StatelessWidget {
   const HomePage({super.key});
