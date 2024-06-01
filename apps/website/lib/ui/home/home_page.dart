@@ -36,27 +36,29 @@ class _Body extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
     final t = Translations.of(context);
-
-    return Column(
-      children: [
-        const TitleAndLogo(),
-        Text(
-          t.title,
-          style: textTheme.headline,
-        ),
-        const SizedBox(height: 16),
-        AppButton.primaryLink(
-          label: const Text('Click me!'),
-          link: Uri.parse('/sample-1'),
-          leading: const Icon(Icons.link),
-        ),
-        const SizedBox(height: 16),
-        AppButton.secondaryLink(
-          label: const Text('Click me!'),
-          link: Uri.parse('/sample-2'),
-          leading: const Icon(Icons.link),
-        ),
-      ],
+    return ContentsMargin(
+      child: Column(
+        children: [
+          const TitleAndLogo(),
+          const _Lead(),
+          Text(
+            t.title,
+            style: textTheme.headline,
+          ),
+          const SizedBox(height: 16),
+          AppButton.primaryLink(
+            label: const Text('Click me!'),
+            link: Uri.parse('/sample-1'),
+            leading: const Icon(Icons.link),
+          ),
+          const SizedBox(height: 16),
+          AppButton.secondaryLink(
+            label: const Text('Click me!'),
+            link: Uri.parse('/sample-2'),
+            leading: const Icon(Icons.link),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -67,7 +69,7 @@ class _Lead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.topRight,
       child: SizedBox(
         width: 512,
         child: Lead(),
