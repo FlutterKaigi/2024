@@ -1,0 +1,32 @@
+name: Deploy Web to Github pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Build Web
+        working-directory: apps/website
+        run: |
+          flutter build web \
+            --release \
+            --wasm \
+            --base-href "/2024/"
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
