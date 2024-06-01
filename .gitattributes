@@ -1,1 +1,2 @@
 *.*.dart linguist-generated=true
+l10n*.dart linguist-generated=true

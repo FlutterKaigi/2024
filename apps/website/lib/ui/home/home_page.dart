@@ -5,6 +5,7 @@ import 'package:conference_2024_website/ui/home/components/background/background
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,12 +34,13 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
+    final l10n = L10n.of(context)!;
     return ContentsMargin(
       child: Column(
         children: [
           const TitleAndLogo(),
           Text(
-            'Hello, World!',
+            l10n.title,
             style: textTheme.headline,
           ),
           const SizedBox(height: 16),

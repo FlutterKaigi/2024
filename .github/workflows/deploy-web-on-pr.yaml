@@ -23,6 +23,10 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
+      - name: Generate L10n
+        working-directory: apps/website
+        run: flutter gen-l10n
+
       - name: Build Web
         working-directory: apps/website
         run: |

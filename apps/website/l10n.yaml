@@ -1,0 +1,9 @@
+# Run `fvm flutter gen-l10n` to generate the l10n.dart file.
+arb-dir: lib/l10n/
+template-arb-file: intl_ja.arb
+output-localization-file: l10n.dart
+output-class: L10n
+output-dir: lib/l10n
+synthetic-package: false
+# 生成ファイルのlint警告を抑制するためのコメント
+header: "// ignore_for_file: type=lint"
