@@ -12,15 +12,18 @@ mixin _$CustomThemeExtensionTailorMixin
     on ThemeExtension<CustomThemeExtension> {
   TextThemeExtension get textTheme;
   ColorThemeExtension get colorTheme;
+  GradientThemeExtension get gradientTheme;
 
   @override
   CustomThemeExtension copyWith({
     TextThemeExtension? textTheme,
     ColorThemeExtension? colorTheme,
+    GradientThemeExtension? gradientTheme,
   }) {
     return CustomThemeExtension(
       textTheme: textTheme ?? this.textTheme,
       colorTheme: colorTheme ?? this.colorTheme,
+      gradientTheme: gradientTheme ?? this.gradientTheme,
     );
   }
 
@@ -31,6 +34,8 @@ mixin _$CustomThemeExtensionTailorMixin
     return CustomThemeExtension(
       textTheme: textTheme.lerp(other.textTheme, t) as TextThemeExtension,
       colorTheme: colorTheme.lerp(other.colorTheme, t) as ColorThemeExtension,
+      gradientTheme:
+          gradientTheme.lerp(other.gradientTheme, t) as GradientThemeExtension,
     );
   }
 
@@ -41,7 +46,9 @@ mixin _$CustomThemeExtensionTailorMixin
             other is CustomThemeExtension &&
             const DeepCollectionEquality().equals(textTheme, other.textTheme) &&
             const DeepCollectionEquality()
-                .equals(colorTheme, other.colorTheme));
+                .equals(colorTheme, other.colorTheme) &&
+            const DeepCollectionEquality()
+                .equals(gradientTheme, other.gradientTheme));
   }
 
   @override
@@ -50,6 +57,7 @@ mixin _$CustomThemeExtensionTailorMixin
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(textTheme),
       const DeepCollectionEquality().hash(colorTheme),
+      const DeepCollectionEquality().hash(gradientTheme),
     );
   }
 }
@@ -150,6 +158,51 @@ mixin _$ColorThemeExtensionTailorMixin on ThemeExtension<ColorThemeExtension> {
     return Object.hash(
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(grey),
+    );
+  }
+}
+
+mixin _$GradientThemeExtensionTailorMixin
+    on ThemeExtension<GradientThemeExtension> {
+  LinearGradient get primary;
+  LinearGradient get secondary;
+
+  @override
+  GradientThemeExtension copyWith({
+    LinearGradient? primary,
+    LinearGradient? secondary,
+  }) {
+    return GradientThemeExtension(
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+    );
+  }
+
+  @override
+  GradientThemeExtension lerp(
+      covariant ThemeExtension<GradientThemeExtension>? other, double t) {
+    if (other is! GradientThemeExtension) return this as GradientThemeExtension;
+    return GradientThemeExtension(
+      primary: t < 0.5 ? primary : other.primary,
+      secondary: t < 0.5 ? secondary : other.secondary,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GradientThemeExtension &&
+            const DeepCollectionEquality().equals(primary, other.primary) &&
+            const DeepCollectionEquality().equals(secondary, other.secondary));
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      runtimeType.hashCode,
+      const DeepCollectionEquality().hash(primary),
+      const DeepCollectionEquality().hash(secondary),
     );
   }
 }
