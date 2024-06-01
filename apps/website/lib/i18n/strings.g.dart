@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 1
+/// Strings: 2
 ///
-/// Built on 2024-06-01 at 20:19 UTC
+/// Built on 2024-06-01 at 21:50 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,6 +148,17 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get title => 'FlutterKaigi';
+	late final _StringsComingSoonJa comingSoon = _StringsComingSoonJa._(_root);
+}
+
+// Path: comingSoon
+class _StringsComingSoonJa {
+	_StringsComingSoonJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get message => 'Other Contents\nComing Soon...';
 }
 
 /// Flat map(s) containing all translations.
@@ -157,6 +168,7 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'title': return 'FlutterKaigi';
+			case 'comingSoon.message': return 'Other Contents\nComing Soon...';
 			default: return null;
 		}
 	}

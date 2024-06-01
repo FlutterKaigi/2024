@@ -1,3 +1,6 @@
 {
-  "title": "FlutterKaigi"
+  "title": "FlutterKaigi",
+  "comingSoon": {
+    "message": "Other Contents\nComing Soon..."
+  }
 }
