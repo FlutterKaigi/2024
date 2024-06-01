@@ -116,6 +116,7 @@ class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
   final LinearGradient secondary;
 }
 
+
 class AvailableFonts {
   AvailableFonts()
       : notoSansJp = (
