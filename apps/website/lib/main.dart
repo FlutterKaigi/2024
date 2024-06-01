@@ -1,9 +1,9 @@
+import 'package:conference_2024_website/l10n/l10n.dart';
 import 'package:conference_2024_website/ui/router/router.dart';
 import 'package:conference_2024_website/ui/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
