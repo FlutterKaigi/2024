@@ -35,28 +35,33 @@ class _Body extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
     final l10n = L10n.of(context)!;
-    return ContentsMargin(
-      child: Column(
-        children: [
-          const TitleAndLogo(),
-          Text(
-            l10n.title,
-            style: textTheme.headline,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const _TitleAndLogo(),
+        ContentsMargin(
+          child: Column(
+            children: [
+              Text(
+                l10n.title,
+                style: textTheme.headline,
+              ),
+              const SizedBox(height: 16),
+              AppButton.primaryLink(
+                label: const Text('Click me!'),
+                link: Uri.parse('/sample-1'),
+                leading: const Icon(Icons.link),
+              ),
+              const SizedBox(height: 16),
+              AppButton.secondaryLink(
+                label: const Text('Click me!'),
+                link: Uri.parse('/sample-2'),
+                leading: const Icon(Icons.link),
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          AppButton.primaryLink(
-            label: const Text('Click me!'),
-            link: Uri.parse('/sample-1'),
-            leading: const Icon(Icons.link),
-          ),
-          const SizedBox(height: 16),
-          AppButton.secondaryLink(
-            label: const Text('Click me!'),
-            link: Uri.parse('/sample-2'),
-            leading: const Icon(Icons.link),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -71,6 +76,33 @@ class _Background extends StatelessWidget {
         BackgroundTop(),
         BackgroundBottom(),
       ],
+    );
+  }
+}
+
+class _TitleAndLogo extends StatelessWidget {
+  const _TitleAndLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    const maxPadding = (
+      horizontal: 88.0,
+      vertical: 110.0,
+    );
+    const minPadding = (
+      horizontal: 24.0,
+      vertical: 24.0,
+    );
+    final width = MediaQuery.of(context).size.width;
+    final threshold = 600 + maxPadding.horizontal * 2;
+    final padding = width > threshold ? maxPadding : minPadding;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: padding.horizontal,
+        vertical: padding.vertical,
+      ),
+      child: const TitleAndLogo(),
     );
   }
 }
