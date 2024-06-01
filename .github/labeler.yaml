@@ -8,6 +8,12 @@ website:
       - any-glob-to-any-file:
           - "apps/website/**"
           - "packages/website/**"
+
+data:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "packages/common/data/**"
+
 test:
   - changed-files:
       - any-glob-to-any-file:
