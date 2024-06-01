@@ -34,16 +34,17 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
     required this.body,
     required this.headline,
     required this.label,
+    required this.availableFonts,
   });
 
   factory TextThemeExtension.light() {
-    final availableFonts = _AvailableFonts();
+    final availableFonts = AvailableFonts();
     final colorTheme = ColorThemeExtension.light();
 
     final grey = colorTheme.grey;
     return TextThemeExtension(
       headline: availableFonts.poppins.bold.copyWith(
-        fontSize: 36,
+        fontSize: 48,
         color: Colors.black,
       ),
       label: availableFonts.notoSansJp.medium.copyWith(
@@ -56,6 +57,7 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
         color: grey,
         height: 1.8,
       ),
+      availableFonts: AvailableFonts(),
     );
   }
 
@@ -67,6 +69,8 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
 
   /// ボタンなど
   final TextStyle label;
+
+  final AvailableFonts availableFonts;
 }
 
 @tailorMixinComponent
@@ -112,8 +116,8 @@ class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
   final LinearGradient secondary;
 }
 
-class _AvailableFonts {
-  _AvailableFonts()
+class AvailableFonts {
+  AvailableFonts()
       : notoSansJp = (
           regular: const TextStyle(
             fontFamily: 'NotoSansJP',
@@ -157,7 +161,7 @@ class _AvailableFonts {
 }
 
 List<TextStyle> get allFonts {
-  final availableFonts = _AvailableFonts();
+  final availableFonts = AvailableFonts();
   return [
     availableFonts.notoSansJp.regular,
     availableFonts.notoSansJp.medium,

@@ -71,17 +71,20 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
   TextStyle get headline;
   TextStyle get body;
   TextStyle get label;
+  AvailableFonts get availableFonts;
 
   @override
   TextThemeExtension copyWith({
     TextStyle? headline,
     TextStyle? body,
     TextStyle? label,
+    AvailableFonts? availableFonts,
   }) {
     return TextThemeExtension(
       headline: headline ?? this.headline,
       body: body ?? this.body,
       label: label ?? this.label,
+      availableFonts: availableFonts ?? this.availableFonts,
     );
   }
 
@@ -93,6 +96,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       headline: TextStyle.lerp(headline, other.headline, t)!,
       body: TextStyle.lerp(body, other.body, t)!,
       label: TextStyle.lerp(label, other.label, t)!,
+      availableFonts: t < 0.5 ? availableFonts : other.availableFonts,
     );
   }
 
@@ -103,7 +107,9 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
             other is TextThemeExtension &&
             const DeepCollectionEquality().equals(headline, other.headline) &&
             const DeepCollectionEquality().equals(body, other.body) &&
-            const DeepCollectionEquality().equals(label, other.label));
+            const DeepCollectionEquality().equals(label, other.label) &&
+            const DeepCollectionEquality()
+                .equals(availableFonts, other.availableFonts));
   }
 
   @override
@@ -113,6 +119,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       const DeepCollectionEquality().hash(headline),
       const DeepCollectionEquality().hash(body),
       const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(availableFonts),
     );
   }
 }

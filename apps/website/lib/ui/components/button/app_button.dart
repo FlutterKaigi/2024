@@ -70,16 +70,17 @@ class AppButton extends StatelessWidget {
 
   const AppButton._({
     required this.label,
-    required this.type,
+    required _GradientType type,
     this.leading,
     this.trailing,
     this.link,
     this.onPressed,
     super.key,
-  }) : assert(
+  })  : assert(
           !(link != null && onPressed != null),
           'Cannot provide both a link and an onPressed callback.',
-        );
+        ),
+        _type = type;
 
   static const _defaultTrailing = Icon(
     Icons.arrow_forward_ios,
@@ -91,7 +92,7 @@ class AppButton extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
 
-  final _GradientType type;
+  final _GradientType _type;
 
   final Uri? link;
   final void Function()? onPressed;
@@ -154,7 +155,7 @@ class AppButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(100),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          gradient: switch (type) {
+          gradient: switch (_type) {
             _GradientType.primary => gradientTheme.primary,
             _GradientType.secondary => gradientTheme.secondary,
           },
@@ -170,7 +171,7 @@ class AppButton extends StatelessWidget {
     properties.add(DiagnosticsProperty<Uri?>('link', link));
     properties
         .add(ObjectFlagProperty<void Function()?>.has('onPressed', onPressed));
-    properties.add(EnumProperty<_GradientType>('type', type));
+    properties.add(EnumProperty<_GradientType>('_type', _type));
   }
 }
 

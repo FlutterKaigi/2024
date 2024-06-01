@@ -35,6 +35,7 @@ flutter:
     - path: assets/svg/
       transformers:
         - package: vector_graphics_compiler
+    - assets/images/
     - assets/fonts/NotoSansJP/OFL.txt
     - assets/fonts/Poppins/OFL.txt
 
