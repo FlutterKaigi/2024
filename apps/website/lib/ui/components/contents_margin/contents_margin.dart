@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// コンテンツのマージンを設定するコンポーネント
 /// - コンテンツ表示領域の最大幅は1024px
-/// - 最小のマージンは16px
+/// - 最小のマージンは24px
 class ContentsMargin extends StatelessWidget {
   const ContentsMargin({
     required this.child,
@@ -16,7 +16,7 @@ class ContentsMargin extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
     final width = size.width;
 
-    const minMargin = 16.0;
+    const minMargin = 24.0;
     const maxContentsWidth = 1024.0;
 
     final margin = switch (width) {
