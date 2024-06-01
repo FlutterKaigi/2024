@@ -1,4 +1,4 @@
-import 'package:conference_2024_website/l10n/l10n.dart';
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
@@ -40,13 +40,13 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    final l10n = L10n.of(context)!;
+    final t = Translations.of(context);
 
     return Column(
       children: [
         const TitleAndLogo(),
         Text(
-          l10n.title,
+          t.title,
           style: textTheme.headline,
         ),
         const SizedBox(height: 16),
