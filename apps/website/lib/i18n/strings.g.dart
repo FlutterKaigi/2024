@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 1
+/// Strings: 4
 ///
-/// Built on 2024-06-01 at 20:19 UTC
+/// Built on 2024-06-01 at 20:26 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,6 +148,19 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get title => 'FlutterKaigi';
+	String get year => '2024';
+	late final _StringsTitleAndLogoJa titleAndLogo = _StringsTitleAndLogoJa._(_root);
+}
+
+// Path: titleAndLogo
+class _StringsTitleAndLogoJa {
+	_StringsTitleAndLogoJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get date => 'November\n21(Thu) - 22(Fri)';
+	String get location => '有明セントラルタワーホール&カンファレンス';
 }
 
 /// Flat map(s) containing all translations.
@@ -157,6 +170,9 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'title': return 'FlutterKaigi';
+			case 'year': return '2024';
+			case 'titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
+			case 'titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
 			default: return null;
 		}
 	}
