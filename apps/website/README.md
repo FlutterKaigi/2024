@@ -17,7 +17,9 @@ This project uses the [`slang`](https://pub.dev/packages/slang) package for inte
 1. Edit the new string file with the translations.
 see `strings.i18n.json` for reference.
 
-1. Run `fvm flutter pub run build_runner build` to generate the new string file.
+#### Generating the string file
+
+Run `fvm dart run slang` to generate the string file. Alternatively, you can run `fvm dart run build_runner build` to generate the string file.
 
 ### Running the website
 

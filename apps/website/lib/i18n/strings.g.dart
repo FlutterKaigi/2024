@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 1
 ///
-/// Built on 2024-06-01 at 20:07 UTC
+/// Built on 2024-06-01 at 20:19 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -147,7 +147,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	String get title => 'Flutter Kaigi';
+	String get title => 'FlutterKaigi';
 }
 
 /// Flat map(s) containing all translations.
@@ -156,7 +156,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'title': return 'Flutter Kaigi';
+			case 'title': return 'FlutterKaigi';
 			default: return null;
 		}
 	}
