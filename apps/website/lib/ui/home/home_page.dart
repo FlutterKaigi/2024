@@ -1,11 +1,11 @@
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
-import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 final class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,13 +27,11 @@ final class HomePage extends StatelessWidget {
   }
 
   Widget _bodyContentSliver() {
-    return const IntrinsicHeight(
-      child: Stack(
-        children: [
-          _Background(),
-          _Body(),
-        ],
-      ),
+    return const Stack(
+      children: [
+        _Background(),
+        _Body(),
+      ],
     );
   }
 }
@@ -43,15 +41,20 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ContentsMargin(
-      child: Column(
-        children: [
-          _TitleAndLogo(),
-          _Lead(),
-          SizedBox(height: 16),
-          ComingSoon(),
-        ],
-      ),
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _TitleAndLogo(),
+        ContentsMargin(
+          child: Column(
+            children: [
+              _Lead(),
+              Gap(128),
+              ComingSoon(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -77,9 +80,10 @@ class _Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         BackgroundTop(),
-        BackgroundBottom(),
+        // BackgroundBottom(),
       ],
     );
   }
