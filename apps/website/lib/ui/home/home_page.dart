@@ -1,5 +1,6 @@
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
+import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
@@ -17,14 +18,7 @@ final class HomePage extends StatelessWidget {
           child: Stack(
             children: [
               _Background(),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    _Body(),
-                  ],
-                ),
-              ),
+              _Body(),
             ],
           ),
         ),
@@ -40,13 +34,13 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    final t = Translations.of(context);
+    final i18n = Translations.of(context);
 
     return Column(
       children: [
         const TitleAndLogo(),
         Text(
-          t.title,
+          i18n.title,
           style: textTheme.headline,
         ),
         const SizedBox(height: 16),

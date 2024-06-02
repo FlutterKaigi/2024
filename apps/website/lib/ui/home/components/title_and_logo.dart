@@ -11,7 +11,7 @@ class TitleAndLogo extends StatelessWidget {
     final textTheme = theme.customThemeExtension.textTheme;
     final colorTheme = theme.customThemeExtension.colorTheme;
 
-    final t = Translations.of(context);
+    final i18n = Translations.of(context);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -31,7 +31,7 @@ class TitleAndLogo extends StatelessWidget {
                   ),
                   const SizedBox(width: 12),
                   Text(
-                    t.title,
+                    i18n.title,
                     style: textTheme.availableFonts.poppins.medium.copyWith(
                       fontSize: 87,
                     ),
