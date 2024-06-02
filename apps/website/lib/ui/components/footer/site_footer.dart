@@ -3,6 +3,7 @@ import 'package:conference_2024_website/ui/components/contents_margin/contents_m
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
 final class SiteFooter extends StatelessWidget {
@@ -60,11 +61,14 @@ final class _FooterContents extends StatelessWidget {
                     style: textTheme.footer,
                   ),
                   const WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        child: Icon(Icons.offline_bolt),
-                      )),
+                    alignment: PlaceholderAlignment.middle,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: VectorGraphic(
+                        loader: AssetBytesLoader('assets/svg/flutter_icon.svg'),
+                      ),
+                    ),
+                  ),
                   TextSpan(
                     text: 'are trademarks owned by Google.',
                     style: textTheme.footer,
@@ -89,22 +93,22 @@ final class _PrevKaigi extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _yearButton('2021', 'https://2021.flutterkaigi.com', context),
+        _yearButton('2021', 'https://flutterkaigi.jp/2021/', context),
         _dividerSlash(),
-        _yearButton('2022', 'https://2022.flutterkaigi.com', context),
+        _yearButton('2022', 'https://flutterkaigi.jp/2022/', context),
         _dividerSlash(),
-        _yearButton('2023', 'https://2023.flutterkaigi.com', context),
+        _yearButton('2023', 'https://flutterkaigi.jp/2023/', context),
       ],
     );
   }
 
-  Widget _yearButton(String year, String, BuildContext context) {
+  Widget _yearButton(String year, String url, BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
     return TextButton(
-      onPressed: () {
-        // TODO: Implement URL launch
+      onPressed: () async{
+        await launchUrl(Uri.parse(url));
       },
       child: Text(
         year,
@@ -135,19 +139,20 @@ final class _SnsLinks extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        // TODO: 正しいIconを設定
         _buildIconButton(
           icon: Icons.close, // X icon
-          url: 'https://example.com', // Replace with your URL
+          url: 'https://x.com/FlutterKaigi',
         ),
         const Gap(40),
         _buildIconButton(
           icon: Icons.code, // Github icon
-          url: 'https://github.com', // Replace with your URL
+          url: 'https://github.com/FlutterKaigi/2024',
         ),
         const Gap(40),
         _buildIconButton(
           icon: Icons.chat, // Discord icon
-          url: 'https://discord.com', // Replace with your URL
+          url: 'https://discord.com/invite/Nr7H8JTJSF',
         ),
         const Gap(40),
         _buildIconButton(
@@ -162,12 +167,10 @@ final class _SnsLinks extends StatelessWidget {
     return IconButton(
       icon: Icon(icon),
       iconSize: 40,
-      onPressed: () async => _launchURL(url),
+      onPressed: () async{
+        await launchUrl(Uri.parse(url));
+      }
     );
-  }
-
-  Future<void> _launchURL(String url) async {
-    // TODO: Implement URL launch
   }
 }
 
