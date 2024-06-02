@@ -65,7 +65,7 @@ class _DateAndLocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = Translations.of(context);
+    final i18n = Translations.of(context);
 
     final textTheme = Theme.of(context).customThemeExtension.textTheme;
 
@@ -76,20 +76,20 @@ class _DateAndLocation extends StatelessWidget {
         ),
         children: [
           TextSpan(
-            text: '${t.lead.date.prefix}: ${t.lead.date.value}\n',
+            text: '${i18n.lead.date.prefix}: ${i18n.lead.date.value}\n',
           ),
           TextSpan(
-            text: '${t.lead.location.prefix}: ',
+            text: '${i18n.lead.location.prefix}: ',
           ),
           WidgetSpan(
             alignment: PlaceholderAlignment.middle,
             child: Link(
-              uri: Uri.parse('https://ariake-hall.jp/'),
+              uri: Uri.parse('https://ariake-hall.jp'),
               target: LinkTarget.blank,
               builder: (context, followLink) => InkWell(
                 onTap: followLink,
                 child: Text(
-                  t.lead.location.value,
+                  i18n.lead.location.value,
                   style: textTheme.label.copyWith(
                     decoration: TextDecoration.underline,
                     fontWeight: FontWeight.bold,
@@ -99,13 +99,19 @@ class _DateAndLocation extends StatelessWidget {
             ),
           ),
           // location icon
-          const WidgetSpan(
-            child: Padding(
-              padding: EdgeInsets.only(left: 8),
-              child: Icon(
-                Icons.location_on,
-                size: 32,
-                color: Colors.black,
+          WidgetSpan(
+            child: Link(
+              uri: Uri.parse('https://maps.app.goo.gl/z65qUg6oYyw2T3jR6'),
+              builder: (context, followLink) => IconButton(
+                onPressed: followLink,
+                style: IconButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                icon: const Icon(
+                  Icons.location_on,
+                  size: 32,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
