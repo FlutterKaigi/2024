@@ -40,13 +40,13 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    final t = Translations.of(context);
+    final i18n = Translations.of(context);
 
     return Column(
       children: [
         const TitleAndLogo(),
         Text(
-          t.title,
+          i18n.title,
           style: textTheme.headline,
         ),
         const SizedBox(height: 16),
