@@ -11,7 +11,7 @@ class Lead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Colors.white.withOpacity(0.6);
-    final t = Translations.of(context);
+    final i18n = Translations.of(context);
 
     final textTheme = Theme.of(context).customThemeExtension.textTheme;
 
@@ -35,14 +35,14 @@ class Lead extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              t.lead.message,
+              i18n.lead.message,
               style: textTheme.body,
             ),
             padding,
             SizedBox(
               width: 480,
               child: AppButton.primaryLink(
-                label: Text(t.lead.xAccount),
+                label: Text(i18n.lead.xAccount),
                 link: Uri.parse('https://x.com/FlutterKaigi'),
                 leading: const VectorGraphic(
                   loader: AssetBytesLoader('assets/svg/products/x.svg'),
