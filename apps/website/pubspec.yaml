@@ -12,11 +12,15 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
+  flutter_localizations:
+    sdk: flutter
   freezed_annotation: ^2.4.1
   gap: ^3.0.1
   go_router: ^14.1.2
   hooks_riverpod: ^2.5.1
   intl: ^0.19.0
+  slang: ^3.31.0
+  slang_flutter: ^3.31.0
   theme_tailor_annotation: ^3.0.1
   url_launcher: ^6.2.6
   vector_graphics: ^1.1.11+1
@@ -26,14 +30,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.5.2
+  slang_build_runner: ^3.31.0
   theme_tailor: ^3.0.1
   vector_graphics_compiler: ^1.1.11+1
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:
     - path: assets/svg/
+      transformers:
+        - package: vector_graphics_compiler
+    - path: assets/svg/products/
       transformers:
         - package: vector_graphics_compiler
     - assets/images/
