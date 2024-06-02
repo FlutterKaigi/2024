@@ -1,5 +1,6 @@
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
+import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
@@ -11,16 +12,27 @@ final class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
-        child: IntrinsicHeight(
-          child: Stack(
-            children: [
-              _Background(),
-              _Body(),
-            ],
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: _bodyContentSliver(),
           ),
-        ),
+          const SliverToBoxAdapter(
+            child: SiteFooter(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _bodyContentSliver() {
+    return const IntrinsicHeight(
+      child: Stack(
+        children: [
+          _Background(),
+          _Body(),
+        ],
       ),
     );
   }
