@@ -1,6 +1,5 @@
-import 'package:conference_2024_website/l10n/l10n.dart';
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
-import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
@@ -34,32 +33,27 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    final l10n = L10n.of(context)!;
+    final i18n = Translations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const _TitleAndLogo(),
-        ContentsMargin(
-          child: Column(
-            children: [
-              Text(
-                l10n.title,
-                style: textTheme.headline,
-              ),
-              const SizedBox(height: 16),
-              AppButton.primaryLink(
-                label: const Text('Click me!'),
-                link: Uri.parse('/sample-1'),
-                leading: const Icon(Icons.link),
-              ),
-              const SizedBox(height: 16),
-              AppButton.secondaryLink(
-                label: const Text('Click me!'),
-                link: Uri.parse('/sample-2'),
-                leading: const Icon(Icons.link),
-              ),
-            ],
-          ),
+        Text(
+          i18n.title,
+          style: textTheme.headline,
+        ),
+        const SizedBox(height: 16),
+        AppButton.primaryLink(
+          label: const Text('Click me!'),
+          link: Uri.parse('/sample-1'),
+          leading: const Icon(Icons.link),
+        ),
+        const SizedBox(height: 16),
+        AppButton.secondaryLink(
+          label: const Text('Click me!'),
+          link: Uri.parse('/sample-2'),
+          leading: const Icon(Icons.link),
         ),
       ],
     );
