@@ -1,5 +1,3 @@
-import 'package:conference_2024_website/i18n/strings.g.dart';
-import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
@@ -7,7 +5,6 @@ import 'package:conference_2024_website/ui/home/components/background/background
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
-import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 final class HomePage extends StatelessWidget {
@@ -35,7 +32,6 @@ final class HomePage extends StatelessWidget {
         children: [
           _Background(),
           _Body(),
-          ComingSoon(),
         ],
       ),
     );
@@ -47,30 +43,13 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.customThemeExtension.textTheme;
-    final i18n = Translations.of(context);
-    return ContentsMargin(
+    return const ContentsMargin(
       child: Column(
         children: [
-          const _TitleAndLogo(),
-          const _Lead(),
-          Text(
-            i18n.title,
-            style: textTheme.headline,
-          ),
-          const SizedBox(height: 16),
-          AppButton.primaryLink(
-            label: const Text('Click me!'),
-            link: Uri.parse('/sample-1'),
-            leading: const Icon(Icons.link),
-          ),
-          const SizedBox(height: 16),
-          AppButton.secondaryLink(
-            label: const Text('Click me!'),
-            link: Uri.parse('/sample-2'),
-            leading: const Icon(Icons.link),
-          ),
+          _TitleAndLogo(),
+          _Lead(),
+          SizedBox(height: 16),
+          ComingSoon(),
         ],
       ),
     );
