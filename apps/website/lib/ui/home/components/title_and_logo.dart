@@ -43,7 +43,7 @@ class TitleAndLogo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    t.titleAndLogo.date,
+                    i18n.titleAndLogo.date,
                     style: textTheme.availableFonts.poppins.regular.copyWith(
                       fontSize: 33,
                       color: colorTheme.grey,
@@ -52,7 +52,7 @@ class TitleAndLogo extends StatelessWidget {
                   ),
                   const SizedBox(width: 40),
                   Text(
-                    t.year,
+                    i18n.year,
                     style: textTheme.availableFonts.poppins.bold.copyWith(
                       fontSize: 120,
                       // Baseline上下の余白を消すため
