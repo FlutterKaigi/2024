@@ -91,3 +91,30 @@ class _Background extends StatelessWidget {
     );
   }
 }
+
+class _TitleAndLogo extends StatelessWidget {
+  const _TitleAndLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    const maxPadding = (
+      horizontal: 88.0,
+      vertical: 110.0,
+    );
+    const minPadding = (
+      horizontal: 24.0,
+      vertical: 24.0,
+    );
+    final width = MediaQuery.of(context).size.width;
+    final threshold = 600 + maxPadding.horizontal * 2;
+    final padding = width > threshold ? maxPadding : minPadding;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: padding.horizontal,
+        vertical: padding.vertical,
+      ),
+      child: const TitleAndLogo(),
+    );
+  }
+}
