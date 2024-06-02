@@ -9,6 +9,7 @@ class AppButton extends StatelessWidget {
     required Uri link,
     Widget? leading,
     Widget? trailing = _defaultTrailing,
+    LinkTarget target = LinkTarget.blank,
     Key? key,
   }) =>
       AppButton._(
@@ -17,6 +18,7 @@ class AppButton extends StatelessWidget {
         trailing: trailing,
         link: link,
         type: _GradientType.primary,
+        target: target,
         key: key,
       );
 
@@ -41,6 +43,7 @@ class AppButton extends StatelessWidget {
     required Uri link,
     Widget? leading,
     Widget? trailing = _defaultTrailing,
+    LinkTarget target = LinkTarget.blank,
     Key? key,
   }) =>
       AppButton._(
@@ -49,6 +52,7 @@ class AppButton extends StatelessWidget {
         trailing: trailing,
         link: link,
         type: _GradientType.secondary,
+        target: target,
         key: key,
       );
 
@@ -75,6 +79,7 @@ class AppButton extends StatelessWidget {
     this.trailing,
     this.link,
     this.onPressed,
+    this.target,
     super.key,
   })  : assert(
           !(link != null && onPressed != null),
@@ -96,6 +101,7 @@ class AppButton extends StatelessWidget {
 
   final Uri? link;
   final void Function()? onPressed;
+  final LinkTarget? target;
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +111,7 @@ class AppButton extends StatelessWidget {
 
     final button = Link(
       uri: link,
+      target: target ?? LinkTarget.defaultTarget,
       builder: (context, followLink) {
         return Material(
           color: Colors.transparent,
@@ -172,6 +179,7 @@ class AppButton extends StatelessWidget {
     properties
         .add(ObjectFlagProperty<void Function()?>.has('onPressed', onPressed));
     properties.add(EnumProperty<_GradientType>('_type', _type));
+    properties.add(DiagnosticsProperty<LinkTarget>('target', target));
   }
 }
 

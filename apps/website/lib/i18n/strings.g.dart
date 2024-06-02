@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 2
+/// Strings: 10
 ///
-/// Built on 2024-06-01 at 21:50 UTC
+/// Built on 2024-06-01 at 21:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -148,17 +148,68 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get title => 'FlutterKaigi';
+<<<<<<< HEAD
 	late final _StringsComingSoonJa comingSoon = _StringsComingSoonJa._(_root);
 }
 
 // Path: comingSoon
 class _StringsComingSoonJa {
 	_StringsComingSoonJa._(this._root);
+=======
+	String get year => '2024';
+	late final _StringsTitleAndLogoJa titleAndLogo = _StringsTitleAndLogoJa._(_root);
+	late final _StringsLeadJa lead = _StringsLeadJa._(_root);
+}
+
+// Path: titleAndLogo
+class _StringsTitleAndLogoJa {
+	_StringsTitleAndLogoJa._(this._root);
+>>>>>>> origin/main
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+<<<<<<< HEAD
 	String get message => 'Other Contents\nComing Soon...';
+=======
+	String get date => 'November\n21(Thu) - 22(Fri)';
+	String get location => '有明セントラルタワーホール&カンファレンス';
+}
+
+// Path: lead
+class _StringsLeadJa {
+	_StringsLeadJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get message => '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
+	String get xAccount => '@FlutterKaigi';
+	late final _StringsLeadDateJa date = _StringsLeadDateJa._(_root);
+	late final _StringsLeadLocationJa location = _StringsLeadLocationJa._(_root);
+}
+
+// Path: lead.date
+class _StringsLeadDateJa {
+	_StringsLeadDateJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get prefix => '開催日時';
+	String get value => '2024年11月21日(木) - 22日(金)';
+}
+
+// Path: lead.location
+class _StringsLeadLocationJa {
+	_StringsLeadLocationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get prefix => '会場';
+	String get value => '有明セントラルタワー＆カンファレンス';
+>>>>>>> origin/main
 }
 
 /// Flat map(s) containing all translations.
@@ -168,7 +219,19 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'title': return 'FlutterKaigi';
+<<<<<<< HEAD
 			case 'comingSoon.message': return 'Other Contents\nComing Soon...';
+=======
+			case 'year': return '2024';
+			case 'titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
+			case 'titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
+			case 'lead.message': return '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
+			case 'lead.xAccount': return '@FlutterKaigi';
+			case 'lead.date.prefix': return '開催日時';
+			case 'lead.date.value': return '2024年11月21日(木) - 22日(金)';
+			case 'lead.location.prefix': return '会場';
+			case 'lead.location.value': return '有明セントラルタワー＆カンファレンス';
+>>>>>>> origin/main
 			default: return null;
 		}
 	}
