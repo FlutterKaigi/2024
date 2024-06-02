@@ -1,6 +1,5 @@
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
-import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
@@ -37,8 +36,9 @@ class _Body extends StatelessWidget {
     final i18n = Translations.of(context);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitleAndLogo(),
+        const _TitleAndLogo(),
         Text(
           i18n.title,
           style: textTheme.headline,
@@ -70,6 +70,33 @@ class _Background extends StatelessWidget {
         BackgroundTop(),
         BackgroundBottom(),
       ],
+    );
+  }
+}
+
+class _TitleAndLogo extends StatelessWidget {
+  const _TitleAndLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    const maxPadding = (
+      horizontal: 88.0,
+      vertical: 110.0,
+    );
+    const minPadding = (
+      horizontal: 24.0,
+      vertical: 24.0,
+    );
+    final width = MediaQuery.of(context).size.width;
+    final threshold = 600 + maxPadding.horizontal * 2;
+    final padding = width > threshold ? maxPadding : minPadding;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: padding.horizontal,
+        vertical: padding.vertical,
+      ),
+      child: const TitleAndLogo(),
     );
   }
 }
