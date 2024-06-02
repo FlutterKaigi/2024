@@ -1,4 +1,5 @@
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
+import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
@@ -16,14 +17,7 @@ final class HomePage extends StatelessWidget {
           child: Stack(
             children: [
               _Background(),
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    _Body(),
-                  ],
-                ),
-              ),
+              _Body(),
             ],
           ),
         ),
@@ -39,26 +33,28 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    return Column(
-      children: [
-        const TitleAndLogo(),
-        Text(
-          'Hello, World!',
-          style: textTheme.headline,
-        ),
-        const SizedBox(height: 16),
-        AppButton.primaryLink(
-          label: const Text('Click me!'),
-          link: Uri.parse('/sample-1'),
-          leading: const Icon(Icons.link),
-        ),
-        const SizedBox(height: 16),
-        AppButton.secondaryLink(
-          label: const Text('Click me!'),
-          link: Uri.parse('/sample-2'),
-          leading: const Icon(Icons.link),
-        ),
-      ],
+    return ContentsMargin(
+      child: Column(
+        children: [
+          const TitleAndLogo(),
+          Text(
+            'Hello, World!',
+            style: textTheme.headline,
+          ),
+          const SizedBox(height: 16),
+          AppButton.primaryLink(
+            label: const Text('Click me!'),
+            link: Uri.parse('/sample-1'),
+            leading: const Icon(Icons.link),
+          ),
+          const SizedBox(height: 16),
+          AppButton.secondaryLink(
+            label: const Text('Click me!'),
+            link: Uri.parse('/sample-2'),
+            leading: const Icon(Icons.link),
+          ),
+        ],
+      ),
     );
   }
 }
