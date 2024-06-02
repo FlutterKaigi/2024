@@ -4,5 +4,17 @@
   "titleAndLogo": {
     "date": "November\n21(Thu) - 22(Fri)",
     "location": "有明セントラルタワーホール&カンファレンス"
+  },
+  "lead": {
+    "message": "昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！",
+    "xAccount": "@FlutterKaigi",
+    "date": {
+      "prefix": "開催日時",
+      "value": "2024年11月21日(木) - 22日(金)"
+    },
+    "location": {
+      "prefix": "会場",
+      "value": "有明セントラルタワー＆カンファレンス"
+    }
   }
 }

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 4
+/// Strings: 10
 ///
-/// Built on 2024-06-01 at 20:26 UTC
+/// Built on 2024-06-01 at 21:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,6 +150,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get title => 'FlutterKaigi';
 	String get year => '2024';
 	late final _StringsTitleAndLogoJa titleAndLogo = _StringsTitleAndLogoJa._(_root);
+	late final _StringsLeadJa lead = _StringsLeadJa._(_root);
 }
 
 // Path: titleAndLogo
@@ -163,6 +164,41 @@ class _StringsTitleAndLogoJa {
 	String get location => '有明セントラルタワーホール&カンファレンス';
 }
 
+// Path: lead
+class _StringsLeadJa {
+	_StringsLeadJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get message => '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
+	String get xAccount => '@FlutterKaigi';
+	late final _StringsLeadDateJa date = _StringsLeadDateJa._(_root);
+	late final _StringsLeadLocationJa location = _StringsLeadLocationJa._(_root);
+}
+
+// Path: lead.date
+class _StringsLeadDateJa {
+	_StringsLeadDateJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get prefix => '開催日時';
+	String get value => '2024年11月21日(木) - 22日(金)';
+}
+
+// Path: lead.location
+class _StringsLeadLocationJa {
+	_StringsLeadLocationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get prefix => '会場';
+	String get value => '有明セントラルタワー＆カンファレンス';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -173,6 +209,12 @@ extension on Translations {
 			case 'year': return '2024';
 			case 'titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
+			case 'lead.message': return '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
+			case 'lead.xAccount': return '@FlutterKaigi';
+			case 'lead.date.prefix': return '開催日時';
+			case 'lead.date.value': return '2024年11月21日(木) - 22日(金)';
+			case 'lead.location.prefix': return '会場';
+			case 'lead.location.value': return '有明セントラルタワー＆カンファレンス';
 			default: return null;
 		}
 	}
