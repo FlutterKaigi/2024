@@ -1,4 +1,3 @@
-import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +106,7 @@ final class _PrevKaigi extends StatelessWidget {
     final textTheme = theme.customThemeExtension.textTheme;
 
     return TextButton(
-      onPressed: () async{
+      onPressed: () async {
         await launchUrl(Uri.parse(url));
       },
       child: Text(
@@ -167,9 +166,9 @@ final class _SnsLinks extends StatelessWidget {
     return IconButton(
       icon: Icon(icon),
       iconSize: 40,
-      onPressed: () async{
+      onPressed: () async {
         await launchUrl(Uri.parse(url));
-      }
+      },
     );
   }
 }
