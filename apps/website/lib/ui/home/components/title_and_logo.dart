@@ -43,7 +43,7 @@ class TitleAndLogo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    'November\n21(Thu) - 22(Fri)',
+                    t.titleAndLogo.date,
                     style: textTheme.availableFonts.poppins.regular.copyWith(
                       fontSize: 33,
                       color: colorTheme.grey,
@@ -52,7 +52,7 @@ class TitleAndLogo extends StatelessWidget {
                   ),
                   const SizedBox(width: 40),
                   Text(
-                    '2024',
+                    t.year,
                     style: textTheme.availableFonts.poppins.bold.copyWith(
                       fontSize: 120,
                       // Baseline上下の余白を消すため
@@ -69,7 +69,7 @@ class TitleAndLogo extends StatelessWidget {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(
-            '有明セントラルタワーホール&カンファレンス',
+            t.titleAndLogo.location,
             style: textTheme.body,
           ),
         ),
