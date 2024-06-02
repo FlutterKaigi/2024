@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
@@ -33,28 +34,28 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
-    return ContentsMargin(
-      child: Column(
-        children: [
-          const TitleAndLogo(),
-          Text(
-            'Hello, World!',
-            style: textTheme.headline,
-          ),
-          const SizedBox(height: 16),
-          AppButton.primaryLink(
-            label: const Text('Click me!'),
-            link: Uri.parse('/sample-1'),
-            leading: const Icon(Icons.link),
-          ),
-          const SizedBox(height: 16),
-          AppButton.secondaryLink(
-            label: const Text('Click me!'),
-            link: Uri.parse('/sample-2'),
-            leading: const Icon(Icons.link),
-          ),
-        ],
-      ),
+    final i18n = Translations.of(context);
+
+    return Column(
+      children: [
+        const TitleAndLogo(),
+        Text(
+          i18n.title,
+          style: textTheme.headline,
+        ),
+        const SizedBox(height: 16),
+        AppButton.primaryLink(
+          label: const Text('Click me!'),
+          link: Uri.parse('/sample-1'),
+          leading: const Icon(Icons.link),
+        ),
+        const SizedBox(height: 16),
+        AppButton.secondaryLink(
+          label: const Text('Click me!'),
+          link: Uri.parse('/sample-2'),
+          leading: const Icon(Icons.link),
+        ),
+      ],
     );
   }
 }

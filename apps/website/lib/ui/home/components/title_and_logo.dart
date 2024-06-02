@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,8 @@ class TitleAndLogo extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
     final colorTheme = theme.customThemeExtension.colorTheme;
+
+    final i18n = Translations.of(context);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -28,7 +31,7 @@ class TitleAndLogo extends StatelessWidget {
                   ),
                   const SizedBox(width: 12),
                   Text(
-                    'FlutterKaigi',
+                    i18n.title,
                     style: textTheme.availableFonts.poppins.medium.copyWith(
                       fontSize: 87,
                     ),
