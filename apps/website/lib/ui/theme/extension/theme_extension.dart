@@ -34,6 +34,7 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
     required this.body,
     required this.headline,
     required this.label,
+    required this.footer,
     required this.availableFonts,
   });
 
@@ -57,6 +58,11 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
         color: grey,
         height: 1.8,
       ),
+      footer: availableFonts.notoSansJp.regular.copyWith(
+        fontSize: 15,
+        color: Colors.black,
+        height: 1.6,
+      ),
       availableFonts: AvailableFonts(),
     );
   }
@@ -69,6 +75,9 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
 
   /// ボタンなど
   final TextStyle label;
+
+  /// フッター部分
+  final TextStyle footer;
 
   final AvailableFonts availableFonts;
 }
