@@ -37677,7 +37677,7 @@ return A.N($async$$0,r)},
 $S:16}
 A.VB.prototype={
 K(a){var s=this
-return A.o2(A.a([s.tD(B.Yq,"https://x.com/FlutterKaigi"),B.fI,s.tD(B.a6M,"https://github.com/FlutterKaigi/2024"),B.fI,s.tD(B.a6N,"https://discord.com/invite/Nr7H8JTJSF"),B.fI,s.tD(B.a6P,"https://medium.com")],t.p),B.ad,B.cI,B.b0)},
+return A.o2(A.a([s.tD(B.Yq,"https://x.com/FlutterKaigi"),B.fI,s.tD(B.a6M,"https://github.com/FlutterKaigi/2024"),B.fI,s.tD(B.a6N,"https://discord.com/invite/Nr7H8JTJSF"),B.fI,s.tD(B.a6P,"https://medium.com/flutterkaigi")],t.p),B.ad,B.cI,B.b0)},
 tD(a,b){return new A.l1(new A.aiU(b,a),A.ck(b,0,null),B.f7,null)}}
 A.aiU.prototype={
 $2(a,b){return A.a4c(null,this.b,40,new A.aiT(this.a),null,null)},
