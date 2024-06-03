@@ -71,6 +71,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
   TextStyle get headline;
   TextStyle get body;
   TextStyle get label;
+  TextStyle get footer;
   AvailableFonts get availableFonts;
 
   @override
@@ -78,12 +79,14 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
     TextStyle? headline,
     TextStyle? body,
     TextStyle? label,
+    TextStyle? footer,
     AvailableFonts? availableFonts,
   }) {
     return TextThemeExtension(
       headline: headline ?? this.headline,
       body: body ?? this.body,
       label: label ?? this.label,
+      footer: footer ?? this.footer,
       availableFonts: availableFonts ?? this.availableFonts,
     );
   }
@@ -96,6 +99,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       headline: TextStyle.lerp(headline, other.headline, t)!,
       body: TextStyle.lerp(body, other.body, t)!,
       label: TextStyle.lerp(label, other.label, t)!,
+      footer: TextStyle.lerp(footer, other.footer, t)!,
       availableFonts: t < 0.5 ? availableFonts : other.availableFonts,
     );
   }
@@ -108,6 +112,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
             const DeepCollectionEquality().equals(headline, other.headline) &&
             const DeepCollectionEquality().equals(body, other.body) &&
             const DeepCollectionEquality().equals(label, other.label) &&
+            const DeepCollectionEquality().equals(footer, other.footer) &&
             const DeepCollectionEquality()
                 .equals(availableFonts, other.availableFonts));
   }
@@ -119,6 +124,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       const DeepCollectionEquality().hash(headline),
       const DeepCollectionEquality().hash(body),
       const DeepCollectionEquality().hash(label),
+      const DeepCollectionEquality().hash(footer),
       const DeepCollectionEquality().hash(availableFonts),
     );
   }
