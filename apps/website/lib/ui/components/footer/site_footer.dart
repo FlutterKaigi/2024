@@ -1,7 +1,9 @@
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_graphics/vector_graphics.dart';
 
@@ -28,6 +30,7 @@ final class _FooterContents extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
+    final i18n = Translations.of(context);
 
     return Container(
       padding: const EdgeInsets.only(top: 46.81, bottom: 40),
@@ -39,14 +42,13 @@ final class _FooterContents extends StatelessWidget {
             const _SnsLinks(),
             const Gap(24),
             Text(
-              // TODO: l18n対応
-              '@ FlutterKaigi 2024 実行委員会',
+              i18n.footer.copyRight,
               style: textTheme.footer,
               textAlign: TextAlign.center,
             ),
             const Gap(24),
             Text(
-              'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.',
+              i18n.footer.googleFlutter1,
               style: textTheme.footer,
               textAlign: TextAlign.center,
             ),
@@ -56,7 +58,7 @@ final class _FooterContents extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'The Flutter name and the Flutter logo',
+                    text: i18n.footer.googleFlutter2,
                     style: textTheme.footer,
                   ),
                   const WidgetSpan(
@@ -69,7 +71,7 @@ final class _FooterContents extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: 'are trademarks owned by Google.',
+                    text: i18n.footer.googleFlutter3,
                     style: textTheme.footer,
                   ),
                 ],
@@ -105,14 +107,19 @@ final class _PrevKaigi extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
-    return TextButton(
-      onPressed: () async {
-        await launchUrl(Uri.parse(url));
+    return Link(
+      uri: Uri.parse(url),
+      builder: (context, _) {
+        return TextButton(
+          onPressed: () async {
+            await launchUrl(Uri.parse(url));
+          },
+          child: Text(
+            year,
+            style: textTheme.footer,
+          ),
+        );
       },
-      child: Text(
-        year,
-        style: textTheme.footer,
-      ),
     );
   }
 
@@ -138,36 +145,63 @@ final class _SnsLinks extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // TODO: 正しいIconを設定
         _buildIconButton(
-          icon: Icons.close, // X icon
+          // Twitterだけ余白のないクソデカアイコンなので、少し小さくしている
+          icon: const Padding(
+            padding: EdgeInsets.all(5),
+            child: VectorGraphic(
+              loader: AssetBytesLoader('assets/svg/products/x.svg'),
+              height: 30,
+              width: 30,
+            ),
+          ), // X icon
           url: 'https://x.com/FlutterKaigi',
         ),
         const Gap(40),
         _buildIconButton(
-          icon: Icons.code, // Github icon
+          icon: const VectorGraphic(
+            loader: AssetBytesLoader('assets/svg/products/github.svg'),
+            height: 40,
+            width: 40,
+            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+          ),
           url: 'https://github.com/FlutterKaigi/2024',
         ),
         const Gap(40),
         _buildIconButton(
-          icon: Icons.chat, // Discord icon
+          icon: const VectorGraphic(
+            loader: AssetBytesLoader('assets/svg/products/discord.svg'),
+            height: 40,
+            width: 40,
+            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+          ),
           url: 'https://discord.com/invite/Nr7H8JTJSF',
         ),
         const Gap(40),
         _buildIconButton(
-          icon: Icons.book, // Medium icon
+          icon: const VectorGraphic(
+            loader: AssetBytesLoader('assets/svg/products/medium.svg'),
+            height: 40,
+            width: 40,
+            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+          ),
           url: 'https://medium.com', // Replace with your URL
         ),
       ],
     );
   }
 
-  Widget _buildIconButton({required IconData icon, required String url}) {
-    return IconButton(
-      icon: Icon(icon),
-      iconSize: 40,
-      onPressed: () async {
-        await launchUrl(Uri.parse(url));
+  Widget _buildIconButton({required Widget icon, required String url}) {
+    return Link(
+      uri: Uri.parse(url),
+      builder: (context, _) {
+        return IconButton(
+          onPressed: () async {
+            await launchUrl(Uri.parse(url));
+          },
+          iconSize: 40,
+          icon: icon,
+        );
       },
     );
   }
