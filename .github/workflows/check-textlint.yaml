@@ -31,6 +31,6 @@ jobs:
       - run: bun install
 
       # https://github.com/danger/danger-js/blob/main/source/ci_source/providers/GitHubActions.ts
-      - run: bun danger ci
+      - run: bun danger ci -d textlint.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
