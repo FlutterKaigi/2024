@@ -25,7 +25,7 @@ class TitleAndLogo extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Image.asset(
-                    'assets/images/icon.png',
+                    'assets/images/icon.webp',
                     height: 94,
                     width: 94,
                   ),
