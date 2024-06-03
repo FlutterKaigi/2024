@@ -185,7 +185,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://medium.com', // Replace with your URL
+          url: 'https://medium.com/flutterkaigi', // Replace with your URL
         ),
       ],
     );
