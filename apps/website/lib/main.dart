@@ -31,7 +31,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final i18n = Translations.of(context);
     return MaterialApp.router(
+      title: '${i18n.title} ${i18n.year}',
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
