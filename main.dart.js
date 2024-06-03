@@ -37736,7 +37736,7 @@ n=t._2
 m=t.pm
 s=A.w6(a,n,m)
 r=t.p
-q=A.o2(A.a([A.arI("assets/images/icon.png",B.O,94,94),B.a0E,A.dU("FlutterKaigi",p,p,B.eK.b.NS(87),p)],r),B.ad,B.an,B.by)
+q=A.o2(A.a([A.arI("assets/images/icon.webp",B.O,94,94),B.a0E,A.dU("FlutterKaigi",p,p,B.eK.b.NS(87),p)],r),B.ad,B.an,B.by)
 s.f.gRf()
 o=A.HC(B.O,A.j5(A.a([q,A.o2(A.a([A.dU("November\n21(Thu) - 22(Fri)",p,p,B.eK.c.vx(o.b.a,33),B.it),B.a0F,A.dU("2024",p,p,B.eK.a.aaf(120,0.8),p)],r),B.cq,B.an,B.by),B.a0I],r),B.ad,B.an,B.b0),B.C,B.dV)
 A.asc($.aps(),n,m).gRf()
