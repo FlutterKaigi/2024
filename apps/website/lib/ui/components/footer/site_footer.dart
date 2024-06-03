@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ final class _FooterContents extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
+    final i18n = Translations.of(context);
 
     return Container(
       padding: const EdgeInsets.only(top: 46.81, bottom: 40),
@@ -40,14 +42,13 @@ final class _FooterContents extends StatelessWidget {
             const _SnsLinks(),
             const Gap(24),
             Text(
-              // TODO: l18n対応
-              '@ FlutterKaigi 2024 実行委員会',
+              i18n.footer.copyRight,
               style: textTheme.footer,
               textAlign: TextAlign.center,
             ),
             const Gap(24),
             Text(
-              'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.',
+              i18n.footer.googleFlutter1,
               style: textTheme.footer,
               textAlign: TextAlign.center,
             ),
@@ -57,7 +58,7 @@ final class _FooterContents extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'The Flutter name and the Flutter logo',
+                    text: i18n.footer.googleFlutter2,
                     style: textTheme.footer,
                   ),
                   const WidgetSpan(
@@ -70,7 +71,7 @@ final class _FooterContents extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: 'are trademarks owned by Google.',
+                    text: i18n.footer.googleFlutter3,
                     style: textTheme.footer,
                   ),
                 ],

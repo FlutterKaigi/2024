@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 11
+/// Strings: 15
 ///
-/// Built on 2024-06-02 at 18:20 UTC
+/// Built on 2024-06-03 at 03:46 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -16,16 +16,16 @@ import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
 
-const AppLocale _baseLocale = AppLocale.ja;
+const AppLocale _baseLocale = AppLocale.en;
 
 /// Supported locales, see extension methods below.
 ///
 /// Usage:
-/// - LocaleSettings.setLocale(AppLocale.ja) // set locale
-/// - Locale locale = AppLocale.ja.flutterLocale // get flutter locale from enum
-/// - if (LocaleSettings.currentLocale == AppLocale.ja) // locale check
+/// - LocaleSettings.setLocale(AppLocale.en) // set locale
+/// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
+/// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	ja(languageCode: 'ja', build: Translations.build);
+	en(languageCode: 'en', build: Translations.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -130,7 +130,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	Translations.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
-		    locale: AppLocale.ja,
+		    locale: AppLocale.en,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
@@ -138,7 +138,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
-	/// Metadata for the translations of <ja>.
+	/// Metadata for the translations of <en>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
@@ -148,15 +148,16 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get title => 'FlutterKaigi';
-	late final _StringsComingSoonJa comingSoon = _StringsComingSoonJa._(_root);
+	late final _StringsComingSoonEn comingSoon = _StringsComingSoonEn._(_root);
 	String get year => '2024';
-	late final _StringsTitleAndLogoJa titleAndLogo = _StringsTitleAndLogoJa._(_root);
-	late final _StringsLeadJa lead = _StringsLeadJa._(_root);
+	late final _StringsTitleAndLogoEn titleAndLogo = _StringsTitleAndLogoEn._(_root);
+	late final _StringsLeadEn lead = _StringsLeadEn._(_root);
+	late final _StringsFooterEn footer = _StringsFooterEn._(_root);
 }
 
 // Path: comingSoon
-class _StringsComingSoonJa {
-	_StringsComingSoonJa._(this._root);
+class _StringsComingSoonEn {
+	_StringsComingSoonEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -165,8 +166,8 @@ class _StringsComingSoonJa {
 }
 
 // Path: titleAndLogo
-class _StringsTitleAndLogoJa {
-	_StringsTitleAndLogoJa._(this._root);
+class _StringsTitleAndLogoEn {
+	_StringsTitleAndLogoEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -176,21 +177,34 @@ class _StringsTitleAndLogoJa {
 }
 
 // Path: lead
-class _StringsLeadJa {
-	_StringsLeadJa._(this._root);
+class _StringsLeadEn {
+	_StringsLeadEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get message => '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
 	String get xAccount => '@FlutterKaigi';
-	late final _StringsLeadDateJa date = _StringsLeadDateJa._(_root);
-	late final _StringsLeadLocationJa location = _StringsLeadLocationJa._(_root);
+	late final _StringsLeadDateEn date = _StringsLeadDateEn._(_root);
+	late final _StringsLeadLocationEn location = _StringsLeadLocationEn._(_root);
+}
+
+// Path: footer
+class _StringsFooterEn {
+	_StringsFooterEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get copyRight => '@ FlutterKaigi 2024 実行委員会';
+	String get googleFlutter1 => 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
+	String get googleFlutter2 => 'The Flutter name and the Flutter logo';
+	String get googleFlutter3 => 'are trademarks of Google LLC.';
 }
 
 // Path: lead.date
-class _StringsLeadDateJa {
-	_StringsLeadDateJa._(this._root);
+class _StringsLeadDateEn {
+	_StringsLeadDateEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -200,8 +214,8 @@ class _StringsLeadDateJa {
 }
 
 // Path: lead.location
-class _StringsLeadLocationJa {
-	_StringsLeadLocationJa._(this._root);
+class _StringsLeadLocationEn {
+	_StringsLeadLocationEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -227,6 +241,10 @@ extension on Translations {
 			case 'lead.date.value': return '2024年11月21日(木) - 22日(金)';
 			case 'lead.location.prefix': return '会場';
 			case 'lead.location.value': return '有明セントラルタワー＆カンファレンス';
+			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
+			case 'footer.googleFlutter1': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
+			case 'footer.googleFlutter2': return 'The Flutter name and the Flutter logo';
+			case 'footer.googleFlutter3': return 'are trademarks of Google LLC.';
 			default: return null;
 		}
 	}
