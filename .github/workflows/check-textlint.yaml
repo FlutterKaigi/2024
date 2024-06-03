@@ -2,6 +2,9 @@ name: Check Textlint
 
 on:
   pull_request:
+    paths:
+      - "**.md"
+      - "apps/app/**/**.arb"
 
 # https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
 permissions:
