@@ -24,6 +24,10 @@
     "copyRight": "@ FlutterKaigi 2024 実行委員会",
     "googleFlutter1": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
     "googleFlutter2": "The Flutter name and the Flutter logo",
-    "googleFlutter3": "are trademarks of Google LLC."
+    "googleFlutter3": "are trademarks of Google LLC.",
+    "codeOfConduct": "Code of Conduct",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact",
+    "license": "License"
   }
 }

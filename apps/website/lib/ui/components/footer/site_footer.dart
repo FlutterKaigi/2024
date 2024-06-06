@@ -41,6 +41,8 @@ final class _FooterContents extends StatelessWidget {
             const Gap(28),
             const _SnsLinks(),
             const Gap(24),
+            const _RequiredContents(),
+            const Gap(40),
             Text(
               i18n.footer.copyRight,
               style: textTheme.footer,
@@ -137,6 +139,80 @@ final class _PrevKaigi extends StatelessWidget {
   }
 }
 
+final class _RequiredContents extends StatelessWidget {
+  const _RequiredContents();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+    final i18n = Translations.of(context);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // code of conduct
+        _linkButton(
+          i18n.footer.codeOfConduct,
+          'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html',
+          context,
+        ),
+        const Gap(40),
+        // privacy policy
+        _linkButton(
+          i18n.footer.privacyPolicy,
+          'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html',
+          context,
+        ),
+        const Gap(40),
+        // contact
+        _linkButton(
+          i18n.footer.contact,
+          'https://flutterkaigi.jp/contact/',
+          context,
+        ),
+        const Gap(40),
+        // license
+        TextButton(
+          onPressed: () {
+            showLicensePage(
+              context: context,
+              applicationName: 'FlutterKaigi 2024',
+              applicationVersion: '1.0.0',
+              applicationIcon: Image.asset('assets/images/icon.webp'),
+              applicationLegalese: '© 2024 FlutterKaigi',
+            );
+          },
+          child: Text(
+            i18n.footer.license,
+            style: textTheme.footer,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _linkButton(String text, String url, BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+
+    return Link(
+      uri: Uri.parse(url),
+      builder: (context, _) {
+        return TextButton(
+          onPressed: () async {
+            await launchUrl(Uri.parse(url));
+          },
+          child: Text(
+            text,
+            style: textTheme.footer,
+          ),
+        );
+      },
+    );
+  }
+}
+
 final class _SnsLinks extends StatelessWidget {
   const _SnsLinks();
 
@@ -185,7 +261,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://medium.com/flutterkaigi', // Replace with your URL
+          url: 'https://medium.com/flutterkaigi',
         ),
       ],
     );
