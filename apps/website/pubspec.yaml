@@ -19,6 +19,7 @@ dependencies:
   go_router: ^14.1.2
   hooks_riverpod: ^2.5.1
   intl: ^0.19.0
+  package_info_plus: ^8.0.0
   slang: ^3.31.0
   slang_flutter: ^3.31.0
   theme_tailor_annotation: ^3.0.1

@@ -2,7 +2,9 @@ import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_graphics/vector_graphics.dart';
@@ -139,7 +141,7 @@ final class _PrevKaigi extends StatelessWidget {
   }
 }
 
-final class _RequiredContents extends StatelessWidget {
+final class _RequiredContents extends HookWidget {
   const _RequiredContents();
 
   @override
@@ -147,6 +149,20 @@ final class _RequiredContents extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
     final i18n = Translations.of(context);
+
+    final version = useState<String>('');
+
+    useEffect(
+      () {
+        // packageInfoの情報をライセンスページを表示する際に同期的に扱いたいため、事前に取得しておく
+        Future.microtask(() async {
+          final packageInfo = await PackageInfo.fromPlatform();
+          version.value = packageInfo.version;
+        });
+        return null;
+      },
+      [],
+    );
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -168,7 +184,7 @@ final class _RequiredContents extends StatelessWidget {
         // contact
         _linkButton(
           i18n.footer.contact,
-          'https://flutterkaigi.jp/contact/',
+          'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform',
           context,
         ),
         const Gap(40),
@@ -178,7 +194,7 @@ final class _RequiredContents extends StatelessWidget {
             showLicensePage(
               context: context,
               applicationName: 'FlutterKaigi 2024',
-              applicationVersion: '1.0.0',
+              applicationVersion: version.value,
               applicationIcon: Image.asset('assets/images/icon.webp'),
               applicationLegalese: '© 2024 FlutterKaigi',
             );
