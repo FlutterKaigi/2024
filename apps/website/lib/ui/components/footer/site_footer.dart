@@ -164,45 +164,59 @@ final class _RequiredContents extends HookWidget {
       [],
     );
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      alignment: WrapAlignment.center,
+      runAlignment: WrapAlignment.center,
+      spacing: 40,
+      runSpacing: 8,
       children: [
-        // code of conduct
-        _linkButton(
-          i18n.footer.codeOfConduct,
-          'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html',
-          context,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // code of conduct
+            _linkButton(
+              i18n.footer.codeOfConduct,
+              'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html',
+              context,
+            ),
+            const Gap(40),
+            // privacy policy
+            _linkButton(
+              i18n.footer.privacyPolicy,
+              'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html',
+              context,
+            ),
+          ],
         ),
-        const Gap(40),
-        // privacy policy
-        _linkButton(
-          i18n.footer.privacyPolicy,
-          'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html',
-          context,
-        ),
-        const Gap(40),
         // contact
-        _linkButton(
-          i18n.footer.contact,
-          'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform',
-          context,
-        ),
-        const Gap(40),
-        // license
-        TextButton(
-          onPressed: () {
-            showLicensePage(
-              context: context,
-              applicationName: 'FlutterKaigi 2024',
-              applicationVersion: version.value,
-              applicationIcon: Image.asset('assets/images/icon.webp'),
-              applicationLegalese: '© 2024 FlutterKaigi',
-            );
-          },
-          child: Text(
-            i18n.footer.license,
-            style: textTheme.footer,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _linkButton(
+              i18n.footer.contact,
+              'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform',
+              context,
+            ),
+            const Gap(40),
+            // license
+            TextButton(
+              onPressed: () {
+                showLicensePage(
+                  context: context,
+                  applicationName: 'FlutterKaigi 2024',
+                  applicationVersion: version.value,
+                  applicationIcon: Image.asset('assets/images/icon.webp'),
+                  applicationLegalese: '© 2024 FlutterKaigi',
+                );
+              },
+              child: Text(
+                i18n.footer.license,
+                style: textTheme.footer,
+              ),
+            ),
+          ],
         ),
       ],
     );
