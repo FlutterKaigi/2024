@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 15
+/// Strings: 19
 ///
-/// Built on 2024-06-03 at 03:46 UTC
+/// Built on 2024-06-06 at 08:59 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -200,6 +200,10 @@ class _StringsFooterEn {
 	String get googleFlutter1 => 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 	String get googleFlutter2 => 'The Flutter name and the Flutter logo';
 	String get googleFlutter3 => 'are trademarks of Google LLC.';
+	String get codeOfConduct => 'Code of Conduct';
+	String get privacyPolicy => 'Privacy Policy';
+	String get contact => 'Contact';
+	String get license => 'License';
 }
 
 // Path: lead.date
@@ -245,6 +249,10 @@ extension on Translations {
 			case 'footer.googleFlutter1': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 			case 'footer.googleFlutter2': return 'The Flutter name and the Flutter logo';
 			case 'footer.googleFlutter3': return 'are trademarks of Google LLC.';
+			case 'footer.codeOfConduct': return 'Code of Conduct';
+			case 'footer.privacyPolicy': return 'Privacy Policy';
+			case 'footer.contact': return 'Contact';
+			case 'footer.license': return 'License';
 			default: return null;
 		}
 	}

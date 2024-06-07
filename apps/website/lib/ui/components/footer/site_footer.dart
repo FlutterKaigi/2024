@@ -2,7 +2,9 @@ import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_graphics/vector_graphics.dart';
@@ -41,6 +43,8 @@ final class _FooterContents extends StatelessWidget {
             const Gap(28),
             const _SnsLinks(),
             const Gap(24),
+            const _RequiredContents(),
+            const Gap(40),
             Text(
               i18n.footer.copyRight,
               style: textTheme.footer,
@@ -137,6 +141,108 @@ final class _PrevKaigi extends StatelessWidget {
   }
 }
 
+final class _RequiredContents extends HookWidget {
+  const _RequiredContents();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+    final i18n = Translations.of(context);
+
+    final version = useState<String>('');
+
+    useEffect(
+      () {
+        // packageInfoの情報をライセンスページを表示する際に同期的に扱いたいため、事前に取得しておく
+        Future.microtask(() async {
+          final packageInfo = await PackageInfo.fromPlatform();
+          version.value = packageInfo.version;
+        });
+        return null;
+      },
+      [],
+    );
+
+    return Wrap(
+      alignment: WrapAlignment.center,
+      runAlignment: WrapAlignment.center,
+      spacing: 40,
+      runSpacing: 8,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // code of conduct
+            _linkButton(
+              i18n.footer.codeOfConduct,
+              'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html',
+              context,
+            ),
+            const Gap(40),
+            // privacy policy
+            _linkButton(
+              i18n.footer.privacyPolicy,
+              'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html',
+              context,
+            ),
+          ],
+        ),
+        // contact
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _linkButton(
+              i18n.footer.contact,
+              'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform',
+              context,
+            ),
+            const Gap(40),
+            // license
+            TextButton(
+              onPressed: () {
+                showLicensePage(
+                  context: context,
+                  applicationName: 'FlutterKaigi 2024',
+                  applicationVersion: version.value,
+                  applicationIcon: Image.asset('assets/images/icon.webp'),
+                  applicationLegalese: '© 2024 FlutterKaigi',
+                );
+              },
+              child: Text(
+                i18n.footer.license,
+                style: textTheme.footer,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _linkButton(String text, String url, BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+
+    return Link(
+      uri: Uri.parse(url),
+      builder: (context, _) {
+        return TextButton(
+          onPressed: () async {
+            await launchUrl(Uri.parse(url));
+          },
+          child: Text(
+            text,
+            style: textTheme.footer,
+          ),
+        );
+      },
+    );
+  }
+}
+
 final class _SnsLinks extends StatelessWidget {
   const _SnsLinks();
 
@@ -185,7 +291,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://medium.com/flutterkaigi', // Replace with your URL
+          url: 'https://medium.com/flutterkaigi',
         ),
       ],
     );
