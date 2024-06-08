@@ -1,3 +1,4 @@
+import 'package:conference_2024_app/widget/debug_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +12,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+        // TODO: ボトムナビゲーション#83が終わるまでデバッグ画面で動作確認する想定です。
+        body: DebugScreen(),
       ),
     );
   }
