@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        // TODO: ボトムナビゲーション#83が終わるまでデバッグ画面で動作確認する想定です。
+        // TODO: Figma のデザインで表示位置をFixし、さらにボトムナビゲーション#83 が完了するまでデバッグ画面で動作を確認する想定です。
         body: DebugScreen(),
       ),
     );
