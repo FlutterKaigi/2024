@@ -10,8 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   go_router: ^14.1.4
   hooks_riverpod: ^2.5.1
+  intl: ^0.19.0
   packages_app_features_about:
     path: ../../packages/app/features/about
   packages_app_features_news:
