@@ -37,7 +37,7 @@ packages:
 
 scripts:
   custom_lint:
-    exec: fvm dart run custom_lint
+    exec: dart run custom_lint
     packageFilters:
       dependsOn: custom_lint
 
