@@ -1,5 +1,5 @@
 name: packages_app_features_about
-description: "A new Flutter package project."
+description: "This package provides about-related features for the application."
 publish_to: "none"
 version: 0.0.1
 homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/features/about"
