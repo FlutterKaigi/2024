@@ -1,4 +1,4 @@
-import 'package:conference_2024_app/src/gen/l10n/l10n.dart';
+import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

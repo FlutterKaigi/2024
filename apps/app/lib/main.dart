@@ -1,5 +1,5 @@
+import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
-import 'package:conference_2024_app/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_features_about/l10n.dart';
