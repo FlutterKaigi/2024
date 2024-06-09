@@ -1,3 +1,4 @@
+import 'package:conference_2024_app/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,26 +12,27 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = L10n.of(context);
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            label: 'Sessions',
-            icon: Icon(Icons.info),
+            label: l.mainPageNavigationBarLabelSessions,
+            icon: const Icon(Icons.info),
           ),
           NavigationDestination(
-            label: 'Venue',
-            icon: Icon(Icons.info),
+            label: l.mainPageNavigationBarLabelVenue,
+            icon: const Icon(Icons.info),
           ),
           NavigationDestination(
-            label: 'News',
-            icon: Icon(Icons.info),
+            label: l.mainPageNavigationBarLabelNews,
+            icon: const Icon(Icons.info),
           ),
           NavigationDestination(
-            label: 'About',
-            icon: Icon(Icons.info),
+            label: l.mainPageNavigationBarLabelAbout,
+            icon: const Icon(Icons.info),
           ),
         ],
         onDestinationSelected: (index) {
