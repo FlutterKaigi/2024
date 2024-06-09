@@ -1,7 +1,7 @@
 name: packages_app_cores_navigation
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/navigation"
 
 environment:
   sdk: ^3.5.0-191.0.dev
