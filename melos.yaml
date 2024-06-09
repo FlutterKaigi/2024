@@ -12,6 +12,8 @@ command:
       flutter:
         sdk: flutter
       flutter_hooks: ^0.20.5
+      flutter_localizations:
+        sdk: flutter
       freezed_annotation: ^2.4.1
       go_router: ^14.1.4
       hooks_riverpod: ^2.5.1
@@ -47,6 +49,16 @@ scripts:
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
+
+  gen-l10n:
+    run: flutter gen-l10n
+    exec:
+      concurrency: 1
+      orderDependents: true
+    packageFilters:
+      dependsOn: flutter_localizations
+      ignore:
+        - conference_2024_website
 
 ide:
   intellij:
