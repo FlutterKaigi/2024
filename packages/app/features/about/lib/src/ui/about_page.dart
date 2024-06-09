@@ -2,15 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:packages_app_cores_navigation/about/providers.dart';
 import 'package:packages_app_features_about/l10n.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends ConsumerWidget {
   const AboutPage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nAbout.of(context);
     return Scaffold(
       body: CustomScrollView(
@@ -21,7 +23,9 @@ class AboutPage extends StatelessWidget {
               if (kDebugMode)
                 IconButton(
                   icon: const Icon(Icons.bug_report),
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.read(aboutPageNavigatorProvider).goDebugPage(context);
+                  },
                 ),
             ],
           ),

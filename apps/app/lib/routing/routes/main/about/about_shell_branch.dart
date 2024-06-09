@@ -4,6 +4,11 @@ const aboutShellBranch = TypedStatefulShellBranch<AboutShellBranch>(
   routes: <TypedRoute<RouteData>>[
     TypedGoRoute<AboutPageRoute>(
       path: AboutPageRoute.path,
+      routes: [
+        TypedGoRoute<DebugPageRoute>(
+          path: DebugPageRoute.path,
+        ),
+      ],
     ),
   ],
 );
