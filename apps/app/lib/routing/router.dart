@@ -1,7 +1,10 @@
 import 'package:conference_2024_app/main_page.dart';
+import 'package:conference_2024_app/routing/navigators/about/about_page_navigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:packages_app_cores_navigation/about/providers.dart';
 import 'package:packages_app_features_about/ui.dart';
 import 'package:packages_app_features_news/ui.dart';
 import 'package:packages_app_features_session/ui.dart';
