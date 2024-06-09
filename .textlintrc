@@ -1,5 +1,10 @@
 {
   "rules": {
-    "preset-jtf-style": true
+    "preset-jtf-style": true,
+    "@textlint-ja/no-synonyms": true,
+    "ja-no-successive-word": true,
+    "ja-no-orthographic-variants": true,
+    "ja-no-inappropriate-words": true,
+    "ja-unnatural-alphabet": true
   }
 }
