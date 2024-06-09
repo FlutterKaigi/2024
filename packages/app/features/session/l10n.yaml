@@ -1,0 +1,12 @@
+arb-dir: assets/l10n
+output-dir: lib/src/gen/l10n
+template-arb-file: app_ja.arb
+output-localization-file: l10n.dart
+output-class: L10nSession
+synthetic-package: false
+preferred-supported-locales:
+  - ja
+  - en
+header: "// ignore_for_file: type=lint"
+nullable-getter: false
+format: true

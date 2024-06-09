@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:packages_app_features_venue/l10n.dart';
 
 class VenuePage extends StatelessWidget {
   const VenuePage({
@@ -7,8 +8,9 @@ class VenuePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Venue Page'),
+    final l = L10nVenue.of(context);
+    return Center(
+      child: Text(l.venuePageTitle),
     );
   }
 }
