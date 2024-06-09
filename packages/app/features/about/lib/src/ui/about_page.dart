@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:packages_app_features_about/l10n.dart';
 
@@ -16,6 +17,13 @@ class AboutPage extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             title: Text(l.aboutPageTitle),
+            actions: [
+              if (kDebugMode)
+                IconButton(
+                  icon: const Icon(Icons.bug_report),
+                  onPressed: () {},
+                ),
+            ],
           ),
           SliverToBoxAdapter(
             child: ElevatedButton(
