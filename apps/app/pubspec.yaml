@@ -9,13 +9,13 @@ environment:
 
 dependencies:
   packages_app_features_about:
-    path: ../packages/app/features/about
+    path: ../../packages/app/features/about
   packages_app_features_news:
-    path: ../packages/app/features/news
+    path: ../../packages/app/features/news
   packages_app_features_session:
-    path: ../packages/app/features/session
+    path: ../../packages/app/features/session
   packages_app_features_venue:
-    path: ../packages/app/features/venue
+    path: ../../packages/app/features/venue
   flutter:
     sdk: flutter
   go_router: ^14.1.4
