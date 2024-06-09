@@ -1,5 +1,5 @@
 name: packages_app_cores_navigation
-description: "A new Flutter package project."
+description: "This package provides navigation-related cores for the application."
 version: 0.0.1
 homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/navigation"
 
