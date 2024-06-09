@@ -1,3 +1,4 @@
+import 'package:conference_2024_app/gen/images/assets.gen.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -20,19 +21,19 @@ class MainPage extends StatelessWidget {
         destinations: [
           NavigationDestination(
             label: l.mainPageNavigationBarLabelSessions,
-            icon: const Icon(Icons.info),
+            icon: Assets.images.sessions.image(width: 24, height: 24),
           ),
           NavigationDestination(
             label: l.mainPageNavigationBarLabelVenue,
-            icon: const Icon(Icons.info),
+            icon: Assets.images.venue.image(width: 24, height: 24),
           ),
           NavigationDestination(
             label: l.mainPageNavigationBarLabelNews,
-            icon: const Icon(Icons.info),
+            icon: Assets.images.news.image(width: 24, height: 24),
           ),
           NavigationDestination(
             label: l.mainPageNavigationBarLabelAbout,
-            icon: const Icon(Icons.info),
+            icon: Assets.images.about.image(width: 24, height: 24),
           ),
         ],
         onDestinationSelected: (index) {
