@@ -19,9 +19,6 @@ class AboutPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    // TODO: 後で `const AboutPage()` に差し替える。
-    return const Center(
-      child: Text('About Page'),
-    );
+    return const AboutPage();
   }
 }

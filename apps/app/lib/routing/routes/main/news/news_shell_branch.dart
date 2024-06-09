@@ -19,9 +19,6 @@ class NewsPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    // TODO: 後で `const NewsPage()` に差し替える。
-    return const Center(
-      child: Text('News Page'),
-    );
+    return const NewsPage();
   }
 }

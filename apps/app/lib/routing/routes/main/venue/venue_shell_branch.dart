@@ -19,9 +19,6 @@ class VenuePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    // TODO: 後で `const VenuePage()` に差し替える。
-    return const Center(
-      child: Text('Venue Page'),
-    );
+    return const VenuePage();
   }
 }

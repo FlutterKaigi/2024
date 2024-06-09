@@ -19,9 +19,6 @@ class SessionsPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    // TODO: 後で `const SessionsPage()` に差し替える。
-    return const Center(
-      child: Text('Sessions Page'),
-    );
+    return const SessionsPage();
   }
 }
