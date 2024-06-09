@@ -44,7 +44,7 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
 
     final grey = colorTheme.grey;
     return TextThemeExtension(
-      headline: availableFonts.poppins.bold.copyWith(
+      headline: availableFonts.poppins.regular.copyWith(
         fontSize: 48,
         color: Colors.black,
       ),
@@ -87,15 +87,18 @@ class ColorThemeExtension extends ThemeExtension<ColorThemeExtension>
     with _$ColorThemeExtensionTailorMixin {
   ColorThemeExtension({
     required this.grey,
+    required this.lightGrey,
   });
 
   factory ColorThemeExtension.light() {
     return ColorThemeExtension(
       grey: const Color(0xFF666666),
+      lightGrey: const Color(0xFFA6A6A6),
     );
   }
 
   final Color grey;
+  final Color lightGrey;
 }
 
 @tailorMixinComponent
