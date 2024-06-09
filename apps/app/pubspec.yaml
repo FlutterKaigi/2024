@@ -8,6 +8,10 @@ environment:
   flutter: ^3.23.0-9.0.pre
 
 dependencies:
+  flutter:
+    sdk: flutter
+  go_router: ^14.1.4
+  hooks_riverpod: ^2.5.1
   packages_app_features_about:
     path: ../../packages/app/features/about
   packages_app_features_news:
@@ -16,10 +20,6 @@ dependencies:
     path: ../../packages/app/features/session
   packages_app_features_venue:
     path: ../../packages/app/features/venue
-  flutter:
-    sdk: flutter
-  go_router: ^14.1.4
-  hooks_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
 
 dev_dependencies:
