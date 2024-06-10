@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 19
+/// Strings: 26
 ///
-/// Built on 2024-06-06 at 08:59 UTC
+/// Built on 2024-06-10 at 03:26 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -16,16 +16,16 @@ import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
 export 'package:slang_flutter/slang_flutter.dart';
 
-const AppLocale _baseLocale = AppLocale.en;
+const AppLocale _baseLocale = AppLocale.ja;
 
 /// Supported locales, see extension methods below.
 ///
 /// Usage:
-/// - LocaleSettings.setLocale(AppLocale.en) // set locale
-/// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
-/// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
+/// - LocaleSettings.setLocale(AppLocale.ja) // set locale
+/// - Locale locale = AppLocale.ja.flutterLocale // get flutter locale from enum
+/// - if (LocaleSettings.currentLocale == AppLocale.ja) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	en(languageCode: 'en', build: Translations.build);
+	ja(languageCode: 'ja', build: Translations.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -130,7 +130,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	Translations.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
-		    locale: AppLocale.en,
+		    locale: AppLocale.ja,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
@@ -138,7 +138,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
-	/// Metadata for the translations of <en>.
+	/// Metadata for the translations of <ja>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
@@ -148,16 +148,17 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get title => 'FlutterKaigi';
-	late final _StringsComingSoonEn comingSoon = _StringsComingSoonEn._(_root);
+	late final _StringsComingSoonJa comingSoon = _StringsComingSoonJa._(_root);
 	String get year => '2024';
-	late final _StringsTitleAndLogoEn titleAndLogo = _StringsTitleAndLogoEn._(_root);
-	late final _StringsLeadEn lead = _StringsLeadEn._(_root);
-	late final _StringsFooterEn footer = _StringsFooterEn._(_root);
+	late final _StringsTitleAndLogoJa titleAndLogo = _StringsTitleAndLogoJa._(_root);
+	late final _StringsLeadJa lead = _StringsLeadJa._(_root);
+	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
+	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
 }
 
 // Path: comingSoon
-class _StringsComingSoonEn {
-	_StringsComingSoonEn._(this._root);
+class _StringsComingSoonJa {
+	_StringsComingSoonJa._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -166,8 +167,8 @@ class _StringsComingSoonEn {
 }
 
 // Path: titleAndLogo
-class _StringsTitleAndLogoEn {
-	_StringsTitleAndLogoEn._(this._root);
+class _StringsTitleAndLogoJa {
+	_StringsTitleAndLogoJa._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -177,21 +178,21 @@ class _StringsTitleAndLogoEn {
 }
 
 // Path: lead
-class _StringsLeadEn {
-	_StringsLeadEn._(this._root);
+class _StringsLeadJa {
+	_StringsLeadJa._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get message => '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
 	String get xAccount => '@FlutterKaigi';
-	late final _StringsLeadDateEn date = _StringsLeadDateEn._(_root);
-	late final _StringsLeadLocationEn location = _StringsLeadLocationEn._(_root);
+	late final _StringsLeadDateJa date = _StringsLeadDateJa._(_root);
+	late final _StringsLeadLocationJa location = _StringsLeadLocationJa._(_root);
 }
 
 // Path: footer
-class _StringsFooterEn {
-	_StringsFooterEn._(this._root);
+class _StringsFooterJa {
+	_StringsFooterJa._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -206,9 +207,27 @@ class _StringsFooterEn {
 	String get license => 'License';
 }
 
+// Path: sponsor
+class _StringsSponsorJa {
+	_StringsSponsorJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Sponsor';
+	List<String> get messages => [
+		'FlutterKaigi 2024を一緒に盛り上げていただけるスポンサーさまを心からお待ちしております。',
+		'この機会にあなたの企業や製品を、国内外のFlutterやDartに情熱を持つ技術者たちに紹介しませんか？',
+		'FlutterKaigi 2024は皆さまのご協力により、成功へと導かれます。',
+		'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。',
+		'お申し込みは 6/17 10:00 より開始します',
+	];
+	String get apply => '協賛資料はこちら';
+}
+
 // Path: lead.date
-class _StringsLeadDateEn {
-	_StringsLeadDateEn._(this._root);
+class _StringsLeadDateJa {
+	_StringsLeadDateJa._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -218,8 +237,8 @@ class _StringsLeadDateEn {
 }
 
 // Path: lead.location
-class _StringsLeadLocationEn {
-	_StringsLeadLocationEn._(this._root);
+class _StringsLeadLocationJa {
+	_StringsLeadLocationJa._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -253,6 +272,13 @@ extension on Translations {
 			case 'footer.privacyPolicy': return 'Privacy Policy';
 			case 'footer.contact': return 'Contact';
 			case 'footer.license': return 'License';
+			case 'sponsor.title': return 'Sponsor';
+			case 'sponsor.messages.0': return 'FlutterKaigi 2024を一緒に盛り上げていただけるスポンサーさまを心からお待ちしております。';
+			case 'sponsor.messages.1': return 'この機会にあなたの企業や製品を、国内外のFlutterやDartに情熱を持つ技術者たちに紹介しませんか？';
+			case 'sponsor.messages.2': return 'FlutterKaigi 2024は皆さまのご協力により、成功へと導かれます。';
+			case 'sponsor.messages.3': return 'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。';
+			case 'sponsor.messages.4': return 'お申し込みは 6/17 10:00 より開始します';
+			case 'sponsor.apply': return '協賛資料はこちら';
 			default: return null;
 		}
 	}

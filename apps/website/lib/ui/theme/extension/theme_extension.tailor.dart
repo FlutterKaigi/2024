@@ -132,13 +132,16 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
 
 mixin _$ColorThemeExtensionTailorMixin on ThemeExtension<ColorThemeExtension> {
   Color get grey;
+  Color get lightGrey;
 
   @override
   ColorThemeExtension copyWith({
     Color? grey,
+    Color? lightGrey,
   }) {
     return ColorThemeExtension(
       grey: grey ?? this.grey,
+      lightGrey: lightGrey ?? this.lightGrey,
     );
   }
 
@@ -148,6 +151,7 @@ mixin _$ColorThemeExtensionTailorMixin on ThemeExtension<ColorThemeExtension> {
     if (other is! ColorThemeExtension) return this as ColorThemeExtension;
     return ColorThemeExtension(
       grey: Color.lerp(grey, other.grey, t)!,
+      lightGrey: Color.lerp(lightGrey, other.lightGrey, t)!,
     );
   }
 
@@ -156,7 +160,8 @@ mixin _$ColorThemeExtensionTailorMixin on ThemeExtension<ColorThemeExtension> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ColorThemeExtension &&
-            const DeepCollectionEquality().equals(grey, other.grey));
+            const DeepCollectionEquality().equals(grey, other.grey) &&
+            const DeepCollectionEquality().equals(lightGrey, other.lightGrey));
   }
 
   @override
@@ -164,6 +169,7 @@ mixin _$ColorThemeExtensionTailorMixin on ThemeExtension<ColorThemeExtension> {
     return Object.hash(
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(grey),
+      const DeepCollectionEquality().hash(lightGrey),
     );
   }
 }
