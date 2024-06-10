@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 25
 ///
-/// Built on 2024-06-09 at 17:24 UTC
+/// Built on 2024-06-10 at 03:24 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -221,7 +221,7 @@ class _StringsSponsorJa {
 		'FlutterKaigi 2024は皆さまのご協力により、成功へと導かれます。',
 		'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。',
 	];
-	String get apply => 'スポンサーお申し込みはこちら';
+	String get apply => '協賛資料はこちら';
 }
 
 // Path: lead.date
@@ -276,7 +276,7 @@ extension on Translations {
 			case 'sponsor.messages.1': return 'この機会にあなたの企業や製品を、国内外のFlutterやDartに情熱を持つ技術者たちに紹介しませんか？';
 			case 'sponsor.messages.2': return 'FlutterKaigi 2024は皆さまのご協力により、成功へと導かれます。';
 			case 'sponsor.messages.3': return 'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。';
-			case 'sponsor.apply': return 'スポンサーお申し込みはこちら';
+			case 'sponsor.apply': return '協賛資料はこちら';
 			default: return null;
 		}
 	}
