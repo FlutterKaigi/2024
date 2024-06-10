@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_cores_navigation/about/providers.dart';
 import 'package:packages_app_features_about/ui.dart';
+import 'package:packages_app_features_debug/ui.dart';
 import 'package:packages_app_features_news/ui.dart';
 import 'package:packages_app_features_session/ui.dart';
 import 'package:packages_app_features_venue/ui.dart';

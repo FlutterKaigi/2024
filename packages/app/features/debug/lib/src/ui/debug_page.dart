@@ -7,9 +7,13 @@ class DebugPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Debug Page'),
+    return const Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar.large(
+            title: Text('Debug Page'),
+          ),
+        ],
       ),
     );
   }

@@ -488,6 +488,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  packages_app_features_debug:
+    dependency: "direct main"
+    description:
+      path: "../../packages/app/features/debug"
+      relative: true
+    source: path
+    version: "0.0.1"
   packages_app_features_news:
     dependency: "direct main"
     description:

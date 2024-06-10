@@ -19,6 +19,8 @@ dependencies:
     path: ../../packages/app/cores/navigation
   packages_app_features_about:
     path: ../../packages/app/features/about
+  packages_app_features_debug:
+    path: ../../packages/app/features/debug
   packages_app_features_news:
     path: ../../packages/app/features/news
   packages_app_features_session:
