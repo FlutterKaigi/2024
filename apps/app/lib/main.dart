@@ -13,6 +13,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         // TODO: Figma のデザインで表示位置をFixし、さらにボトムナビゲーション#83 が完了するまでデバッグ画面で動作を確認する想定です。
+        // https://github.com/FlutterKaigi/2024/issues/118
         body: DebugScreen(),
       ),
     );
