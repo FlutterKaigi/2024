@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:packages_app_features_about/l10n.dart';
 
@@ -17,11 +19,13 @@ class AboutPage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context, rootNavigator: true).push(
-                  MaterialPageRoute<void>(
-                    builder: (context) => const LicensePage(
-                      applicationName: 'FlutterKaigi 2024 Official App',
+              onPressed: () async {
+                unawaited(
+                  Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute<void>(
+                      builder: (context) => const LicensePage(
+                        applicationName: 'FlutterKaigi 2024 Official App',
+                      ),
                     ),
                   ),
                 );
