@@ -9,8 +9,28 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10nAbout.of(context);
-    return Center(
-      child: Text(l.aboutPageTitle),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar.large(
+            title: Text(l.aboutPageTitle),
+          ),
+          SliverToBoxAdapter(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute<void>(
+                    builder: (context) => const LicensePage(
+                      applicationName: 'FlutterKaigi 2024 Official App',
+                    ),
+                  ),
+                );
+              },
+              child: const Text('ライセンスページ'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
