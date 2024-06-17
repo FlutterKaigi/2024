@@ -14,7 +14,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'routes/main/main_page_shell_route.dart';
 part 'routes/main/about/about_shell_branch.dart';
-part 'routes/main/about/debug_page_route.dart';
+part 'routes/debug_page_route.dart';
 part 'routes/main/news/news_shell_branch.dart';
 part 'routes/main/sessions/sessions_shell_branch.dart';
 part 'routes/main/venue/venue_shell_branch.dart';

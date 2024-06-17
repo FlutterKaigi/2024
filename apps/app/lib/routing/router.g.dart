@@ -8,6 +8,7 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
       $mainPageShellRoute,
+      $debugPageRoute,
     ];
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
@@ -42,13 +43,6 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/about',
               factory: $AboutPageRouteExtension._fromState,
-              routes: [
-                GoRouteData.$route(
-                  path: 'debug',
-                  parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
-                  factory: $DebugPageRouteExtension._fromState,
-                ),
-              ],
             ),
           ],
         ),
@@ -131,12 +125,17 @@ extension $AboutPageRouteExtension on AboutPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+RouteBase get $debugPageRoute => GoRouteData.$route(
+      path: '/debug',
+      factory: $DebugPageRouteExtension._fromState,
+    );
+
 extension $DebugPageRouteExtension on DebugPageRoute {
   static DebugPageRoute _fromState(GoRouterState state) =>
       const DebugPageRoute();
 
   String get location => GoRouteData.$location(
-        '/about/debug',
+        '/debug',
       );
 
   void go(BuildContext context) => context.go(location);

@@ -1,11 +1,12 @@
 part of 'package:conference_2024_app/routing/router.dart';
 
+@TypedGoRoute<DebugPageRoute>(
+  path: DebugPageRoute.path,
+)
 class DebugPageRoute extends GoRouteData {
   const DebugPageRoute();
 
-  static const path = 'debug';
-
-  static final $parentNavigatorKey = _rootNavigatorKey;
+  static const path = '/debug';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
