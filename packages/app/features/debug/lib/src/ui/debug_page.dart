@@ -17,28 +17,36 @@ class DebugPage extends StatelessWidget {
             title: Text('Debug Page'),
           ),
           SliverToBoxAdapter(
-            child: DropdownMenu<GoRoute>(
-              dropdownMenuEntries: goRoutes
-                  .map(
-                    (goRoute) {
-                      // debug routes are excluded
-                      if (goRoute.path.contains('debug')) {
-                        return null;
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return DropdownMenu<GoRoute>(
+                    width: constraints.maxWidth,
+                    dropdownMenuEntries: goRoutes
+                        .map(
+                          (goRoute) {
+                            // debug routes are excluded
+                            if (goRoute.path.contains('debug')) {
+                              return null;
+                            }
+                            return DropdownMenuEntry<GoRoute>(
+                              value: goRoute,
+                              label: goRoute.path,
+                            );
+                          },
+                        )
+                        .nonNulls
+                        .toList(),
+                    onSelected: (goRoute) {
+                      if (goRoute == null) {
+                        return;
                       }
-                      return DropdownMenuEntry<GoRoute>(
-                        value: goRoute,
-                        label: goRoute.path,
-                      );
+                      router.go(goRoute.path);
                     },
-                  )
-                  .nonNulls
-                  .toList(),
-              onSelected: (goRoute) {
-                if (goRoute == null) {
-                  return;
-                }
-                router.go(goRoute.path);
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],
