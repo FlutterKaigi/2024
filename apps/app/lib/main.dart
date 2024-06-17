@@ -1,6 +1,7 @@
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_news/l10n.dart';
@@ -37,6 +38,21 @@ class MainApp extends ConsumerWidget {
         ...L10nSession.supportedLocales,
         ...L10nVenue.supportedLocales,
       ],
+      shortcuts: {
+        LogicalKeySet(
+          LogicalKeyboardKey.shift,
+          LogicalKeyboardKey.keyD,
+        ): const _DebugIntent(),
+      },
+      actions: <Type, Action<Intent>>{
+        _DebugIntent: CallbackAction<_DebugIntent>(
+          onInvoke: (_) => router.go(const DebugPageRoute().location),
+        ),
+      },
     );
   }
+}
+
+class _DebugIntent extends Intent {
+  const _DebugIntent();
 }
