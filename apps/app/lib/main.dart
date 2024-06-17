@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +48,9 @@ class MainApp extends ConsumerWidget {
       },
       actions: <Type, Action<Intent>>{
         _DebugIntent: CallbackAction<_DebugIntent>(
-          onInvoke: (_) => router.go(const DebugPageRoute().location),
+          onInvoke: (_) => unawaited(
+            router.push(const DebugPageRoute().location),
+          ),
         ),
       },
     );
