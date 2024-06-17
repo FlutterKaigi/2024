@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:packages_app_cores_navigation/about/providers.dart';
 import 'package:packages_app_features_about/l10n.dart';
 
 class AboutPage extends ConsumerWidget {
@@ -19,15 +17,6 @@ class AboutPage extends ConsumerWidget {
         slivers: [
           SliverAppBar.large(
             title: Text(l.aboutPageTitle),
-            actions: [
-              if (kDebugMode)
-                IconButton(
-                  icon: const Icon(Icons.bug_report),
-                  onPressed: () {
-                    ref.read(aboutPageNavigatorProvider).goDebugPage(context);
-                  },
-                ),
-            ],
           ),
           SliverToBoxAdapter(
             child: ElevatedButton(
