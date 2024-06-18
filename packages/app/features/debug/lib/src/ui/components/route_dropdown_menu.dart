@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:packages_app_features_debug/src/gen/l10n/l10n.dart';
 
 final class RouteDropdownMenu extends HookWidget {
   const RouteDropdownMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l = L10nDebug.of(context);
     final router = GoRouter.of(context);
     final routeBases = router.configuration.routes;
     final dropdownMenuEntries = useMemoized(
@@ -38,6 +40,7 @@ final class RouteDropdownMenu extends HookWidget {
         return DropdownMenu<_Route>(
           width: constraints.maxWidth,
           dropdownMenuEntries: dropdownMenuEntries,
+          hintText: l.routeDropDownHintText,
           onSelected: (route) {
             if (route == null) {
               return;
