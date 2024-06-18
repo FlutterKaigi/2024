@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_debug/l10n.dart';
+import 'package:packages_app_features_debug/routing.dart';
 import 'package:packages_app_features_news/l10n.dart';
 import 'package:packages_app_features_session/l10n.dart';
 import 'package:packages_app_features_venue/l10n.dart';

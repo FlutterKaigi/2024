@@ -8,7 +8,6 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
       $mainPageShellRoute,
-      $debugPageRoute,
     ];
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
@@ -151,34 +150,11 @@ extension $AboutPageRouteExtension on AboutPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $debugPageRoute => GoRouteData.$route(
-      path: '/debug',
-      factory: $DebugPageRouteExtension._fromState,
-    );
-
-extension $DebugPageRouteExtension on DebugPageRoute {
-  static DebugPageRoute _fromState(GoRouterState state) =>
-      const DebugPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/debug',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'0ea5bdf7b7f59d167086a705311568927b914256';
+String _$routerHash() => r'7f5c22934bb76263537a2e4ba9c8b8569c6528c6';
 
 /// See also [router].
 @ProviderFor(router)

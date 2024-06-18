@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_cores_navigation/about/providers.dart';
 import 'package:packages_app_features_about/ui.dart';
-import 'package:packages_app_features_debug/ui.dart';
+import 'package:packages_app_features_debug/routing.dart';
 import 'package:packages_app_features_news/ui.dart';
 import 'package:packages_app_features_session/ui.dart';
 import 'package:packages_app_features_venue/ui.dart';
@@ -14,7 +14,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'routes/main/main_page_shell_route.dart';
 part 'routes/main/about/about_shell_branch.dart';
-part 'routes/debug_page_route.dart';
 part 'routes/main/news/news_shell_branch.dart';
 part 'routes/main/sessions/sessions_shell_branch.dart';
 part 'routes/main/venue/venue_shell_branch.dart';
@@ -26,7 +25,10 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 GoRouter router(RouterRef ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    routes: $appRoutes,
+    routes: [
+      ...$appRoutes,
+      $debugPageRoute,
+    ],
     debugLogDiagnostics: kDebugMode,
     initialLocation: SessionsPageRoute.path,
   );
