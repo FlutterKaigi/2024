@@ -8,4 +8,7 @@ class L10nSessionJa extends L10nSession {
 
   @override
   String get sessionsPageTitle => 'Sessions';
+
+  @override
+  String get sessionPageTitle => 'Session';
 }

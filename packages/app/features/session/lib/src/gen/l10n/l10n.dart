@@ -102,6 +102,12 @@ abstract class L10nSession {
   /// In ja, this message translates to:
   /// **'Sessions'**
   String get sessionsPageTitle;
+
+  /// No description provided for @sessionPageTitle.
+  ///
+  /// In ja, this message translates to:
+  /// **'Session'**
+  String get sessionPageTitle;
 }
 
 class _L10nSessionDelegate extends LocalizationsDelegate<L10nSession> {
