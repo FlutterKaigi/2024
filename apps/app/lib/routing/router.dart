@@ -27,7 +27,7 @@ GoRouter router(RouterRef ref) {
     navigatorKey: _rootNavigatorKey,
     routes: [
       ...$appRoutes,
-      $debugPageRoute,
+      if (kDebugMode) $debugPageRoute,
     ],
     debugLogDiagnostics: kDebugMode,
     initialLocation: SessionsPageRoute.path,
