@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -44,19 +45,23 @@ class MainApp extends ConsumerWidget {
         ...L10nVenue.supportedLocales,
         ...L10nDebug.supportedLocales,
       ],
-      shortcuts: {
-        LogicalKeySet(
-          LogicalKeyboardKey.shift,
-          LogicalKeyboardKey.keyD,
-        ): const _DebugIntent(),
-      },
-      actions: <Type, Action<Intent>>{
-        _DebugIntent: CallbackAction<_DebugIntent>(
-          onInvoke: (_) => unawaited(
-            router.push(const DebugPageRoute().location),
-          ),
-        ),
-      },
+      shortcuts: kDebugMode
+          ? {
+              LogicalKeySet(
+                LogicalKeyboardKey.shift,
+                LogicalKeyboardKey.keyD,
+              ): const _DebugIntent(),
+            }
+          : null,
+      actions: kDebugMode
+          ? <Type, Action<Intent>>{
+              _DebugIntent: CallbackAction<_DebugIntent>(
+                onInvoke: (_) => unawaited(
+                  router.push(const DebugPageRoute().location),
+                ),
+              ),
+            }
+          : null,
     );
   }
 }
