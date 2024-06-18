@@ -11,17 +11,19 @@ final class RouteDropdownMenu extends HookWidget {
     final routeBases = router.configuration.routes;
     final dropdownMenuEntries = useMemoized(
       () {
-        final goRoutes = routeBases.toGoRoutes();
-        return goRoutes
+        final routes = routeBases.toRoutes();
+        return routes
             .map(
-              (goRoute) {
-                // debug routes are excluded
-                if (goRoute.path.contains('debug')) {
+              (route) {
+                final routePath = route.path;
+
+                // デバッグ関連のルートは除外する
+                if (routePath.contains('debug')) {
                   return null;
                 }
-                return DropdownMenuEntry<GoRoute>(
-                  value: goRoute,
-                  label: goRoute.path,
+                return DropdownMenuEntry<_Route>(
+                  value: route,
+                  label: routePath,
                 );
               },
             )
@@ -33,14 +35,14 @@ final class RouteDropdownMenu extends HookWidget {
     // DropdownMenu を親の横幅に合わせる
     return LayoutBuilder(
       builder: (context, constraints) {
-        return DropdownMenu<GoRoute>(
+        return DropdownMenu<_Route>(
           width: constraints.maxWidth,
           dropdownMenuEntries: dropdownMenuEntries,
-          onSelected: (goRoute) {
-            if (goRoute == null) {
+          onSelected: (route) {
+            if (route == null) {
               return;
             }
-            router.go(goRoute.path);
+            router.go(route.path);
           },
         );
       },
@@ -48,22 +50,46 @@ final class RouteDropdownMenu extends HookWidget {
   }
 }
 
-extension _ToGoRoutes on List<RouteBase> {
-  List<GoRoute> toGoRoutes() {
-    final goRoutes = <GoRoute>[];
-    for (final route in this) {
-      switch (route) {
+extension _ToRoutes on List<RouteBase> {
+  List<_Route> toRoutes([_Route? parentRoute]) {
+    final routes = <_Route>[];
+    for (final routeBase in this) {
+      switch (routeBase) {
         case GoRoute():
-          final childRoutes = route.routes;
-          if (childRoutes.isEmpty) {
-            goRoutes.add(route);
-          } else {
-            goRoutes.addAll(childRoutes.toGoRoutes());
+          final route = _Route(
+            goRoute: routeBase,
+            parentRoute: parentRoute,
+          );
+          routes.add(route);
+
+          final childRouteBases = routeBase.routes;
+          if (childRouteBases.isNotEmpty) {
+            routes.addAll(childRouteBases.toRoutes(route));
           }
         case ShellRoute() || StatefulShellRoute():
-          goRoutes.addAll(route.routes.toGoRoutes());
+          routes.addAll(routeBase.routes.toRoutes());
       }
     }
-    return goRoutes;
+    return routes;
+  }
+}
+
+final class _Route {
+  _Route({
+    required GoRoute goRoute,
+    _Route? parentRoute,
+  })  : _goRoute = goRoute,
+        _parentRoute = parentRoute;
+
+  final GoRoute _goRoute;
+  final _Route? _parentRoute;
+
+  late final String path = _path;
+
+  String get _path {
+    if (_parentRoute == null) {
+      return _goRoute.path;
+    }
+    return '${_parentRoute._path}/${_goRoute.path}';
   }
 }
