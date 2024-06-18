@@ -30,6 +30,7 @@ final class RouteDropdownMenu extends HookWidget {
       },
       routeBases,
     );
+    // DropdownMenu を親の横幅に合わせる
     return LayoutBuilder(
       builder: (context, constraints) {
         return DropdownMenu<GoRoute>(
