@@ -19,6 +19,13 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/sessions',
               factory: $SessionsPageRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: ':sessionId',
+                  parentNavigatorKey: SessionPageRoute.$parentNavigatorKey,
+                  factory: $SessionPageRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -60,6 +67,25 @@ extension $SessionsPageRouteExtension on SessionsPageRoute {
 
   String get location => GoRouteData.$location(
         '/sessions',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SessionPageRouteExtension on SessionPageRoute {
+  static SessionPageRoute _fromState(GoRouterState state) => SessionPageRoute(
+        sessionId: state.pathParameters['sessionId']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/sessions/${Uri.encodeComponent(sessionId)}',
       );
 
   void go(BuildContext context) => context.go(location);
