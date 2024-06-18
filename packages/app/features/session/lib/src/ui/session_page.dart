@@ -12,8 +12,11 @@ class SessionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10nSession.of(context);
-    return Center(
-      child: Text('${l.sessionPageTitle}: $_sessionId'),
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text('${l.sessionPageTitle}: $_sessionId'),
+      ),
     );
   }
 }
