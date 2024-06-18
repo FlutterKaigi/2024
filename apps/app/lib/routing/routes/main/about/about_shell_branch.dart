@@ -19,11 +19,6 @@ class AboutPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return ProviderScope(
-      overrides: [
-        aboutPageNavigatorProvider.overrideWithValue(AboutPageNavigatorImpl()),
-      ],
-      child: const AboutPage(),
-    );
+    return const AboutPage();
   }
 }

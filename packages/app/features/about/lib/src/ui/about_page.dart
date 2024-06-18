@@ -1,16 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_features_about/l10n.dart';
 
-class AboutPage extends ConsumerWidget {
+class AboutPage extends StatelessWidget {
   const AboutPage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final l = L10nAbout.of(context);
     return Scaffold(
       body: CustomScrollView(
