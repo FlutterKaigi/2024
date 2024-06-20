@@ -9,10 +9,10 @@ import 'package:intl/intl.dart' as intl;
 import 'l10n_en.dart';
 import 'l10n_ja.dart';
 
-/// Callers can lookup localized strings with an instance of L10nSession
-/// returned by `L10nSession.of(context)`.
+/// Callers can lookup localized strings with an instance of L10nDebug
+/// returned by `L10nDebug.of(context)`.
 ///
-/// Applications need to include `L10nSession.delegate()` in their app's
+/// Applications need to include `L10nDebug.delegate()` in their app's
 /// `localizationDelegates` list, and the locales they support in the app's
 /// `supportedLocales` list. For example:
 ///
@@ -20,8 +20,8 @@ import 'l10n_ja.dart';
 /// import 'l10n/l10n.dart';
 ///
 /// return MaterialApp(
-///   localizationsDelegates: L10nSession.localizationsDelegates,
-///   supportedLocales: L10nSession.supportedLocales,
+///   localizationsDelegates: L10nDebug.localizationsDelegates,
+///   supportedLocales: L10nDebug.supportedLocales,
 ///   home: MyApplicationHome(),
 /// );
 /// ```
@@ -58,20 +58,19 @@ import 'l10n_ja.dart';
 /// Select and expand the newly-created Localizations item then, for each
 /// locale your application supports, add a new item and select the locale
 /// you wish to add from the pop-up menu in the Value field. This list should
-/// be consistent with the languages listed in the L10nSession.supportedLocales
+/// be consistent with the languages listed in the L10nDebug.supportedLocales
 /// property.
-abstract class L10nSession {
-  L10nSession(String locale)
+abstract class L10nDebug {
+  L10nDebug(String locale)
       : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
-  static L10nSession of(BuildContext context) {
-    return Localizations.of<L10nSession>(context, L10nSession)!;
+  static L10nDebug of(BuildContext context) {
+    return Localizations.of<L10nDebug>(context, L10nDebug)!;
   }
 
-  static const LocalizationsDelegate<L10nSession> delegate =
-      _L10nSessionDelegate();
+  static const LocalizationsDelegate<L10nDebug> delegate = _L10nDebugDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -97,25 +96,19 @@ abstract class L10nSession {
     Locale('en')
   ];
 
-  /// No description provided for @sessionsPageTitle.
+  /// No description provided for @routeDropDownHintText.
   ///
   /// In ja, this message translates to:
-  /// **'Sessions'**
-  String get sessionsPageTitle;
-
-  /// No description provided for @sessionPageTitle.
-  ///
-  /// In ja, this message translates to:
-  /// **'Session'**
-  String get sessionPageTitle;
+  /// **'Select a route'**
+  String get routeDropDownHintText;
 }
 
-class _L10nSessionDelegate extends LocalizationsDelegate<L10nSession> {
-  const _L10nSessionDelegate();
+class _L10nDebugDelegate extends LocalizationsDelegate<L10nDebug> {
+  const _L10nDebugDelegate();
 
   @override
-  Future<L10nSession> load(Locale locale) {
-    return SynchronousFuture<L10nSession>(lookupL10nSession(locale));
+  Future<L10nDebug> load(Locale locale) {
+    return SynchronousFuture<L10nDebug>(lookupL10nDebug(locale));
   }
 
   @override
@@ -123,20 +116,20 @@ class _L10nSessionDelegate extends LocalizationsDelegate<L10nSession> {
       <String>['en', 'ja'].contains(locale.languageCode);
 
   @override
-  bool shouldReload(_L10nSessionDelegate old) => false;
+  bool shouldReload(_L10nDebugDelegate old) => false;
 }
 
-L10nSession lookupL10nSession(Locale locale) {
+L10nDebug lookupL10nDebug(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en':
-      return L10nSessionEn();
+      return L10nDebugEn();
     case 'ja':
-      return L10nSessionJa();
+      return L10nDebugJa();
   }
 
   throw FlutterError(
-      'L10nSession.delegate failed to load unsupported locale "$locale". This is likely '
+      'L10nDebug.delegate failed to load unsupported locale "$locale". This is likely '
       'an issue with the localizations generation tool. Please file an issue '
       'on GitHub with a reproducible sample app and the gen-l10n configuration '
       'that was used.');

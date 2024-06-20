@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:packages_app_features_about/ui.dart';
+import 'package:packages_app_features_debug/routing.dart';
 import 'package:packages_app_features_news/ui.dart';
 import 'package:packages_app_features_session/ui.dart';
 import 'package:packages_app_features_venue/ui.dart';
@@ -21,7 +22,10 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 GoRouter router(RouterRef ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    routes: $appRoutes,
+    routes: [
+      ...$appRoutes,
+      if (kDebugMode) $debugPageRoute,
+    ],
     debugLogDiagnostics: kDebugMode,
     initialLocation: SessionsPageRoute.path,
   );
