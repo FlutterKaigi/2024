@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:packages_app_features_about/constants/cc_about.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
 
@@ -25,13 +26,13 @@ class AboutPage extends StatelessWidget {
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
                       builder: (context) => const LicensePage(
-                        applicationName: 'FlutterKaigi 2024 Official App',
+                        applicationName: CcAbout.applicationName,
                       ),
                     ),
                   ),
                 );
               },
-              child: const Text('ライセンスページ'),
+              child: const Text(CcAbout.license),
             ),
           ),
           SliverToBoxAdapter(
@@ -41,12 +42,12 @@ class AboutPage extends StatelessWidget {
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
                       builder: (context) =>
-                          const StaffPage(name: 'Contributors'),
+                          const StaffPage(name: CcAbout.contributorsPageName),
                     ),
                   ),
                 );
               },
-              child: const Text('コントリビューター'),
+              child: const Text(CcAbout.contributor),
             ),
           ),
           SliverToBoxAdapter(
@@ -55,12 +56,13 @@ class AboutPage extends StatelessWidget {
                 unawaited(
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
-                      builder: (context) => const StaffPage(name: 'Staffs'),
+                      builder: (context) =>
+                          const StaffPage(name: CcAbout.staffsPageName),
                     ),
                   ),
                 );
               },
-              child: const Text('スタッフ'),
+              child: const Text(CcAbout.staff),
             ),
           ),
         ],
