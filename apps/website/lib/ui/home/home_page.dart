@@ -13,16 +13,18 @@ final class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: _bodyContentSliver(),
-          ),
-          const SliverToBoxAdapter(
-            child: SiteFooter(),
-          ),
-        ],
+    return SelectionArea(
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: _bodyContentSliver(),
+            ),
+            const SliverToBoxAdapter(
+              child: SiteFooter(),
+            ),
+          ],
+        ),
       ),
     );
   }
