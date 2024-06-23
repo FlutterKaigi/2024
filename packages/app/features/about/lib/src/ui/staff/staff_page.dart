@@ -11,6 +11,8 @@ class StaffPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -31,7 +33,7 @@ class StaffPage extends StatelessWidget {
           ),
           Text(
             _name,
-            style: const TextStyle(fontSize: 32),
+            style: theme.textTheme.titleLarge!.copyWith(fontSize: 32),
           ),
           const SizedBox(
             height: 28,

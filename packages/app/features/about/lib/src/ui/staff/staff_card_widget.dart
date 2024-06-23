@@ -13,6 +13,8 @@ class StaffCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.only(
         bottom: 16,
@@ -24,7 +26,7 @@ class StaffCardWidget extends StatelessWidget {
         ),
         title: Text(
           _name,
-          style: const TextStyle(fontSize: 16),
+          style: theme.textTheme.bodyMedium,
         ),
         contentPadding: EdgeInsets.zero,
       ),
