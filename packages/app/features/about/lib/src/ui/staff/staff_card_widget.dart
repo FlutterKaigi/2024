@@ -13,25 +13,20 @@ class StaffCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 72,
-      child: Row(
-        children: [
-          SizedBox(
-            height: 56,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(_imageUrl),
-            ),
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          Text(
-            _name,
-            style: const TextStyle(fontSize: 16),
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: 16,
+      ),
+      child: ListTile(
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Image.network(_imageUrl),
+        ),
+        title: Text(
+          _name,
+          style: const TextStyle(fontSize: 16),
+        ),
+        contentPadding: EdgeInsets.zero,
       ),
     );
   }

@@ -23,7 +23,6 @@ class StaffPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.only(
           bottom: MediaQuery.paddingOf(context).bottom,
-          right: 16,
           left: 16,
         ),
         children: [
