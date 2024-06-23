@@ -18,6 +18,9 @@
   },
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
+  "files.associations": {
+    "*.json": "json"
+  },
   "[json][jsonc][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

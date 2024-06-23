@@ -6,6 +6,7 @@
     "djbkwon.flutter-dependency-docs",
     "esbenp.prettier-vscode",
     "DavidAnson.vscode-markdownlint",
-    "bierner.markdown-mermaid"
+    "bierner.markdown-mermaid",
+    "streetsidesoftware.code-spell-checker"
   ]
 }
