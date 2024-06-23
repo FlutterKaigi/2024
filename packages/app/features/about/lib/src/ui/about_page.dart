@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:packages_app_features_about/constants/cc_about.dart';
 import 'package:packages_app_features_about/l10n.dart';
+import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
 
 class AboutPage extends StatelessWidget {
@@ -57,7 +58,7 @@ class AboutPage extends StatelessWidget {
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
                       builder: (context) =>
-                          const StaffPage(name: CcAbout.staffsPageName),
+                          const ContributorsPage(name: CcAbout.staffsPageName),
                     ),
                   ),
                 );

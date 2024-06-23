@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_card_widget.dart';
 
-/// スタッフ一覧ページ
-class StaffPage extends StatelessWidget {
-  const StaffPage({
+/// コントリビューター一覧ページ
+class ContributorsPage extends StatelessWidget {
+  const ContributorsPage({
     required String name,
     super.key,
   }) : _name = name;
