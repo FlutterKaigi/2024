@@ -13,6 +13,10 @@ on:
       - "packages/app/**"
       - "**/*.md"
 
+permissions:
+  contents: read
+  deployments: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
