@@ -101,6 +101,42 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'About us'**
   String get aboutPageTitle;
+
+  /// No description provided for @license.
+  ///
+  /// In ja, this message translates to:
+  /// **'ライセンスページ'**
+  String get license;
+
+  /// No description provided for @contributor.
+  ///
+  /// In ja, this message translates to:
+  /// **'コントリビューター'**
+  String get contributor;
+
+  /// No description provided for @staff.
+  ///
+  /// In ja, this message translates to:
+  /// **'スタッフ'**
+  String get staff;
+
+  /// No description provided for @applicationName.
+  ///
+  /// In ja, this message translates to:
+  /// **'FlutterKaigi 2024 Official App'**
+  String get applicationName;
+
+  /// No description provided for @contributorsPageName.
+  ///
+  /// In ja, this message translates to:
+  /// **'Contributors'**
+  String get contributorsPageName;
+
+  /// No description provided for @staffsPageName.
+  ///
+  /// In ja, this message translates to:
+  /// **'Staffs'**
+  String get staffsPageName;
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {

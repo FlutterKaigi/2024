@@ -8,4 +8,22 @@ class L10nAboutJa extends L10nAbout {
 
   @override
   String get aboutPageTitle => 'About us';
+
+  @override
+  String get license => 'ライセンスページ';
+
+  @override
+  String get contributor => 'コントリビューター';
+
+  @override
+  String get staff => 'スタッフ';
+
+  @override
+  String get applicationName => 'FlutterKaigi 2024 Official App';
+
+  @override
+  String get contributorsPageName => 'Contributors';
+
+  @override
+  String get staffsPageName => 'Staffs';
 }

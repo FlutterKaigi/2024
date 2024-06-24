@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_about/constants/cc_about.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
@@ -26,14 +25,14 @@ class AboutPage extends StatelessWidget {
                 unawaited(
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
-                      builder: (context) => const LicensePage(
-                        applicationName: CcAbout.applicationName,
+                      builder: (context) => LicensePage(
+                        applicationName: l.applicationName,
                       ),
                     ),
                   ),
                 );
               },
-              child: const Text(CcAbout.license),
+              child: Text(l.license),
             ),
           ),
           SliverToBoxAdapter(
@@ -43,12 +42,12 @@ class AboutPage extends StatelessWidget {
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
                       builder: (context) =>
-                          const StaffPage(name: CcAbout.contributorsPageName),
+                          StaffPage(name: l.contributorsPageName),
                     ),
                   ),
                 );
               },
-              child: const Text(CcAbout.contributor),
+              child: Text(l.contributor),
             ),
           ),
           SliverToBoxAdapter(
@@ -58,12 +57,12 @@ class AboutPage extends StatelessWidget {
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
                       builder: (context) =>
-                          const ContributorsPage(name: CcAbout.staffsPageName),
+                          ContributorsPage(name: l.staffsPageName),
                     ),
                   ),
                 );
               },
-              child: const Text(CcAbout.staff),
+              child: Text(l.staff),
             ),
           ),
         ],
