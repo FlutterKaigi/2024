@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_card_widget.dart';
 
 /// コントリビューター一覧ページ
 class ContributorsPage extends StatelessWidget {
   const ContributorsPage({
-    required String name,
     super.key,
-  }) : _name = name;
-  final String _name;
+  });
 
   @override
   Widget build(BuildContext context) {
+    final l = L10nAbout.of(context);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
             title: Text(
-              _name,
+              l.contributorsPageName,
             ),
           ),
 

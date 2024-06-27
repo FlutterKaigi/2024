@@ -41,8 +41,7 @@ class AboutPage extends StatelessWidget {
                 unawaited(
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
-                      builder: (context) =>
-                          StaffPage(name: l.contributorsPageName),
+                      builder: (context) => const ContributorsPage(),
                     ),
                   ),
                 );
@@ -56,8 +55,7 @@ class AboutPage extends StatelessWidget {
                 unawaited(
                   Navigator.of(context, rootNavigator: true).push(
                     MaterialPageRoute<void>(
-                      builder: (context) =>
-                          ContributorsPage(name: l.staffsPageName),
+                      builder: (context) => const StaffPage(),
                     ),
                   ),
                 );
