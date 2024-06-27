@@ -22,19 +22,15 @@ class StaffPage extends StatelessWidget {
 
           // TODO:モックデータとしてWidgetを出してます。
           // https://github.com/FlutterKaigi/2024/issues/122
-          SliverPadding(
-            padding: const EdgeInsets.only(left: 16),
-            sliver: SliverFixedExtentList(
-              itemExtent: 76,
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return const StaffCardWidget(
-                    name: 'Staffさん',
-                    imageUrl:
-                        'https://pbs.twimg.com/profile_images/1797556194556710912/ZncGhPyV_400x400.png',
-                  );
-                },
-              ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return const StaffCardWidget(
+                  name: 'Staffさん',
+                  imageUrl:
+                      'https://pbs.twimg.com/profile_images/1797556194556710912/ZncGhPyV_400x400.png',
+                );
+              },
             ),
           ),
         ],

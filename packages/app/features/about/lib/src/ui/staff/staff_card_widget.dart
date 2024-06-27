@@ -21,14 +21,14 @@ class StaffCardWidget extends StatelessWidget {
       ),
       child: ListTile(
         leading: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(12),
           child: Image.network(_imageUrl),
         ),
         title: Text(
           _name,
           style: theme.textTheme.bodyMedium,
         ),
-        contentPadding: EdgeInsets.zero,
+        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       ),
     );
   }
