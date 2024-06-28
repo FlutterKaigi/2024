@@ -1,3 +1,9 @@
 {
-  "aboutPageTitle": "About us"
+  "aboutPageTitle": "About us",
+  "license": "license page",
+  "contributor": "contributor",
+  "staff": "staff",
+  "applicationName": "FlutterKaigi 2024 Official App",
+  "contributorsPageName": "Contributors",
+  "staffsPageName": "Staffs"
 }
