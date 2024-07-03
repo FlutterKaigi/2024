@@ -2,8 +2,8 @@ name: Supabase Schema Generator
 
 on:
   push:
-    paths:
-      - "packages/common/data/**.sql"
+    #paths:
+    #  - "packages/common/data/**.sql"
 
 permissions:
   contents: read
