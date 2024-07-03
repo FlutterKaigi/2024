@@ -1,0 +1,61 @@
+name: Supabase Schema Generator
+
+on:
+  push:
+    #paths:
+    #  - "packages/common/data/**.sql"
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: "oracle"
+          java-version: "21"
+
+      # https://github.com/supabase/setup-cli
+      - name: Install supabase cli
+        uses: supabase/setup-cli@v1
+
+      - run: supabase db start
+        working-directory: packages/common/data
+
+      - name: Download SchemaSpy
+        working-directory: packages/common/data
+        run: |
+          curl -L https://github.com/schemaspy/schemaspy/releases/download/v6.2.4/schemaspy-6.2.4.jar \
+              --output schemaspy.jar
+          curl -L https://jdbc.postgresql.org/download/postgresql-42.7.3.jar \
+              --output jdbc-driver.jar
+
+      - name: Generate schema
+        working-directory: packages/common/data
+        run: |
+          java -jar \
+            ./schemaspy.jar \
+            -t pgsql \
+            -dp ./jdbc-driver.jar \
+            -db postgres \
+            -host 127.0.0.1 \
+            -port 54322 \
+            -u postgres \
+            -p postgres \
+            -o output -vizjs
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: website-2024-preview
+          directory: packages/common/data/output
