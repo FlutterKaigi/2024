@@ -2,6 +2,8 @@
 
 import 'l10n.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class L10nAboutEn extends L10nAbout {
   L10nAboutEn([String locale = 'en']) : super(locale);
