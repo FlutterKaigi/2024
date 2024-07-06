@@ -15,6 +15,14 @@
       "program": "lib/main.dart",
       "args": ["--web-port", "8080", "--web-renderer", "html"],
       "type": "dart"
+    },
+    {
+      "name": "website-canvaskit-wasm-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": ["--web-port", "8080", "--web-renderer", "canvaskit", "--wasm"],
+      "type": "dart"
     }
   ]
 }
