@@ -9,11 +9,11 @@
       "type": "dart"
     },
     {
-      "name": "website-debug",
+      "name": "website-html-debug",
       "cwd": "apps/website",
       "request": "launch",
       "program": "lib/main.dart",
-      "args": ["--web-port", "8080", "--wasm"],
+      "args": ["--web-port", "8080", "--web-renderer", "html"],
       "type": "dart"
     }
   ]
