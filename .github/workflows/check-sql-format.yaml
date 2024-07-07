@@ -68,7 +68,7 @@ jobs:
           commit-message: "Auto format for SQL files"
           committer: "GitHub Actions <noreply@github.com>"
           base: ${{ github.head_ref }}
-          branch: "auto-format/${{ github.head_ref }}"
+          branch: "auto-format/sql/${{ github.head_ref }}"
           title: "Auto format - ${{ github.head_ref }}"
           body: "Auto format by GitHub Actions on ${{ github.ref }}\nby: ${{github.actor}}"
           labels: "Auto Format"
