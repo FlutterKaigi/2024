@@ -1,5 +1,3 @@
-// ignore_for_file: type=lint
-
 import 'l10n.dart';
 
 // ignore_for_file: type=lint
