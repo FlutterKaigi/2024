@@ -1,0 +1,78 @@
+name: Check SQL Format
+
+on:
+  pull_request:
+    paths:
+      - "packages/common/data/**.sql"
+
+permissions:
+  pull-requests: write
+  statuses: write
+
+env:
+  PNPM_VERSION: 9
+  NODE_VERSION: 20
+  SQL_FORMATTER_VERSION: 15
+
+jobs:
+  check-sql-format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # Git changes are not needed for this job
+          fetch-depth: 1
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --global sql-formatter@${{ env.SQL_FORMATTER_VERSION }}
+
+      - name: Check SQL Format
+        run: |
+          SQL_FILES=$(find packages/common/data -type f -name "*.sql")
+          pnpm exec sql-formatter \
+            --config .sqlformatrc.json \
+            --fix \
+            $SQL_FILES
+
+      - name: Check for changes
+        run: git diff --exit-code
+
+      # https://github.com/peter-evans/create-pull-request
+      - name: Create or update pull request
+        uses: peter-evans/create-pull-request@v6
+        if: failure()
+        id: cpr
+        with:
+          delete-branch: true
+          commit-message: "Auto format for SQL files"
+          committer: "GitHub Actions <noreply@github.com>"
+          base: ${{ github.head_ref }}
+          branch: "auto-format/${{ github.head_ref }}"
+          title: "Auto format - ${{ github.head_ref }}"
+          body: "Auto format by GitHub Actions on ${{ github.ref }}\nby: ${{github.actor}}"
+          labels: "Auto Format"
+          reviewers: ${{ github.actor }}
+
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
