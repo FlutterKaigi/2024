@@ -3,11 +3,7 @@ name: Check SQL Format
 on:
   pull_request:
     #paths:
-      #- "packages/common/data/**.sql"
-
-permissions:
-  pull-requests: write
-  statuses: write
+    #- "packages/common/data/**.sql"
 
 env:
   PNPM_VERSION: 9
@@ -18,6 +14,13 @@ jobs:
   check-sql-format:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+    permissions:
+      checks: write
+      contents: write
+      issues: write
+      pull-requests: write
 
     steps:
       # https://github.com/actions/checkout
