@@ -2,6 +2,8 @@ name: Check SQL Format
 
 on:
   pull_request:
+    paths:
+      - "packages/common/data/**.sql"
 
 permissions:
   pull-requests: write
