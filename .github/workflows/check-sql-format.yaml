@@ -47,10 +47,13 @@ jobs:
       - name: Check SQL Format
         run: |
           SQL_FILES=$(find packages/common/data -type f -name "*.sql")
-          pnpm exec sql-formatter \
-            --config .sqlformatrc.json \
-            --fix \
-            $SQL_FILES
+          for FILE in $SQL_FILES; do
+             echo "Checking $FILE"
+             pnpm exec sql-formatter \
+              --config .sqlformatrc.json \
+              --fix \
+              $FILE
+          done
 
       - name: Check for changes
         run: git diff --exit-code
