@@ -17,7 +17,7 @@ env:
 jobs:
   check-sql-format:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 10
 
     steps:
       # https://github.com/actions/checkout
