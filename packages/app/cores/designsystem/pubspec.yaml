@@ -1,5 +1,6 @@
 name: app_cores_designsystem
 description: "This package provides style definitions, themes, etc., for the app."
+publish_to: "none"
 version: 0.0.1
 homepage:
 
