@@ -1,6 +1,6 @@
-// ignore_for_file: type=lint
-
 import 'l10n.dart';
+
+// ignore_for_file: type=lint
 
 /// The translations for English (`en`).
 class L10nDebugEn extends L10nDebug {

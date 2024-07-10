@@ -1,4 +1,3 @@
-// ignore_for_file: type=lint
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -8,6 +7,8 @@ import 'package:intl/intl.dart' as intl;
 
 import 'l10n_en.dart';
 import 'l10n_ja.dart';
+
+// ignore_for_file: type=lint
 
 /// Callers can lookup localized strings with an instance of L10n
 /// returned by `L10n.of(context)`.

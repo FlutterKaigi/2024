@@ -5,7 +5,7 @@ repository: https://github.com/FlutterKaigi/2024/tree/main/packages/common/data
 issue_tracker: https://github.com/FlutterKaigi/2024/issues
 
 environment:
-  sdk: ^3.5.0-191.0.dev
+  sdk: ^3.5.0-293.0.dev
 
 dev_dependencies:
   test: ^1.24.0
