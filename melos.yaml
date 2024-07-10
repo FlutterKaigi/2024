@@ -8,6 +8,7 @@ command:
       sdk: ^3.5.0-293.0.dev
       flutter: ^3.23.0-13.0.pre
     dependencies:
+      accessibility_tools: ^2.2.1
       collection: ^1.18.0
       dynamic_color: ^1.7.0
       flutter:
