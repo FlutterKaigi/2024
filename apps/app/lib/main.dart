@@ -35,6 +35,8 @@ class MainApp extends ConsumerWidget {
         final darkTheme = ref.watch(darkThemeProvider(darkDynamic));
 
         return MaterialApp.router(
+          // Enables state restoration for descendant widgets.
+          restorationScopeId: 'app',
           theme: theme,
           darkTheme: darkTheme,
           routerConfig: router,
