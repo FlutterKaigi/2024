@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:app_cores_designsystem/theme.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
@@ -73,6 +74,9 @@ class MainApp extends ConsumerWidget {
                   ),
                 }
               : null,
+          builder: (context, child) => AccessibilityTools(
+            child: child,
+          ),
         );
       },
     );
