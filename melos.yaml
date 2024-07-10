@@ -9,6 +9,7 @@ command:
       flutter: ^3.23.0-13.0.pre
     dependencies:
       collection: ^1.18.0
+      dynamic_color: ^1.7.0
       flutter:
         sdk: flutter
       flutter_hooks: ^0.20.5
