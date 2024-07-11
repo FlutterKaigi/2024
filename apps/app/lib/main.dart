@@ -75,6 +75,7 @@ class MainApp extends ConsumerWidget {
                 }
               : null,
           builder: (context, child) => AccessibilityTools(
+            enableButtonsDrag: true,
             child: child,
           ),
         );
