@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS sponsors (
 
 ALTER TABLE sponsors enable ROW level security;
 
-CREATE POLICY "Everyone can read sponsor" ON sponsors FOR
+CREATE POLICY "Everyone can read sponsors" ON sponsors FOR
 SELECT
   USING (TRUE);
