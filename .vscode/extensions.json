@@ -7,6 +7,7 @@
     "esbenp.prettier-vscode",
     "DavidAnson.vscode-markdownlint",
     "bierner.markdown-mermaid",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "renesaarsoo.sql-formatter-vsc"
   ]
 }
