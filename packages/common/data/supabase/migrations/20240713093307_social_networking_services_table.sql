@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS social_networking_services (
   id serial PRIMARY KEY NOT NULL,
   name text NOT NULL,
-  icon_name text NOT NULL -- https://[project.id].supabase.co/storage/v1/object/public/social_networking_services/[icon_name]
+  icon_name text NOT NULL -- https://[project_id].supabase.co/storage/v1/object/public/social_networking_services/[icon_name]
 );
 
 ALTER TABLE social_networking_services enable ROW level security;
