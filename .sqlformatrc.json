@@ -1,0 +1,8 @@
+{
+  "expressionWidth": 120,
+  "language": "postgresql",
+  "keywordCase": "upper",
+  "dataTypeCase": "lower",
+  "functionCase": "lower",
+  "identifierCase": "lower"
+}
