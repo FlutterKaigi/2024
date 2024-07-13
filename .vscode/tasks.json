@@ -1,0 +1,61 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "supabase-start",
+      "type": "shell",
+      "command": "supabase",
+      "args": ["start", "--workdir", "${workspaceFolder}/packages/common/data"]
+    },
+    {
+      "label": "supabase-stop",
+      "type": "shell",
+      "command": "supabase",
+      "args": ["stop", "--workdir", "${workspaceFolder}/packages/common/data"]
+    },
+    {
+      "label": "supabase-migration-new",
+      "type": "shell",
+      "command": "supabase",
+      "args": [
+        "migration",
+        "new",
+        "${input:migrationName}",
+        "--workdir",
+        "${workspaceFolder}/packages/common/data"
+      ]
+    },
+    {
+      "label": "supabase-migration-up",
+      "type": "shell",
+      "command": "supabase",
+      "args": [
+        "migration",
+        "up",
+        "--local",
+        "--workdir",
+        "${workspaceFolder}/packages/common/data"
+      ]
+    },
+    {
+      "label": "supabase-db-reset",
+      "type": "shell",
+      "command": "supabase",
+      "args": [
+        "db",
+        "reset",
+        "--workdir",
+        "${workspaceFolder}/packages/common/data"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "migrationName",
+      "type": "promptString",
+      "description": "Migration name"
+    }
+  ]
+}
