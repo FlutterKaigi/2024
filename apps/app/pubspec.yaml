@@ -8,6 +8,10 @@ environment:
   flutter: ^3.23.0-13.0.pre
 
 dependencies:
+  accessibility_tools: ^2.2.1
+  app_cores_designsystem:
+    path: ../../packages/app/cores/designsystem
+  dynamic_color: ^1.7.0
   flutter:
     sdk: flutter
   flutter_localizations:

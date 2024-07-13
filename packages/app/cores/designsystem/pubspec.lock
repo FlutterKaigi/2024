@@ -14,14 +14,6 @@ packages:
     description: dart
     source: sdk
     version: "0.3.2"
-  accessibility_tools:
-    dependency: "direct main"
-    description:
-      name: accessibility_tools
-      sha256: "4627f89350b9997c68279b72b6cb3f262c83468a857956c6f8439215a727ab63"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.1"
   analyzer:
     dependency: transitive
     description:
@@ -38,13 +30,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.3"
-  app_cores_designsystem:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/cores/designsystem"
-      relative: true
-    source: path
-    version: "0.0.1"
   args:
     dependency: transitive
     description:
@@ -237,14 +222,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.6"
-  dynamic_color:
-    dependency: "direct main"
-    description:
-      name: dynamic_color
-      sha256: eae98052fa6e2826bdac3dd2e921c6ce2903be15c6b7f8b6d8a5d49b5086298d
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.7.0"
   fake_async:
     dependency: transitive
     description:
@@ -282,11 +259,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.5"
-  flutter_localizations:
-    dependency: "direct main"
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -300,19 +272,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   freezed_annotation:
     dependency: transitive
     description:
       name: freezed_annotation
-      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
+      sha256: f9f6597ac43cc262fa7d7f2e65259a6060c23a560525d1f2631be374540f2a9b
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.1"
+    version: "2.4.3"
   frontend_server_client:
     dependency: transitive
     description:
@@ -329,22 +296,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-  go_router:
-    dependency: "direct main"
-    description:
-      name: go_router
-      sha256: abec47eb8c8c36ebf41d0a4c64dbbe7f956e39a012b3aafc530e951bdc12fe3f
-      url: "https://pub.dev"
-    source: hosted
-    version: "14.1.4"
-  go_router_builder:
-    dependency: "direct dev"
-    description:
-      name: go_router_builder
-      sha256: "51eca134e77d84c78a5297242ed45dc6988c66531a97cb4bf49d149e8f60d809"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.7.0"
   graphs:
     dependency: transitive
     description:
@@ -385,14 +336,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  intl:
-    dependency: "direct main"
-    description:
-      name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.19.0"
   io:
     dependency: transitive
     description:
@@ -497,41 +440,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  packages_app_features_about:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/features/about"
-      relative: true
-    source: path
-    version: "0.0.1"
-  packages_app_features_debug:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/features/debug"
-      relative: true
-    source: path
-    version: "0.0.1"
-  packages_app_features_news:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/features/news"
-      relative: true
-    source: path
-    version: "0.0.1"
-  packages_app_features_session:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/features/session"
-      relative: true
-    source: path
-    version: "0.0.1"
-  packages_app_features_venue:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/features/venue"
-      relative: true
-    source: path
-    version: "0.0.1"
   path:
     dependency: transitive
     description:
@@ -641,14 +549,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
-  source_helper:
-    dependency: transitive
-    description:
-      name: source_helper
-      sha256: "6adebc0006c37dd63fe05bca0a929b99f06402fc95aa35bf36d67f5c06de01fd"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.3.4"
   source_span:
     dependency: transitive
     description:
@@ -741,10 +641,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: "814e9e88f21a176ae1359149021870e87f7cddaf633ab678a5d2b0bff7fd1ba8"
+      sha256: b3e1cb245a96993cfb11d0e53aaf75aa87302ba4d156dc1b0309c60b6650f3fa
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.0"
+    version: "4.4.1"
   vector_math:
     dependency: transitive
     description:
