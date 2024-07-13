@@ -1,0 +1,14 @@
+CREATE TABLE
+  IF NOT EXISTS news (
+    id SERIAL PRIMARY KEY NOT NULL,
+    text TEXT NOT NULL,
+    url CHARACTER VARYING,
+    started_at TIME WITH TIME ZONE,
+    ended_at TIME WITH TIME ZONE
+  );
+
+ALTER TABLE news ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Everyone can read news" ON news
+FOR SELECT
+  USING (true);
