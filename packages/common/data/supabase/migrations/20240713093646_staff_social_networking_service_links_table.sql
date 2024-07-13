@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS staff_social_networking_service_links (
-  staff_id serial REFERENCES staffs (id) NOT NULL,
-  social_networking_service_id serial REFERENCES social_networking_services (id) NOT NULL,
+  staff_id smallserial REFERENCES staffs (id) NOT NULL,
+  social_networking_service_id smallserial REFERENCES social_networking_services (id) NOT NULL,
   url text NOT NULL,
   PRIMARY KEY (staff_id, social_networking_service_id)
 );

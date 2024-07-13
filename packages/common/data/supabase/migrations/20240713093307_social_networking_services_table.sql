@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS social_networking_services (
-  id serial PRIMARY KEY NOT NULL,
+  id smallserial PRIMARY KEY NOT NULL,
   name text NOT NULL,
   icon_name text NOT NULL -- https://[project_id].supabase.co/storage/v1/object/public/social_networking_services/[icon_name]
 );
