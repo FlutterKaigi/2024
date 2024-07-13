@@ -1,8 +1,9 @@
 CREATE TABLE IF NOT EXISTS staff_social_networking_service_links (
   id serial PRIMARY KEY NOT NULL,
-  staff_id int NOT NULL FOREIGN key (staff_id) REFERENCES staffs (id),
-  social_networking_service_id int NOT NULL FOREIGN key (social_networking_service_id) REFERENCES social_networking_services (id),
-  url text NOT NULL
+  staff_id int NOT NULL REFERENCES staffs (id),
+  social_networking_service_id int NOT NULL REFERENCES social_networking_services (id),
+  url text NOT NULL,
+  PRIMARY KEY (staff_id, social_networking_service_id)
 );
 
 ALTER TABLE staff_social_networking_service_links enable ROW level security;
