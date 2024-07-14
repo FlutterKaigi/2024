@@ -1,7 +1,8 @@
 CREATE TYPE social_networking_service_type AS enum(
+  'github', -- https://github.com/[value]
   'x', -- https://x.com/[value]
   'discord', -- https://discordapp.com/users/[value]
-  'github', -- https://github.com/[value]
+  'medium', -- https://medium.com/@[value]
   'qiita', -- https://qiita.com/[value]
   'zenn', -- https://zenn.dev/[value]
   'note', -- https://note.com/[value]
