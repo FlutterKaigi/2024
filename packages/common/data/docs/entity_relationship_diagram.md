@@ -27,19 +27,12 @@ erDiagram
         text greeting
     }
 
-    social_networking_services {
-        smallserial id PK
-        text name
-        text icon_name
-    }
-
     staff_social_networking_services {
-        smallserial staff_id PK, FK "INDEX"
-        smallserial social_networking_service_id PK, FK
-        text url
+        smallserial id PK
+        smallserial staff_id FK
+        social_networking_service_type type
+        text value
     }
 
     staff_social_networking_services ||--|| staffs : "references"
-    staff_social_networking_services ||--|| social_networking_services : "references"
-
 ```
