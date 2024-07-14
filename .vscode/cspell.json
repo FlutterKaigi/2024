@@ -3,9 +3,11 @@
     "designsystem",
     "IntelliJ",
     "Kaigi",
+    "qiita",
     "riverpod",
     "smallserial",
     "Supabase",
-    "unawaited"
+    "unawaited",
+    "zenn"
   ]
 }

@@ -1,8 +1,19 @@
+CREATE TYPE social_networking_service_type AS enum(
+  'x', -- https://x.com/[value]
+  'discord', -- https://discordapp.com/users/[value]
+  'github', -- https://github.com/[value]
+  'qiita', -- https://qiita.com/[value]
+  'zenn', -- https://zenn.dev/[value]
+  'note', -- https://note.com/[value]
+  'other' -- [value]
+);
+
 CREATE TABLE IF NOT EXISTS staff_social_networking_services (
+  id serial PRIMARY KEY NOT NULL,
   staff_id smallserial REFERENCES staffs (id) NOT NULL,
-  social_networking_service_id smallserial REFERENCES social_networking_services (id) NOT NULL,
-  url text NOT NULL,
-  PRIMARY KEY (staff_id, social_networking_service_id)
+  type social_networking_service_type NOT NULL,
+  value text NOT NULL,
+  UNIQUE (staff_id, type, value)
 );
 
 CREATE INDEX idx_staff_social_networking_services_staff_id ON staff_social_networking_services (staff_id);
