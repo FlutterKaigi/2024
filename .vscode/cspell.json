@@ -3,12 +3,9 @@
     "designsystem",
     "IntelliJ",
     "Kaigi",
-    "qiita",
     "riverpod",
-    "smallserial",
     "Supabase",
-    "unawaited",
-    "zenn"
+    "unawaited"
   ],
   "ignorePaths": ["**.sql"]
 }
