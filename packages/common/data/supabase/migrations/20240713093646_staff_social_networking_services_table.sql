@@ -10,7 +10,7 @@ CREATE TYPE social_networking_service_type AS enum(
 );
 
 CREATE TABLE IF NOT EXISTS staff_social_networking_services (
-  id serial PRIMARY KEY NOT NULL,
+  id smallserial PRIMARY KEY NOT NULL,
   staff_id smallserial REFERENCES staffs (id) NOT NULL,
   type social_networking_service_type NOT NULL,
   value text NOT NULL,
