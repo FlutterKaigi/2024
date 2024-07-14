@@ -9,5 +9,6 @@
     "Supabase",
     "unawaited",
     "zenn"
-  ]
+  ],
+  "ignorePaths": ["**.sql"]
 }
