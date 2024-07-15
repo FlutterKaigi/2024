@@ -53,6 +53,7 @@ class NewsPage extends StatelessWidget {
                 return NewsItemWidget(
                   name: 'Opening CfP form!',
                   publishedAt: DateTime.now(),
+                  uri: Uri.https('flutter.dev'),
                 );
               },
             ),
