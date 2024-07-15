@@ -5,6 +5,10 @@
     "ja-no-successive-word": true,
     "ja-no-orthographic-variants": true,
     "ja-no-inappropriate-words": true,
-    "ja-unnatural-alphabet": true
+    "ja-unnatural-alphabet": true,
+    "ja-space-between-half-and-full-width": {
+      "space": "always"
+    },
+    "ja-space-around-code": true
   }
 }
