@@ -5,6 +5,9 @@
     "Kaigi",
     "MMMMEEE",
     "riverpod",
+    "smallserial",
+    "Supabase",
     "unawaited"
-  ]
+  ],
+  "ignorePaths": ["**.sql"]
 }
