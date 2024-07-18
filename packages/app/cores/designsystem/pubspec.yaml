@@ -16,6 +16,8 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.11
+  flutter_gen_runner:
+
   custom_lint: ^0.6.4
   flutter_test:
     sdk: flutter
@@ -23,3 +25,11 @@ dev_dependencies:
   riverpod_lint: ^2.3.12
 
 flutter:
+  assets:
+    - assets/logo/
+
+flutter_gen:
+  output: lib/src/gen/assets
+  assets:
+    outputs:
+      package_parameter_enabled: true
