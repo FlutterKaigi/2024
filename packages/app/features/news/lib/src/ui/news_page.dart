@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:packages_app_features_news/src/gen/l10n/l10n.dart';
 import 'package:packages_app_features_news/src/ui/news_item_widget.dart';
 
+/// お知らせ一覧画面
 class NewsPage extends StatelessWidget {
   const NewsPage({
     super.key,
