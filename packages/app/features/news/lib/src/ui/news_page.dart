@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_news/src/gen/l10n/l10n.dart';
 import 'package:packages_app_features_news/src/ui/news_item_widget.dart';
+import 'package:app_cores_designsystem/common_assets.dart';
 
 /// お知らせ一覧画面
 class NewsPage extends StatelessWidget {
@@ -14,10 +16,9 @@ class NewsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const Padding(
-          padding: EdgeInsets.all(12),
-          // TODO:FlutterGenで生成されたアイコンを使用
-          child: Icon(Icons.flutter_dash_sharp),
+        leading: Padding(
+          padding: const EdgeInsets.all(12),
+          child: SvgPicture.asset(CommonAssets.logo.mainLogoMono),
         ),
         titleSpacing: 4,
         centerTitle: false,
