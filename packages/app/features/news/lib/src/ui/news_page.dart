@@ -13,41 +13,27 @@ class NewsPage extends StatelessWidget {
     final l = L10nNews.of(context);
 
     return Scaffold(
+      appBar: AppBar(
+        leading: const Padding(
+          padding: EdgeInsets.all(12),
+          // TODO:FlutterGenで生成されたアイコンを使用
+          child: Icon(Icons.flutter_dash_sharp),
+        ),
+        titleSpacing: 4,
+        centerTitle: false,
+        title: Text(l.newsPageTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // TODO:画面遷移は別タスクで行います
+              // https://github.com/FlutterKaigi/2024/issues/145
+            },
+          ),
+        ],
+      ),
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: Icon(
-                        Icons.flutter_dash_sharp,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      l.newsPageTitle,
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.settings,
-                  ),
-                  onPressed: () {
-                    // TODO:画面遷移は別タスクで行います
-                    // https://github.com/FlutterKaigi/2024/issues/145
-                  },
-                ),
-              ],
-            ),
-          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
