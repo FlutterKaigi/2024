@@ -15,21 +15,16 @@ class StaffCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 16,
+    return ListTile(
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Image.network(_imageUrl),
       ),
-      child: ListTile(
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.network(_imageUrl),
-        ),
-        title: Text(
-          _name,
-          style: theme.textTheme.bodyMedium,
-        ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      title: Text(
+        _name,
+        style: theme.textTheme.bodyMedium,
       ),
+      contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     );
   }
 }
