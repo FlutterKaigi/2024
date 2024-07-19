@@ -16,10 +16,14 @@ class NewsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(12),
-          child: SvgPicture.asset(CommonAssets.logo.mainLogoMono),
+        leading: Center(
+          child: SvgPicture.asset(
+            CommonAssets.logo.mainLogoMono,
+            width: 24,
+            height: 24,
+          ),
         ),
+        leadingWidth: 48,
         titleSpacing: 4,
         centerTitle: false,
         title: Text(l.newsPageTitle),
