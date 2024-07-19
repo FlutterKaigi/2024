@@ -29,5 +29,14 @@
   },
   "yaml.schemas": {
     "https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yaml"
-  }
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "ReneSaarsoo.sql-formatter-vsc"
+  },
+  "SQL-Formatter-VSCode.expressionWidth": 120,
+  "SQL-Formatter-VSCode.dialect": "postgresql",
+  "SQL-Formatter-VSCode.keywordCase": "upper",
+  "SQL-Formatter-VSCode.dataTypeCase": "lower",
+  "SQL-Formatter-VSCode.functionCase": "lower",
+  "SQL-Formatter-VSCode.identifierCase": "lower"
 }
