@@ -6,6 +6,7 @@ SELECT
 CREATE EXTENSION "basejump-supabase_test_helpers";
 
 -- 事前準備: スタッフを追加
+DELETE FROM staff_social_networking_services;
 DELETE FROM staffs;
 
 INSERT INTO
