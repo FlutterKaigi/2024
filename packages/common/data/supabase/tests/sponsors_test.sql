@@ -1,10 +1,5 @@
 BEGIN;
 
-SELECT
-  dbdev.install ('basejump-supabase_test_helpers');
-
-CREATE EXTENSION "basejump-supabase_test_helpers";
-
 -- 事前準備: スポンサーを追加
 DELETE FROM sponsors;
 

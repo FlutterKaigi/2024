@@ -40,3 +40,8 @@ SELECT
 DROP EXTENSION if EXISTS "supabase-dbdev";
 
 CREATE EXTENSION "supabase-dbdev";
+
+SELECT
+  dbdev.install ('basejump-supabase_test_helpers');
+
+CREATE EXTENSION "basejump-supabase_test_helpers";
