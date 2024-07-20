@@ -19,3 +19,11 @@ jobs:
       - name: start supabase database
         working-directory: packages/common/data
         run: supabase db start
+
+      - name: lint SQL
+        working-directory: packages/common/data
+        run: supabase db lint
+
+      - name: unit test
+        working-directory: packages/common/data
+        run: supabase db test
