@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - "packages/common/data/**.sql"
-  pull_request:
 
 env:
   SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
