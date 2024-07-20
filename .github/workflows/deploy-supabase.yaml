@@ -1,0 +1,20 @@
+name: Deploy Supabase Schema
+
+on:
+  push:
+    paths:
+      - "packages/common/data/**.sql"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # https://github.com/supabase/setup-cli
+      - name: Install supabase cli
+        uses: supabase/setup-cli@v1
+
+      - run: supabase db push
+        working-directory: packages/common/data
