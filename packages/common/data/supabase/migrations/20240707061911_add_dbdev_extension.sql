@@ -11,12 +11,7 @@ SELECT
   pgtle.uninstall_extension_if_exists ('supabase-dbdev');
 
 SELECT
-  pgtle.install_extension (
-    'supabase-dbdev',
-    resp.contents ->> 'version',
-    'PostgreSQL package manager',
-    resp.contents ->> 'sql'
-  )
+  pgtle.install_extension ('supabase-dbdev', resp.contents ->> 'version', 'PostgreSQL package manager', resp.contents ->> 'sql')
 FROM
   http (
     (
