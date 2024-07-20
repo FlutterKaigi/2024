@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
-      - "*" # For debugging
     paths:
-      - "*" # For debugging
+      - "packages/common/data/**.sql"
+  pull_request:
+    paths:
       - "packages/common/data/**.sql"
 
 env:
