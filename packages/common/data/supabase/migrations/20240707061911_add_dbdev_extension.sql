@@ -41,7 +41,13 @@ DROP EXTENSION if EXISTS "supabase-dbdev";
 
 CREATE EXTENSION "supabase-dbdev";
 
+CREATE EXTENSION pgtap
+WITH
+  schema extensions;
+
 SELECT
   dbdev.install ('basejump-supabase_test_helpers');
 
-CREATE EXTENSION "basejump-supabase_test_helpers";
+CREATE EXTENSION "basejump-supabase_test_helpers"
+WITH
+  schema extensions;
