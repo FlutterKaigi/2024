@@ -58,4 +58,4 @@ jobs:
           status: ${{ job.status }}
           env: supabase-prod
           deployment_id: ${{ steps.deployment.outputs.deployment_id}}
-          env_url: "https://supabase.com/dashboard/project/$PROJECT_ID"
+          env_url: "https://supabase.com/dashboard/project/xflwrlgfukzpgkudzrlu"
