@@ -3,7 +3,17 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'supabase_client.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
+Supabase _supabase(_SupabaseRef ref) {
+  final supabase = Supabase.instance;
+  ref.onDispose(() async => supabase.dispose());
+  return supabase;
+}
+
+@Riverpod(keepAlive: true)
 SupabaseClient supabaseClient(SupabaseClientRef ref) {
-  return Supabase.instance.client;
+  final supabase = ref.watch(_supabaseProvider);
+  final supabaseClient = supabase.client;
+  ref.onDispose(() async => supabaseClient.dispose());
+  return supabaseClient;
 }
