@@ -1,8 +1,8 @@
+import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_news/src/gen/l10n/l10n.dart';
 import 'package:packages_app_features_news/src/ui/news_item_widget.dart';
-import 'package:app_cores_designsystem/common_assets.dart';
 
 /// お知らせ一覧画面
 class NewsPage extends StatelessWidget {

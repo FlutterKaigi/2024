@@ -1,5 +1,6 @@
 name: common_data
-description: Packages related to data commonly used in the official FlutterKaigi app and website.
+description: |
+  Packages related to data commonly used in the official FlutterKaigi app and website.
 version: 1.0.0
 repository: https://github.com/FlutterKaigi/2024/tree/main/packages/common/data
 issue_tracker: https://github.com/FlutterKaigi/2024/issues
@@ -7,5 +8,14 @@ issue_tracker: https://github.com/FlutterKaigi/2024/issues
 environment:
   sdk: ^3.5.0-293.0.dev
 
+dependencies:
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+  supabase_flutter: ^2.5.8
+
 dev_dependencies:
+  build_runner: ^2.4.11
+  custom_lint: ^0.6.4
+  riverpod_generator: ^2.4.2
+  riverpod_lint: ^2.3.12
   test: ^1.24.0
