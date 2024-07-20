@@ -2,8 +2,8 @@ name: app_cores_designsystem
 description: "This package provides style definitions, themes, etc., for the app."
 publish_to: "none"
 version: 0.0.1
-homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/de\
-  signsystem"
+homepage: |
+  https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/designsystem
 
 environment:
   sdk: ^3.5.0-293.0.dev
