@@ -2,13 +2,13 @@
 INSERT INTO
   staffs (name, icon_name, greeting)
 VALUES
-  ('井関竜太郎（いせりゅー）', 'iseruuuuu.webp', 'みんなで楽しむ！'),
+  ('いせりゅー', 'iseruuuuu.webp', '今年は広報のリーダをしています🥳'),
   ('asuka', 'a-skua.webp', 'I □ Flutter'),
   ('酒井佑旗(yuki s)', 'yukisakai1225.webp', '第4回も楽しみましょう！'),
   ('尾上 遼太朗', 'YumNumm.webp', ''),
   ('minn', 'kitashio.webp', ''),
   ('blendthink', 'blendthink.webp', '開発担当'),
-  ('mkosuke', 'shcahill.webp', ''),
+  ('mkosuke', 'shcahill.webp', 'フロサポ🐬'),
   ('ENDO Takumi', 'ENDOTAKUMI.webp', ''),
   ('たこさん', 'K9i-0.webp', '去年は広報チームリーダーしてました😉'),
   ('heyhey1028', 'heyhey1028.webp', ''),
@@ -24,21 +24,27 @@ VALUES
   ('darallium', 'darallium.webp', ''),
   ('Santa Takahashi', 'santa112358.webp', ''),
   ('Inoue', 'k-inoue-github.webp', 'デザイナー視点でFlutterを広げたい'),
-  ('TK', 'TK-Guitar.webp', ''),
+  ('TK', 'TK-Guitar.webp', 'カンファレンススタッフ初挑戦、頑張る！'),
   ('sohichiro', 'sohichiro.webp', ''),
   ('白崎 紀充', 'tucur-prg.webp', '新しい繋がりを探して'),
   ('うめちゃん', 'umechanhika.webp', ''),
   ('shimizu', 'j1522158.webp', ''),
   ('cardseditor', 'cardseditor.webp', ''),
   ('yuta-ike', 'yuta-ike.webp', ''),
-  ('萩尾 亮斗', 'akeybako.webp', '');
+  ('萩尾 亮斗', 'akeybako.webp', ''),
+  ('kikuchy', 'kikuchy.webp', '楽しいFlutterKaigiにするぞ！'),
+  ('haru', 'Haru-Kobayashi073.webp', 'さじ1杯分程、Web開発に携わりました!'),
+  ('kuno', 'kno3a87.webp', 'わいわい'),
+  ('mafreud', 'mafreud.webp', 'Flutter盛り上げていきましょう！'),
+  ('草野 慶人', 'keitokusano.webp', 'FlutterKaigi楽しみっ！'),
+  ('そた', 'SoutaTanaka.webp', 'Webサイト頑張りました！');
 
 -- staff_social_networking_services
 DO $$
 DECLARE
     temp_id INT;
 BEGIN
-    SELECT id INTO temp_id FROM staffs WHERE name = '井関竜太郎（いせりゅー）';
+    SELECT id INTO temp_id FROM staffs WHERE name = 'いせりゅー';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
         (temp_id, 'github', 'iseruuuuu'),
         (temp_id, 'x', 'isekiryu'),
@@ -111,7 +117,11 @@ DECLARE
 BEGIN
     SELECT id INTO temp_id FROM staffs WHERE name = 'mkosuke';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
-        (temp_id, 'github', 'shcahill');
+        (temp_id, 'github', 'shcahill'),
+        (temp_id, 'x', 'kosuke_mtm'),
+        (temp_id, 'qiita', 'mkosuke'),
+        (temp_id, 'zenn', 'mkosuke'),
+        (temp_id, 'note', 'shcahill');
 END $$;
 
 DO $$
@@ -122,6 +132,7 @@ BEGIN
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
         (temp_id, 'github', 'ENDOTAKUMI'),
         (temp_id, 'x', 'endotakumi_dev'),
+        (temp_id, 'medium', 'endo.takumi.info'),
         (temp_id, 'qiita', 'ENDOTAKUMI'),
         (temp_id, 'zenn', 'endotakumi'),
         (temp_id, 'note', 'endo_takumi'),
@@ -190,7 +201,8 @@ DECLARE
 BEGIN
     SELECT id INTO temp_id FROM staffs WHERE name = 'katota';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
-        (temp_id, 'github', 'KTmifune');
+        (temp_id, 'github', 'KTmifune'),
+        (temp_id, 'x', 'table_house');
 END $$;
 
 DO $$
@@ -287,7 +299,8 @@ DECLARE
 BEGIN
     SELECT id INTO temp_id FROM staffs WHERE name = 'TK';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
-        (temp_id, 'github', 'TK-Guitar');
+        (temp_id, 'github', 'TK-Guitar'),
+        (temp_id, 'qiita', 'TK-San');
 END $$;
 
 DO $$
@@ -371,4 +384,73 @@ BEGIN
         (temp_id, 'github', 'akeybako'),
         (temp_id, 'x', 'a_key_bako'),
         (temp_id, 'zenn', 'akeybako');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'kikuchy';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'kikuchy'),
+        (temp_id, 'x', 'kikuchy'),
+        (temp_id, 'medium', 'kikuchy'),
+        (temp_id, 'qiita', 'kikuchy'),
+        (temp_id, 'zenn', 'kikuchy');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'haru';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'Haru-Kobayashi073'),
+        (temp_id, 'x', 'h_aru073'),
+        (temp_id, 'qiita', 'haru_826230'),
+        (temp_id, 'zenn', 'haru_073'),
+        (temp_id, 'note', 'koba_haru'),
+        (temp_id, 'other', 'https://general-epoxy-a08.notion.site/ac045c55f61946e88864847d6cd2cf0f?pvs=4');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'kuno';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'kno3a87'),
+        (temp_id, 'x', 'Kunodayo_oboete'),
+        (temp_id, 'zenn', 'kuno');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'mafreud';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'mafreud'),
+        (temp_id, 'x', 'ma_freud');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = '草野 慶人';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'keitokusano'),
+        (temp_id, 'x', 'techkeito');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'そた';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'SoutaTanaka'),
+        (temp_id, 'x', '_sotaatos'),
+        (temp_id, 'qiita', 'SotaAtos');
 END $$;
