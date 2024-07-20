@@ -2,7 +2,8 @@ name: app_cores_designsystem
 description: "This package provides style definitions, themes, etc., for the app."
 publish_to: "none"
 version: 0.0.1
-homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/designsystem"
+homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/de\
+  signsystem"
 
 environment:
   sdk: ^3.5.0-293.0.dev
@@ -16,9 +17,9 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.11
-  flutter_gen_runner: ^5.6.0
 
   custom_lint: ^0.6.4
+  flutter_gen_runner: ^5.6.0
   flutter_test:
     sdk: flutter
   riverpod_generator: ^2.4.2
