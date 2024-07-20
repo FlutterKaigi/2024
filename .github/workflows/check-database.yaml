@@ -1,0 +1,21 @@
+name: Unit Test for Supabase Database
+
+on:
+  pull_request:
+    paths:
+      - "packages/common/data/**.sql"
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # https://github.com/supabase/setup-cli
+      - name: Install supabase cli
+        uses: supabase/setup-cli@33abed8329585a2cd45817cae458bc79b91a5156 # v1.4.0
+
+      - name: start supabase database
+        working-directory: packages/common/data
+        run: supabase db start
