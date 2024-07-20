@@ -2,13 +2,13 @@
 INSERT INTO
   staffs (name, icon_name, greeting)
 VALUES
-  ('井関竜太郎（いせりゅー）', 'iseruuuuu.webp', 'みんなで楽しむ！'),
+  ('いせりゅー', 'iseruuuuu.webp', '今年は広報のリーダをしています🥳'),
   ('asuka', 'a-skua.webp', 'I □ Flutter'),
   ('酒井佑旗(yuki s)', 'yukisakai1225.webp', '第4回も楽しみましょう！'),
   ('尾上 遼太朗', 'YumNumm.webp', ''),
   ('minn', 'kitashio.webp', ''),
   ('blendthink', 'blendthink.webp', '開発担当'),
-  ('mkosuke', 'shcahill.webp', ''),
+  ('mkosuke', 'shcahill.webp', 'フロサポ🐬'),
   ('ENDO Takumi', 'ENDOTAKUMI.webp', ''),
   ('たこさん', 'K9i-0.webp', '去年は広報チームリーダーしてました😉'),
   ('heyhey1028', 'heyhey1028.webp', ''),
@@ -24,14 +24,20 @@ VALUES
   ('darallium', 'darallium.webp', ''),
   ('Santa Takahashi', 'santa112358.webp', ''),
   ('Inoue', 'k-inoue-github.webp', 'デザイナー視点でFlutterを広げたい'),
-  ('TK', 'TK-Guitar.webp', ''),
+  ('TK', 'TK-Guitar.webp', 'カンファレンススタッフ初挑戦、頑張る！'),
   ('sohichiro', 'sohichiro.webp', ''),
   ('白崎 紀充', 'tucur-prg.webp', '新しい繋がりを探して'),
   ('うめちゃん', 'umechanhika.webp', ''),
   ('shimizu', 'j1522158.webp', ''),
   ('cardseditor', 'cardseditor.webp', ''),
   ('yuta-ike', 'yuta-ike.webp', ''),
-  ('萩尾 亮斗', 'akeybako.webp', '');
+  ('萩尾 亮斗', 'akeybako.webp', ''),
+  ('kikuchy', 'kikuchy.webp', '楽しいFlutterKaigiにするぞ！'),
+  ('haru', 'Haru-Kobayashi073.webp', 'さじ1杯分程、Web開発に携わりました!'),
+  ('kuno', 'kno3a87.webp', 'わいわい'),
+  ('mafreud', 'mafreud.webp', 'Flutter盛り上げていきましょう！'),
+  ('草野 慶人', 'keitokusano.webp', 'FlutterKaigi楽しみっ！'),
+  ('そた', 'SoutaTanaka.webp', 'Webサイト頑張りました！');
 
 -- staff_social_networking_services
 DO $$
