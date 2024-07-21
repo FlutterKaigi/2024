@@ -4,10 +4,12 @@
     "IntelliJ",
     "Kaigi",
     "MMMMEEE",
+    "qiita",
     "riverpod",
     "smallserial",
     "Supabase",
-    "unawaited"
+    "unawaited",
+    "zenn"
   ],
   "ignorePaths": ["**.sql"]
 }
