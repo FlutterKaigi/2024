@@ -68,6 +68,7 @@ scripts:
     exec: flutter test
     packageFilters:
       dependsOn: flutter_test
+
 ide:
   intellij:
     # Disabling IntelliJ's automatic configuration.
