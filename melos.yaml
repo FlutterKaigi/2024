@@ -64,7 +64,10 @@ scripts:
       dependsOn: flutter_localizations
       ignore:
         - conference_2024_website
-
+  flutter_test:
+    exec: flutter test
+    packageFilters:
+      dependsOn: flutter_test
 ide:
   intellij:
     # Disabling IntelliJ's automatic configuration.

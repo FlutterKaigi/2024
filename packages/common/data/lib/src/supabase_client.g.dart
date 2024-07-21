@@ -6,21 +6,21 @@ part of 'supabase_client.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$supabaseHash() => r'31e7f01a8d16688e20ca4923072d4113273f17f2';
+String _$supabaseHash() => r'ba8a1f86a7fbe9adc688c42e8c9512dc4dc10090';
 
-/// See also [_supabase].
-@ProviderFor(_supabase)
-final _supabaseProvider = Provider<Supabase>.internal(
-  _supabase,
-  name: r'_supabaseProvider',
+/// See also [supabase].
+@ProviderFor(supabase)
+final supabaseProvider = Provider<Supabase>.internal(
+  supabase,
+  name: r'supabaseProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$supabaseHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _SupabaseRef = ProviderRef<Supabase>;
-String _$supabaseClientHash() => r'4107c57d9c3ab7e01315fd5874d4920cb3695610';
+typedef SupabaseRef = ProviderRef<Supabase>;
+String _$supabaseClientHash() => r'78c315fdf5c2467b2b7afe920654739802f88c55';
 
 /// See also [supabaseClient].
 @ProviderFor(supabaseClient)

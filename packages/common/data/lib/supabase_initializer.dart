@@ -9,7 +9,7 @@ final class SupabaseInitializer {
   final String url;
   final String anonKey;
 
-  Future<void> initialize() => Supabase.initialize(
+  Future<Supabase> initialize() => Supabase.initialize(
         url: url,
         anonKey: anonKey,
       );
