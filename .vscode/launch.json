@@ -2,11 +2,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "app-debug",
+      "name": "app-development-debug",
       "cwd": "apps/app",
       "request": "launch",
       "program": "lib/main.dart",
-      "type": "dart"
+      "type": "dart",
+      "args": ["--dart-define-from-file=defines/development.env"]
+    },
+    {
+      "name": "app-production-debug",
+      "cwd": "apps/app",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
       "name": "website-html-debug",

@@ -1,7 +1,10 @@
+// ignore_for_file: do_not_use_environment
+
 import 'dart:async';
 
 import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:app_cores_designsystem/theme.dart';
+import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
 import 'package:dynamic_color/dynamic_color.dart';
@@ -16,7 +19,13 @@ import 'package:packages_app_features_news/l10n.dart';
 import 'package:packages_app_features_session/l10n.dart';
 import 'package:packages_app_features_venue/l10n.dart';
 
-void main() {
+void main() async {
+  final supabaseInitializer = SupabaseInitializer(
+    url: const String.fromEnvironment('SUPABASE_URL'),
+    anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
+  );
+  await supabaseInitializer.initialize();
+
   runApp(
     const ProviderScope(
       child: MainApp(),
