@@ -35,5 +35,21 @@ final supabaseClientProvider = Provider<SupabaseClient>.internal(
 );
 
 typedef SupabaseClientRef = ProviderRef<SupabaseClient>;
+String _$staffsStorageFileApiHash() =>
+    r'b14e244a300d4d87f44ecbc83caf87ef81e68985';
+
+/// See also [staffsStorageFileApi].
+@ProviderFor(staffsStorageFileApi)
+final staffsStorageFileApiProvider = Provider<StorageFileApi>.internal(
+  staffsStorageFileApi,
+  name: r'staffsStorageFileApiProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$staffsStorageFileApiHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef StaffsStorageFileApiRef = ProviderRef<StorageFileApi>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

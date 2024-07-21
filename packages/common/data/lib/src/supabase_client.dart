@@ -17,3 +17,9 @@ SupabaseClient supabaseClient(SupabaseClientRef ref) {
   ref.onDispose(() async => supabaseClient.dispose());
   return supabaseClient;
 }
+
+@Riverpod(keepAlive: true)
+StorageFileApi staffsStorageFileApi(StaffsStorageFileApiRef ref) {
+  final supabaseClient = ref.watch(supabaseClientProvider);
+  return supabaseClient.storage.from('staffs');
+}
