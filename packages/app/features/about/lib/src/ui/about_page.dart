@@ -43,7 +43,11 @@ class AboutPage extends StatelessWidget {
                     child: Column(
                       children: [
                         const SizedBox(height: 16),
-                        const FlutterLogo(size: 100), // Placeholder for the logo
+                        SvgPicture.asset(
+                          CommonAssets.logo.mainLogo,
+                          width: 96,
+                          height: 96,
+                        ),
                         const SizedBox(height: 16),
                         Padding(
                           padding: const EdgeInsets.all(16),
