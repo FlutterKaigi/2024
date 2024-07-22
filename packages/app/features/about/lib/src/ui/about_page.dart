@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
@@ -18,7 +20,13 @@ class AboutPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
-            leading: const Icon(Icons.arrow_back),
+            leading: Center(
+              child: SvgPicture.asset(
+                CommonAssets.logo.mainLogoMono,
+                width: 24,
+                height: 24,
+              ),
+            ),
             title: Text(l.aboutPageTitle),
             actions: [
               IconButton(
