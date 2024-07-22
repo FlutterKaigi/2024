@@ -11,6 +11,8 @@ dependencies:
   accessibility_tools: ^2.2.1
   app_cores_designsystem:
     path: ../../packages/app/cores/designsystem
+  common_data:
+    path: ../../packages/common/data
   dynamic_color: ^1.7.0
   flutter:
     sdk: flutter

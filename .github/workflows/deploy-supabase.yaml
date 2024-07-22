@@ -1,0 +1,62 @@
+name: Deploy Supabase Schema
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/common/data/**.sql"
+
+env:
+  SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+  SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+  PROJECT_ID: xflwrlgfukzpgkudzrlu
+
+permissions:
+  deployments: write
+  id-token: write
+  contents: read
+
+jobs:
+  deploy-database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Start deployment
+        # https://github.com/bobheadxi/deployments
+        uses: bobheadxi/deployments@648679e8e4915b27893bd7dbc35cb504dc915bc8 # v1.5.0
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: supabase-prod
+          ref: ${{ github.head_ref}}
+
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # https://github.com/supabase/setup-cli
+      - name: Install supabase cli
+        uses: supabase/setup-cli@33abed8329585a2cd45817cae458bc79b91a5156 # v1.4.0
+
+      - name: link supabase project
+        working-directory: packages/common/data
+        run: supabase link --project-ref $PROJECT_ID
+
+      - run: supabase db push
+        working-directory: packages/common/data
+
+      - name: Update deployment status
+        # https://github.com/bobheadxi/deployments
+        uses: bobheadxi/deployments@648679e8e4915b27893bd7dbc35cb504dc915bc8 # v1.5.0
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: supabase-prod
+          deployment_id: ${{ steps.deployment.outputs.deployment_id}}
+          env_url: "https://supabase.com/dashboard/project/xflwrlgfukzpgkudzrlu"

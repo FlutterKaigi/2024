@@ -1,3 +1,15 @@
 {
-  "words": ["designsystem", "IntelliJ", "Kaigi", "riverpod", "unawaited"]
+  "words": [
+    "designsystem",
+    "IntelliJ",
+    "Kaigi",
+    "MMMMEEE",
+    "qiita",
+    "riverpod",
+    "smallserial",
+    "Supabase",
+    "unawaited",
+    "zenn"
+  ],
+  "ignorePaths": ["**.sql"]
 }
