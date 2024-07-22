@@ -93,12 +93,12 @@ class AboutPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               ListTile(
-                title: Text(l.sponsors, style: theme.textTheme.bodyLarge),
+                title: Text(l.sponsors),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(l.websiteAndAppContributors, style: theme.textTheme.bodyLarge),
+                title: Text(l.websiteAndAppContributors),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {
                   unawaited(
@@ -111,7 +111,7 @@ class AboutPage extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text(l.staffs, style: theme.textTheme.bodyLarge),
+                title: Text(l.staffs),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {
                   unawaited(
@@ -129,22 +129,22 @@ class AboutPage extends StatelessWidget {
                 child: Text(l.other, style: theme.textTheme.titleMedium),
               ),
               ListTile(
-                title: Text(l.codeOfConduct, style: theme.textTheme.bodyLarge),
+                title: Text(l.codeOfConduct),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(l.privacyPolicy, style: theme.textTheme.bodyLarge),
+                title: Text(l.privacyPolicy),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(l.contactUs, style: theme.textTheme.bodyLarge),
+                title: Text(l.contactUs),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(l.ossLicenses, style: theme.textTheme.bodyLarge),
+                title: Text(l.ossLicenses),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {
                   unawaited(
