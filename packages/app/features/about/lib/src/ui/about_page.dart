@@ -159,15 +159,27 @@ class AboutPage extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 32),
-              const Center(
+              Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.email),
-                    SizedBox(width: 16),
-                    Icon(Icons.link),
-                    SizedBox(width: 16),
-                    Icon(Icons.code),
+                    SvgPicture.asset(
+                      CommonAssets.logo.xLogo,
+                      width: 48,
+                      height: 48,
+                    ),
+                    const SizedBox(width: 16),
+                    SvgPicture.asset(
+                      CommonAssets.logo.mediumLogo,
+                      width: 48,
+                      height: 48,
+                    ),
+                    const SizedBox(width: 16),
+                    SvgPicture.asset(
+                      CommonAssets.logo.githubLogo,
+                      width: 48,
+                      height: 48,
+                    ),
                   ],
                 ),
               ),
