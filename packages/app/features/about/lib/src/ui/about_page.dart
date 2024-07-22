@@ -61,26 +61,16 @@ class AboutPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8, top: 8, right: 24, bottom: 8),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.location_on_outlined),
-                        const SizedBox(width: 16),
-                        Text('Ariake Central Tower Hall & Conference', style: theme.textTheme.bodyLarge),
-                      ],
-                    ),
+                  ListTile(
+                    title: Text(l.location, style: theme.textTheme.bodyLarge),
+                    leading: const Icon(Icons.location_on_outlined),
+                    onTap: () {},
                   ),
                   const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8, top: 8, right: 24, bottom: 8),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.event_outlined),
-                        const SizedBox(width: 16),
-                        Text('November 21 ~ 22, 2024', style: theme.textTheme.bodyLarge),
-                      ],
-                    ),
+                  ListTile(
+                    title: Text(l.date, style: theme.textTheme.bodyLarge),
+                    leading: const Icon(Icons.event_outlined),
+                    onTap: () {},
                   ),
                   const SizedBox(height: 32),
                   Padding(

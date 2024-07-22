@@ -109,6 +109,18 @@ abstract class L10nAbout {
   /// **'FlutterKaigi は世界中の Flutter/Dart を愛する人々が集まる場所です。知識や情熱を共有する場を提供することを目的に、Flutter/Dart に魅せられた有志によって実行委員会が組織されています。初心者から上級者までが集まり、Flutter/Dart について学び、語り合い、楽しむことができます。イベントの開催は日本になりますが、インターネット配信を活用し、全世界に発信しています。'**
   String get flutterKaigiDescription;
 
+  /// No description provided for @location.
+  ///
+  /// In ja, this message translates to:
+  /// **'有明セントラルタワーホール&カンファレンス'**
+  String get location;
+
+  /// No description provided for @date.
+  ///
+  /// In ja, this message translates to:
+  /// **'2024年11月21日～22日'**
+  String get date;
+
   /// No description provided for @contributors.
   ///
   /// In ja, this message translates to:
