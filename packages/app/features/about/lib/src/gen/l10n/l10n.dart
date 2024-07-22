@@ -103,41 +103,77 @@ abstract class L10nAbout {
   /// **'About us'**
   String get aboutPageTitle;
 
-  /// No description provided for @license.
+  /// No description provided for @flutterKaigiDescription.
   ///
   /// In ja, this message translates to:
-  /// **'ライセンスページ'**
-  String get license;
+  /// **'FlutterKaigi は世界中の Flutter/Dart を愛する人々が集まる場所です。知識や情熱を共有する場を提供することを目的に、Flutter/Dart に魅せられた有志によって実行委員会が組織されています。初心者から上級者までが集まり、Flutter/Dart について学び、語り合い、楽しむことができます。イベントの開催は日本になりますが、インターネット配信を活用し、全世界に発信しています。'**
+  String get flutterKaigiDescription;
 
-  /// No description provided for @contributor.
+  /// No description provided for @contributors.
   ///
   /// In ja, this message translates to:
   /// **'コントリビューター'**
-  String get contributor;
+  String get contributors;
 
-  /// No description provided for @staff.
+  /// No description provided for @sponsors.
+  ///
+  /// In ja, this message translates to:
+  /// **'スポンサー'**
+  String get sponsors;
+
+  /// No description provided for @websiteAndAppContributors.
+  ///
+  /// In ja, this message translates to:
+  /// **'Website/App コントリビューター'**
+  String get websiteAndAppContributors;
+
+  /// No description provided for @staffs.
   ///
   /// In ja, this message translates to:
   /// **'スタッフ'**
-  String get staff;
+  String get staffs;
+
+  /// No description provided for @other.
+  ///
+  /// In ja, this message translates to:
+  /// **'Others'**
+  String get other;
+
+  /// No description provided for @codeOfConduct.
+  ///
+  /// In ja, this message translates to:
+  /// **'行動規範'**
+  String get codeOfConduct;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In ja, this message translates to:
+  /// **'プライバシーポリシー'**
+  String get privacyPolicy;
+
+  /// No description provided for @contactUs.
+  ///
+  /// In ja, this message translates to:
+  /// **'お問い合わせ'**
+  String get contactUs;
+
+  /// No description provided for @ossLicenses.
+  ///
+  /// In ja, this message translates to:
+  /// **'OSS Licenses'**
+  String get ossLicenses;
+
+  /// No description provided for @licensesAboutUs.
+  ///
+  /// In ja, this message translates to:
+  /// **'Flutterおよび関連ロゴはGoogle LLCの商標です。FlutterKaigiはGoogle LLCとは提携しておらず、または他の形でスポンサーを受けていません。'**
+  String get licensesAboutUs;
 
   /// No description provided for @applicationName.
   ///
   /// In ja, this message translates to:
   /// **'FlutterKaigi 2024 Official App'**
   String get applicationName;
-
-  /// No description provided for @contributorsPageName.
-  ///
-  /// In ja, this message translates to:
-  /// **'Contributors'**
-  String get contributorsPageName;
-
-  /// No description provided for @staffsPageName.
-  ///
-  /// In ja, this message translates to:
-  /// **'Staffs'**
-  String get staffsPageName;
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {

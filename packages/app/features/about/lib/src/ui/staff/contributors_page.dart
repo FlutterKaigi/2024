@@ -16,7 +16,7 @@ class ContributorsPage extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             title: Text(
-              l.contributorsPageName,
+              l.contributors,
             ),
           ),
 

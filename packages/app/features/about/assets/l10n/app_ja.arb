@@ -1,9 +1,15 @@
 {
   "aboutPageTitle": "About us",
-  "license": "ライセンスページ",
-  "contributor": "コントリビューター",
-  "staff": "スタッフ",
-  "applicationName": "FlutterKaigi 2024 Official App",
-  "contributorsPageName": "Contributors",
-  "staffsPageName": "Staffs"
+  "flutterKaigiDescription": "FlutterKaigi は世界中の Flutter/Dart を愛する人々が集まる場所です。知識や情熱を共有する場を提供することを目的に、Flutter/Dart に魅せられた有志によって実行委員会が組織されています。初心者から上級者までが集まり、Flutter/Dart について学び、語り合い、楽しむことができます。イベントの開催は日本になりますが、インターネット配信を活用し、全世界に発信しています。",
+  "contributors": "コントリビューター",
+  "sponsors": "スポンサー",
+  "websiteAndAppContributors": "Website/App コントリビューター",
+  "staffs": "スタッフ",
+  "other": "Others",
+  "codeOfConduct": "行動規範",
+  "privacyPolicy": "プライバシーポリシー",
+  "contactUs": "お問い合わせ",
+  "ossLicenses": "OSS Licenses",
+  "licensesAboutUs": "Flutterおよび関連ロゴはGoogle LLCの商標です。FlutterKaigiはGoogle LLCとは提携しておらず、または他の形でスポンサーを受けていません。",
+  "applicationName": "FlutterKaigi 2024 Official App"
 }

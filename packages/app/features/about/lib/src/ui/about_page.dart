@@ -52,7 +52,7 @@ class AboutPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            'FlutterKaigi is a conference for Flutter/Dart lovers from around the world. Our objective is to provide a space for sharing your knowledge and passion for Flutter/Dart. And we are running the committee as volunteers. Beginners and advanced users alike gather to learn, discuss, and enjoy Flutter/Dart. Although the event will be held in Japan, we are using Internet distribution to transmit the information to the entire world.',
+                            l.flutterKaigiDescription,
                             textAlign: TextAlign.center,
                             style: theme.textTheme.bodyMedium,
                           ),
@@ -85,7 +85,7 @@ class AboutPage extends StatelessWidget {
                   const SizedBox(height: 32),
                   Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Text('Contributors', style: theme.textTheme.titleMedium),
+                    child: Text(l.contributors, style: theme.textTheme.titleMedium),
                   ),
                 ],
               ),
@@ -93,12 +93,12 @@ class AboutPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               ListTile(
-                title: Text('Sponsors', style: theme.textTheme.bodyLarge),
+                title: Text(l.sponsors, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('Website/App contributors', style: theme.textTheme.bodyLarge),
+                title: Text(l.websiteAndAppContributors, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {
                   unawaited(
@@ -111,7 +111,7 @@ class AboutPage extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text('Staffs', style: theme.textTheme.bodyLarge),
+                title: Text(l.staffs, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {
                   unawaited(
@@ -126,25 +126,25 @@ class AboutPage extends StatelessWidget {
               const SizedBox(height: 32),
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: Text('Others', style: theme.textTheme.titleMedium),
+                child: Text(l.other, style: theme.textTheme.titleMedium),
               ),
               ListTile(
-                title: Text('Code of conduct', style: theme.textTheme.bodyLarge),
+                title: Text(l.codeOfConduct, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('Privacy policy', style: theme.textTheme.bodyLarge),
+                title: Text(l.privacyPolicy, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('Contact us', style: theme.textTheme.bodyLarge),
+                title: Text(l.contactUs, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('OSS Licenses', style: theme.textTheme.bodyLarge),
+                title: Text(l.ossLicenses, style: theme.textTheme.bodyLarge),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () {
                   unawaited(
@@ -187,7 +187,7 @@ class AboutPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
-                  'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.',
+                  l.licensesAboutUs,
                   textAlign: TextAlign.start,
                   style: theme.textTheme.labelSmall,
                 ),
