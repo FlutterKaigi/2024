@@ -40,7 +40,7 @@ jobs:
 
       # https://github.com/supabase/setup-cli
       - name: Install supabase cli
-        uses: supabase/setup-cli@33abed8329585a2cd45817cae458bc79b91a5156 # v1.4.0
+        uses: supabase/setup-cli@3b9dbf86026385dcfd2b11263e0924d0bb4a9028 # v1.4.0
 
       - name: link supabase project
         working-directory: packages/common/data
