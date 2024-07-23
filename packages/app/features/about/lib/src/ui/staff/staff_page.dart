@@ -16,7 +16,7 @@ class StaffPage extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             title: Text(
-              l.staffsPageName,
+              l.staffs,
             ),
           ),
 
