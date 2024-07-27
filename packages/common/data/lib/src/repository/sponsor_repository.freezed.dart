@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sponsor.dart';
+part of 'sponsor_repository.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,60 +14,62 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Sponsor _$SponsorFromJson(Map<String, dynamic> json) {
-  return _Sponsor.fromJson(json);
+SponsorTable _$SponsorTableFromJson(Map<String, dynamic> json) {
+  return _SponsorTable.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Sponsor {
+mixin _$SponsorTable {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  Uri get logoUrl => throw _privateConstructorUsedError;
+  String get logoName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  Uri? get url => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   SponsorType get type => throw _privateConstructorUsedError;
 
-  /// Serializes this Sponsor to a JSON map.
+  /// Serializes this SponsorTable to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Sponsor
+  /// Create a copy of SponsorTable
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SponsorCopyWith<Sponsor> get copyWith => throw _privateConstructorUsedError;
+  $SponsorTableCopyWith<SponsorTable> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SponsorCopyWith<$Res> {
-  factory $SponsorCopyWith(Sponsor value, $Res Function(Sponsor) then) =
-      _$SponsorCopyWithImpl<$Res, Sponsor>;
+abstract class $SponsorTableCopyWith<$Res> {
+  factory $SponsorTableCopyWith(
+          SponsorTable value, $Res Function(SponsorTable) then) =
+      _$SponsorTableCopyWithImpl<$Res, SponsorTable>;
   @useResult
   $Res call(
       {int id,
       String name,
-      Uri logoUrl,
+      String logoName,
       String description,
-      Uri? url,
+      String? url,
       SponsorType type});
 }
 
 /// @nodoc
-class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
-    implements $SponsorCopyWith<$Res> {
-  _$SponsorCopyWithImpl(this._value, this._then);
+class _$SponsorTableCopyWithImpl<$Res, $Val extends SponsorTable>
+    implements $SponsorTableCopyWith<$Res> {
+  _$SponsorTableCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Sponsor
+  /// Create a copy of SponsorTable
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? logoUrl = null,
+    Object? logoName = null,
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
@@ -81,10 +83,10 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      logoUrl: null == logoUrl
-          ? _value.logoUrl
-          : logoUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+      logoName: null == logoName
+          ? _value.logoName
+          : logoName // ignore: cast_nullable_to_non_nullable
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -92,7 +94,7 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as Uri?,
+              as String?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -102,42 +104,43 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
 }
 
 /// @nodoc
-abstract class _$$SponsorImplCopyWith<$Res> implements $SponsorCopyWith<$Res> {
-  factory _$$SponsorImplCopyWith(
-          _$SponsorImpl value, $Res Function(_$SponsorImpl) then) =
-      __$$SponsorImplCopyWithImpl<$Res>;
+abstract class _$$SponsorTableImplCopyWith<$Res>
+    implements $SponsorTableCopyWith<$Res> {
+  factory _$$SponsorTableImplCopyWith(
+          _$SponsorTableImpl value, $Res Function(_$SponsorTableImpl) then) =
+      __$$SponsorTableImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
       String name,
-      Uri logoUrl,
+      String logoName,
       String description,
-      Uri? url,
+      String? url,
       SponsorType type});
 }
 
 /// @nodoc
-class __$$SponsorImplCopyWithImpl<$Res>
-    extends _$SponsorCopyWithImpl<$Res, _$SponsorImpl>
-    implements _$$SponsorImplCopyWith<$Res> {
-  __$$SponsorImplCopyWithImpl(
-      _$SponsorImpl _value, $Res Function(_$SponsorImpl) _then)
+class __$$SponsorTableImplCopyWithImpl<$Res>
+    extends _$SponsorTableCopyWithImpl<$Res, _$SponsorTableImpl>
+    implements _$$SponsorTableImplCopyWith<$Res> {
+  __$$SponsorTableImplCopyWithImpl(
+      _$SponsorTableImpl _value, $Res Function(_$SponsorTableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Sponsor
+  /// Create a copy of SponsorTable
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? logoUrl = null,
+    Object? logoName = null,
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
   }) {
-    return _then(_$SponsorImpl(
+    return _then(_$SponsorTableImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -146,10 +149,10 @@ class __$$SponsorImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      logoUrl: null == logoUrl
-          ? _value.logoUrl
-          : logoUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+      logoName: null == logoName
+          ? _value.logoName
+          : logoName // ignore: cast_nullable_to_non_nullable
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -157,7 +160,7 @@ class __$$SponsorImplCopyWithImpl<$Res>
       url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as Uri?,
+              as String?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -168,44 +171,45 @@ class __$$SponsorImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SponsorImpl implements _Sponsor {
-  const _$SponsorImpl(
+class _$SponsorTableImpl implements _SponsorTable {
+  const _$SponsorTableImpl(
       {required this.id,
       required this.name,
-      required this.logoUrl,
+      required this.logoName,
       required this.description,
       required this.url,
       required this.type});
 
-  factory _$SponsorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SponsorImplFromJson(json);
+  factory _$SponsorTableImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorTableImplFromJson(json);
 
   @override
   final int id;
   @override
   final String name;
   @override
-  final Uri logoUrl;
+  final String logoName;
   @override
   final String description;
   @override
-  final Uri? url;
+  final String? url;
   @override
   final SponsorType type;
 
   @override
   String toString() {
-    return 'Sponsor(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type)';
+    return 'SponsorTable(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SponsorImpl &&
+            other is _$SponsorTableImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.logoName, logoName) ||
+                other.logoName == logoName) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.url, url) || other.url == url) &&
@@ -215,52 +219,53 @@ class _$SponsorImpl implements _Sponsor {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, logoUrl, description, url, type);
+      Object.hash(runtimeType, id, name, logoName, description, url, type);
 
-  /// Create a copy of Sponsor
+  /// Create a copy of SponsorTable
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SponsorImplCopyWith<_$SponsorImpl> get copyWith =>
-      __$$SponsorImplCopyWithImpl<_$SponsorImpl>(this, _$identity);
+  _$$SponsorTableImplCopyWith<_$SponsorTableImpl> get copyWith =>
+      __$$SponsorTableImplCopyWithImpl<_$SponsorTableImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SponsorImplToJson(
+    return _$$SponsorTableImplToJson(
       this,
     );
   }
 }
 
-abstract class _Sponsor implements Sponsor {
-  const factory _Sponsor(
+abstract class _SponsorTable implements SponsorTable {
+  const factory _SponsorTable(
       {required final int id,
       required final String name,
-      required final Uri logoUrl,
+      required final String logoName,
       required final String description,
-      required final Uri? url,
-      required final SponsorType type}) = _$SponsorImpl;
+      required final String? url,
+      required final SponsorType type}) = _$SponsorTableImpl;
 
-  factory _Sponsor.fromJson(Map<String, dynamic> json) = _$SponsorImpl.fromJson;
+  factory _SponsorTable.fromJson(Map<String, dynamic> json) =
+      _$SponsorTableImpl.fromJson;
 
   @override
   int get id;
   @override
   String get name;
   @override
-  Uri get logoUrl;
+  String get logoName;
   @override
   String get description;
   @override
-  Uri? get url;
+  String? get url;
   @override
   SponsorType get type;
 
-  /// Create a copy of Sponsor
+  /// Create a copy of SponsorTable
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SponsorImplCopyWith<_$SponsorImpl> get copyWith =>
+  _$$SponsorTableImplCopyWith<_$SponsorTableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

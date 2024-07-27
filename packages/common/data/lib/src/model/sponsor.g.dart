@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint
+
 part of 'sponsor.dart';
 
 // **************************************************************************
@@ -7,22 +9,32 @@ part of 'sponsor.dart';
 // **************************************************************************
 
 _$SponsorImpl _$$SponsorImplFromJson(Map<String, dynamic> json) =>
-    _$SponsorImpl(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      logoName: json['logoName'] as String,
-      description: json['description'] as String,
-      url: json['url'] as String?,
-      type: $enumDecode(_$SponsorTypeEnumMap, json['type']),
+    $checkedCreate(
+      r'_$SponsorImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$SponsorImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          logoUrl: $checkedConvert('logo_url', (v) => Uri.parse(v as String)),
+          description: $checkedConvert('description', (v) => v as String),
+          url: $checkedConvert(
+              'url', (v) => v == null ? null : Uri.parse(v as String)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SponsorTypeEnumMap, v)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'logoUrl': 'logo_url'},
     );
 
 Map<String, dynamic> _$$SponsorImplToJson(_$SponsorImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'logoName': instance.logoName,
+      'logo_url': instance.logoUrl.toString(),
       'description': instance.description,
-      'url': instance.url,
+      'url': instance.url?.toString(),
       'type': _$SponsorTypeEnumMap[instance.type]!,
     };
 

@@ -8,9 +8,9 @@ class Sponsor with _$Sponsor {
   const factory Sponsor({
     required int id,
     required String name,
-    required String logoName,
+    required Uri logoUrl,
     required String description,
-    required String? url,
+    required Uri? url,
     required SponsorType type,
   }) = _Sponsor;
 
