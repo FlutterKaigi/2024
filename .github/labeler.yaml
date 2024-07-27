@@ -9,6 +9,12 @@ website:
           - "apps/website/**"
           - "packages/website/**"
 
+ticket:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "apps/ticket/**"
+          - "packages/ticket/**"
+
 data:
   - changed-files:
       - any-glob-to-any-file:
