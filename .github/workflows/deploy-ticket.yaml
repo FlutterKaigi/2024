@@ -1,4 +1,4 @@
-name: Deploy Web on PR
+name: Deploy Ticket
 
 on:
   workflow_dispatch:
