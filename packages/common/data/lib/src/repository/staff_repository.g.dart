@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint
+
 part of 'staff_repository.dart';
 
 // **************************************************************************
@@ -7,13 +9,27 @@ part of 'staff_repository.dart';
 // **************************************************************************
 
 _$StaffsViewImpl _$$StaffsViewImplFromJson(Map<String, dynamic> json) =>
-    _$StaffsViewImpl(
-      name: json['name'] as String,
-      iconName: json['icon_name'] as String,
-      greeting: json['greeting'] as String,
-      snsAccounts: (json['sns_accounts'] as List<dynamic>)
-          .map((e) => StaffsViewSnsAccount.fromJson(e as Map<String, dynamic>))
-          .toList(),
+    $checkedCreate(
+      r'_$StaffsViewImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$StaffsViewImpl(
+          name: $checkedConvert('name', (v) => v as String),
+          iconName: $checkedConvert('icon_name', (v) => v as String),
+          greeting: $checkedConvert('greeting', (v) => v as String),
+          snsAccounts: $checkedConvert(
+              'sns_accounts',
+              (v) => (v as List<dynamic>)
+                  .map((e) =>
+                      StaffsViewSnsAccount.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'iconName': 'icon_name',
+        'snsAccounts': 'sns_accounts'
+      },
     );
 
 Map<String, dynamic> _$$StaffsViewImplToJson(_$StaffsViewImpl instance) =>
@@ -26,9 +42,16 @@ Map<String, dynamic> _$$StaffsViewImplToJson(_$StaffsViewImpl instance) =>
 
 _$StaffsViewSnsAccountImpl _$$StaffsViewSnsAccountImplFromJson(
         Map<String, dynamic> json) =>
-    _$StaffsViewSnsAccountImpl(
-      type: json['type'] as String,
-      value: json['value'] as String,
+    $checkedCreate(
+      r'_$StaffsViewSnsAccountImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$StaffsViewSnsAccountImpl(
+          type: $checkedConvert('type', (v) => v as String),
+          value: $checkedConvert('value', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$StaffsViewSnsAccountImplToJson(

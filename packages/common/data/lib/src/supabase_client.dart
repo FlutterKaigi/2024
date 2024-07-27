@@ -23,3 +23,7 @@ StorageFileApi staffsStorageFileApi(StaffsStorageFileApiRef ref) {
   final supabaseClient = ref.watch(supabaseClientProvider);
   return supabaseClient.storage.from('staffs');
 }
+
+@Riverpod(keepAlive: true)
+StorageFileApi sponsorStorageFileApi(SponsorStorageFileApiRef ref) =>
+    ref.watch(supabaseClientProvider).storage.from('sponsors');
