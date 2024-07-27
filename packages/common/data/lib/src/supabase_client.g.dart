@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint
+
 part of 'supabase_client.dart';
 
 // **************************************************************************
@@ -51,5 +53,21 @@ final staffsStorageFileApiProvider = Provider<StorageFileApi>.internal(
 );
 
 typedef StaffsStorageFileApiRef = ProviderRef<StorageFileApi>;
+String _$sponsorStorageFileApiHash() =>
+    r'1eab25da944ce93c2363b14e0b21bffe595ed001';
+
+/// See also [sponsorStorageFileApi].
+@ProviderFor(sponsorStorageFileApi)
+final sponsorStorageFileApiProvider = Provider<StorageFileApi>.internal(
+  sponsorStorageFileApi,
+  name: r'sponsorStorageFileApiProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sponsorStorageFileApiHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SponsorStorageFileApiRef = ProviderRef<StorageFileApi>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
