@@ -29,18 +29,20 @@ final class SponsorRepository {
         await _supabaseClient.from('sponsors').select().withConverter(
               (json) => json.map(SponsorTable.fromJson).toList(),
             );
-    return result.map(
-      (sponsor) => Sponsor(
-        id: sponsor.id,
-        name: sponsor.name,
-        logoUrl: Uri.parse(
-          _sponsorStorageFileApi.getPublicUrl(sponsor.logoName),
-        ),
-        description: sponsor.description,
-        url: sponsor.url != null ? Uri.tryParse(sponsor.url!) : null,
-        type: sponsor.type,
-      ),
-    ).toList();
+    return result
+        .map(
+          (sponsor) => Sponsor(
+            id: sponsor.id,
+            name: sponsor.name,
+            logoUrl: Uri.parse(
+              _sponsorStorageFileApi.getPublicUrl(sponsor.logoName),
+            ),
+            description: sponsor.description,
+            url: sponsor.url != null ? Uri.tryParse(sponsor.url!) : null,
+            type: sponsor.type,
+          ),
+        )
+        .toList();
   }
 }
 
