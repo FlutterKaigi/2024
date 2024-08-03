@@ -8,6 +8,8 @@ import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import 'components/news_component.dart';
+
 final class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -52,6 +54,8 @@ class _Body extends StatelessWidget {
           child: Column(
             children: [
               _Lead(),
+              Gap(80),
+              _News(),
               Gap(128),
               Sponsor(),
               Gap(128),
@@ -74,6 +78,21 @@ class _Lead extends StatelessWidget {
       child: SizedBox(
         width: 512,
         child: Lead(),
+      ),
+    );
+  }
+}
+
+class _News extends StatelessWidget {
+  const _News();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.topRight,
+      child: SizedBox(
+        width: 512,
+        child: NewsComponent(),
       ),
     );
   }

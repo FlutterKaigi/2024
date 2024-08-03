@@ -1,3 +1,4 @@
+import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/router/router.dart';
 import 'package:conference_2024_website/ui/theme/theme.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,10 +20,21 @@ Future<void> main() async {
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     }
   });
+
   LocaleSettings.useDeviceLocale();
+
+  final supabaseInitializer = SupabaseInitializer(
+    url: const String.fromEnvironment('SUPABASE_URL'),
+    anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
+  );
+
+  await supabaseInitializer.initialize();
+
   runApp(
-    TranslationProvider(
-      child: const MainApp(),
+    ProviderScope(
+      child: TranslationProvider(
+        child: const MainApp(),
+      ),
     ),
   );
 }

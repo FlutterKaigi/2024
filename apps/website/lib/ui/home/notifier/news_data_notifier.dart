@@ -23,5 +23,4 @@ class NewsDataNotifier extends _$NewsDataNotifier {
       state = NewsDataState.error(e.toString());
     }
   }
-
 }
