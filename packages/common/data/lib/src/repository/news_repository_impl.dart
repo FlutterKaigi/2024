@@ -1,7 +1,5 @@
 import 'package:common_data/news.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'news_repository_impl.freezed.dart';
