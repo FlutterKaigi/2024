@@ -37,49 +37,52 @@ class AboutPage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 16),
-                        SvgPicture.asset(
-                          CommonAssets.logo.mainLogo,
-                          width: 96,
-                          height: 96,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 16),
+                      SvgPicture.asset(
+                        CommonAssets.logo.mainLogo,
+                        width: 96,
+                        height: 96,
+                      ),
+                      const SizedBox(height: 16),
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Text(
+                          l.flutterKaigiDescription,
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodyMedium,
                         ),
-                        const SizedBox(height: 16),
-                        Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(
-                            l.flutterKaigiDescription,
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 32),
-                  ListTile(
-                    title: Text(l.location, style: theme.textTheme.bodyLarge),
-                    leading: const Icon(Icons.location_on_outlined),
-                    onTap: () {},
+                ),
+                const SizedBox(height: 32),
+                ListTile(
+                  title: Text(l.location, style: theme.textTheme.bodyLarge),
+                  leading: const Icon(Icons.location_on_outlined),
+                  onTap: () {},
+                ),
+                const SizedBox(height: 16),
+                ListTile(
+                  title: Text(l.date, style: theme.textTheme.bodyLarge),
+                  leading: const Icon(Icons.event_outlined),
+                  onTap: () {},
+                ),
+                const SizedBox(height: 32),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    l.contributors,
+                    style: theme.textTheme.titleMedium,
                   ),
-                  const SizedBox(height: 16),
-                  ListTile(
-                    title: Text(l.date, style: theme.textTheme.bodyLarge),
-                    leading: const Icon(Icons.event_outlined),
-                    onTap: () {},
-                  ),
-                  const SizedBox(height: 32),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(l.contributors, style: theme.textTheme.titleMedium),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
           SliverList(
             delegate: SliverChildListDelegate([
               ListTile(
