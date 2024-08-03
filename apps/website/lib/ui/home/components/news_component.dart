@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 import 'package:common_data/news.dart';
+import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/home/notifier/news_data_notifier.dart';
 import 'package:conference_2024_website/ui/home/notifier/news_data_state.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -23,10 +24,14 @@ class NewsComponent extends HookConsumerWidget {
     final newsDataState = ref.watch(newsDataNotifierProvider);
     final newsDataNotifier = ref.read(newsDataNotifierProvider.notifier);
 
+    final i18n = Translations.of(context);
+
     useEffect(
       () {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          unawaited(newsDataNotifier.getNews());
+          if (newsDataState is NewsDataInitial) {
+            unawaited(newsDataNotifier.getNews());
+          }
         });
         return null;
       },
@@ -39,7 +44,7 @@ class NewsComponent extends HookConsumerWidget {
         const Center(child: CircularProgressIndicator()),
       NewsDataLoaded(availableNews: final news) =>
         _newsList(news, textTheme, colorTheme),
-      NewsDataError(message: final message) => Center(child: Text(message)),
+      NewsDataError() => _errorRetryButton(newsDataNotifier, i18n, textTheme),
     };
   }
 
@@ -93,6 +98,35 @@ class NewsComponent extends HookConsumerWidget {
           ),
         );
       }).toList(),
+    );
+  }
+
+  Widget _errorRetryButton(
+    NewsDataNotifier newsDataNotifier,
+    Translations i18n,
+    TextThemeExtension textTheme,
+  ) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Text(
+            i18n.news_error,
+            style: textTheme.body,
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              unawaited(newsDataNotifier.getNews());
+            },
+            child: Text(
+              i18n.retry,
+              style: textTheme.label,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

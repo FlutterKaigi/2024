@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 26
+/// Strings: 28
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsLeadJa lead = _StringsLeadJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
+	String get news_error => 'お知らせの取得に失敗しました';
+	String get retry => '再試行';
 }
 
 // Path: comingSoon
@@ -277,6 +279,8 @@ extension on Translations {
 			case 'sponsor.messages.3': return 'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。';
 			case 'sponsor.messages.4': return 'お申し込みは 6/17 10:00 より開始します';
 			case 'sponsor.apply': return '協賛資料はこちら';
+			case 'news_error': return 'お知らせの取得に失敗しました';
+			case 'retry': return '再試行';
 			default: return null;
 		}
 	}
