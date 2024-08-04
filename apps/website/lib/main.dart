@@ -1,3 +1,5 @@
+// ignore_for_file: do_not_use_environment
+
 import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/router/router.dart';
