@@ -19,7 +19,7 @@ extension LoadedDataExtension on NewsDataLoaded {
       .where(
         (news) =>
             news.startedAt.isBefore(DateTime.now()) &&
-            news.endedAt.isAfter(DateTime.now()),
+            (news.endedAt?.isAfter(DateTime.now()) ?? true),
       )
       .toList();
 }
