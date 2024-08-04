@@ -23,8 +23,8 @@ mixin _$News {
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   Uri get url => throw _privateConstructorUsedError;
-  DateTime get startedAt => throw _privateConstructorUsedError;
-  DateTime get endedAt => throw _privateConstructorUsedError;
+  DateTime? get startedAt => throw _privateConstructorUsedError;
+  DateTime? get endedAt => throw _privateConstructorUsedError;
 
   /// Serializes this News to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $NewsCopyWith<$Res> {
       _$NewsCopyWithImpl<$Res, News>;
   @useResult
   $Res call(
-      {int id, String text, Uri url, DateTime startedAt, DateTime endedAt});
+      {int id, String text, Uri url, DateTime? startedAt, DateTime? endedAt});
 }
 
 /// @nodoc
@@ -62,8 +62,8 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? id = null,
     Object? text = null,
     Object? url = null,
-    Object? startedAt = null,
-    Object? endedAt = null,
+    Object? startedAt = freezed,
+    Object? endedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -78,14 +78,14 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as Uri,
-      startedAt: null == startedAt
+      startedAt: freezed == startedAt
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endedAt: null == endedAt
+              as DateTime?,
+      endedAt: freezed == endedAt
           ? _value.endedAt
           : endedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -98,7 +98,7 @@ abstract class _$$NewsImplCopyWith<$Res> implements $NewsCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id, String text, Uri url, DateTime startedAt, DateTime endedAt});
+      {int id, String text, Uri url, DateTime? startedAt, DateTime? endedAt});
 }
 
 /// @nodoc
@@ -116,8 +116,8 @@ class __$$NewsImplCopyWithImpl<$Res>
     Object? id = null,
     Object? text = null,
     Object? url = null,
-    Object? startedAt = null,
-    Object? endedAt = null,
+    Object? startedAt = freezed,
+    Object? endedAt = freezed,
   }) {
     return _then(_$NewsImpl(
       id: null == id
@@ -132,14 +132,14 @@ class __$$NewsImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as Uri,
-      startedAt: null == startedAt
+      startedAt: freezed == startedAt
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      endedAt: null == endedAt
+              as DateTime?,
+      endedAt: freezed == endedAt
           ? _value.endedAt
           : endedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -164,9 +164,9 @@ class _$NewsImpl implements _News {
   @override
   final Uri url;
   @override
-  final DateTime startedAt;
+  final DateTime? startedAt;
   @override
-  final DateTime endedAt;
+  final DateTime? endedAt;
 
   @override
   String toString() {
@@ -212,8 +212,8 @@ abstract class _News implements News {
       {required final int id,
       required final String text,
       required final Uri url,
-      required final DateTime startedAt,
-      required final DateTime endedAt}) = _$NewsImpl;
+      required final DateTime? startedAt,
+      required final DateTime? endedAt}) = _$NewsImpl;
 
   factory _News.fromJson(Map<String, dynamic> json) = _$NewsImpl.fromJson;
 
@@ -224,9 +224,9 @@ abstract class _News implements News {
   @override
   Uri get url;
   @override
-  DateTime get startedAt;
+  DateTime? get startedAt;
   @override
-  DateTime get endedAt;
+  DateTime? get endedAt;
 
   /// Create a copy of News
   /// with the given fields replaced by the non-null parameter values.
