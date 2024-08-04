@@ -16,8 +16,8 @@ _$NewsImpl _$$NewsImplFromJson(Map<String, dynamic> json) => $checkedCreate(
           id: $checkedConvert('id', (v) => (v as num).toInt()),
           text: $checkedConvert('text', (v) => v as String),
           url: $checkedConvert('url', (v) => Uri.parse(v as String)),
-          startedAt: $checkedConvert('started_at',
-              (v) => v == null ? null : DateTime.parse(v as String)),
+          startedAt:
+              $checkedConvert('started_at', (v) => DateTime.parse(v as String)),
           endedAt: $checkedConvert('ended_at',
               (v) => v == null ? null : DateTime.parse(v as String)),
         );
@@ -31,6 +31,6 @@ Map<String, dynamic> _$$NewsImplToJson(_$NewsImpl instance) =>
       'id': instance.id,
       'text': instance.text,
       'url': instance.url.toString(),
-      'started_at': instance.startedAt?.toIso8601String(),
+      'started_at': instance.startedAt.toIso8601String(),
       'ended_at': instance.endedAt?.toIso8601String(),
     };
