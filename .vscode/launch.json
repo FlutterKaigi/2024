@@ -7,9 +7,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/development.env"
-      ]
+      "args": ["--dart-define-from-file=defines/development.env"]
     },
     {
       "name": "app-production-debug",
@@ -17,9 +15,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/production.env"
-      ]
+      "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
       "name": "website-development-canvaskit-wasm-debug",
@@ -34,7 +30,7 @@
         // そのため、現状 canvaskit を指定している
         "canvaskit",
         "--wasm",
-        "--dart-define-from-file=defines/development.env",
+        "--dart-define-from-file=defines/development.env"
       ],
       "type": "dart"
     },
@@ -51,9 +47,9 @@
         // そのため、現状 canvaskit を指定している
         "canvaskit",
         "--wasm",
-        "--dart-define-from-file=defines/production.env",
+        "--dart-define-from-file=defines/production.env"
       ],
       "type": "dart"
-    },
+    }
   ]
 }
