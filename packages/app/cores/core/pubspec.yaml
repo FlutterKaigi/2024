@@ -1,5 +1,5 @@
 name: app_cores_core
-description: "This package provides style definitions, themes, etc., for the app."
+description: "This package provides core features of app."
 publish_to: "none"
 version: 0.0.1
 homepage: |
