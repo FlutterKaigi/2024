@@ -36,7 +36,7 @@ final class _FooterContents extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.only(top: 46.81, bottom: 40),
-      child: ContentsMargin(
+      child: ContentsMargin.narrow(
         child: Column(
           children: [
             const _PrevKaigi(),

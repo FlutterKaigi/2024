@@ -3,7 +3,7 @@ import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
-import 'package:conference_2024_website/ui/home/components/sponsor.dart';
+import 'package:conference_2024_website/ui/home/components/speaker_wanted.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -44,20 +44,24 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _TitleAndLogo(),
-        ContentsMargin(
-          child: Column(
-            children: [
-              _Lead(),
-              Gap(128),
-              Sponsor(),
-              Gap(128),
-              ComingSoon(),
-            ],
-          ),
+        const _TitleAndLogo(),
+        Column(
+          children: [
+            ContentsMargin.narrow(
+              child: const _Lead(),
+            ),
+            const Gap(128),
+            ContentsMargin.wide(
+              child: const SpeakerWanted(),
+            ),
+            const Gap(128),
+            ContentsMargin.narrow(
+              child: const ComingSoon(),
+            ),
+          ],
         ),
       ],
     );
