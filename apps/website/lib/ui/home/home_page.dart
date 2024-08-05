@@ -3,6 +3,7 @@ import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
+import 'package:conference_2024_website/ui/home/components/news_component.dart';
 import 'package:conference_2024_website/ui/home/components/sponsor.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,8 @@ class _Body extends StatelessWidget {
           child: Column(
             children: [
               _Lead(),
+              Gap(80),
+              _News(),
               Gap(128),
               Sponsor(),
               Gap(128),
@@ -74,6 +77,21 @@ class _Lead extends StatelessWidget {
       child: SizedBox(
         width: 512,
         child: Lead(),
+      ),
+    );
+  }
+}
+
+class _News extends StatelessWidget {
+  const _News();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.topRight,
+      child: SizedBox(
+        width: 512,
+        child: NewsComponent(),
       ),
     );
   }

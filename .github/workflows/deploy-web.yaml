@@ -36,7 +36,8 @@ jobs:
           flutter build web \
             --release \
             --wasm \
-            --base-href "/2024/"
+            --base-href "/2024/" \
+            --dart-define-from-file=defines/production.env
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

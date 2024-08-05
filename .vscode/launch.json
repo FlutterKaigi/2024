@@ -18,15 +18,7 @@
       "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
-      "name": "website-html-debug",
-      "cwd": "apps/website",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "args": ["--web-port", "8080", "--web-renderer", "html"],
-      "type": "dart"
-    },
-    {
-      "name": "website-canvaskit-wasm-debug",
+      "name": "website-development-canvaskit-wasm-debug",
       "cwd": "apps/website",
       "request": "launch",
       "program": "lib/main.dart",
@@ -37,7 +29,25 @@
         // 何も指定してない場合 skwasm が指定されるが、なぜか開発環境だとリンクが期待通りに動作しない不具合が発生する
         // そのため、現状 canvaskit を指定している
         "canvaskit",
-        "--wasm"
+        "--wasm",
+        "--dart-define-from-file=defines/development.env"
+      ],
+      "type": "dart"
+    },
+    {
+      "name": "website-production-canvaskit-wasm-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--web-renderer",
+        // 何も指定してない場合 skwasm が指定されるが、なぜか開発環境だとリンクが期待通りに動作しない不具合が発生する
+        // そのため、現状 canvaskit を指定している
+        "canvaskit",
+        "--wasm",
+        "--dart-define-from-file=defines/production.env"
       ],
       "type": "dart"
     }

@@ -1,0 +1,3 @@
+ALTER TABLE news
+ALTER COLUMN started_at
+SET NOT NULL;
