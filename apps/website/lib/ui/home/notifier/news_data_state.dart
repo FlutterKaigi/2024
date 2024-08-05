@@ -11,7 +11,7 @@ sealed class NewsDataState with _$NewsDataState {
 
   const factory NewsDataState.loaded(List<News> news) = NewsDataLoaded;
 
-  const factory NewsDataState.error(String message) = NewsDataError;
+  const factory NewsDataState.error() = NewsDataError;
 }
 
 extension LoadedDataExtension on NewsDataLoaded {

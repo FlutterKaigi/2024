@@ -6,21 +6,20 @@ part 'news_data_notifier.g.dart';
 
 @riverpod
 class NewsDataNotifier extends _$NewsDataNotifier {
-  late final NewsRepository _newsRepository;
 
   @override
   NewsDataState build() {
-    _newsRepository = ref.read(newsRepositoryProvider);
     return const NewsDataState.initial();
   }
 
   Future<void> getNews() async {
+    final newsRepository = ref.read(newsRepositoryProvider);
     state = const NewsDataState.loading();
     try {
-      final news = await _newsRepository.getNews();
+      final news = await newsRepository.getNews();
       state = NewsDataState.loaded(news);
     } on Exception catch (e) {
-      state = NewsDataState.error(e.toString());
+      state = NewsDataState.error();
     }
   }
 }

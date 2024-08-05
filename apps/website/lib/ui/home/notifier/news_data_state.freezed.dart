@@ -21,7 +21,7 @@ mixin _$NewsDataState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function(String message) error,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$NewsDataState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$NewsDataState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function(String message)? error,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class _$NewsDataInitialImpl implements NewsDataInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function(String message) error,
+    required TResult Function() error,
   }) {
     return initial();
   }
@@ -144,7 +144,7 @@ class _$NewsDataInitialImpl implements NewsDataInitial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -155,7 +155,7 @@ class _$NewsDataInitialImpl implements NewsDataInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function(String message)? error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -250,7 +250,7 @@ class _$NewsDataLoadingImpl implements NewsDataLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function(String message) error,
+    required TResult Function() error,
   }) {
     return loading();
   }
@@ -261,7 +261,7 @@ class _$NewsDataLoadingImpl implements NewsDataLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -272,7 +272,7 @@ class _$NewsDataLoadingImpl implements NewsDataLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function(String message)? error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -401,7 +401,7 @@ class _$NewsDataLoadedImpl implements NewsDataLoaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function(String message) error,
+    required TResult Function() error,
   }) {
     return loaded(news);
   }
@@ -412,7 +412,7 @@ class _$NewsDataLoadedImpl implements NewsDataLoaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function()? error,
   }) {
     return loaded?.call(news);
   }
@@ -423,7 +423,7 @@ class _$NewsDataLoadedImpl implements NewsDataLoaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function(String message)? error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -487,8 +487,6 @@ abstract class _$$NewsDataErrorImplCopyWith<$Res> {
   factory _$$NewsDataErrorImplCopyWith(
           _$NewsDataErrorImpl value, $Res Function(_$NewsDataErrorImpl) then) =
       __$$NewsDataErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
 }
 
 /// @nodoc
@@ -501,51 +499,26 @@ class __$$NewsDataErrorImplCopyWithImpl<$Res>
 
   /// Create a copy of NewsDataState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$NewsDataErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$NewsDataErrorImpl implements NewsDataError {
-  const _$NewsDataErrorImpl(this.message);
-
-  @override
-  final String message;
+  const _$NewsDataErrorImpl();
 
   @override
   String toString() {
-    return 'NewsDataState.error(message: $message)';
+    return 'NewsDataState.error()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NewsDataErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+        (other.runtimeType == runtimeType && other is _$NewsDataErrorImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of NewsDataState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$NewsDataErrorImplCopyWith<_$NewsDataErrorImpl> get copyWith =>
-      __$$NewsDataErrorImplCopyWithImpl<_$NewsDataErrorImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -553,9 +526,9 @@ class _$NewsDataErrorImpl implements NewsDataError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<News> news) loaded,
-    required TResult Function(String message) error,
+    required TResult Function() error,
   }) {
-    return error(message);
+    return error();
   }
 
   @override
@@ -564,9 +537,9 @@ class _$NewsDataErrorImpl implements NewsDataError {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<News> news)? loaded,
-    TResult? Function(String message)? error,
+    TResult? Function()? error,
   }) {
-    return error?.call(message);
+    return error?.call();
   }
 
   @override
@@ -575,11 +548,11 @@ class _$NewsDataErrorImpl implements NewsDataError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<News> news)? loaded,
-    TResult Function(String message)? error,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error();
     }
     return orElse();
   }
@@ -623,13 +596,5 @@ class _$NewsDataErrorImpl implements NewsDataError {
 }
 
 abstract class NewsDataError implements NewsDataState {
-  const factory NewsDataError(final String message) = _$NewsDataErrorImpl;
-
-  String get message;
-
-  /// Create a copy of NewsDataState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NewsDataErrorImplCopyWith<_$NewsDataErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory NewsDataError() = _$NewsDataErrorImpl;
 }
