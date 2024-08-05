@@ -47,7 +47,9 @@ final class SpeakerWanted extends StatelessWidget {
                   width: 480,
                   child: AppButton.secondaryLink(
                     label: Text(i18n.speaker.apply),
-                    link: Uri.parse('https://x.com/FlutterKaigi'),
+                    link: Uri.parse(
+                      'https://fortee.jp/flutterkaigi-2024/speaker/callfor/regular-session/callfor',
+                    ),
                   ),
                 ),
               ],
