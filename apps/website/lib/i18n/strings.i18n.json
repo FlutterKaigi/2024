@@ -20,6 +20,11 @@
       "value": "有明セントラルタワー＆カンファレンス"
     }
   },
+  "header": {
+    "speakerWanted": "Speaker Wanted",
+    "sponsor": "Sponsor",
+    "staff": "Staff"
+  },
   "footer": {
     "copyRight": "@ FlutterKaigi 2024 実行委員会",
     "googleFlutter1": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
