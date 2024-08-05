@@ -6,11 +6,24 @@ import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({
     super.key,
   });
+
+  Future<bool> launchInExternalApp(Uri url) async {
+    final canLaunch = await canLaunchUrl(url);
+    if (!canLaunch) {
+      return false;
+    }
+
+    return await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +137,10 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.codeOfConduct),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.codeOfConductUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.privacyPolicy),

@@ -38,6 +38,10 @@ class L10nAboutJa extends L10nAbout {
   String get codeOfConduct => '行動規範';
 
   @override
+  String get codeOfConductUrl =>
+      'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html';
+
+  @override
   String get privacyPolicy => 'プライバシーポリシー';
 
   @override
