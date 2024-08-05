@@ -1,29 +1,17 @@
 import 'dart:async';
 
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({
     super.key,
   });
-
-  Future<bool> launchInExternalApp(Uri url) async {
-    final canLaunch = await canLaunchUrl(url);
-    if (!canLaunch) {
-      return false;
-    }
-
-    return await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
