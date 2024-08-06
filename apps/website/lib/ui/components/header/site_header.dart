@@ -71,7 +71,7 @@ final class _DrawerButton extends StatelessWidget {
   }
 }
 
-class _HeaderBody extends StatelessWidget {
+final class _HeaderBody extends StatelessWidget {
   const _HeaderBody({required this.onTitleTap});
   final VoidCallback onTitleTap;
 
@@ -103,7 +103,7 @@ class _HeaderBody extends StatelessWidget {
   }
 }
 
-class _HeaderLogo extends StatelessWidget {
+final class _HeaderLogo extends StatelessWidget {
   const _HeaderLogo({required this.onTitleTap});
   final VoidCallback onTitleTap;
 
