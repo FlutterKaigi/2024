@@ -26,7 +26,8 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
       duration: const Duration(milliseconds: 500),
       height: isMobile || showAppBar ? appbarHeight : 0,
       child: AppBar(
-        backgroundColor: Colors.white.withOpacity(0.8),
+        backgroundColor:
+            isMobile ? Colors.transparent : Colors.white.withOpacity(0.8),
         toolbarHeight: appbarHeight,
         elevation: 0,
         scrolledUnderElevation: 0,
