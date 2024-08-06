@@ -132,7 +132,7 @@ class _TitleAndLogo extends StatelessWidget {
     );
     const minPadding = (
       horizontal: 24.0,
-      vertical: 24.0,
+      vertical: 64.0,
     );
     final width = MediaQuery.of(context).size.width;
     final threshold = 600 + maxPadding.horizontal * 2;
