@@ -1,9 +1,17 @@
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
-  const SiteHeader({super.key});
+  const SiteHeader({
+    required this.onTitleTap,
+    super.key = const GlobalObjectKey('headerKey'),
+    this.showAppBar = false,
+  });
+
+  final VoidCallback onTitleTap;
+  final bool showAppBar;
 
   static const double appbarHeight = 66;
 
@@ -14,16 +22,36 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.sizeOf(context).width < 960;
 
-    return AppBar(
-      backgroundColor: Colors.white.withOpacity(0.8),
-      toolbarHeight: appbarHeight,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      title: isMobile ? null : const _HeaderBody(),
-      actions: [
-        if (isMobile) const _DrawerButton(),
-      ],
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      height: isMobile || showAppBar ? appbarHeight : 0,
+      child: AppBar(
+        backgroundColor: Colors.white.withOpacity(0.8),
+        toolbarHeight: appbarHeight,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        title: isMobile
+            ? null
+            : _HeaderBody(
+                onTitleTap: onTitleTap,
+              ),
+        actions: [
+          if (isMobile) const _DrawerButton(),
+        ],
+      ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+        ObjectFlagProperty<VoidCallback>.has('onTitleTap', onTitleTap),
+      )
+      ..add(
+        DiagnosticsProperty<bool>('showAppBar', showAppBar),
+      );
   }
 }
 
@@ -43,7 +71,8 @@ final class _DrawerButton extends StatelessWidget {
 }
 
 class _HeaderBody extends StatelessWidget {
-  const _HeaderBody();
+  const _HeaderBody({required this.onTitleTap});
+  final VoidCallback onTitleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -54,19 +83,28 @@ class _HeaderBody extends StatelessWidget {
       height: 66,
       padding: const EdgeInsets.symmetric(horizontal: 160),
       alignment: Alignment.center,
-      child: const Row(
+      child: Row(
         children: [
-          _HeaderLogo(),
-          Spacer(),
-          _HeaderNavigation(),
+          _HeaderLogo(onTitleTap: onTitleTap),
+          const Spacer(),
+          const _HeaderNavigation(),
         ],
       ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+      ObjectFlagProperty<VoidCallback>.has('onTitleTap', onTitleTap),
     );
   }
 }
 
 class _HeaderLogo extends StatelessWidget {
-  const _HeaderLogo();
+  const _HeaderLogo({required this.onTitleTap});
+  final VoidCallback onTitleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -74,33 +112,51 @@ class _HeaderLogo extends StatelessWidget {
     final textTheme = theme.customThemeExtension.textTheme;
     final i18n = Translations.of(context);
 
-    return Row(
-      children: [
-        Image.asset(
-          'assets/images/icon.webp',
-          height: 36,
-          width: 36,
+    return Material(
+      color: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
+      ),
+      child: InkWell(
+        onTap: onTitleTap,
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        child: Row(
+          children: [
+            Image.asset(
+              'assets/images/icon.webp',
+              height: 36,
+              width: 36,
+            ),
+            const SizedBox(width: 10),
+            Text(
+              i18n.title,
+              style: textTheme.availableFonts.poppins.bold.copyWith(
+                fontSize: 24,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              i18n.year,
+              style: textTheme.availableFonts.poppins.bold.copyWith(
+                fontSize: 24,
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 10),
-        Text(
-          i18n.title,
-          style: textTheme.availableFonts.poppins.bold.copyWith(
-            fontSize: 24,
-          ),
-        ),
-        const SizedBox(width: 8),
-        Text(
-          i18n.year,
-          style: textTheme.availableFonts.poppins.bold.copyWith(
-            fontSize: 24,
-          ),
-        ),
-      ],
+      ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+      ObjectFlagProperty<VoidCallback>.has('onTitleTap', onTitleTap),
     );
   }
 }
 
-class _HeaderNavigation extends StatelessWidget {
+final class _HeaderNavigation extends StatelessWidget {
   const _HeaderNavigation();
 
   @override
@@ -108,33 +164,50 @@ class _HeaderNavigation extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
     final i18n = Translations.of(context);
+    final naviItemDataList = <NaviItemButtonData>[
+      NaviItemButtonData(
+        title: i18n.header.speakerWanted,
+        key: const GlobalObjectKey('speakerWantedSectionKey'),
+      ),
+      NaviItemButtonData(
+        title: i18n.header.sponsor,
+        key: const GlobalObjectKey('sponsorSectionKey'),
+      ),
+      NaviItemButtonData(
+        title: i18n.header.staff,
+        key: const GlobalObjectKey('staffSectionKey'),
+      ),
+    ];
+
+    Future<void> scrollToSection(GlobalObjectKey key) async {
+      final displayHeight = MediaQuery.sizeOf(context).height;
+      final targetWidgetHeight = key.currentContext!.size!.height;
+      final alignment = kToolbarHeight / (displayHeight - targetWidgetHeight);
+
+      return Scrollable.ensureVisible(
+        key.currentContext!,
+        alignment: alignment,
+        curve: Curves.easeOutCirc,
+        duration: const Duration(milliseconds: 500),
+      );
+    }
 
     return Row(
-      children: [
-        _naviItem(
-          text: i18n.header.speakerWanted,
-          onPressed: () {},
-          textTheme: textTheme,
-        ),
-        const SizedBox(width: 16),
-        _naviItem(
-          text: i18n.header.sponsor,
-          onPressed: () {},
-          textTheme: textTheme,
-        ),
-        const SizedBox(width: 16),
-        _naviItem(
-          text: i18n.header.staff,
-          onPressed: () {},
-          textTheme: textTheme,
-        ),
-      ],
+      children: naviItemDataList
+          .map(
+            (data) => _naviItem(
+              onPressed: () async => scrollToSection(data.key),
+              text: data.title,
+              textTheme: textTheme,
+            ),
+          )
+          .toList(),
     );
   }
 
   Widget _naviItem({
-    required String text,
     required VoidCallback onPressed,
+    required String text,
     required TextThemeExtension textTheme,
   }) {
     return TextButton(
@@ -148,4 +221,13 @@ class _HeaderNavigation extends StatelessWidget {
       ),
     );
   }
+}
+
+final class NaviItemButtonData {
+  const NaviItemButtonData({
+    required this.title,
+    required this.key,
+  });
+  final String title;
+  final GlobalObjectKey key;
 }

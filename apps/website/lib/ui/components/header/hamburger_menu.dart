@@ -1,4 +1,5 @@
 import 'package:conference_2024_website/i18n/strings.g.dart';
+import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
@@ -117,28 +118,61 @@ final class _MenuItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).customThemeExtension.textTheme;
     final i18n = Translations.of(context);
-    final menuItemStrings = [
-      i18n.header.speakerWanted,
-      i18n.header.sponsor,
-      i18n.header.staff,
+    final naviItemDataList = <NaviItemButtonData>[
+      NaviItemButtonData(
+        title: i18n.header.speakerWanted,
+        key: const GlobalObjectKey('speakerWantedSectionKey'),
+      ),
+      NaviItemButtonData(
+        title: i18n.header.sponsor,
+        key: const GlobalObjectKey('sponsorSectionKey'),
+      ),
+      NaviItemButtonData(
+        title: i18n.header.staff,
+        key: const GlobalObjectKey('staffSectionKey'),
+      ),
     ];
+
+    Future<void> scrollToSection(GlobalObjectKey key) async {
+      final displayHeight = MediaQuery.sizeOf(context).height;
+      final targetWidgetHeight = key.currentContext!.size!.height;
+      final alignment = kToolbarHeight / (displayHeight - targetWidgetHeight);
+
+      Navigator.of(context).pop();
+      return Scrollable.ensureVisible(
+        key.currentContext!,
+        alignment: alignment,
+        curve: Curves.easeOutCirc,
+        duration: const Duration(milliseconds: 500),
+      );
+    }
 
     return Column(
       children: [
-        ...menuItemStrings.map((text) => _menuItemButton(text, textTheme)),
+        ...naviItemDataList.map(
+          (data) => _menuItemButton(
+            data.title,
+            textTheme,
+            () async => scrollToSection(data.key),
+          ),
+        ),
         const Divider(color: Color(0xFFD8D8D8)),
       ],
     );
   }
 
-  Widget _menuItemButton(String text, TextThemeExtension textTheme) {
+  Widget _menuItemButton(
+    String text,
+    TextThemeExtension textTheme,
+    VoidCallback onPressed,
+  ) {
     return Column(
       children: [
         const Divider(color: Color(0xFFD8D8D8)),
         SizedBox(
           width: double.infinity,
           child: FilledButton.tonal(
-            onPressed: () {},
+            onPressed: onPressed,
             style: FilledButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 24),
               shape: const RoundedRectangleBorder(),

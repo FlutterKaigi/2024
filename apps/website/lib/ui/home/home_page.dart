@@ -1,29 +1,56 @@
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
+import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
+import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
 import 'package:conference_2024_website/ui/home/components/sponsor.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 
-final class HomePage extends StatelessWidget {
+final class HomePage extends HookWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.sizeOf(context).width < 960;
+    final showAppbar = useState<bool>(false);
+    final scrollController = useScrollController();
+
     return SelectionArea(
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: _bodyContentSliver(),
+      child: NotificationListener(
+        onNotification: (notification) {
+          if (notification is ScrollUpdateNotification) {
+            // 300px以上スクロールしたらAppBarを表示
+            showAppbar.value = notification.metrics.pixels > 300;
+          }
+          return true;
+        },
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: SiteHeader(
+            onTitleTap: () async => scrollController.animateTo(
+              0,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeOutCirc,
             ),
-            const SliverToBoxAdapter(
-              child: SiteFooter(),
-            ),
-          ],
+            showAppBar: showAppbar.value,
+          ),
+          body: CustomScrollView(
+            controller: scrollController,
+            slivers: [
+              SliverToBoxAdapter(
+                child: _bodyContentSliver(),
+              ),
+              const SliverToBoxAdapter(
+                child: SiteFooter(),
+              ),
+            ],
+          ),
+          endDrawer: isMobile ? const HamburgerMenu() : null,
         ),
       ),
     );
@@ -53,7 +80,7 @@ class _Body extends StatelessWidget {
             children: [
               _Lead(),
               Gap(128),
-              Sponsor(),
+              Sponsor(key: GlobalObjectKey('sponsorSectionKey')),
               Gap(128),
               ComingSoon(),
             ],
