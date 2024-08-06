@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 29
+/// Strings: 36
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -153,6 +153,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsHeaderJa header = _StringsHeaderJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
+	late final _StringsSpeakerJa speaker = _StringsSpeakerJa._(_root);
 }
 
 // Path: comingSoon
@@ -236,6 +237,24 @@ class _StringsSponsorJa {
 	String get apply => '協賛資料はこちら';
 }
 
+// Path: speaker
+class _StringsSpeakerJa {
+	_StringsSpeakerJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Speaker Wanted';
+	List<String> get messages => [
+		'FlutterKaigi 2024でのセッションスピーカーを募集開始しました！',
+		'FlutterKaigiは、技術者が自分の知識と経験を共有するためのカンファレンスです。新参者もベテランも、あなたの知識を共有する絶好の機会です。',
+		'テーマはFlutterやDartに関連していれば何でもOKです。初心者向けのヒントから上級者向けのテクニック、チュートリアル、ライブラリの紹介、ベストプラクティス、挑戦した事例など、聞いて面白く、他の開発者に有益な内容を募集しています。',
+		'FlutterKaigi 2024は、あなたのユニークな視点と経験、そしてFlutterやDartへの情熱を歓迎します。私たちと共にあなたの「素晴らしいセッション」を世界に伝えましょう。',
+	];
+	String get caution => 'ただし、自社製品の宣伝を目的としたトークや、FlutterやDartと無関係なトピックは避けてください。（Flutter開発支援ツールについては除きます。）';
+	String get apply => 'スピーカーお申込はこちら';
+}
+
 // Path: lead.date
 class _StringsLeadDateJa {
 	_StringsLeadDateJa._(this._root);
@@ -293,6 +312,13 @@ extension on Translations {
 			case 'sponsor.messages.3': return 'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。';
 			case 'sponsor.messages.4': return 'お申し込みは 6/17 10:00 より開始します';
 			case 'sponsor.apply': return '協賛資料はこちら';
+			case 'speaker.title': return 'Speaker Wanted';
+			case 'speaker.messages.0': return 'FlutterKaigi 2024でのセッションスピーカーを募集開始しました！';
+			case 'speaker.messages.1': return 'FlutterKaigiは、技術者が自分の知識と経験を共有するためのカンファレンスです。新参者もベテランも、あなたの知識を共有する絶好の機会です。';
+			case 'speaker.messages.2': return 'テーマはFlutterやDartに関連していれば何でもOKです。初心者向けのヒントから上級者向けのテクニック、チュートリアル、ライブラリの紹介、ベストプラクティス、挑戦した事例など、聞いて面白く、他の開発者に有益な内容を募集しています。';
+			case 'speaker.messages.3': return 'FlutterKaigi 2024は、あなたのユニークな視点と経験、そしてFlutterやDartへの情熱を歓迎します。私たちと共にあなたの「素晴らしいセッション」を世界に伝えましょう。';
+			case 'speaker.caution': return 'ただし、自社製品の宣伝を目的としたトークや、FlutterやDartと無関係なトピックは避けてください。（Flutter開発支援ツールについては除きます。）';
+			case 'speaker.apply': return 'スピーカーお申込はこちら';
 			default: return null;
 		}
 	}
