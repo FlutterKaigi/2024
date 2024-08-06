@@ -82,7 +82,9 @@ class _Body extends StatelessWidget {
             ),
             const Gap(128),
             ContentsMargin.wide(
-              child: const SpeakerWanted(),
+              child: const SpeakerWanted(
+                key: GlobalObjectKey('speakerWantedSectionKey'),
+              ),
             ),
             const Gap(128),
             ContentsMargin.narrow(
