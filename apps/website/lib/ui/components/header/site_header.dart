@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
   const SiteHeader({
     required this.onTitleTap,
-    super.key = const GlobalObjectKey('headerKey'),
+    super.key = NaviSectionKey.title,
     this.showAppBar = false,
   });
 
@@ -168,15 +168,15 @@ final class _HeaderNavigation extends StatelessWidget {
     final naviItemDataList = <NaviItemButtonData>[
       NaviItemButtonData(
         title: i18n.header.speakerWanted,
-        key: const GlobalObjectKey('speakerWantedSectionKey'),
+        key: NaviSectionKey.speakerWanted,
       ),
       NaviItemButtonData(
         title: i18n.header.sponsor,
-        key: const GlobalObjectKey('sponsorSectionKey'),
+        key: NaviSectionKey.sponsor,
       ),
       NaviItemButtonData(
         title: i18n.header.staff,
-        key: const GlobalObjectKey('staffSectionKey'),
+        key: NaviSectionKey.staff,
       ),
     ];
 
@@ -222,6 +222,14 @@ final class _HeaderNavigation extends StatelessWidget {
       ),
     );
   }
+}
+
+final class NaviSectionKey {
+  // 各セクションへのジャンプするためのキー
+  static const title = GlobalObjectKey('headerTitleKey');
+  static const speakerWanted = GlobalObjectKey('speakerWantedSectionKey');
+  static const sponsor = GlobalObjectKey('sponsorSectionKey');
+  static const staff = GlobalObjectKey('staffSectionKey');
 }
 
 final class NaviItemButtonData {

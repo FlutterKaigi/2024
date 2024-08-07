@@ -121,15 +121,15 @@ final class _MenuItems extends StatelessWidget {
     final naviItemDataList = <NaviItemButtonData>[
       NaviItemButtonData(
         title: i18n.header.speakerWanted,
-        key: const GlobalObjectKey('speakerWantedSectionKey'),
+        key: NaviSectionKey.speakerWanted,
       ),
       NaviItemButtonData(
         title: i18n.header.sponsor,
-        key: const GlobalObjectKey('sponsorSectionKey'),
+        key: NaviSectionKey.sponsor,
       ),
       NaviItemButtonData(
         title: i18n.header.staff,
-        key: const GlobalObjectKey('staffSectionKey'),
+        key: NaviSectionKey.staff,
       ),
     ];
 
