@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Sponsors _$SponsorsFromJson(Map<String, dynamic> json) {
-  return _Sponsors.fromJson(json);
+  return _SponsorList.fromJson(json);
 }
 
 /// @nodoc
@@ -79,22 +79,22 @@ class _$SponsorsCopyWithImpl<$Res, $Val extends Sponsors>
 }
 
 /// @nodoc
-abstract class _$$SponsorsImplCopyWith<$Res>
+abstract class _$$SponsorListImplCopyWith<$Res>
     implements $SponsorsCopyWith<$Res> {
-  factory _$$SponsorsImplCopyWith(
-          _$SponsorsImpl value, $Res Function(_$SponsorsImpl) then) =
-      __$$SponsorsImplCopyWithImpl<$Res>;
+  factory _$$SponsorListImplCopyWith(
+          _$SponsorListImpl value, $Res Function(_$SponsorListImpl) then) =
+      __$$SponsorListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Sponsor> platinum, List<Sponsor> gold, List<Sponsor> silver});
 }
 
 /// @nodoc
-class __$$SponsorsImplCopyWithImpl<$Res>
-    extends _$SponsorsCopyWithImpl<$Res, _$SponsorsImpl>
-    implements _$$SponsorsImplCopyWith<$Res> {
-  __$$SponsorsImplCopyWithImpl(
-      _$SponsorsImpl _value, $Res Function(_$SponsorsImpl) _then)
+class __$$SponsorListImplCopyWithImpl<$Res>
+    extends _$SponsorsCopyWithImpl<$Res, _$SponsorListImpl>
+    implements _$$SponsorListImplCopyWith<$Res> {
+  __$$SponsorListImplCopyWithImpl(
+      _$SponsorListImpl _value, $Res Function(_$SponsorListImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of Sponsors
@@ -106,7 +106,7 @@ class __$$SponsorsImplCopyWithImpl<$Res>
     Object? gold = null,
     Object? silver = null,
   }) {
-    return _then(_$SponsorsImpl(
+    return _then(_$SponsorListImpl(
       platinum: null == platinum
           ? _value._platinum
           : platinum // ignore: cast_nullable_to_non_nullable
@@ -125,8 +125,8 @@ class __$$SponsorsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SponsorsImpl implements _Sponsors {
-  const _$SponsorsImpl(
+class _$SponsorListImpl with DiagnosticableTreeMixin implements _SponsorList {
+  const _$SponsorListImpl(
       {required final List<Sponsor> platinum,
       required final List<Sponsor> gold,
       required final List<Sponsor> silver})
@@ -134,8 +134,8 @@ class _$SponsorsImpl implements _Sponsors {
         _gold = gold,
         _silver = silver;
 
-  factory _$SponsorsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SponsorsImplFromJson(json);
+  factory _$SponsorListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorListImplFromJson(json);
 
   final List<Sponsor> _platinum;
   @override
@@ -162,15 +162,25 @@ class _$SponsorsImpl implements _Sponsors {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Sponsors(platinum: $platinum, gold: $gold, silver: $silver)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Sponsors'))
+      ..add(DiagnosticsProperty('platinum', platinum))
+      ..add(DiagnosticsProperty('gold', gold))
+      ..add(DiagnosticsProperty('silver', silver));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SponsorsImpl &&
+            other is _$SponsorListImpl &&
             const DeepCollectionEquality().equals(other._platinum, _platinum) &&
             const DeepCollectionEquality().equals(other._gold, _gold) &&
             const DeepCollectionEquality().equals(other._silver, _silver));
@@ -189,25 +199,25 @@ class _$SponsorsImpl implements _Sponsors {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SponsorsImplCopyWith<_$SponsorsImpl> get copyWith =>
-      __$$SponsorsImplCopyWithImpl<_$SponsorsImpl>(this, _$identity);
+  _$$SponsorListImplCopyWith<_$SponsorListImpl> get copyWith =>
+      __$$SponsorListImplCopyWithImpl<_$SponsorListImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SponsorsImplToJson(
+    return _$$SponsorListImplToJson(
       this,
     );
   }
 }
 
-abstract class _Sponsors implements Sponsors {
-  const factory _Sponsors(
+abstract class _SponsorList implements Sponsors {
+  const factory _SponsorList(
       {required final List<Sponsor> platinum,
       required final List<Sponsor> gold,
-      required final List<Sponsor> silver}) = _$SponsorsImpl;
+      required final List<Sponsor> silver}) = _$SponsorListImpl;
 
-  factory _Sponsors.fromJson(Map<String, dynamic> json) =
-      _$SponsorsImpl.fromJson;
+  factory _SponsorList.fromJson(Map<String, dynamic> json) =
+      _$SponsorListImpl.fromJson;
 
   @override
   List<Sponsor> get platinum;
@@ -220,7 +230,7 @@ abstract class _Sponsors implements Sponsors {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SponsorsImplCopyWith<_$SponsorsImpl> get copyWith =>
+  _$$SponsorListImplCopyWith<_$SponsorListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -352,7 +362,7 @@ class __$$SponsorImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SponsorImpl implements _Sponsor {
+class _$SponsorImpl with DiagnosticableTreeMixin implements _Sponsor {
   const _$SponsorImpl(
       {required this.sponsorName,
       required this.sponsorLinkUrl,
@@ -372,8 +382,19 @@ class _$SponsorImpl implements _Sponsor {
   final String sponsorDescription;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Sponsor(sponsorName: $sponsorName, sponsorLinkUrl: $sponsorLinkUrl, sponsorLogoUrl: $sponsorLogoUrl, sponsorDescription: $sponsorDescription)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Sponsor'))
+      ..add(DiagnosticsProperty('sponsorName', sponsorName))
+      ..add(DiagnosticsProperty('sponsorLinkUrl', sponsorLinkUrl))
+      ..add(DiagnosticsProperty('sponsorLogoUrl', sponsorLogoUrl))
+      ..add(DiagnosticsProperty('sponsorDescription', sponsorDescription));
   }
 
   @override

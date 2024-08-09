@@ -1,6 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sponsor.freezed.dart';
+
+part 'sponsor.g.dart';
 
 @freezed
 class Sponsors with _$Sponsors {
@@ -8,7 +11,7 @@ class Sponsors with _$Sponsors {
     required List<Sponsor> platinum,
     required List<Sponsor> gold,
     required List<Sponsor> silver,
-  }) = _Sponsors;
+  }) = _SponsorList;
 
   factory Sponsors.fromJson(Map<String, dynamic> json) =>
       _$SponsorsFromJson(json);
