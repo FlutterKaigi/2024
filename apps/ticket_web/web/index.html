@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="$FLUTTER_BASE_HREF" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta
+      name="description"
+      content="FlutterKaigi 2024 チケット購入サイト"
+    />
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="FlutterKaigi 2024 チケット購入サイト"
+    />
+    <meta property="og:title" content="FlutterKaigi 2024" />
+    <meta property="og:url" content="https://flutterkaigi.jp/2024" />
+    <meta property="og:image" content="https://flutterkaigi.jp/2024/ogp.png" />
+
+    <!-- Open Graph Protocol - Twitter -->
+    <meta
+      name="twitter:description"
+      content="FlutterKaigi 2024 チケット購入サイト"
+    />
+    <meta name="twitter:title" content="FlutterKaigi 2024" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="FlutterKaigi 2024 Ticket" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="icon.webp" />
+    <!-- 192x192px -->
+
+    <!-- Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Q0VWYGC7ZE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Q0VWYGC7ZE");
+    </script>
+
+    <!-- Load custom styles -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web@1.5.1/"
+        }
+      }
+    </script>
+    <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div id="loading">
+      <md-circular-progress indeterminate four-color></md-circular-progress>
+    </div>
+    <script src="flutter_bootstrap.js" async></script>
+  </body>
+</html>
