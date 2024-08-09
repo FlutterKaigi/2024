@@ -94,7 +94,6 @@ class SponsorsPage extends StatelessWidget {
               itemCount: sponsors.platinum.length,
             ),
           ),
-          const SliverGap(16),
           SliverPadding(
             padding: padding,
             sliver: SliverGrid.builder(
@@ -111,7 +110,6 @@ class SponsorsPage extends StatelessWidget {
               itemCount: sponsors.gold.length,
             ),
           ),
-          const SliverGap(16),
           SliverPadding(
             padding: padding,
             sliver: SliverGrid.builder(
