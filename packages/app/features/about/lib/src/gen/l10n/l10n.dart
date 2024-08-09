@@ -169,6 +169,12 @@ abstract class L10nAbout {
   /// **'プライバシーポリシー'**
   String get privacyPolicy;
 
+  /// No description provided for @privacyPolicyUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html'**
+  String get privacyPolicyUrl;
+
   /// No description provided for @contactUs.
   ///
   /// In ja, this message translates to:
