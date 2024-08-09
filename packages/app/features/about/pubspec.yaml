@@ -16,6 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
   intl: ^0.19.0
   url_launcher: ^6.3.0
 
