@@ -25,7 +25,7 @@ class SponsorsPage extends StatelessWidget {
           sponsorName: 'A1会社',
           sponsorLinkUrl: 'LinkUrl',
           sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*I6v0w7FK27AdQ5OeoOhqVA.png',
+              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
           sponsorDescription: 'Demo',
         ),
       ],
@@ -50,21 +50,21 @@ class SponsorsPage extends StatelessWidget {
           sponsorName: 'C1会社',
           sponsorLinkUrl: 'LinkUrl',
           sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*I6v0w7FK27AdQ5OeoOhqVA.png',
+              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
           sponsorDescription: 'Demo',
         ),
         Sponsor(
           sponsorName: 'C2会社',
           sponsorLinkUrl: 'LinkUrl',
           sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*I6v0w7FK27AdQ5OeoOhqVA.png',
+              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
           sponsorDescription: 'Demo',
         ),
         Sponsor(
           sponsorName: 'C3会社',
           sponsorLinkUrl: 'LinkUrl',
           sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*I6v0w7FK27AdQ5OeoOhqVA.png',
+              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
           sponsorDescription: 'Demo',
         ),
       ],
@@ -75,7 +75,7 @@ class SponsorsPage extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             title: Text(
-              l.contributors,
+              l.sponsors,
             ),
           ),
           SliverPadding(
@@ -83,6 +83,7 @@ class SponsorsPage extends StatelessWidget {
             sliver: SliverGrid.builder(
               itemBuilder: (context, index) => SponsorItem(
                 sponsor: sponsors.platinum[index],
+                sponsorRank: SponsorRank.platinum,
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: spacing,
@@ -99,6 +100,7 @@ class SponsorsPage extends StatelessWidget {
             sliver: SliverGrid.builder(
               itemBuilder: (context, index) => SponsorItem(
                 sponsor: sponsors.gold[index],
+                sponsorRank: SponsorRank.gold,
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: spacing,
@@ -115,6 +117,7 @@ class SponsorsPage extends StatelessWidget {
             sliver: SliverGrid.builder(
               itemBuilder: (context, index) => SponsorItem(
                 sponsor: sponsors.silver[index],
+                sponsorRank: SponsorRank.silver,
               ),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 mainAxisSpacing: spacing,

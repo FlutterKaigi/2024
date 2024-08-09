@@ -5,9 +5,12 @@ import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 class SponsorItem extends StatelessWidget {
   const SponsorItem({
     required Sponsor sponsor,
+    required SponsorRank sponsorRank,
     super.key,
-  }) : _sponsor = sponsor;
+  })  : _sponsor = sponsor,
+        _sponsorRank = sponsorRank;
   final Sponsor _sponsor;
+  final SponsorRank _sponsorRank;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,7 @@ class SponsorItem extends StatelessWidget {
               child: _WhiteBackgroundImage(
                 semanticLabel: _sponsor.sponsorName,
                 imageUrl: _sponsor.sponsorLogoUrl,
+                sponsorRank: _sponsorRank,
               ),
             ),
             Positioned.fill(
@@ -50,26 +54,68 @@ class _WhiteBackgroundImage extends StatelessWidget {
   const _WhiteBackgroundImage({
     required String semanticLabel,
     required String imageUrl,
+    required SponsorRank sponsorRank,
   })  : _imageUrl = imageUrl,
-        _semanticLabel = semanticLabel;
+        _semanticLabel = semanticLabel,
+        _sponsorRank = sponsorRank;
 
   final String _semanticLabel;
   final String _imageUrl;
+  final SponsorRank _sponsorRank;
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
+    late final List<Color> colors;
+    switch (_sponsorRank) {
+      case SponsorRank.platinum:
+        colors = [
+          const Color(0xff9ACDD6),
+          const Color(0xff59ADBB),
+        ];
+      case SponsorRank.gold:
+        colors = [
+          const Color(0xffE6D089),
+          const Color(0xffD4AF37),
+        ];
+      case SponsorRank.silver:
+        colors = [
+          const Color(0xffB2BCBD),
+          const Color(0xff819193),
+        ];
+      case SponsorRank.bronze:
+        colors = [
+          const Color(0xffB58A69),
+          const Color(0xff936949),
+        ];
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: colors,
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(4),
         child: Image.network(
           _imageUrl,
           errorBuilder: (context, error, stackTrace) => const Center(
             child: Icon(Icons.error_outline),
           ),
           semanticLabel: _semanticLabel,
+          fit: BoxFit.cover,
         ),
       ),
     );
   }
+}
+
+enum SponsorRank {
+  platinum,
+  gold,
+  silver,
+  bronze,
 }
