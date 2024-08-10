@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/sponsors_item.dart';
-import 'package:packages_app_features_about/src/ui/staff/staff_card_widget.dart';
 
 /// スポンサー一覧ページ
 class SponsorsPage extends StatelessWidget {
@@ -14,7 +13,7 @@ class SponsorsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10nAbout.of(context);
-    const padding = EdgeInsets.all(16);
+    const padding = EdgeInsets.only(top: 16, left: 16, right: 16);
     const spacing = 8.0;
     const childAspectRatio = 16 / 9;
 

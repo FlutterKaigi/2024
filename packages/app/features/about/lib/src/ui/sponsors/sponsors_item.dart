@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 
 class SponsorItem extends StatelessWidget {
@@ -93,8 +92,8 @@ class _WhiteBackgroundImage extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: colors,
         ),
       ),
