@@ -45,6 +45,10 @@ class L10nAboutJa extends L10nAbout {
   String get privacyPolicy => 'プライバシーポリシー';
 
   @override
+  String get privacyPolicyUrl =>
+      'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html';
+
+  @override
   String get contactUs => 'お問い合わせ';
 
   @override

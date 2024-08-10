@@ -133,7 +133,10 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.privacyPolicy),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.privacyPolicyUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.contactUs),
