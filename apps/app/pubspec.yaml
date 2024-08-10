@@ -9,6 +9,8 @@ environment:
 
 dependencies:
   accessibility_tools: ^2.2.1
+  app_cores_core:
+    path: ../../packages/app/cores/core
   app_cores_designsystem:
     path: ../../packages/app/cores/designsystem
   common_data:

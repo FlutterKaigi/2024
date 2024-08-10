@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -124,12 +125,18 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.codeOfConduct),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.codeOfConductUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.privacyPolicy),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.privacyPolicyUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.contactUs),
