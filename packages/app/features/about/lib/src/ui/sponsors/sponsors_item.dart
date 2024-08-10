@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 
 class SponsorItem extends StatelessWidget {

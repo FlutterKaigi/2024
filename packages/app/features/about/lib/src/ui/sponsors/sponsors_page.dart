@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/sponsors_item.dart';
-import 'package:packages_app_features_about/src/ui/staff/staff_card_widget.dart';
 
 /// スポンサー一覧ページ
 class SponsorsPage extends StatelessWidget {
