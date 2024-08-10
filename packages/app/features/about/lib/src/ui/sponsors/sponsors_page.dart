@@ -14,7 +14,7 @@ class SponsorsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10nAbout.of(context);
-    const padding = EdgeInsets.all(16);
+    const padding = EdgeInsets.only(top: 16, left: 16, right: 16);
     const spacing = 8.0;
     const childAspectRatio = 16 / 9;
 
