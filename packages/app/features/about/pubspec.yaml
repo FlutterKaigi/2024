@@ -11,6 +11,8 @@ environment:
 dependencies:
   app_cores_core:
   app_cores_designsystem:
+  app_cores_settings:
+    path: ../../cores/settings
   flutter:
     sdk: flutter
   flutter_localizations:

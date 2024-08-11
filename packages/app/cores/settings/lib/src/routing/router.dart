@@ -10,7 +10,7 @@ part 'router.g.dart';
 class SettingsPageRoute extends GoRouteData {
   const SettingsPageRoute();
 
-  static const path = '/debug';
+  static const path = '/settings';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {

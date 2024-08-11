@@ -11,7 +11,7 @@ List<RouteBase> get $appRoutes => [
     ];
 
 RouteBase get $settingsPageRoute => GoRouteData.$route(
-      path: '/debug',
+      path: '/settings',
       factory: $SettingsPageRouteExtension._fromState,
     );
 
@@ -20,7 +20,7 @@ extension $SettingsPageRouteExtension on SettingsPageRoute {
       const SettingsPageRoute();
 
   String get location => GoRouteData.$location(
-        '/debug',
+        '/settings',
       );
 
   void go(BuildContext context) => context.go(location);

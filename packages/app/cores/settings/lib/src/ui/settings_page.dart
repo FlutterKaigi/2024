@@ -9,8 +9,10 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10nSettings.of(context);
-    return Center(
-      child: Text(l.settingsPageTitle),
+    return Scaffold(
+      body: Center(
+        child: Text(l.settingsPageTitle),
+      ),
     );
   }
 }
