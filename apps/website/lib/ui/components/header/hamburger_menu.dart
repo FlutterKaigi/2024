@@ -122,6 +122,7 @@ final class _MenuItems extends StatelessWidget {
         title: i18n.header.speakerWanted,
         key: NaviSectionKey.speakerWanted.key,
       ),
+      /// 未実装のセクションはコメントアウト
       // NaviItemButtonData(
       //   title: i18n.header.sponsor,
       //   key: NaviSectionKey.sponsor.key,
