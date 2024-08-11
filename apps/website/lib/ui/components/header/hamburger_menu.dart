@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/common/util/scroll_to_section.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -133,27 +134,16 @@ final class _MenuItems extends StatelessWidget {
       ),
     ];
 
-    Future<void> scrollToSection(GlobalObjectKey key) async {
-      final displayHeight = MediaQuery.sizeOf(context).height;
-      final targetWidgetHeight = key.currentContext!.size!.height;
-      final alignment = kToolbarHeight / (displayHeight - targetWidgetHeight);
-
-      Navigator.of(context).pop();
-      return Scrollable.ensureVisible(
-        key.currentContext!,
-        alignment: alignment,
-        curve: Curves.easeOutCirc,
-        duration: const Duration(milliseconds: 500),
-      );
-    }
-
     return Column(
       children: [
         ...naviItemDataList.map(
           (data) => _menuItemButton(
             data.title,
             textTheme,
-            () async => scrollToSection(data.key),
+            () async {
+              Navigator.of(context).pop();
+              await scrollToSection(data.key, context);
+            },
           ),
         ),
         const Divider(color: Color(0xFFD8D8D8)),

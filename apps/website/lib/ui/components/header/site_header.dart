@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/common/util/scroll_to_section.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
@@ -180,24 +181,11 @@ final class _HeaderNavigation extends StatelessWidget {
       ),
     ];
 
-    Future<void> scrollToSection(GlobalObjectKey key) async {
-      final displayHeight = MediaQuery.sizeOf(context).height;
-      final targetWidgetHeight = key.currentContext!.size!.height;
-      final alignment = kToolbarHeight / (displayHeight - targetWidgetHeight);
-
-      return Scrollable.ensureVisible(
-        key.currentContext!,
-        alignment: alignment,
-        curve: Curves.easeOutCirc,
-        duration: const Duration(milliseconds: 500),
-      );
-    }
-
     return Row(
       children: naviItemDataList
           .map(
             (data) => _naviItem(
-              onPressed: () async => scrollToSection(data.key),
+              onPressed: () async => scrollToSection(data.key, context),
               text: data.title,
               textTheme: textTheme,
             ),
