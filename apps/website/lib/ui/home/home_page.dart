@@ -32,6 +32,7 @@ final class HomePage extends HookWidget {
         child: Scaffold(
           extendBodyBehindAppBar: true,
           appBar: SiteHeader(
+            key: NaviSectionKey.title.key,
             onTitleTap: () async => scrollController.animateTo(
               0,
               duration: const Duration(milliseconds: 500),
@@ -82,8 +83,8 @@ class _Body extends StatelessWidget {
             ),
             const Gap(128),
             ContentsMargin.wide(
-              child: const SpeakerWanted(
-                key: NaviSectionKey.speakerWanted,
+              child: SpeakerWanted(
+                key: NaviSectionKey.speakerWanted.key,
               ),
             ),
             const Gap(128),
