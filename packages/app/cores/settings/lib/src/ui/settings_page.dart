@@ -1,5 +1,5 @@
+import 'package:app_cores_settings/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_cores_settings/l10n.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({
