@@ -12,15 +12,13 @@ final class HamburgerMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final gradientTheme = theme.customThemeExtension.gradientTheme;
+
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color(0xFFFFF275),
-            Color(0xFF1CDAC5),
-          ],
-        ),
+      decoration: BoxDecoration(
+        gradient: gradientTheme.tertiary,
       ),
       child: Drawer(
         backgroundColor: Colors.white.withOpacity(0.5),

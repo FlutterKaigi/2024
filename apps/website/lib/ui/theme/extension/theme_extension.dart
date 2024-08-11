@@ -116,6 +116,7 @@ class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
   GradientThemeExtension({
     required this.primary,
     required this.secondary,
+    required this.tertiary,
   });
 
   factory GradientThemeExtension.light() => GradientThemeExtension(
@@ -131,10 +132,17 @@ class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
             Color(0xFFEF629F),
           ],
         ),
+        tertiary: const LinearGradient(
+          colors: [
+            Color(0xFFFFF275),
+            Color(0xFF1CDAC5),
+          ],
+        ),
       );
 
   final LinearGradient primary;
   final LinearGradient secondary;
+  final LinearGradient tertiary;
 }
 
 class AvailableFonts {
