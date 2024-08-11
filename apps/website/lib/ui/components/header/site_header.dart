@@ -171,14 +171,14 @@ final class _HeaderNavigation extends StatelessWidget {
         title: i18n.header.speakerWanted,
         key: NaviSectionKey.speakerWanted.key,
       ),
-      NaviItemButtonData(
-        title: i18n.header.sponsor,
-        key: NaviSectionKey.sponsor.key,
-      ),
-      NaviItemButtonData(
-        title: i18n.header.staff,
-        key: NaviSectionKey.staff.key,
-      ),
+      // NaviItemButtonData(
+      //   title: i18n.header.sponsor,
+      //   key: NaviSectionKey.sponsor.key,
+      // ),
+      // NaviItemButtonData(
+      //   title: i18n.header.staff,
+      //   key: NaviSectionKey.staff.key,
+      // ),
     ];
 
     return Row(
