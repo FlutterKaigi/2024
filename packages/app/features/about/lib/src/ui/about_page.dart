@@ -5,6 +5,7 @@ import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
+import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
 
@@ -89,7 +90,15 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.sponsors),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () {
+                  unawaited(
+                    Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const SponsorsPage(),
+                      ),
+                    ),
+                  );
+                },
               ),
               ListTile(
                 title: Text(l.websiteAndAppContributors),
