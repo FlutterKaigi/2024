@@ -184,15 +184,18 @@ mixin _$GradientThemeExtensionTailorMixin
     on ThemeExtension<GradientThemeExtension> {
   LinearGradient get primary;
   LinearGradient get secondary;
+  LinearGradient get tertiary;
 
   @override
   GradientThemeExtension copyWith({
     LinearGradient? primary,
     LinearGradient? secondary,
+    LinearGradient? tertiary,
   }) {
     return GradientThemeExtension(
       primary: primary ?? this.primary,
       secondary: secondary ?? this.secondary,
+      tertiary: tertiary ?? this.tertiary,
     );
   }
 
@@ -203,6 +206,7 @@ mixin _$GradientThemeExtensionTailorMixin
     return GradientThemeExtension(
       primary: t < 0.5 ? primary : other.primary,
       secondary: t < 0.5 ? secondary : other.secondary,
+      tertiary: t < 0.5 ? tertiary : other.tertiary,
     );
   }
 
@@ -212,7 +216,8 @@ mixin _$GradientThemeExtensionTailorMixin
         (other.runtimeType == runtimeType &&
             other is GradientThemeExtension &&
             const DeepCollectionEquality().equals(primary, other.primary) &&
-            const DeepCollectionEquality().equals(secondary, other.secondary));
+            const DeepCollectionEquality().equals(secondary, other.secondary) &&
+            const DeepCollectionEquality().equals(tertiary, other.tertiary));
   }
 
   @override
@@ -221,6 +226,7 @@ mixin _$GradientThemeExtensionTailorMixin
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(primary),
       const DeepCollectionEquality().hash(secondary),
+      const DeepCollectionEquality().hash(tertiary),
     );
   }
 }
