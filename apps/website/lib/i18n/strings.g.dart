@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 33
+/// Strings: 36
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,6 +150,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get year => '2024';
 	late final _StringsTitleAndLogoJa titleAndLogo = _StringsTitleAndLogoJa._(_root);
 	late final _StringsLeadJa lead = _StringsLeadJa._(_root);
+	late final _StringsHeaderJa header = _StringsHeaderJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
 	late final _StringsSpeakerJa speaker = _StringsSpeakerJa._(_root);
@@ -187,6 +188,18 @@ class _StringsLeadJa {
 	String get xAccount => '@FlutterKaigi';
 	late final _StringsLeadDateJa date = _StringsLeadDateJa._(_root);
 	late final _StringsLeadLocationJa location = _StringsLeadLocationJa._(_root);
+}
+
+// Path: header
+class _StringsHeaderJa {
+	_StringsHeaderJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get speakerWanted => 'Speaker Wanted';
+	String get sponsor => 'Sponsor';
+	String get staff => 'Staff';
 }
 
 // Path: footer
@@ -281,6 +294,9 @@ extension on Translations {
 			case 'lead.date.value': return '2024年11月21日(木) - 22日(金)';
 			case 'lead.location.prefix': return '会場';
 			case 'lead.location.value': return '有明セントラルタワー＆カンファレンス';
+			case 'header.speakerWanted': return 'Speaker Wanted';
+			case 'header.sponsor': return 'Sponsor';
+			case 'header.staff': return 'Staff';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
 			case 'footer.googleFlutter1': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 			case 'footer.googleFlutter2': return 'The Flutter name and the Flutter logo';
