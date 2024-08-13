@@ -98,6 +98,24 @@ abstract class L10nSettings {
     Locale('en')
   ];
 
+  /// No description provided for @cancel.
+  ///
+  /// In ja, this message translates to:
+  /// **'キャンセル'**
+  String get cancel;
+
+  /// No description provided for @fontFamily.
+  ///
+  /// In ja, this message translates to:
+  /// **'フォント'**
+  String get fontFamily;
+
+  /// No description provided for @ok.
+  ///
+  /// In ja, this message translates to:
+  /// **'OK'**
+  String get ok;
+
   /// No description provided for @settingsPageTitle.
   ///
   /// In ja, this message translates to:

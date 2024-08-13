@@ -7,5 +7,14 @@ class L10nSettingsJa extends L10nSettings {
   L10nSettingsJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get cancel => 'キャンセル';
+
+  @override
+  String get fontFamily => 'フォント';
+
+  @override
+  String get ok => 'OK';
+
+  @override
   String get settingsPageTitle => '設定';
 }
