@@ -1,0 +1,256 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'news_repository_impl.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+NewsTable _$NewsTableFromJson(Map<String, dynamic> json) {
+  return _NewsTable.fromJson(json);
+}
+
+/// @nodoc
+mixin _$NewsTable {
+  int get id => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+  @JsonKey(name: 'started_at')
+  DateTime get startedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ended_at')
+  DateTime get endedAt => throw _privateConstructorUsedError;
+
+  /// Serializes this NewsTable to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of NewsTable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $NewsTableCopyWith<NewsTable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NewsTableCopyWith<$Res> {
+  factory $NewsTableCopyWith(NewsTable value, $Res Function(NewsTable) then) =
+      _$NewsTableCopyWithImpl<$Res, NewsTable>;
+  @useResult
+  $Res call(
+      {int id,
+      String text,
+      String url,
+      @JsonKey(name: 'started_at') DateTime startedAt,
+      @JsonKey(name: 'ended_at') DateTime endedAt});
+}
+
+/// @nodoc
+class _$NewsTableCopyWithImpl<$Res, $Val extends NewsTable>
+    implements $NewsTableCopyWith<$Res> {
+  _$NewsTableCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of NewsTable
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? text = null,
+    Object? url = null,
+    Object? startedAt = null,
+    Object? endedAt = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      startedAt: null == startedAt
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endedAt: null == endedAt
+          ? _value.endedAt
+          : endedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NewsTableImplCopyWith<$Res>
+    implements $NewsTableCopyWith<$Res> {
+  factory _$$NewsTableImplCopyWith(
+          _$NewsTableImpl value, $Res Function(_$NewsTableImpl) then) =
+      __$$NewsTableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String text,
+      String url,
+      @JsonKey(name: 'started_at') DateTime startedAt,
+      @JsonKey(name: 'ended_at') DateTime endedAt});
+}
+
+/// @nodoc
+class __$$NewsTableImplCopyWithImpl<$Res>
+    extends _$NewsTableCopyWithImpl<$Res, _$NewsTableImpl>
+    implements _$$NewsTableImplCopyWith<$Res> {
+  __$$NewsTableImplCopyWithImpl(
+      _$NewsTableImpl _value, $Res Function(_$NewsTableImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NewsTable
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? text = null,
+    Object? url = null,
+    Object? startedAt = null,
+    Object? endedAt = null,
+  }) {
+    return _then(_$NewsTableImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      startedAt: null == startedAt
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endedAt: null == endedAt
+          ? _value.endedAt
+          : endedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NewsTableImpl implements _NewsTable {
+  const _$NewsTableImpl(
+      {required this.id,
+      required this.text,
+      required this.url,
+      @JsonKey(name: 'started_at') required this.startedAt,
+      @JsonKey(name: 'ended_at') required this.endedAt});
+
+  factory _$NewsTableImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewsTableImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String text;
+  @override
+  final String url;
+  @override
+  @JsonKey(name: 'started_at')
+  final DateTime startedAt;
+  @override
+  @JsonKey(name: 'ended_at')
+  final DateTime endedAt;
+
+  @override
+  String toString() {
+    return 'NewsTable(id: $id, text: $text, url: $url, startedAt: $startedAt, endedAt: $endedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewsTableImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.startedAt, startedAt) ||
+                other.startedAt == startedAt) &&
+            (identical(other.endedAt, endedAt) || other.endedAt == endedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, text, url, startedAt, endedAt);
+
+  /// Create a copy of NewsTable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewsTableImplCopyWith<_$NewsTableImpl> get copyWith =>
+      __$$NewsTableImplCopyWithImpl<_$NewsTableImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewsTableImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _NewsTable implements NewsTable {
+  const factory _NewsTable(
+          {required final int id,
+          required final String text,
+          required final String url,
+          @JsonKey(name: 'started_at') required final DateTime startedAt,
+          @JsonKey(name: 'ended_at') required final DateTime endedAt}) =
+      _$NewsTableImpl;
+
+  factory _NewsTable.fromJson(Map<String, dynamic> json) =
+      _$NewsTableImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get text;
+  @override
+  String get url;
+  @override
+  @JsonKey(name: 'started_at')
+  DateTime get startedAt;
+  @override
+  @JsonKey(name: 'ended_at')
+  DateTime get endedAt;
+
+  /// Create a copy of NewsTable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$NewsTableImplCopyWith<_$NewsTableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

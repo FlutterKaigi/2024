@@ -9,8 +9,12 @@ environment:
 
 dependencies:
   accessibility_tools: ^2.2.1
+  app_cores_core:
+    path: ../../packages/app/cores/core
   app_cores_designsystem:
     path: ../../packages/app/cores/designsystem
+  app_cores_settings:
+    path: ../../packages/app/cores/settings
   common_data:
     path: ../../packages/common/data
   dynamic_color: ^1.7.0

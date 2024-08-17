@@ -157,11 +157,23 @@ abstract class L10nAbout {
   /// **'行動規範'**
   String get codeOfConduct;
 
+  /// No description provided for @codeOfConductUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html'**
+  String get codeOfConductUrl;
+
   /// No description provided for @privacyPolicy.
   ///
   /// In ja, this message translates to:
   /// **'プライバシーポリシー'**
   String get privacyPolicy;
+
+  /// No description provided for @privacyPolicyUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html'**
+  String get privacyPolicyUrl;
 
   /// No description provided for @contactUs.
   ///
