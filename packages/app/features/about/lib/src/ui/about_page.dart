@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
+import 'package:app_cores_settings/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
@@ -30,11 +31,8 @@ class AboutPage extends StatelessWidget {
               ),
             ),
             title: Text(l.aboutPageTitle),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.settings),
-                onPressed: () {},
-              ),
+            actions: const [
+              SettingsButton(),
             ],
           ),
           SliverToBoxAdapter(

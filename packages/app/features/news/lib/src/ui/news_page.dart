@@ -1,4 +1,5 @@
 import 'package:app_cores_designsystem/common_assets.dart';
+import 'package:app_cores_settings/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_news/src/gen/l10n/l10n.dart';
@@ -27,14 +28,8 @@ class NewsPage extends StatelessWidget {
         titleSpacing: 4,
         centerTitle: false,
         title: Text(l.newsPageTitle),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // TODO:画面遷移は別タスクで行います
-              // https://github.com/FlutterKaigi/2024/issues/145
-            },
-          ),
+        actions: const [
+          SettingsButton(),
         ],
       ),
       body: CustomScrollView(
