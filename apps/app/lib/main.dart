@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:app_cores_designsystem/theme.dart';
+import 'package:app_cores_settings/l10n.dart';
 import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
@@ -57,6 +58,7 @@ class MainApp extends ConsumerWidget {
             ...L10nSession.localizationsDelegates,
             ...L10nVenue.localizationsDelegates,
             ...L10nDebug.localizationsDelegates,
+            ...L10nSettings.localizationsDelegates,
           ],
           supportedLocales: const [
             ...L10n.supportedLocales,
@@ -65,6 +67,7 @@ class MainApp extends ConsumerWidget {
             ...L10nSession.supportedLocales,
             ...L10nVenue.supportedLocales,
             ...L10nDebug.supportedLocales,
+            ...L10nSettings.supportedLocales,
           ],
           shortcuts: kDebugMode
               ? {
