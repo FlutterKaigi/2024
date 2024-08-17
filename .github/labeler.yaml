@@ -12,7 +12,7 @@ website:
 ticket:
   - changed-files:
       - any-glob-to-any-file:
-          - "apps/ticket/**"
+          - "apps/ticket_web/**"
           - "packages/ticket/**"
 
 data:
