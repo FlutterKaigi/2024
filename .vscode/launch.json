@@ -18,6 +18,14 @@
       "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
+      "name": "ticket-web-debug",
+      "cwd": "apps/ticket_web",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": ["--web-port", "8080", "--wasm"]
+    },
+    {
       "name": "website-html-debug",
       "cwd": "apps/website",
       "request": "launch",
