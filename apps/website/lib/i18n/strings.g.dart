@@ -198,7 +198,7 @@ class _StringsHeaderJa {
 
 	// Translations
 	String get speakerWanted => 'Speaker Wanted';
-	String get sponsor => 'Sponsor';
+	String get sponsors => 'Sponsors';
 	String get staff => 'Staff';
 }
 
@@ -295,7 +295,7 @@ extension on Translations {
 			case 'lead.location.prefix': return '会場';
 			case 'lead.location.value': return '有明セントラルタワー＆カンファレンス';
 			case 'header.speakerWanted': return 'Speaker Wanted';
-			case 'header.sponsor': return 'Sponsor';
+			case 'header.sponsors': return 'Sponsors';
 			case 'header.staff': return 'Staff';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
 			case 'footer.googleFlutter1': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
