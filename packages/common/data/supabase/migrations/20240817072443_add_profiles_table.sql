@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   name varchar(255) DEFAULT '' NOT NULL,
   role role DEFAULT 'user' NOT NULL,
   comment varchar(255) DEFAULT '' NOT NULL,
-  avatar_id text,
+  avatar_name text, -- https://[project_id].supabase.co/storage/v1/object/public/profile_avatars/[avatar_name]
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
