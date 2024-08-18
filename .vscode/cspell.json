@@ -3,12 +3,14 @@
     "designsystem",
     "IntelliJ",
     "Kaigi",
+    "microtask",
     "MMMMEEE",
     "qiita",
     "riverpod",
     "smallserial",
     "Supabase",
     "unawaited",
+    "webp",
     "zenn"
   ],
   "ignorePaths": ["**.sql"]
