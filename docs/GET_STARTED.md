@@ -1,36 +1,32 @@
-## Flutter アプリケーション開発を始めよう
+# FlutterKaigi の公式アプリを作り始めよう
 
-### 事前準備
+## 前もって準備すること
 
-まず、開発に必要なツールをインストールしましょう。
+### エディタや統合開発環境 (IDE) の準備
 
-- 統合開発環境(IDE)をインストールしてください
-  - [Visual Studio Code], [Android Studio] または [IntelliJ IDEA]
-  - [Xcode]
+Android アプリ開発をする場合は [Android Studio]、iOS アプリ開発をする場合は [Xcode] をインストールする必要があります。
 
-- [fvm] コマンドを有効にしてください
+細かい設定については、次の公式ドキュメントを確認してください。
 
-- [melos] コマンドを有効にしてください
-  - まだインストールされていない場合は、[yq] コマンドもインストールしてください。yq コマンドは、 `pubspec.lock` ファイルから melos コマンドのバージョン情報を取り出すために使います。
-  - 以下のコマンドを実行して、melos コマンドをグローバルに有効にしてください。
+<https://docs.flutter.dev/get-started/install>
 
-    ```shell
-    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && fvm dart pub global activate melos $MELOS_VERSION
-    ```
+また、このプロジェクトでは [Visual Studio Code] の設定を共有していることでより開発しやすくなっています。そのため Visual Studio Code を使って開発することをおすすめします。
 
-### Flutter SDK の設定
+### Flutter SDK の準備
+
+このプロジェクトでは [fvm] を使って Flutter SDK を管理しています。
+
+fvm コマンドを有効にした後、次のコマンドを実行して、プロジェクトで指定されている Flutter SDK バージョンをインストールしてください。
 
 ```shell
 fvm use --force
 ```
 
-このコマンドで、プロジェクトで指定されているバージョンの Flutter SDK を設定します。
+### エディタや統合開発環境 (IDE) への Flutter SDK の設定
 
-### 統合開発環境 (IDE) で FVM の利用設定
+Visual Studio Code を使う場合は再起動してください。
 
-[Visual Studio Code]を使う場合、ウィンドウをリロードしてください。
-
-[IntelliJ IDEA] や [Android Studio] を使う場合、次のように設定してください。
+IntelliJ IDEA や Android Studio を使う場合は次のように設定してください。
 
 1. 「Languages & Frameworks」 > 「Flutter」に移動するか、「Flutter」を検索して、Flutter SDK のパスを変更します。
 2. プロジェクトのルートディレクトリにあるシンボリックリンクの絶対パスをコピーします。例: `/absolute-project-path/.fvm/flutter_sdk`
@@ -39,25 +35,40 @@ fvm use --force
 
 ### ライブラリのインストール
 
-このコマンドを実行すると、プロジェクトに必要なライブラリが自動的にインストールされます。
+このプロジェクトでは [melos] を使って複数のアプリやパッケージを管理しています。
+
+次のコマンドを実行して melos コマンドを有効にしてください。ただし、melos コマンドのバージョン情報を `pubspec.lock` ファイルから取り出すために [yq] コマンドが必要です。
+
+```shell
+# Dart パッケージのグローバルシステムキャッシュをクリア
+fvm dart pub cache clean
+
+# バージョンを指定して melos コマンドを上書き有効化
+MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && \
+  fvm dart pub global activate melos $MELOS_VERSION --overwrite
+```
+
+その後、次のコマンドを実行して、必要なライブラリをインストールします。
 
 ```shell
 melos bootstrap
 ```
 
-### アプリケーションの実行
+### 気をつけること
 
-このアプリケーションを実行するための設定は既に用意されています。
+melos コマンドを実行時にエラーになる場合は、プロジェクトで使っている Dart SDK のバージョンとグローバルで有効になっている Dart SDK のバージョンが同じになっているか確認してください。
 
-以下のファイルを確認して、実行してください。
+## アプリの実行
 
-Visual Studio Code を使用している場合:
+Visual Studio Code を使う場合は `.vscode/launch.json` ファイルで起動設定を共有しているため、次の公式ドキュメントを参考にしてアプリを実行してください。
 
-- `.vscode/launch.json` ファイルを確認してください。
+<https://code.visualstudio.com/docs/editor/debugging#_launch-configurations>
+
+IntelliJ IDEA や Android Studio を使う場合はまだ起動設定を共有していないため、次の公式ドキュメントを参考にしてアプリを実行してください。
+
+<https://developer.android.com/studio/run/rundebugconfig>
 
 <!-- Links -->
-
-[IntelliJ IDEA]: https://www.jetbrains.com/idea/
 
 [Android Studio]: https://developer.android.com/studio
 

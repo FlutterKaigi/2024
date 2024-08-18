@@ -1,0 +1,48 @@
+name: Deploy Ticket
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths-ignore:
+      - "docs/**"
+      - "apps/app/**"
+      - "apps/website/**"
+      - "packages/app/**"
+      - "**/*.md"
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Build Web
+        working-directory: apps/ticket_web
+        run: |
+          flutter build web \
+            --release \
+            --wasm
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: flutterkaigi-ticket-2024
+          directory: apps/ticket_web/build/web
