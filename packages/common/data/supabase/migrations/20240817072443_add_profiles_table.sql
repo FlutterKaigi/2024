@@ -20,34 +20,58 @@ SELECT
     ) = id
   );
 
+CREATE FUNCTION public.role () returns role stable AS $$
+    SELECT
+        ROLE
+    FROM
+        public.profiles
+    WHERE
+        id = auth.uid ();
+$$ language sql security definer
+SET
+  search_path TO 'public';
+
+CREATE POLICY "Admin can read all profiles" ON public.profiles FOR
+SELECT
+  TO authenticated USING (role () = 'admin');
+
 CREATE POLICY "Allow update own profile" ON public.profiles
 FOR UPDATE
+  -- 自分のプロフィールのみ更新できる
   TO authenticated USING (
     (
-      SELECT
-        auth.uid ()
-    ) = id
+      (
+        SELECT
+          auth.uid ()
+      ) = id
+    )
+    -- または、role が admin の場合
+    OR role () = 'admin'
   );
 
--- role の更新が含まれているかどうかをチェックする関数
+-- (role の更新が含まれている && ロールがadminではない)かどうかをチェックする関数
 CREATE
 OR REPLACE function public.validate_profile_update () returns trigger language plpgsql AS $$
 BEGIN
-  IF NEW.role <> OLD.role THEN
+  -- roleの変更が含まれている　かつ　ロールがadminではない場合は、例外を発生させる
+  IF NEW.role <> OLD.role AND role()::text <> 'admin' THEN
     RAISE EXCEPTION 'Updating "role" is not allowed';
+  END IF;
+  -- IDの変更が含まれている場合は、例外を発生させる
+  IF NEW.id <> OLD.id THEN
+    RAISE EXCEPTION 'Updating "id" is not allowed';
   END IF;
 
   RETURN NEW;
 END;
 $$;
 
--- role の更新を禁止するためのトリガー
 CREATE TRIGGER before_profile_update before insert
 OR
 UPDATE ON profiles FOR each ROW WHEN (row_security_active('profiles'))
 EXECUTE function validate_profile_update ();
 
--- Supabase Auth　にユーザが追加されたときに profiles テーブルにも追加する
+-- Supabase Auth　にユーザが追加されたときに profiles テーブルに追加する
 CREATE FUNCTION public.handle_new_user () returns trigger language plpgsql security definer
 SET
   search_path = public AS $$
