@@ -40,7 +40,7 @@ IntelliJ IDEA や Android Studio を使う場合は次のように設定して�
 次のコマンドを実行して melos コマンドを有効にしてください。ただし、melos コマンドのバージョン情報を `pubspec.lock` ファイルから取り出すために [yq] コマンドが必要です。
 
 ```shell
-# グローバルシステムキャッシュをクリア
+# Dart パッケージのグローバルシステムキャッシュをクリア
 fvm dart pub cache clean
 
 # バージョンを指定して melos コマンドを上書き有効化
