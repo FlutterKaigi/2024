@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   name varchar(255) DEFAULT '' NOT NULL,
   role role DEFAULT 'user' NOT NULL,
   comment varchar(255) DEFAULT '' NOT NULL,
-  avatar_name text REFERENCES storage.objects (name) ON DELETE SET NULL,
+  avatar_id text,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
@@ -85,3 +85,41 @@ $$;
 CREATE TRIGGER on_auth_user_created
 AFTER insert ON auth.users FOR each ROW
 EXECUTE procedure public.handle_new_user ();
+
+-- Storageのセットアップ
+INSERT INTO
+  storage.buckets (id, name)
+VALUES
+  ('profile_avatars', 'profile_avatars');
+
+CREATE POLICY "Allow read their own avatar & admin can read all avatars" ON storage.objects FOR
+SELECT
+  TO authenticated USING (
+    (
+      SELECT
+        auth.uid () = owner
+    )
+    OR (role () = 'admin')
+  );
+
+CREATE POLICY "Allow upload for authenticated users" ON storage.objects FOR insert TO authenticated
+WITH
+  CHECK (
+    bucket_id = 'profile_avatars'
+    -- [auth.uid]/[*] のみアップロード可能
+    AND (storage.foldername (name)) [1] = (
+      SELECT
+        auth.uid ()::text
+    )
+  );
+
+CREATE POLICY "Allow update their own avatar" ON storage.objects
+FOR UPDATE
+  USING (
+    (
+      SELECT
+        auth.uid () = owner
+    )
+  )
+WITH
+  CHECK (bucket_id = 'profile_avatars');
