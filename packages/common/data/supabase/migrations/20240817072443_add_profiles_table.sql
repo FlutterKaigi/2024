@@ -50,7 +50,7 @@ EXECUTE function validate_profile_update ();
 -- Supabase Auth　にユーザが追加されたときに profiles テーブルにも追加する
 CREATE FUNCTION public.handle_new_user () returns trigger language plpgsql security definer
 SET
-  search_path = '' AS $$
+  search_path = public AS $$
 begin
   insert into public.profiles (id)
   values (new.id);

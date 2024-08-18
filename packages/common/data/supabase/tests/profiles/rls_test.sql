@@ -11,10 +11,10 @@ WITH
 DELETE FROM profiles;
 
 SELECT
-  tests.create_supabase_user ('sample_user', 'example@example.com', 'password');
+  tests.create_supabase_user ('sample_user', 'example@example.com', '555-555-5555');
 
 SELECT
-  tests.create_supabase_user ('sample_admin', 'example_admin@example.com', 'password');
+  tests.create_supabase_user ('sample_admin', 'example_admin@example.com', '666-666-6666');
 
 SELECT
   tests.authenticate_as ('sample_user');
