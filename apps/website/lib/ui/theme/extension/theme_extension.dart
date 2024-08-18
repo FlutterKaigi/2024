@@ -35,6 +35,7 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
     required this.headline,
     required this.label,
     required this.footer,
+    required this.caution,
     required this.availableFonts,
   });
 
@@ -63,6 +64,11 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
         color: Colors.black,
         height: 1.6,
       ),
+      caution: availableFonts.notoSansJp.regular.copyWith(
+        fontSize: 14,
+        color: colorTheme.grey,
+        height: 1.6,
+      ),
       availableFonts: AvailableFonts(),
     );
   }
@@ -78,6 +84,9 @@ class TextThemeExtension extends ThemeExtension<TextThemeExtension>
 
   /// フッター部分
   final TextStyle footer;
+
+  /// 注意事項
+  final TextStyle caution;
 
   final AvailableFonts availableFonts;
 }
@@ -107,6 +116,7 @@ class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
   GradientThemeExtension({
     required this.primary,
     required this.secondary,
+    required this.tertiary,
   });
 
   factory GradientThemeExtension.light() => GradientThemeExtension(
@@ -122,10 +132,17 @@ class GradientThemeExtension extends ThemeExtension<GradientThemeExtension>
             Color(0xFFEF629F),
           ],
         ),
+        tertiary: const LinearGradient(
+          colors: [
+            Color(0xFFFFF275),
+            Color(0xFF1CDAC5),
+          ],
+        ),
       );
 
   final LinearGradient primary;
   final LinearGradient secondary;
+  final LinearGradient tertiary;
 }
 
 class AvailableFonts {

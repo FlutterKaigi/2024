@@ -72,6 +72,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
   TextStyle get body;
   TextStyle get label;
   TextStyle get footer;
+  TextStyle get caution;
   AvailableFonts get availableFonts;
 
   @override
@@ -80,6 +81,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
     TextStyle? body,
     TextStyle? label,
     TextStyle? footer,
+    TextStyle? caution,
     AvailableFonts? availableFonts,
   }) {
     return TextThemeExtension(
@@ -87,6 +89,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       body: body ?? this.body,
       label: label ?? this.label,
       footer: footer ?? this.footer,
+      caution: caution ?? this.caution,
       availableFonts: availableFonts ?? this.availableFonts,
     );
   }
@@ -100,6 +103,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       body: TextStyle.lerp(body, other.body, t)!,
       label: TextStyle.lerp(label, other.label, t)!,
       footer: TextStyle.lerp(footer, other.footer, t)!,
+      caution: TextStyle.lerp(caution, other.caution, t)!,
       availableFonts: t < 0.5 ? availableFonts : other.availableFonts,
     );
   }
@@ -113,6 +117,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
             const DeepCollectionEquality().equals(body, other.body) &&
             const DeepCollectionEquality().equals(label, other.label) &&
             const DeepCollectionEquality().equals(footer, other.footer) &&
+            const DeepCollectionEquality().equals(caution, other.caution) &&
             const DeepCollectionEquality()
                 .equals(availableFonts, other.availableFonts));
   }
@@ -125,6 +130,7 @@ mixin _$TextThemeExtensionTailorMixin on ThemeExtension<TextThemeExtension> {
       const DeepCollectionEquality().hash(body),
       const DeepCollectionEquality().hash(label),
       const DeepCollectionEquality().hash(footer),
+      const DeepCollectionEquality().hash(caution),
       const DeepCollectionEquality().hash(availableFonts),
     );
   }
@@ -178,15 +184,18 @@ mixin _$GradientThemeExtensionTailorMixin
     on ThemeExtension<GradientThemeExtension> {
   LinearGradient get primary;
   LinearGradient get secondary;
+  LinearGradient get tertiary;
 
   @override
   GradientThemeExtension copyWith({
     LinearGradient? primary,
     LinearGradient? secondary,
+    LinearGradient? tertiary,
   }) {
     return GradientThemeExtension(
       primary: primary ?? this.primary,
       secondary: secondary ?? this.secondary,
+      tertiary: tertiary ?? this.tertiary,
     );
   }
 
@@ -197,6 +206,7 @@ mixin _$GradientThemeExtensionTailorMixin
     return GradientThemeExtension(
       primary: t < 0.5 ? primary : other.primary,
       secondary: t < 0.5 ? secondary : other.secondary,
+      tertiary: t < 0.5 ? tertiary : other.tertiary,
     );
   }
 
@@ -206,7 +216,8 @@ mixin _$GradientThemeExtensionTailorMixin
         (other.runtimeType == runtimeType &&
             other is GradientThemeExtension &&
             const DeepCollectionEquality().equals(primary, other.primary) &&
-            const DeepCollectionEquality().equals(secondary, other.secondary));
+            const DeepCollectionEquality().equals(secondary, other.secondary) &&
+            const DeepCollectionEquality().equals(tertiary, other.tertiary));
   }
 
   @override
@@ -215,6 +226,7 @@ mixin _$GradientThemeExtensionTailorMixin
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(primary),
       const DeepCollectionEquality().hash(secondary),
+      const DeepCollectionEquality().hash(tertiary),
     );
   }
 }

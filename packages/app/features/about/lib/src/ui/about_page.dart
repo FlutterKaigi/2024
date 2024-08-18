@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
+import 'package:app_cores_settings/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
+import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
 
@@ -28,11 +31,8 @@ class AboutPage extends StatelessWidget {
               ),
             ),
             title: Text(l.aboutPageTitle),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.settings),
-                onPressed: () {},
-              ),
+            actions: const [
+              SettingsButton(),
             ],
           ),
           SliverToBoxAdapter(
@@ -88,7 +88,15 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.sponsors),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () {
+                  unawaited(
+                    Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const SponsorsPage(),
+                      ),
+                    ),
+                  );
+                },
               ),
               ListTile(
                 title: Text(l.websiteAndAppContributors),
@@ -124,12 +132,18 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.codeOfConduct),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.codeOfConductUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.privacyPolicy),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.privacyPolicyUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.contactUs),
