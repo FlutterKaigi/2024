@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   name varchar(255) DEFAULT '' NOT NULL,
   role role DEFAULT 'user' NOT NULL,
   comment varchar(255) DEFAULT '' NOT NULL,
-  avatar_name TEXT REFERENCES storage.objects(name) ON DELETE SET NULL,
+  avatar_name text REFERENCES storage.objects (name) ON DELETE SET NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
