@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SponsorItem extends StatelessWidget {
   const SponsorItem({
@@ -13,6 +17,92 @@ class SponsorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void onTap() {
+      unawaited(
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          isDismissible: false,
+          useRootNavigator: true,
+          constraints: const BoxConstraints(
+            maxWidth: 310,
+          ),
+          builder: (context) => DraggableScrollableSheet(
+            initialChildSize: 0.75,
+            minChildSize: 0.6,
+            maxChildSize: 0.75,
+            expand: false,
+            builder: (context, scrollController) => ListView(
+              controller: scrollController,
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.paddingOf(context).bottom,
+              ),
+              children: [
+                const Gap(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 139),
+                  child: Container(
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                ),
+
+                const Gap(16),
+                Image.network(
+                  _sponsor.sponsorLogoUrl,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error_outline),
+                  fit: BoxFit.fitWidth,
+                ),
+                const Gap(8),
+                Text(
+                  _sponsor.sponsorName,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const Gap(8),
+                // ランク表示Widget
+                const Gap(8),
+                Text(
+                  _sponsor.sponsorDescription,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                const Gap(8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final uri = Uri.parse(_sponsor.sponsorLinkUrl);
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(uri);
+                      }
+                    },
+                    child: const Text('Link'),
+                  ),
+                ),
+
+                // Linkify(
+                //   onOpen: (link) async {
+                //     final uri = Uri.parse(link.url);
+                //     if (await canLaunchUrl(uri)) {
+                //       await launchUrl(uri);
+                //     }
+                //   },
+                //   text: _sponsor.sponsorDescription,
+                // ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return Material(
       elevation: 1,
       color: Colors.transparent,
@@ -35,10 +125,7 @@ class SponsorItem extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {
-                    // TODO:スポンサー詳細画面で対応予定
-                    // https://github.com/FlutterKaigi/2024/issues/29
-                  },
+                  onTap: onTap,
                 ),
               ),
             ),
