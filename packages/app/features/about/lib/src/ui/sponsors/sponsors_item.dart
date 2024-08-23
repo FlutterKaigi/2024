@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,6 +18,7 @@ class SponsorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = L10nAbout.of(context);
     void onTap() {
       unawaited(
         showModalBottomSheet(
@@ -49,53 +51,56 @@ class SponsorItem extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const Gap(16),
-                Image.network(
-                  _sponsor.sponsorLogoUrl,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.error_outline),
-                  fit: BoxFit.fitWidth,
-                ),
-                const Gap(8),
-                Text(
-                  _sponsor.sponsorName,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const Gap(8),
-                // ランク表示Widget
-                const Gap(8),
-                Text(
-                  _sponsor.sponsorDescription,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                const Gap(8),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      final uri = Uri.parse(_sponsor.sponsorLinkUrl);
-                      if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri);
-                      }
-                    },
-                    child: const Text('Link'),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.network(
+                        _sponsor.sponsorLogoUrl,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.error_outline),
+                        fit: BoxFit.fitWidth,
+                      ),
+                      const Gap(8),
+                      Text(
+                        _sponsor.sponsorName,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const Gap(8),
+                      // ランク表示Widget
+                      const Gap(8),
+                      Text(
+                        _sponsor.sponsorDescription,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      const Gap(8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ),
+                        child: OutlinedButton(
+                          onPressed: () async {
+                            final uri = Uri.parse(_sponsor.sponsorLinkUrl);
+                            if (await canLaunchUrl(uri)) {
+                              await launchUrl(uri);
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.arrow_outward,
+                              ),
+                              Text(l.seeMore),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-
-                // Linkify(
-                //   onOpen: (link) async {
-                //     final uri = Uri.parse(link.url);
-                //     if (await canLaunchUrl(uri)) {
-                //       await launchUrl(uri);
-                //     }
-                //   },
-                //   text: _sponsor.sponsorDescription,
-                // ),
               ],
             ),
           ),
