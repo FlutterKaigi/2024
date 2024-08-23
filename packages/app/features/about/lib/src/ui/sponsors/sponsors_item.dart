@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SponsorItem extends StatelessWidget {
@@ -20,6 +22,7 @@ class SponsorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = L10nAbout.of(context);
     void onTap() {
+      final colors = _getColors(_sponsorRank);
       unawaited(
         showModalBottomSheet(
           context: context,
@@ -69,7 +72,20 @@ class SponsorItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const Gap(8),
-                      // ランク表示Widget
+                      OutlineGradientButton(
+                        gradient: LinearGradient(
+                          colors: colors,
+                        ),
+                        strokeWidth: 2,
+                        radius: const Radius.circular(12),
+                        child: GradientText(
+                          _sponsorRank.name,
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ),
+                          colors: colors,
+                        ),
+                      ),
                       const Gap(8),
                       Text(
                         _sponsor.sponsorDescription,
@@ -158,29 +174,7 @@ class _WhiteBackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late final List<Color> colors;
-    switch (_sponsorRank) {
-      case SponsorRank.platinum:
-        colors = [
-          const Color(0xff9ACDD6),
-          const Color(0xff59ADBB),
-        ];
-      case SponsorRank.gold:
-        colors = [
-          const Color(0xffE6D089),
-          const Color(0xffD4AF37),
-        ];
-      case SponsorRank.silver:
-        colors = [
-          const Color(0xffB2BCBD),
-          const Color(0xff819193),
-        ];
-      case SponsorRank.bronze:
-        colors = [
-          const Color(0xffB58A69),
-          const Color(0xff936949),
-        ];
-    }
+    final colors = _getColors(_sponsorRank);
 
     return Container(
       padding: const EdgeInsets.all(4),
@@ -203,6 +197,31 @@ class _WhiteBackgroundImage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+List<Color> _getColors(SponsorRank sponsorRank) {
+  switch (sponsorRank) {
+    case SponsorRank.platinum:
+      return [
+        const Color(0xff9ACDD6),
+        const Color(0xff59ADBB),
+      ];
+    case SponsorRank.gold:
+      return [
+        const Color(0xffE6D089),
+        const Color(0xffD4AF37),
+      ];
+    case SponsorRank.silver:
+      return [
+        const Color(0xffB2BCBD),
+        const Color(0xff819193),
+      ];
+    case SponsorRank.bronze:
+      return [
+        const Color(0xffB58A69),
+        const Color(0xff936949),
+      ];
   }
 }
 
