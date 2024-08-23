@@ -52,18 +52,18 @@ class SponsorItem extends StatelessWidget {
                   ),
                 ),
                 const Gap(16),
+                Image.network(
+                  _sponsor.sponsorLogoUrl,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error_outline),
+                  fit: BoxFit.fitWidth,
+                ),
+                const Gap(8),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(
-                        _sponsor.sponsorLogoUrl,
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.error_outline),
-                        fit: BoxFit.fitWidth,
-                      ),
-                      const Gap(8),
                       Text(
                         _sponsor.sponsorName,
                         style: Theme.of(context).textTheme.headlineSmall,
@@ -92,7 +92,9 @@ class SponsorItem extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.arrow_outward,
+                                size: 20,
                               ),
+                              const Gap(4),
                               Text(l.seeMore),
                             ],
                           ),
