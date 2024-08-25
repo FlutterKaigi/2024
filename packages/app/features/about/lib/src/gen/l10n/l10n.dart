@@ -133,6 +133,12 @@ abstract class L10nAbout {
   /// **'スポンサー'**
   String get sponsors;
 
+  /// No description provided for @seeMore.
+  ///
+  /// In ja, this message translates to:
+  /// **'もっと見る'**
+  String get seeMore;
+
   /// No description provided for @websiteAndAppContributors.
   ///
   /// In ja, this message translates to:

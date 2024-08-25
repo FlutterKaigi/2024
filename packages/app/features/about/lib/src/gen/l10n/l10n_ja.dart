@@ -26,6 +26,9 @@ class L10nAboutJa extends L10nAbout {
   String get sponsors => 'スポンサー';
 
   @override
+  String get seeMore => 'もっと見る';
+
+  @override
   String get websiteAndAppContributors => 'Website/App コントリビューター';
 
   @override
