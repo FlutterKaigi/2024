@@ -236,5 +236,11 @@ enum SponsorRank {
   platinum,
   gold,
   silver,
-  bronze,
+  bronze;
+
+  String get nameUpperCase => name.replaceRange(
+        0,
+        1,
+        name[0].toUpperCase(),
+      );
 }
