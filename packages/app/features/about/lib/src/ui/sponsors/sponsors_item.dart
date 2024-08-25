@@ -71,18 +71,26 @@ class SponsorItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const Gap(8),
-                      OutlineGradientButton(
-                        gradient: LinearGradient(
+                      ShaderMask(
+                        blendMode: BlendMode.srcIn,
+                        shaderCallback: (bounds) => LinearGradient(
                           colors: colors,
-                        ),
-                        strokeWidth: 2,
-                        radius: const Radius.circular(12),
-                        child: GradientText(
-                          _sponsorRank.name,
-                          style: const TextStyle(
-                            fontSize: 12,
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ).createShader(bounds),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(width: 2),
                           ),
-                          colors: colors,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Text(
+                            _sponsorRank.nameUpperCase,
+                            style: Theme.of(context).textTheme.labelMedium,
+                          ),
                         ),
                       ),
                       const Gap(8),
