@@ -35,7 +35,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.5.7
   riverpod_generator: ^2.4.2
-  riverpod_lint: ^2.3.12
+  riverpod_lint: ^2.3.13
   slang_build_runner: ^3.31.0
   theme_tailor: ^3.0.1
   vector_graphics_compiler: ^1.1.11+1
