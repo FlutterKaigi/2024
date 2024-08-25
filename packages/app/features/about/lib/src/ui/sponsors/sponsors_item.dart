@@ -27,7 +27,6 @@ class SponsorItem extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          isDismissible: false,
           useRootNavigator: true,
           constraints: const BoxConstraints(
             maxWidth: 310,
