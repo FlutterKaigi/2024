@@ -97,8 +97,8 @@ class SponsorItem extends StatelessWidget {
                         ),
                         child: OutlinedButton(
                           onPressed: () async {
-                            final uri = Uri.parse(_sponsor.sponsorLinkUrl);
-                            if (await canLaunchUrl(uri)) {
+                            final uri = Uri.tryParse(_sponsor.sponsorLinkUrl);
+                            if (uri != null && await canLaunchUrl(uri)) {
                               await launchUrl(uri);
                             }
                           },
