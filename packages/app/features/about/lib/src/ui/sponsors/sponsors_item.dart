@@ -2,10 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SponsorItem extends StatelessWidget {
