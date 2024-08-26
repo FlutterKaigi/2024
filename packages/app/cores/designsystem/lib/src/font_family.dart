@@ -1,6 +1,11 @@
+import 'dart:async';
+
+import 'package:app_cores_core/providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'font_family.g.dart';
+
+const _persistKey = 'font_family';
 
 enum FontFamily {
   system,
@@ -28,10 +33,23 @@ enum FontFamily {
 class FontFamilyStore extends _$FontFamilyStore {
   @override
   FontFamily build() {
-    return FontFamily.system;
+    final sharedPreference =
+        ref.watch(sharedPreferencesInstanceProvider).valueOrNull;
+    final stored = sharedPreference?.getString(_persistKey);
+
+    if (stored == null) {
+      return FontFamily.system;
+    }
+
+    return FontFamily.values.byName(stored);
   }
 
   void update(FontFamily fontFamily) {
     state = fontFamily;
+    final sharedPreference =
+        ref.read(sharedPreferencesInstanceProvider).valueOrNull;
+    unawaited(
+      sharedPreference?.setString(_persistKey, fontFamily.name),
+    );
   }
 }
