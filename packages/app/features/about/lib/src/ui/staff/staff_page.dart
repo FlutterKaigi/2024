@@ -1,4 +1,3 @@
-import 'package:common_data/staff.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_features_about/l10n.dart';
