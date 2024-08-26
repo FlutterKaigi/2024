@@ -32,6 +32,7 @@ class StaffPage extends HookConsumerWidget {
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
+                  childCount: staffList.length,
                   (context, index) {
                     final staffData = staffList[index];
                     return StaffCardWidget(
