@@ -187,6 +187,12 @@ abstract class L10nAbout {
   /// **'お問い合わせ'**
   String get contactUs;
 
+  /// No description provided for @contactUsUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform'**
+  String get contactUsUrl;
+
   /// No description provided for @ossLicenses.
   ///
   /// In ja, this message translates to:
