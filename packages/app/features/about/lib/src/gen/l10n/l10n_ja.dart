@@ -55,6 +55,10 @@ class L10nAboutJa extends L10nAbout {
   String get contactUs => 'お問い合わせ';
 
   @override
+  String get contactUsUrl =>
+      'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform';
+
+  @override
   String get ossLicenses => 'OSS Licenses';
 
   @override
