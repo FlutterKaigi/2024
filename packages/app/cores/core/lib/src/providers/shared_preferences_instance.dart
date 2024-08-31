@@ -6,8 +6,10 @@ part 'shared_preferences_instance.g.dart';
 late SharedPreferences _sharedPreferences;
 
 /// [SharedPreferences] instance initialization.
-Future<void> initSharedPreferencesInstance() async {
-  _sharedPreferences = await SharedPreferences.getInstance();
+Future<void> initSharedPreferencesInstance({
+  SharedPreferences? preferences,
+}) async {
+  _sharedPreferences = preferences ?? await SharedPreferences.getInstance();
 }
 
 /// This provider requires calling [initSharedPreferencesInstance] in advance.
