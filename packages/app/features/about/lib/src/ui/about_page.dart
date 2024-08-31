@@ -64,7 +64,11 @@ class AboutPage extends StatelessWidget {
                 ListTile(
                   title: Text(l.location, style: theme.textTheme.bodyLarge),
                   leading: const Icon(Icons.location_on_outlined),
-                  onTap: () {},
+                  onTap: () async {
+                    final url =
+                        Uri.parse('https://maps.app.goo.gl/W5k8XU7Jd5GZdaww7');
+                    await launchInExternalApp(url);
+                  },
                 ),
                 const SizedBox(height: 16),
                 ListTile(
@@ -148,7 +152,10 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.contactUs),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.contactUsUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.ossLicenses),

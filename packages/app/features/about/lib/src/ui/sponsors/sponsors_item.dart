@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SponsorItem extends StatelessWidget {
   const SponsorItem({
@@ -13,6 +18,119 @@ class SponsorItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = L10nAbout.of(context);
+    void onTap() {
+      final colors = _getColors(_sponsorRank);
+      unawaited(
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          useRootNavigator: true,
+          constraints: const BoxConstraints(
+            maxWidth: 310,
+          ),
+          builder: (context) => DraggableScrollableSheet(
+            initialChildSize: 0.75,
+            minChildSize: 0.6,
+            maxChildSize: 0.75,
+            expand: false,
+            builder: (context, scrollController) => ListView(
+              controller: scrollController,
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.paddingOf(context).bottom,
+              ),
+              children: [
+                const Gap(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 139),
+                  child: Container(
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                ),
+                const Gap(16),
+                Image.network(
+                  _sponsor.sponsorLogoUrl,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error_outline),
+                  fit: BoxFit.fitWidth,
+                ),
+                const Gap(8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _sponsor.sponsorName,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const Gap(8),
+                      ShaderMask(
+                        blendMode: BlendMode.srcIn,
+                        shaderCallback: (bounds) => LinearGradient(
+                          colors: colors,
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ).createShader(bounds),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(width: 2),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 8,
+                          ),
+                          child: Text(
+                            _sponsorRank.nameUpperCase,
+                            style: Theme.of(context).textTheme.labelMedium,
+                          ),
+                        ),
+                      ),
+                      const Gap(8),
+                      Text(
+                        _sponsor.sponsorDescription,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      const Gap(8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ),
+                        child: OutlinedButton(
+                          onPressed: () async {
+                            final uri = Uri.tryParse(_sponsor.sponsorLinkUrl);
+                            if (uri != null && await canLaunchUrl(uri)) {
+                              await launchUrl(uri);
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.arrow_outward,
+                                size: 20,
+                              ),
+                              const Gap(4),
+                              Text(l.seeMore),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+
     return Material(
       elevation: 1,
       color: Colors.transparent,
@@ -35,10 +153,7 @@ class SponsorItem extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {
-                    // TODO:スポンサー詳細画面で対応予定
-                    // https://github.com/FlutterKaigi/2024/issues/29
-                  },
+                  onTap: onTap,
                 ),
               ),
             ),
@@ -64,29 +179,7 @@ class _WhiteBackgroundImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late final List<Color> colors;
-    switch (_sponsorRank) {
-      case SponsorRank.platinum:
-        colors = [
-          const Color(0xff9ACDD6),
-          const Color(0xff59ADBB),
-        ];
-      case SponsorRank.gold:
-        colors = [
-          const Color(0xffE6D089),
-          const Color(0xffD4AF37),
-        ];
-      case SponsorRank.silver:
-        colors = [
-          const Color(0xffB2BCBD),
-          const Color(0xff819193),
-        ];
-      case SponsorRank.bronze:
-        colors = [
-          const Color(0xffB58A69),
-          const Color(0xff936949),
-        ];
-    }
+    final colors = _getColors(_sponsorRank);
 
     return Container(
       padding: const EdgeInsets.all(4),
@@ -112,9 +205,40 @@ class _WhiteBackgroundImage extends StatelessWidget {
   }
 }
 
+List<Color> _getColors(SponsorRank sponsorRank) {
+  switch (sponsorRank) {
+    case SponsorRank.platinum:
+      return [
+        const Color(0xff9ACDD6),
+        const Color(0xff59ADBB),
+      ];
+    case SponsorRank.gold:
+      return [
+        const Color(0xffE6D089),
+        const Color(0xffD4AF37),
+      ];
+    case SponsorRank.silver:
+      return [
+        const Color(0xffB2BCBD),
+        const Color(0xff819193),
+      ];
+    case SponsorRank.bronze:
+      return [
+        const Color(0xffB58A69),
+        const Color(0xff936949),
+      ];
+  }
+}
+
 enum SponsorRank {
   platinum,
   gold,
   silver,
-  bronze,
+  bronze;
+
+  String get nameUpperCase => name.replaceRange(
+        0,
+        1,
+        name[0].toUpperCase(),
+      );
 }
