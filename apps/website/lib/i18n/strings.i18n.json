@@ -46,6 +46,15 @@
     ],
     "apply": "協賛資料はこちら"
   },
+  "sponsors": {
+    "title": "Sponsors",
+    "levels": {
+      "platinum": "Platinum",
+      "gold": "Gold",
+      "silver": "Silver",
+      "bronze": "Bronze"
+    }
+  },
   "speaker": {
     "title": "Speaker Wanted",
     "messages": [
