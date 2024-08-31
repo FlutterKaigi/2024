@@ -14,18 +14,24 @@ final class NewsRepositoryImpl implements NewsRepository {
 
   @override
   Future<List<News>> getNews() async {
-    final result = await _supabaseClient.from('news').select().withConverter(
+    final result = await _supabaseClient
+        .from('news')
+        .select()
+        .order('started_at', ascending: false)
+        .withConverter(
           (json) => json.map(NewsTable.fromJson).toList(),
         );
-    return result.map(
-      (news) => News(
-        id: news.id,
-        text: news.text,
-        url: Uri.parse(news.url),
-        startedAt: news.startedAt,
-        endedAt: news.endedAt,
-      ),
-    ).toList();
+    return result
+        .map(
+          (news) => News(
+            id: news.id,
+            text: news.text,
+            url: Uri.parse(news.url),
+            startedAt: news.startedAt,
+            endedAt: news.endedAt,
+          ),
+        )
+        .toList();
   }
 }
 

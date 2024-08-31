@@ -1,3 +1,4 @@
+import 'package:app_cores_settings/routing.dart';
 import 'package:conference_2024_app/main_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ GoRouter router(RouterRef ref) {
     navigatorKey: _rootNavigatorKey,
     routes: [
       ...$appRoutes,
+      $settingsPageRoute,
       if (kDebugMode) $debugPageRoute,
     ],
     debugLogDiagnostics: kDebugMode,

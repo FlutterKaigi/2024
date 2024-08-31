@@ -10,8 +10,11 @@ environment:
   flutter: ^3.23.0-13.0.pre
 
 dependencies:
+  app_cores_core:
+    path: ../core
   flutter:
     sdk: flutter
+  google_fonts: ^6.2.1
   hooks_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
 

@@ -55,6 +55,8 @@
       "bronze": "Bronze"
     }
   },
+  "news_error": "お知らせの取得に失敗しました",
+  "retry": "再試行",
   "speaker": {
     "title": "Speaker Wanted",
     "messages": [

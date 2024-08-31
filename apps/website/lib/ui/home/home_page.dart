@@ -6,6 +6,7 @@ import 'package:conference_2024_website/ui/home/components/background/background
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
+import 'package:conference_2024_website/ui/home/components/news_component.dart';
 import 'package:conference_2024_website/ui/home/components/speaker_wanted.dart';
 import 'package:conference_2024_website/ui/home/components/sponsors.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
@@ -83,6 +84,10 @@ class _Body extends StatelessWidget {
             ContentsMargin.narrow(
               child: const _Lead(),
             ),
+            const Gap(80),
+            ContentsMargin.wide(
+              child: const _News(),
+            ),
             const Gap(128),
             ContentsMargin.wide(
               child: SpeakerWanted(
@@ -116,6 +121,21 @@ class _Lead extends StatelessWidget {
       child: SizedBox(
         width: 512,
         child: Lead(),
+      ),
+    );
+  }
+}
+
+class _News extends StatelessWidget {
+  const _News();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.topRight,
+      child: SizedBox(
+        width: 512,
+        child: NewsComponent(),
       ),
     );
   }

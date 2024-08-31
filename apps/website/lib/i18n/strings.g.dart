@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 41
+/// Strings: 43
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,6 +154,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
 	late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
+	String get news_error => 'お知らせの取得に失敗しました';
+	String get retry => '再試行';
 	late final _StringsSpeakerJa speaker = _StringsSpeakerJa._(_root);
 }
 
@@ -342,6 +344,8 @@ extension on Translations {
 			case 'sponsors.levels.gold': return 'Gold';
 			case 'sponsors.levels.silver': return 'Silver';
 			case 'sponsors.levels.bronze': return 'Bronze';
+			case 'news_error': return 'お知らせの取得に失敗しました';
+			case 'retry': return '再試行';
 			case 'speaker.title': return 'Speaker Wanted';
 			case 'speaker.messages.0': return 'FlutterKaigi 2024でのセッションスピーカーを募集開始しました！';
 			case 'speaker.messages.1': return 'FlutterKaigiは、技術者が自分の知識と経験を共有するためのカンファレンスです。新参者もベテランも、あなたの知識を共有する絶好の機会です。';

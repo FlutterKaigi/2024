@@ -10,7 +10,7 @@ class News with _$News {
     required String text,
     required Uri url,
     required DateTime startedAt,
-    required DateTime endedAt,
+    required DateTime? endedAt,
   }) = _News;
 
   factory News.fromJson(Map<String, dynamic> json) => _$NewsFromJson(json);
