@@ -2,10 +2,12 @@ import 'package:conference_2024_website/ui/components/contents_margin/contents_m
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
+import 'package:conference_2024_website/ui/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
 import 'package:conference_2024_website/ui/home/components/speaker_wanted.dart';
+import 'package:conference_2024_website/ui/home/components/sponsors.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -89,6 +91,12 @@ class _Body extends StatelessWidget {
             ),
             const Gap(128),
             ContentsMargin.narrow(
+              child: Sponsors(
+                key: NaviSectionKey.sponsors.key,
+              ),
+            ),
+            const Gap(128),
+            ContentsMargin.narrow(
               child: const ComingSoon(),
             ),
           ],
@@ -122,7 +130,7 @@ class _Background extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         BackgroundTop(),
-        // BackgroundBottom(),
+        BackgroundBottom(),
       ],
     );
   }
