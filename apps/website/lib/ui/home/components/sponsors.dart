@@ -93,7 +93,7 @@ Widget _sponsorListByLevel(
         Text(
           levelData.title,
           style: textTheme.availableFonts.poppins.regular.copyWith(
-            fontSize: 48,
+            fontSize: isMobile ? 36 : 48,
           ),
         ),
         Wrap(
@@ -124,6 +124,14 @@ Widget _sponsorCard(double size) {
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.6),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              offset: const Offset(0, 4),
+              blurRadius: 4,
+              spreadRadius: 1,
+            ),
+          ],
         ),
         child: const FittedBox(
           fit: BoxFit.fill,
