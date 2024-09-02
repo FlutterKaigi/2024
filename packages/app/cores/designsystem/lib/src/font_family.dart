@@ -33,9 +33,8 @@ enum FontFamily {
 class FontFamilyStore extends _$FontFamilyStore {
   @override
   FontFamily build() {
-    final sharedPreference =
-        ref.watch(sharedPreferencesInstanceProvider).valueOrNull;
-    final stored = sharedPreference?.getString(_persistKey);
+    final sharedPreference = ref.watch(sharedPreferencesInstanceProvider);
+    final stored = sharedPreference.getString(_persistKey);
 
     if (stored == null) {
       return FontFamily.system;
@@ -46,10 +45,9 @@ class FontFamilyStore extends _$FontFamilyStore {
 
   void update(FontFamily fontFamily) {
     state = fontFamily;
-    final sharedPreference =
-        ref.read(sharedPreferencesInstanceProvider).valueOrNull;
+    final sharedPreference = ref.read(sharedPreferencesInstanceProvider);
     unawaited(
-      sharedPreference?.setString(_persistKey, fontFamily.name),
+      sharedPreference.setString(_persistKey, fontFamily.name),
     );
   }
 }

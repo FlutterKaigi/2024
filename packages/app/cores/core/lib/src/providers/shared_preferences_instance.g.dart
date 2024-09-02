@@ -7,12 +7,14 @@ part of 'shared_preferences_instance.dart';
 // **************************************************************************
 
 String _$sharedPreferencesInstanceHash() =>
-    r'6b647159a531e64198d5d8f04afd60e2a9978a96';
+    r'94b3ee34ea4111b4be3fecda1c00fa24da731565';
 
-/// See also [sharedPreferencesInstance].
+/// This provider requires calling [initSharedPreferencesInstance] in advance.
+///
+/// Copied from [sharedPreferencesInstance].
 @ProviderFor(sharedPreferencesInstance)
 final sharedPreferencesInstanceProvider =
-    AutoDisposeFutureProvider<SharedPreferences>.internal(
+    AutoDisposeProvider<SharedPreferences>.internal(
   sharedPreferencesInstance,
   name: r'sharedPreferencesInstanceProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -23,6 +25,6 @@ final sharedPreferencesInstanceProvider =
 );
 
 typedef SharedPreferencesInstanceRef
-    = AutoDisposeFutureProviderRef<SharedPreferences>;
+    = AutoDisposeProviderRef<SharedPreferences>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
