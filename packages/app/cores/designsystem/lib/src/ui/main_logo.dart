@@ -12,10 +12,18 @@ class MainLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CommonAssets.logo.mainLogoLight.svg(
-      width: size,
-      height: size,
-    );
+    final brightness = Theme.of(context).brightness;
+
+    return switch (brightness) {
+      Brightness.light => CommonAssets.logo.mainLogoLight.svg(
+          width: size,
+          height: size,
+        ),
+      Brightness.dark => CommonAssets.logo.mainLogoDark.svg(
+          width: size,
+          height: size,
+        ),
+    };
   }
 
   @override

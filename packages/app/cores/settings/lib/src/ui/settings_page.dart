@@ -22,6 +22,7 @@ class SettingsPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               const _FontFamilyTile(),
+              const _ThemeModeTile(),
             ]),
           ),
         ],
@@ -54,6 +55,34 @@ class _FontFamilyTile extends ConsumerWidget {
       },
       title: Text(l.fontFamily),
       subtitle: Text(fontFamily.label),
+    );
+  }
+}
+
+class _ThemeModeTile extends ConsumerWidget {
+  const _ThemeModeTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    final themeMode = ref.watch(themeModeStoreProvider);
+    return ListTile(
+      onTap: () async {
+        final result = await showDialog<ThemeMode>(
+          context: context,
+          builder: (context) => _ListSelectionDialog(
+            values: ThemeMode.values,
+            title: l.theme,
+            tileTitleBuilder: (mode) => Text(mode.label(l)),
+            initialValue: themeMode,
+          ),
+        );
+        if (result != null) {
+          ref.read(themeModeStoreProvider.notifier).update(result);
+        }
+      },
+      title: Text(l.theme),
+      subtitle: Text(themeMode.label(l)),
     );
   }
 }
@@ -118,4 +147,12 @@ class _ListSelectionDialog<T> extends HookWidget {
     properties.add(IterableProperty<T>('values', values));
     properties.add(DiagnosticsProperty<T?>('initialValue', initialValue));
   }
+}
+
+extension on ThemeMode {
+  String label(L10nSettings l) => switch (this) {
+        ThemeMode.system => l.system,
+        ThemeMode.light => l.light,
+        ThemeMode.dark => l.dark,
+      };
 }

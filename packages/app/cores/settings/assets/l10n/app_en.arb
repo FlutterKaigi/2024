@@ -1,7 +1,11 @@
 {
   "@@locale": "en",
   "cancel": "Cancel",
+  "dark": "Dark",
   "fontFamily": "Font Family",
+  "light": "Light",
   "ok": "OK",
-  "settingsPageTitle": "Settings"
+  "settingsPageTitle": "Settings",
+  "system": "System",
+  "theme": "Theme"
 }
