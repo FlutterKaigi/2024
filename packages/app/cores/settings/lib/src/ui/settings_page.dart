@@ -1,4 +1,4 @@
-import 'package:app_cores_designsystem/font_family.dart';
+import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
