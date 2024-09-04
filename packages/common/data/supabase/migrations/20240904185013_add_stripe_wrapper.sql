@@ -15,10 +15,10 @@ values (
 returning key_id;
 */
 CREATE SERVER stripe_server FOREIGN data wrapper stripe_wrapper options (
-  api_key_id '89fec8a6-bc72-4b89-a8f6-09f4539d7ce5', -- The Key ID from above, required if api_key_name is not specified.
-  api_key_name 'stripe', -- The Key Name from above, required if api_key_id is not specified.
-  api_url 'https://api.stripe.com/v1/', -- Stripe API base URL, optional. Default is 'https://api.stripe.com/v1/'
-  api_version '2024-06-20' -- Stripe API version, optional. Default is your Stripe account’s default API version.
+  api_key_id '89fec8a6-bc72-4b89-a8f6-09f4539d7ce5',
+  api_key_name 'stripe',
+  api_url 'https://api.stripe.com/v1/',
+  api_version '2024-06-20'
 );
 
 CREATE SCHEMA stripe;
