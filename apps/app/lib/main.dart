@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:accessibility_tools/accessibility_tools.dart';
+import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_designsystem/theme.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:common_data/supabase_initializer.dart';
@@ -26,6 +27,8 @@ void main() async {
     anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
   );
   await supabaseInitializer.initialize();
+
+  await initSharedPreferencesInstance();
 
   runApp(
     const ProviderScope(

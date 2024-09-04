@@ -39,7 +39,7 @@ $$ language sql;
 
 -- 事前準備: テスト用ユーザを作成
 SELECT
-  tests.create_supabase_user ('sample_user', 'example@example.com', 'password');
+  tests.create_supabase_user ('sample_user', 'example@example.com', '444-444-4444');
 
 SELECT
   tests.authenticate_as ('sample_user');
