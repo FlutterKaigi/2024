@@ -1,4 +1,6 @@
+import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 /// スタッフ情報のアイテム
 class StaffCardWidget extends StatelessWidget {
@@ -18,7 +20,14 @@ class StaffCardWidget extends StatelessWidget {
     return ListTile(
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.network(_imageUrl),
+        child: Image.network(
+          _imageUrl,
+          errorBuilder: (context, error, stackTrace) {
+            return SvgPicture.asset(
+              CommonAssets.logo.mainLogo,
+            );
+          },
+        ),
       ),
       title: Text(
         _name,
