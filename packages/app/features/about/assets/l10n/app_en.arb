@@ -5,6 +5,7 @@
   "date": "November 21 ~ 22, 2024",
   "contributors": "Contributors",
   "sponsors": "Sponsors",
+  "seeMore": "See more",
   "websiteAndAppContributors": "Website/App contributors",
   "staffs": "Staffs",
   "other": "Others",
@@ -13,6 +14,7 @@
   "privacyPolicy": "Privacy policy",
   "privacyPolicyUrl": "https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.html",
   "contactUs": "Contact us",
+  "contactUsUrl": "https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform",
   "ossLicenses": "OSS Licenses",
   "licensesAboutUs": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
   "applicationName": "FlutterKaigi 2024 Official App"

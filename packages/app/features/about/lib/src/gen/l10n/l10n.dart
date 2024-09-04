@@ -133,6 +133,12 @@ abstract class L10nAbout {
   /// **'スポンサー'**
   String get sponsors;
 
+  /// No description provided for @seeMore.
+  ///
+  /// In ja, this message translates to:
+  /// **'もっと見る'**
+  String get seeMore;
+
   /// No description provided for @websiteAndAppContributors.
   ///
   /// In ja, this message translates to:
@@ -180,6 +186,12 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'お問い合わせ'**
   String get contactUs;
+
+  /// No description provided for @contactUsUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform'**
+  String get contactUsUrl;
 
   /// No description provided for @ossLicenses.
   ///
