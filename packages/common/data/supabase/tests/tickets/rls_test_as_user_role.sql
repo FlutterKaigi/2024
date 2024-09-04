@@ -38,11 +38,7 @@ SELECT
 
 -- 自分のチケットのみが読み取れること
 SELECT
-  results_eq (
-    'SELECT COUNT(*) FROM tickets',
-    ARRAY[1::bigint],
-    '自分のチケットのみが読み取れること'
-  );
+  results_eq ('SELECT COUNT(*) FROM tickets', ARRAY[1::bigint], '自分のチケットのみが読み取れること');
 
 -- typeを変更できないこと
 PREPARE update_type_throw AS
@@ -60,12 +56,7 @@ WHERE
   );
 
 SELECT
-  throws_ok (
-    'update_type_throw',
-    '42501',
-    'new row violates row-level security policy for table "tickets"',
-    'typeを変更できないこと'
-  );
+  throws_ok ('update_type_throw', '42501', 'new row violates row-level security policy for table "tickets"', 'typeを変更できないこと');
 
 -- チケットを追加できないこと
 PREPARE insert_throw AS
@@ -75,12 +66,7 @@ VALUES
   (gen_random_uuid (), 'general');
 
 SELECT
-  throws_ok (
-    'insert_throw',
-    '42501',
-    'new row violates row-level security policy for table "tickets"',
-    'チケットを追加できないこと'
-  );
+  throws_ok ('insert_throw', '42501', 'new row violates row-level security policy for table "tickets"', 'チケットを追加できないこと');
 
 -- チケットを削除できないこと
 PREPARE delete_throw AS
@@ -96,20 +82,11 @@ WHERE
   );
 
 SELECT
-  throws_ok (
-    'delete_throw',
-    '42501',
-    'new row violates row-level security policy for table "tickets"',
-    'チケットを削除できないこと'
-  );
+  throws_ok ('delete_throw', '42501', 'new row violates row-level security policy for table "tickets"', 'チケットを削除できないこと');
 
 -- チケットが削除されていないことを確認
 SELECT
-  results_eq (
-    'SELECT COUNT(*) FROM tickets',
-    ARRAY[1::bigint],
-    'チケットが削除されていないこと'
-  );
+  results_eq ('SELECT COUNT(*) FROM tickets', ARRAY[1::bigint], 'チケットが削除されていないこと');
 
 SELECT
   *
