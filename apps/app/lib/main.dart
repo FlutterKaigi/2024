@@ -3,6 +3,8 @@
 import 'dart:async';
 
 import 'package:accessibility_tools/accessibility_tools.dart';
+import 'package:app_cores_core/providers.dart';
+import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_designsystem/theme.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:common_data/supabase_initializer.dart';
@@ -27,6 +29,8 @@ void main() async {
   );
   await supabaseInitializer.initialize();
 
+  await initSharedPreferencesInstance();
+
   runApp(
     const ProviderScope(
       child: MainApp(),
@@ -44,12 +48,14 @@ class MainApp extends ConsumerWidget {
       builder: (lightDynamic, darkDynamic) {
         final theme = ref.watch(themeProvider(lightDynamic));
         final darkTheme = ref.watch(darkThemeProvider(darkDynamic));
+        final themeMode = ref.watch(themeModeStoreProvider);
 
         return MaterialApp.router(
           // Enables state restoration for descendant widgets.
           restorationScopeId: 'app',
           theme: theme,
           darkTheme: darkTheme,
+          themeMode: themeMode,
           routerConfig: router,
           localizationsDelegates: const [
             ...L10n.localizationsDelegates,
