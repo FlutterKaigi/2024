@@ -1,0 +1,18 @@
+{
+  "name": "api",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "@hono/valibot-validator": "^0.3.0",
+    "@supabase/supabase-js": "^2.45.3",
+    "hono": "^4.5.11",
+    "stripe": "^16.9.0",
+    "valibot": "^0.41.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "wrangler": "^3.57.2"
+  }
+}
