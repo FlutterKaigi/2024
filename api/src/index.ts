@@ -4,7 +4,7 @@ import { cors } from "hono/cors";
 import { secureHeaders } from "hono/secure-headers";
 import { prettyJSON } from "hono/pretty-json";
 import { Hono } from "hono";
-import { Bindings } from "./binding";
+import { Bindings } from "./bindings";
 
 import coupon from "./routes/coupon";
 
