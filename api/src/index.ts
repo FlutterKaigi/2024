@@ -5,7 +5,6 @@ import { prettyJSON } from "hono/pretty-json";
 import { Hono } from "hono";
 import { Bindings } from "./bindings";
 
-import coupon from "./routes/coupon";
 import { getUserWithProfile } from "./util/user";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "./util/supabaseSchema";
