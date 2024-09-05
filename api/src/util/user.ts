@@ -29,7 +29,7 @@ export async function getUserWithProfile(
 > {
   const user = await getUser(authorizationHeader, supabase);
   if (!user) {
-    return { error: "User not found" };
+    return { success: false, error: "User not found" };
   }
   const { data: profile, error } = await supabase
     .from("profiles")
@@ -37,9 +37,10 @@ export async function getUserWithProfile(
     .eq("id", user.id)
     .single();
   if (error) {
-    return { error: error.message };
+    return { success: false, error: error.message };
   }
   return {
+    success: true,
     user,
     profile
   };
