@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { Bindings } from "../bindings";
 import { createClient } from "@supabase/supabase-js";
-import { getUser, getUserWithProfile } from "../util/user";
+import { getUserWithProfile } from "../util/user";
 import { Database } from "../util/supabaseSchema";
 
 const app = new Hono<{ Bindings: Bindings }>();
@@ -20,8 +20,6 @@ app.get("/", async (c) => {
   if (!user.success) {
     return c.json({ error: "Unauthorized" }, 401);
   }
-
-  
 });
 
 export default app;
