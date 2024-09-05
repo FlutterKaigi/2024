@@ -104,11 +104,23 @@ abstract class L10nSettings {
   /// **'キャンセル'**
   String get cancel;
 
+  /// No description provided for @dark.
+  ///
+  /// In ja, this message translates to:
+  /// **'ダーク'**
+  String get dark;
+
   /// No description provided for @fontFamily.
   ///
   /// In ja, this message translates to:
   /// **'フォント'**
   String get fontFamily;
+
+  /// No description provided for @light.
+  ///
+  /// In ja, this message translates to:
+  /// **'ライト'**
+  String get light;
 
   /// No description provided for @ok.
   ///
@@ -121,6 +133,18 @@ abstract class L10nSettings {
   /// In ja, this message translates to:
   /// **'設定'**
   String get settingsPageTitle;
+
+  /// No description provided for @system.
+  ///
+  /// In ja, this message translates to:
+  /// **'システムに合わせる'**
+  String get system;
+
+  /// No description provided for @theme.
+  ///
+  /// In ja, this message translates to:
+  /// **'外観'**
+  String get theme;
 }
 
 class _L10nSettingsDelegate extends LocalizationsDelegate<L10nSettings> {
