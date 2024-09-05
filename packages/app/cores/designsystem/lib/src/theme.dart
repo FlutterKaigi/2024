@@ -1,4 +1,4 @@
-import 'package:app_cores_designsystem/src/font_family.dart';
+import 'package:app_cores_designsystem/src/providers/font_family.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

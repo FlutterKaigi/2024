@@ -10,11 +10,23 @@ class L10nSettingsJa extends L10nSettings {
   String get cancel => 'キャンセル';
 
   @override
+  String get dark => 'ダーク';
+
+  @override
   String get fontFamily => 'フォント';
+
+  @override
+  String get light => 'ライト';
 
   @override
   String get ok => 'OK';
 
   @override
   String get settingsPageTitle => '設定';
+
+  @override
+  String get system => 'システムに合わせる';
+
+  @override
+  String get theme => '外観';
 }
