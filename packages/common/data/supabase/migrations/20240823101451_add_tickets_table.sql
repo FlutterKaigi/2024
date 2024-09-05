@@ -16,8 +16,6 @@ CREATE TABLE tickets (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- インデックスを作成
-CREATE INDEX tickets_user_id_idx ON tickets (user_id);
 
 -- RLSを有効化
 ALTER TABLE tickets enable ROW level security;
