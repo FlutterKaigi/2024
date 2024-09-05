@@ -1,7 +1,6 @@
-import 'package:app_cores_designsystem/common_assets.dart';
+import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_news/src/gen/l10n/l10n.dart';
 import 'package:packages_app_features_news/src/ui/news_item_widget.dart';
 
@@ -17,12 +16,8 @@ class NewsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: Center(
-          child: SvgPicture.asset(
-            CommonAssets.logo.mainLogoMono,
-            width: 24,
-            height: 24,
-          ),
+        leading: const Center(
+          child: MainLogo(),
         ),
         leadingWidth: 48,
         titleSpacing: 4,
