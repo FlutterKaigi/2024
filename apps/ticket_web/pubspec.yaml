@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
+  flutter_localizations:
+    sdk: flutter
   freezed_annotation: ^2.4.4
   hooks_riverpod: ^2.5.1
   json_annotation: ^4.9.0
