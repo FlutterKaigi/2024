@@ -27,14 +27,14 @@ SELECT
 
 CREATE POLICY "管理者はすべてのチケットを表示可能" ON tickets FOR
 SELECT
-  TO authenticated USING (auth.role () = 'admin');
+  TO authenticated USING (role () = 'admin');
 
 CREATE POLICY "管理者はすべてのチケットを作成可能" ON tickets FOR insert TO authenticated
 WITH
-  CHECK (auth.role () = 'admin');
+  CHECK (role () = 'admin');
 
 CREATE POLICY "管理者はすべてのチケットを更新可能" ON tickets
 FOR UPDATE
-  TO authenticated USING (auth.role () = 'admin');
+  TO authenticated USING (role () = 'admin');
 
-CREATE POLICY "管理者はすべてのチケットを削除可能" ON tickets FOR delete USING (auth.role () = 'admin');
+CREATE POLICY "管理者はすべてのチケットを削除可能" ON tickets FOR delete USING (role () = 'admin');
