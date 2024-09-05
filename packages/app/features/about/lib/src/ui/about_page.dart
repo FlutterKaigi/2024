@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
+import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
@@ -23,12 +23,8 @@ class AboutPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
-            leading: Center(
-              child: SvgPicture.asset(
-                CommonAssets.logo.mainLogoMono,
-                width: 24,
-                height: 24,
-              ),
+            leading: const Center(
+              child: MainLogo(),
             ),
             title: Text(l.aboutPageTitle),
             actions: const [
@@ -43,11 +39,7 @@ class AboutPage extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 16),
-                      SvgPicture.asset(
-                        CommonAssets.logo.mainLogo,
-                        width: 96,
-                        height: 96,
-                      ),
+                      const MainLogo(size: 96),
                       const SizedBox(height: 16),
                       Padding(
                         padding: const EdgeInsets.all(16),
@@ -64,7 +56,11 @@ class AboutPage extends StatelessWidget {
                 ListTile(
                   title: Text(l.location, style: theme.textTheme.bodyLarge),
                   leading: const Icon(Icons.location_on_outlined),
-                  onTap: () {},
+                  onTap: () async {
+                    final url =
+                        Uri.parse('https://maps.app.goo.gl/W5k8XU7Jd5GZdaww7');
+                    await launchInExternalApp(url);
+                  },
                 ),
                 const SizedBox(height: 16),
                 ListTile(
@@ -148,7 +144,10 @@ class AboutPage extends StatelessWidget {
               ListTile(
                 title: Text(l.contactUs),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
-                onTap: () {},
+                onTap: () async {
+                  final url = Uri.parse(l.contactUsUrl);
+                  await launchInExternalApp(url);
+                },
               ),
               ListTile(
                 title: Text(l.ossLicenses),
@@ -170,20 +169,17 @@ class AboutPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                      CommonAssets.logo.xLogo,
+                    CommonAssets.logo.xLogo.svg(
                       width: 48,
                       height: 48,
                     ),
                     const SizedBox(width: 16),
-                    SvgPicture.asset(
-                      CommonAssets.logo.mediumLogo,
+                    CommonAssets.logo.mediumLogo.svg(
                       width: 48,
                       height: 48,
                     ),
                     const SizedBox(width: 16),
-                    SvgPicture.asset(
-                      CommonAssets.logo.githubLogo,
+                    CommonAssets.logo.githubLogo.svg(
                       width: 48,
                       height: 48,
                     ),

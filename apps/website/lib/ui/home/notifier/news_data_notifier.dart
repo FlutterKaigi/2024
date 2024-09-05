@@ -6,7 +6,6 @@ part 'news_data_notifier.g.dart';
 
 @riverpod
 class NewsDataNotifier extends _$NewsDataNotifier {
-
   @override
   NewsDataState build() {
     return const NewsDataState.initial();
@@ -18,8 +17,8 @@ class NewsDataNotifier extends _$NewsDataNotifier {
     try {
       final news = await newsRepository.getNews();
       state = NewsDataState.loaded(news);
-    } on Exception catch (e) {
-      state = NewsDataState.error();
+    } on Exception catch (_) {
+      state = const NewsDataState.error();
     }
   }
 }

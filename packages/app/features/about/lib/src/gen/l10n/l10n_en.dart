@@ -26,6 +26,9 @@ class L10nAboutEn extends L10nAbout {
   String get sponsors => 'Sponsors';
 
   @override
+  String get seeMore => 'See more';
+
+  @override
   String get websiteAndAppContributors => 'Website/App contributors';
 
   @override
@@ -50,6 +53,10 @@ class L10nAboutEn extends L10nAbout {
 
   @override
   String get contactUs => 'Contact us';
+
+  @override
+  String get contactUsUrl =>
+      'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform';
 
   @override
   String get ossLicenses => 'OSS Licenses';
