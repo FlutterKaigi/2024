@@ -16,7 +16,6 @@ CREATE TABLE tickets (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-
 -- RLSを有効化
 ALTER TABLE tickets enable ROW level security;
 
