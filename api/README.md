@@ -32,3 +32,11 @@ pnpm run dev
 ```bash
 pnpm run deploy
 ```
+
+## `util/supabaseSchema.ts` の更新方法
+
+Supabaseのスキーマを更新したら、以下のコマンドを実行して `util/supabaseSchema.ts` を更新してください。
+
+```bash
+pnpm run generate:supabase
+```

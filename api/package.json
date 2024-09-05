@@ -2,7 +2,8 @@
   "name": "api",
   "scripts": {
     "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "generate:supabase": "supabase gen types typescript -s public,stripe --project-id=xflwrlgfukzpgkudzrlu > src/util/supabaseSchema.ts"
   },
   "dependencies": {
     "@hono/valibot-validator": "^0.3.0",
