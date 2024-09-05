@@ -18,45 +18,31 @@ SELECT
 INSERT INTO
   tickets (user_id, type)
 VALUES
-  (
-    (
-      SELECT
-        id
-      FROM
-        auth.users
-      WHERE
-        email = 'example@example.com'
-    ),
-    'general'
-  );
+  (tests.get_supabase_uid ('sample_user'), 'general');
 
 SELECT
   tests.authenticate_as ('sample_user');
 
 SELECT
-  plan (5);
+  plan (4);
 
 -- 自分のチケットのみが読み取れること
 SELECT
   results_eq ('SELECT COUNT(*) FROM tickets', ARRAY[1::bigint], '自分のチケットのみが読み取れること');
 
--- typeを変更できないこと
-PREPARE update_type_throw AS
+-- typeを変更できていないこと
 UPDATE tickets
 SET
   type = 'sponsor_booth'
 WHERE
-  user_id = (
-    SELECT
-      id
-    FROM
-      auth.users
-    WHERE
-      email = 'example@example.com'
-  );
+  user_id = tests.get_supabase_uid ('sample_user');
 
 SELECT
-  throws_ok ('update_type_throw', '42501', 'new row violates row-level security policy for table "tickets"', 'typeを変更できないこと');
+  results_eq (
+    'SELECT type FROM tickets WHERE user_id = tests.get_supabase_uid(''sample_user'')',
+    ARRAY['general'::ticket_type],
+    'typeを変更できていないこと'
+  );
 
 -- チケットを追加できないこと
 PREPARE insert_throw AS
@@ -68,23 +54,11 @@ VALUES
 SELECT
   throws_ok ('insert_throw', '42501', 'new row violates row-level security policy for table "tickets"', 'チケットを追加できないこと');
 
--- チケットを削除できないこと
-PREPARE delete_throw AS
+-- チケットを削除できていないこと
 DELETE FROM tickets
 WHERE
-  user_id = (
-    SELECT
-      id
-    FROM
-      auth.users
-    WHERE
-      email = 'example@example.com'
-  );
+  user_id = tests.get_supabase_uid ('sample_user');
 
-SELECT
-  throws_ok ('delete_throw', '42501', 'new row violates row-level security policy for table "tickets"', 'チケットを削除できないこと');
-
--- チケットが削除されていないことを確認
 SELECT
   results_eq ('SELECT COUNT(*) FROM tickets', ARRAY[1::bigint], 'チケットが削除されていないこと');
 

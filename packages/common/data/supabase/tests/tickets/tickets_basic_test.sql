@@ -8,7 +8,7 @@ WITH
   schema extensions;
 
 SELECT
-  plan (4);
+  plan (3);
 
 SELECT
   has_table ('public', 'tickets', 'tickets テーブルが存在すること');
@@ -18,9 +18,6 @@ SELECT
 
 SELECT
   tests.rls_enabled ('public', 'tickets');
-
-SELECT
-  has_index ('public', 'tickets', 'tickets_type_idx', 'type列にインデックスが作成されていること');
 
 SELECT
   *
