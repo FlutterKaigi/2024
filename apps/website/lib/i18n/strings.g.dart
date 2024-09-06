@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 43
+/// Strings: 44
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -249,6 +249,7 @@ class _StringsSponsorsJa {
 	// Translations
 	String get title => 'Sponsors';
 	late final _StringsSponsorsLevelsJa levels = _StringsSponsorsLevelsJa._(_root);
+	String get sponsors_error => 'スポンサー一覧の取得に失敗しました';
 }
 
 // Path: speaker
@@ -344,6 +345,7 @@ extension on Translations {
 			case 'sponsors.levels.gold': return 'Gold';
 			case 'sponsors.levels.silver': return 'Silver';
 			case 'sponsors.levels.bronze': return 'Bronze';
+			case 'sponsors.sponsors_error': return 'スポンサー一覧の取得に失敗しました';
 			case 'news_error': return 'お知らせの取得に失敗しました';
 			case 'retry': return '再試行';
 			case 'speaker.title': return 'Speaker Wanted';

@@ -53,7 +53,8 @@
       "gold": "Gold",
       "silver": "Silver",
       "bronze": "Bronze"
-    }
+    },
+    "sponsors_error": "スポンサー一覧の取得に失敗しました"
   },
   "news_error": "お知らせの取得に失敗しました",
   "retry": "再試行",
