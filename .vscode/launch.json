@@ -18,12 +18,20 @@
       "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
-      "name": "ticket-web-debug",
+      "name": "ticket-web-development-debug",
       "cwd": "apps/ticket_web",
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": ["--web-port", "8080", "--wasm"]
+      "args": ["--web-port", "8080", "--wasm", "--dart-define-from-file=defines/development.env"]
+    },
+    {
+      "name": "ticket-web-production-debug",
+      "cwd": "apps/ticket_web",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": ["--web-port", "8080", "--wasm", "--dart-define-from-file=defines/production.env"]
     },
     {
       "name": "website-html-debug",
