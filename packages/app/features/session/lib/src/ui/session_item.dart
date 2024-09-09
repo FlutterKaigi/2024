@@ -5,10 +5,13 @@ import 'package:gap/gap.dart';
 /// タイムラインのアイテム
 class SessionItem extends StatelessWidget {
   const SessionItem({
+    required String title,
     required String name,
     super.key,
-  }) : _name = name;
+  })  : _title = title,
+        _name = name;
 
+  final String _title;
   final String _name;
 
   @override
@@ -29,7 +32,7 @@ class SessionItem extends StatelessWidget {
           vertical: 16,
         ),
         title: Text(
-          _name,
+          _title,
           style: theme.textTheme.titleMedium,
         ),
         subtitle: Column(
@@ -50,7 +53,7 @@ class SessionItem extends StatelessWidget {
                 ),
                 const Gap(8),
                 Text(
-                  'Test2',
+                  _name,
                   style: theme.textTheme.labelMedium,
                 ),
               ],

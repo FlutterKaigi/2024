@@ -28,7 +28,8 @@ class SessionsPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) {
                 return const SessionItem(
-                  name: 'Example Super Session Title ~ Why we using Flutter?',
+                  title: 'Example Super Session Title ~ Why we using Flutter?',
+                  name: 'Test',
                 );
               },
             ),
