@@ -45,7 +45,7 @@ class SessionItem extends StatelessWidget {
                   child: Image.network(
                     height: 40,
                     width: 40,
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQalMJeasBiucOyCl7CwofX0mtDRL77WPt6XA&s',
+                    'https://flutterkaigi.jp/2023/assets/assets/flutterkaigi_logo_shadowed.svg',
                     errorBuilder: (context, error, stackTrace) {
                       return const MainLogo();
                     },
