@@ -22,7 +22,7 @@ class SessionItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
         side: BorderSide(
-          color: Theme.of(context).colorScheme.outline,
+          color: theme.colorScheme.outline,
         ),
       ),
       clipBehavior: Clip.antiAlias,
