@@ -68,7 +68,7 @@ class SessionItem extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       height: 28,
                       decoration: BoxDecoration(
-                        color: const Color(0xff81d3dd),
+                        color: theme.colorScheme.primaryFixedDim,
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: Center(
@@ -83,7 +83,7 @@ class SessionItem extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       height: 28,
                       decoration: BoxDecoration(
-                        color: const Color(0xffB8C6EA),
+                        color: theme.colorScheme.tertiaryFixedDim,
                         borderRadius: BorderRadius.circular(25),
                       ),
                       child: Center(
