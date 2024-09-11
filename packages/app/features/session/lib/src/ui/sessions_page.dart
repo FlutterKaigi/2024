@@ -31,45 +31,10 @@ class SessionsPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            '11:00',
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                      const Gap(8),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          left: 16,
-                        ),
-                        padding: const EdgeInsets.only(
-                          left: 16,
-                          bottom: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
-                              width: 2,
-                              color:
-                                  Theme.of(context).colorScheme.outlineVariant,
-                            ),
-                          ),
-                        ),
-                        child: const SessionItem(
-                          title:
-                              'Example Super Session Title ~ Why we using Flutter?',
-                          name: 'Test',
-                        ),
-                      ),
-                    ],
-                  ),
+                return const SessionItem(
+                  title: 'Example Super Session Title ~ Why we using Flutter?',
+                  name: 'Name',
+                  isDateVisible: true,
                 );
               },
             ),
