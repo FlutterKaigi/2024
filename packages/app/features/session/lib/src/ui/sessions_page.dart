@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:app_cores_designsystem/ui.dart';
+import 'package:app_cores_settings/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:packages_app_features_session/l10n.dart';
@@ -16,17 +17,17 @@ class SessionsPage extends StatelessWidget {
     final l = L10nSession.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        leading: const Center(
-          child: MainLogo(),
-        ),
-        leadingWidth: 48,
-        titleSpacing: 4,
-        centerTitle: false,
-        title: Text(l.sessionPageTitle),
-      ),
       body: CustomScrollView(
         slivers: [
+          SliverAppBar.large(
+            leading: const Center(
+              child: MainLogo(),
+            ),
+            title: Text(l.sessionPageTitle),
+            actions: const [
+              SettingsButton(),
+            ],
+          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
