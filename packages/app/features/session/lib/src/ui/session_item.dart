@@ -21,7 +21,12 @@ class SessionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.only(
+        right: 16,
+        left: 8,
+        top: 8,
+        bottom: 8,
+      ),
       child: Column(
         children: [
           Row(
@@ -38,15 +43,11 @@ class SessionItem extends StatelessWidget {
             margin: const EdgeInsets.only(
               left: 16,
             ),
-            padding: const EdgeInsets.only(
-              left: 16,
-              bottom: 4,
-            ),
+            padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
             decoration: BoxDecoration(
               border: Border(
                 left: BorderSide(
-                  width: 2,
-                  color: Theme.of(context).colorScheme.outlineVariant,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
               ),
             ),
