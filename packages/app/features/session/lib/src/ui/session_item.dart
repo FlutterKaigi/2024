@@ -22,11 +22,11 @@ class SessionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(
         right: 16,
         left: 8,
+        top: 8,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,96 +48,131 @@ class SessionItem extends StatelessWidget {
                 ),
               ),
             ),
-            child: Card(
-              elevation: 0,
-              color: theme.colorScheme.surface,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(
-                  color: theme.colorScheme.outline,
-                ),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: ListTile(
-                onTap: _onTap,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 16,
-                ),
-                title: Text(
-                  _title,
-                  style: theme.textTheme.titleMedium,
-                ),
-                subtitle: Column(
+            child: _SessionCard(
+              title: _title,
+              name: _name,
+              onTap: _onTap,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SessionCard extends StatelessWidget {
+  const _SessionCard({
+    required String title,
+    required String name,
+    required VoidCallback? onTap,
+  })  : _title = title,
+        _name = name,
+        _onTap = onTap;
+
+  final String _title;
+  final String _name;
+  final VoidCallback? _onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Card(
+      elevation: 0,
+      color: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: theme.colorScheme.outline,
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          ListTile(
+            onTap: _onTap,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
+            title: Text(
+              _title,
+              style: theme.textTheme.titleMedium,
+            ),
+            subtitle: Column(
+              children: [
+                const Gap(8),
+                Row(
                   children: [
-                    const Gap(8),
-                    Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.network(
-                            height: 40,
-                            width: 40,
-                            'https://flutterkaigi.jp/2023/assets/assets/flutterkaigi_logo_shadowed.svg',
-                            errorBuilder: (context, error, stackTrace) {
-                              return const MainLogo();
-                            },
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: theme.colorScheme.secondary,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        image: DecorationImage(
+                          image: const NetworkImage(
+                            'https://via.placeholder.com/40',
                           ),
+                          onError: (exception, stackTrace) =>
+                              const MainLogo(size: 40),
                         ),
-                        const Gap(8),
-                        Text(
-                          _name,
-                          style: theme.textTheme.labelMedium,
-                        ),
-                      ],
+                      ),
+                      child: const SizedBox(height: 40, width: 40),
                     ),
                     const Gap(8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 12),
-                              height: 28,
-                              decoration: BoxDecoration(
-                                color: theme.colorScheme.primaryFixedDim,
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'DevOps',
-                                  style: theme.textTheme.labelSmall,
-                                ),
-                              ),
-                            ),
-                            const Gap(8),
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 12),
-                              height: 28,
-                              decoration: BoxDecoration(
-                                color: theme.colorScheme.tertiaryFixedDim,
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Room1',
-                                  style: theme.textTheme.labelSmall,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Icon(
-                          Icons.bookmark_outline,
-                        ),
-                      ],
+                    Text(
+                      _name,
+                      style: theme.textTheme.labelMedium,
                     ),
                   ],
                 ),
+                const Gap(8),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primaryFixedDim,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'DevOps',
+                          style: theme.textTheme.labelSmall,
+                        ),
+                      ),
+                    ),
+                    const Gap(8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      height: 28,
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.tertiaryFixedDim,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Room1',
+                          style: theme.textTheme.labelSmall,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            right: 0,
+            bottom: 0,
+            child: IconButton(
+              padding: const EdgeInsets.all(12),
+              icon: const Icon(
+                Icons.bookmark_outline,
               ),
+              onPressed: () {},
             ),
           ),
         ],
