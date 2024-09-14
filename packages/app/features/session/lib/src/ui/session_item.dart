@@ -24,21 +24,15 @@ class SessionItem extends StatelessWidget {
       padding: const EdgeInsets.only(
         right: 16,
         left: 8,
-        top: 8,
-        bottom: 8,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              if (_isDateVisible)
-                Text(
-                  '11:00',
-                  style: Theme.of(context).textTheme.labelLarge,
-                ),
-              const Spacer(),
-            ],
-          ),
+          if (_isDateVisible)
+            Text(
+              '11:00',
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
           Container(
             margin: const EdgeInsets.only(
               left: 16,
