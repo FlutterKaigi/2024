@@ -8,14 +8,17 @@ class SessionItem extends StatelessWidget {
     required String title,
     required String name,
     required bool isDateVisible,
+    required VoidCallback? onTap,
     super.key,
   })  : _title = title,
         _name = name,
-        _isDateVisible = isDateVisible;
+        _isDateVisible = isDateVisible,
+        _onTap = onTap;
 
   final String _title;
   final String _name;
   final bool _isDateVisible;
+  final VoidCallback? _onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +50,7 @@ class SessionItem extends StatelessWidget {
             ),
             child: Card(
               elevation: 0,
+              color: theme.colorScheme.surface,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
                 side: BorderSide(
@@ -55,6 +59,7 @@ class SessionItem extends StatelessWidget {
               ),
               clipBehavior: Clip.antiAlias,
               child: ListTile(
+                onTap: _onTap,
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 16,
