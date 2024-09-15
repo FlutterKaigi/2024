@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:packages_app_features_session/src/providers/bookmarked_sessions.dart';
 import 'package:packages_app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:packages_app_features_session/src/ui/session_room_chip.dart';
 
@@ -62,7 +64,7 @@ class SessionItem extends StatelessWidget {
   }
 }
 
-class _SessionCard extends StatelessWidget {
+class _SessionCard extends ConsumerWidget {
   const _SessionCard({
     required String title,
     required String name,
@@ -76,8 +78,9 @@ class _SessionCard extends StatelessWidget {
   final VoidCallback? _onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final isBookmarked = ref.watch(isBookmarkedProvider(sessionId: 'id'));
 
     return Card(
       elevation: 0,
@@ -143,10 +146,20 @@ class _SessionCard extends StatelessWidget {
             bottom: 0,
             child: IconButton(
               padding: const EdgeInsets.all(12),
-              icon: const Icon(
-                Icons.bookmark_outline,
-              ),
-              onPressed: () {},
+              icon: isBookmarked
+                  ? const Icon(Icons.bookmark)
+                  : const Icon(Icons.bookmark_outline),
+              onPressed: () {
+                if (isBookmarked) {
+                  ref
+                      .read(bookmarkedSessionsProvider.notifier)
+                      .remove(sessionId: 'id');
+                } else {
+                  ref
+                      .read(bookmarkedSessionsProvider.notifier)
+                      .save(sessionId: 'id');
+                }
+              },
             ),
           ),
         ],
