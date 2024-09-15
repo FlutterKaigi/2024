@@ -45,8 +45,6 @@ class SessionPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return SessionPage(
-      sessionId: sessionId,
-    );
+    return const SessionPage();
   }
 }

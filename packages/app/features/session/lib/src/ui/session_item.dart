@@ -1,9 +1,11 @@
-import 'package:app_cores_designsystem/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:packages_app_features_session/src/ui/bordered_icon_image.dart';
+import 'package:packages_app_features_session/src/ui/session_room_chip.dart';
 
 /// タイムラインのアイテム
 class SessionItem extends StatelessWidget {
+  // FIXME: セッションデータの設計が終わったらidを引数にする
   const SessionItem({
     required String title,
     required String name,
@@ -104,22 +106,7 @@ class _SessionCard extends StatelessWidget {
                 const Gap(8),
                 Row(
                   children: [
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: theme.colorScheme.secondary,
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                        image: DecorationImage(
-                          image: const NetworkImage(
-                            'https://via.placeholder.com/40',
-                          ),
-                          onError: (exception, stackTrace) =>
-                              const MainLogo(size: 40),
-                        ),
-                      ),
-                      child: const SizedBox(height: 40, width: 40),
-                    ),
+                    const BorderedIconImage(size: 40),
                     const Gap(8),
                     Text(
                       _name,
@@ -145,20 +132,7 @@ class _SessionCard extends StatelessWidget {
                       ),
                     ),
                     const Gap(8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      height: 28,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.tertiaryFixedDim,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Room1',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                      ),
-                    ),
+                    const SessionRoomChip(),
                   ],
                 ),
               ],
