@@ -43,7 +43,12 @@ class BookmarkedSessions extends _$BookmarkedSessions {
   }
 
   void remove({required String sessionId}) {
-    state = state.copyWith(sessions: state.sessions..remove(sessionId));
+    state = state.copyWith(
+      sessions: {
+        for (final id in state.sessions)
+          if (id != sessionId) id,
+      },
+    );
     final sharedPreference = ref.watch(sharedPreferencesInstanceProvider);
 
     unawaited(
