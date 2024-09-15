@@ -3,6 +3,7 @@
     "designsystem",
     "IntelliJ",
     "Kaigi",
+    "LTRB",
     "microtask",
     "MMMMEEE",
     "pubspec",
@@ -14,5 +15,7 @@
     "webp",
     "zenn"
   ],
-  "ignorePaths": ["**.sql"]
+  "ignorePaths": [
+    "**.sql"
+  ]
 }
