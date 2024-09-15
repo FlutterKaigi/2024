@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:app_cores_core/util.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:packages_app_features_session/l10n.dart';
@@ -13,8 +16,20 @@ class SessionPage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const SliverAppBar.large(
-            title: Text('Example Super Session Title ~ Why we using Flutter?'),
+          SliverAppBar.large(
+            title: const Text(
+              'Example Super Session Title ~ Why we using Flutter?',
+            ),
+            actions: [
+              IconButton(
+                tooltip: l.shareOnX,
+                padding: const EdgeInsets.all(12),
+                onPressed: () {
+                  // TODO: データをつなぎこんだら共有機能を実装する
+                },
+                icon: const Icon(Icons.share),
+              ),
+            ],
           ),
           SliverList.list(
             children: [
@@ -25,14 +40,20 @@ class SessionPage extends StatelessWidget {
                 ],
               ),
               const Gap(8),
-              ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 16,
+              Tooltip(
+                message: l.openSpeakersLink,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 16,
+                  ),
+                  leading: const BorderedIconImage(size: 56),
+                  title: const Text('John Doe'),
+                  onTap: () {
+                    final url = Uri.parse('https://twitter.com/FlutterKaigi');
+                    unawaited(launchInExternalApp(url));
+                  },
                 ),
-                leading: const BorderedIconImage(size: 56),
-                title: const Text('John Doe'),
-                onTap: () {},
               ),
               const Gap(8),
               Padding(
@@ -42,6 +63,21 @@ class SessionPage extends StatelessWidget {
                   'printing and typesetting industry. '
                   'Lorem Ipsum has been the industry',
                   style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+              const Gap(8),
+              // TODO: データをつなぎこんだら日時を下記の形式にフォーマットする
+              Tooltip(
+                message: l.registerToCalendar,
+                child: ListTile(
+                  title: Text(
+                    'Day1 14:00~15:00',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  leading: const Icon(Icons.event_outlined),
+                  onTap: () {
+                    // TODO: 該当の日時でカレンダーを開く
+                  },
                 ),
               ),
             ],
