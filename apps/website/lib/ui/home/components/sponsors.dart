@@ -1,5 +1,5 @@
+import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/common/util/group_by.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/state/sponsor_notifier.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -42,7 +42,7 @@ Widget sponsorsSection(
   final i18n = Translations.of(context);
 
   // スポンサーのレベルによって分ける
-  final mapOfLevels = groupBy(sponsors, (sponsor) => sponsor.type);
+  final mapOfLevels = sponsors.groupListsBy((e) => e.type);
 
   return Column(
     children: [
