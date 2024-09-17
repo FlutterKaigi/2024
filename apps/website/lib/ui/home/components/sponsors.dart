@@ -23,11 +23,12 @@ final class Sponsors extends HookConsumerWidget {
           i18n,
           textTheme,
         ),
-      AsyncValue<List<Sponsor>>(:final value) => sponsorsSection(
-          value ?? dummy,  // TODO:  remove dummy
+      AsyncData<List<Sponsor>>(:final value) => sponsorsSection(
+          value,
           theme,
           context,
         ),
+      _ => const SizedBox.shrink(),
     };
   }
 }
@@ -241,24 +242,3 @@ final class CustomBoxShadow extends BoxShadow {
     return result;
   }
 }
-
-final dummy = [
-  ...[
-    (5, SponsorType.platinum),
-    (7, SponsorType.gold),
-    (16, SponsorType.silver),
-    (18, SponsorType.bronze),
-  ].map((e) {
-    return List.generate(
-      e.$1,
-      (_) => Sponsor(
-        id: 0,
-        name: '株式会社ABC',
-        description: '風通しの良い企業風土です！',
-        logoUrl: Uri.parse('https://picsum.photos/200/200'),
-        url: Uri.parse('https://flutterkaigi.jp/2023/'),
-        type: e.$2,
-      ),
-    );
-  }).expand((element) => element),
-];
