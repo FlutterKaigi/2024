@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// セッションに対してルーム情報を表示するチップ
+///
+/// セッション関連のWidgetにおいて、該当するセッションがどのルームで行われるかを表示するためのWidget。
 class SessionRoomChip extends StatelessWidget {
   const SessionRoomChip({super.key});
 

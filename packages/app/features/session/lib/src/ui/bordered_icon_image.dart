@@ -2,6 +2,10 @@ import 'package:app_cores_designsystem/ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+/// ボーダー付きのアイコン画像
+///
+/// セッション登壇者や、コントリビューター等アカウントに対する
+/// アイコン画像をボーダー付きで表示するためのWidget。
 class BorderedIconImage extends StatelessWidget {
   const BorderedIconImage({
     required this.size,

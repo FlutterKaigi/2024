@@ -15,7 +15,5 @@
     "webp",
     "zenn"
   ],
-  "ignorePaths": [
-    "**.sql"
-  ]
+  "ignorePaths": ["**.sql"]
 }

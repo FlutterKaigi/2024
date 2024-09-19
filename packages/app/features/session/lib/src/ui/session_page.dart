@@ -76,7 +76,7 @@ class SessionPage extends ConsumerWidget {
                 ),
               ),
               const Gap(8),
-              // TODO: データをつなぎこんだら日時を下記の形式にフォーマットする
+              // TODO: データをつなぎこんだら日時を下記の形式にフォーマットする (#231)
               Tooltip(
                 message: l.registerToCalendar,
                 child: ListTile(
@@ -86,7 +86,7 @@ class SessionPage extends ConsumerWidget {
                   ),
                   leading: const Icon(Icons.event_outlined),
                   onTap: () {
-                    // TODO: 該当の日時でカレンダーを開く
+                    // TODO: 該当の日時でカレンダーを開く (#24)
                   },
                 ),
               ),
