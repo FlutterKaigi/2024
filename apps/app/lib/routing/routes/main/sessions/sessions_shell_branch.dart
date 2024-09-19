@@ -24,7 +24,11 @@ class SessionsPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const SessionsPage();
+    return SessionsPage(
+      onTapSession: (id) => unawaited(
+        SessionPageRoute(sessionId: id).push(context),
+      ),
+    );
   }
 }
 
@@ -41,8 +45,6 @@ class SessionPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return SessionPage(
-      sessionId: sessionId,
-    );
+    return const SessionPage();
   }
 }

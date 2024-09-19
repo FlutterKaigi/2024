@@ -9,6 +9,7 @@ environment:
   flutter: ^3.23.0-13.0.pre
 
 dependencies:
+  app_cores_core:
   app_cores_designsystem:
   app_cores_settings:
     path: ../../cores/settings

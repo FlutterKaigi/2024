@@ -98,17 +98,35 @@ abstract class L10nSession {
     Locale('en')
   ];
 
-  /// No description provided for @sessionsPageTitle.
+  /// No description provided for @openSpeakersLink.
   ///
   /// In ja, this message translates to:
-  /// **'Sessions'**
-  String get sessionsPageTitle;
+  /// **'登壇者情報を見る'**
+  String get openSpeakersLink;
+
+  /// No description provided for @registerToCalendar.
+  ///
+  /// In ja, this message translates to:
+  /// **'スケジュールをカレンダーに登録する'**
+  String get registerToCalendar;
 
   /// No description provided for @sessionPageTitle.
   ///
   /// In ja, this message translates to:
   /// **'Session'**
   String get sessionPageTitle;
+
+  /// No description provided for @sessionsPageTitle.
+  ///
+  /// In ja, this message translates to:
+  /// **'Sessions'**
+  String get sessionsPageTitle;
+
+  /// No description provided for @shareOnX.
+  ///
+  /// In ja, this message translates to:
+  /// **'Xで共有する'**
+  String get shareOnX;
 }
 
 class _L10nSessionDelegate extends LocalizationsDelegate<L10nSession> {

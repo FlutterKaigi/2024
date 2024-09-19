@@ -1,4 +1,7 @@
 {
+  "openSpeakersLink": "Open speaker's link",
+  "registerToCalendar": "Register schedule to calendar",
+  "sessionPageTitle": "Session",
   "sessionsPageTitle": "Sessions",
-  "sessionPageTitle": "Session"
+  "shareOnX": "Share on X"
 }
