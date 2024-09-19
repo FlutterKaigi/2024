@@ -1,18 +1,28 @@
 import 'dart:async';
 
 import 'package:app_cores_core/util.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:packages_app_features_session/l10n.dart';
+import 'package:packages_app_features_session/src/providers/bookmarked_sessions.dart';
 import 'package:packages_app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:packages_app_features_session/src/ui/session_room_chip.dart';
 
-class SessionPage extends StatelessWidget {
-  const SessionPage({super.key});
+class SessionPage extends ConsumerWidget {
+  const SessionPage({
+    required this.sessionId,
+    super.key,
+  });
+
+  final String sessionId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nSession.of(context);
+    final isBookmarked = ref.watch(isBookmarkedProvider(sessionId: sessionId));
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -84,6 +94,28 @@ class SessionPage extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (isBookmarked) {
+            ref.read(bookmarkedSessionsProvider.notifier).remove(
+                  sessionId: sessionId,
+                );
+          } else {
+            ref.read(bookmarkedSessionsProvider.notifier).save(
+                  sessionId: sessionId,
+                );
+          }
+        },
+        child: isBookmarked
+            ? const Icon(Icons.bookmark)
+            : const Icon(Icons.bookmark_outline),
+      ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('sessionId', sessionId));
   }
 }
