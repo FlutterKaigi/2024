@@ -3,10 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:ticket_web/core/components/app_header.dart';
-import 'package:ticket_web/core/components/responsive_content_container.dart';
-import 'package:ticket_web/core/components/site_footer.dart';
-import 'package:ticket_web/feature/auth/data/current_user.dart';
+import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
 
 part 'home_page.g.dart';
@@ -26,36 +23,21 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: const AppHeader(),
-      body: ResponsiveContentContainer(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: TitleAndLogo(),
-              ),
-              TextButton.icon(
-                label: const Text('Sign in with Google'),
-                icon: const Icon(Icons.login),
-                onPressed: () async =>
-                    ref.read(authRepositoryProvider).signInWithGoogle(
-                          redirectTo: kIsWeb
-                              ? null
-                              : 'jp.flutterkaigi.ticket://login-callback',
-                        ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                ref.watch(currentUserProvider).toString(),
-              ),
-              const Spacer(),
-              const SiteFooter(),
-            ],
+    return SiteScaffold.widget(
+      body: Column(
+        children: [
+          const TitleAndLogo(),
+          TextButton.icon(
+            label: const Text('Sign in with Google'),
+            icon: const Icon(Icons.login),
+            onPressed: () async =>
+                ref.read(authRepositoryProvider).signInWithGoogle(
+                      redirectTo: kIsWeb
+                          ? null
+                          : 'jp.flutterkaigi.ticket://login-callback',
+                    ),
           ),
-        ),
+        ],
       ),
     );
   }
