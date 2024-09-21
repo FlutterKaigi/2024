@@ -3,8 +3,8 @@ import 'package:ticket_web/core/extension/is_mobile.dart';
 import 'package:ticket_web/gen/fonts.gen.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
-class AppHeader extends StatelessWidget implements PreferredSizeWidget {
-  const AppHeader({super.key});
+class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
+  const SiteHeader({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -15,6 +15,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: Colors.transparent,
+      forceMaterialTransparency: true,
       centerTitle: false,
       title: AnimatedSwitcher(
         layoutBuilder: (currentChild, previousChildren) => Stack(
