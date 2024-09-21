@@ -50,16 +50,13 @@ class _HeaderLogo extends StatelessWidget {
               width: 8,
             ),
             Text(
-              i18n.flutterKaigi,
+              '${i18n.flutterKaigi} ${i18n.year} ${i18n.ticketSite}',
               style: theme.textTheme.titleLarge?.copyWith(
                 fontFamily: FontFamily.poppins,
+                fontFamilyFallback: [FontFamily.notoSansJP],
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
               ),
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-            Text(
-              i18n.year,
             ),
           ],
         ),
