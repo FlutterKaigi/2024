@@ -94,14 +94,14 @@ SELECT
               'sns_accounts',
               (
                 SELECT
-                  json_agg(json_build_object('type', pss.type, 'value', pss.value)) AS JSON_AGG
+                  json_agg(pss.*)
                 FROM
                   profile_social_networking_services pss
                 WHERE
                   pss.id = p.id
               )
             )
-          ) AS JSON_AGG
+          )
         FROM
           session_speakers ss
           JOIN profiles p ON ss.speaker_id = p.id
