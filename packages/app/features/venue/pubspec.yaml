@@ -5,8 +5,8 @@ version: 0.0.1
 homepage: "https://github.com/FlutterKaigi/2024/tree/main/packages/app/features/venue"
 
 environment:
-  sdk: ^3.5.0-293.0.dev
-  flutter: ^3.23.0-13.0.pre
+  sdk: ^3.6.0-216.1.beta
+  flutter: ^3.26.0-0.1.pre
 
 dependencies:
   flutter:
