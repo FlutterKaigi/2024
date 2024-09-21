@@ -1,5 +1,5 @@
 {
-  "flutter": "3.23.0-13.0.pre@master",
+  "flutter": "3.26.0-0.1.pre",
   "runPubGetOnSdkChanges": false,
   "updateVscodeSettings": false,
   "updateGitIgnore": false
