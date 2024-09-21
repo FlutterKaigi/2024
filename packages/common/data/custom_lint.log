@@ -1,0 +1,27 @@
+The request analysis.setContextRoots failed with the following error:
+RequestErrorCode.PLUGIN_ERROR
+Exception: Failed to run "pub get" in the client project:
+Resolving dependencies...
+
+The current Dart SDK version is 3.4.3.
+
+Because custom_lint_client requires SDK version >=3.6.0-216.1.beta <4.0.0, version solving failed.
+
+at:
+#0      CustomLintWorkspace.runPubGet (package:custom_lint/src/workspace.dart:781:7)
+<asynchronous suspension>
+#1      CustomLintWorkspace.resolvePluginHost (package:custom_lint/src/workspace.dart:765:5)
+<asynchronous suspension>
+#2      SocketCustomLintServerToClientChannel._startProcess (package:custom_lint/src/v2/server_to_client_channel.dart:151:7)
+<asynchronous suspension>
+#3      SocketCustomLintServerToClientChannel.init (package:custom_lint/src/v2/server_to_client_channel.dart:111:21)
+<asynchronous suspension>
+#4      CustomLintServer._maybeSpawnCustomLintPlugin (package:custom_lint/src/v2/custom_lint_analyzer_plugin.dart:394:5)
+<asynchronous suspension>
+#5      CustomLintServer._handleAnalysisSetContextRoots.<anonymous closure> (package:custom_lint/src/v2/custom_lint_analyzer_plugin.dart:341:9)
+<asynchronous suspension>
+#6      PendingOperation.run (package:custom_lint/src/async_operation.dart:22:14)
+<asynchronous suspension>
+#7      CustomLintServer._handleRequest (package:custom_lint/src/v2/custom_lint_analyzer_plugin.dart:173:22)
+<asynchronous suspension>
+
