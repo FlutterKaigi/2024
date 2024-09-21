@@ -1,6 +1,10 @@
+// MEMO(YumNumm): `String.fromEnvironment` の警告を無視する
+// ignore_for_file: do_not_use_environment
+
 import 'package:common_data/supabase_initializer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,6 +13,11 @@ Future<void> main() async {
       'assets/fonts/NotoSansJP/OFL.txt',
       'assets/fonts/Poppins/OFL.txt',
     ];
+
+    for (final licenseFile in licenseFiles) {
+      final license = await rootBundle.loadString(licenseFile);
+      yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+    }
   });
 
   final supabaseInitializer = SupabaseInitializer(
