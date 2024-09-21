@@ -15,17 +15,34 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: Colors.transparent,
-      title: isMobile
-          ? null
-          : const _HeaderLogo(
-              onTap: null,
-            ),
+      centerTitle: false,
+      title: AnimatedSwitcher(
+        layoutBuilder: (currentChild, previousChildren) => Stack(
+          alignment: Alignment.centerLeft,
+          children: [
+            ...previousChildren,
+            if (currentChild != null) currentChild,
+          ],
+        ),
+        duration: const Duration(milliseconds: 200),
+        child: isMobile
+            ? const KeyedSubtree(
+                key: ValueKey('header-logo'),
+                child: _HeaderLogo(),
+              )
+            : const KeyedSubtree(
+                key: ValueKey('header-title'),
+                child: _HeaderTitle(
+                  onTap: null,
+                ),
+              ),
+      ),
     );
   }
 }
 
-class _HeaderLogo extends StatelessWidget {
-  const _HeaderLogo({
+class _HeaderTitle extends StatelessWidget {
+  const _HeaderTitle({
     required this.onTap,
   });
 
@@ -41,11 +58,7 @@ class _HeaderLogo extends StatelessWidget {
         onTap: onTap,
         child: Row(
           children: [
-            Image.asset(
-              'assets/images/icon.webp',
-              height: 36,
-              width: 36,
-            ),
+            const _HeaderLogo(),
             const SizedBox(
               width: 8,
             ),
@@ -61,6 +74,19 @@ class _HeaderLogo extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _HeaderLogo extends StatelessWidget {
+  const _HeaderLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'assets/images/icon.webp',
+      height: 36,
+      width: 36,
     );
   }
 }

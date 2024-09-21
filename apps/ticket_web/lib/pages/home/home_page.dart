@@ -32,7 +32,10 @@ class HomePage extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TitleAndLogo(),
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: TitleAndLogo(),
+              ),
               TextButton.icon(
                 label: const Text('Sign in with Google'),
                 icon: const Icon(Icons.login),
