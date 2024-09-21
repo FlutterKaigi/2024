@@ -23,7 +23,12 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": ["--web-port", "8080", "--wasm", "--dart-define-from-file=defines/development.env"]
+      "args": [
+        "--web-port",
+        "8080",
+        "--wasm",
+        "--dart-define-from-file=defines/development.env"
+      ]
     },
     {
       "name": "ticket-web-production-debug",
@@ -31,7 +36,12 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": ["--web-port", "8080", "--wasm", "--dart-define-from-file=defines/production.env"]
+      "args": [
+        "--web-port",
+        "8080",
+        "--wasm",
+        "--dart-define-from-file=defines/production.env"
+      ]
     },
     {
       "name": "website-html-debug",
