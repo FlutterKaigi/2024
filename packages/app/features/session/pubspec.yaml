@@ -9,15 +9,28 @@ environment:
   flutter: ^3.23.0-13.0.pre
 
 dependencies:
+  app_cores_core:
+  app_cores_designsystem:
+  app_cores_settings:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_riverpod: ^2.5.1
+  freezed_annotation: ^2.4.4
+  gap: ^3.0.1
   intl: ^0.19.0
+  riverpod_annotation: ^2.3.5
 
 dev_dependencies:
+  build_runner: ^2.4.11
+  custom_lint: ^0.6.4
   flutter_test:
     sdk: flutter
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  riverpod_generator: ^2.4.2
+  riverpod_lint: ^2.3.12
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

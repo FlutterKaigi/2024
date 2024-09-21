@@ -1,0 +1,6 @@
+name = "flutterkaigi-ticket-2024-api"
+account_id = "cdd8f59359fe226645e7b541cdc53b57"
+compatibility_date = "2024-09-05"
+main = "./src/index.ts"
+
+placement = { mode = "smart" }
