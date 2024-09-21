@@ -53,7 +53,7 @@ class NewsComponent extends HookConsumerWidget {
     TextThemeExtension textTheme,
     ColorThemeExtension colorTheme,
   ) {
-    final backgroundColor = Colors.white.withOpacity(0.6);
+    final backgroundColor = Colors.white.withValues(alpha: 0.6);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

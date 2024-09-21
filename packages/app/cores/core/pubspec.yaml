@@ -26,12 +26,11 @@ dev_dependencies:
     sdk: flutter
   riverpod_generator: ^2.4.3
   riverpod_lint: ^2.3.13
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
-flutter:
+#flutter:
 # To add assets to your package, add an assets section, like this:
 # assets:
 #   - images/a_dot_burr.jpeg
