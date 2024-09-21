@@ -3,7 +3,6 @@ import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/theme/extension/theme_extension.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:vector_graphics/vector_graphics_compat.dart';
 
 class SiteFooter extends StatelessWidget {
@@ -27,57 +26,19 @@ class _FooterContents extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-    final i18n = Translations.of(context);
-
     return Container(
       padding: const EdgeInsets.only(top: 48, bottom: 40),
-      child: ResponsiveContentContainer(
+      child: const ResponsiveContentContainer(
         child: Column(
           children: [
-            const _PrevKaigi(),
-            const SizedBox(height: 28),
-            const _SnsLinks(),
-            const SizedBox(height: 24),
-            const _RequiredContents(),
-            const SizedBox(height: 40),
-            Text(
-              i18n.footer.copyRight,
-              style: textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            Text(
-              i18n.footer.googleCopyright.text0,
-              style: textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 24),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: i18n.footer.googleCopyright.text1,
-                    style: textTheme.bodyMedium,
-                  ),
-                  const WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
-                      child: FlutterLogo(
-                        size: 16,
-                      ),
-                    ),
-                  ),
-                  TextSpan(
-                    text: i18n.footer.googleCopyright.text2,
-                    style: textTheme.bodyMedium,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 40),
+            _PreviousFlutterKaigiLinks(),
+            SizedBox(height: 28),
+            _SnsLinks(),
+            SizedBox(height: 28),
+            _RequiredContents(),
+            SizedBox(height: 40),
+            _Copyright(),
+            SizedBox(height: 40),
           ],
         ),
       ),
@@ -85,23 +46,26 @@ class _FooterContents extends StatelessWidget {
   }
 }
 
-// button of 2021 / 2022 / 2023
-class _PrevKaigi extends StatelessWidget {
-  const _PrevKaigi();
+// button of 2021 / 2022 / 2023 / 2024
+class _PreviousFlutterKaigiLinks extends StatelessWidget {
+  const _PreviousFlutterKaigiLinks();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _yearButton('2021', 'https://flutterkaigi.jp/2021/', context),
-        _dividerSlash(),
-        _yearButton('2022', 'https://flutterkaigi.jp/2022/', context),
-        _dividerSlash(),
-        _yearButton('2023', 'https://flutterkaigi.jp/2023/', context),
-        _dividerSlash(),
-        _yearButton('2024', 'https://flutterkaigi.jp/2024/', context),
-      ],
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _yearButton('2021', 'https://flutterkaigi.jp/2021/', context),
+          _dividerSlash(),
+          _yearButton('2022', 'https://flutterkaigi.jp/2022/', context),
+          _dividerSlash(),
+          _yearButton('2023', 'https://flutterkaigi.jp/2023/', context),
+          _dividerSlash(),
+          _yearButton('2024', 'https://flutterkaigi.jp/2024/', context),
+        ],
+      ),
     );
   }
 
@@ -154,52 +118,37 @@ class _RequiredContents extends StatelessWidget {
       spacing: 40,
       runSpacing: 8,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // code of conduct
-            _linkButton(
-              i18n.footer.codeOfConduct,
-              'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html',
-              context,
-            ),
-            const SizedBox(width: 40),
-            // privacy policy
-            _linkButton(
-              i18n.footer.privacyPolicy,
-              'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html',
-              context,
-            ),
-          ],
+        // code of conduct
+        _linkButton(
+          i18n.footer.codeOfConduct,
+          'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html',
+          context,
         ),
-        // contact
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _linkButton(
-              i18n.footer.contact,
-              'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform',
-              context,
-            ),
-            const SizedBox(width: 40),
-            // license
-            TextButton(
-              onPressed: () {
-                showLicensePage(
-                  context: context,
-                  applicationName: 'FlutterKaigi 2024 Ticket System',
-                  applicationIcon: Image.asset('assets/images/icon.webp'),
-                  applicationLegalese: '© 2024 FlutterKaigi',
-                );
-              },
-              child: Text(
-                i18n.footer.license,
-                style: textTheme.bodyMedium,
-              ),
-            ),
-          ],
+        // privacy policy
+        _linkButton(
+          i18n.footer.privacyPolicy,
+          'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html',
+          context,
+        ),
+        _linkButton(
+          i18n.footer.contact,
+          'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform',
+          context,
+        ),
+        // license
+        TextButton(
+          onPressed: () {
+            showLicensePage(
+              context: context,
+              applicationName: 'FlutterKaigi 2024 Ticket System',
+              applicationIcon: Image.asset('assets/images/icon.webp'),
+              applicationLegalese: '© 2024 FlutterKaigi',
+            );
+          },
+          child: Text(
+            i18n.footer.license,
+            style: textTheme.bodyMedium,
+          ),
         ),
       ],
     );
@@ -211,11 +160,9 @@ class _RequiredContents extends StatelessWidget {
 
     return Link(
       uri: Uri.parse(url),
-      builder: (context, _) {
+      builder: (context, action) {
         return TextButton(
-          onPressed: () async {
-            await launchUrl(Uri.parse(url));
-          },
+          onPressed: action,
           child: Text(
             text,
             style: textTheme.bodyMedium,
@@ -289,6 +236,57 @@ class _SnsLinks extends StatelessWidget {
           icon: icon,
         );
       },
+    );
+  }
+}
+
+class _Copyright extends StatelessWidget {
+  const _Copyright();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final i18n = Translations.of(context);
+
+    return DefaultTextStyle(
+      style: textTheme.bodyMedium ?? const TextStyle(),
+      child: Column(
+        children: [
+          Text(
+            i18n.footer.copyRight,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+          Text(
+            i18n.footer.googleCopyright.text0,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 24),
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: i18n.footer.googleCopyright.text1,
+                ),
+                const WidgetSpan(
+                  alignment: PlaceholderAlignment.middle,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    child: FlutterLogo(
+                      size: 16,
+                    ),
+                  ),
+                ),
+                TextSpan(
+                  text: i18n.footer.googleCopyright.text2,
+                ),
+              ],
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
