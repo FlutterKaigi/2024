@@ -16,6 +16,11 @@ jobs:
       - name: Install supabase cli
         uses: supabase/setup-cli@3b9dbf86026385dcfd2b11263e0924d0bb4a9028 # v1.4.0
 
+      - name: Set fake environment variables
+        working-directory: packages/common/data
+        run: |
+          cp .env.example .env
+
       - name: start supabase database
         working-directory: packages/common/data
         run: supabase db start
