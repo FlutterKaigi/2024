@@ -63,3 +63,68 @@ SELECT
         ss.speaker_id = id
     )
   );
+
+CREATE VIEW public.session_venues_with_sessions AS
+SELECT
+  v.id,
+  v.name,
+  json_agg(
+    json_build_object(
+      'id',
+      s.id,
+      'title',
+      s.title,
+      'description',
+      s.description,
+      'starts_at',
+      s.starts_at,
+      'ends_at',
+      s.ends_at,
+      'speakers',
+      (
+        SELECT
+          json_agg(
+            json_build_object(
+              'id',
+              p.id,
+              'name',
+              p.name,
+              'avatar_url',
+              p.avatar_url,
+              'sns_accounts',
+              (
+                SELECT
+                  json_agg(pss.*)
+                FROM
+                  profile_social_networking_services pss
+                WHERE
+                  pss.id = p.id
+              )
+            )
+          )
+        FROM
+          session_speakers ss
+          JOIN profiles p ON ss.speaker_id = p.id
+        WHERE
+          ss.session_id = s.id
+      ),
+      'sponsor',
+      (
+        SELECT
+          json_agg(sp.*) AS JSON_AGG
+        FROM
+          sponsors sp
+        WHERE
+          sp.id = s.sponsor_id
+      )
+    )
+    ORDER BY
+      s.starts_at
+  ) AS sessions
+FROM
+  session_venues v
+  JOIN sessions s ON s.venue_id = v.id
+GROUP BY
+  v.id
+ORDER BY
+  v.id;
