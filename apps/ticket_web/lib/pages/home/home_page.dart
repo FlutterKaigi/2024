@@ -1,4 +1,5 @@
 import 'package:common_data/auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -33,7 +34,7 @@ class HomePage extends ConsumerWidget {
                   ref.read(authRepositoryProvider).signInWithGoogle(
                         redirectTo: kIsWeb
                             ? null
-                            : "jp.flutterkaigi.ticket://login-callback",
+                            : 'jp.flutterkaigi.ticket://login-callback',
                       ),
             ),
             const SizedBox(height: 16),
