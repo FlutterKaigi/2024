@@ -1,6 +1,9 @@
 BEGIN;
+
 DELETE FROM public.sessions;
+
 DELETE FROM public.session_speakers;
+
 DELETE FROM public.session_venues;
 
 -- サンプルの会場を追加
