@@ -27,9 +27,6 @@ Future<void> main() async {
     anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
   );
 
-  print('SUPABASE_URL: ${const String.fromEnvironment('SUPABASE_URL')}');
-  print('SUPABASE_ANON_KEY: ${const String.fromEnvironment('SUPABASE_ANON_KEY')}');
-
   await supabaseInitializer.initialize();
 
   runApp(
