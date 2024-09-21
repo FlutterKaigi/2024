@@ -35,7 +35,7 @@ CREATE POLICY "Everyone can read session_speakers" ON session_speakers FOR
 SELECT
   USING (TRUE);
 
--- session_speakersに含まれるUserは公開
+-- session_speakersに含まれるProfileは公開
 CREATE POLICY "Everyone can read profiles in session_speakers" ON profiles FOR
 SELECT
   USING (
@@ -46,6 +46,20 @@ SELECT
         session_speakers ss
       WHERE
         ss.speaker_id = profiles.id
+    )
+  );
+
+-- session_speakersに含まれるSNSアカウントは公開
+CREATE POLICY "Everyone can read profile_social_networking_services in session_speakers" ON public.profile_social_networking_services FOR
+SELECT
+  USING (
+    EXISTS (
+      SELECT
+        1
+      FROM
+        session_speakers ss
+      WHERE
+        ss.speaker_id = id
     )
   );
 
@@ -69,7 +83,23 @@ SELECT
       'speakers',
       (
         SELECT
-          json_agg(p)
+          json_agg(
+            json_build_object(
+              'id', p.id,
+              'name', p.name,
+              'avatar_url', p.avatar_url,
+              'sns_accounts', (
+                SELECT json_agg(
+                  json_build_object(
+                    'type', pss.type,
+                    'value', pss.value
+                  )
+                )
+                FROM profile_social_networking_services pss
+                WHERE pss.id = p.id
+              )
+            )
+          )
         FROM
           session_speakers ss
           JOIN profiles p ON ss.speaker_id = p.id
