@@ -7,6 +7,21 @@
     "titleAndLogo": {
       "date": "November\n21(Thu) - 22(Fri)",
       "location": "Ariake Central Tower & Conference"
+    },
+    "tickets": {
+      "buyTicket": "Buy Ticket",
+      "normal": {
+        "name": "Normal Ticket",
+        "price": "¥$price",
+        "description": "General admission ticket"
+      },
+      "invitation": {
+        "name": "Invitation Ticket",
+        "description": "For those who have an invitation code or coupon code",
+        "text_box_title": "Invitation Code or Coupon Code",
+        "text_box_description": "Enter the code",
+        "apply_code_button": "Apply Code"
+      }
     }
   },
   "footer": {
