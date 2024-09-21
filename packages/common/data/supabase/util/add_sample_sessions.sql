@@ -18,20 +18,29 @@ DECLARE
   venue_id UUID;
   speaker_id UUID;
   session_id UUID;
+  sponsor_id INT;
   i INT;
 BEGIN
   FOR i IN 1..500 LOOP
     -- ランダムな会場を選択
     SELECT id INTO venue_id FROM public.session_venues ORDER BY RANDOM() LIMIT 1;
 
+    -- 50%の確率でsponsor_idを選択
+    IF RANDOM() < 0.5 THEN
+      SELECT id INTO sponsor_id FROM public.sponsors ORDER BY RANDOM() LIMIT 1;
+    ELSE
+      sponsor_id := NULL;
+    END IF;
+
     -- セッションを挿入
-    INSERT INTO public.sessions (title, description, starts_at, ends_at, venue_id)
+    INSERT INTO public.sessions (title, description, starts_at, ends_at, venue_id, sponsor_id)
     VALUES (
       'サンプルセッション ' || i,
       'これはサンプルセッション ' || i || ' の説明です。',
       NOW() + (RANDOM() * INTERVAL '7 days'),
       NOW() + (RANDOM() * INTERVAL '7 days') + INTERVAL '1 hour',
-      venue_id
+      venue_id,
+      sponsor_id
     ) RETURNING id INTO session_id;
 
     -- ランダムな登壇者を1-3人選択

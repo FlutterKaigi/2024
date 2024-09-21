@@ -14,6 +14,7 @@ CREATE TABLE public.sessions (
   starts_at TIMESTAMP WITH TIME ZONE NOT NULL,
   ends_at TIMESTAMP WITH TIME ZONE NOT NULL,
   venue_id UUID NOT NULL REFERENCES session_venues (id) ON DELETE restrict,
+  sponsor_id smallint REFERENCES sponsors (id),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
@@ -62,58 +63,3 @@ SELECT
         ss.speaker_id = id
     )
   );
-
-CREATE OR REPLACE VIEW public.session_venues_with_sessions
-WITH
-  (security_invoker = TRUE) AS
-SELECT
-  v.*,
-  json_agg(
-    json_build_object(
-      'id',
-      s.id,
-      'title',
-      s.title,
-      'description',
-      s.description,
-      'starts_at',
-      s.starts_at,
-      'ends_at',
-      s.ends_at,
-      'speakers',
-      (
-        SELECT
-          json_agg(
-            json_build_object(
-              'id', p.id,
-              'name', p.name,
-              'avatar_url', p.avatar_url,
-              'sns_accounts', (
-                SELECT json_agg(
-                  json_build_object(
-                    'type', pss.type,
-                    'value', pss.value
-                  )
-                )
-                FROM profile_social_networking_services pss
-                WHERE pss.id = p.id
-              )
-            )
-          )
-        FROM
-          session_speakers ss
-          JOIN profiles p ON ss.speaker_id = p.id
-        WHERE
-          ss.session_id = s.id
-      )
-    )
-    ORDER BY
-      s.starts_at ASC
-  ) AS sessions
-FROM
-  public.session_venues v
-  JOIN sessions s ON s.venue_id = v.id
-GROUP BY
-  v.id
-ORDER BY
-  v.id;
