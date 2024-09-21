@@ -9,6 +9,8 @@ import { getUserWithProfile } from "./util/user";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "./util/supabaseSchema";
 
+import admin from "./routes/admin/admin";
+
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.use(
@@ -38,5 +40,7 @@ app.get("/auth", async (c) => {
 
   return c.json(result);
 });
+
+app.route("/admin", admin);
 
 export default app;
