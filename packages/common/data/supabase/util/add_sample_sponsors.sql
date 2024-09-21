@@ -4,7 +4,8 @@ BEGIN;
 DELETE FROM public.sponsors;
 
 -- サンプルスポンサーを挿入
-INSERT INTO public.sponsors (name, logo_name, description, url, type)
+INSERT INTO
+  public.sponsors (name, logo_name, description, url, type)
 VALUES
   ('プラチナ株式会社', 'platinum_company.png', 'プラチナスポンサーの説明文です。', 'https://platinum-company.example.com', 'platinum'),
   ('ゴールド商事', 'gold_trading.png', 'ゴールドスポンサーの説明文です。', 'https://gold-trading.example.com', 'gold'),
@@ -13,6 +14,9 @@ VALUES
   ('プラチナグループ', 'platinum_group.png', '2つ目のプラチナスポンサーの説明文です。', 'https://platinum-group.example.com', 'platinum');
 
 -- 挿入されたデータを確認
-SELECT * FROM public.sponsors;
+SELECT
+  *
+FROM
+  public.sponsors;
 
 COMMIT;
