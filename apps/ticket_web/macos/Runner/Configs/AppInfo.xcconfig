@@ -8,7 +8,7 @@
 PRODUCT_NAME = ticket_web
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = jp.flutterkaigi.ticketweb.ticketWeb
+PRODUCT_BUNDLE_IDENTIFIER = jp.flutterkaigi.ticket
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024 jp.flutterkaigi.ticket_web. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 jp.flutterkaigi. All rights reserved.
