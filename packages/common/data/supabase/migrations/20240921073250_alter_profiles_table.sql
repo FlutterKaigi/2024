@@ -17,11 +17,9 @@ begin
 
   -- もし name がNullではない場合は、profiles テーブルに追加する
   IF new.raw_user_meta_data ->> 'name' IS NOT NULL THEN
-    insert into public.profiles (id, name)
-    values (
-      new.id,
-      new.raw_user_meta_data ->> 'name'
-    );
+    UPDATE public.profiles
+    SET name = new.raw_user_meta_data ->> 'name'
+    WHERE id = new.id;
   END IF;
   return new;
 end;
