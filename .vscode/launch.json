@@ -7,9 +7,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/development.env"
-      ]
+      "args": ["--dart-define-from-file=defines/development.env"]
     },
     {
       "name": "app-production-debug",
@@ -17,9 +15,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/production.env"
-      ]
+      "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
       "name": "ticket-web-development-debug-wasm",
