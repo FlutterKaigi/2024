@@ -25,6 +25,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/icon.webp
   AssetGenImage get icon => const AssetGenImage('assets/images/icon.webp');
 
+  /// Directory path: assets/images/sns
+  $AssetsImagesSnsGen get sns => const $AssetsImagesSnsGen();
+
   /// List of all assets
   List<AssetGenImage> get values => [icon];
 }
@@ -47,6 +50,25 @@ class $AssetsFontsPoppinsGen {
 
   /// List of all assets
   List<String> get values => [ofl];
+}
+
+class $AssetsImagesSnsGen {
+  const $AssetsImagesSnsGen();
+
+  /// File path: assets/images/sns/discord.svg
+  String get discord => 'assets/images/sns/discord.svg';
+
+  /// File path: assets/images/sns/github.svg
+  String get github => 'assets/images/sns/github.svg';
+
+  /// File path: assets/images/sns/medium.svg
+  String get medium => 'assets/images/sns/medium.svg';
+
+  /// File path: assets/images/sns/x.svg
+  String get x => 'assets/images/sns/x.svg';
+
+  /// List of all assets
+  List<String> get values => [discord, github, medium, x];
 }
 
 class Assets {

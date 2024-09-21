@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/components/app_header.dart';
 import 'package:ticket_web/core/components/responsive_content_container.dart';
+import 'package:ticket_web/core/components/site_footer.dart';
 import 'package:ticket_web/feature/auth/data/current_user.dart';
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
 
@@ -50,6 +51,8 @@ class HomePage extends ConsumerWidget {
               Text(
                 ref.watch(currentUserProvider).toString(),
               ),
+              const Spacer(),
+              const SiteFooter(),
             ],
           ),
         ),
