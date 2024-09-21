@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards.dart';
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
+import 'package:ticket_web/pages/home/components/transit_to_home_page.dart';
 
 part 'home_page.g.dart';
 
@@ -29,6 +30,7 @@ class HomePage extends ConsumerWidget {
             padding: EdgeInsets.all(16),
             child: TitleAndLogo(),
           ),
+          TransitToHomePage(),
           SizedBox(height: 48),
           TicketCards(),
         ],

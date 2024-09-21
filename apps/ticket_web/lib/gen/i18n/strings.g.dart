@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 46 (23 per locale)
+/// Strings: 48 (24 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -149,6 +149,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get hello => 'こんにちは、世界';
 	String get flutterKaigi => 'FlutterKaigi';
 	String get year => '2024';
+	String get officialSite => '公式サイト';
 	String get ticketSite => 'チケットサイト';
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
@@ -270,6 +271,7 @@ class _StringsEn extends Translations {
 	@override String get hello => 'Hello, World!';
 	@override String get flutterKaigi => 'FlutterKaigi';
 	@override String get year => '2024';
+	@override String get officialSite => 'Official Site';
 	@override String get ticketSite => 'Ticket Site';
 	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
 	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
@@ -371,6 +373,7 @@ extension on Translations {
 			case 'hello': return 'こんにちは、世界';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
+			case 'officialSite': return '公式サイト';
 			case 'ticketSite': return 'チケットサイト';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
@@ -402,6 +405,7 @@ extension on _StringsEn {
 			case 'hello': return 'Hello, World!';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
+			case 'officialSite': return 'Official Site';
 			case 'ticketSite': return 'Ticket Site';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
