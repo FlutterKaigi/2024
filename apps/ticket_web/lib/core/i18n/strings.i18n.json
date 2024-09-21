@@ -2,5 +2,11 @@
   "hello": "こんにちは、世界",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
-  "ticket_site": "チケットサイト"
+  "ticket_site": "チケットサイト",
+  "homePage": {
+    "titleAndLogo": {
+      "date": "November\n21(Thu) - 22(Fri)",
+      "location": "有明セントラルタワーホール&カンファレンス"
+    }
+  }
 }
