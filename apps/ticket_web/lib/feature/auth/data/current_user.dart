@@ -4,5 +4,12 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'current_user.g.dart';
 
 @Riverpod(keepAlive: true)
-User? currentUser(CurrentUserRef ref) {
+Stream<User?> currentUser(CurrentUserRef ref) async* {
+  final authRepository = ref.watch(authRepositoryProvider);
+
+  authRepository.onAuthStateChange.listen(
+    (_) => ref.invalidateSelf(),
+  );
+
+  yield authRepository.currentUser;
 }
