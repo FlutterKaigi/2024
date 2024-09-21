@@ -1,7 +1,9 @@
 import 'package:common_data/auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticket_web/core/components/app_header.dart';
 import 'package:ticket_web/feature/auth/data/current_user.dart';
 
 part 'home_page.g.dart';
@@ -22,6 +24,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: const AppHeader(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +36,7 @@ class HomePage extends ConsumerWidget {
                   ref.read(authRepositoryProvider).signInWithGoogle(
                         redirectTo: kIsWeb
                             ? null
-                            : "jp.flutterkaigi.ticket://login-callback",
+                            : 'jp.flutterkaigi.ticket://login-callback',
                       ),
             ),
             const SizedBox(height: 16),
