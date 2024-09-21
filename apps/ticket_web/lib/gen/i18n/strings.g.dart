@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 6 (3 per locale)
+/// Strings: 8 (4 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -149,6 +149,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get hello => 'こんにちは、世界';
 	String get flutterKaigi => 'FlutterKaigi';
 	String get year => '2024';
+	String get ticketSite => 'チケットサイト';
 }
 
 // Path: <root>
@@ -180,6 +181,7 @@ class _StringsEn extends Translations {
 	@override String get hello => 'Hello, World!';
 	@override String get flutterKaigi => 'FlutterKaigi';
 	@override String get year => '2024';
+	@override String get ticketSite => 'Ticket Site';
 }
 
 /// Flat map(s) containing all translations.
@@ -191,6 +193,7 @@ extension on Translations {
 			case 'hello': return 'こんにちは、世界';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
+			case 'ticketSite': return 'チケットサイト';
 			default: return null;
 		}
 	}
@@ -202,6 +205,7 @@ extension on _StringsEn {
 			case 'hello': return 'Hello, World!';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
+			case 'ticketSite': return 'Ticket Site';
 			default: return null;
 		}
 	}

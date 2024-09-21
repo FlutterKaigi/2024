@@ -1,5 +1,6 @@
 {
   "hello": "こんにちは、世界",
-  "flutterKaigi": "FlutterKaigi",
-  "year": "2024"
+  "flutter_kaigi": "FlutterKaigi",
+  "year": "2024",
+  "ticket_site": "チケットサイト"
 }
