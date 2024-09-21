@@ -1,20 +1,37 @@
+// MEMO(YumNumm): `String.fromEnvironment` の警告を無視する
+// ignore_for_file: do_not_use_environment
+
+import 'package:common_data/supabase_initializer.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticket_web/app.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LicenseRegistry.addLicense(() async* {
+    final licenseFiles = [
+      'assets/fonts/NotoSansJP/OFL.txt',
+      'assets/fonts/Poppins/OFL.txt',
+    ];
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+    for (final licenseFile in licenseFiles) {
+      final license = await rootBundle.loadString(licenseFile);
+      yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+    }
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+  final supabaseInitializer = SupabaseInitializer(
+    url: const String.fromEnvironment('SUPABASE_URL'),
+    anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
+  );
+
+  await supabaseInitializer.initialize();
+
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }

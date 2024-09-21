@@ -9,3 +9,5 @@
 .pub-cache/
 .pub/
 /build/
+
+/.env

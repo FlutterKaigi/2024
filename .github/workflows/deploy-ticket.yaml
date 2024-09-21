@@ -37,7 +37,8 @@ jobs:
         run: |
           flutter build web \
             --release \
-            --wasm
+            --wasm \
+            --dart-define-from-file=defines/production.env
 
       # https://github.com/cloudflare/pages-action
       - name: Publish to Cloudflare Pages
