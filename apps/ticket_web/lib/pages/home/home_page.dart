@@ -30,7 +30,7 @@ class HomePage extends ConsumerWidget {
               label: const Text('Sign in with Google'),
               icon: const Icon(Icons.login),
               onPressed: () async {
-                await ref.read(authRepositoryProvider).signInWithGoogle();
+              onPressed: ref.read(authRepositoryProvider).signInWithGoogle,
               },
             ),
             const SizedBox(height: 16),
