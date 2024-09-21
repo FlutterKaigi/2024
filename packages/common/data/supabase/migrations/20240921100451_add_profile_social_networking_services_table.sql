@@ -14,6 +14,9 @@ CREATE POLICY "Users can CRUD their own profile SNS" ON public.profile_social_ne
   ) = id
 );
 
+CREATE POLICY "Admin can read all profile SNS" ON public.profile_social_networking_services FOR
+SELECT
+  TO authenticated USING (role () = 'admin');
 
 CREATE FUNCTION public.validate_profile_social_networking_service_update () returns trigger language plpgsql AS $$
 BEGIN
@@ -29,24 +32,14 @@ OR
 UPDATE ON profile_social_networking_services FOR each ROW WHEN (row_security_active('profile_social_networking_services'))
 EXECUTE function validate_profile_social_networking_service_update ();
 
-
 CREATE VIEW public.profiles_with_sns
 WITH
   (security_invoker = TRUE) AS
 SELECT
   p.*,
-  json_agg(
-    json_build_object(
-      'id',
-      pss.id,
-      'type',
-      pss.type,
-      'value', pss.value
-    )
-  ) as sns_accounts
+  json_agg(json_build_object('id', pss.id, 'type', pss.type, 'value', pss.value)) AS sns_accounts
 FROM
   profiles p
-LEFT JOIN
-  profile_social_networking_services pss ON p.id = pss.id
+  LEFT JOIN profile_social_networking_services pss ON p.id = pss.id
 GROUP BY
   p.id;
