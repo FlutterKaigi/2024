@@ -1,3 +1,6 @@
 {
-  "hello": "Hello, World!"
+  "hello": "Hello, World!",
+  "flutter_kaigi": "FlutterKaigi",
+  "year": "2024",
+  "ticket_site": "Ticket Site"
 }
