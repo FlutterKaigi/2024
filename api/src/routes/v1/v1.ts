@@ -11,6 +11,7 @@ import {
   promotionCodeMetadataSchema
 } from "../../features/coupon/coupon";
 import { authorizationSchema } from "../../util/authorizationSchema";
+import { limiter } from "../..";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
 
@@ -79,6 +80,32 @@ v1.post(
       checkoutSessionId: checkoutSession.id
     });
     return c.json({ ticket });
+  }
+);
+
+v1.get(
+  "/promotion/validate",
+  vValidator(
+    "query",
+    v.object({
+      code: v.string()
+    })
+  ),
+  // プロモーションコードの検証はRate Limitの対象とする
+  async (c, next) => limiter(c.env.RATE_LIMITER)(c, next),
+  async (c) => {
+    const { code } = c.req.valid("query");
+    const stripe = new Stripe(c.env.STRIPE_KEY);
+    const promotionCode = await stripe.promotionCodes.list({
+      code,
+      limit: 1
+    });
+    if (promotionCode.data.length === 0) {
+      return c.json({ error: "Promotion code not found" }, 404);
+    }
+    const metadata = promotionCode.data[0].metadata;
+    const validatedMetadata = v.parse(promotionCodeMetadataSchema, metadata);
+    return c.json({ metadata: validatedMetadata });
   }
 );
 
