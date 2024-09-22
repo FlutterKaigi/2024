@@ -185,6 +185,9 @@ function getTicketType(
     case "sponsorSession": {
       return "sponsor_speaker";
     }
+    case "general": {
+      return "general";
+    }
     default: {
       const _exhaustiveCheck: never = promotionCodeMetadata;
       return _exhaustiveCheck;

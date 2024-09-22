@@ -2,6 +2,10 @@ import Stripe from "stripe";
 import * as v from "valibot";
 
 export const promotionCodeMetadataSchema = v.variant("type", [
+  // 一般来場者用
+  v.object({
+    type: v.literal("general")
+  }),
   // 一般セッション登壇者
   v.object({
     type: v.literal("session"),
@@ -65,6 +69,9 @@ function getPromotionCodePrefix(
     case "sponsorSession": {
       return "SS";
     }
+    case "general": {
+      return "GN";
+      }
     default: {
       const _exhausted: never = metadata;
       return _exhausted;
