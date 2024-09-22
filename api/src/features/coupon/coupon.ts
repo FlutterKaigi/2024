@@ -20,6 +20,8 @@ export const promotionCodeMetadataSchema = v.variant("type", [
   })
 ]);
 
+// 100%割引のプロモーションコードを発行する関数
+// [maxRedemptions]回使用できる
 export async function createPromotionCode({
   stripe,
   metadata,
