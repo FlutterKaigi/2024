@@ -6,8 +6,15 @@ environment:
   sdk: ^3.6.0-216.1.beta
 
 dependencies:
-  # path: ^1.8.0
+  common_data:
+    path: ../data
+  dio: ^5.7.0
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  retrofit: ^4.4.1
 
 dev_dependencies:
-  lints: ^4.0.0
-  test: ^1.24.0
+  build_runner: ^2.4.12
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  retrofit_generator: ^9.1.2
