@@ -96,6 +96,9 @@ async function getSessionAndPromotion(
   const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ["total_details.breakdown"]
   });
+  if (checkoutSession.status !== "complete") {
+    throw new Error("Checkout session is not completed");
+  }
   const promotionCodePromises =
     checkoutSession.total_details?.breakdown?.discounts
       .map((e) => e.discount.promotion_code)
