@@ -28,7 +28,7 @@ class SessionRepository {
 
   final SupabaseClient _client;
 
-  Future<List<Session>> getSessions() async =>
+  Future<List<Session>> fetchSessions() async =>
       _client.from('sessions').select().withConverter(
             (data) => data.map(Session.fromJson).toList(),
           );
@@ -68,7 +68,7 @@ class SessionVenueRepository {
 
   final SupabaseClient _client;
 
-  Future<List<SessionVenue>> getSessionVenues() async =>
+  Future<List<SessionVenue>> fetchSessionVenues() async =>
       _client.from('session_venues').select().withConverter(
             (data) => data.map(SessionVenue.fromJson).toList(),
           );
@@ -101,7 +101,7 @@ class SessionSpeakerRepository {
 
   final SupabaseClient _client;
 
-  Future<List<SessionSpeaker>> getSessionSpeakers() async =>
+  Future<List<SessionSpeaker>> fetchSessionSpeakers() async =>
       _client.from('session_speakers').select().withConverter(
             (data) => data.map(SessionSpeaker.fromJson).toList(),
           );
