@@ -55,7 +55,7 @@ function getPromotionCodePrefix(
 ) {
   switch (metadata.type) {
     case "session": {
-      return "SS";
+      return "SE";
     }
     case "sponsor": {
       return "SP";
