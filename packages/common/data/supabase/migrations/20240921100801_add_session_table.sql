@@ -7,6 +7,8 @@ CREATE POLICY "Everyone can read session_venues" ON session_venues FOR
 SELECT
   USING (TRUE);
 
+CREATE POLICY "Admin can CRUD session_venues" ON session_venues FOR ALL TO authenticated USING (role () = 'admin');
+
 CREATE TABLE public.sessions (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4 (),
   title text NOT NULL,
@@ -24,6 +26,8 @@ ALTER TABLE public.sessions enable ROW level security;
 CREATE POLICY "Everyone can read sessions" ON sessions FOR
 SELECT
   USING (TRUE);
+
+CREATE POLICY "Admin can CRUD sessions" ON sessions FOR ALL TO authenticated USING (role () = 'admin');
 
 CREATE TABLE public.session_speakers (
   session_id UUID NOT NULL REFERENCES sessions (id) ON DELETE cascade,
@@ -94,6 +98,8 @@ SELECT
               p.name,
               'avatar_url',
               p.avatar_url,
+              'avatar_name',
+              p.avatar_name,
               'sns_accounts',
               (
                 SELECT
