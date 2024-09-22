@@ -6,7 +6,10 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Database } from "../../util/supabaseSchema";
 import { getUser } from "../../util/user";
 import Stripe from "stripe";
-import { promotionCodeMetadataSchema } from "../../features/coupon/coupon";
+import {
+  createPromotionCode,
+  promotionCodeMetadataSchema
+} from "../../features/coupon/coupon";
 import { authorizationSchema } from "../../util/authorizationSchema";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
@@ -21,7 +24,7 @@ v1.get(
   vValidator("header", authorizationSchema),
   async (c) => {
     const { session_id } = c.req.valid("query");
-    const {authorization} = c.req.valid("header");
+    const { authorization } = c.req.valid("header");
 
     const supabase = createClient<Database>(
       c.env.SUPABASE_URL,
@@ -57,12 +60,15 @@ v1.get(
     );
     const promotionCodeMetadata = promotionCodes.map((e) => e.metadata)[0];
     if (promotionCodeMetadata) {
-      const validatedMetdata = v.parse(promotionCodeMetadataSchema, promotionCodeMetadata);
+      const validatedMetdata = v.parse(
+        promotionCodeMetadataSchema,
+        promotionCodeMetadata
+      );
       const ticket = await createTicket({
         supabase,
         userId: user.id,
         promotionCodeMetadata: validatedMetdata,
-        checkoutSessionId: checkoutSession.id,
+        checkoutSessionId: checkoutSession.id
       });
       return c.json({ ticket });
     }
@@ -70,7 +76,7 @@ v1.get(
     const ticket = await createTicket({
       supabase,
       userId: user.id,
-      checkoutSessionId: checkoutSession.id,
+      checkoutSessionId: checkoutSession.id
     });
     return c.json({ ticket });
   }
@@ -113,14 +119,14 @@ async function createTicket({
   promotionCodeMetadata?:
     | v.InferOutput<typeof promotionCodeMetadataSchema>
     | undefined;
-    userId: string;
+  userId: string;
   checkoutSessionId: string;
 }): Promise<Database["public"]["Tables"]["tickets"]["Row"]> {
   const type = getTicketType(promotionCodeMetadata);
   let ticket: Database["public"]["Tables"]["tickets"]["Insert"] = {
     type,
     user_id: userId,
-    stripe_checkout_session_id: checkoutSessionId,
+    stripe_checkout_session_id: checkoutSessionId
   };
   if (
     promotionCodeMetadata?.type === "session" ||

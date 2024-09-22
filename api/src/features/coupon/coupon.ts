@@ -32,12 +32,13 @@ export async function createPromotionCode({
   const couponId = "N2L6fdRd";
 
   const uuid = crypto.randomUUID();
-  // 頭4文字をsuffixにする
+  // UUIDの頭6文字をsuffixにする
   const suffix = uuid.slice(0, 6);
   const prefix = getPromotionCodePrefix(metadata);
 
-  const code = `${prefix}-${suffix}`;
+  const code = `${prefix}${suffix}`.toUpperCase();
 
+  // see https://docs.stripe.com/api/promotion_codes/create
   const promotionCode = await stripe.promotionCodes.create({
     coupon: couponId,
     code,
@@ -49,8 +50,9 @@ export async function createPromotionCode({
   return promotionCode;
 }
 
-
-function getPromotionCodePrefix(metadata: v.InferOutput<typeof promotionCodeMetadataSchema>) {
+function getPromotionCodePrefix(
+  metadata: v.InferOutput<typeof promotionCodeMetadataSchema>
+) {
   switch (metadata.type) {
     case "session": {
       return "SS";
