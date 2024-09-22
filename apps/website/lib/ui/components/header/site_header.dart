@@ -28,7 +28,7 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
       height: isMobile || showAppBar ? appbarHeight : 0,
       child: AppBar(
         backgroundColor:
-            isMobile ? Colors.transparent : Colors.white.withOpacity(0.8),
+            isMobile ? Colors.transparent : Colors.white.withValues(alpha: 0.8),
         toolbarHeight: appbarHeight,
         elevation: 0,
         scrolledUnderElevation: 0,
@@ -171,6 +171,7 @@ final class _HeaderNavigation extends StatelessWidget {
         title: i18n.header.speakerWanted,
         key: NaviSectionKey.speakerWanted.key,
       ),
+
       /// 未実装のセクションはコメントアウト
       // NaviItemButtonData(
       //   title: i18n.header.sponsor,

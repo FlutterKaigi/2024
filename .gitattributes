@@ -1,2 +1,3 @@
 *.*.dart linguist-generated=true
 **/gen/**/*.dart linguist-generated=true
+*.lock linguist-generated=true
