@@ -13,8 +13,5 @@ class ProfileSocialNetworkingService with _$ProfileSocialNetworkingService {
   }) = _ProfileSocialNetworkingService;
 
   factory ProfileSocialNetworkingService.fromJson(Map<String, dynamic> json) =>
-    _$ProfileSocialNetworkingServiceFromJson(json);
+      _$ProfileSocialNetworkingServiceFromJson(json);
 }
-
-
-
