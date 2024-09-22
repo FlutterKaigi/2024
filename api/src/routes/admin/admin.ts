@@ -28,7 +28,7 @@ admin.use("*", async (c, next) => {
     }
   }
 
-  return c.text("Forbidden", 403);
+  return c.json({ error: "Forbidden" }, 403);
 });
 
 admin.get("/coupons", async (c) => {

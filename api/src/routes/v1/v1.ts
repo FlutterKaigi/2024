@@ -7,6 +7,7 @@ import { Database } from "../../util/supabaseSchema";
 import { getUser } from "../../util/user";
 import Stripe from "stripe";
 import { promotionCodeMetadataSchema } from "../../features/coupon/coupon";
+import { authorizationSchema } from "../../util/authorizationSchema";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
 
@@ -17,13 +18,10 @@ const verifyPurchaseSchema = v.object({
 v1.get(
   "/verify_purchase",
   vValidator("query", verifyPurchaseSchema),
+  vValidator("header", authorizationSchema),
   async (c) => {
     const { session_id } = c.req.valid("query");
-
-    const authorization = c.req.header("Authorization");
-    if (!authorization) {
-      return c.json({ error: "Unauthorized" }, 401);
-    }
+    const {authorization} = c.req.valid("header");
 
     const supabase = createClient<Database>(
       c.env.SUPABASE_URL,
