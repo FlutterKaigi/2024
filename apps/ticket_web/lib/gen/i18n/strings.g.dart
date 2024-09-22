@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 10 (5 per locale)
+/// Strings: 28 (14 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -151,6 +151,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get year => '2024';
 	String get ticketSite => 'チケットサイト';
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
+	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 }
 
 // Path: homePage
@@ -163,6 +164,21 @@ class _StringsHomePageJa {
 	late final _StringsHomePageTitleAndLogoJa titleAndLogo = _StringsHomePageTitleAndLogoJa._(_root);
 }
 
+// Path: footer
+class _StringsFooterJa {
+	_StringsFooterJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get copyRight => '@ FlutterKaigi 2024 実行委員会';
+	late final _StringsFooterGoogleCopyrightJa googleCopyright = _StringsFooterGoogleCopyrightJa._(_root);
+	String get codeOfConduct => '行動規範';
+	String get privacyPolicy => 'プライバシーポリシー';
+	String get contact => 'お問い合わせ';
+	String get license => 'ライセンス';
+}
+
 // Path: homePage.titleAndLogo
 class _StringsHomePageTitleAndLogoJa {
 	_StringsHomePageTitleAndLogoJa._(this._root);
@@ -172,6 +188,18 @@ class _StringsHomePageTitleAndLogoJa {
 	// Translations
 	String get date => 'November\n21(Thu) - 22(Fri)';
 	String get location => '有明セントラルタワーホール&カンファレンス';
+}
+
+// Path: footer.googleCopyright
+class _StringsFooterGoogleCopyrightJa {
+	_StringsFooterGoogleCopyrightJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get text0 => 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
+	String get text1 => 'The Flutter name and the Flutter logo';
+	String get text2 => 'are trademarks of Google LLC.';
 }
 
 // Path: <root>
@@ -204,6 +232,56 @@ class _StringsEn extends Translations {
 	@override String get flutterKaigi => 'FlutterKaigi';
 	@override String get year => '2024';
 	@override String get ticketSite => 'Ticket Site';
+	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
+	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
+}
+
+// Path: homePage
+class _StringsHomePageEn extends _StringsHomePageJa {
+	_StringsHomePageEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsHomePageTitleAndLogoEn titleAndLogo = _StringsHomePageTitleAndLogoEn._(_root);
+}
+
+// Path: footer
+class _StringsFooterEn extends _StringsFooterJa {
+	_StringsFooterEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get copyRight => '@ FlutterKaigi 2024 Organizing Committee';
+	@override late final _StringsFooterGoogleCopyrightEn googleCopyright = _StringsFooterGoogleCopyrightEn._(_root);
+	@override String get codeOfConduct => 'Code of Conduct';
+	@override String get privacyPolicy => 'Privacy Policy';
+	@override String get contact => 'Contact';
+	@override String get license => 'License';
+}
+
+// Path: homePage.titleAndLogo
+class _StringsHomePageTitleAndLogoEn extends _StringsHomePageTitleAndLogoJa {
+	_StringsHomePageTitleAndLogoEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get date => 'November\n21(Thu) - 22(Fri)';
+	@override String get location => 'Ariake Central Tower & Conference';
+}
+
+// Path: footer.googleCopyright
+class _StringsFooterGoogleCopyrightEn extends _StringsFooterGoogleCopyrightJa {
+	_StringsFooterGoogleCopyrightEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get text0 => 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
+	@override String get text1 => 'The Flutter name and the Flutter logo';
+	@override String get text2 => 'are trademarks of Google LLC.';
 }
 
 /// Flat map(s) containing all translations.
@@ -218,6 +296,14 @@ extension on Translations {
 			case 'ticketSite': return 'チケットサイト';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
+			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
+			case 'footer.googleCopyright.text0': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
+			case 'footer.googleCopyright.text1': return 'The Flutter name and the Flutter logo';
+			case 'footer.googleCopyright.text2': return 'are trademarks of Google LLC.';
+			case 'footer.codeOfConduct': return '行動規範';
+			case 'footer.privacyPolicy': return 'プライバシーポリシー';
+			case 'footer.contact': return 'お問い合わせ';
+			case 'footer.license': return 'ライセンス';
 			default: return null;
 		}
 	}
@@ -230,6 +316,16 @@ extension on _StringsEn {
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
 			case 'ticketSite': return 'Ticket Site';
+			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
+			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
+			case 'footer.copyRight': return '@ FlutterKaigi 2024 Organizing Committee';
+			case 'footer.googleCopyright.text0': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
+			case 'footer.googleCopyright.text1': return 'The Flutter name and the Flutter logo';
+			case 'footer.googleCopyright.text2': return 'are trademarks of Google LLC.';
+			case 'footer.codeOfConduct': return 'Code of Conduct';
+			case 'footer.privacyPolicy': return 'Privacy Policy';
+			case 'footer.contact': return 'Contact';
+			case 'footer.license': return 'License';
 			default: return null;
 		}
 	}

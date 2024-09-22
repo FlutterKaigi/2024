@@ -2,5 +2,23 @@
   "hello": "Hello, World!",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
-  "ticket_site": "Ticket Site"
+  "ticket_site": "Ticket Site",
+  "homePage": {
+    "titleAndLogo": {
+      "date": "November\n21(Thu) - 22(Fri)",
+      "location": "Ariake Central Tower & Conference"
+    }
+  },
+  "footer": {
+    "copyRight": "@ FlutterKaigi 2024 Organizing Committee",
+    "googleCopyright": {
+      "text0": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
+      "text1": "The Flutter name and the Flutter logo",
+      "text2": "are trademarks of Google LLC."
+    },
+    "codeOfConduct": "Code of Conduct",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact",
+    "license": "License"
+  }
 }

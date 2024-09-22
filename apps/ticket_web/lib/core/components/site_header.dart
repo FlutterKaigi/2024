@@ -3,8 +3,13 @@ import 'package:ticket_web/core/extension/is_mobile.dart';
 import 'package:ticket_web/gen/fonts.gen.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
-class AppHeader extends StatelessWidget implements PreferredSizeWidget {
-  const AppHeader({super.key});
+class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
+  const SiteHeader({
+    this.onHeaderTitleTap,
+    super.key,
+  });
+
+  final VoidCallback? onHeaderTitleTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -15,6 +20,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       backgroundColor: Colors.transparent,
+      forceMaterialTransparency: true,
       centerTitle: false,
       title: AnimatedSwitcher(
         layoutBuilder: (currentChild, previousChildren) => Stack(
@@ -26,14 +32,16 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
         ),
         duration: const Duration(milliseconds: 200),
         child: isMobile
-            ? const KeyedSubtree(
-                key: ValueKey('header-logo'),
-                child: _HeaderLogo(),
+            ? KeyedSubtree(
+                key: const ValueKey('header-logo'),
+                child: _HeaderLogo(
+                  onPressed: onHeaderTitleTap,
+                ),
               )
-            : const KeyedSubtree(
-                key: ValueKey('header-title'),
+            : KeyedSubtree(
+                key: const ValueKey('header-title'),
                 child: _HeaderTitle(
-                  onTap: null,
+                  onPressed: onHeaderTitleTap,
                 ),
               ),
       ),
@@ -43,35 +51,26 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
 
 class _HeaderTitle extends StatelessWidget {
   const _HeaderTitle({
-    required this.onTap,
+    this.onPressed,
   });
 
-  final VoidCallback? onTap;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     final i18n = Translations.of(context);
     final theme = Theme.of(context);
 
-    return Material(
-      child: InkWell(
-        onTap: onTap,
-        child: Row(
-          children: [
-            const _HeaderLogo(),
-            const SizedBox(
-              width: 8,
-            ),
-            Text(
-              '${i18n.flutterKaigi} ${i18n.year} ${i18n.ticketSite}',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontFamily: FontFamily.poppins,
-                fontFamilyFallback: [FontFamily.notoSansJP],
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-            ),
-          ],
+    return TextButton.icon(
+      icon: const _HeaderLogo(),
+      onPressed: onPressed,
+      label: Text(
+        '${i18n.flutterKaigi} ${i18n.year} ${i18n.ticketSite}',
+        style: theme.textTheme.titleLarge?.copyWith(
+          fontFamily: FontFamily.poppins,
+          fontFamilyFallback: [FontFamily.notoSansJP],
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
         ),
       ),
     );
@@ -79,14 +78,21 @@ class _HeaderTitle extends StatelessWidget {
 }
 
 class _HeaderLogo extends StatelessWidget {
-  const _HeaderLogo();
+  const _HeaderLogo({
+    this.onPressed,
+  });
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/icon.webp',
-      height: 36,
-      width: 36,
+    return IconButton(
+      onPressed: onPressed,
+      icon: Image.asset(
+        'assets/images/icon.webp',
+        height: 36,
+        width: 36,
+      ),
     );
   }
 }

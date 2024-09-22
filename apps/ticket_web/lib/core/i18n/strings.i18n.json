@@ -8,5 +8,17 @@
       "date": "November\n21(Thu) - 22(Fri)",
       "location": "有明セントラルタワーホール&カンファレンス"
     }
+  },
+  "footer": {
+    "copyRight": "@ FlutterKaigi 2024 実行委員会",
+    "googleCopyright": {
+      "text0": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
+      "text1": "The Flutter name and the Flutter logo",
+      "text2": "are trademarks of Google LLC."
+    },
+    "codeOfConduct": "行動規範",
+    "privacyPolicy": "プライバシーポリシー",
+    "contact": "お問い合わせ",
+    "license": "ライセンス"
   }
 }
