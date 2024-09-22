@@ -1,8 +1,17 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library;
+import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:ticket_api/models/verify_purchase_response.dart';
 
-export 'src/ticket_api_base.dart';
+part 'ticket_api.g.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+@RestApi()
+abstract class TicketApiClient {
+  factory TicketApiClient(Dio dio, {String baseUrl}) = _TicketApiClient;
+
+  // MEMO(YumNumm): めんどくさいので とりあえずMapで返す
+  @POST('/verify_purchase')
+  Future<HttpResponse<VerifyPurchaseResponse>> verifyPurchase({
+    @Query('session_id') required String sessionId,
+    @Header('Authorization') required String authorization,
+  });
+}
