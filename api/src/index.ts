@@ -7,7 +7,6 @@ import { Bindings } from "./bindings";
 import { HTTPException } from "hono/http-exception";
 import * as v from "valibot";
 
-import admin from "./routes/admin/admin";
 import v1 from "./routes/v1/v1";
 import Stripe from "stripe";
 
@@ -40,7 +39,6 @@ app.onError((err, c) => {
   return c.json({ error: err }, 500);
 });
 
-app.route("/admin", admin);
 app.route("/v1", v1);
 
 export default app;
