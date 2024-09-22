@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 28 (14 per locale)
+/// Strings: 48 (24 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -149,6 +149,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get hello => 'こんにちは、世界';
 	String get flutterKaigi => 'FlutterKaigi';
 	String get year => '2024';
+	String get officialSite => '公式サイト';
 	String get ticketSite => 'チケットサイト';
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
@@ -162,6 +163,7 @@ class _StringsHomePageJa {
 
 	// Translations
 	late final _StringsHomePageTitleAndLogoJa titleAndLogo = _StringsHomePageTitleAndLogoJa._(_root);
+	late final _StringsHomePageTicketsJa tickets = _StringsHomePageTicketsJa._(_root);
 }
 
 // Path: footer
@@ -190,6 +192,18 @@ class _StringsHomePageTitleAndLogoJa {
 	String get location => '有明セントラルタワーホール&カンファレンス';
 }
 
+// Path: homePage.tickets
+class _StringsHomePageTicketsJa {
+	_StringsHomePageTicketsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get buyTicket => 'チケットを購入';
+	late final _StringsHomePageTicketsNormalJa normal = _StringsHomePageTicketsNormalJa._(_root);
+	late final _StringsHomePageTicketsInvitationJa invitation = _StringsHomePageTicketsInvitationJa._(_root);
+}
+
 // Path: footer.googleCopyright
 class _StringsFooterGoogleCopyrightJa {
 	_StringsFooterGoogleCopyrightJa._(this._root);
@@ -200,6 +214,32 @@ class _StringsFooterGoogleCopyrightJa {
 	String get text0 => 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 	String get text1 => 'The Flutter name and the Flutter logo';
 	String get text2 => 'are trademarks of Google LLC.';
+}
+
+// Path: homePage.tickets.normal
+class _StringsHomePageTicketsNormalJa {
+	_StringsHomePageTicketsNormalJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get name => '一般チケット';
+	String price({required Object price}) => '¥${price}';
+	String get description => '一般参加者向けチケット';
+}
+
+// Path: homePage.tickets.invitation
+class _StringsHomePageTicketsInvitationJa {
+	_StringsHomePageTicketsInvitationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get name => '招待チケット・クーポンコード';
+	String get description => '招待コードまたはクーポンコードをお持ちの方はこちら';
+	String get textBoxTitle => '招待コード もしくは クーポンコード';
+	String get textBoxDescription => 'コードを入力';
+	String get applyCodeButton => 'コードを適用';
 }
 
 // Path: <root>
@@ -231,6 +271,7 @@ class _StringsEn extends Translations {
 	@override String get hello => 'Hello, World!';
 	@override String get flutterKaigi => 'FlutterKaigi';
 	@override String get year => '2024';
+	@override String get officialSite => 'Official Site';
 	@override String get ticketSite => 'Ticket Site';
 	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
 	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
@@ -244,6 +285,7 @@ class _StringsHomePageEn extends _StringsHomePageJa {
 
 	// Translations
 	@override late final _StringsHomePageTitleAndLogoEn titleAndLogo = _StringsHomePageTitleAndLogoEn._(_root);
+	@override late final _StringsHomePageTicketsEn tickets = _StringsHomePageTicketsEn._(_root);
 }
 
 // Path: footer
@@ -272,6 +314,18 @@ class _StringsHomePageTitleAndLogoEn extends _StringsHomePageTitleAndLogoJa {
 	@override String get location => 'Ariake Central Tower & Conference';
 }
 
+// Path: homePage.tickets
+class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
+	_StringsHomePageTicketsEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get buyTicket => 'Buy Ticket';
+	@override late final _StringsHomePageTicketsNormalEn normal = _StringsHomePageTicketsNormalEn._(_root);
+	@override late final _StringsHomePageTicketsInvitationEn invitation = _StringsHomePageTicketsInvitationEn._(_root);
+}
+
 // Path: footer.googleCopyright
 class _StringsFooterGoogleCopyrightEn extends _StringsFooterGoogleCopyrightJa {
 	_StringsFooterGoogleCopyrightEn._(_StringsEn root) : this._root = root, super._(root);
@@ -284,6 +338,32 @@ class _StringsFooterGoogleCopyrightEn extends _StringsFooterGoogleCopyrightJa {
 	@override String get text2 => 'are trademarks of Google LLC.';
 }
 
+// Path: homePage.tickets.normal
+class _StringsHomePageTicketsNormalEn extends _StringsHomePageTicketsNormalJa {
+	_StringsHomePageTicketsNormalEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get name => 'Normal Ticket';
+	@override String price({required Object price}) => '¥${price}';
+	@override String get description => 'General admission ticket';
+}
+
+// Path: homePage.tickets.invitation
+class _StringsHomePageTicketsInvitationEn extends _StringsHomePageTicketsInvitationJa {
+	_StringsHomePageTicketsInvitationEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get name => 'Invitation Ticket';
+	@override String get description => 'For those who have an invitation code or coupon code';
+	@override String get textBoxTitle => 'Invitation Code or Coupon Code';
+	@override String get textBoxDescription => 'Enter the code';
+	@override String get applyCodeButton => 'Apply Code';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -293,9 +373,19 @@ extension on Translations {
 			case 'hello': return 'こんにちは、世界';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
+			case 'officialSite': return '公式サイト';
 			case 'ticketSite': return 'チケットサイト';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
+			case 'homePage.tickets.buyTicket': return 'チケットを購入';
+			case 'homePage.tickets.normal.name': return '一般チケット';
+			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
+			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
+			case 'homePage.tickets.invitation.name': return '招待チケット・クーポンコード';
+			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方はこちら';
+			case 'homePage.tickets.invitation.textBoxTitle': return '招待コード もしくは クーポンコード';
+			case 'homePage.tickets.invitation.textBoxDescription': return 'コードを入力';
+			case 'homePage.tickets.invitation.applyCodeButton': return 'コードを適用';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
 			case 'footer.googleCopyright.text0': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 			case 'footer.googleCopyright.text1': return 'The Flutter name and the Flutter logo';
@@ -315,9 +405,19 @@ extension on _StringsEn {
 			case 'hello': return 'Hello, World!';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
+			case 'officialSite': return 'Official Site';
 			case 'ticketSite': return 'Ticket Site';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
+			case 'homePage.tickets.buyTicket': return 'Buy Ticket';
+			case 'homePage.tickets.normal.name': return 'Normal Ticket';
+			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
+			case 'homePage.tickets.normal.description': return 'General admission ticket';
+			case 'homePage.tickets.invitation.name': return 'Invitation Ticket';
+			case 'homePage.tickets.invitation.description': return 'For those who have an invitation code or coupon code';
+			case 'homePage.tickets.invitation.textBoxTitle': return 'Invitation Code or Coupon Code';
+			case 'homePage.tickets.invitation.textBoxDescription': return 'Enter the code';
+			case 'homePage.tickets.invitation.applyCodeButton': return 'Apply Code';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 Organizing Committee';
 			case 'footer.googleCopyright.text0': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 			case 'footer.googleCopyright.text1': return 'The Flutter name and the Flutter logo';
