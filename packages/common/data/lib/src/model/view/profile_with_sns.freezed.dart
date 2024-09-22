@@ -24,7 +24,8 @@ mixin _$ProfileWithSns {
   String get name => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
   String get avatarName => throw _privateConstructorUsedError;
-  List<SnsAccount> get snsAccounts => throw _privateConstructorUsedError;
+  List<ProfileSocialNetworkingService> get snsAccounts =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this ProfileWithSns to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,7 @@ abstract class $ProfileWithSnsCopyWith<$Res> {
       String name,
       String avatarUrl,
       String avatarName,
-      List<SnsAccount> snsAccounts});
+      List<ProfileSocialNetworkingService> snsAccounts});
 }
 
 /// @nodoc
@@ -91,7 +92,7 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
       snsAccounts: null == snsAccounts
           ? _value.snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
-              as List<SnsAccount>,
+              as List<ProfileSocialNetworkingService>,
     ) as $Val);
   }
 }
@@ -109,7 +110,7 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
       String name,
       String avatarUrl,
       String avatarName,
-      List<SnsAccount> snsAccounts});
+      List<ProfileSocialNetworkingService> snsAccounts});
 }
 
 /// @nodoc
@@ -151,7 +152,7 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
       snsAccounts: null == snsAccounts
           ? _value._snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
-              as List<SnsAccount>,
+              as List<ProfileSocialNetworkingService>,
     ));
   }
 }
@@ -164,7 +165,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required this.name,
       required this.avatarUrl,
       required this.avatarName,
-      required final List<SnsAccount> snsAccounts})
+      required final List<ProfileSocialNetworkingService> snsAccounts})
       : _snsAccounts = snsAccounts;
 
   factory _$ProfileWithSnsImpl.fromJson(Map<String, dynamic> json) =>
@@ -178,9 +179,9 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   final String avatarUrl;
   @override
   final String avatarName;
-  final List<SnsAccount> _snsAccounts;
+  final List<ProfileSocialNetworkingService> _snsAccounts;
   @override
-  List<SnsAccount> get snsAccounts {
+  List<ProfileSocialNetworkingService> get snsAccounts {
     if (_snsAccounts is EqualUnmodifiableListView) return _snsAccounts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_snsAccounts);
@@ -230,11 +231,12 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
 
 abstract class _ProfileWithSns implements ProfileWithSns {
   const factory _ProfileWithSns(
-      {required final String id,
-      required final String name,
-      required final String avatarUrl,
-      required final String avatarName,
-      required final List<SnsAccount> snsAccounts}) = _$ProfileWithSnsImpl;
+          {required final String id,
+          required final String name,
+          required final String avatarUrl,
+          required final String avatarName,
+          required final List<ProfileSocialNetworkingService> snsAccounts}) =
+      _$ProfileWithSnsImpl;
 
   factory _ProfileWithSns.fromJson(Map<String, dynamic> json) =
       _$ProfileWithSnsImpl.fromJson;
@@ -248,7 +250,7 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   @override
   String get avatarName;
   @override
-  List<SnsAccount> get snsAccounts;
+  List<ProfileSocialNetworkingService> get snsAccounts;
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.

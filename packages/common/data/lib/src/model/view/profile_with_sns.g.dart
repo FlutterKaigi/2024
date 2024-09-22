@@ -21,7 +21,8 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
           snsAccounts: $checkedConvert(
               'sns_accounts',
               (v) => (v as List<dynamic>)
-                  .map((e) => SnsAccount.fromJson(e as Map<String, dynamic>))
+                  .map((e) => ProfileSocialNetworkingService.fromJson(
+                      e as Map<String, dynamic>))
                   .toList()),
         );
         return val;

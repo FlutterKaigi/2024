@@ -1,4 +1,4 @@
-import 'package:common_data/staff.dart';
+import 'package:common_data/src/model/profile_social_networking_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'profile_with_sns.freezed.dart';
@@ -11,7 +11,7 @@ class ProfileWithSns with _$ProfileWithSns {
     required String name,
     required String avatarUrl,
     required String avatarName,
-    required List<SnsAccount> snsAccounts,
+    required List<ProfileSocialNetworkingService> snsAccounts,
   }) = _ProfileWithSns;
 
   factory ProfileWithSns.fromJson(Map<String, dynamic> json) =>
