@@ -14,7 +14,8 @@ CREATE TABLE public.sessions (
   starts_at TIMESTAMP WITH TIME ZONE NOT NULL,
   ends_at TIMESTAMP WITH TIME ZONE NOT NULL,
   venue_id UUID NOT NULL REFERENCES session_venues (id) ON DELETE restrict,
-  sponsor_id smallint REFERENCES sponsors (id),
+  sponsor_id smallint REFERENCES sponsors (id), -- `sponsor_id`が値を持つ時、そのセッションはスポンサーセッションとして扱う
+  is_lightning_talk BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
@@ -80,6 +81,8 @@ SELECT
       s.starts_at,
       'ends_at',
       s.ends_at,
+      'is_lightning_talk',
+      s.is_lightning_talk,
       'speakers',
       (
         SELECT
