@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'sns.freezed.dart';
+part 'sns.g.dart';
 
 enum SnsType {
   github,
@@ -19,4 +20,7 @@ class SnsAccount with _$SnsAccount {
     required SnsType type,
     required Uri link,
   }) = _SnsAccount;
+
+  factory SnsAccount.fromJson(Map<String, dynamic> json) =>
+      _$SnsAccountFromJson(json);
 }
