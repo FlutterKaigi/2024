@@ -4,14 +4,14 @@ import * as v from "valibot";
 import { vValidator } from "@hono/valibot-validator";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { Database } from "../../util/supabaseSchema";
-import { getUser } from "../../util/user";
+import { getUser, getUserWithProfile } from "../../util/user";
 import Stripe from "stripe";
 import {
   createPromotionCode,
   promotionCodeMetadataSchema
 } from "../../features/coupon/coupon";
 import { authorizationSchema } from "../../util/authorizationSchema";
-import { limiter } from "../..";
+import { rateLimiter } from "../../middleware/rateLimiter";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
 
@@ -83,8 +83,12 @@ v1.post(
   }
 );
 
+// プロモーションコードが有効かどうかを確認する
+// プロモーションコードが有効な場合は、そのプロモーションコードのmetadataを返す
+// プロモーションコードが無効な場合は、404を返す
+// RateLimitの対象エンドポイント
 v1.get(
-  "/promotion/validate",
+  "/promotion",
   vValidator(
     "query",
     v.object({
@@ -92,7 +96,7 @@ v1.get(
     })
   ),
   // プロモーションコードの検証はRate Limitの対象とする
-  async (c, next) => limiter(c.env.RATE_LIMITER)(c, next),
+  async (c, next) => rateLimiter(c.env.RATE_LIMITER)(c, next),
   async (c) => {
     const { code } = c.req.valid("query");
     const stripe = new Stripe(c.env.STRIPE_KEY);
@@ -106,6 +110,50 @@ v1.get(
     const metadata = promotionCode.data[0].metadata;
     const validatedMetadata = v.parse(promotionCodeMetadataSchema, metadata);
     return c.json({ metadata: validatedMetadata });
+  }
+);
+
+// プロモーションコードを発行する
+// プロモーションコードのメタデータと最大使用回数をJSONでPOSTしてください
+// 発行前に、Authorization HeaderトークンユーザのRoleがadminであることを確認します
+v1.post(
+  "/promotion",
+  vValidator(
+    "json",
+    v.object({
+      metadata: promotionCodeMetadataSchema,
+      maxRedemptions: v.pipe(v.number(), v.integer(), v.minValue(0))
+    })
+  ),
+  vValidator("header", authorizationSchema),
+  async (c) => {
+    const { metadata, maxRedemptions } = c.req.valid("json");
+    const { authorization } = c.req.valid("header");
+
+    const supabase = createClient<Database>(
+      c.env.SUPABASE_URL,
+      c.env.SUPABASE_KEY
+    );
+    const user = await getUserWithProfile(authorization, supabase);
+    if (!user.success) {
+      return c.json({ error: "User not found" }, 404);
+    }
+    if (user.profile.role !== "admin") {
+      return c.json({ error: "Unauthorized" }, 401);
+    }
+
+    const stripe = new Stripe(c.env.STRIPE_KEY);
+
+    const promotionCode = await createPromotionCode({
+      stripe,
+      metadata,
+      maxRedemptions
+    });
+
+    return c.json({
+      id: promotionCode.id,
+      code: promotionCode.code
+    });
   }
 );
 
