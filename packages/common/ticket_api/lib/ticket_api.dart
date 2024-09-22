@@ -11,8 +11,8 @@ abstract class TicketApiClient {
     String baseUrl,
   }) = _TicketApiClient;
 
-  @POST('/verify_purchase')
-  Future<HttpResponse<VerifyPurchaseResponse>> verifyPurchase({
+  @POST('/v1/verify_purchase')
+  Future<VerifyPurchaseResponse> verifyPurchase({
     @Query('session_id') required String sessionId,
     @Header('Authorization') required String authorization,
   });

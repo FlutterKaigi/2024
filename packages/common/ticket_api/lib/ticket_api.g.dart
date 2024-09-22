@@ -24,7 +24,7 @@ class _TicketApiClient implements TicketApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<VerifyPurchaseResponse>> verifyPurchase({
+  Future<VerifyPurchaseResponse> verifyPurchase({
     required String sessionId,
     required String authorization,
   }) async {
@@ -33,23 +33,22 @@ class _TicketApiClient implements TicketApiClient {
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options =
-        _setStreamType<HttpResponse<VerifyPurchaseResponse>>(Options(
+    final _options = _setStreamType<VerifyPurchaseResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/verify_purchase',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
+        .compose(
+          _dio.options,
+          '/v1/verify_purchase',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late VerifyPurchaseResponse _value;
     try {
@@ -58,8 +57,7 @@ class _TicketApiClient implements TicketApiClient {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
