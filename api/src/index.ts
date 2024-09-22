@@ -4,12 +4,17 @@ import { secureHeaders } from "hono/secure-headers";
 import { prettyJSON } from "hono/pretty-json";
 import { Hono } from "hono";
 import { Bindings } from "./bindings";
+import { PostgrestError } from "@supabase/supabase-js";
 
 import { getUserWithProfile } from "./util/user";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "./util/supabaseSchema";
+import { HTTPException } from "hono/http-exception";
+import * as v from "valibot";
 
 import admin from "./routes/admin/admin";
+import v1 from "./routes/v1/v1";
+import Stripe from "stripe";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
@@ -23,24 +28,24 @@ app.use(logger());
 app.use(secureHeaders());
 app.use(prettyJSON());
 
-// MEMO(YumNumm): 動作検証用のテストエンドポイント
-// TODO(YumNumm): 削除する
-app.get("/auth", async (c) => {
-  const authorization = c.req.header("Authorization");
-  if (!authorization) {
-    return c.text("Unauthorized", 401);
+app.onError((err, c) => {
+  if (err instanceof HTTPException) {
+    return err.getResponse();
+  }
+  if (err instanceof Stripe.errors.StripeInvalidRequestError) {
+    return c.json({ code: err.code, error: err.message }, 400);
+  }
+  if (err instanceof v.ValiError) {
+    return c.json({ error: err.message }, 400);
+  }
+  if (err instanceof Object && err.message) {
+    return c.json({ error: err.message }, 500);
   }
 
-  const supabase = createClient<Database>(
-    c.env.SUPABASE_URL,
-    c.env.SUPABASE_KEY
-  );
-
-  const result = await getUserWithProfile(authorization, supabase);
-
-  return c.json(result);
+  return c.json({ error: err }, 500);
 });
 
 app.route("/admin", admin);
+app.route("/v1", v1);
 
 export default app;
