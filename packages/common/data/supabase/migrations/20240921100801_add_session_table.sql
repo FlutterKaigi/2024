@@ -117,7 +117,7 @@ SELECT
         WHERE
           ss.session_id = s.id
       ),
-      'sponsor',
+      'sponsors',
       (
         SELECT
           json_agg(sp.*) AS JSON_AGG
