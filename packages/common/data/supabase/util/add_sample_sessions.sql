@@ -23,6 +23,7 @@ DECLARE
   session_id UUID;
   sponsor_id INT;
   i INT;
+  is_lightning_talk BOOLEAN;
 BEGIN
   FOR i IN 1..500 LOOP
     -- ランダムな会場を選択
@@ -35,15 +36,23 @@ BEGIN
       sponsor_id := NULL;
     END IF;
 
+    -- 30%の確率でライトニングトークとして扱う
+    IF RANDOM() < 0.3 THEN
+      is_lightning_talk := TRUE;
+    ELSE
+      is_lightning_talk := FALSE;
+    END IF;
+
     -- セッションを挿入
-    INSERT INTO public.sessions (title, description, starts_at, ends_at, venue_id, sponsor_id)
+    INSERT INTO public.sessions (title, description, starts_at, ends_at, venue_id, sponsor_id, is_lightning_talk)
     VALUES (
       'サンプルセッション ' || i,
       'これはサンプルセッション ' || i || ' の説明です。',
       NOW() + (RANDOM() * INTERVAL '7 days'),
       NOW() + (RANDOM() * INTERVAL '7 days') + INTERVAL '1 hour',
       venue_id,
-      sponsor_id
+      sponsor_id,
+      is_lightning_talk
     ) RETURNING id INTO session_id;
 
     -- ランダムな登壇者を1-3人選択
