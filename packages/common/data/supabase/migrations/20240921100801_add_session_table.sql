@@ -15,7 +15,7 @@ CREATE TABLE public.sessions (
   ends_at TIMESTAMP WITH TIME ZONE NOT NULL,
   venue_id UUID NOT NULL REFERENCES session_venues (id) ON DELETE restrict,
   sponsor_id smallint REFERENCES sponsors (id), -- `sponsor_id`が値を持つ時、そのセッションはスポンサーセッションとして扱う
-  is_lightning_talk BOOLEAN NOT NULL DEFAULT FALSE,
+  is_lightning_talk boolean NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
