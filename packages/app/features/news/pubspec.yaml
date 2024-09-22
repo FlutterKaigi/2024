@@ -12,10 +12,13 @@ dependencies:
   app_cores_designsystem:
   app_cores_settings:
     path: ../../cores/settings
+  common_data:
+    path: ../../../../packages/common/data
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  hooks_riverpod: ^2.5.1
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0
   url_launcher: ^6.3.0
