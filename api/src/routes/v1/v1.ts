@@ -18,7 +18,7 @@ const verifyPurchaseSchema = v.object({
   session_id: v.string()
 });
 
-v1.get(
+v1.post(
   "/verify_purchase",
   vValidator("query", verifyPurchaseSchema),
   vValidator("header", authorizationSchema),
