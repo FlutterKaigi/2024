@@ -14,10 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+SnsAccount _$SnsAccountFromJson(Map<String, dynamic> json) {
+  return _SnsAccount.fromJson(json);
+}
+
 /// @nodoc
 mixin _$SnsAccount {
   SnsType get type => throw _privateConstructorUsedError;
   Uri get link => throw _privateConstructorUsedError;
+
+  /// Serializes this SnsAccount to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of SnsAccount
   /// with the given fields replaced by the non-null parameter values.
@@ -107,9 +114,12 @@ class __$$SnsAccountImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$SnsAccountImpl implements _SnsAccount {
   const _$SnsAccountImpl({required this.type, required this.link});
+
+  factory _$SnsAccountImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SnsAccountImplFromJson(json);
 
   @override
   final SnsType type;
@@ -130,6 +140,7 @@ class _$SnsAccountImpl implements _SnsAccount {
             (identical(other.link, link) || other.link == link));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, link);
 
@@ -140,12 +151,22 @@ class _$SnsAccountImpl implements _SnsAccount {
   @pragma('vm:prefer-inline')
   _$$SnsAccountImplCopyWith<_$SnsAccountImpl> get copyWith =>
       __$$SnsAccountImplCopyWithImpl<_$SnsAccountImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SnsAccountImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _SnsAccount implements SnsAccount {
   const factory _SnsAccount(
       {required final SnsType type,
       required final Uri link}) = _$SnsAccountImpl;
+
+  factory _SnsAccount.fromJson(Map<String, dynamic> json) =
+      _$SnsAccountImpl.fromJson;
 
   @override
   SnsType get type;
