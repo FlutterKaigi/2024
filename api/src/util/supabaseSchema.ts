@@ -317,22 +317,45 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
+          session_id: string | null
+          sponsor_id: number | null
+          stripe_checkout_session_id: string | null
           type: Database["public"]["Enums"]["ticket_type"]
           user_id: string
         }
         Insert: {
           created_at?: string | null
           id?: string
+          session_id?: string | null
+          sponsor_id?: number | null
+          stripe_checkout_session_id?: string | null
           type: Database["public"]["Enums"]["ticket_type"]
           user_id: string
         }
         Update: {
           created_at?: string | null
           id?: string
+          session_id?: string | null
+          sponsor_id?: number | null
+          stripe_checkout_session_id?: string | null
           type?: Database["public"]["Enums"]["ticket_type"]
           user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "tickets_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tickets_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
+            referencedRelation: "sponsors"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "tickets_user_id_fkey"
             columns: ["user_id"]
@@ -842,4 +865,3 @@ export type Enums<
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
     : never
-
