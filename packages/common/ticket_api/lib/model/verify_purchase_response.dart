@@ -1,3 +1,4 @@
+import 'package:common_data/ticket.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'verify_purchase_response.freezed.dart';
@@ -10,5 +11,5 @@ class VerifyPurchaseResponse with _$VerifyPurchaseResponse {
   }) = _VerifyPurchaseResponse;
 
   factory VerifyPurchaseResponse.fromJson(Map<String, dynamic> json) =>
-    _$VerifyPurchaseResponseFromJson(json);
+      _$VerifyPurchaseResponseFromJson(json);
 }
