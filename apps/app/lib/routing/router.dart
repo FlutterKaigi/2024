@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:app_cores_settings/routing.dart';
 import 'package:conference_2024_app/main_page.dart';
 import 'package:flutter/foundation.dart';

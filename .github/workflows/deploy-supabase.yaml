@@ -33,14 +33,15 @@ jobs:
           env: supabase-prod
           ref: ${{ github.head_ref}}
 
-      - name: checkout
-        uses: actions/checkout@v4
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 1
 
       # https://github.com/supabase/setup-cli
       - name: Install supabase cli
-        uses: supabase/setup-cli@3b9dbf86026385dcfd2b11263e0924d0bb4a9028 # v1.4.0
+        uses: supabase/setup-cli@27c884de7eda765c10d181bbee08b82a47b4d0a6 # v1.4.0
 
       - name: link supabase project
         working-directory: packages/common/data
@@ -49,8 +50,8 @@ jobs:
       - run: supabase db push
         working-directory: packages/common/data
 
-      - name: Update deployment status
         # https://github.com/bobheadxi/deployments
+      - name: Update deployment status
         uses: bobheadxi/deployments@648679e8e4915b27893bd7dbc35cb504dc915bc8 # v1.5.0
         if: always()
         with:

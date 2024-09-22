@@ -1,4 +1,7 @@
 {
+  "openSpeakersLink": "登壇者情報を見る",
+  "registerToCalendar": "スケジュールをカレンダーに登録する",
+  "sessionPageTitle": "Session",
   "sessionsPageTitle": "Sessions",
-  "sessionPageTitle": "Session"
+  "shareOnX": "Xで共有する"
 }

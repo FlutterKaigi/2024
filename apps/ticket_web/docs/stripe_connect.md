@@ -31,8 +31,4 @@ sequenceDiagram
     API->>D: 購入履歴検索 (StripeのSession ID もしくは メールアドレス)
     D->>API: ユーザ情報と購入履歴
     API->>A: ユーザ情報と購入履歴
-
-
-
-
 ```

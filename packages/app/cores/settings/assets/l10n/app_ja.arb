@@ -1,7 +1,11 @@
 {
   "@@locale": "ja",
   "cancel": "キャンセル",
+  "dark": "ダーク",
   "fontFamily": "フォント",
+  "light": "ライト",
   "ok": "OK",
-  "settingsPageTitle": "設定"
+  "settingsPageTitle": "設定",
+  "system": "システムに合わせる",
+  "theme": "外観"
 }

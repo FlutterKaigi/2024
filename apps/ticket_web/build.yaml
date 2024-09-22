@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      slang_build_runner:
+        options:
+          base_locale: ja
+          timestamp: false
+          output_directory: lib/gen/i18n
+          fallback_strategy: base_locale
