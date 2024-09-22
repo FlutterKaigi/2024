@@ -1,6 +1,7 @@
 import 'package:common_data/src/model/session.dart';
 import 'package:common_data/src/model/session_speaker.dart';
 import 'package:common_data/src/model/session_venue.dart';
+import 'package:common_data/src/model/view/session_venues_with_sessions.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
@@ -27,6 +28,12 @@ class SessionRepository {
   }) : _client = client;
 
   final SupabaseClient _client;
+
+  Future<List<SessionVenuesWithSessions>>
+      fetchSessionVenuesWithSessions() async =>
+          _client.from('session_venues_with_sessions').select().withConverter(
+                (list) => list.map(SessionVenuesWithSessions.fromJson).toList(),
+              );
 
   Future<List<Session>> fetchSessions() async =>
       _client.from('sessions').select().withConverter(
