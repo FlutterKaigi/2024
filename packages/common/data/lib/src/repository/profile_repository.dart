@@ -2,7 +2,17 @@ import 'dart:typed_data';
 
 import 'package:common_data/session.dart';
 import 'package:common_data/src/model/profile.dart';
+import 'package:common_data/supabase_client.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+part 'profile_repository.g.dart';
+
+@Riverpod(keepAlive: true)
+ProfileRepository profileRepository(ProfileRepositoryRef ref) =>
+    ProfileRepository(
+      client: ref.watch(supabaseClientProvider),
+    );
 
 class ProfileRepository {
   ProfileRepository({
@@ -117,7 +127,7 @@ class ProfileRepository {
     required List<ProfileSocialNetworkingService> snsAccounts,
   }) async =>
       _client.rpc<void>(
-        'update_sns_accounts',
+        'replace_sns_accounts',
         params: {
           'user_id': userId,
           'sns_accounts': snsAccounts
