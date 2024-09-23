@@ -52,7 +52,9 @@
       "args": [
         "--web-port",
         "8080",
-        "--dart-define-from-file=defines/development.env"
+        "--dart-define-from-file=defines/development.env",
+        "-d",
+        "macos"
       ]
     },
     {
@@ -64,7 +66,9 @@
       "args": [
         "--web-port",
         "8080",
-        "--dart-define-from-file=defines/production.env"
+        "--dart-define-from-file=defines/production.env",
+        "-d",
+        "macos"
       ]
     },
     {

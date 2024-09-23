@@ -26,6 +26,7 @@ class SponsorsPage extends StatelessWidget {
           sponsorLogoUrl:
               'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
           sponsorDescription:
+              // ignore: lines_longer_than_80_chars
               'スポンサーのアブストラクトは、印刷・組版業界の単なるダミーテキストである。ロレム・イプサムは、1500年代に無名の印刷業者が活字見本帳を作るために活字のガレーを取り、スクランブルをかけたとき以来、業界の標準的なダミーテキストとなっている。',
         ),
       ],
