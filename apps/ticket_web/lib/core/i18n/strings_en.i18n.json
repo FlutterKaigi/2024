@@ -1,3 +1,40 @@
 {
-  "hello": "Hello, World!"
+  "hello": "Hello, World!",
+  "flutter_kaigi": "FlutterKaigi",
+  "year": "2024",
+  "official_site": "Official Site",
+  "ticket_site": "Ticket Site",
+  "homePage": {
+    "titleAndLogo": {
+      "date": "November\n21(Thu) - 22(Fri)",
+      "location": "Ariake Central Tower & Conference"
+    },
+    "tickets": {
+      "buyTicket": "Buy Ticket",
+      "normal": {
+        "name": "Normal Ticket",
+        "price": "¥$price",
+        "description": "General admission ticket"
+      },
+      "invitation": {
+        "name": "Invitation Ticket",
+        "description": "For those who have an invitation code or coupon code",
+        "text_box_title": "Invitation Code or Coupon Code",
+        "text_box_description": "Enter the code",
+        "apply_code_button": "Apply Code"
+      }
+    }
+  },
+  "footer": {
+    "copyRight": "@ FlutterKaigi 2024 Organizing Committee",
+    "googleCopyright": {
+      "text0": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
+      "text1": "The Flutter name and the Flutter logo",
+      "text2": "are trademarks of Google LLC."
+    },
+    "codeOfConduct": "Code of Conduct",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact",
+    "license": "License"
+  }
 }

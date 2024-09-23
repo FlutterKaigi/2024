@@ -87,7 +87,12 @@ WHERE
   value = 'sample_user_2';
 
 SELECT
-  throws_ok ('update_id_throw', 'P0001', 'Updating "id" is not allowed', 'IDを変更できないこと');
+  throws_ok (
+    'update_id_throw',
+    '42501',
+    'new row violates row-level security policy for table "profile_social_networking_services"',
+    'IDを変更できないこと'
+  );
 
 SELECT
   *

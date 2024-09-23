@@ -18,7 +18,7 @@
       "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
-      "name": "ticket-web-development-debug",
+      "name": "ticket-web-development-debug-wasm",
       "cwd": "apps/ticket_web",
       "request": "launch",
       "program": "lib/main.dart",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "name": "ticket-web-production-debug",
+      "name": "ticket-web-production-debug-wasm",
       "cwd": "apps/ticket_web",
       "request": "launch",
       "program": "lib/main.dart",
@@ -41,6 +41,34 @@
         "8080",
         "--wasm",
         "--dart-define-from-file=defines/production.env"
+      ]
+    },
+    {
+      "name": "ticket-web-development-debug",
+      "cwd": "apps/ticket_web",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--dart-define-from-file=defines/development.env",
+        "-d",
+        "macos"
+      ]
+    },
+    {
+      "name": "ticket-web-production-debug",
+      "cwd": "apps/ticket_web",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--dart-define-from-file=defines/production.env",
+        "-d",
+        "macos"
       ]
     },
     {

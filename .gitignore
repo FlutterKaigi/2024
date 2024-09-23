@@ -7,3 +7,5 @@ pubspec_overrides.yaml
 
 # bun related
 /node_modules
+
+custom_lint.log
