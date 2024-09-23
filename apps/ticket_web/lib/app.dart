@@ -15,7 +15,7 @@ class App extends ConsumerWidget {
       child: MaterialApp.router(
         title: 'Ticket System',
         routerConfig: router,
-        theme: lightTheme(),
+        theme: lightTheme,
       ),
     );
   }

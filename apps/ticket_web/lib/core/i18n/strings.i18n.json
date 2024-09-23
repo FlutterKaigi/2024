@@ -27,6 +27,16 @@
       }
     }
   },
+  "authorization": {
+    "already_logged_in_with_mail_address": "$mailAddress でログイン済みです",
+    "log_out": "ログアウト",
+    "log_out_dialog": {
+      "title": "ログアウトしますか？",
+      "description": "ログアウトすると、再度ログインするまでチケットの購入や登録ができなくなります。",
+      "cancel": "キャンセル",
+      "logout": "ログアウト"
+    }
+  },
   "footer": {
     "copyRight": "@ FlutterKaigi 2024 実行委員会",
     "googleCopyright": {

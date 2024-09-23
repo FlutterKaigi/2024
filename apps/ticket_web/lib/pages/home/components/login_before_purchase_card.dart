@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ticket_web/feature/auth/ui/sign_in_with_google_button.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
-class LoginBeforePurchase extends StatelessWidget {
-  const LoginBeforePurchase({
+class LoginBeforePurchaseCard extends StatelessWidget {
+  const LoginBeforePurchaseCard({
     this.onSignInPressed,
     super.key,
   });

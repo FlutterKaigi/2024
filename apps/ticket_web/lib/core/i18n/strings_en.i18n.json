@@ -27,6 +27,16 @@
       }
     }
   },
+  "authorization": {
+    "already_logged_in_with_mail_address": "Already logged in with $mailAddress",
+    "log_out": "Log Out",
+    "log_out_dialog": {
+      "title": "Are you sure you want to log out?",
+      "description": "Logging out will prevent you from purchasing or registering tickets until you log in again.",
+      "cancel": "Cancel",
+      "logout": "Log Out"
+    }
+  },
   "footer": {
     "copyRight": "@ FlutterKaigi 2024 Organizing Committee",
     "googleCopyright": {
