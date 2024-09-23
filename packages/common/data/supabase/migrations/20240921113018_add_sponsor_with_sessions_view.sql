@@ -42,6 +42,17 @@ SELECT
           JOIN profiles p ON ss.speaker_id = p.id
         WHERE
           ss.session_id = s.id
+      ),
+      'venue',
+      (
+        SELECT
+          json_build_object('id', ve.id, 'name', ve.name)
+        FROM
+          session_venues ve
+        WHERE
+          ve.id = s.venue_id
+        LIMIT
+          1
       )
     )
   ) AS sessions
