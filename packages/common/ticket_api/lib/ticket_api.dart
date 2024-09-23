@@ -6,6 +6,8 @@ import 'package:ticket_api/model/ticket/post_promotion_request.dart';
 import 'package:ticket_api/model/ticket/post_promotion_response.dart';
 import 'package:ticket_api/model/verify_purchase_response.dart';
 
+export 'package:dio/dio.dart' show DioException, DioExceptionType;
+
 part 'ticket_api.g.dart';
 
 @Riverpod(keepAlive: true)

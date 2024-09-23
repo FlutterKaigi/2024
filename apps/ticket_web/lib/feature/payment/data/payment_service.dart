@@ -40,11 +40,6 @@ class PaymentService {
     required String mailAddress,
     String? promotionCode,
   }) {
-    assert(
-      type == PaymentType.invitation || promotionCode != null,
-      'promotionCode must be provided if type is invitation',
-    );
-
     final url = switch (type) {
       PaymentType.general => _url.general,
       PaymentType.invitation => _url.invitation,

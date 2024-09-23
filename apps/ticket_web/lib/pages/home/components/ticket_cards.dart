@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:ticket_api/ticket_api.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
+import 'package:ticket_web/core/provider/ticket_api_base_url_provider.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
+import 'package:ticket_web/feature/payment/data/payment_service.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 class TicketCards extends ConsumerWidget {
@@ -13,18 +16,50 @@ class TicketCards extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isMobile = MediaQuery.sizeOf(context).isMobile;
 
-    final isLoggedIn = ref.watch(authNotifierProvider) != null;
+    final authState = ref.watch(authNotifierProvider);
+    final isLoggedIn = authState != null;
 
     final children = [
       _NormalTicketCard(
         isLoggedIn: isLoggedIn,
-        onPurchasePressed: () async {},
+        onPurchasePressed: () async =>
+            ref.read(paymentServiceProvider).transitionToPayment(
+                  mailAddress: authState!.email!,
+                  type: PaymentType.general,
+                ),
         onSignInPressed:
             ref.read(authNotifierProvider.notifier).signInWithGoogle,
       ),
       _InvitationTicketCard(
         isLoggedIn: isLoggedIn,
-        onApplyCodePressed: (code) async {},
+        onApplyCodePressed: (code) async {
+          try {
+            final baseUrl = ref.read(ticketApiBaseUrlProvider);
+            final verifyResult = await ref
+                .read(ticketApiClientProvider(baseUrl))
+                .getPromotion(code: code);
+            final metadata = verifyResult.metadata;
+            await metadata.mapOrNull(
+              general: (value) =>
+                  ref.read(paymentServiceProvider).transitionToPayment(
+                        mailAddress: authState!.email!,
+                        type: PaymentType.general,
+                        promotionCode: code,
+                      ),
+              session: (value) async {},
+              sponsor: (value) async {},
+              sponsorSession: (value) async {},
+            );
+          } on DioException catch (e) {
+            if (e.response?.data case {'error': final String error}) {
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(error)),
+                );
+              }
+            }
+          }
+        },
         onSignInPressed:
             ref.read(authNotifierProvider.notifier).signInWithGoogle,
       ),
@@ -95,11 +130,7 @@ class _NormalTicketCard extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               ),
-              onPressed: isLoggedIn
-                  ? () async {
-                      // TODO(YumNumm): チケットを購入する
-                    }
-                  : null,
+              onPressed: isLoggedIn ? onPurchasePressed : null,
               icon: const Icon(Icons.shopping_cart),
               label: Text(i18n.homePage.tickets.buyTicket),
             ),
