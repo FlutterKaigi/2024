@@ -2,11 +2,27 @@
   "hello": "こんにちは、世界",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
+  "official_site": "公式サイト",
   "ticket_site": "チケットサイト",
   "homePage": {
     "titleAndLogo": {
       "date": "November\n21(Thu) - 22(Fri)",
       "location": "有明セントラルタワーホール&カンファレンス"
+    },
+    "tickets": {
+      "buyTicket": "チケットを購入",
+      "normal": {
+        "name": "一般チケット",
+        "price": "¥$price",
+        "description": "一般参加者向けチケット"
+      },
+      "invitation": {
+        "name": "招待チケット・クーポンコード",
+        "description": "招待コードまたはクーポンコードをお持ちの方はこちら",
+        "text_box_title": "招待コード もしくは クーポンコード",
+        "text_box_description": "コードを入力",
+        "apply_code_button": "コードを適用"
+      }
     }
   },
   "footer": {
