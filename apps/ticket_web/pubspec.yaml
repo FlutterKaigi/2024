@@ -23,6 +23,8 @@ dependencies:
   slang: ^3.31.2
   slang_flutter: ^3.31.0
   theme_tailor_annotation: ^3.0.1
+  ticket_api:
+    path: ../../packages/common/ticket_api
   url_launcher: ^6.3.0
   vector_graphics: ^1.1.11+1
 
