@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 import 'package:common_data/news.dart';
-import 'package:conference_2024_website/core/i18n/strings.g.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/home/notifier/news_data_notifier.dart';
 import 'package:conference_2024_website/ui/home/notifier/news_data_state.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -112,7 +112,7 @@ class NewsComponent extends HookConsumerWidget {
       child: Column(
         children: [
           Text(
-            i18n.news_error,
+            i18n.newsError,
             style: textTheme.body,
           ),
           const SizedBox(height: 16),

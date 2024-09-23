@@ -1,8 +1,8 @@
 // ignore_for_file: do_not_use_environment
 
 import 'package:common_data/supabase_initializer.dart';
-import 'package:conference_2024_website/core/i18n/strings.g.dart';
 import 'package:conference_2024_website/core/router/router.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
