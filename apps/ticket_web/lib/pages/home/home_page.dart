@@ -1,4 +1,5 @@
 import 'package:common_data/auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,7 +30,12 @@ class HomePage extends ConsumerWidget {
             TextButton.icon(
               label: const Text('Sign in with Google'),
               icon: const Icon(Icons.login),
-              onPressed: ref.read(authRepositoryProvider).signInWithGoogle,
+              onPressed: () async =>
+                  ref.read(authRepositoryProvider).signInWithGoogle(
+                        redirectTo: kIsWeb
+                            ? null
+                            : 'jp.flutterkaigi.ticket://login-callback',
+                      ),
             ),
             const SizedBox(height: 16),
             Text(
