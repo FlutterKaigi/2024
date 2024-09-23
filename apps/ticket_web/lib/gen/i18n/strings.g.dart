@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 2 (1 per locale)
+/// Strings: 10 (5 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -147,6 +147,31 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get hello => 'こんにちは、世界';
+	String get flutterKaigi => 'FlutterKaigi';
+	String get year => '2024';
+	String get ticketSite => 'チケットサイト';
+	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
+}
+
+// Path: homePage
+class _StringsHomePageJa {
+	_StringsHomePageJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsHomePageTitleAndLogoJa titleAndLogo = _StringsHomePageTitleAndLogoJa._(_root);
+}
+
+// Path: homePage.titleAndLogo
+class _StringsHomePageTitleAndLogoJa {
+	_StringsHomePageTitleAndLogoJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get date => 'November\n21(Thu) - 22(Fri)';
+	String get location => '有明セントラルタワーホール&カンファレンス';
 }
 
 // Path: <root>
@@ -176,6 +201,9 @@ class _StringsEn extends Translations {
 
 	// Translations
 	@override String get hello => 'Hello, World!';
+	@override String get flutterKaigi => 'FlutterKaigi';
+	@override String get year => '2024';
+	@override String get ticketSite => 'Ticket Site';
 }
 
 /// Flat map(s) containing all translations.
@@ -185,6 +213,11 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'hello': return 'こんにちは、世界';
+			case 'flutterKaigi': return 'FlutterKaigi';
+			case 'year': return '2024';
+			case 'ticketSite': return 'チケットサイト';
+			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
+			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
 			default: return null;
 		}
 	}
@@ -194,6 +227,9 @@ extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'hello': return 'Hello, World!';
+			case 'flutterKaigi': return 'FlutterKaigi';
+			case 'year': return '2024';
+			case 'ticketSite': return 'Ticket Site';
 			default: return null;
 		}
 	}

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:common_data/auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,8 +10,14 @@ Stream<User?> currentUser(CurrentUserRef ref) async* {
   final authRepository = ref.watch(authRepositoryProvider);
 
   authRepository.onAuthStateChange.listen(
-    (_) => ref.invalidateSelf(),
+    (authChangeEvent) {
+      if (authChangeEvent != AuthChangeEvent.initialSession) {
+        ref.invalidateSelf();
+      }
+    },
   );
 
-  yield authRepository.currentUser;
+  final currentUser = authRepository.currentUser;
+  log('currentUser: $currentUser');
+  yield currentUser;
 }
