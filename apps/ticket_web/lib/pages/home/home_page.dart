@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
+import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
+import 'package:ticket_web/pages/home/components/login_before_purchase.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards.dart';
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
 import 'package:ticket_web/pages/home/components/transit_to_home_page.dart';
@@ -23,16 +25,24 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authNotifierProvider);
+
     return SiteScaffold.widget(
-      body: const Column(
+      body: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(16),
             child: TitleAndLogo(),
           ),
-          TransitToHomePage(),
-          SizedBox(height: 48),
-          TicketCards(),
+          const TransitToHomePage(),
+          const SizedBox(height: 48),
+          if (authState == null)
+            LoginBeforePurchase(
+              onSignInPressed:
+                  ref.read(authNotifierProvider.notifier).signInWithGoogle,
+            ),
+          const TicketCards(),
+          const SizedBox(height: 48),
         ],
       ),
     );
