@@ -38,8 +38,7 @@ final class StaffRepository {
       final snsAccounts = staffView.snsAccounts.map((snsAccount) {
         final snsType = SnsType.values.byName(snsAccount.type);
         final snsValue = snsAccount.value;
-        final linkText = snsType.toUrl(snsValue);
-        final link = Uri.parse(linkText);
+        final link = snsType.toUri(snsValue);
         return SnsAccount(
           type: snsType,
           link: link,
