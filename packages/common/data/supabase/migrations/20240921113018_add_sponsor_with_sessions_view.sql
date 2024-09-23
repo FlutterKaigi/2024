@@ -44,13 +44,9 @@ SELECT
           ss.session_id = s.id
       )
     )
-    ORDER BY
-      s.starts_at
   ) AS sessions
 FROM
   public.sponsors sp
   LEFT JOIN public.sessions s ON sp.id = s.sponsor_id
 GROUP BY
-  sp.id
-ORDER BY
   sp.id;

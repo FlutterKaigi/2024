@@ -118,13 +118,9 @@ SELECT
           sp.id = s.sponsor_id
       )
     )
-    ORDER BY
-      s.starts_at
   ) AS sessions
 FROM
   session_venues v
   JOIN sessions s ON s.venue_id = v.id
 GROUP BY
-  v.id
-ORDER BY
   v.id;
