@@ -18,20 +18,6 @@ CREATE POLICY "Admin can read all profile SNS" ON public.profile_social_networki
 SELECT
   TO authenticated USING (role () = 'admin');
 
-CREATE FUNCTION public.validate_profile_social_networking_service_update () returns trigger language plpgsql AS $$
-BEGIN
-  IF NEW.id <> OLD.id THEN
-    RAISE EXCEPTION 'Updating "id" is not allowed';
-  END IF;
-  RETURN NEW;
-END;
-$$;
-
-CREATE TRIGGER before_profile_social_networking_service_update before insert
-OR
-UPDATE ON profile_social_networking_services FOR each ROW WHEN (row_security_active('profile_social_networking_services'))
-EXECUTE function validate_profile_social_networking_service_update ();
-
 CREATE VIEW public.profiles_with_sns
 WITH
   (security_invoker = TRUE) AS
