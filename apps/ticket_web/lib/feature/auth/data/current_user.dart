@@ -11,6 +11,7 @@ Stream<User?> currentUser(CurrentUserRef ref) async* {
 
   authRepository.onAuthStateChange.listen(
     (authChangeEvent) {
+      log('authChangeEvent: $authChangeEvent');
       if (authChangeEvent != AuthChangeEvent.initialSession) {
         ref.invalidateSelf();
       }
