@@ -11,8 +11,8 @@
     },
     "tickets": {
       "buyTicket": "Buy Ticket",
-      "loginBeforeBuy": "Please login with your Google account to purchase a ticket.",
-      "ticketManagedByGoogleAccount": "After purchase, tickets will be managed by your Google account.",
+      "loginBeforeBuy": "Please login with your Google account to buy or register a ticket.",
+      "ticketManagedByGoogleAccount": "After purchase or registration, tickets will be managed by your Google account.",
       "normal": {
         "name": "Normal Ticket",
         "price": "¥$price",

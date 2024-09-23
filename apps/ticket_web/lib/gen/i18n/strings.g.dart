@@ -200,8 +200,8 @@ class _StringsHomePageTicketsJa {
 
 	// Translations
 	String get buyTicket => 'チケットを購入';
-	String get loginBeforeBuy => 'チケットを購入するためには、お手持ちのGoogleアカウントでログインしてください。';
-	String get ticketManagedByGoogleAccount => '購入後に、チケットはGoogleアカウントに紐づいて管理されます。';
+	String get loginBeforeBuy => 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
+	String get ticketManagedByGoogleAccount => '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 	late final _StringsHomePageTicketsNormalJa normal = _StringsHomePageTicketsNormalJa._(_root);
 	late final _StringsHomePageTicketsInvitationJa invitation = _StringsHomePageTicketsInvitationJa._(_root);
 }
@@ -324,8 +324,8 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
 
 	// Translations
 	@override String get buyTicket => 'Buy Ticket';
-	@override String get loginBeforeBuy => 'Please login with your Google account to purchase a ticket.';
-	@override String get ticketManagedByGoogleAccount => 'After purchase, tickets will be managed by your Google account.';
+	@override String get loginBeforeBuy => 'Please login with your Google account to buy or register a ticket.';
+	@override String get ticketManagedByGoogleAccount => 'After purchase or registration, tickets will be managed by your Google account.';
 	@override late final _StringsHomePageTicketsNormalEn normal = _StringsHomePageTicketsNormalEn._(_root);
 	@override late final _StringsHomePageTicketsInvitationEn invitation = _StringsHomePageTicketsInvitationEn._(_root);
 }
@@ -382,8 +382,8 @@ extension on Translations {
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
-			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入するためには、お手持ちのGoogleアカウントでログインしてください。';
-			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入後に、チケットはGoogleアカウントに紐づいて管理されます。';
+			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
+			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 			case 'homePage.tickets.normal.name': return '一般チケット';
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
@@ -416,8 +416,8 @@ extension on _StringsEn {
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
 			case 'homePage.tickets.buyTicket': return 'Buy Ticket';
-			case 'homePage.tickets.loginBeforeBuy': return 'Please login with your Google account to purchase a ticket.';
-			case 'homePage.tickets.ticketManagedByGoogleAccount': return 'After purchase, tickets will be managed by your Google account.';
+			case 'homePage.tickets.loginBeforeBuy': return 'Please login with your Google account to buy or register a ticket.';
+			case 'homePage.tickets.ticketManagedByGoogleAccount': return 'After purchase or registration, tickets will be managed by your Google account.';
 			case 'homePage.tickets.normal.name': return 'Normal Ticket';
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return 'General admission ticket';

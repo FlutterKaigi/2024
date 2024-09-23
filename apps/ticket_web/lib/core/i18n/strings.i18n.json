@@ -11,8 +11,8 @@
     },
     "tickets": {
       "buyTicket": "チケットを購入",
-      "loginBeforeBuy": "チケットを購入するためには、お手持ちのGoogleアカウントでログインしてください。",
-      "ticketManagedByGoogleAccount": "購入後に、チケットはGoogleアカウントに紐づいて管理されます。",
+      "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
+      "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
       "normal": {
         "name": "一般チケット",
         "price": "¥$price",
