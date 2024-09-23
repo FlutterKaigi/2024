@@ -2,7 +2,7 @@ import { logger } from "hono/logger";
 import { cors } from "hono/cors";
 import { secureHeaders } from "hono/secure-headers";
 import { prettyJSON } from "hono/pretty-json";
-import {  Hono } from "hono";
+import { Hono } from "hono";
 import { Bindings } from "./bindings";
 import { HTTPException } from "hono/http-exception";
 import * as v from "valibot";
