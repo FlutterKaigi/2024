@@ -1,3 +1,4 @@
 {
-  "newsPageTitle": "News"
+  "newsPageTitle": "News",
+  "newsIsEmpty" : "There's no new news right now.",
 }
