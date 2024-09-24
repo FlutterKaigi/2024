@@ -51,6 +51,9 @@ flutter:
     - path: assets/images/sns/
       transformers:
         - package: vector_graphics_compiler
+    - path: assets/images/svg/
+      transformers:
+        - package: vector_graphics_compiler
   fonts:
     - family: NotoSansJP
       fonts:
