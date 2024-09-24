@@ -1,3 +1,52 @@
 {
-  "hello": "こんにちは、世界"
+  "hello": "こんにちは、世界",
+  "flutter_kaigi": "FlutterKaigi",
+  "year": "2024",
+  "official_site": "公式サイト",
+  "ticket_site": "チケットサイト",
+  "homePage": {
+    "titleAndLogo": {
+      "date": "November\n21(Thu) - 22(Fri)",
+      "location": "有明セントラルタワーホール&カンファレンス"
+    },
+    "tickets": {
+      "buyTicket": "チケットを購入",
+      "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
+      "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
+      "normal": {
+        "name": "一般チケット",
+        "price": "¥$price",
+        "description": "一般参加者向けチケット"
+      },
+      "invitation": {
+        "name": "招待チケット・クーポンコード",
+        "description": "招待コードまたはクーポンコードをお持ちの方はこちら",
+        "text_box_title": "招待コード もしくは クーポンコード",
+        "text_box_description": "コードを入力",
+        "apply_code_button": "コードを適用"
+      }
+    }
+  },
+  "authorization": {
+    "already_logged_in_with_mail_address": "$mailAddress でログイン済みです",
+    "log_out": "ログアウト",
+    "log_out_dialog": {
+      "title": "ログアウトしますか？",
+      "description": "ログアウトすると、再度ログインするまでチケットの購入や登録ができなくなります。",
+      "cancel": "キャンセル",
+      "logout": "ログアウト"
+    }
+  },
+  "footer": {
+    "copyRight": "@ FlutterKaigi 2024 実行委員会",
+    "googleCopyright": {
+      "text0": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
+      "text1": "The Flutter name and the Flutter logo",
+      "text2": "are trademarks of Google LLC."
+    },
+    "codeOfConduct": "行動規範",
+    "privacyPolicy": "プライバシーポリシー",
+    "contact": "お問い合わせ",
+    "license": "ライセンス"
+  }
 }

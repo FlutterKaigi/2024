@@ -4,3 +4,7 @@ compatibility_date = "2024-09-05"
 main = "./src/index.ts"
 
 placement = { mode = "smart" }
+
+[[kv_namespaces]]
+binding = "RATE_LIMITER"
+id = "36ed2056500d4c4ba321baca10c4c95b"
