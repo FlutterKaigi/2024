@@ -102,6 +102,12 @@ abstract class L10nNews {
   /// In ja, this message translates to:
   /// **'News'**
   String get newsPageTitle;
+
+  /// No description provided for @newsIsEmpty.
+  ///
+  /// In ja, this message translates to:
+  /// **'現在、新しいニュースはありません。'**
+  String get newsIsEmpty;
 }
 
 class _L10nNewsDelegate extends LocalizationsDelegate<L10nNews> {

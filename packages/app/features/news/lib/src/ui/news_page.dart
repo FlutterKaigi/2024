@@ -53,8 +53,8 @@ class NewsPage extends HookConsumerWidget {
                     ),
                   ],
                 )
-              : const Center(
-                  child: Text('現在、新しいニュースはありません。'),
+              : Center(
+                  child: Text(l.newsIsEmpty),
                 );
         },
         error: (error, stackTrace) {
