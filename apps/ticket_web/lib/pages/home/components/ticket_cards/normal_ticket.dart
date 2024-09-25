@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
@@ -8,12 +9,15 @@ class NormalTicketCard extends StatelessWidget {
     required this.isLoggedIn,
     this.onPurchasePressed,
     this.onSignInPressed,
+    this.onApplyCodePressed,
     super.key,
   });
 
   final bool isLoggedIn;
   final VoidCallback? onPurchasePressed;
   final VoidCallback? onSignInPressed;
+  final VoidCallback? onApplyCodePressed;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -37,15 +41,32 @@ class NormalTicketCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              i18n.homePage.tickets.normal.description,
-              style: textTheme.bodyLarge?.copyWith(
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: '${i18n.homePage.tickets.normal.description}\n',
+                  ),
+                  TextSpan(
+                    text: '${i18n.homePage.tickets.invitation.description} ',
+                  ),
+                  TextSpan(
+                    text: i18n.homePage.tickets.invitation.here,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: theme.colorScheme.primary,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = onApplyCodePressed,
+                  ),
+                ],
+              ),
+              style: textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 16),
             Text(
-              i18n.homePage.tickets.normal.price(
+              i18n.homePage.tickets.price(
                 price: NumberFormat('#,###').format(3000),
               ),
               style: textTheme.titleLarge,
@@ -59,32 +80,6 @@ class NormalTicketCard extends StatelessWidget {
               onPressed: isLoggedIn ? onPurchasePressed : null,
               icon: const Icon(Icons.shopping_cart),
               label: Text(i18n.homePage.tickets.buyTicket),
-            ),
-            const SizedBox(height: 8),
-            const Divider(),
-            const SizedBox(height: 8),
-            TextField(
-              enabled: isLoggedIn,
-              decoration: InputDecoration(
-                labelText: i18n.homePage.tickets.invitation.textBoxTitle,
-                hintText: i18n.homePage.tickets.invitation.textBoxDescription,
-                border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                ),
-              ),
-              onSubmitted: (value) {
-                // TODO(YumNumm): クーポンコードを適用する
-              },
-            ),
-            const SizedBox(height: 8),
-            FilledButton.tonalIcon(
-              icon: const Icon(Icons.check),
-              label: Text(i18n.homePage.tickets.invitation.applyCodeButton),
-              style: FilledButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              ),
-              onPressed: () {},
             ),
           ],
         ),

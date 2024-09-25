@@ -12,6 +12,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
 
   final bool isLoggedIn;
   final VoidCallback? onPurchasePressed;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -43,7 +44,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              i18n.homePage.tickets.normal.price(
+              i18n.homePage.tickets.price(
                 price: NumberFormat('#,###').format(1234),
               ),
               style: textTheme.titleLarge,

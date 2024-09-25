@@ -20,7 +20,8 @@
       },
       "invitation": {
         "name": "Invitation Ticket",
-        "description": "For those who have an invitation code or coupon code",
+        "description": "If you have an invitation code or coupon code, please",
+        "here": "tap here",
         "text_box_title": "Invitation Code or Coupon Code",
         "text_box_description": "Enter the code",
         "apply_code_button": "Apply Code"

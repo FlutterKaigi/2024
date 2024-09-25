@@ -13,17 +13,22 @@
       "buyTicket": "チケットを購入",
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
       "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
+      "price": "¥$price",
       "normal": {
         "name": "一般チケット",
-        "price": "¥$price",
         "description": "一般参加者向けチケット"
       },
       "invitation": {
         "name": "招待チケット・クーポンコード",
-        "description": "招待コードまたはクーポンコードをお持ちの方はこちら",
+        "description": "招待コードまたはクーポンコードをお持ちの方は",
+        "here": "こちら",
         "text_box_title": "招待コード もしくは クーポンコード",
         "text_box_description": "コードを入力",
         "apply_code_button": "コードを適用"
+      },
+      "personal_sponsor": {
+        "name": "個人スポンサーチケット",
+        "description": "[仮]個人スポンサー向けチケット"
       }
     }
   },

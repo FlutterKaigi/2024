@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 64 (32 per locale)
+/// Strings: 68 (34 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -215,8 +215,10 @@ class _StringsHomePageTicketsJa {
 	String get buyTicket => 'チケットを購入';
 	String get loginBeforeBuy => 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 	String get ticketManagedByGoogleAccount => '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
+	String price({required Object price}) => '¥${price}';
 	late final _StringsHomePageTicketsNormalJa normal = _StringsHomePageTicketsNormalJa._(_root);
 	late final _StringsHomePageTicketsInvitationJa invitation = _StringsHomePageTicketsInvitationJa._(_root);
+	late final _StringsHomePageTicketsPersonalSponsorJa personalSponsor = _StringsHomePageTicketsPersonalSponsorJa._(_root);
 }
 
 // Path: authorization.logOutDialog
@@ -252,7 +254,6 @@ class _StringsHomePageTicketsNormalJa {
 
 	// Translations
 	String get name => '一般チケット';
-	String price({required Object price}) => '¥${price}';
 	String get description => '一般参加者向けチケット';
 }
 
@@ -264,10 +265,22 @@ class _StringsHomePageTicketsInvitationJa {
 
 	// Translations
 	String get name => '招待チケット・クーポンコード';
-	String get description => '招待コードまたはクーポンコードをお持ちの方はこちら';
+	String get description => '招待コードまたはクーポンコードをお持ちの方は';
+	String get here => 'こちら';
 	String get textBoxTitle => '招待コード もしくは クーポンコード';
 	String get textBoxDescription => 'コードを入力';
 	String get applyCodeButton => 'コードを適用';
+}
+
+// Path: homePage.tickets.personalSponsor
+class _StringsHomePageTicketsPersonalSponsorJa {
+	_StringsHomePageTicketsPersonalSponsorJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get name => '個人スポンサーチケット';
+	String get description => '[仮]個人スポンサー向けチケット';
 }
 
 // Path: <root>
@@ -414,7 +427,8 @@ class _StringsHomePageTicketsInvitationEn extends _StringsHomePageTicketsInvitat
 
 	// Translations
 	@override String get name => 'Invitation Ticket';
-	@override String get description => 'For those who have an invitation code or coupon code';
+	@override String get description => 'If you have an invitation code or coupon code, please';
+	@override String get here => 'tap here';
 	@override String get textBoxTitle => 'Invitation Code or Coupon Code';
 	@override String get textBoxDescription => 'Enter the code';
 	@override String get applyCodeButton => 'Apply Code';
@@ -436,14 +450,17 @@ extension on Translations {
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
 			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
+			case 'homePage.tickets.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.name': return '一般チケット';
-			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
 			case 'homePage.tickets.invitation.name': return '招待チケット・クーポンコード';
-			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方はこちら';
+			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方は';
+			case 'homePage.tickets.invitation.here': return 'こちら';
 			case 'homePage.tickets.invitation.textBoxTitle': return '招待コード もしくは クーポンコード';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'コードを入力';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'コードを適用';
+			case 'homePage.tickets.personalSponsor.name': return '個人スポンサーチケット';
+			case 'homePage.tickets.personalSponsor.description': return '[仮]個人スポンサー向けチケット';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => '${mailAddress} でログイン済みです';
 			case 'authorization.logOut': return 'ログアウト';
 			case 'authorization.logOutDialog.title': return 'ログアウトしますか？';
@@ -480,7 +497,8 @@ extension on _StringsEn {
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return 'General admission ticket';
 			case 'homePage.tickets.invitation.name': return 'Invitation Ticket';
-			case 'homePage.tickets.invitation.description': return 'For those who have an invitation code or coupon code';
+			case 'homePage.tickets.invitation.description': return 'If you have an invitation code or coupon code, please';
+			case 'homePage.tickets.invitation.here': return 'tap here';
 			case 'homePage.tickets.invitation.textBoxTitle': return 'Invitation Code or Coupon Code';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'Enter the code';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'Apply Code';
