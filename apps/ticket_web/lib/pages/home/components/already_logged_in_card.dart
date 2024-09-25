@@ -22,10 +22,10 @@ class AlreadyLoggedInCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(
-          color: theme.colorScheme.onPrimaryContainer,
+          color: theme.colorScheme.onSurface,
         ),
       ),
-      color: theme.colorScheme.primaryContainer,
+      color: theme.colorScheme.surfaceContainer,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
