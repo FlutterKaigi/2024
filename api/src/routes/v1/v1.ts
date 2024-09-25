@@ -108,6 +108,7 @@ v1.get(
       return c.json({ error: "Promotion code not found" }, 404);
     }
     const metadata = promotionCode.data[0].metadata;
+    console.log(metadata);
     const validatedMetadata = v.parse(promotionCodeMetadataSchema, metadata);
     return c.json({ metadata: validatedMetadata });
   }

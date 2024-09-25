@@ -28,28 +28,30 @@ class PersonalSponsorTicketCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(),
+            Row(),
             Text(
-              '個人スポンサーチケット',
+              i18n.homePage.tickets.personalSponsor.name,
               style: textTheme.displaySmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 4),
             Text(
-              '個人スポンサーチケットの概要',
+              i18n.homePage.tickets.price(
+                price: NumberFormat('#,###').format(123456),
+              ),
+              style: textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              i18n.homePage.tickets.personalSponsor.description,
               style: textTheme.bodyLarge?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              i18n.homePage.tickets.price(
-                price: NumberFormat('#,###').format(1234),
-              ),
-              style: textTheme.titleLarge,
-            ),
-            const SizedBox(height: 8),
             FilledButton.icon(
               style: FilledButton.styleFrom(
                 padding:

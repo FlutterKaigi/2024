@@ -24,7 +24,17 @@
         "here": "tap here",
         "text_box_title": "Invitation Code or Coupon Code",
         "text_box_description": "Enter the code",
-        "apply_code_button": "Apply Code"
+        "apply_code_button": "Apply Code",
+        "validation": {
+          "ok": "Your code is valid!",
+          "invalid": "Your code is invalid.",
+          "next_payment": "By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.",
+          "next_confirm_order": "By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.",
+          "dialog": {
+            "ok": "OK",
+            "cancel": "Cancel"
+          }
+        }
       }
     }
   },
@@ -49,5 +59,17 @@
     "privacyPolicy": "Privacy Policy",
     "contact": "Contact",
     "license": "License"
+  },
+  "error": {
+    "network": {
+      "status400": "Bad Request",
+      "status403": "Forbidden",
+      "status404": "Not Found",
+      "status429": "Too Many Requests",
+      "status500": "Internal Server Error",
+      "status503": "Service Unavailable",
+      "try_again": "Please try again later.",
+      "unknown": "An unknown error occurred."
+    }
   }
 }

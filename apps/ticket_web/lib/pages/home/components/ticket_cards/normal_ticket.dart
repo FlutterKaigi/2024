@@ -33,10 +33,19 @@ class NormalTicketCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(),
+            Row(),
             Text(
               i18n.homePage.tickets.normal.name,
               style: textTheme.displaySmall?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              i18n.homePage.tickets.price(
+                price: NumberFormat('#,###').format(3000),
+              ),
+              style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -65,13 +74,6 @@ class NormalTicketCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              i18n.homePage.tickets.price(
-                price: NumberFormat('#,###').format(3000),
-              ),
-              style: textTheme.titleLarge,
-            ),
-            const SizedBox(height: 8),
             FilledButton.icon(
               style: FilledButton.styleFrom(
                 padding:

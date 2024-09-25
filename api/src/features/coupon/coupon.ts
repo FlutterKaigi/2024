@@ -1,6 +1,13 @@
 import Stripe from "stripe";
 import * as v from "valibot";
 
+const StringInt = v.pipe(
+  v.string(),
+  v.custom((input) => typeof input === "string" && !isNaN(Number(input))),
+  v.transform(Number),
+  v.integer()
+);
+
 export const promotionCodeMetadataSchema = v.variant("type", [
   // 一般来場者用
   v.object({
@@ -14,12 +21,12 @@ export const promotionCodeMetadataSchema = v.variant("type", [
   // スポンサー招待
   v.object({
     type: v.literal("sponsor"),
-    sponsorId: v.pipe(v.number(), v.integer(), v.minValue(0))
+    sponsorId: StringInt
   }),
   // スポンサーセッション登壇者
   v.object({
     type: v.literal("sponsorSession"),
-    sponsorId: v.pipe(v.number(), v.integer(), v.minValue(0)),
+    sponsorId: StringInt,
     sessionId: v.pipe(v.string(), v.uuid())
   })
 ]);
@@ -71,7 +78,7 @@ function getPromotionCodePrefix(
     }
     case "general": {
       return "GN";
-      }
+    }
     default: {
       const _exhausted: never = metadata;
       return _exhausted;

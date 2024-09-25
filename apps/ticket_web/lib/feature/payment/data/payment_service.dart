@@ -48,7 +48,7 @@ class PaymentService {
     // See https://docs.stripe.com/payment-links/customize#customize-checkout-with-url-parameters
     final queryParameters = <String, String>{
       'prefilled_email': mailAddress,
-      if (promotionCode != null) 'promotion_code': promotionCode,
+      if (promotionCode != null) 'prefilled_promo_code': promotionCode,
     };
 
     final uri = Uri.parse(url).replace(queryParameters: queryParameters);

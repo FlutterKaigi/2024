@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 68 (34 per locale)
+/// Strings: 106 (53 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -154,6 +154,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
 	late final _StringsAuthorizationJa authorization = _StringsAuthorizationJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
+	late final _StringsErrorJa error = _StringsErrorJa._(_root);
 }
 
 // Path: homePage
@@ -194,6 +195,16 @@ class _StringsFooterJa {
 	String get license => 'ライセンス';
 }
 
+// Path: error
+class _StringsErrorJa {
+	_StringsErrorJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsErrorNetworkJa network = _StringsErrorNetworkJa._(_root);
+}
+
 // Path: homePage.titleAndLogo
 class _StringsHomePageTitleAndLogoJa {
 	_StringsHomePageTitleAndLogoJa._(this._root);
@@ -212,6 +223,7 @@ class _StringsHomePageTicketsJa {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	late final _StringsHomePageTicketsVariantJa variant = _StringsHomePageTicketsVariantJa._(_root);
 	String get buyTicket => 'チケットを購入';
 	String get loginBeforeBuy => 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 	String get ticketManagedByGoogleAccount => '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
@@ -246,6 +258,36 @@ class _StringsFooterGoogleCopyrightJa {
 	String get text2 => 'are trademarks of Google LLC.';
 }
 
+// Path: error.network
+class _StringsErrorNetworkJa {
+	_StringsErrorNetworkJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get status400 => 'リクエストが不正です';
+	String get status403 => 'リクエストが拒否されました';
+	String get status404 => 'リクエストが見つかりません';
+	String get status429 => 'リクエストが多すぎます';
+	String get status500 => 'サーバーでエラーが発生しました';
+	String get status503 => 'サーバーが過負荷状態です';
+	String get tryAgain => '時間をおいて再度お試しください';
+	String get unknown => '不明なエラーが発生しました';
+}
+
+// Path: homePage.tickets.variant
+class _StringsHomePageTicketsVariantJa {
+	_StringsHomePageTicketsVariantJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get general => '一般チケット';
+	String get sponsor => '個人スポンサーチケット';
+	late final _StringsHomePageTicketsVariantSponsorSessionJa sponsorSession = _StringsHomePageTicketsVariantSponsorSessionJa._(_root);
+	late final _StringsHomePageTicketsVariantSponsorInvitationJa sponsorInvitation = _StringsHomePageTicketsVariantSponsorInvitationJa._(_root);
+}
+
 // Path: homePage.tickets.normal
 class _StringsHomePageTicketsNormalJa {
 	_StringsHomePageTicketsNormalJa._(this._root);
@@ -270,6 +312,8 @@ class _StringsHomePageTicketsInvitationJa {
 	String get textBoxTitle => '招待コード もしくは クーポンコード';
 	String get textBoxDescription => 'コードを入力';
 	String get applyCodeButton => 'コードを適用';
+	late final _StringsHomePageTicketsInvitationErrorJa error = _StringsHomePageTicketsInvitationErrorJa._(_root);
+	late final _StringsHomePageTicketsInvitationValidationJa validation = _StringsHomePageTicketsInvitationValidationJa._(_root);
 }
 
 // Path: homePage.tickets.personalSponsor
@@ -281,6 +325,66 @@ class _StringsHomePageTicketsPersonalSponsorJa {
 	// Translations
 	String get name => '個人スポンサーチケット';
 	String get description => '[仮]個人スポンサー向けチケット';
+}
+
+// Path: homePage.tickets.variant.sponsorSession
+class _StringsHomePageTicketsVariantSponsorSessionJa {
+	_StringsHomePageTicketsVariantSponsorSessionJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get name => 'スポンサーセッション登壇者チケット';
+	String withName({required Object name}) => '${name} 社さま スポンサーセッション登壇者チケット';
+}
+
+// Path: homePage.tickets.variant.sponsorInvitation
+class _StringsHomePageTicketsVariantSponsorInvitationJa {
+	_StringsHomePageTicketsVariantSponsorInvitationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get name => 'スポンサー招待チケット';
+	String withName({required Object name}) => '${name} 社さま スポンサー招待チケット';
+}
+
+// Path: homePage.tickets.invitation.error
+class _StringsHomePageTicketsInvitationErrorJa {
+	_StringsHomePageTicketsInvitationErrorJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get status404 => 'プロモーションコードが見つかりません';
+	String get status429 => 'リクエストが多過ぎます 数分後に再度お試しください';
+	String get status500 => 'サーバーでエラーが発生しました';
+	String get unknown => '不明なエラーが発生しました';
+}
+
+// Path: homePage.tickets.invitation.validation
+class _StringsHomePageTicketsInvitationValidationJa {
+	_StringsHomePageTicketsInvitationValidationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get ok => 'プロモーションコードが有効です';
+	String get invalid => 'プロモーションコードが無効です';
+	String get nextPayment => '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットを購入してください';
+	String get nextConfirmOrder => '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
+	late final _StringsHomePageTicketsInvitationValidationDialogJa dialog = _StringsHomePageTicketsInvitationValidationDialogJa._(_root);
+}
+
+// Path: homePage.tickets.invitation.validation.dialog
+class _StringsHomePageTicketsInvitationValidationDialogJa {
+	_StringsHomePageTicketsInvitationValidationDialogJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get ok => '決定';
+	String get cancel => 'キャンセル';
 }
 
 // Path: <root>
@@ -317,6 +421,7 @@ class _StringsEn extends Translations {
 	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
 	@override late final _StringsAuthorizationEn authorization = _StringsAuthorizationEn._(_root);
 	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
+	@override late final _StringsErrorEn error = _StringsErrorEn._(_root);
 }
 
 // Path: homePage
@@ -355,6 +460,16 @@ class _StringsFooterEn extends _StringsFooterJa {
 	@override String get privacyPolicy => 'Privacy Policy';
 	@override String get contact => 'Contact';
 	@override String get license => 'License';
+}
+
+// Path: error
+class _StringsErrorEn extends _StringsErrorJa {
+	_StringsErrorEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsErrorNetworkEn network = _StringsErrorNetworkEn._(_root);
 }
 
 // Path: homePage.titleAndLogo
@@ -407,6 +522,23 @@ class _StringsFooterGoogleCopyrightEn extends _StringsFooterGoogleCopyrightJa {
 	@override String get text2 => 'are trademarks of Google LLC.';
 }
 
+// Path: error.network
+class _StringsErrorNetworkEn extends _StringsErrorNetworkJa {
+	_StringsErrorNetworkEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get status400 => 'Bad Request';
+	@override String get status403 => 'Forbidden';
+	@override String get status404 => 'Not Found';
+	@override String get status429 => 'Too Many Requests';
+	@override String get status500 => 'Internal Server Error';
+	@override String get status503 => 'Service Unavailable';
+	@override String get tryAgain => 'Please try again later.';
+	@override String get unknown => 'An unknown error occurred.';
+}
+
 // Path: homePage.tickets.normal
 class _StringsHomePageTicketsNormalEn extends _StringsHomePageTicketsNormalJa {
 	_StringsHomePageTicketsNormalEn._(_StringsEn root) : this._root = root, super._(root);
@@ -432,6 +564,32 @@ class _StringsHomePageTicketsInvitationEn extends _StringsHomePageTicketsInvitat
 	@override String get textBoxTitle => 'Invitation Code or Coupon Code';
 	@override String get textBoxDescription => 'Enter the code';
 	@override String get applyCodeButton => 'Apply Code';
+	@override late final _StringsHomePageTicketsInvitationValidationEn validation = _StringsHomePageTicketsInvitationValidationEn._(_root);
+}
+
+// Path: homePage.tickets.invitation.validation
+class _StringsHomePageTicketsInvitationValidationEn extends _StringsHomePageTicketsInvitationValidationJa {
+	_StringsHomePageTicketsInvitationValidationEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get ok => 'Your code is valid!';
+	@override String get invalid => 'Your code is invalid.';
+	@override String get nextPayment => 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.';
+	@override String get nextConfirmOrder => 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
+	@override late final _StringsHomePageTicketsInvitationValidationDialogEn dialog = _StringsHomePageTicketsInvitationValidationDialogEn._(_root);
+}
+
+// Path: homePage.tickets.invitation.validation.dialog
+class _StringsHomePageTicketsInvitationValidationDialogEn extends _StringsHomePageTicketsInvitationValidationDialogJa {
+	_StringsHomePageTicketsInvitationValidationDialogEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get ok => 'OK';
+	@override String get cancel => 'Cancel';
 }
 
 /// Flat map(s) containing all translations.
@@ -447,6 +605,12 @@ extension on Translations {
 			case 'ticketSite': return 'チケットサイト';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
+			case 'homePage.tickets.variant.general': return '一般チケット';
+			case 'homePage.tickets.variant.sponsor': return '個人スポンサーチケット';
+			case 'homePage.tickets.variant.sponsorSession.name': return 'スポンサーセッション登壇者チケット';
+			case 'homePage.tickets.variant.sponsorSession.withName': return ({required Object name}) => '${name} 社さま スポンサーセッション登壇者チケット';
+			case 'homePage.tickets.variant.sponsorInvitation.name': return 'スポンサー招待チケット';
+			case 'homePage.tickets.variant.sponsorInvitation.withName': return ({required Object name}) => '${name} 社さま スポンサー招待チケット';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
 			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
@@ -459,6 +623,16 @@ extension on Translations {
 			case 'homePage.tickets.invitation.textBoxTitle': return '招待コード もしくは クーポンコード';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'コードを入力';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'コードを適用';
+			case 'homePage.tickets.invitation.error.status404': return 'プロモーションコードが見つかりません';
+			case 'homePage.tickets.invitation.error.status429': return 'リクエストが多過ぎます 数分後に再度お試しください';
+			case 'homePage.tickets.invitation.error.status500': return 'サーバーでエラーが発生しました';
+			case 'homePage.tickets.invitation.error.unknown': return '不明なエラーが発生しました';
+			case 'homePage.tickets.invitation.validation.ok': return 'プロモーションコードが有効です';
+			case 'homePage.tickets.invitation.validation.invalid': return 'プロモーションコードが無効です';
+			case 'homePage.tickets.invitation.validation.nextPayment': return '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットを購入してください';
+			case 'homePage.tickets.invitation.validation.nextConfirmOrder': return '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
+			case 'homePage.tickets.invitation.validation.dialog.ok': return '決定';
+			case 'homePage.tickets.invitation.validation.dialog.cancel': return 'キャンセル';
 			case 'homePage.tickets.personalSponsor.name': return '個人スポンサーチケット';
 			case 'homePage.tickets.personalSponsor.description': return '[仮]個人スポンサー向けチケット';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => '${mailAddress} でログイン済みです';
@@ -475,6 +649,14 @@ extension on Translations {
 			case 'footer.privacyPolicy': return 'プライバシーポリシー';
 			case 'footer.contact': return 'お問い合わせ';
 			case 'footer.license': return 'ライセンス';
+			case 'error.network.status400': return 'リクエストが不正です';
+			case 'error.network.status403': return 'リクエストが拒否されました';
+			case 'error.network.status404': return 'リクエストが見つかりません';
+			case 'error.network.status429': return 'リクエストが多すぎます';
+			case 'error.network.status500': return 'サーバーでエラーが発生しました';
+			case 'error.network.status503': return 'サーバーが過負荷状態です';
+			case 'error.network.tryAgain': return '時間をおいて再度お試しください';
+			case 'error.network.unknown': return '不明なエラーが発生しました';
 			default: return null;
 		}
 	}
@@ -502,6 +684,12 @@ extension on _StringsEn {
 			case 'homePage.tickets.invitation.textBoxTitle': return 'Invitation Code or Coupon Code';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'Enter the code';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'Apply Code';
+			case 'homePage.tickets.invitation.validation.ok': return 'Your code is valid!';
+			case 'homePage.tickets.invitation.validation.invalid': return 'Your code is invalid.';
+			case 'homePage.tickets.invitation.validation.nextPayment': return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.';
+			case 'homePage.tickets.invitation.validation.nextConfirmOrder': return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
+			case 'homePage.tickets.invitation.validation.dialog.ok': return 'OK';
+			case 'homePage.tickets.invitation.validation.dialog.cancel': return 'Cancel';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => 'Already logged in with ${mailAddress}';
 			case 'authorization.logOut': return 'Log Out';
 			case 'authorization.logOutDialog.title': return 'Are you sure you want to log out?';
@@ -516,6 +704,14 @@ extension on _StringsEn {
 			case 'footer.privacyPolicy': return 'Privacy Policy';
 			case 'footer.contact': return 'Contact';
 			case 'footer.license': return 'License';
+			case 'error.network.status400': return 'Bad Request';
+			case 'error.network.status403': return 'Forbidden';
+			case 'error.network.status404': return 'Not Found';
+			case 'error.network.status429': return 'Too Many Requests';
+			case 'error.network.status500': return 'Internal Server Error';
+			case 'error.network.status503': return 'Service Unavailable';
+			case 'error.network.tryAgain': return 'Please try again later.';
+			case 'error.network.unknown': return 'An unknown error occurred.';
 			default: return null;
 		}
 	}
