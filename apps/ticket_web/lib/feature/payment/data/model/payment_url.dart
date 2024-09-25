@@ -8,6 +8,7 @@ class PaymentUrl with _$PaymentUrl {
   const factory PaymentUrl({
     required String general,
     required String invitation,
+    required String personalSponsor,
   }) = _PaymentUrl;
 
   factory PaymentUrl.fromJson(Map<String, dynamic> json) =>

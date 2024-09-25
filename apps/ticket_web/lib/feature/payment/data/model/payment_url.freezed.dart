@@ -22,6 +22,7 @@ PaymentUrl _$PaymentUrlFromJson(Map<String, dynamic> json) {
 mixin _$PaymentUrl {
   String get general => throw _privateConstructorUsedError;
   String get invitation => throw _privateConstructorUsedError;
+  String get personalSponsor => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentUrl to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +40,7 @@ abstract class $PaymentUrlCopyWith<$Res> {
           PaymentUrl value, $Res Function(PaymentUrl) then) =
       _$PaymentUrlCopyWithImpl<$Res, PaymentUrl>;
   @useResult
-  $Res call({String general, String invitation});
+  $Res call({String general, String invitation, String personalSponsor});
 }
 
 /// @nodoc
@@ -59,6 +60,7 @@ class _$PaymentUrlCopyWithImpl<$Res, $Val extends PaymentUrl>
   $Res call({
     Object? general = null,
     Object? invitation = null,
+    Object? personalSponsor = null,
   }) {
     return _then(_value.copyWith(
       general: null == general
@@ -68,6 +70,10 @@ class _$PaymentUrlCopyWithImpl<$Res, $Val extends PaymentUrl>
       invitation: null == invitation
           ? _value.invitation
           : invitation // ignore: cast_nullable_to_non_nullable
+              as String,
+      personalSponsor: null == personalSponsor
+          ? _value.personalSponsor
+          : personalSponsor // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -81,7 +87,7 @@ abstract class _$$PaymentUrlImplCopyWith<$Res>
       __$$PaymentUrlImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String general, String invitation});
+  $Res call({String general, String invitation, String personalSponsor});
 }
 
 /// @nodoc
@@ -99,6 +105,7 @@ class __$$PaymentUrlImplCopyWithImpl<$Res>
   $Res call({
     Object? general = null,
     Object? invitation = null,
+    Object? personalSponsor = null,
   }) {
     return _then(_$PaymentUrlImpl(
       general: null == general
@@ -109,6 +116,10 @@ class __$$PaymentUrlImplCopyWithImpl<$Res>
           ? _value.invitation
           : invitation // ignore: cast_nullable_to_non_nullable
               as String,
+      personalSponsor: null == personalSponsor
+          ? _value.personalSponsor
+          : personalSponsor // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,7 +127,10 @@ class __$$PaymentUrlImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PaymentUrlImpl implements _PaymentUrl {
-  const _$PaymentUrlImpl({required this.general, required this.invitation});
+  const _$PaymentUrlImpl(
+      {required this.general,
+      required this.invitation,
+      required this.personalSponsor});
 
   factory _$PaymentUrlImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentUrlImplFromJson(json);
@@ -125,10 +139,12 @@ class _$PaymentUrlImpl implements _PaymentUrl {
   final String general;
   @override
   final String invitation;
+  @override
+  final String personalSponsor;
 
   @override
   String toString() {
-    return 'PaymentUrl(general: $general, invitation: $invitation)';
+    return 'PaymentUrl(general: $general, invitation: $invitation, personalSponsor: $personalSponsor)';
   }
 
   @override
@@ -138,12 +154,15 @@ class _$PaymentUrlImpl implements _PaymentUrl {
             other is _$PaymentUrlImpl &&
             (identical(other.general, general) || other.general == general) &&
             (identical(other.invitation, invitation) ||
-                other.invitation == invitation));
+                other.invitation == invitation) &&
+            (identical(other.personalSponsor, personalSponsor) ||
+                other.personalSponsor == personalSponsor));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, general, invitation);
+  int get hashCode =>
+      Object.hash(runtimeType, general, invitation, personalSponsor);
 
   /// Create a copy of PaymentUrl
   /// with the given fields replaced by the non-null parameter values.
@@ -164,7 +183,8 @@ class _$PaymentUrlImpl implements _PaymentUrl {
 abstract class _PaymentUrl implements PaymentUrl {
   const factory _PaymentUrl(
       {required final String general,
-      required final String invitation}) = _$PaymentUrlImpl;
+      required final String invitation,
+      required final String personalSponsor}) = _$PaymentUrlImpl;
 
   factory _PaymentUrl.fromJson(Map<String, dynamic> json) =
       _$PaymentUrlImpl.fromJson;
@@ -173,6 +193,8 @@ abstract class _PaymentUrl implements PaymentUrl {
   String get general;
   @override
   String get invitation;
+  @override
+  String get personalSponsor;
 
   /// Create a copy of PaymentUrl
   /// with the given fields replaced by the non-null parameter values.
