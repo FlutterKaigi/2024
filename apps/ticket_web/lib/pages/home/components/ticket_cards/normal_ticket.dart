@@ -33,7 +33,7 @@ class NormalTicketCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(),
+            const Row(),
             Text(
               i18n.homePage.tickets.normal.name,
               style: textTheme.displaySmall?.copyWith(

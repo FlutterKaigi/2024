@@ -28,7 +28,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(),
+            const Row(),
             Text(
               i18n.homePage.tickets.personalSponsor.name,
               style: textTheme.displaySmall?.copyWith(
