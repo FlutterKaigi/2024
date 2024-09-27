@@ -1,5 +1,5 @@
+import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/common/util/group_by.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/state/sponsor_notifier.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -23,11 +23,12 @@ final class Sponsors extends HookConsumerWidget {
           i18n,
           textTheme,
         ),
-      AsyncValue<List<Sponsor>>(:final value) => sponsorsSection(
-          value ?? dummy,  // TODO:  remove dummy
+      AsyncData<List<Sponsor>>(:final value) => sponsorsSection(
+          value,
           theme,
           context,
         ),
+      _ => const SizedBox.shrink(),
     };
   }
 }
@@ -41,7 +42,7 @@ Widget sponsorsSection(
   final i18n = Translations.of(context);
 
   // スポンサーのレベルによって分ける
-  final mapOfLevels = groupBy(sponsors, (sponsor) => sponsor.type);
+  final mapOfLevels = sponsors.groupListsBy((e) => e.type);
 
   return Column(
     children: [
@@ -241,24 +242,3 @@ final class CustomBoxShadow extends BoxShadow {
     return result;
   }
 }
-
-final dummy = [
-  ...[
-    (5, SponsorType.platinum),
-    (7, SponsorType.gold),
-    (16, SponsorType.silver),
-    (18, SponsorType.bronze),
-  ].map((e) {
-    return List.generate(
-      e.$1,
-      (_) => Sponsor(
-        id: 0,
-        name: '株式会社ABC',
-        description: '風通しの良い企業風土です！',
-        logoUrl: Uri.parse('https://picsum.photos/200/200'),
-        url: Uri.parse('https://flutterkaigi.jp/2023/'),
-        type: e.$2,
-      ),
-    );
-  }).expand((element) => element),
-];
