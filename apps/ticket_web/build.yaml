@@ -1,0 +1,11 @@
+targets:
+  $default:
+    builders:
+      slang_build_runner:
+        options:
+          base_locale: ja
+          timestamp: false
+          input_directory: lib/core/i18n
+          output_directory: lib/gen/i18n
+          fallback_strategy: base_locale
+          key_case: camel

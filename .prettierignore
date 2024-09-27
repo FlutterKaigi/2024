@@ -1,2 +1,5 @@
 # Ignore artifacts:
 build
+
+# Ignore PNPM Lock file
+pnpm-lock.yaml

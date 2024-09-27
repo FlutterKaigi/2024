@@ -38,17 +38,7 @@ final class StaffRepository {
       final snsAccounts = staffView.snsAccounts.map((snsAccount) {
         final snsType = SnsType.values.byName(snsAccount.type);
         final snsValue = snsAccount.value;
-        final linkText = switch (snsType) {
-          SnsType.github => 'https://github.com/$snsValue',
-          SnsType.x => 'https://x.com/$snsValue',
-          SnsType.discord => 'https://discord.com/users/$snsValue',
-          SnsType.medium => 'https://medium.com/@$snsValue',
-          SnsType.qiita => 'https://qiita.com/$snsValue',
-          SnsType.zenn => 'https://zenn.dev/$snsValue',
-          SnsType.note => 'https://note.com/$snsValue',
-          SnsType.other => snsValue,
-        };
-        final link = Uri.parse(linkText);
+        final link = snsType.toUri(snsValue);
         return SnsAccount(
           type: snsType,
           link: link,

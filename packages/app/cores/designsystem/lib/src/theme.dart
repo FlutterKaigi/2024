@@ -1,4 +1,4 @@
-import 'package:app_cores_designsystem/src/font_family.dart';
+import 'package:app_cores_designsystem/src/providers/font_family.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -13,11 +13,14 @@ ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
   );
   final baseTheme = ThemeData.from(
     colorScheme: colorScheme ?? defaultLightScheme,
+    useMaterial3: true,
   );
 
-  return _setFontFamily(
-    baseTheme: baseTheme,
-    fontFamily: fontFamily,
+  return _setDefaults(
+    baseTheme: _setFontFamily(
+      baseTheme: baseTheme,
+      fontFamily: fontFamily,
+    ),
   );
 }
 
@@ -30,15 +33,25 @@ ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) {
   );
   final baseTheme = ThemeData.from(
     colorScheme: colorScheme ?? defaultDarkColorScheme,
+    useMaterial3: true,
   );
 
-  return _setFontFamily(
-    baseTheme: baseTheme,
-    fontFamily: fontFamily,
+  return _setDefaults(
+    baseTheme: _setFontFamily(
+      baseTheme: baseTheme,
+      fontFamily: fontFamily,
+    ),
   );
 }
 
 const _seedColor = Color(0xFF005AC1);
+
+ThemeData _setDefaults({
+  required ThemeData baseTheme,
+}) =>
+    baseTheme.copyWith(
+      splashFactory: InkSparkle.splashFactory,
+    );
 
 ThemeData _setFontFamily({
   required ThemeData baseTheme,

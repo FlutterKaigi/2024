@@ -10,11 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
 
       # https://github.com/supabase/setup-cli
       - name: Install supabase cli
-        uses: supabase/setup-cli@3b9dbf86026385dcfd2b11263e0924d0bb4a9028 # v1.4.0
+        uses: supabase/setup-cli@7c6d72a8c2fea26067db1b32c7fc301ae189f493 # v1.4.0
+
+      - name: Set fake environment variables
+        working-directory: packages/common/data
+        run: |
+          cp .env.example .env
 
       - name: start supabase database
         working-directory: packages/common/data

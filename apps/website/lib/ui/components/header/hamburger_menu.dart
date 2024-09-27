@@ -21,7 +21,7 @@ final class HamburgerMenu extends StatelessWidget {
         gradient: gradientTheme.tertiary,
       ),
       child: Drawer(
-        backgroundColor: Colors.white.withOpacity(0.5),
+        backgroundColor: Colors.white.withValues(alpha: 0.5),
         shape: const RoundedRectangleBorder(),
         child: const SingleChildScrollView(
           child: Column(
@@ -126,7 +126,6 @@ final class _MenuItems extends StatelessWidget {
         title: i18n.header.sponsors,
         key: NaviSectionKey.sponsors.key,
       ),
-
       /// 未実装のセクションはコメントアウト
       // NaviItemButtonData(
       //   title: i18n.header.staff,
