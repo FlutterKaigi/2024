@@ -3,8 +3,10 @@ import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/i18n/strings.g.dart';
 import 'package:conference_2024_website/state/sponsor_notifier.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:vector_graphics/vector_graphics.dart';
 
 final class Sponsors extends HookConsumerWidget {
   const Sponsors({super.key});
@@ -42,7 +44,11 @@ Widget sponsorsSection(
   final i18n = Translations.of(context);
 
   // スポンサーのレベルによって分ける
-  final mapOfLevels = sponsors.groupListsBy((e) => e.type);
+  final mapOfLevels = sponsors
+      .sorted(
+        (a, b) => a.type.index.compareTo(b.type.index),
+      )
+      .groupListsBy((e) => e.type);
 
   return Column(
     children: [
@@ -66,6 +72,11 @@ Widget _sponsorListByLevel(
   List<Sponsor> sponsors,
   BuildContext context,
 ) {
+  assert(
+    sponsors.isNotEmpty,
+    'sponsors must not be empty',
+  );
+
   final i18n = Translations.of(context);
   final textTheme = theme.customThemeExtension.textTheme;
   final colorTheme = theme.customThemeExtension.colorTheme;
@@ -136,47 +147,71 @@ Widget _sponsorListByLevel(
         Wrap(
           spacing: wrapSpacing,
           runSpacing: wrapSpacing,
-          children: List.generate(
-            10,
-            (_) => _sponsorCard(
-              isMobile
-                  ? levelData.cardSize.minSize
-                  : levelData.cardSize.maxSize,
-            ),
-          ),
+          children: sponsors
+              .map(
+                (sponsor) => _SponsorCard(
+                  sponsor: sponsor,
+                  size: isMobile
+                      ? levelData.cardSize.minSize
+                      : levelData.cardSize.maxSize,
+                ),
+              )
+              .toList(),
         ),
       ],
     ),
   );
 }
 
-Widget _sponsorCard(double size) {
-  return Material(
-    color: Colors.transparent,
-    child: InkWell(
-      onTap: () {},
-      child: Container(
-        width: size,
-        height: size,
-        padding: const EdgeInsets.all(32),
-        decoration: BoxDecoration(
-          color: Colors.white.withValues(alpha: 0.6),
-          boxShadow: [
-            CustomBoxShadow(
-              color: Colors.black.withValues(alpha: 0.25),
-              offset: const Offset(2, 2),
-              blurRadius: 4,
-              blurStyle: BlurStyle.outer,
-            ),
-          ],
-        ),
-        child: const FittedBox(
-          fit: BoxFit.fill,
-          child: Icon(Icons.account_circle),
+class _SponsorCard extends ConsumerWidget {
+  const _SponsorCard({
+    required this.sponsor,
+    required this.size,
+  });
+
+  final Sponsor sponsor;
+  final double size;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {},
+        child: Container(
+          width: size,
+          height: size,
+          padding: const EdgeInsets.all(32),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.6),
+            boxShadow: [
+              CustomBoxShadow(
+                color: Colors.black.withValues(alpha: 0.25),
+                offset: const Offset(2, 2),
+                blurRadius: 4,
+                blurStyle: BlurStyle.outer,
+              ),
+            ],
+          ),
+          child: sponsor.logoUrl.toString().endsWith('.svg')
+              ? VectorGraphic(
+                  loader: NetworkBytesLoader(sponsor.logoUrl),
+                )
+              : Image.network(
+                  sponsor.logoUrl.toString(),
+                  fit: BoxFit.contain,
+                ),
         ),
       ),
-    ),
-  );
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<Sponsor>('sponsor', sponsor));
+    properties.add(DoubleProperty('size', size));
+  }
 }
 
 Widget _errorRetryButton(
