@@ -6,7 +6,7 @@ repository: https://github.com/FlutterKaigi/2024/tree/main/packages/common/data
 issue_tracker: https://github.com/FlutterKaigi/2024/issues
 
 environment:
-  sdk: ^3.6.0-216.1.beta
+  sdk: ^3.5.3
 
 dependencies:
   flutter_riverpod: ^2.5.1

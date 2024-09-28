@@ -4,11 +4,11 @@ publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ^3.6.0-216.1.beta
-  flutter: ^3.26.0-0.1.pre
+  sdk: ^3.5.3
+  flutter: ^3.24.3
 
 dependencies:
-  collection: ^1.19.0
+  collection: ^1.18.0
   common_data:
     path: ../../packages/common/data
   flutter:

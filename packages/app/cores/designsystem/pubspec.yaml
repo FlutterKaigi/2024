@@ -6,8 +6,8 @@ homepage: |
   https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/designsystem
 
 environment:
-  sdk: ^3.6.0-216.1.beta
-  flutter: ^3.26.0-0.1.pre
+  sdk: ^3.5.3
+  flutter: ^3.24.3
 
 dependencies:
   app_cores_core:

@@ -4,8 +4,8 @@ publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ^3.6.0-216.1.beta
-  flutter: ^3.26.0-0.1.pre
+  sdk: ^3.5.3
+  flutter: ^3.24.3
 
 dependencies:
   accessibility_tools: ^2.2.2
