@@ -177,9 +177,7 @@ class _SponsorCard extends ConsumerWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {
-          print(sponsor.logoUrl);
-        },
+        onTap: () {},
         child: Container(
           width: size,
           height: size,
@@ -198,19 +196,10 @@ class _SponsorCard extends ConsumerWidget {
           child: sponsor.logoUrl.toString().endsWith('.svg')
               ? SvgPicture.network(
                   sponsor.logoUrl.toString(),
-                  width: size,
-                  height: size,
                 )
-              : DecoratedBox(
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
-                  child: Image.network(
-                    sponsor.logoUrl.toString(),
-                    fit: BoxFit.contain,
-                    width: size,
-                    height: size,
-                  ),
+              : Image.network(
+                  sponsor.logoUrl.toString(),
+                  fit: BoxFit.contain,
                 ),
         ),
       ),
