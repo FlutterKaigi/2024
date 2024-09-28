@@ -5,11 +5,11 @@ sdkPath: .fvm/flutter_sdk
 command:
   bootstrap:
     environment:
-      sdk: ^3.6.0-216.1.beta
-      flutter: ^3.26.0-0.1.pre
+      sdk: ^3.5.3
+      flutter: ^3.24.3
     dependencies:
       accessibility_tools: ^2.2.2
-      collection: ^1.19.0
+      collection: ^1.18.0
       dynamic_color: ^1.7.0
       flutter:
         sdk: flutter
