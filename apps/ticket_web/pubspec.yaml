@@ -45,7 +45,7 @@ dependency_overrides:
   vector_graphics:
     git:
       url: https://github.com/YumNumm/vector_graphics.git
-      ref: 8f7abd11cff39096b829e3810f7eb12474bc8e58
+      ref: ae04010d19feff0db4e5b1763aa43d340fa6fa5e
       path: packages/vector_graphics
   yet_another_json_isolate:
     git:

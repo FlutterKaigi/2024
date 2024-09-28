@@ -1250,8 +1250,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/vector_graphics"
-      ref: "8f7abd11cff39096b829e3810f7eb12474bc8e58"
-      resolved-ref: "8f7abd11cff39096b829e3810f7eb12474bc8e58"
+      ref: ae04010d19feff0db4e5b1763aa43d340fa6fa5e
+      resolved-ref: ae04010d19feff0db4e5b1763aa43d340fa6fa5e
       url: "https://github.com/YumNumm/vector_graphics.git"
     source: git
     version: "1.1.11+1"
