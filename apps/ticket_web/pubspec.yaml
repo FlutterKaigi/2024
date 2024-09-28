@@ -47,6 +47,11 @@ dependency_overrides:
       url: https://github.com/YumNumm/supabase-flutter.git
       ref: 4edc00b3b70621d37814b8c1fbef448655a4b222
       path: packages/yet_another_json_isolate
+  vector_graphics:
+    git:
+      url: https://github.com/YumNumm/vector_graphics.git
+      ref: 8f7abd11cff39096b829e3810f7eb12474bc8e58
+      path: packages/vector_graphics
 
 flutter:
   uses-material-design: true
