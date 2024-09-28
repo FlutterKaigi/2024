@@ -160,10 +160,10 @@ Widget _sponsorCard(double size) {
         height: size,
         padding: const EdgeInsets.all(32),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.6),
+          color: Colors.white.withValues(alpha: 0.6),
           boxShadow: [
             CustomBoxShadow(
-              color: Colors.black.withOpacity(0.25),
+              color: Colors.black.withValues(alpha: 0.25),
               offset: const Offset(2, 2),
               blurRadius: 4,
               blurStyle: BlurStyle.outer,
