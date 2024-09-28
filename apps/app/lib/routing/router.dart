@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:packages_app_features_about/ui.dart';
 import 'package:packages_app_features_debug/routing.dart';
 import 'package:packages_app_features_news/ui.dart';
+import 'package:packages_app_features_session/routing.dart';
 import 'package:packages_app_features_session/ui.dart';
 import 'package:packages_app_features_venue/ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -28,6 +29,7 @@ GoRouter router(RouterRef ref) {
     routes: [
       ...$appRoutes,
       $settingsPageRoute,
+      ...sessionRoutes,
       if (kDebugMode) $debugPageRoute,
     ],
     debugLogDiagnostics: kDebugMode,
