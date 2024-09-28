@@ -7,6 +7,9 @@ class L10nSessionEn extends L10nSession {
   L10nSessionEn([String locale = 'en']) : super(locale);
 
   @override
+  String get bookmarked => 'Bookmarked';
+
+  @override
   String get openSpeakersLink => 'Open speaker\'s link';
 
   @override

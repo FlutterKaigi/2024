@@ -98,6 +98,12 @@ abstract class L10nSession {
     Locale('en')
   ];
 
+  /// No description provided for @bookmarked.
+  ///
+  /// In ja, this message translates to:
+  /// **'お気に入り'**
+  String get bookmarked;
+
   /// No description provided for @openSpeakersLink.
   ///
   /// In ja, this message translates to:

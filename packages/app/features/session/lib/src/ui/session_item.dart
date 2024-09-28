@@ -7,7 +7,7 @@ import 'package:packages_app_features_session/src/ui/session_room_chip.dart';
 
 /// タイムラインのアイテム
 class SessionItem extends StatelessWidget {
-  // FIXME: セッションデータの設計が終わったらidを引数にする
+  // FIXME: セッションデータの設計が終わったらデータモデルを引数にする
   const SessionItem({
     required String title,
     required String name,
