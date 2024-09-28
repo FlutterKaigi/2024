@@ -52,7 +52,7 @@ class SessionItem extends StatelessWidget {
                 ),
               ),
             ),
-            child: _SessionCard(
+            child: SessionCard(
               title: _title,
               name: _name,
               onTap: _onTap,
@@ -64,11 +64,12 @@ class SessionItem extends StatelessWidget {
   }
 }
 
-class _SessionCard extends ConsumerWidget {
-  const _SessionCard({
+class SessionCard extends ConsumerWidget {
+  const SessionCard({
     required String title,
     required String name,
     required VoidCallback? onTap,
+    super.key,
   })  : _title = title,
         _name = name,
         _onTap = onTap;

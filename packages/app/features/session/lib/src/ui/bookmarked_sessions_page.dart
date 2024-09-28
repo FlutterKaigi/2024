@@ -21,17 +21,20 @@ class BookmarkedSessionsPage extends ConsumerWidget {
           SliverAppBar.large(
             title: Text(l.bookmarked),
           ),
-          SliverList.list(
-            children: [
-              for (final id in sessions.sessions)
-                SessionItem(
-                  title: 'Example Super Session Title ~ Why we using Flutter?',
-                  name: 'Name',
-                  isDateVisible: true,
-                  onTap: () async =>
-                      SessionPageRoute(sessionId: id).push(context),
-                ),
-            ],
+          SliverPadding(
+            padding: const EdgeInsets.all(16),
+            sliver: SliverList.list(
+              children: [
+                for (final id in sessions.sessions)
+                  SessionCard(
+                    title:
+                        'Example Super Session Title ~ Why we using Flutter?',
+                    name: 'Name',
+                    onTap: () async =>
+                        SessionPageRoute(sessionId: id).push(context),
+                  ),
+              ],
+            ),
           ),
         ],
       ),
