@@ -175,7 +175,7 @@ class _IsBookmarkedProviderElement extends AutoDisposeProviderElement<bool>
 }
 
 String _$bookmarkedSessionsHash() =>
-    r'0caa953cb404dc72d042b0d60d249c004bcf8023';
+    r'068b306dc6e33d890178f3917d0d499a280dda66';
 
 /// See also [BookmarkedSessions].
 @ProviderFor(BookmarkedSessions)
