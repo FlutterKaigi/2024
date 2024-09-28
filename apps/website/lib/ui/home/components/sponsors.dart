@@ -5,8 +5,8 @@ import 'package:conference_2024_website/state/sponsor_notifier.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:vector_graphics/vector_graphics.dart';
 
 final class Sponsors extends HookConsumerWidget {
   const Sponsors({super.key});
@@ -177,11 +177,13 @@ class _SponsorCard extends ConsumerWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          print(sponsor.logoUrl);
+        },
         child: Container(
           width: size,
           height: size,
-          padding: const EdgeInsets.all(32),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.6),
             boxShadow: [
@@ -194,12 +196,21 @@ class _SponsorCard extends ConsumerWidget {
             ],
           ),
           child: sponsor.logoUrl.toString().endsWith('.svg')
-              ? VectorGraphic(
-                  loader: NetworkBytesLoader(sponsor.logoUrl),
-                )
-              : Image.network(
+              ? SvgPicture.network(
                   sponsor.logoUrl.toString(),
-                  fit: BoxFit.contain,
+                  width: size,
+                  height: size,
+                )
+              : DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                  ),
+                  child: Image.network(
+                    sponsor.logoUrl.toString(),
+                    fit: BoxFit.contain,
+                    width: size,
+                    height: size,
+                  ),
                 ),
         ),
       ),
