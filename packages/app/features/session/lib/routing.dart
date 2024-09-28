@@ -1,1 +1,2 @@
-export 'src/routing/router.dart';
+export 'src/routing/router.dart'
+    show BookmarkedSessionsPageRoute, SessionPageRoute, sessionRoutes;

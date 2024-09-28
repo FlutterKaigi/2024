@@ -4,6 +4,22 @@ import 'package:packages_app_features_session/ui.dart';
 
 part 'router.g.dart';
 
+final sessionRoutes = $appRoutes;
+
+@TypedGoRoute<BookmarkedSessionsPageRoute>(
+  path: BookmarkedSessionsPageRoute.path,
+)
+class BookmarkedSessionsPageRoute extends GoRouteData {
+  const BookmarkedSessionsPageRoute();
+
+  static const path = '/bookmarked_sessions';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const BookmarkedSessionsPage();
+  }
+}
+
 @TypedGoRoute<SessionPageRoute>(
   path: SessionPageRoute.path,
 )
@@ -12,7 +28,7 @@ class SessionPageRoute extends GoRouteData {
     required this.sessionId,
   });
 
-  static const path = ':sessionId';
+  static const path = '/:sessionId';
 
   final String sessionId;
 
@@ -21,19 +37,5 @@ class SessionPageRoute extends GoRouteData {
     return SessionPage(
       sessionId: sessionId,
     );
-  }
-}
-
-@TypedGoRoute<BookmarkedSessionsPageRoute>(
-  path: BookmarkedSessionsPageRoute.path,
-)
-class BookmarkedSessionsPageRoute extends GoRouteData {
-  const BookmarkedSessionsPageRoute();
-
-  static const path = 'bookmarked_sessions';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const BookmarkedSessionsPage();
   }
 }

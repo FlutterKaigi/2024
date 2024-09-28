@@ -128,7 +128,7 @@ extension $AboutPageRouteExtension on AboutPageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'2a1088a80e98dcc7940f71383b49d4997e2cc8d6';
+String _$routerHash() => r'73d8ed8b0902e280b842c4d8e9d262f646ef90f7';
 
 /// See also [router].
 @ProviderFor(router)

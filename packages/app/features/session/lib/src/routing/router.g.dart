@@ -7,22 +7,21 @@ part of 'router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $sessionPageRoute,
       $bookmarkedSessionsPageRoute,
+      $sessionPageRoute,
     ];
 
-RouteBase get $sessionPageRoute => GoRouteData.$route(
-      path: ':sessionId',
-      factory: $SessionPageRouteExtension._fromState,
+RouteBase get $bookmarkedSessionsPageRoute => GoRouteData.$route(
+      path: '/bookmarked_sessions',
+      factory: $BookmarkedSessionsPageRouteExtension._fromState,
     );
 
-extension $SessionPageRouteExtension on SessionPageRoute {
-  static SessionPageRoute _fromState(GoRouterState state) => SessionPageRoute(
-        sessionId: state.pathParameters['sessionId']!,
-      );
+extension $BookmarkedSessionsPageRouteExtension on BookmarkedSessionsPageRoute {
+  static BookmarkedSessionsPageRoute _fromState(GoRouterState state) =>
+      const BookmarkedSessionsPageRoute();
 
   String get location => GoRouteData.$location(
-        '${Uri.encodeComponent(sessionId)}',
+        '/bookmarked_sessions',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -35,17 +34,18 @@ extension $SessionPageRouteExtension on SessionPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $bookmarkedSessionsPageRoute => GoRouteData.$route(
-      path: 'bookmarked_sessions',
-      factory: $BookmarkedSessionsPageRouteExtension._fromState,
+RouteBase get $sessionPageRoute => GoRouteData.$route(
+      path: '/:sessionId',
+      factory: $SessionPageRouteExtension._fromState,
     );
 
-extension $BookmarkedSessionsPageRouteExtension on BookmarkedSessionsPageRoute {
-  static BookmarkedSessionsPageRoute _fromState(GoRouterState state) =>
-      const BookmarkedSessionsPageRoute();
+extension $SessionPageRouteExtension on SessionPageRoute {
+  static SessionPageRoute _fromState(GoRouterState state) => SessionPageRoute(
+        sessionId: state.pathParameters['sessionId']!,
+      );
 
   String get location => GoRouteData.$location(
-        'bookmarked_sessions',
+        '/${Uri.encodeComponent(sessionId)}',
       );
 
   void go(BuildContext context) => context.go(location);

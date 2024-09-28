@@ -22,8 +22,14 @@ class SessionsPage extends StatelessWidget {
               child: MainLogo(),
             ),
             title: Text(l.sessionPageTitle),
-            actions: const [
-              SettingsButton(),
+            actions: [
+              IconButton(
+                tooltip: l.bookmarked,
+                onPressed: () async =>
+                    const BookmarkedSessionsPageRoute().push(context),
+                icon: const Icon(Icons.bookmarks_outlined),
+              ),
+              const SettingsButton(),
             ],
           ),
           SliverList(
