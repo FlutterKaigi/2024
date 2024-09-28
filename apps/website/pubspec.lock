@@ -1201,10 +1201,11 @@ packages:
   vector_graphics:
     dependency: "direct main"
     description:
-      name: vector_graphics
-      sha256: "32c3c684e02f9bc0afb0ae0aa653337a2fe022e8ab064bcd7ffda27a74e288e3"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/vector_graphics"
+      ref: "8f7abd11cff39096b829e3810f7eb12474bc8e58"
+      resolved-ref: "8f7abd11cff39096b829e3810f7eb12474bc8e58"
+      url: "https://github.com/YumNumm/vector_graphics.git"
+    source: git
     version: "1.1.11+1"
   vector_graphics_codec:
     dependency: transitive
