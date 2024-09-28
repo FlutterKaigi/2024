@@ -40,6 +40,18 @@ dev_dependencies:
   theme_tailor: ^3.0.1
   vector_graphics_compiler: ^1.1.11+1
 
+dependency_overrides:
+  vector_graphics:
+    git:
+      url: https://github.com/YumNumm/vector_graphics.git
+      ref: ae04010d19feff0db4e5b1763aa43d340fa6fa5e
+      path: packages/vector_graphics
+  yet_another_json_isolate:
+    git:
+      url: https://github.com/YumNumm/supabase-flutter.git
+      ref: 4edc00b3b70621d37814b8c1fbef448655a4b222
+      path: packages/yet_another_json_isolate
+
 flutter:
   generate: true
   uses-material-design: true
