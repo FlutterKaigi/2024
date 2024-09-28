@@ -10,7 +10,7 @@ class Lead extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = Colors.white.withValues(alpha: 0.6);
+    final backgroundColor = Colors.white.withOpacity(0.6);
     final i18n = Translations.of(context);
 
     final textTheme = Theme.of(context).customThemeExtension.textTheme;
