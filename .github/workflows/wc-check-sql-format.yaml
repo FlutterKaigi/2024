@@ -1,0 +1,79 @@
+name: Check SQL Format
+
+on:
+  workflow_call:
+
+env:
+  PNPM_VERSION: 9
+  NODE_VERSION: 20
+  SQL_FORMATTER_VERSION: 15
+
+jobs:
+  check-sql-format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+    permissions:
+      checks: write
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # Git changes are not needed for this job
+          fetch-depth: 1
+      # https://github.com/actions/setup-node
+      - name: Install Node.js
+        uses: actions/setup-node@0a44ba7841725637a19e28fa30b79a866c81b0a6 # v4.0.4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      # https://github.com/pnpm/action-setup
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+        name: Install pnpm
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: |
+            - args: [--global, sql-formatter@${{ env.SQL_FORMATTER_VERSION }}]
+
+      - name: Check SQL Format
+        run: |
+          SQL_FILES=$(find packages/common/data -type f -name "*.sql")
+          for FILE in $SQL_FILES; do
+             echo "Checking $FILE"
+             pnpm exec sql-formatter \
+              --config .sqlformatrc.json \
+              --fix \
+              $FILE
+          done
+
+      - name: Check for changes
+        run: git diff --exit-code
+
+      # https://github.com/peter-evans/create-pull-request
+      - name: Create or update pull request
+        uses: peter-evans/create-pull-request@5e914681df9dc83aa4e4905692ca88beb2f9e91f # v7.0.5
+        if: failure()
+        id: cpr
+        with:
+          delete-branch: true
+          commit-message: "Auto format for SQL files"
+          committer: "GitHub Actions <noreply@github.com>"
+          base: ${{ github.head_ref }}
+          branch: "auto-format/sql/${{ github.head_ref }}"
+          title: "Auto format - ${{ github.head_ref }}"
+          body: "Auto format by GitHub Actions on ${{ github.ref }}\nby: ${{github.actor}}"
+          labels: "Auto Format"
+          reviewers: ${{ github.actor }}
+
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"

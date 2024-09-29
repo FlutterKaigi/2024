@@ -1,0 +1,27 @@
+name: Check Prettier
+
+on:
+  workflow_call:
+
+jobs:
+  check-prettier:
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
+
+      # https://github.com/creyD/prettier_action
+      - name: Check Prettier
+        uses: creyD/prettier_action@31355f8eef017f8aeba2e0bc09d8502b13dbbad1 # v4.3
+        with:
+          dry: true
+          prettier_options: --config .prettierrc.yaml --check **/*.{json,jsonc,yaml}

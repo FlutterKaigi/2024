@@ -72,20 +72,6 @@
       ]
     },
     {
-      "name": "website-html-debug",
-      "cwd": "apps/website",
-      "request": "launch",
-      "program": "lib/main.dart",
-      "args": [
-        "--web-port",
-        "8080",
-        "--web-renderer",
-        "html",
-        "--dart-define-from-file=defines/production.env"
-      ],
-      "type": "dart"
-    },
-    {
       "name": "website-development-canvaskit-wasm-debug",
       "cwd": "apps/website",
       "request": "launch",
@@ -118,6 +104,34 @@
         "--dart-define-from-file=defines/production.env"
       ],
       "type": "dart"
+    },
+    {
+      "name": "website-development-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--dart-define-from-file=defines/development.env",
+        "-d",
+        "macos"
+      ]
+    },
+    {
+      "name": "website-production-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--dart-define-from-file=defines/production.env",
+        "-d",
+        "macos"
+      ]
     }
   ]
 }

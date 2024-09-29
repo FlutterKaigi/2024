@@ -1,5 +1,5 @@
-import 'package:conference_2024_website/common/util/scroll_to_section.dart';
-import 'package:conference_2024_website/i18n/strings.g.dart';
+import 'package:conference_2024_website/core/util/scroll_to_section.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -168,15 +168,11 @@ final class _HeaderNavigation extends StatelessWidget {
     final i18n = Translations.of(context);
     final naviItemDataList = <NaviItemButtonData>[
       NaviItemButtonData(
-        title: i18n.header.speakerWanted,
-        key: NaviSectionKey.speakerWanted.key,
+        title: i18n.header.sponsors,
+        key: NaviSectionKey.sponsors.key,
       ),
 
       /// 未実装のセクションはコメントアウト
-      // NaviItemButtonData(
-      //   title: i18n.header.sponsor,
-      //   key: NaviSectionKey.sponsor.key,
-      // ),
       // NaviItemButtonData(
       //   title: i18n.header.staff,
       //   key: NaviSectionKey.staff.key,
@@ -218,7 +214,7 @@ final class _HeaderNavigation extends StatelessWidget {
 enum NaviSectionKey {
   title(GlobalObjectKey('headerTitleKey')),
   speakerWanted(GlobalObjectKey('speakerWantedSectionKey')),
-  sponsor(GlobalObjectKey('sponsorSectionKey')),
+  sponsors(GlobalObjectKey('sponsorsSectionKey')),
   staff(GlobalObjectKey('staffSectionKey')),
   ;
 

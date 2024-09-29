@@ -1,3 +1,4 @@
 {
-  "newsPageTitle": "News"
+  "newsPageTitle": "News",
+  "newsIsEmpty" : "現在、新しいニュースはありません。"
 }
