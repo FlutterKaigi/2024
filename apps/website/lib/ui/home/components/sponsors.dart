@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/i18n/strings.g.dart';
-import 'package:conference_2024_website/state/sponsor_notifier.dart';
+import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -225,7 +225,7 @@ Widget _errorRetryButton(
     child: Column(
       children: [
         Text(
-          i18n.sponsors.sponsors_error,
+          i18n.sponsors.sponsorsError,
           style: textTheme.body,
         ),
         const SizedBox(height: 16),
