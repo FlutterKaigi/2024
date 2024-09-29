@@ -24,7 +24,9 @@ class InformationForStudents extends StatelessWidget {
             children: [
               Text(
                 i18n.homePage.tickets.student.name,
-                style: theme.textTheme.titleMedium,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
