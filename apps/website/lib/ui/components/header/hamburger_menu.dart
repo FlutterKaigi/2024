@@ -1,5 +1,5 @@
-import 'package:conference_2024_website/common/util/scroll_to_section.dart';
-import 'package:conference_2024_website/i18n/strings.g.dart';
+import 'package:conference_2024_website/core/util/scroll_to_section.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
@@ -122,12 +122,11 @@ final class _MenuItems extends StatelessWidget {
         title: i18n.header.speakerWanted,
         key: NaviSectionKey.speakerWanted.key,
       ),
-
+      NaviItemButtonData(
+        title: i18n.header.sponsors,
+        key: NaviSectionKey.sponsors.key,
+      ),
       /// 未実装のセクションはコメントアウト
-      // NaviItemButtonData(
-      //   title: i18n.header.sponsor,
-      //   key: NaviSectionKey.sponsor.key,
-      // ),
       // NaviItemButtonData(
       //   title: i18n.header.staff,
       //   key: NaviSectionKey.staff.key,

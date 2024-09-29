@@ -7,6 +7,9 @@ class L10nSessionJa extends L10nSession {
   L10nSessionJa([String locale = 'ja']) : super(locale);
 
   @override
+  String get bookmarked => 'お気に入り';
+
+  @override
   String get openSpeakersLink => '登壇者情報を見る';
 
   @override

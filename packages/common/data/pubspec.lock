@@ -1107,12 +1107,13 @@ packages:
     source: hosted
     version: "3.1.2"
   yet_another_json_isolate:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: yet_another_json_isolate
-      sha256: "47ed3900e6b0e4dfe378811a4402e85b7fc126a7daa94f840fef65ea9c8e46f4"
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/yet_another_json_isolate"
+      ref: "4edc00b3b70621d37814b8c1fbef448655a4b222"
+      resolved-ref: "4edc00b3b70621d37814b8c1fbef448655a4b222"
+      url: "https://github.com/YumNumm/supabase-flutter.git"
+    source: git
     version: "2.0.2"
 sdks:
   dart: ">=3.6.0-216.1.beta <4.0.0"

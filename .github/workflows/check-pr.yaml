@@ -1,0 +1,63 @@
+name: Check Pull Request
+
+on:
+  pull_request:
+
+concurrency:
+  group: check-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    uses: ./.github/workflows/wc-check-changes.yaml
+
+  skip-job-no-changes:
+    runs-on: ubuntu-22.04
+    needs: changes
+    if: ${{ needs.changes.outputs.any == 'false'}}
+    steps:
+      # https://github.com/peter-evans/create-or-update-comment
+      - name: Skip comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            チェック対象ファイルに変更がないため、ジョブの実行をスキップしました。
+
+  check-database:
+    needs: changes
+    if: ${{ needs.changes.outputs.database == 'true' }}
+    uses: ./.github/workflows/wc-check-database.yaml
+
+  check-markdownlint:
+    needs: changes
+    if: ${{ needs.changes.outputs.markdownlint == 'true' }}
+    uses: ./.github/workflows/wc-check-markdownlint.yaml
+
+  check-prettier:
+    needs: changes
+    if: ${{ needs.changes.outputs.prettier == 'true' }}
+    uses: ./.github/workflows/wc-check-prettier.yaml
+
+  check-sql-format:
+    needs: changes
+    if: ${{ needs.changes.outputs.sql-format == 'true' }}
+    uses: ./.github/workflows/wc-check-sql-format.yaml
+
+  check-textlint:
+    needs: changes
+    if: ${{ needs.changes.outputs.textlint == 'true' }}
+    uses: ./.github/workflows/wc-check-textlint.yaml
+
+  status-check:
+    runs-on: ubuntu-22.04
+    needs:
+      - check-database
+      - check-markdownlint
+      - check-prettier
+      - check-sql-format
+      - check-textlint
+    permissions: {}
+    if: failure()
+    steps:
+      - run: exit 1

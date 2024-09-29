@@ -1,10 +1,10 @@
 /// Generated file. Do not edit.
 ///
-/// Original: lib/i18n
+/// Original: lib/core/i18n
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 38
+/// Strings: 44
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -153,7 +153,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsHeaderJa header = _StringsHeaderJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
-	String get news_error => 'お知らせの取得に失敗しました';
+	late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
+	String get newsError => 'お知らせの取得に失敗しました';
 	String get retry => '再試行';
 	late final _StringsSpeakerJa speaker = _StringsSpeakerJa._(_root);
 }
@@ -200,7 +201,7 @@ class _StringsHeaderJa {
 
 	// Translations
 	String get speakerWanted => 'Speaker Wanted';
-	String get sponsor => 'Sponsor';
+	String get sponsors => 'Sponsors';
 	String get staff => 'Staff';
 }
 
@@ -237,6 +238,18 @@ class _StringsSponsorJa {
 		'お申し込みは 6/17 10:00 より開始します',
 	];
 	String get apply => '協賛資料はこちら';
+}
+
+// Path: sponsors
+class _StringsSponsorsJa {
+	_StringsSponsorsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Sponsors';
+	late final _StringsSponsorsLevelsJa levels = _StringsSponsorsLevelsJa._(_root);
+	String get sponsorsError => 'スポンサー一覧の取得に失敗しました';
 }
 
 // Path: speaker
@@ -279,6 +292,19 @@ class _StringsLeadLocationJa {
 	String get value => '有明セントラルタワー＆カンファレンス';
 }
 
+// Path: sponsors.levels
+class _StringsSponsorsLevelsJa {
+	_StringsSponsorsLevelsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get platinum => 'Platinum';
+	String get gold => 'Gold';
+	String get silver => 'Silver';
+	String get bronze => 'Bronze';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -297,7 +323,7 @@ extension on Translations {
 			case 'lead.location.prefix': return '会場';
 			case 'lead.location.value': return '有明セントラルタワー＆カンファレンス';
 			case 'header.speakerWanted': return 'Speaker Wanted';
-			case 'header.sponsor': return 'Sponsor';
+			case 'header.sponsors': return 'Sponsors';
 			case 'header.staff': return 'Staff';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
 			case 'footer.googleFlutter1': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
@@ -314,7 +340,13 @@ extension on Translations {
 			case 'sponsor.messages.3': return 'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。';
 			case 'sponsor.messages.4': return 'お申し込みは 6/17 10:00 より開始します';
 			case 'sponsor.apply': return '協賛資料はこちら';
-			case 'news_error': return 'お知らせの取得に失敗しました';
+			case 'sponsors.title': return 'Sponsors';
+			case 'sponsors.levels.platinum': return 'Platinum';
+			case 'sponsors.levels.gold': return 'Gold';
+			case 'sponsors.levels.silver': return 'Silver';
+			case 'sponsors.levels.bronze': return 'Bronze';
+			case 'sponsors.sponsorsError': return 'スポンサー一覧の取得に失敗しました';
+			case 'newsError': return 'お知らせの取得に失敗しました';
 			case 'retry': return '再試行';
 			case 'speaker.title': return 'Speaker Wanted';
 			case 'speaker.messages.0': return 'FlutterKaigi 2024でのセッションスピーカーを募集開始しました！';
