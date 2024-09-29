@@ -72,7 +72,7 @@ class SponsorView extends StatelessWidget {
                 builder: (context, followLink) => TextButton(
                   onPressed: followLink,
                   child: Text(
-                    sponsor.url!.toString(),
+                    sponsor.url!.toString().split('?').first,
                     style: textTheme.body,
                   ),
                 ),
