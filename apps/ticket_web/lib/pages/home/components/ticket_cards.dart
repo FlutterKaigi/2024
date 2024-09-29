@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
+import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
-class TicketCards extends StatelessWidget {
+class TicketCards extends ConsumerWidget {
   const TicketCards({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isMobile = MediaQuery.sizeOf(context).isMobile;
 
+    final isLoggedIn = ref.watch(authNotifierProvider) != null;
+
     final children = [
-      const _NormalTicketCard(),
-      const _InvitationTicketCard(),
+      _NormalTicketCard(
+        isLoggedIn: isLoggedIn,
+        onPurchasePressed: () async {},
+        onSignInPressed:
+            ref.read(authNotifierProvider.notifier).signInWithGoogle,
+      ),
+      _InvitationTicketCard(
+        isLoggedIn: isLoggedIn,
+        onApplyCodePressed: (code) async {},
+        onSignInPressed:
+            ref.read(authNotifierProvider.notifier).signInWithGoogle,
+      ),
     ];
     if (isMobile) {
       return Column(
@@ -30,8 +44,15 @@ class TicketCards extends StatelessWidget {
 
 /// 一般チケットのカード
 class _NormalTicketCard extends StatelessWidget {
-  const _NormalTicketCard();
+  const _NormalTicketCard({
+    required this.isLoggedIn,
+    this.onPurchasePressed,
+    this.onSignInPressed,
+  });
 
+  final bool isLoggedIn;
+  final VoidCallback? onPurchasePressed;
+  final VoidCallback? onSignInPressed;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -74,9 +95,11 @@ class _NormalTicketCard extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               ),
-              onPressed: () async {
-                // TODO(YumNumm): チケットを購入する
-              },
+              onPressed: isLoggedIn
+                  ? () async {
+                      // TODO(YumNumm): チケットを購入する
+                    }
+                  : null,
               icon: const Icon(Icons.shopping_cart),
               label: Text(i18n.homePage.tickets.buyTicket),
             ),
@@ -89,7 +112,15 @@ class _NormalTicketCard extends StatelessWidget {
 
 /// 招待チケット・クーポンコードのカード
 class _InvitationTicketCard extends HookWidget {
-  const _InvitationTicketCard();
+  const _InvitationTicketCard({
+    required this.isLoggedIn,
+    this.onApplyCodePressed,
+    this.onSignInPressed,
+  });
+
+  final bool isLoggedIn;
+  final void Function(String code)? onApplyCodePressed;
+  final VoidCallback? onSignInPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -121,6 +152,7 @@ class _InvitationTicketCard extends HookWidget {
             ),
             const SizedBox(height: 16),
             TextField(
+              enabled: isLoggedIn,
               controller: textController,
               decoration: InputDecoration(
                 labelText: i18n.homePage.tickets.invitation.textBoxTitle,
@@ -141,9 +173,9 @@ class _InvitationTicketCard extends HookWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               ),
-              onPressed: () async {
-                // TODO(YumNumm): クーポンコードを適用する
-              },
+              onPressed: isLoggedIn
+                  ? () async => onApplyCodePressed?.call(textController.text)
+                  : null,
             ),
           ],
         ),

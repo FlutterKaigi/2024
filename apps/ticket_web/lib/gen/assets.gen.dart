@@ -28,6 +28,9 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/sns
   $AssetsImagesSnsGen get sns => const $AssetsImagesSnsGen();
 
+  /// Directory path: assets/images/svg
+  $AssetsImagesSvgGen get svg => const $AssetsImagesSvgGen();
+
   /// List of all assets
   List<AssetGenImage> get values => [icon];
 }
@@ -69,6 +72,16 @@ class $AssetsImagesSnsGen {
 
   /// List of all assets
   List<String> get values => [discord, github, medium, x];
+}
+
+class $AssetsImagesSvgGen {
+  const $AssetsImagesSvgGen();
+
+  /// File path: assets/images/svg/sign_in_with_google.svg
+  String get signInWithGoogle => 'assets/images/svg/sign_in_with_google.svg';
+
+  /// List of all assets
+  List<String> get values => [signInWithGoogle];
 }
 
 class Assets {

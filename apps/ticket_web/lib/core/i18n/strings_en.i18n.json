@@ -11,6 +11,8 @@
     },
     "tickets": {
       "buyTicket": "Buy Ticket",
+      "loginBeforeBuy": "Please login with your Google account to buy or register a ticket.",
+      "ticketManagedByGoogleAccount": "After purchase or registration, tickets will be managed by your Google account.",
       "normal": {
         "name": "Normal Ticket",
         "price": "¥$price",
@@ -23,6 +25,16 @@
         "text_box_description": "Enter the code",
         "apply_code_button": "Apply Code"
       }
+    }
+  },
+  "authorization": {
+    "already_logged_in_with_mail_address": "Already logged in with $mailAddress",
+    "log_out": "Log Out",
+    "log_out_dialog": {
+      "title": "Are you sure you want to log out?",
+      "description": "Logging out will prevent you from purchasing or registering tickets until you log in again.",
+      "cancel": "Cancel",
+      "logout": "Log Out"
     }
   },
   "footer": {

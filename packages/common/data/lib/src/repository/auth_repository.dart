@@ -58,7 +58,7 @@ final class AuthRepository {
   Future<void> signOut() async => _client.auth.signOut();
 
   /// Google サインイン
-  Future<void> signInWithGoogle({
+  Future<bool> signInWithGoogle({
     String? redirectTo,
   }) async =>
       _client.auth.signInWithOAuth(

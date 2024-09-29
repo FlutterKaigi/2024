@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 48 (24 per locale)
+/// Strings: 64 (32 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get officialSite => '公式サイト';
 	String get ticketSite => 'チケットサイト';
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
+	late final _StringsAuthorizationJa authorization = _StringsAuthorizationJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 }
 
@@ -164,6 +165,18 @@ class _StringsHomePageJa {
 	// Translations
 	late final _StringsHomePageTitleAndLogoJa titleAndLogo = _StringsHomePageTitleAndLogoJa._(_root);
 	late final _StringsHomePageTicketsJa tickets = _StringsHomePageTicketsJa._(_root);
+}
+
+// Path: authorization
+class _StringsAuthorizationJa {
+	_StringsAuthorizationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String alreadyLoggedInWithMailAddress({required Object mailAddress}) => '${mailAddress} でログイン済みです';
+	String get logOut => 'ログアウト';
+	late final _StringsAuthorizationLogOutDialogJa logOutDialog = _StringsAuthorizationLogOutDialogJa._(_root);
 }
 
 // Path: footer
@@ -200,8 +213,23 @@ class _StringsHomePageTicketsJa {
 
 	// Translations
 	String get buyTicket => 'チケットを購入';
+	String get loginBeforeBuy => 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
+	String get ticketManagedByGoogleAccount => '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 	late final _StringsHomePageTicketsNormalJa normal = _StringsHomePageTicketsNormalJa._(_root);
 	late final _StringsHomePageTicketsInvitationJa invitation = _StringsHomePageTicketsInvitationJa._(_root);
+}
+
+// Path: authorization.logOutDialog
+class _StringsAuthorizationLogOutDialogJa {
+	_StringsAuthorizationLogOutDialogJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'ログアウトしますか？';
+	String get description => 'ログアウトすると、再度ログインするまでチケットの購入や登録ができなくなります。';
+	String get cancel => 'キャンセル';
+	String get logout => 'ログアウト';
 }
 
 // Path: footer.googleCopyright
@@ -274,6 +302,7 @@ class _StringsEn extends Translations {
 	@override String get officialSite => 'Official Site';
 	@override String get ticketSite => 'Ticket Site';
 	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
+	@override late final _StringsAuthorizationEn authorization = _StringsAuthorizationEn._(_root);
 	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
 }
 
@@ -286,6 +315,18 @@ class _StringsHomePageEn extends _StringsHomePageJa {
 	// Translations
 	@override late final _StringsHomePageTitleAndLogoEn titleAndLogo = _StringsHomePageTitleAndLogoEn._(_root);
 	@override late final _StringsHomePageTicketsEn tickets = _StringsHomePageTicketsEn._(_root);
+}
+
+// Path: authorization
+class _StringsAuthorizationEn extends _StringsAuthorizationJa {
+	_StringsAuthorizationEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String alreadyLoggedInWithMailAddress({required Object mailAddress}) => 'Already logged in with ${mailAddress}';
+	@override String get logOut => 'Log Out';
+	@override late final _StringsAuthorizationLogOutDialogEn logOutDialog = _StringsAuthorizationLogOutDialogEn._(_root);
 }
 
 // Path: footer
@@ -322,8 +363,23 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
 
 	// Translations
 	@override String get buyTicket => 'Buy Ticket';
+	@override String get loginBeforeBuy => 'Please login with your Google account to buy or register a ticket.';
+	@override String get ticketManagedByGoogleAccount => 'After purchase or registration, tickets will be managed by your Google account.';
 	@override late final _StringsHomePageTicketsNormalEn normal = _StringsHomePageTicketsNormalEn._(_root);
 	@override late final _StringsHomePageTicketsInvitationEn invitation = _StringsHomePageTicketsInvitationEn._(_root);
+}
+
+// Path: authorization.logOutDialog
+class _StringsAuthorizationLogOutDialogEn extends _StringsAuthorizationLogOutDialogJa {
+	_StringsAuthorizationLogOutDialogEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Are you sure you want to log out?';
+	@override String get description => 'Logging out will prevent you from purchasing or registering tickets until you log in again.';
+	@override String get cancel => 'Cancel';
+	@override String get logout => 'Log Out';
 }
 
 // Path: footer.googleCopyright
@@ -378,6 +434,8 @@ extension on Translations {
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
+			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
+			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 			case 'homePage.tickets.normal.name': return '一般チケット';
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
@@ -386,6 +444,12 @@ extension on Translations {
 			case 'homePage.tickets.invitation.textBoxTitle': return '招待コード もしくは クーポンコード';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'コードを入力';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'コードを適用';
+			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => '${mailAddress} でログイン済みです';
+			case 'authorization.logOut': return 'ログアウト';
+			case 'authorization.logOutDialog.title': return 'ログアウトしますか？';
+			case 'authorization.logOutDialog.description': return 'ログアウトすると、再度ログインするまでチケットの購入や登録ができなくなります。';
+			case 'authorization.logOutDialog.cancel': return 'キャンセル';
+			case 'authorization.logOutDialog.logout': return 'ログアウト';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 実行委員会';
 			case 'footer.googleCopyright.text0': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 			case 'footer.googleCopyright.text1': return 'The Flutter name and the Flutter logo';
@@ -410,6 +474,8 @@ extension on _StringsEn {
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
 			case 'homePage.tickets.buyTicket': return 'Buy Ticket';
+			case 'homePage.tickets.loginBeforeBuy': return 'Please login with your Google account to buy or register a ticket.';
+			case 'homePage.tickets.ticketManagedByGoogleAccount': return 'After purchase or registration, tickets will be managed by your Google account.';
 			case 'homePage.tickets.normal.name': return 'Normal Ticket';
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return 'General admission ticket';
@@ -418,6 +484,12 @@ extension on _StringsEn {
 			case 'homePage.tickets.invitation.textBoxTitle': return 'Invitation Code or Coupon Code';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'Enter the code';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'Apply Code';
+			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => 'Already logged in with ${mailAddress}';
+			case 'authorization.logOut': return 'Log Out';
+			case 'authorization.logOutDialog.title': return 'Are you sure you want to log out?';
+			case 'authorization.logOutDialog.description': return 'Logging out will prevent you from purchasing or registering tickets until you log in again.';
+			case 'authorization.logOutDialog.cancel': return 'Cancel';
+			case 'authorization.logOutDialog.logout': return 'Log Out';
 			case 'footer.copyRight': return '@ FlutterKaigi 2024 Organizing Committee';
 			case 'footer.googleCopyright.text0': return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
 			case 'footer.googleCopyright.text1': return 'The Flutter name and the Flutter logo';
