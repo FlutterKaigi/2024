@@ -35,8 +35,17 @@ class ErrorDialog extends StatelessWidget {
 
     return AlertDialog(
       backgroundColor: theme.colorScheme.errorContainer,
-      title: const Text('ERROR!'),
-      content: Text(message),
+      title: Text(
+        'ERROR!',
+        style: TextStyle(
+          color: theme.colorScheme.onErrorContainer,
+        ),
+      ),
+      content: Text(
+        message,
+        style: theme.textTheme.bodyMedium
+            ?.copyWith(color: theme.colorScheme.onErrorContainer),
+      ),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
