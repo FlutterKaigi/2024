@@ -3,10 +3,12 @@ import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
+import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
+import 'package:conference_2024_website/ui/pages/sponsor/components/sponsor_view.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -74,16 +76,21 @@ class SponsorPage extends HookWidget {
         ),
         body: CustomScrollView(
           controller: scrollController,
-          slivers: const [
+          slivers: [
             SliverToBoxAdapter(
               child: Stack(
                 children: [
-                  _Body(),
-                  BackgroundTop(),
+                  const FittedBox(
+                    fit: BoxFit.cover,
+                    child: BackgroundTop(),
+                  ),
+                  _Body(
+                    sponsor: sponsor,
+                  ),
                 ],
               ),
             ),
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: SiteFooter(),
             ),
           ],
@@ -101,7 +108,11 @@ class SponsorPage extends HookWidget {
 }
 
 class _Body extends StatelessWidget {
-  const _Body();
+  const _Body({
+    required this.sponsor,
+  });
+
+  final SponsorWithSession sponsor;
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +121,7 @@ class _Body extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
-    return Column(
+    final child = Column(
       children: [
         const Row(),
         const Gap(120),
@@ -121,8 +132,20 @@ class _Body extends StatelessWidget {
           ),
         ),
         const Gap(80),
+        SponsorView(sponsor: sponsor),
+        const Gap(80),
       ],
     );
+
+    return ContentsMargin.narrow(
+      child: child,
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
   }
 }
 
