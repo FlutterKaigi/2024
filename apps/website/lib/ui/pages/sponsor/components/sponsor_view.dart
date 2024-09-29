@@ -79,7 +79,7 @@ class SponsorView extends StatelessWidget {
               ),
             const Gap(16),
             Text(
-              sponsor.description.replaceAll('\nモバイルアプリ開発', 'AAAA!!'),
+              sponsor.description,
               style: textTheme.body,
             ),
           ],
