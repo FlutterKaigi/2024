@@ -1,3 +1,4 @@
+import 'package:conference_2024_website/feature/news/ui/news_component.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
@@ -6,8 +7,6 @@ import 'package:conference_2024_website/ui/home/components/background/background
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
-import 'package:conference_2024_website/ui/home/components/news_component.dart';
-import 'package:conference_2024_website/ui/home/components/speaker_wanted.dart';
 import 'package:conference_2024_website/ui/home/components/sponsors.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
@@ -87,12 +86,6 @@ class _Body extends StatelessWidget {
             const Gap(80),
             ContentsMargin.wide(
               child: const _News(),
-            ),
-            const Gap(128),
-            ContentsMargin.wide(
-              child: SpeakerWanted(
-                key: NaviSectionKey.speakerWanted.key,
-              ),
             ),
             const Gap(128),
             ContentsMargin.narrow(

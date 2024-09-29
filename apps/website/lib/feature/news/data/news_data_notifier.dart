@@ -1,5 +1,5 @@
 import 'package:common_data/news.dart';
-import 'package:conference_2024_website/ui/home/notifier/news_data_state.dart';
+import 'package:conference_2024_website/feature/news/data/news_data_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'news_data_notifier.g.dart';
