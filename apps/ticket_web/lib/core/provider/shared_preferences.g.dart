@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'promotion_code_service.dart';
+part of 'shared_preferences.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$promotionCodeServiceHash() =>
-    r'2c949891d5232f6168e32b9f1357b2146b7d56a0';
+String _$sharedPreferencesHash() => r'75e745127707e465d3f55ce89ddcc932bd72bc2d';
 
-/// See also [promotionCodeService].
-@ProviderFor(promotionCodeService)
-final promotionCodeServiceProvider = Provider<PromotionCodeService>.internal(
-  promotionCodeService,
-  name: r'promotionCodeServiceProvider',
+/// See also [sharedPreferences].
+@ProviderFor(sharedPreferences)
+final sharedPreferencesProvider = Provider<SharedPreferences>.internal(
+  sharedPreferences,
+  name: r'sharedPreferencesProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$promotionCodeServiceHash,
+      : _$sharedPreferencesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef PromotionCodeServiceRef = ProviderRef<PromotionCodeService>;
+typedef SharedPreferencesRef = ProviderRef<SharedPreferences>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
