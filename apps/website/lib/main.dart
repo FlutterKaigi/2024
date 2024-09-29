@@ -2,7 +2,7 @@
 
 import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_website/core/app.dart';
-import 'package:conference_2024_website/core/util/set_url_strategy/set_url_strategy_web.dart';
+import 'package:conference_2024_website/core/util/setup_web_environment.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
