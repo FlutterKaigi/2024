@@ -1,6 +1,6 @@
 /// Generated file. Do not edit.
 ///
-/// Original: lib/i18n
+/// Original: lib/core/i18n
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
@@ -154,7 +154,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
 	late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
-	String get news_error => 'お知らせの取得に失敗しました';
+	String get newsError => 'お知らせの取得に失敗しました';
 	String get retry => '再試行';
 	late final _StringsSpeakerJa speaker = _StringsSpeakerJa._(_root);
 }
@@ -249,7 +249,7 @@ class _StringsSponsorsJa {
 	// Translations
 	String get title => 'Sponsors';
 	late final _StringsSponsorsLevelsJa levels = _StringsSponsorsLevelsJa._(_root);
-	String get sponsors_error => 'スポンサー一覧の取得に失敗しました';
+	String get sponsorsError => 'スポンサー一覧の取得に失敗しました';
 }
 
 // Path: speaker
@@ -345,8 +345,8 @@ extension on Translations {
 			case 'sponsors.levels.gold': return 'Gold';
 			case 'sponsors.levels.silver': return 'Silver';
 			case 'sponsors.levels.bronze': return 'Bronze';
-			case 'sponsors.sponsors_error': return 'スポンサー一覧の取得に失敗しました';
-			case 'news_error': return 'お知らせの取得に失敗しました';
+			case 'sponsors.sponsorsError': return 'スポンサー一覧の取得に失敗しました';
+			case 'newsError': return 'お知らせの取得に失敗しました';
 			case 'retry': return '再試行';
 			case 'speaker.title': return 'Speaker Wanted';
 			case 'speaker.messages.0': return 'FlutterKaigi 2024でのセッションスピーカーを募集開始しました！';
