@@ -11,5 +11,5 @@ class GetPromotionResponse with _$GetPromotionResponse {
   }) = _GetPromotionResponse;
 
   factory GetPromotionResponse.fromJson(Map<String, dynamic> json) =>
-    _$GetPromotionResponseFromJson(json);
+      _$GetPromotionResponseFromJson(json);
 }

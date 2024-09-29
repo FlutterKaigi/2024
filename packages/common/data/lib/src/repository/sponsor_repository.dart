@@ -1,4 +1,5 @@
 import 'package:common_data/src/model/sponsor.dart';
+import 'package:common_data/src/model/view/sponsor_with_session.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -39,6 +40,30 @@ final class SponsorRepository {
             ),
             description: sponsor.description,
             url: sponsor.url != null ? Uri.tryParse(sponsor.url!) : null,
+            type: sponsor.type,
+          ),
+        )
+        .toList();
+  }
+
+  Future<List<SponsorWithSession>> fetchSponsorWithSessions() async {
+    final result = await _supabaseClient
+        .from('sponsor_with_sessions')
+        .select()
+        .withConverter(
+          (json) => json.map(SponsorWithSessionView.fromJson).toList(),
+        );
+
+    return result
+        .map(
+          (sponsor) => SponsorWithSession(
+            id: sponsor.id,
+            name: sponsor.name,
+            logoUrl: Uri.parse(
+              _sponsorStorageFileApi.getPublicUrl(sponsor.logoName),
+            ),
+            description: sponsor.description,
+            url: sponsor.url,
             type: sponsor.type,
           ),
         )

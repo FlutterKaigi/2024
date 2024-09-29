@@ -6,8 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'news_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-NewsRepository newsRepository(NewsRepositoryRef ref) =>
-    NewsRepositoryImpl(
+NewsRepository newsRepository(NewsRepositoryRef ref) => NewsRepositoryImpl(
       supabaseClient: ref.watch(supabaseClientProvider),
     );
 

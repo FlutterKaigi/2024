@@ -10,11 +10,10 @@ class SessionVenuesWithSessions with _$SessionVenuesWithSessions {
   const factory SessionVenuesWithSessions({
     required String id,
     required String name,
-
   }) = _SessionVenuesWithSessions;
 
   factory SessionVenuesWithSessions.fromJson(Map<String, dynamic> json) =>
-    _$SessionVenuesWithSessionsFromJson(json);
+      _$SessionVenuesWithSessionsFromJson(json);
 }
 
 @freezed
@@ -31,5 +30,5 @@ class SessionWithSpeakerAndSponsor with _$SessionWithSpeakerAndSponsor {
   }) = _SessionWithSpeakerAndSponsor;
 
   factory SessionWithSpeakerAndSponsor.fromJson(Map<String, dynamic> json) =>
-    _$SessionWithSpeakerAndSponsorFromJson(json);
+      _$SessionWithSpeakerAndSponsorFromJson(json);
 }
