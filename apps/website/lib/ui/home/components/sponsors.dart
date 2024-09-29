@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
