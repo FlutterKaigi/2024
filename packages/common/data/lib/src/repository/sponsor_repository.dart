@@ -59,7 +59,9 @@ final class SponsorRepository {
           (sponsor) => SponsorWithSession(
             id: sponsor.id,
             name: sponsor.name,
-            logoUrl: sponsor.logoUrl,
+            logoUrl: Uri.parse(
+              _sponsorStorageFileApi.getPublicUrl(sponsor.logoName),
+            ),
             description: sponsor.description,
             url: sponsor.url,
             type: sponsor.type,

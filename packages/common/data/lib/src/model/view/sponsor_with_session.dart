@@ -6,7 +6,7 @@ part 'sponsor_with_session.freezed.dart';
 part 'sponsor_with_session.g.dart';
 
 @freezed
-class SponsorWithSessionView with _$SponsorWithSession {
+class SponsorWithSessionView with _$SponsorWithSessionView {
   const factory SponsorWithSessionView({
     required int id,
     required String name,
