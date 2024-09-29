@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 36
+/// Strings: 38
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -248,6 +248,8 @@ class _StringsSponsorsJa {
 	String get title => 'Sponsors';
 	late final _StringsSponsorsLevelsJa levels = _StringsSponsorsLevelsJa._(_root);
 	String get sponsorsError => 'スポンサー一覧の取得に失敗しました';
+	String get sponsorNotFound => 'スポンサーが見つかりませんでした';
+	String get backToTop => 'トップに戻る';
 }
 
 // Path: lead.date
@@ -325,6 +327,8 @@ extension on Translations {
 			case 'sponsors.levels.silver': return 'Silver';
 			case 'sponsors.levels.bronze': return 'Bronze';
 			case 'sponsors.sponsorsError': return 'スポンサー一覧の取得に失敗しました';
+			case 'sponsors.sponsorNotFound': return 'スポンサーが見つかりませんでした';
+			case 'sponsors.backToTop': return 'トップに戻る';
 			case 'newsError': return 'お知らせの取得に失敗しました';
 			case 'retry': return '再試行';
 			default: return null;

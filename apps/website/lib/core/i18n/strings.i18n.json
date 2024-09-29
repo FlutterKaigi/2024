@@ -53,7 +53,9 @@
       "silver": "Silver",
       "bronze": "Bronze"
     },
-    "sponsors_error": "スポンサー一覧の取得に失敗しました"
+    "sponsors_error": "スポンサー一覧の取得に失敗しました",
+    "sponsor_not_found": "スポンサーが見つかりませんでした",
+    "back_to_top": "トップに戻る"
   },
   "news_error": "お知らせの取得に失敗しました",
   "retry": "再試行"

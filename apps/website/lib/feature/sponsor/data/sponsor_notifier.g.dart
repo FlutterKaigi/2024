@@ -6,11 +6,11 @@ part of 'sponsor_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sponsorHash() => r'61300177bf82a42c73d32fcb938fa914742bb82d';
+String _$sponsorHash() => r'1a61153c9422c3e93dfd8211a5d6745877f49d17';
 
 /// See also [sponsor].
 @ProviderFor(sponsor)
-final sponsorProvider = FutureProvider<List<Sponsor>>.internal(
+final sponsorProvider = FutureProvider<List<SponsorWithSession>>.internal(
   sponsor,
   name: r'sponsorProvider',
   debugGetCreateSourceHash:
@@ -19,6 +19,6 @@ final sponsorProvider = FutureProvider<List<Sponsor>>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef SponsorRef = FutureProviderRef<List<Sponsor>>;
+typedef SponsorRef = FutureProviderRef<List<SponsorWithSession>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

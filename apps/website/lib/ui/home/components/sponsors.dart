@@ -1,7 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
+import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
+import 'package:conference_2024_website/ui/pages/sponsor_page.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -177,7 +179,7 @@ class _SponsorCard extends ConsumerWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {},
+        onTap: () async => SponsorRoute(id: sponsor.id).push<void>(context),
         child: Container(
           width: size,
           height: size,
