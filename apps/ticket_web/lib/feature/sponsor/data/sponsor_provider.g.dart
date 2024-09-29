@@ -7,7 +7,7 @@ part of 'sponsor_provider.dart';
 // **************************************************************************
 
 String _$sponsorWithSessionsHash() =>
-    r'a884b2dbdc42a0ac8b291f56512c426d6c6dd905';
+    r'1bdd8d4902d8aaee424724db8a50340b1f7833aa';
 
 /// See also [sponsorWithSessions].
 @ProviderFor(sponsorWithSessions)

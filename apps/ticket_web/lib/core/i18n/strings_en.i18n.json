@@ -31,6 +31,15 @@
           "dialog": {
             "ok": "OK",
             "cancel": "Cancel"
+          },
+          "invited": {
+            "title": "Invitation code has been successfully validated",
+            "description": "Please enter the following information",
+            "warning": "Pressing \"Next\" will finalize the information. If you need to make changes, please contact the organizers.",
+            "sponsor": "Sponsor you are member of",
+            "session": "Session you will speak at",
+            "next": "Next",
+            "please_wait_for_a_moment": "Please wait a moment..."
           }
         }
       },

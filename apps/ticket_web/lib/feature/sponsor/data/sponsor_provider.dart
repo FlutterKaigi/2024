@@ -6,7 +6,5 @@ part 'sponsor_provider.g.dart';
 @Riverpod(keepAlive: true)
 Future<List<SponsorWithSession>> sponsorWithSessions(
   SponsorWithSessionsRef ref,
-) async {
-  final repository = ref.watch(sponsorRepositoryProvider);
-  return repository.fetchSponsorWithSessions();
-}
+) async =>
+    ref.watch(sponsorRepositoryProvider).fetchSponsorWithSessions();

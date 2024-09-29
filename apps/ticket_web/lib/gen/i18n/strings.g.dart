@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 108 (54 per locale)
+/// Strings: 120 (60 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -285,8 +285,8 @@ class _StringsHomePageTicketsVariantJa {
 	// Translations
 	String get general => '一般チケット';
 	String get sponsor => '個人スポンサーチケット';
-	late final _StringsHomePageTicketsVariantSponsorSessionJa sponsorSession = _StringsHomePageTicketsVariantSponsorSessionJa._(_root);
-	late final _StringsHomePageTicketsVariantSponsorInvitationJa sponsorInvitation = _StringsHomePageTicketsVariantSponsorInvitationJa._(_root);
+	String get sponsorSession => 'スポンサーセッション登壇者チケット';
+	String get sponsorInvitation => 'スポンサー招待チケット';
 }
 
 // Path: homePage.tickets.normal
@@ -337,28 +337,6 @@ class _StringsHomePageTicketsStudentJa {
 	String get description => '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 }
 
-// Path: homePage.tickets.variant.sponsorSession
-class _StringsHomePageTicketsVariantSponsorSessionJa {
-	_StringsHomePageTicketsVariantSponsorSessionJa._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get name => 'スポンサーセッション登壇者チケット';
-	String withName({required Object name}) => '${name} 社さま スポンサーセッション登壇者チケット';
-}
-
-// Path: homePage.tickets.variant.sponsorInvitation
-class _StringsHomePageTicketsVariantSponsorInvitationJa {
-	_StringsHomePageTicketsVariantSponsorInvitationJa._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get name => 'スポンサー招待チケット';
-	String withName({required Object name}) => '${name} 社さま スポンサー招待チケット';
-}
-
 // Path: homePage.tickets.invitation.error
 class _StringsHomePageTicketsInvitationErrorJa {
 	_StringsHomePageTicketsInvitationErrorJa._(this._root);
@@ -384,6 +362,7 @@ class _StringsHomePageTicketsInvitationValidationJa {
 	String get nextPayment => '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットを購入してください';
 	String get nextConfirmOrder => '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
 	late final _StringsHomePageTicketsInvitationValidationDialogJa dialog = _StringsHomePageTicketsInvitationValidationDialogJa._(_root);
+	late final _StringsHomePageTicketsInvitationValidationInvitedJa invited = _StringsHomePageTicketsInvitationValidationInvitedJa._(_root);
 }
 
 // Path: homePage.tickets.invitation.validation.dialog
@@ -395,6 +374,22 @@ class _StringsHomePageTicketsInvitationValidationDialogJa {
 	// Translations
 	String get ok => '決定';
 	String get cancel => 'キャンセル';
+}
+
+// Path: homePage.tickets.invitation.validation.invited
+class _StringsHomePageTicketsInvitationValidationInvitedJa {
+	_StringsHomePageTicketsInvitationValidationInvitedJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => '招待コードが正常に検証されました';
+	String get description => '以下の情報を入力してください';
+	String get warning => '「次へ」を押すと、情報は確定されます。変更するには、運営へお問い合わせください。';
+	String get sponsor => '所属スポンサー';
+	String get session => '登壇セッション';
+	String get next => '次へ';
+	String get pleaseWaitForAMoment => '少々お待ちください...';
 }
 
 // Path: <root>
@@ -611,6 +606,7 @@ class _StringsHomePageTicketsInvitationValidationEn extends _StringsHomePageTick
 	@override String get nextPayment => 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.';
 	@override String get nextConfirmOrder => 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
 	@override late final _StringsHomePageTicketsInvitationValidationDialogEn dialog = _StringsHomePageTicketsInvitationValidationDialogEn._(_root);
+	@override late final _StringsHomePageTicketsInvitationValidationInvitedEn invited = _StringsHomePageTicketsInvitationValidationInvitedEn._(_root);
 }
 
 // Path: homePage.tickets.invitation.validation.dialog
@@ -622,6 +618,22 @@ class _StringsHomePageTicketsInvitationValidationDialogEn extends _StringsHomePa
 	// Translations
 	@override String get ok => 'OK';
 	@override String get cancel => 'Cancel';
+}
+
+// Path: homePage.tickets.invitation.validation.invited
+class _StringsHomePageTicketsInvitationValidationInvitedEn extends _StringsHomePageTicketsInvitationValidationInvitedJa {
+	_StringsHomePageTicketsInvitationValidationInvitedEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Invitation code has been successfully validated';
+	@override String get description => 'Please enter the following information';
+	@override String get warning => 'Pressing "Next" will finalize the information. If you need to make changes, please contact the organizers.';
+	@override String get sponsor => 'Sponsor you are member of';
+	@override String get session => 'Session you will speak at';
+	@override String get next => 'Next';
+	@override String get pleaseWaitForAMoment => 'Please wait a moment...';
 }
 
 /// Flat map(s) containing all translations.
@@ -639,10 +651,8 @@ extension on Translations {
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
 			case 'homePage.tickets.variant.general': return '一般チケット';
 			case 'homePage.tickets.variant.sponsor': return '個人スポンサーチケット';
-			case 'homePage.tickets.variant.sponsorSession.name': return 'スポンサーセッション登壇者チケット';
-			case 'homePage.tickets.variant.sponsorSession.withName': return ({required Object name}) => '${name} 社さま スポンサーセッション登壇者チケット';
-			case 'homePage.tickets.variant.sponsorInvitation.name': return 'スポンサー招待チケット';
-			case 'homePage.tickets.variant.sponsorInvitation.withName': return ({required Object name}) => '${name} 社さま スポンサー招待チケット';
+			case 'homePage.tickets.variant.sponsorSession': return 'スポンサーセッション登壇者チケット';
+			case 'homePage.tickets.variant.sponsorInvitation': return 'スポンサー招待チケット';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
 			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
@@ -663,6 +673,13 @@ extension on Translations {
 			case 'homePage.tickets.invitation.validation.nextConfirmOrder': return '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
 			case 'homePage.tickets.invitation.validation.dialog.ok': return '決定';
 			case 'homePage.tickets.invitation.validation.dialog.cancel': return 'キャンセル';
+			case 'homePage.tickets.invitation.validation.invited.title': return '招待コードが正常に検証されました';
+			case 'homePage.tickets.invitation.validation.invited.description': return '以下の情報を入力してください';
+			case 'homePage.tickets.invitation.validation.invited.warning': return '「次へ」を押すと、情報は確定されます。変更するには、運営へお問い合わせください。';
+			case 'homePage.tickets.invitation.validation.invited.sponsor': return '所属スポンサー';
+			case 'homePage.tickets.invitation.validation.invited.session': return '登壇セッション';
+			case 'homePage.tickets.invitation.validation.invited.next': return '次へ';
+			case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment': return '少々お待ちください...';
 			case 'homePage.tickets.personalSponsor.name': return '個人スポンサーチケット';
 			case 'homePage.tickets.personalSponsor.description': return '個人スポンサー向けチケット';
 			case 'homePage.tickets.student.name': return '学割について';
@@ -720,6 +737,13 @@ extension on _StringsEn {
 			case 'homePage.tickets.invitation.validation.nextConfirmOrder': return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
 			case 'homePage.tickets.invitation.validation.dialog.ok': return 'OK';
 			case 'homePage.tickets.invitation.validation.dialog.cancel': return 'Cancel';
+			case 'homePage.tickets.invitation.validation.invited.title': return 'Invitation code has been successfully validated';
+			case 'homePage.tickets.invitation.validation.invited.description': return 'Please enter the following information';
+			case 'homePage.tickets.invitation.validation.invited.warning': return 'Pressing "Next" will finalize the information. If you need to make changes, please contact the organizers.';
+			case 'homePage.tickets.invitation.validation.invited.sponsor': return 'Sponsor you are member of';
+			case 'homePage.tickets.invitation.validation.invited.session': return 'Session you will speak at';
+			case 'homePage.tickets.invitation.validation.invited.next': return 'Next';
+			case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment': return 'Please wait a moment...';
 			case 'homePage.tickets.personalSponsor.name': return 'Personal Sponsor Ticket';
 			case 'homePage.tickets.personalSponsor.description': return 'Ticket for individual sponsors';
 			case 'homePage.tickets.student.name': return 'Student Discount';

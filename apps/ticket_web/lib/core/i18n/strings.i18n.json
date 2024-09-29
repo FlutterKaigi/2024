@@ -13,14 +13,8 @@
       "variant": {
         "general": "一般チケット",
         "sponsor": "個人スポンサーチケット",
-        "sponsor_session": {
-          "name": "スポンサーセッション登壇者チケット",
-          "with_name": "$name 社さま スポンサーセッション登壇者チケット"
-        },
-        "sponsor_invitation": {
-          "name": "スポンサー招待チケット",
-          "with_name": "$name 社さま スポンサー招待チケット"
-        }
+        "sponsor_session": "スポンサーセッション登壇者チケット",
+        "sponsor_invitation": "スポンサー招待チケット"
       },
       "buyTicket": "チケットを購入",
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
@@ -49,6 +43,15 @@
           "dialog": {
             "ok": "決定",
             "cancel": "キャンセル"
+          },
+          "invited": {
+            "title": "招待コードが正常に検証されました",
+            "description": "以下の情報を入力してください",
+            "warning": "「次へ」を押すと、情報は確定されます。変更するには、運営へお問い合わせください。",
+            "sponsor": "所属スポンサー",
+            "session": "登壇セッション",
+            "next": "次へ",
+            "please_wait_for_a_moment": "少々お待ちください..."
           }
         }
       },
