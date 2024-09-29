@@ -35,6 +35,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
+  go_router_builder: ^2.7.1
   riverpod_generator: ^2.4.3
   riverpod_lint: ^2.3.13
   slang_build_runner: ^3.31.0
