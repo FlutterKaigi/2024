@@ -681,7 +681,7 @@ VALUES
     '77bea69d-5a57-426d-922a-c9e85155eb84.svg',
     'Flutter developers use Codemagic CI/CD since Flutter Live in 2018 and they love it!\nFlutter developers use Codemagic to automate their release pipeline to the app stores and now Codemagic has M2 Mac Minis available on free tier!',
     'https://codemagic.io/start/?utm_source=events&utm_medium=Flutter_Kaigi',
-    'gold'
+    'platinum'
   );
 
 INSERT INTO
