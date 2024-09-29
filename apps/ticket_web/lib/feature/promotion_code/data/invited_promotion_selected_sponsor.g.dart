@@ -7,12 +7,12 @@ part of 'invited_promotion_selected_sponsor.dart';
 // **************************************************************************
 
 String _$invitedPromotionSelectedSponsorHash() =>
-    r'a4c487a75843af154e09c192771db65041cb2dd7';
+    r'8f31e67e52aa084375ca9407e2a3377b60f28867';
 
 /// See also [InvitedPromotionSelectedSponsor].
 @ProviderFor(InvitedPromotionSelectedSponsor)
 final invitedPromotionSelectedSponsorProvider =
-    NotifierProvider<InvitedPromotionSelectedSponsor, String?>.internal(
+    NotifierProvider<InvitedPromotionSelectedSponsor, int?>.internal(
   InvitedPromotionSelectedSponsor.new,
   name: r'invitedPromotionSelectedSponsorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final invitedPromotionSelectedSponsorProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$InvitedPromotionSelectedSponsor = Notifier<String?>;
+typedef _$InvitedPromotionSelectedSponsor = Notifier<int?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

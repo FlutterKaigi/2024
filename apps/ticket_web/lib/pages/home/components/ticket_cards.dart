@@ -9,6 +9,8 @@ import 'package:ticket_web/core/util/full_screen_loading.dart';
 import 'package:ticket_web/core/util/result.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/payment/data/payment_service.dart';
+import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_session.dart';
+import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_sponsor.dart';
 import 'package:ticket_web/feature/promotion_code/data/promotion_code_service.dart';
 import 'package:ticket_web/feature/promotion_code/ui/on_invited_promotion_code_entered_dialog/on_invited_promotion_code_entered_session_dialog.dart';
 import 'package:ticket_web/feature/promotion_code/ui/on_invited_promotion_code_entered_dialog/on_invited_promotion_code_entered_sponsor_dialog.dart';
@@ -107,7 +109,17 @@ class TicketCards extends ConsumerWidget {
                             sessions: sessions,
                             title: getAlertDialogTitle(value.type),
                           );
-                          // TODO(YumNumm): 保存処理
+                          if (selectedSession == null) {
+                            return;
+                          }
+
+                          await ref
+                              .read(
+                                invitedPromotionSelectedSessionProvider
+                                    .notifier,
+                              )
+                              .save(selectedSession.id);
+
                           if (context.mounted) {
                             await OnPromotionCodeVerifiedDialog.show(
                               context: context,
@@ -139,7 +151,17 @@ class TicketCards extends ConsumerWidget {
                             sponsors: sponsors,
                             title: getAlertDialogTitle(value.type),
                           );
-                          // TODO(YumNumm): 保存処理
+                          if (selectedSponsor == null) {
+                            return;
+                          }
+
+                          await ref
+                              .read(
+                                invitedPromotionSelectedSponsorProvider
+                                    .notifier,
+                              )
+                              .save(selectedSponsor.id);
+
                           if (context.mounted) {
                             await OnPromotionCodeVerifiedDialog.show(
                               context: context,
@@ -172,7 +194,21 @@ class TicketCards extends ConsumerWidget {
                             sessionWithSponsors: sponsorAndSessions,
                             title: getAlertDialogTitle(value.type),
                           );
-                          // TODO(YumNumm): 保存処理
+                          if (selectedSponsorAndSession == null) {
+                            return;
+                          }
+                          await ref
+                              .read(
+                                invitedPromotionSelectedSponsorProvider
+                                    .notifier,
+                              )
+                              .save(selectedSponsorAndSession.sponsor.id);
+                          await ref
+                              .read(
+                                invitedPromotionSelectedSessionProvider
+                                    .notifier,
+                              )
+                              .save(selectedSponsorAndSession.session.id);
                           if (context.mounted) {
                             await OnPromotionCodeVerifiedDialog.show(
                               context: context,

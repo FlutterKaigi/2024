@@ -32,6 +32,9 @@ class OnPromotionCodeVerifiedDialog extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final i18n = Translations.of(context);
 
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
     return AlertDialog(
       title: Text(i18n.homePage.tickets.invitation.validation.ok),
       content: Text(
@@ -40,14 +43,9 @@ class OnPromotionCodeVerifiedDialog extends HookConsumerWidget {
             i18n.homePage.tickets.invitation.validation.nextPayment,
           _ => i18n.homePage.tickets.invitation.validation.nextConfirmOrder,
         },
+        style: textTheme.bodyMedium,
       ),
       actions: [
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text(
-            i18n.homePage.tickets.invitation.validation.dialog.cancel,
-          ),
-        ),
         TextButton(
           onPressed: () async {
             final paymentService = ref.read(paymentServiceProvider);
@@ -60,6 +58,9 @@ class OnPromotionCodeVerifiedDialog extends HookConsumerWidget {
               },
               promotionCode: promotionCode,
             );
+            if (context.mounted && Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
           },
           child: Text(
             i18n.homePage.tickets.invitation.validation.dialog.ok,

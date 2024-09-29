@@ -7,19 +7,19 @@ part 'invited_promotion_selected_sponsor.g.dart';
 class InvitedPromotionSelectedSponsor
     extends _$InvitedPromotionSelectedSponsor {
   @override
-  String? build() {
+  int? build() {
     final prefs = ref.watch(sharedPreferencesProvider);
-    return prefs.getString(_key);
+    return prefs.getInt(_key);
   }
 
-  Future<void> save(String? value) async {
+  Future<void> save(int? value) async {
     state = value;
     final prefs = ref.read(sharedPreferencesProvider);
     if (value == null) {
       await prefs.remove(_key);
       return;
     }
-    await prefs.setString(_key, value);
+    await prefs.setInt(_key, value);
   }
 
   static const String _key = 'invited_promotion_selected_sponsor';
