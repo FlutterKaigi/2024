@@ -24,7 +24,7 @@ final sponsorWithSessionsProvider =
 
 typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSession>>;
 String _$sponsorAndSessionListHash() =>
-    r'bfb57f0a0a17842fa72d5cd5c262d5d93641b53f';
+    r'f79e3020f7c6bd7b0348804707749cfcae9e27ec';
 
 /// See also [sponsorAndSessionList].
 @ProviderFor(sponsorAndSessionList)
