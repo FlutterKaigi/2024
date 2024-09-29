@@ -168,10 +168,6 @@ final class _HeaderNavigation extends StatelessWidget {
     final i18n = Translations.of(context);
     final naviItemDataList = <NaviItemButtonData>[
       NaviItemButtonData(
-        title: i18n.header.speakerWanted,
-        key: NaviSectionKey.speakerWanted.key,
-      ),
-      NaviItemButtonData(
         title: i18n.header.sponsors,
         key: NaviSectionKey.sponsors.key,
       ),
