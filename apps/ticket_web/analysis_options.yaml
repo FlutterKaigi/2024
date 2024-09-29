@@ -6,3 +6,5 @@ analyzer:
   errors:
     invalid_annotation_target: ignore
     diagnostic_describe_all_properties: ignore
+  exclude:
+    - lib/gen/i18n/strings.g.dart
