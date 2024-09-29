@@ -111,7 +111,7 @@
     },
     {
       "name": "website-development-debug",
-      "cwd": "apps/ticket_web",
+      "cwd": "apps/website",
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
@@ -125,7 +125,7 @@
     },
     {
       "name": "website-production-debug",
-      "cwd": "apps/ticket_web",
+      "cwd": "apps/website",
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
