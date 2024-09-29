@@ -15,19 +15,15 @@ export const promotionCodeMetadataSchema = v.variant("type", [
   }),
   // 一般セッション登壇者
   v.object({
-    type: v.literal("session"),
-    sessionId: v.pipe(v.string(), v.uuid())
+    type: v.literal("session")
   }),
   // スポンサー招待
   v.object({
-    type: v.literal("sponsor"),
-    sponsorId: StringInt
+    type: v.literal("sponsor")
   }),
   // スポンサーセッション登壇者
   v.object({
-    type: v.literal("sponsorSession"),
-    sponsorId: StringInt,
-    sessionId: v.pipe(v.string(), v.uuid())
+    type: v.literal("sponsorSession")
   })
 ]);
 

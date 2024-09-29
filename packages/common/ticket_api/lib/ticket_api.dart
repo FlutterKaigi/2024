@@ -35,8 +35,10 @@ abstract class TicketApiClient {
 
   @POST('/v1/verify_purchase')
   Future<VerifyPurchaseResponse> verifyPurchase({
-    @Query('session_id') required String sessionId,
+    @Query('stripe_session_id') required String stripeSessionId,
     @Header('Authorization') required String authorization,
+    @Query('sponsor_id') String? sponsorId,
+    @Query('session_id') String? sessionId,
   });
 
   @GET('/v1/promotion')
