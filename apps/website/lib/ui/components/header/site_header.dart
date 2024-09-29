@@ -171,12 +171,12 @@ final class _HeaderNavigation extends StatelessWidget {
         title: i18n.header.speakerWanted,
         key: NaviSectionKey.speakerWanted.key,
       ),
+      NaviItemButtonData(
+        title: i18n.header.sponsors,
+        key: NaviSectionKey.sponsors.key,
+      ),
 
       /// 未実装のセクションはコメントアウト
-      // NaviItemButtonData(
-      //   title: i18n.header.sponsor,
-      //   key: NaviSectionKey.sponsor.key,
-      // ),
       // NaviItemButtonData(
       //   title: i18n.header.staff,
       //   key: NaviSectionKey.staff.key,
@@ -218,7 +218,7 @@ final class _HeaderNavigation extends StatelessWidget {
 enum NaviSectionKey {
   title(GlobalObjectKey('headerTitleKey')),
   speakerWanted(GlobalObjectKey('speakerWantedSectionKey')),
-  sponsor(GlobalObjectKey('sponsorSectionKey')),
+  sponsors(GlobalObjectKey('sponsorsSectionKey')),
   staff(GlobalObjectKey('staffSectionKey')),
   ;
 

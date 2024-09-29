@@ -22,7 +22,7 @@
   },
   "header": {
     "speakerWanted": "Speaker Wanted",
-    "sponsor": "Sponsor",
+    "sponsors": "Sponsors",
     "staff": "Staff"
   },
   "footer": {
@@ -45,6 +45,16 @@
       "お申し込みは 6/17 10:00 より開始します"
     ],
     "apply": "協賛資料はこちら"
+  },
+  "sponsors": {
+    "title": "Sponsors",
+    "levels": {
+      "platinum": "Platinum",
+      "gold": "Gold",
+      "silver": "Silver",
+      "bronze": "Bronze"
+    },
+    "sponsors_error": "スポンサー一覧の取得に失敗しました"
   },
   "news_error": "お知らせの取得に失敗しました",
   "retry": "再試行",

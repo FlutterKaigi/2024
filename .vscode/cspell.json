@@ -1,9 +1,11 @@
 {
   "words": [
     "designsystem",
+    "dorny",
     "IntelliJ",
     "Kaigi",
     "LTRB",
+    "markdownlint",
     "microtask",
     "MMMMEEE",
     "pubspec",
@@ -11,6 +13,7 @@
     "riverpod",
     "smallserial",
     "Supabase",
+    "textlint",
     "unawaited",
     "webp",
     "zenn"
