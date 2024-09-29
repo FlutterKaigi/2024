@@ -153,12 +153,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsHeaderJa header = _StringsHeaderJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
-<<<<<<< HEAD:apps/website/lib/gen/i18n/strings.g.dart
-	String get newsError => 'お知らせの取得に失敗しました';
-=======
 	late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
-	String get news_error => 'お知らせの取得に失敗しました';
->>>>>>> origin/main:apps/website/lib/i18n/strings.g.dart
+	String get newsError => 'お知らせの取得に失敗しました';
 	String get retry => '再試行';
 	late final _StringsSpeakerJa speaker = _StringsSpeakerJa._(_root);
 }
@@ -253,7 +249,7 @@ class _StringsSponsorsJa {
 	// Translations
 	String get title => 'Sponsors';
 	late final _StringsSponsorsLevelsJa levels = _StringsSponsorsLevelsJa._(_root);
-	String get sponsors_error => 'スポンサー一覧の取得に失敗しました';
+	String get sponsorsError => 'スポンサー一覧の取得に失敗しました';
 }
 
 // Path: speaker
@@ -344,17 +340,13 @@ extension on Translations {
 			case 'sponsor.messages.3': return 'ともにFlutterコミュニティを成長させ、盛り上げるお手伝いをお願い申し上げます。';
 			case 'sponsor.messages.4': return 'お申し込みは 6/17 10:00 より開始します';
 			case 'sponsor.apply': return '協賛資料はこちら';
-<<<<<<< HEAD:apps/website/lib/gen/i18n/strings.g.dart
-			case 'newsError': return 'お知らせの取得に失敗しました';
-=======
 			case 'sponsors.title': return 'Sponsors';
 			case 'sponsors.levels.platinum': return 'Platinum';
 			case 'sponsors.levels.gold': return 'Gold';
 			case 'sponsors.levels.silver': return 'Silver';
 			case 'sponsors.levels.bronze': return 'Bronze';
-			case 'sponsors.sponsors_error': return 'スポンサー一覧の取得に失敗しました';
-			case 'news_error': return 'お知らせの取得に失敗しました';
->>>>>>> origin/main:apps/website/lib/i18n/strings.g.dart
+			case 'sponsors.sponsorsError': return 'スポンサー一覧の取得に失敗しました';
+			case 'newsError': return 'お知らせの取得に失敗しました';
 			case 'retry': return '再試行';
 			case 'speaker.title': return 'Speaker Wanted';
 			case 'speaker.messages.0': return 'FlutterKaigi 2024でのセッションスピーカーを募集開始しました！';
