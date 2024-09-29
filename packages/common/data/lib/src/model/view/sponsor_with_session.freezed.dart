@@ -14,12 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-SponsorWithSession _$SponsorWithSessionFromJson(Map<String, dynamic> json) {
-  return _SponsorWithSession.fromJson(json);
+SponsorWithSessionView _$SponsorWithSessionViewFromJson(
+    Map<String, dynamic> json) {
+  return _SponsorWithSessionView.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SponsorWithSession {
+mixin _$SponsorWithSessionView {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get logoName => throw _privateConstructorUsedError;
@@ -27,21 +28,21 @@ mixin _$SponsorWithSession {
   Uri? get url => throw _privateConstructorUsedError;
   SponsorType get type => throw _privateConstructorUsedError;
 
-  /// Serializes this SponsorWithSession to a JSON map.
+  /// Serializes this SponsorWithSessionView to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SponsorWithSession
+  /// Create a copy of SponsorWithSessionView
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SponsorWithSessionCopyWith<SponsorWithSession> get copyWith =>
+  $SponsorWithSessionViewCopyWith<SponsorWithSessionView> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SponsorWithSessionCopyWith<$Res> {
-  factory $SponsorWithSessionCopyWith(
-          SponsorWithSession value, $Res Function(SponsorWithSession) then) =
-      _$SponsorWithSessionCopyWithImpl<$Res, SponsorWithSession>;
+abstract class $SponsorWithSessionViewCopyWith<$Res> {
+  factory $SponsorWithSessionViewCopyWith(SponsorWithSessionView value,
+          $Res Function(SponsorWithSessionView) then) =
+      _$SponsorWithSessionViewCopyWithImpl<$Res, SponsorWithSessionView>;
   @useResult
   $Res call(
       {int id,
@@ -53,16 +54,17 @@ abstract class $SponsorWithSessionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SponsorWithSessionCopyWithImpl<$Res, $Val extends SponsorWithSession>
-    implements $SponsorWithSessionCopyWith<$Res> {
-  _$SponsorWithSessionCopyWithImpl(this._value, this._then);
+class _$SponsorWithSessionViewCopyWithImpl<$Res,
+        $Val extends SponsorWithSessionView>
+    implements $SponsorWithSessionViewCopyWith<$Res> {
+  _$SponsorWithSessionViewCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SponsorWithSession
+  /// Create a copy of SponsorWithSessionView
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -104,11 +106,12 @@ class _$SponsorWithSessionCopyWithImpl<$Res, $Val extends SponsorWithSession>
 }
 
 /// @nodoc
-abstract class _$$SponsorWithSessionImplCopyWith<$Res>
-    implements $SponsorWithSessionCopyWith<$Res> {
-  factory _$$SponsorWithSessionImplCopyWith(_$SponsorWithSessionImpl value,
-          $Res Function(_$SponsorWithSessionImpl) then) =
-      __$$SponsorWithSessionImplCopyWithImpl<$Res>;
+abstract class _$$SponsorWithSessionViewImplCopyWith<$Res>
+    implements $SponsorWithSessionViewCopyWith<$Res> {
+  factory _$$SponsorWithSessionViewImplCopyWith(
+          _$SponsorWithSessionViewImpl value,
+          $Res Function(_$SponsorWithSessionViewImpl) then) =
+      __$$SponsorWithSessionViewImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,14 +124,16 @@ abstract class _$$SponsorWithSessionImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SponsorWithSessionImplCopyWithImpl<$Res>
-    extends _$SponsorWithSessionCopyWithImpl<$Res, _$SponsorWithSessionImpl>
-    implements _$$SponsorWithSessionImplCopyWith<$Res> {
-  __$$SponsorWithSessionImplCopyWithImpl(_$SponsorWithSessionImpl _value,
-      $Res Function(_$SponsorWithSessionImpl) _then)
+class __$$SponsorWithSessionViewImplCopyWithImpl<$Res>
+    extends _$SponsorWithSessionViewCopyWithImpl<$Res,
+        _$SponsorWithSessionViewImpl>
+    implements _$$SponsorWithSessionViewImplCopyWith<$Res> {
+  __$$SponsorWithSessionViewImplCopyWithImpl(
+      _$SponsorWithSessionViewImpl _value,
+      $Res Function(_$SponsorWithSessionViewImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SponsorWithSession
+  /// Create a copy of SponsorWithSessionView
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -140,7 +145,7 @@ class __$$SponsorWithSessionImplCopyWithImpl<$Res>
     Object? url = freezed,
     Object? type = null,
   }) {
-    return _then(_$SponsorWithSessionImpl(
+    return _then(_$SponsorWithSessionViewImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -171,8 +176,8 @@ class __$$SponsorWithSessionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SponsorWithSessionImpl implements _SponsorWithSession {
-  const _$SponsorWithSessionImpl(
+class _$SponsorWithSessionViewImpl implements _SponsorWithSessionView {
+  const _$SponsorWithSessionViewImpl(
       {required this.id,
       required this.name,
       required this.logoName,
@@ -180,8 +185,8 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
       required this.url,
       required this.type});
 
-  factory _$SponsorWithSessionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SponsorWithSessionImplFromJson(json);
+  factory _$SponsorWithSessionViewImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorWithSessionViewImplFromJson(json);
 
   @override
   final int id;
@@ -198,14 +203,14 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
 
   @override
   String toString() {
-    return 'SponsorWithSession(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type)';
+    return 'SponsorWithSessionView(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SponsorWithSessionImpl &&
+            other is _$SponsorWithSessionViewImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.logoName, logoName) ||
@@ -220,6 +225,262 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name, logoName, description, url, type);
+
+  /// Create a copy of SponsorWithSessionView
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SponsorWithSessionViewImplCopyWith<_$SponsorWithSessionViewImpl>
+      get copyWith => __$$SponsorWithSessionViewImplCopyWithImpl<
+          _$SponsorWithSessionViewImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SponsorWithSessionViewImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SponsorWithSessionView implements SponsorWithSessionView {
+  const factory _SponsorWithSessionView(
+      {required final int id,
+      required final String name,
+      required final String logoName,
+      required final String description,
+      required final Uri? url,
+      required final SponsorType type}) = _$SponsorWithSessionViewImpl;
+
+  factory _SponsorWithSessionView.fromJson(Map<String, dynamic> json) =
+      _$SponsorWithSessionViewImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  String get logoName;
+  @override
+  String get description;
+  @override
+  Uri? get url;
+  @override
+  SponsorType get type;
+
+  /// Create a copy of SponsorWithSessionView
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SponsorWithSessionViewImplCopyWith<_$SponsorWithSessionViewImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SponsorWithSession _$SponsorWithSessionFromJson(Map<String, dynamic> json) {
+  return _SponsorWithSession.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SponsorWithSession {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  Uri? get logoUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  Uri? get url => throw _privateConstructorUsedError;
+  SponsorType get type => throw _privateConstructorUsedError;
+
+  /// Serializes this SponsorWithSession to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SponsorWithSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SponsorWithSessionCopyWith<SponsorWithSession> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SponsorWithSessionCopyWith<$Res> {
+  factory $SponsorWithSessionCopyWith(
+          SponsorWithSession value, $Res Function(SponsorWithSession) then) =
+      _$SponsorWithSessionCopyWithImpl<$Res, SponsorWithSession>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      Uri? logoUrl,
+      String description,
+      Uri? url,
+      SponsorType type});
+}
+
+/// @nodoc
+class _$SponsorWithSessionCopyWithImpl<$Res, $Val extends SponsorWithSession>
+    implements $SponsorWithSessionCopyWith<$Res> {
+  _$SponsorWithSessionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SponsorWithSession
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? logoUrl = freezed,
+    Object? description = null,
+    Object? url = freezed,
+    Object? type = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logoUrl: freezed == logoUrl
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SponsorType,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SponsorWithSessionImplCopyWith<$Res>
+    implements $SponsorWithSessionCopyWith<$Res> {
+  factory _$$SponsorWithSessionImplCopyWith(_$SponsorWithSessionImpl value,
+          $Res Function(_$SponsorWithSessionImpl) then) =
+      __$$SponsorWithSessionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      Uri? logoUrl,
+      String description,
+      Uri? url,
+      SponsorType type});
+}
+
+/// @nodoc
+class __$$SponsorWithSessionImplCopyWithImpl<$Res>
+    extends _$SponsorWithSessionCopyWithImpl<$Res, _$SponsorWithSessionImpl>
+    implements _$$SponsorWithSessionImplCopyWith<$Res> {
+  __$$SponsorWithSessionImplCopyWithImpl(_$SponsorWithSessionImpl _value,
+      $Res Function(_$SponsorWithSessionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SponsorWithSession
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? logoUrl = freezed,
+    Object? description = null,
+    Object? url = freezed,
+    Object? type = null,
+  }) {
+    return _then(_$SponsorWithSessionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logoUrl: freezed == logoUrl
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SponsorType,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SponsorWithSessionImpl implements _SponsorWithSession {
+  const _$SponsorWithSessionImpl(
+      {required this.id,
+      required this.name,
+      required this.logoUrl,
+      required this.description,
+      required this.url,
+      required this.type});
+
+  factory _$SponsorWithSessionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorWithSessionImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final Uri? logoUrl;
+  @override
+  final String description;
+  @override
+  final Uri? url;
+  @override
+  final SponsorType type;
+
+  @override
+  String toString() {
+    return 'SponsorWithSession(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SponsorWithSessionImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, logoUrl, description, url, type);
 
   /// Create a copy of SponsorWithSession
   /// with the given fields replaced by the non-null parameter values.
@@ -242,7 +503,7 @@ abstract class _SponsorWithSession implements SponsorWithSession {
   const factory _SponsorWithSession(
       {required final int id,
       required final String name,
-      required final String logoName,
+      required final Uri? logoUrl,
       required final String description,
       required final Uri? url,
       required final SponsorType type}) = _$SponsorWithSessionImpl;
@@ -255,7 +516,7 @@ abstract class _SponsorWithSession implements SponsorWithSession {
   @override
   String get name;
   @override
-  String get logoName;
+  Uri? get logoUrl;
   @override
   String get description;
   @override

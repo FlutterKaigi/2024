@@ -8,13 +8,13 @@ part of 'sponsor_with_session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SponsorWithSessionImpl _$$SponsorWithSessionImplFromJson(
+_$SponsorWithSessionViewImpl _$$SponsorWithSessionViewImplFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$SponsorWithSessionImpl',
+      r'_$SponsorWithSessionViewImpl',
       json,
       ($checkedConvert) {
-        final val = _$SponsorWithSessionImpl(
+        final val = _$SponsorWithSessionViewImpl(
           id: $checkedConvert('id', (v) => (v as num).toInt()),
           name: $checkedConvert('name', (v) => v as String),
           logoName: $checkedConvert('logo_name', (v) => v as String),
@@ -29,8 +29,8 @@ _$SponsorWithSessionImpl _$$SponsorWithSessionImplFromJson(
       fieldKeyMap: const {'logoName': 'logo_name'},
     );
 
-Map<String, dynamic> _$$SponsorWithSessionImplToJson(
-        _$SponsorWithSessionImpl instance) =>
+Map<String, dynamic> _$$SponsorWithSessionViewImplToJson(
+        _$SponsorWithSessionViewImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -46,6 +46,39 @@ const _$SponsorTypeEnumMap = {
   SponsorType.silver: 'silver',
   SponsorType.bronze: 'bronze',
 };
+
+_$SponsorWithSessionImpl _$$SponsorWithSessionImplFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SponsorWithSessionImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$SponsorWithSessionImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          logoUrl: $checkedConvert(
+              'logo_url', (v) => v == null ? null : Uri.parse(v as String)),
+          description: $checkedConvert('description', (v) => v as String),
+          url: $checkedConvert(
+              'url', (v) => v == null ? null : Uri.parse(v as String)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SponsorTypeEnumMap, v)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'logoUrl': 'logo_url'},
+    );
+
+Map<String, dynamic> _$$SponsorWithSessionImplToJson(
+        _$SponsorWithSessionImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'logo_url': instance.logoUrl?.toString(),
+      'description': instance.description,
+      'url': instance.url?.toString(),
+      'type': _$SponsorTypeEnumMap[instance.type]!,
+    };
 
 _$SessionWithSpeakerAndVenueImpl _$$SessionWithSpeakerAndVenueImplFromJson(
         Map<String, dynamic> json) =>
