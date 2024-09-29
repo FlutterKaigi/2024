@@ -27,6 +27,8 @@ mixin _$SponsorWithSessionView {
   String get description => throw _privateConstructorUsedError;
   Uri? get url => throw _privateConstructorUsedError;
   SponsorType get type => throw _privateConstructorUsedError;
+  List<SessionWithSpeakerAndVenue> get sessions =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this SponsorWithSessionView to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +52,8 @@ abstract class $SponsorWithSessionViewCopyWith<$Res> {
       String logoName,
       String description,
       Uri? url,
-      SponsorType type});
+      SponsorType type,
+      List<SessionWithSpeakerAndVenue> sessions});
 }
 
 /// @nodoc
@@ -75,6 +78,7 @@ class _$SponsorWithSessionViewCopyWithImpl<$Res,
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sessions = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,6 +105,10 @@ class _$SponsorWithSessionViewCopyWithImpl<$Res,
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sessions: null == sessions
+          ? _value.sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SessionWithSpeakerAndVenue>,
     ) as $Val);
   }
 }
@@ -120,7 +128,8 @@ abstract class _$$SponsorWithSessionViewImplCopyWith<$Res>
       String logoName,
       String description,
       Uri? url,
-      SponsorType type});
+      SponsorType type,
+      List<SessionWithSpeakerAndVenue> sessions});
 }
 
 /// @nodoc
@@ -144,6 +153,7 @@ class __$$SponsorWithSessionViewImplCopyWithImpl<$Res>
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sessions = null,
   }) {
     return _then(_$SponsorWithSessionViewImpl(
       id: null == id
@@ -170,6 +180,10 @@ class __$$SponsorWithSessionViewImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sessions: null == sessions
+          ? _value._sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SessionWithSpeakerAndVenue>,
     ));
   }
 }
@@ -183,7 +197,9 @@ class _$SponsorWithSessionViewImpl implements _SponsorWithSessionView {
       required this.logoName,
       required this.description,
       required this.url,
-      required this.type});
+      required this.type,
+      required final List<SessionWithSpeakerAndVenue> sessions})
+      : _sessions = sessions;
 
   factory _$SponsorWithSessionViewImpl.fromJson(Map<String, dynamic> json) =>
       _$$SponsorWithSessionViewImplFromJson(json);
@@ -200,10 +216,17 @@ class _$SponsorWithSessionViewImpl implements _SponsorWithSessionView {
   final Uri? url;
   @override
   final SponsorType type;
+  final List<SessionWithSpeakerAndVenue> _sessions;
+  @override
+  List<SessionWithSpeakerAndVenue> get sessions {
+    if (_sessions is EqualUnmodifiableListView) return _sessions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sessions);
+  }
 
   @override
   String toString() {
-    return 'SponsorWithSessionView(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type)';
+    return 'SponsorWithSessionView(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type, sessions: $sessions)';
   }
 
   @override
@@ -218,13 +241,14 @@ class _$SponsorWithSessionViewImpl implements _SponsorWithSessionView {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._sessions, _sessions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, logoName, description, url, type);
+  int get hashCode => Object.hash(runtimeType, id, name, logoName, description,
+      url, type, const DeepCollectionEquality().hash(_sessions));
 
   /// Create a copy of SponsorWithSessionView
   /// with the given fields replaced by the non-null parameter values.
@@ -245,12 +269,14 @@ class _$SponsorWithSessionViewImpl implements _SponsorWithSessionView {
 
 abstract class _SponsorWithSessionView implements SponsorWithSessionView {
   const factory _SponsorWithSessionView(
-      {required final int id,
-      required final String name,
-      required final String logoName,
-      required final String description,
-      required final Uri? url,
-      required final SponsorType type}) = _$SponsorWithSessionViewImpl;
+          {required final int id,
+          required final String name,
+          required final String logoName,
+          required final String description,
+          required final Uri? url,
+          required final SponsorType type,
+          required final List<SessionWithSpeakerAndVenue> sessions}) =
+      _$SponsorWithSessionViewImpl;
 
   factory _SponsorWithSessionView.fromJson(Map<String, dynamic> json) =
       _$SponsorWithSessionViewImpl.fromJson;
@@ -267,6 +293,8 @@ abstract class _SponsorWithSessionView implements SponsorWithSessionView {
   Uri? get url;
   @override
   SponsorType get type;
+  @override
+  List<SessionWithSpeakerAndVenue> get sessions;
 
   /// Create a copy of SponsorWithSessionView
   /// with the given fields replaced by the non-null parameter values.
@@ -288,6 +316,8 @@ mixin _$SponsorWithSession {
   String get description => throw _privateConstructorUsedError;
   Uri? get url => throw _privateConstructorUsedError;
   SponsorType get type => throw _privateConstructorUsedError;
+  List<SessionWithSpeakerAndVenue> get sessions =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this SponsorWithSession to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -311,7 +341,8 @@ abstract class $SponsorWithSessionCopyWith<$Res> {
       Uri? logoUrl,
       String description,
       Uri? url,
-      SponsorType type});
+      SponsorType type,
+      List<SessionWithSpeakerAndVenue> sessions});
 }
 
 /// @nodoc
@@ -335,6 +366,7 @@ class _$SponsorWithSessionCopyWithImpl<$Res, $Val extends SponsorWithSession>
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sessions = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -361,6 +393,10 @@ class _$SponsorWithSessionCopyWithImpl<$Res, $Val extends SponsorWithSession>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sessions: null == sessions
+          ? _value.sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SessionWithSpeakerAndVenue>,
     ) as $Val);
   }
 }
@@ -379,7 +415,8 @@ abstract class _$$SponsorWithSessionImplCopyWith<$Res>
       Uri? logoUrl,
       String description,
       Uri? url,
-      SponsorType type});
+      SponsorType type,
+      List<SessionWithSpeakerAndVenue> sessions});
 }
 
 /// @nodoc
@@ -401,6 +438,7 @@ class __$$SponsorWithSessionImplCopyWithImpl<$Res>
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sessions = null,
   }) {
     return _then(_$SponsorWithSessionImpl(
       id: null == id
@@ -427,6 +465,10 @@ class __$$SponsorWithSessionImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sessions: null == sessions
+          ? _value._sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SessionWithSpeakerAndVenue>,
     ));
   }
 }
@@ -440,7 +482,9 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
       required this.logoUrl,
       required this.description,
       required this.url,
-      required this.type});
+      required this.type,
+      required final List<SessionWithSpeakerAndVenue> sessions})
+      : _sessions = sessions;
 
   factory _$SponsorWithSessionImpl.fromJson(Map<String, dynamic> json) =>
       _$$SponsorWithSessionImplFromJson(json);
@@ -457,10 +501,17 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
   final Uri? url;
   @override
   final SponsorType type;
+  final List<SessionWithSpeakerAndVenue> _sessions;
+  @override
+  List<SessionWithSpeakerAndVenue> get sessions {
+    if (_sessions is EqualUnmodifiableListView) return _sessions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sessions);
+  }
 
   @override
   String toString() {
-    return 'SponsorWithSession(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type)';
+    return 'SponsorWithSession(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type, sessions: $sessions)';
   }
 
   @override
@@ -474,13 +525,14 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            const DeepCollectionEquality().equals(other._sessions, _sessions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, logoUrl, description, url, type);
+  int get hashCode => Object.hash(runtimeType, id, name, logoUrl, description,
+      url, type, const DeepCollectionEquality().hash(_sessions));
 
   /// Create a copy of SponsorWithSession
   /// with the given fields replaced by the non-null parameter values.
@@ -501,12 +553,14 @@ class _$SponsorWithSessionImpl implements _SponsorWithSession {
 
 abstract class _SponsorWithSession implements SponsorWithSession {
   const factory _SponsorWithSession(
-      {required final int id,
-      required final String name,
-      required final Uri? logoUrl,
-      required final String description,
-      required final Uri? url,
-      required final SponsorType type}) = _$SponsorWithSessionImpl;
+          {required final int id,
+          required final String name,
+          required final Uri? logoUrl,
+          required final String description,
+          required final Uri? url,
+          required final SponsorType type,
+          required final List<SessionWithSpeakerAndVenue> sessions}) =
+      _$SponsorWithSessionImpl;
 
   factory _SponsorWithSession.fromJson(Map<String, dynamic> json) =
       _$SponsorWithSessionImpl.fromJson;
@@ -523,6 +577,8 @@ abstract class _SponsorWithSession implements SponsorWithSession {
   Uri? get url;
   @override
   SponsorType get type;
+  @override
+  List<SessionWithSpeakerAndVenue> get sessions;
 
   /// Create a copy of SponsorWithSession
   /// with the given fields replaced by the non-null parameter values.

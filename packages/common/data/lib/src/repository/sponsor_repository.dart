@@ -65,6 +65,7 @@ final class SponsorRepository {
             description: sponsor.description,
             url: sponsor.url,
             type: sponsor.type,
+            sessions: sponsor.sessions,
           ),
         )
         .toList();
