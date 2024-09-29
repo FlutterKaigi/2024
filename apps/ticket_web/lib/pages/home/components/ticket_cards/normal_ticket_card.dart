@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 /// 一般チケットのカード
-class NormalTicketCard extends StatelessWidget {
+class NormalTicketCard extends HookWidget {
   const NormalTicketCard({
     required this.isLoggedIn,
     super.key,
     this.onPurchasePressed,
-    this.onSignInPressed,
+    this.onApplyCodePressed,
   });
 
   final bool isLoggedIn;
   final VoidCallback? onPurchasePressed;
-  final VoidCallback? onSignInPressed;
+  final void Function(String code)? onApplyCodePressed;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
     final i18n = Translations.of(context);
+
+    final textController = useTextEditingController();
 
     return Card.outlined(
       elevation: 2,
@@ -63,6 +67,33 @@ class NormalTicketCard extends StatelessWidget {
                   : null,
               icon: const Icon(Icons.shopping_cart),
               label: Text(i18n.homePage.tickets.buyTicket),
+            ),
+            const SizedBox(height: 8),
+            const Divider(),
+            const SizedBox(height: 8),
+            TextField(
+              enabled: isLoggedIn,
+              controller: textController,
+              decoration: InputDecoration(
+                labelText: i18n.homePage.tickets.normal.couponCode,
+                hintText: i18n.homePage.tickets.invitation.textBoxDescription,
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+              ),
+              onSubmitted: (value) => onApplyCodePressed?.call(value),
+            ),
+            const SizedBox(height: 8),
+            FilledButton.icon(
+              icon: const Icon(Icons.check),
+              label: Text(i18n.homePage.tickets.invitation.applyCodeButton),
+              style: FilledButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              ),
+              onPressed: isLoggedIn
+                  ? () async => onApplyCodePressed?.call(textController.text)
+                  : null,
             ),
           ],
         ),

@@ -16,7 +16,9 @@
       "normal": {
         "name": "一般チケット",
         "price": "¥$price",
-        "description": "一般参加者向けチケット"
+        "description": "一般参加者向けチケット",
+        "invitation": "一般チケットのクーポンコードをお持ちの方はこちら",
+        "coupon_code": "クーポンコード"
       },
       "invitation": {
         "name": "招待チケット・クーポンコード",

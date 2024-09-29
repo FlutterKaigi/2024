@@ -16,7 +16,9 @@
       "normal": {
         "name": "Normal Ticket",
         "price": "¥$price",
-        "description": "General admission ticket"
+        "description": "General admission ticket",
+        "invitation": "For those who have a coupon code for a general ticket",
+        "coupon_code": "Coupon Code"
       },
       "invitation": {
         "name": "Invitation Ticket",

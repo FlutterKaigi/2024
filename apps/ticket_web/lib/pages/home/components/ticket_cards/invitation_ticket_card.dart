@@ -54,9 +54,7 @@ class InvitationTicketCard extends HookWidget {
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
               ),
-              onSubmitted: (value) {
-                // TODO(YumNumm): クーポンコードを適用する
-              },
+              onSubmitted: (value) => onApplyCodePressed?.call(value),
             ),
             const SizedBox(height: 8),
             FilledButton.icon(

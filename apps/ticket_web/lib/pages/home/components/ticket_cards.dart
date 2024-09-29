@@ -18,8 +18,6 @@ class TicketCards extends ConsumerWidget {
       NormalTicketCard(
         isLoggedIn: isLoggedIn,
         onPurchasePressed: () async {},
-        onSignInPressed:
-            ref.read(authNotifierProvider.notifier).signInWithGoogle,
       ),
       InvitationTicketCard(
         isLoggedIn: isLoggedIn,
