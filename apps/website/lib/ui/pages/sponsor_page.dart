@@ -3,8 +3,12 @@ import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
+import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
+import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
+import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -45,7 +49,7 @@ class SponsorRoute extends GoRouteData {
   }
 }
 
-class SponsorPage extends StatelessWidget {
+class SponsorPage extends HookWidget {
   const SponsorPage({
     required this.sponsor,
     super.key,
@@ -55,9 +59,38 @@ class SponsorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(sponsor.name),
+    final isMobile = MediaQuery.sizeOf(context).width < 960;
+    final showAppbar = useState<bool>(false);
+    final scrollController = useScrollController();
+
+    return SelectionArea(
+      child: NotificationListener(
+        onNotification: (notification) {
+          if (notification is ScrollUpdateNotification) {
+            // 300px以上スクロールしたらAppBarを表示
+            showAppbar.value = notification.metrics.pixels > 300;
+          }
+          return true;
+        },
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: SiteHeader(
+            onTitleTap: () async => const HomeRoute().go(context),
+            showAppBar: showAppbar.value,
+          ),
+          body: CustomScrollView(
+            controller: scrollController,
+            slivers: const [
+              SliverToBoxAdapter(
+                child: _Body(),
+              ),
+              SliverToBoxAdapter(
+                child: SiteFooter(),
+              ),
+            ],
+          ),
+          endDrawer: isMobile ? const HamburgerMenu() : null,
+        ),
       ),
     );
   }
@@ -66,6 +99,15 @@ class SponsorPage extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
 
