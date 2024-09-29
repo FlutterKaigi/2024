@@ -5,7 +5,7 @@ import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/home/components/lead.dart';
-import 'package:conference_2024_website/ui/home/components/news_component.dart';
+import 'package:conference_2024_website/feature/news/ui/news_component.dart';
 import 'package:conference_2024_website/ui/home/components/speaker_wanted.dart';
 import 'package:conference_2024_website/ui/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
