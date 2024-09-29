@@ -33,6 +33,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
               i18n.homePage.tickets.personalSponsor.name,
               style: textTheme.displaySmall?.copyWith(
                 fontWeight: FontWeight.bold,
+                fontSize: 32,
               ),
             ),
             const SizedBox(height: 4),

@@ -29,7 +29,7 @@ class TicketCards extends ConsumerWidget {
                 ),
         onSignInPressed:
             ref.read(authNotifierProvider.notifier).signInWithGoogle,
-        onApplyCodePressed: () async {
+        onApplyCodePressed: (code) async {
           final result = await PromotionCodeVerifyDialog.show(context);
           if (result == null || !context.mounted) {
             return;
@@ -77,7 +77,11 @@ class TicketCards extends ConsumerWidget {
       ),
       PersonalSponsorTicketCard(
         isLoggedIn: isLoggedIn,
-        onPurchasePressed: () {},
+        onPurchasePressed: () async =>
+            ref.read(paymentServiceProvider).transitionToPayment(
+                  mailAddress: authState!.email!,
+                  type: PaymentType.invitation,
+                ),
       ),
     ];
     if (isMobile) {
@@ -87,13 +91,15 @@ class TicketCards extends ConsumerWidget {
         ),
       );
     }
-    return IntrinsicWidth(
-      child: IntrinsicHeight(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
-        ),
+    return IntrinsicHeight(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: children
+            .map(
+              (e) => SizedBox(width: desktopThreshold / 2, child: e),
+            )
+            .toList(),
       ),
     );
   }

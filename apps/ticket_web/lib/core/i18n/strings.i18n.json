@@ -31,9 +31,7 @@
         "description": "一般参加者向けチケット"
       },
       "invitation": {
-        "name": "招待チケット・クーポンコード",
-        "description": "招待コードまたはクーポンコードをお持ちの方は",
-        "here": "こちら",
+        "description": "招待コードまたはクーポンコードをお持ちの方はこちらに入力してください",
         "text_box_title": "招待コード もしくは クーポンコード",
         "text_box_description": "コードを入力",
         "apply_code_button": "コードを適用",
@@ -56,7 +54,11 @@
       },
       "personal_sponsor": {
         "name": "個人スポンサーチケット",
-        "description": "[仮]個人スポンサー向けチケット"
+        "description": "個人スポンサー向けチケット"
+      },
+      "student": {
+        "name": "学割について",
+        "description": "[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。"
       }
     }
   },

@@ -87,7 +87,7 @@ class PromotionCodeVerifyDialog extends HookConsumerWidget {
     }
 
     return AlertDialog(
-      title: Text(i18n.homePage.tickets.invitation.name),
+      title: const Text('i18n.homePage.tickets.invitation.name'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

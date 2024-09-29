@@ -1,10 +1,10 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 /// 一般チケットのカード
-class NormalTicketCard extends StatelessWidget {
+class NormalTicketCard extends HookWidget {
   const NormalTicketCard({
     required this.isLoggedIn,
     this.onPurchasePressed,
@@ -16,7 +16,7 @@ class NormalTicketCard extends StatelessWidget {
   final bool isLoggedIn;
   final VoidCallback? onPurchasePressed;
   final VoidCallback? onSignInPressed;
-  final VoidCallback? onApplyCodePressed;
+  final void Function(String code)? onApplyCodePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,8 @@ class NormalTicketCard extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     final i18n = Translations.of(context);
+
+    final textEditingController = useTextEditingController();
 
     return Card.outlined(
       elevation: 2,
@@ -38,6 +40,7 @@ class NormalTicketCard extends StatelessWidget {
               i18n.homePage.tickets.normal.name,
               style: textTheme.displaySmall?.copyWith(
                 fontWeight: FontWeight.bold,
+                fontSize: 32,
               ),
             ),
             const SizedBox(height: 4),
@@ -49,30 +52,6 @@ class NormalTicketCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 4),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: '${i18n.homePage.tickets.normal.description}\n',
-                  ),
-                  TextSpan(
-                    text: '${i18n.homePage.tickets.invitation.description} ',
-                  ),
-                  TextSpan(
-                    text: i18n.homePage.tickets.invitation.here,
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.primary,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = onApplyCodePressed,
-                  ),
-                ],
-              ),
-              style: textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-              ),
-            ),
             const SizedBox(height: 16),
             FilledButton.icon(
               style: FilledButton.styleFrom(
@@ -82,6 +61,39 @@ class NormalTicketCard extends StatelessWidget {
               onPressed: isLoggedIn ? onPurchasePressed : null,
               icon: const Icon(Icons.shopping_cart),
               label: Text(i18n.homePage.tickets.buyTicket),
+            ),
+            const SizedBox(height: 8),
+            const Divider(),
+            const SizedBox(height: 8),
+            Text(
+              i18n.homePage.tickets.invitation.description,
+              style: textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: textEditingController,
+              decoration: InputDecoration(
+                labelText: i18n.homePage.tickets.invitation.textBoxTitle,
+                hintText: i18n.homePage.tickets.invitation.textBoxDescription,
+                border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+              ),
+              onSubmitted: (value) => onApplyCodePressed?.call(value),
+            ),
+            const SizedBox(height: 8),
+            FilledButton.icon(
+              icon: const Icon(Icons.check),
+              label: Text(i18n.homePage.tickets.invitation.applyCodeButton),
+              style: FilledButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              ),
+              onPressed: isLoggedIn
+                  ? () => onApplyCodePressed?.call(textEditingController.text)
+                  : onSignInPressed,
             ),
           ],
         ),

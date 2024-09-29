@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 106 (53 per locale)
+/// Strings: 108 (54 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -231,6 +231,7 @@ class _StringsHomePageTicketsJa {
 	late final _StringsHomePageTicketsNormalJa normal = _StringsHomePageTicketsNormalJa._(_root);
 	late final _StringsHomePageTicketsInvitationJa invitation = _StringsHomePageTicketsInvitationJa._(_root);
 	late final _StringsHomePageTicketsPersonalSponsorJa personalSponsor = _StringsHomePageTicketsPersonalSponsorJa._(_root);
+	late final _StringsHomePageTicketsStudentJa student = _StringsHomePageTicketsStudentJa._(_root);
 }
 
 // Path: authorization.logOutDialog
@@ -306,9 +307,7 @@ class _StringsHomePageTicketsInvitationJa {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get name => '招待チケット・クーポンコード';
-	String get description => '招待コードまたはクーポンコードをお持ちの方は';
-	String get here => 'こちら';
+	String get description => '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
 	String get textBoxTitle => '招待コード もしくは クーポンコード';
 	String get textBoxDescription => 'コードを入力';
 	String get applyCodeButton => 'コードを適用';
@@ -324,7 +323,18 @@ class _StringsHomePageTicketsPersonalSponsorJa {
 
 	// Translations
 	String get name => '個人スポンサーチケット';
-	String get description => '[仮]個人スポンサー向けチケット';
+	String get description => '個人スポンサー向けチケット';
+}
+
+// Path: homePage.tickets.student
+class _StringsHomePageTicketsStudentJa {
+	_StringsHomePageTicketsStudentJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get name => '学割について';
+	String get description => '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 }
 
 // Path: homePage.tickets.variant.sponsorSession
@@ -495,6 +505,8 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
 	@override String get ticketManagedByGoogleAccount => 'After purchase or registration, tickets will be managed by your Google account.';
 	@override late final _StringsHomePageTicketsNormalEn normal = _StringsHomePageTicketsNormalEn._(_root);
 	@override late final _StringsHomePageTicketsInvitationEn invitation = _StringsHomePageTicketsInvitationEn._(_root);
+	@override late final _StringsHomePageTicketsPersonalSponsorEn personalSponsor = _StringsHomePageTicketsPersonalSponsorEn._(_root);
+	@override late final _StringsHomePageTicketsStudentEn student = _StringsHomePageTicketsStudentEn._(_root);
 }
 
 // Path: authorization.logOutDialog
@@ -558,13 +570,33 @@ class _StringsHomePageTicketsInvitationEn extends _StringsHomePageTicketsInvitat
 	@override final _StringsEn _root; // ignore: unused_field
 
 	// Translations
-	@override String get name => 'Invitation Ticket';
-	@override String get description => 'If you have an invitation code or coupon code, please';
-	@override String get here => 'tap here';
+	@override String get description => 'If you have an invitation code or coupon code, please enter it here.';
 	@override String get textBoxTitle => 'Invitation Code or Coupon Code';
 	@override String get textBoxDescription => 'Enter the code';
 	@override String get applyCodeButton => 'Apply Code';
 	@override late final _StringsHomePageTicketsInvitationValidationEn validation = _StringsHomePageTicketsInvitationValidationEn._(_root);
+}
+
+// Path: homePage.tickets.personalSponsor
+class _StringsHomePageTicketsPersonalSponsorEn extends _StringsHomePageTicketsPersonalSponsorJa {
+	_StringsHomePageTicketsPersonalSponsorEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get name => 'Personal Sponsor Ticket';
+	@override String get description => 'Ticket for individual sponsors';
+}
+
+// Path: homePage.tickets.student
+class _StringsHomePageTicketsStudentEn extends _StringsHomePageTicketsStudentJa {
+	_StringsHomePageTicketsStudentEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get name => 'Student Discount';
+	@override String get description => 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
 }
 
 // Path: homePage.tickets.invitation.validation
@@ -617,9 +649,7 @@ extension on Translations {
 			case 'homePage.tickets.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.name': return '一般チケット';
 			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
-			case 'homePage.tickets.invitation.name': return '招待チケット・クーポンコード';
-			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方は';
-			case 'homePage.tickets.invitation.here': return 'こちら';
+			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
 			case 'homePage.tickets.invitation.textBoxTitle': return '招待コード もしくは クーポンコード';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'コードを入力';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'コードを適用';
@@ -634,7 +664,9 @@ extension on Translations {
 			case 'homePage.tickets.invitation.validation.dialog.ok': return '決定';
 			case 'homePage.tickets.invitation.validation.dialog.cancel': return 'キャンセル';
 			case 'homePage.tickets.personalSponsor.name': return '個人スポンサーチケット';
-			case 'homePage.tickets.personalSponsor.description': return '[仮]個人スポンサー向けチケット';
+			case 'homePage.tickets.personalSponsor.description': return '個人スポンサー向けチケット';
+			case 'homePage.tickets.student.name': return '学割について';
+			case 'homePage.tickets.student.description': return '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => '${mailAddress} でログイン済みです';
 			case 'authorization.logOut': return 'ログアウト';
 			case 'authorization.logOutDialog.title': return 'ログアウトしますか？';
@@ -678,9 +710,7 @@ extension on _StringsEn {
 			case 'homePage.tickets.normal.name': return 'Normal Ticket';
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return 'General admission ticket';
-			case 'homePage.tickets.invitation.name': return 'Invitation Ticket';
-			case 'homePage.tickets.invitation.description': return 'If you have an invitation code or coupon code, please';
-			case 'homePage.tickets.invitation.here': return 'tap here';
+			case 'homePage.tickets.invitation.description': return 'If you have an invitation code or coupon code, please enter it here.';
 			case 'homePage.tickets.invitation.textBoxTitle': return 'Invitation Code or Coupon Code';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'Enter the code';
 			case 'homePage.tickets.invitation.applyCodeButton': return 'Apply Code';
@@ -690,6 +720,10 @@ extension on _StringsEn {
 			case 'homePage.tickets.invitation.validation.nextConfirmOrder': return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
 			case 'homePage.tickets.invitation.validation.dialog.ok': return 'OK';
 			case 'homePage.tickets.invitation.validation.dialog.cancel': return 'Cancel';
+			case 'homePage.tickets.personalSponsor.name': return 'Personal Sponsor Ticket';
+			case 'homePage.tickets.personalSponsor.description': return 'Ticket for individual sponsors';
+			case 'homePage.tickets.student.name': return 'Student Discount';
+			case 'homePage.tickets.student.description': return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => 'Already logged in with ${mailAddress}';
 			case 'authorization.logOut': return 'Log Out';
 			case 'authorization.logOutDialog.title': return 'Are you sure you want to log out?';
