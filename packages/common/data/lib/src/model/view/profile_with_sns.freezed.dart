@@ -24,6 +24,7 @@ mixin _$ProfileWithSns {
   String get name => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
   String get avatarName => throw _privateConstructorUsedError;
+  bool? get isAdult => throw _privateConstructorUsedError;
   List<ProfileSocialNetworkingService> get snsAccounts =>
       throw _privateConstructorUsedError;
 
@@ -48,6 +49,7 @@ abstract class $ProfileWithSnsCopyWith<$Res> {
       String name,
       String avatarUrl,
       String avatarName,
+      bool? isAdult,
       List<ProfileSocialNetworkingService> snsAccounts});
 }
 
@@ -70,6 +72,7 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
     Object? name = null,
     Object? avatarUrl = null,
     Object? avatarName = null,
+    Object? isAdult = freezed,
     Object? snsAccounts = null,
   }) {
     return _then(_value.copyWith(
@@ -89,6 +92,10 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
           ? _value.avatarName
           : avatarName // ignore: cast_nullable_to_non_nullable
               as String,
+      isAdult: freezed == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
       snsAccounts: null == snsAccounts
           ? _value.snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
@@ -110,6 +117,7 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
       String name,
       String avatarUrl,
       String avatarName,
+      bool? isAdult,
       List<ProfileSocialNetworkingService> snsAccounts});
 }
 
@@ -130,6 +138,7 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
     Object? name = null,
     Object? avatarUrl = null,
     Object? avatarName = null,
+    Object? isAdult = freezed,
     Object? snsAccounts = null,
   }) {
     return _then(_$ProfileWithSnsImpl(
@@ -149,6 +158,10 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
           ? _value.avatarName
           : avatarName // ignore: cast_nullable_to_non_nullable
               as String,
+      isAdult: freezed == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
       snsAccounts: null == snsAccounts
           ? _value._snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
@@ -165,6 +178,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required this.name,
       required this.avatarUrl,
       required this.avatarName,
+      this.isAdult = false,
       required final List<ProfileSocialNetworkingService> snsAccounts})
       : _snsAccounts = snsAccounts;
 
@@ -179,6 +193,9 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   final String avatarUrl;
   @override
   final String avatarName;
+  @override
+  @JsonKey()
+  final bool? isAdult;
   final List<ProfileSocialNetworkingService> _snsAccounts;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts {
@@ -189,7 +206,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
 
   @override
   String toString() {
-    return 'ProfileWithSns(id: $id, name: $name, avatarUrl: $avatarUrl, avatarName: $avatarName, snsAccounts: $snsAccounts)';
+    return 'ProfileWithSns(id: $id, name: $name, avatarUrl: $avatarUrl, avatarName: $avatarName, isAdult: $isAdult, snsAccounts: $snsAccounts)';
   }
 
   @override
@@ -203,6 +220,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
                 other.avatarUrl == avatarUrl) &&
             (identical(other.avatarName, avatarName) ||
                 other.avatarName == avatarName) &&
+            (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
             const DeepCollectionEquality()
                 .equals(other._snsAccounts, _snsAccounts));
   }
@@ -210,7 +228,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, avatarUrl, avatarName,
-      const DeepCollectionEquality().hash(_snsAccounts));
+      isAdult, const DeepCollectionEquality().hash(_snsAccounts));
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.
@@ -235,6 +253,7 @@ abstract class _ProfileWithSns implements ProfileWithSns {
           required final String name,
           required final String avatarUrl,
           required final String avatarName,
+          final bool? isAdult,
           required final List<ProfileSocialNetworkingService> snsAccounts}) =
       _$ProfileWithSnsImpl;
 
@@ -249,6 +268,8 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   String get avatarUrl;
   @override
   String get avatarName;
+  @override
+  bool? get isAdult;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts;
 
