@@ -32,7 +32,7 @@ class SponsorWithSession with _$SponsorWithSession {
   }) = _SponsorWithSession;
 
   factory SponsorWithSession.fromJson(Map<String, dynamic> json) =>
-    _$SponsorWithSessionFromJson(json);
+      _$SponsorWithSessionFromJson(json);
 }
 
 @freezed

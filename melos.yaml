@@ -49,7 +49,7 @@ scripts:
       dependsOn: custom_lint
 
   rebuild:
-    run: dart run build_runner build -d
+    run: dart run build_runner build -d && melos format -c 5
     exec:
       orderDependents: true
     packageFilters:
