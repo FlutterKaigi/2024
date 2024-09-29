@@ -2,12 +2,11 @@
 
 import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_website/core/app.dart';
+import 'package:conference_2024_website/core/util/set_url_strategy/set_url_strategy_web.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
@@ -23,10 +22,7 @@ Future<void> main() async {
     }
   });
 
-  if (kIsWeb) {
-    usePathUrlStrategy();
-    GoRouter.optionURLReflectsImperativeAPIs = true;
-  }
+  setupWebEnvironment();
 
   LocaleSettings.useDeviceLocale();
 
