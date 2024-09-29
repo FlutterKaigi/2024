@@ -23,5 +23,22 @@ final sponsorWithSessionsProvider =
 );
 
 typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSession>>;
+String _$sponsorAndSessionListHash() =>
+    r'bfb57f0a0a17842fa72d5cd5c262d5d93641b53f';
+
+/// See also [sponsorAndSessionList].
+@ProviderFor(sponsorAndSessionList)
+final sponsorAndSessionListProvider =
+    FutureProvider<List<SponsorAndSession>>.internal(
+  sponsorAndSessionList,
+  name: r'sponsorAndSessionListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sponsorAndSessionListHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SponsorAndSessionListRef = FutureProviderRef<List<SponsorAndSession>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

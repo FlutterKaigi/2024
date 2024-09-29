@@ -25,11 +25,18 @@ class _TicketApiClient implements TicketApiClient {
 
   @override
   Future<VerifyPurchaseResponse> verifyPurchase({
-    required String sessionId,
+    required String stripeSessionId,
     required String authorization,
+    String? sponsorId,
+    String? sessionId,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'session_id': sessionId};
+    final queryParameters = <String, dynamic>{
+      r'stripe_session_id': stripeSessionId,
+      r'sponsor_id': sponsorId,
+      r'session_id': sessionId,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;

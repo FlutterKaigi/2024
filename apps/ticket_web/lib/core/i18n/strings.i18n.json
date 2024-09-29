@@ -12,7 +12,7 @@
     "tickets": {
       "variant": {
         "general": "一般チケット",
-        "sponsor": "個人スポンサーチケット",
+        "session_speaker": "セッション登壇者チケット",
         "sponsor_session": "スポンサーセッション登壇者チケット",
         "sponsor_invitation": "スポンサー招待チケット"
       },
@@ -95,6 +95,7 @@
       "status429": "リクエストが多すぎます",
       "status500": "サーバーでエラーが発生しました",
       "status503": "サーバーが過負荷状態です",
+      "status_other": "ネットワークエラーが発生しました (ステータスコード: $statusCode)",
       "try_again": "時間をおいて再度お試しください",
       "unknown": "不明なエラーが発生しました"
     }

@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 120 (60 per locale)
+/// Strings: 126 (63 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -272,6 +272,7 @@ class _StringsErrorNetworkJa {
 	String get status429 => 'リクエストが多すぎます';
 	String get status500 => 'サーバーでエラーが発生しました';
 	String get status503 => 'サーバーが過負荷状態です';
+	String statusOther({required Object statusCode}) => 'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
 	String get tryAgain => '時間をおいて再度お試しください';
 	String get unknown => '不明なエラーが発生しました';
 }
@@ -284,7 +285,7 @@ class _StringsHomePageTicketsVariantJa {
 
 	// Translations
 	String get general => '一般チケット';
-	String get sponsor => '個人スポンサーチケット';
+	String get sessionSpeaker => 'セッション登壇者チケット';
 	String get sponsorSession => 'スポンサーセッション登壇者チケット';
 	String get sponsorInvitation => 'スポンサー招待チケット';
 }
@@ -495,6 +496,7 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
 	@override final _StringsEn _root; // ignore: unused_field
 
 	// Translations
+	@override late final _StringsHomePageTicketsVariantEn variant = _StringsHomePageTicketsVariantEn._(_root);
 	@override String get buyTicket => 'Buy Ticket';
 	@override String get loginBeforeBuy => 'Please login with your Google account to buy or register a ticket.';
 	@override String get ticketManagedByGoogleAccount => 'After purchase or registration, tickets will be managed by your Google account.';
@@ -542,8 +544,22 @@ class _StringsErrorNetworkEn extends _StringsErrorNetworkJa {
 	@override String get status429 => 'Too Many Requests';
 	@override String get status500 => 'Internal Server Error';
 	@override String get status503 => 'Service Unavailable';
+	@override String statusOther({required Object statusCode}) => 'A network error occurred (Status Code: ${statusCode})';
 	@override String get tryAgain => 'Please try again later.';
 	@override String get unknown => 'An unknown error occurred.';
+}
+
+// Path: homePage.tickets.variant
+class _StringsHomePageTicketsVariantEn extends _StringsHomePageTicketsVariantJa {
+	_StringsHomePageTicketsVariantEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get general => 'General Ticket';
+	@override String get sessionSpeaker => 'Session Speaker Ticket';
+	@override String get sponsorSession => 'Sponsor Session Speaker Ticket';
+	@override String get sponsorInvitation => 'Sponsor Invitation Ticket';
 }
 
 // Path: homePage.tickets.normal
@@ -650,7 +666,7 @@ extension on Translations {
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return '有明セントラルタワーホール&カンファレンス';
 			case 'homePage.tickets.variant.general': return '一般チケット';
-			case 'homePage.tickets.variant.sponsor': return '個人スポンサーチケット';
+			case 'homePage.tickets.variant.sessionSpeaker': return 'セッション登壇者チケット';
 			case 'homePage.tickets.variant.sponsorSession': return 'スポンサーセッション登壇者チケット';
 			case 'homePage.tickets.variant.sponsorInvitation': return 'スポンサー招待チケット';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
@@ -704,6 +720,7 @@ extension on Translations {
 			case 'error.network.status429': return 'リクエストが多すぎます';
 			case 'error.network.status500': return 'サーバーでエラーが発生しました';
 			case 'error.network.status503': return 'サーバーが過負荷状態です';
+			case 'error.network.statusOther': return ({required Object statusCode}) => 'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
 			case 'error.network.tryAgain': return '時間をおいて再度お試しください';
 			case 'error.network.unknown': return '不明なエラーが発生しました';
 			default: return null;
@@ -721,6 +738,10 @@ extension on _StringsEn {
 			case 'ticketSite': return 'Ticket Site';
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
+			case 'homePage.tickets.variant.general': return 'General Ticket';
+			case 'homePage.tickets.variant.sessionSpeaker': return 'Session Speaker Ticket';
+			case 'homePage.tickets.variant.sponsorSession': return 'Sponsor Session Speaker Ticket';
+			case 'homePage.tickets.variant.sponsorInvitation': return 'Sponsor Invitation Ticket';
 			case 'homePage.tickets.buyTicket': return 'Buy Ticket';
 			case 'homePage.tickets.loginBeforeBuy': return 'Please login with your Google account to buy or register a ticket.';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return 'After purchase or registration, tickets will be managed by your Google account.';
@@ -768,6 +789,7 @@ extension on _StringsEn {
 			case 'error.network.status429': return 'Too Many Requests';
 			case 'error.network.status500': return 'Internal Server Error';
 			case 'error.network.status503': return 'Service Unavailable';
+			case 'error.network.statusOther': return ({required Object statusCode}) => 'A network error occurred (Status Code: ${statusCode})';
 			case 'error.network.tryAgain': return 'Please try again later.';
 			case 'error.network.unknown': return 'An unknown error occurred.';
 			default: return null;

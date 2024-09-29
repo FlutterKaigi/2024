@@ -10,6 +10,12 @@
       "location": "Ariake Central Tower & Conference"
     },
     "tickets": {
+      "variant": {
+        "general": "General Ticket",
+        "session_speaker": "Session Speaker Ticket",
+        "sponsor_session": "Sponsor Session Speaker Ticket",
+        "sponsor_invitation": "Sponsor Invitation Ticket"
+      },
       "buyTicket": "Buy Ticket",
       "loginBeforeBuy": "Please login with your Google account to buy or register a ticket.",
       "ticketManagedByGoogleAccount": "After purchase or registration, tickets will be managed by your Google account.",
@@ -83,6 +89,7 @@
       "status429": "Too Many Requests",
       "status500": "Internal Server Error",
       "status503": "Service Unavailable",
+      "status_other": "A network error occurred (Status Code: $statusCode)",
       "try_again": "Please try again later.",
       "unknown": "An unknown error occurred."
     }

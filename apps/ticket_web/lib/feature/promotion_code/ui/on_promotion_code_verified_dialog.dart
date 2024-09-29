@@ -35,8 +35,8 @@ class OnPromotionCodeVerifiedDialog extends HookConsumerWidget {
     return AlertDialog(
       title: Text(i18n.homePage.tickets.invitation.validation.ok),
       content: Text(
-        switch (metadata) {
-          PromotionMetadataGeneral() =>
+        switch (metadata.type) {
+          PromotionMetadataType.general =>
             i18n.homePage.tickets.invitation.validation.nextPayment,
           _ => i18n.homePage.tickets.invitation.validation.nextConfirmOrder,
         },
@@ -54,8 +54,8 @@ class OnPromotionCodeVerifiedDialog extends HookConsumerWidget {
             final email = ref.read(authNotifierProvider)!.email!;
             await paymentService.transitionToPayment(
               mailAddress: email,
-              type: switch (metadata) {
-                PromotionMetadataGeneral() => PaymentType.general,
+              type: switch (metadata.type) {
+                PromotionMetadataType.general => PaymentType.general,
                 _ => PaymentType.invitation,
               },
               promotionCode: promotionCode,

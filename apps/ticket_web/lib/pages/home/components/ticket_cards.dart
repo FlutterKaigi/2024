@@ -1,16 +1,21 @@
-import 'dart:developer';
+// ignore_for_file: lines_longer_than_80_chars
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_api/model/ticket/promotion_metadata.dart';
-import 'package:ticket_api/ticket_api.dart';
+import 'package:ticket_web/core/components/error/error_dialog.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
 import 'package:ticket_web/core/util/full_screen_loading.dart';
 import 'package:ticket_web/core/util/result.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/payment/data/payment_service.dart';
 import 'package:ticket_web/feature/promotion_code/data/promotion_code_service.dart';
+import 'package:ticket_web/feature/promotion_code/ui/on_invited_promotion_code_entered_dialog/on_invited_promotion_code_entered_session_dialog.dart';
+import 'package:ticket_web/feature/promotion_code/ui/on_invited_promotion_code_entered_dialog/on_invited_promotion_code_entered_sponsor_dialog.dart';
+import 'package:ticket_web/feature/promotion_code/ui/on_invited_promotion_code_entered_dialog/on_invited_promotion_code_entered_sponsor_session_dialog.dart';
 import 'package:ticket_web/feature/promotion_code/ui/on_promotion_code_verified_dialog.dart';
+import 'package:ticket_web/feature/session/data/session_provider.dart';
+import 'package:ticket_web/feature/sponsor/data/sponsor_provider.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/normal_ticket.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/personal_sponsor_ticket.dart';
@@ -43,22 +48,142 @@ class TicketCards extends ConsumerWidget {
           if (!context.mounted) {
             return;
           }
+          final i18n = Translations.of(context);
+          final ticketVariant = i18n.homePage.tickets.variant;
+          String getAlertDialogTitle(PromotionMetadataType type) {
+            final title =
+                i18n.homePage.tickets.invitation.validation.invited.title;
+
+            final suffix = switch (type) {
+              PromotionMetadataType.general => ticketVariant.general,
+              PromotionMetadataType.session => ticketVariant.sessionSpeaker,
+              PromotionMetadataType.sponsor => ticketVariant.sponsorInvitation,
+              PromotionMetadataType.sponsorSession =>
+                ticketVariant.sponsorSession,
+            };
+            return '$title ($suffix)';
+          }
+
           final _ = await switch (result) {
-            Failure(:final exception) => _onPromoVerifyError(
-                exception,
-                context,
+            Failure(:final exception) => ErrorDialog.show(
+                context: context,
+                error: exception,
+                onDioExceptionStatusOverride: (code) {
+                  final i18n = Translations.of(context);
+                  return switch (code) {
+                    404 => i18n.homePage.tickets.invitation.error.status404,
+                    429 => i18n.homePage.tickets.invitation.error.status429,
+                    500 => i18n.homePage.tickets.invitation.error.status500,
+                    _ => null,
+                  };
+                },
               ),
-            Success(:final value) => switch (value) {
+            Success(:final value) => switch (value.type) {
                 // プロモーションコードが、一般チケットのプロモーションコードとして有効な場合
                 // 一般チケットの購入画面に遷移する
-                PromotionMetadataGeneral() =>
+                PromotionMetadataType.general =>
                   OnPromotionCodeVerifiedDialog.show(
                     context: context,
                     promotionCode: code,
                     metadata: value,
                   ),
-                // プロモーションコードが、招待チケットのプロモーションコードとして有効な場合
-                _ => () async {}(),
+                PromotionMetadataType.session => () async {
+                    final sessionsResult =
+                        await FullScreenCircularProgressIndicator.showUntil(
+                      context,
+                      () async => ref.read(sessionProvider.future),
+                    ).wrapped();
+                    return switch (sessionsResult) {
+                      Failure(:final exception) when context.mounted =>
+                        ErrorDialog.show(
+                          context: context,
+                          error: exception,
+                        ),
+                      Success(value: final sessions) => () async {
+                          final selectedSession =
+                              await OnInvitedPromotionCodeEnteredSessionDialog
+                                  .show(
+                            context: context,
+                            sessions: sessions,
+                            title: getAlertDialogTitle(value.type),
+                          );
+                          // TODO(YumNumm): 保存処理
+                          if (context.mounted) {
+                            await OnPromotionCodeVerifiedDialog.show(
+                              context: context,
+                              promotionCode: code,
+                              metadata: value,
+                            );
+                          }
+                        }(),
+                      _ => null,
+                    };
+                  }(),
+                PromotionMetadataType.sponsor => () async {
+                    final sponsorsResult =
+                        await FullScreenCircularProgressIndicator.showUntil(
+                      context,
+                      () async => ref.read(sponsorWithSessionsProvider.future),
+                    ).wrapped();
+                    return switch (sponsorsResult) {
+                      Failure(:final exception) when context.mounted =>
+                        ErrorDialog.show(
+                          context: context,
+                          error: exception,
+                        ),
+                      Success(value: final sponsors) => () async {
+                          final selectedSponsor =
+                              await OnInvitedPromotionCodeEnteredSponsorDialog
+                                  .show(
+                            context: context,
+                            sponsors: sponsors,
+                            title: getAlertDialogTitle(value.type),
+                          );
+                          // TODO(YumNumm): 保存処理
+                          if (context.mounted) {
+                            await OnPromotionCodeVerifiedDialog.show(
+                              context: context,
+                              promotionCode: code,
+                              metadata: value,
+                            );
+                          }
+                        }(),
+                      _ => null,
+                    };
+                  }(),
+                PromotionMetadataType.sponsorSession => () async {
+                    final sponsorAndSessionsResult =
+                        await FullScreenCircularProgressIndicator.showUntil(
+                      context,
+                      () async =>
+                          ref.read(sponsorAndSessionListProvider.future),
+                    ).wrapped();
+                    return switch (sponsorAndSessionsResult) {
+                      Failure(:final exception) when context.mounted =>
+                        ErrorDialog.show(
+                          context: context,
+                          error: exception,
+                        ),
+                      Success(value: final sponsorAndSessions) => () async {
+                          final selectedSponsorAndSession =
+                              await OnInvitedPromotionCodeEnteredSponsorSessionDialog
+                                  .show(
+                            context: context,
+                            sessionWithSponsors: sponsorAndSessions,
+                            title: getAlertDialogTitle(value.type),
+                          );
+                          // TODO(YumNumm): 保存処理
+                          if (context.mounted) {
+                            await OnPromotionCodeVerifiedDialog.show(
+                              context: context,
+                              promotionCode: code,
+                              metadata: value,
+                            );
+                          }
+                        }(),
+                      _ => null,
+                    };
+                  }(),
               },
           };
         },
@@ -91,33 +216,4 @@ class TicketCards extends ConsumerWidget {
       ),
     );
   }
-}
-
-Future<void> _onPromoVerifyError(
-  Exception exception,
-  BuildContext context,
-) async {
-  final String snackBarMessage;
-  if (exception case DioException(:final response) when response != null) {
-    log(response.data.toString());
-    final i18n = Translations.of(context);
-    final data = response.data;
-    snackBarMessage = switch (response.statusCode) {
-      404 => i18n.homePage.tickets.invitation.error.status404,
-      429 => i18n.homePage.tickets.invitation.error.status429,
-      500 => i18n.homePage.tickets.invitation.error.status500,
-      _ when data is Map<String, dynamic> && data['error'] != null =>
-        data['error']!.toString(),
-      _ => i18n.homePage.tickets.invitation.error.unknown,
-    };
-  } else if (exception case DioException(:final message) when message != null) {
-    snackBarMessage = message;
-  } else {
-    snackBarMessage = 'ネットワークのエラーが発生しました';
-  }
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(snackBarMessage),
-    ),
-  );
 }
