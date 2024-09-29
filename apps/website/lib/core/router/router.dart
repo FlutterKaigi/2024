@@ -1,4 +1,4 @@
-import 'package:conference_2024_website/ui/home/home_page.dart';
+import 'package:conference_2024_website/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
