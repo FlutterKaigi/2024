@@ -10,7 +10,6 @@ part 'router.g.dart';
 @Riverpod(keepAlive: true)
 GoRouter goRoute(GoRouteRef ref) => GoRouter(
       debugLogDiagnostics: kDebugMode,
-      initialLocation: const HomeRoute().location,
       routes: $appRoutes,
     );
 
