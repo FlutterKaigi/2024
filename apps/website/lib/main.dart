@@ -6,6 +6,7 @@ import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 Future<void> main() async {
@@ -20,6 +21,10 @@ Future<void> main() async {
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     }
   });
+
+  if (kIsWeb) {
+    setUrlStrategy(PathUrlStrategy());
+  }
 
   LocaleSettings.useDeviceLocale();
 
