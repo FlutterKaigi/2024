@@ -6,6 +6,8 @@ import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
+import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
+import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -60,37 +62,33 @@ class SponsorPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.sizeOf(context).width < 960;
-    final showAppbar = useState<bool>(false);
     final scrollController = useScrollController();
 
     return SelectionArea(
-      child: NotificationListener(
-        onNotification: (notification) {
-          if (notification is ScrollUpdateNotification) {
-            // 300px以上スクロールしたらAppBarを表示
-            showAppbar.value = notification.metrics.pixels > 300;
-          }
-          return true;
-        },
-        child: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: SiteHeader(
-            onTitleTap: () async => const HomeRoute().go(context),
-            showAppBar: showAppbar.value,
-          ),
-          body: CustomScrollView(
-            controller: scrollController,
-            slivers: const [
-              SliverToBoxAdapter(
-                child: _Body(),
-              ),
-              SliverToBoxAdapter(
-                child: SiteFooter(),
-              ),
-            ],
-          ),
-          endDrawer: isMobile ? const HamburgerMenu() : null,
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: SiteHeader(
+          onTitleTap: () async => const HomeRoute().go(context),
+          showAppBar: true,
+          showHeaderNavigation: false,
         ),
+        body: CustomScrollView(
+          controller: scrollController,
+          slivers: const [
+            SliverToBoxAdapter(
+              child: Stack(
+                children: [
+                  _Body(),
+                  BackgroundTop(),
+                ],
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SiteFooter(),
+            ),
+          ],
+        ),
+        endDrawer: isMobile ? const HamburgerMenu() : null,
       ),
     );
   }
@@ -107,7 +105,24 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final i18n = Translations.of(context);
+
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+
+    return Column(
+      children: [
+        const Row(),
+        const Gap(120),
+        Text(
+          i18n.sponsors.title,
+          style: textTheme.availableFonts.poppins.regular.copyWith(
+            fontSize: 48,
+          ),
+        ),
+        const Gap(80),
+      ],
+    );
   }
 }
 
