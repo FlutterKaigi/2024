@@ -17,7 +17,13 @@ const v1 = new Hono<{ Bindings: Bindings }>();
 
 const verifyPurchaseSchema = v.object({
   stripe_session_id: v.string(),
-  sponsor_id: v.optional(v.number()),
+  sponsor_id: v.optional(
+    v.pipe(
+      v.string(),
+      v.custom((input) => typeof input === "string" && !isNaN(Number(input))),
+      v.transform(parseInt)
+    )
+  ),
   session_id: v.optional(v.string())
 });
 
