@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_api/model/ticket/promotion_metadata.dart';
+import 'package:ticket_api/ticket_api.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
+import 'package:ticket_web/core/util/full_screen_loading.dart';
+import 'package:ticket_web/core/util/result.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/payment/data/payment_service.dart';
-import 'package:ticket_web/feature/promotion_code/ui/promotion_code_verify_dialog.dart';
+import 'package:ticket_web/feature/promotion_code/data/promotion_code_service.dart';
+import 'package:ticket_web/feature/promotion_code/ui/on_promotion_code_verified_dialog.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/normal_ticket.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/personal_sponsor_ticket.dart';
@@ -30,49 +36,31 @@ class TicketCards extends ConsumerWidget {
         onSignInPressed:
             ref.read(authNotifierProvider.notifier).signInWithGoogle,
         onApplyCodePressed: (code) async {
-          final result = await PromotionCodeVerifyDialog.show(context);
-          if (result == null || !context.mounted) {
+          final result = await FullScreenCircularProgressIndicator.showUntil(
+            context,
+            () async => ref.read(promotionCodeServiceProvider).verifyCode(code),
+          ).wrapped();
+          if (!context.mounted) {
             return;
           }
-          final i18n = Translations.of(context);
-          await showDialog<void>(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: Text(i18n.homePage.tickets.invitation.validation.ok),
-              content: Text(
-                switch (result.$1) {
-                  PromotionMetadataGeneral() =>
-                    i18n.homePage.tickets.invitation.validation.nextPayment,
-                  _ => i18n
-                      .homePage.tickets.invitation.validation.nextConfirmOrder,
-                },
+          final _ = await switch (result) {
+            Failure(:final exception) => _onPromoVerifyError(
+                exception,
+                context,
               ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(
-                    i18n.homePage.tickets.invitation.validation.dialog.cancel,
+            Success(:final value) => switch (value) {
+                // プロモーションコードが、一般チケットのプロモーションコードとして有効な場合
+                // 一般チケットの購入画面に遷移する
+                PromotionMetadataGeneral() =>
+                  OnPromotionCodeVerifiedDialog.show(
+                    context: context,
+                    promotionCode: code,
+                    metadata: value,
                   ),
-                ),
-                TextButton(
-                  onPressed: () async {
-                    final paymentService = ref.read(paymentServiceProvider);
-                    await paymentService.transitionToPayment(
-                      mailAddress: authState!.email!,
-                      type: switch (result.$1) {
-                        PromotionMetadataGeneral() => PaymentType.general,
-                        _ => PaymentType.invitation,
-                      },
-                      promotionCode: result.$2,
-                    );
-                  },
-                  child: Text(
-                    i18n.homePage.tickets.invitation.validation.dialog.ok,
-                  ),
-                ),
-              ],
-            ),
-          );
+                // プロモーションコードが、招待チケットのプロモーションコードとして有効な場合
+                _ => () async {}(),
+              },
+          };
         },
       ),
       PersonalSponsorTicketCard(
@@ -103,4 +91,33 @@ class TicketCards extends ConsumerWidget {
       ),
     );
   }
+}
+
+Future<void> _onPromoVerifyError(
+  Exception exception,
+  BuildContext context,
+) async {
+  final String snackBarMessage;
+  if (exception case DioException(:final response) when response != null) {
+    log(response.data.toString());
+    final i18n = Translations.of(context);
+    final data = response.data;
+    snackBarMessage = switch (response.statusCode) {
+      404 => i18n.homePage.tickets.invitation.error.status404,
+      429 => i18n.homePage.tickets.invitation.error.status429,
+      500 => i18n.homePage.tickets.invitation.error.status500,
+      _ when data is Map<String, dynamic> && data['error'] != null =>
+        data['error']!.toString(),
+      _ => i18n.homePage.tickets.invitation.error.unknown,
+    };
+  } else if (exception case DioException(:final message) when message != null) {
+    snackBarMessage = message;
+  } else {
+    snackBarMessage = 'ネットワークのエラーが発生しました';
+  }
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(snackBarMessage),
+    ),
+  );
 }

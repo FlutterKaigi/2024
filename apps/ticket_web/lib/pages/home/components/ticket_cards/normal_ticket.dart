@@ -80,6 +80,10 @@ class NormalTicketCard extends HookWidget {
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                 ),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: textEditingController.clear,
+                ),
               ),
               onSubmitted: (value) => onApplyCodePressed?.call(value),
             ),
