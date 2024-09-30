@@ -73,6 +73,7 @@ class NormalTicketCard extends HookWidget {
             ),
             const SizedBox(height: 16),
             TextField(
+              enabled: isLoggedIn,
               controller: textEditingController,
               decoration: InputDecoration(
                 labelText: i18n.homePage.tickets.invitation.textBoxTitle,
@@ -97,7 +98,7 @@ class NormalTicketCard extends HookWidget {
               ),
               onPressed: isLoggedIn
                   ? () => onApplyCodePressed?.call(textEditingController.text)
-                  : onSignInPressed,
+                  : null,
             ),
           ],
         ),
