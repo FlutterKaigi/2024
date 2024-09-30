@@ -18,6 +18,7 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
           name: $checkedConvert('name', (v) => v as String),
           avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
           avatarName: $checkedConvert('avatar_name', (v) => v as String),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool? ?? false),
           snsAccounts: $checkedConvert(
               'sns_accounts',
               (v) => (v as List<dynamic>)
@@ -30,6 +31,7 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'avatarUrl': 'avatar_url',
         'avatarName': 'avatar_name',
+        'isAdult': 'is_adult',
         'snsAccounts': 'sns_accounts'
       },
     );
@@ -41,5 +43,6 @@ Map<String, dynamic> _$$ProfileWithSnsImplToJson(
       'name': instance.name,
       'avatar_url': instance.avatarUrl,
       'avatar_name': instance.avatarName,
+      'is_adult': instance.isAdult,
       'sns_accounts': instance.snsAccounts,
     };
