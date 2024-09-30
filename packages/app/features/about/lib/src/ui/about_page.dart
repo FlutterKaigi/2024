@@ -73,7 +73,7 @@ class AboutPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: Text(
                     l.contributors,
-                    style: theme.textTheme.titleMedium,
+                    style: theme.textTheme.titleLarge,
                   ),
                 ),
               ],
@@ -123,7 +123,7 @@ class AboutPage extends StatelessWidget {
               const SizedBox(height: 32),
               Padding(
                 padding: const EdgeInsets.all(16),
-                child: Text(l.other, style: theme.textTheme.titleMedium),
+                child: Text(l.other, style: theme.textTheme.titleLarge),
               ),
               ListTile(
                 title: Text(l.codeOfConduct),
