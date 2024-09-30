@@ -95,7 +95,7 @@ v1.post(
         checkoutSessionId: checkoutSession.id,
         sessionId: session_id,
         sponsorId: sponsor_id,
-        productType,
+        productType
       });
       return c.json({ ticket });
     }
@@ -201,24 +201,16 @@ async function getSessionAndPromotion(
   productType: v.InferOutput<typeof productTypeSchema>;
 }> {
   const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId, {
-    expand: ["total_details.breakdown"]
+    expand: ["total_details.breakdown", "line_items"]
   });
-  console.log(JSON.stringify(checkoutSession, null, 2));
   if (checkoutSession.status !== "complete") {
     throw new HTTPException(400, {
       message: "Checkout session is not completed"
     });
   }
+  console.log(JSON.stringify(checkoutSession, null, 2));
 
   // 購入した商品の識別
-  const productMetadataSchema = v.object({
-    type: productTypeSchema
-  });
-  const productMetadata = v.parse(
-    productMetadataSchema,
-    checkoutSession.metadata
-  );
-
   const promotionCodePromises =
     checkoutSession.total_details?.breakdown?.discounts
       .map((e) => e.discount.promotion_code)
@@ -227,7 +219,34 @@ async function getSessionAndPromotion(
 
   const promotionCodes = await Promise.all(promotionCodePromises);
 
-  return { checkoutSession, promotionCodes, productType: productMetadata.type };
+  switch (checkoutSession.line_items!.data[0].description) {
+    case "FlutterKaigi 2024 一般チケット": {
+      return {
+        checkoutSession,
+        promotionCodes,
+        productType: "general"
+      };
+    }
+    case "FlutterKaigi 2024 招待用チケット": {
+      return {
+        checkoutSession,
+        promotionCodes,
+        productType: "invited"
+      };
+    }
+    case "FlutterKaigi 2024 個人スポンサーチケット": {
+      return {
+        checkoutSession,
+        promotionCodes,
+        productType: "personal_sponsor"
+      };
+    }
+    default: {
+      throw new HTTPException(400, {
+        message: "Invalid product type"
+      });
+    }
+  }
 }
 
 // チケットを作成する
