@@ -1,13 +1,6 @@
 import Stripe from "stripe";
 import * as v from "valibot";
 
-const StringInt = v.pipe(
-  v.string(),
-  v.custom((input) => typeof input === "string" && !isNaN(Number(input))),
-  v.transform(Number),
-  v.integer()
-);
-
 export const promotionCodeMetadataSchema = v.variant("type", [
   // 一般来場者用
   v.object({
