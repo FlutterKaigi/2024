@@ -195,6 +195,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsAuthorizationJa authorization =
       _StringsAuthorizationJa._(_root);
   late final _StringsFooterJa footer = _StringsFooterJa._(_root);
+  late final _StringsErrorJa error = _StringsErrorJa._(_root);
 }
 
 // Path: homePage
@@ -240,6 +241,16 @@ class _StringsFooterJa {
   String get license => 'ライセンス';
 }
 
+// Path: error
+class _StringsErrorJa {
+  _StringsErrorJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  late final _StringsErrorNetworkJa network = _StringsErrorNetworkJa._(_root);
+}
+
 // Path: homePage.titleAndLogo
 class _StringsHomePageTitleAndLogoJa {
   _StringsHomePageTitleAndLogoJa._(this._root);
@@ -258,14 +269,21 @@ class _StringsHomePageTicketsJa {
   final Translations _root; // ignore: unused_field
 
   // Translations
+  late final _StringsHomePageTicketsVariantJa variant =
+      _StringsHomePageTicketsVariantJa._(_root);
   String get buyTicket => 'チケットを購入';
   String get loginBeforeBuy => 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
   String get ticketManagedByGoogleAccount =>
       '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
+  String price({required Object price}) => '¥${price}';
   late final _StringsHomePageTicketsNormalJa normal =
       _StringsHomePageTicketsNormalJa._(_root);
   late final _StringsHomePageTicketsInvitationJa invitation =
       _StringsHomePageTicketsInvitationJa._(_root);
+  late final _StringsHomePageTicketsPersonalSponsorJa personalSponsor =
+      _StringsHomePageTicketsPersonalSponsorJa._(_root);
+  late final _StringsHomePageTicketsStudentJa student =
+      _StringsHomePageTicketsStudentJa._(_root);
 }
 
 // Path: authorization.logOutDialog
@@ -294,6 +312,38 @@ class _StringsFooterGoogleCopyrightJa {
   String get text2 => 'are trademarks of Google LLC.';
 }
 
+// Path: error.network
+class _StringsErrorNetworkJa {
+  _StringsErrorNetworkJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get status400 => 'リクエストが不正です';
+  String get status403 => 'リクエストが拒否されました';
+  String get status404 => 'リクエストが見つかりません';
+  String get status429 => 'リクエストが多すぎます';
+  String get status500 => 'サーバーでエラーが発生しました';
+  String get status503 => 'サーバーが過負荷状態です';
+  String statusOther({required Object statusCode}) =>
+      'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
+  String get tryAgain => '時間をおいて再度お試しください';
+  String get unknown => '不明なエラーが発生しました';
+}
+
+// Path: homePage.tickets.variant
+class _StringsHomePageTicketsVariantJa {
+  _StringsHomePageTicketsVariantJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get general => '一般チケット';
+  String get sessionSpeaker => 'セッション登壇者チケット';
+  String get sponsorSession => 'スポンサーセッション登壇者チケット';
+  String get sponsorInvitation => 'スポンサー招待チケット';
+}
+
 // Path: homePage.tickets.normal
 class _StringsHomePageTicketsNormalJa {
   _StringsHomePageTicketsNormalJa._(this._root);
@@ -302,7 +352,6 @@ class _StringsHomePageTicketsNormalJa {
 
   // Translations
   String get name => '一般チケット';
-  String price({required Object price}) => '¥${price}';
   String get description => '一般参加者向けチケット';
 }
 
@@ -313,11 +362,96 @@ class _StringsHomePageTicketsInvitationJa {
   final Translations _root; // ignore: unused_field
 
   // Translations
-  String get name => '招待チケット・クーポンコード';
-  String get description => '招待コードまたはクーポンコードをお持ちの方はこちら';
+  String get description => '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
   String get textBoxTitle => '招待コード もしくは クーポンコード';
   String get textBoxDescription => 'コードを入力';
   String get applyCodeButton => 'コードを適用';
+  late final _StringsHomePageTicketsInvitationErrorJa error =
+      _StringsHomePageTicketsInvitationErrorJa._(_root);
+  late final _StringsHomePageTicketsInvitationValidationJa validation =
+      _StringsHomePageTicketsInvitationValidationJa._(_root);
+}
+
+// Path: homePage.tickets.personalSponsor
+class _StringsHomePageTicketsPersonalSponsorJa {
+  _StringsHomePageTicketsPersonalSponsorJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get name => '個人スポンサーチケット';
+  String get description => '個人スポンサー向けチケット';
+}
+
+// Path: homePage.tickets.student
+class _StringsHomePageTicketsStudentJa {
+  _StringsHomePageTicketsStudentJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get name => '学割について';
+  String get description =>
+      '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+}
+
+// Path: homePage.tickets.invitation.error
+class _StringsHomePageTicketsInvitationErrorJa {
+  _StringsHomePageTicketsInvitationErrorJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get status404 => 'プロモーションコードが見つかりません';
+  String get status429 => 'リクエストが多過ぎます 数分後に再度お試しください';
+  String get status500 => 'サーバーでエラーが発生しました';
+  String get unknown => '不明なエラーが発生しました';
+}
+
+// Path: homePage.tickets.invitation.validation
+class _StringsHomePageTicketsInvitationValidationJa {
+  _StringsHomePageTicketsInvitationValidationJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get ok => 'プロモーションコードが有効です';
+  String get invalid => 'プロモーションコードが無効です';
+  String get nextPayment =>
+      '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットを購入してください';
+  String get nextConfirmOrder =>
+      '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
+  late final _StringsHomePageTicketsInvitationValidationDialogJa dialog =
+      _StringsHomePageTicketsInvitationValidationDialogJa._(_root);
+  late final _StringsHomePageTicketsInvitationValidationInvitedJa invited =
+      _StringsHomePageTicketsInvitationValidationInvitedJa._(_root);
+}
+
+// Path: homePage.tickets.invitation.validation.dialog
+class _StringsHomePageTicketsInvitationValidationDialogJa {
+  _StringsHomePageTicketsInvitationValidationDialogJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get ok => '決定';
+  String get cancel => 'キャンセル';
+}
+
+// Path: homePage.tickets.invitation.validation.invited
+class _StringsHomePageTicketsInvitationValidationInvitedJa {
+  _StringsHomePageTicketsInvitationValidationInvitedJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => '招待コードが正常に検証されました';
+  String get description => '以下の情報を入力してください';
+  String get warning => '「次へ」を押すと、情報は確定されます。変更するには、運営へお問い合わせください。';
+  String get sponsor => '所属スポンサー';
+  String get session => '登壇セッション';
+  String get next => '次へ';
+  String get pleaseWaitForAMoment => '少々お待ちください...';
 }
 
 // Path: <root>
@@ -374,6 +508,8 @@ class _StringsEn extends Translations {
       _StringsAuthorizationEn._(_root);
   @override
   late final _StringsFooterEn footer = _StringsFooterEn._(_root);
+  @override
+  late final _StringsErrorEn error = _StringsErrorEn._(_root);
 }
 
 // Path: homePage
@@ -439,6 +575,20 @@ class _StringsFooterEn extends _StringsFooterJa {
   String get license => 'License';
 }
 
+// Path: error
+class _StringsErrorEn extends _StringsErrorJa {
+  _StringsErrorEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  late final _StringsErrorNetworkEn network = _StringsErrorNetworkEn._(_root);
+}
+
 // Path: homePage.titleAndLogo
 class _StringsHomePageTitleAndLogoEn extends _StringsHomePageTitleAndLogoJa {
   _StringsHomePageTitleAndLogoEn._(_StringsEn root)
@@ -466,6 +616,9 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
 
   // Translations
   @override
+  late final _StringsHomePageTicketsVariantEn variant =
+      _StringsHomePageTicketsVariantEn._(_root);
+  @override
   String get buyTicket => 'Buy Ticket';
   @override
   String get loginBeforeBuy =>
@@ -479,6 +632,12 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
   @override
   late final _StringsHomePageTicketsInvitationEn invitation =
       _StringsHomePageTicketsInvitationEn._(_root);
+  @override
+  late final _StringsHomePageTicketsPersonalSponsorEn personalSponsor =
+      _StringsHomePageTicketsPersonalSponsorEn._(_root);
+  @override
+  late final _StringsHomePageTicketsStudentEn student =
+      _StringsHomePageTicketsStudentEn._(_root);
 }
 
 // Path: authorization.logOutDialog
@@ -522,6 +681,58 @@ class _StringsFooterGoogleCopyrightEn extends _StringsFooterGoogleCopyrightJa {
   String get text2 => 'are trademarks of Google LLC.';
 }
 
+// Path: error.network
+class _StringsErrorNetworkEn extends _StringsErrorNetworkJa {
+  _StringsErrorNetworkEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get status400 => 'Bad Request';
+  @override
+  String get status403 => 'Forbidden';
+  @override
+  String get status404 => 'Not Found';
+  @override
+  String get status429 => 'Too Many Requests';
+  @override
+  String get status500 => 'Internal Server Error';
+  @override
+  String get status503 => 'Service Unavailable';
+  @override
+  String statusOther({required Object statusCode}) =>
+      'A network error occurred (Status Code: ${statusCode})';
+  @override
+  String get tryAgain => 'Please try again later.';
+  @override
+  String get unknown => 'An unknown error occurred.';
+}
+
+// Path: homePage.tickets.variant
+class _StringsHomePageTicketsVariantEn
+    extends _StringsHomePageTicketsVariantJa {
+  _StringsHomePageTicketsVariantEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get general => 'General Ticket';
+  @override
+  String get sessionSpeaker => 'Session Speaker Ticket';
+  @override
+  String get sponsorSession => 'Sponsor Session Speaker Ticket';
+  @override
+  String get sponsorInvitation => 'Sponsor Invitation Ticket';
+}
+
 // Path: homePage.tickets.normal
 class _StringsHomePageTicketsNormalEn extends _StringsHomePageTicketsNormalJa {
   _StringsHomePageTicketsNormalEn._(_StringsEn root)
@@ -552,16 +763,126 @@ class _StringsHomePageTicketsInvitationEn
 
   // Translations
   @override
-  String get name => 'Invitation Ticket';
-  @override
   String get description =>
-      'For those who have an invitation code or coupon code';
+      'If you have an invitation code or coupon code, please enter it here.';
   @override
   String get textBoxTitle => 'Invitation Code or Coupon Code';
   @override
   String get textBoxDescription => 'Enter the code';
   @override
   String get applyCodeButton => 'Apply Code';
+  @override
+  late final _StringsHomePageTicketsInvitationValidationEn validation =
+      _StringsHomePageTicketsInvitationValidationEn._(_root);
+}
+
+// Path: homePage.tickets.personalSponsor
+class _StringsHomePageTicketsPersonalSponsorEn
+    extends _StringsHomePageTicketsPersonalSponsorJa {
+  _StringsHomePageTicketsPersonalSponsorEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get name => 'Personal Sponsor Ticket';
+  @override
+  String get description => 'Ticket for individual sponsors';
+}
+
+// Path: homePage.tickets.student
+class _StringsHomePageTicketsStudentEn
+    extends _StringsHomePageTicketsStudentJa {
+  _StringsHomePageTicketsStudentEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get name => 'Student Discount';
+  @override
+  String get description =>
+      'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
+}
+
+// Path: homePage.tickets.invitation.validation
+class _StringsHomePageTicketsInvitationValidationEn
+    extends _StringsHomePageTicketsInvitationValidationJa {
+  _StringsHomePageTicketsInvitationValidationEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get ok => 'Your code is valid!';
+  @override
+  String get invalid => 'Your code is invalid.';
+  @override
+  String get nextPayment =>
+      'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.';
+  @override
+  String get nextConfirmOrder =>
+      'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
+  @override
+  late final _StringsHomePageTicketsInvitationValidationDialogEn dialog =
+      _StringsHomePageTicketsInvitationValidationDialogEn._(_root);
+  @override
+  late final _StringsHomePageTicketsInvitationValidationInvitedEn invited =
+      _StringsHomePageTicketsInvitationValidationInvitedEn._(_root);
+}
+
+// Path: homePage.tickets.invitation.validation.dialog
+class _StringsHomePageTicketsInvitationValidationDialogEn
+    extends _StringsHomePageTicketsInvitationValidationDialogJa {
+  _StringsHomePageTicketsInvitationValidationDialogEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get ok => 'OK';
+  @override
+  String get cancel => 'Cancel';
+}
+
+// Path: homePage.tickets.invitation.validation.invited
+class _StringsHomePageTicketsInvitationValidationInvitedEn
+    extends _StringsHomePageTicketsInvitationValidationInvitedJa {
+  _StringsHomePageTicketsInvitationValidationInvitedEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Invitation code has been successfully validated';
+  @override
+  String get description => 'Please enter the following information';
+  @override
+  String get warning =>
+      'Pressing "Next" will finalize the information. If you need to make changes, please contact the organizers.';
+  @override
+  String get sponsor => 'Sponsor you are member of';
+  @override
+  String get session => 'Session you will speak at';
+  @override
+  String get next => 'Next';
+  @override
+  String get pleaseWaitForAMoment => 'Please wait a moment...';
 }
 
 /// Flat map(s) containing all translations.
@@ -584,28 +905,76 @@ extension on Translations {
         return 'November\n21(Thu) - 22(Fri)';
       case 'homePage.titleAndLogo.location':
         return '有明セントラルタワーホール&カンファレンス';
+      case 'homePage.tickets.variant.general':
+        return '一般チケット';
+      case 'homePage.tickets.variant.sessionSpeaker':
+        return 'セッション登壇者チケット';
+      case 'homePage.tickets.variant.sponsorSession':
+        return 'スポンサーセッション登壇者チケット';
+      case 'homePage.tickets.variant.sponsorInvitation':
+        return 'スポンサー招待チケット';
       case 'homePage.tickets.buyTicket':
         return 'チケットを購入';
       case 'homePage.tickets.loginBeforeBuy':
         return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
       case 'homePage.tickets.ticketManagedByGoogleAccount':
         return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
+      case 'homePage.tickets.price':
+        return ({required Object price}) => '¥${price}';
       case 'homePage.tickets.normal.name':
         return '一般チケット';
-      case 'homePage.tickets.normal.price':
-        return ({required Object price}) => '¥${price}';
       case 'homePage.tickets.normal.description':
         return '一般参加者向けチケット';
-      case 'homePage.tickets.invitation.name':
-        return '招待チケット・クーポンコード';
       case 'homePage.tickets.invitation.description':
-        return '招待コードまたはクーポンコードをお持ちの方はこちら';
+        return '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
       case 'homePage.tickets.invitation.textBoxTitle':
         return '招待コード もしくは クーポンコード';
       case 'homePage.tickets.invitation.textBoxDescription':
         return 'コードを入力';
       case 'homePage.tickets.invitation.applyCodeButton':
         return 'コードを適用';
+      case 'homePage.tickets.invitation.error.status404':
+        return 'プロモーションコードが見つかりません';
+      case 'homePage.tickets.invitation.error.status429':
+        return 'リクエストが多過ぎます 数分後に再度お試しください';
+      case 'homePage.tickets.invitation.error.status500':
+        return 'サーバーでエラーが発生しました';
+      case 'homePage.tickets.invitation.error.unknown':
+        return '不明なエラーが発生しました';
+      case 'homePage.tickets.invitation.validation.ok':
+        return 'プロモーションコードが有効です';
+      case 'homePage.tickets.invitation.validation.invalid':
+        return 'プロモーションコードが無効です';
+      case 'homePage.tickets.invitation.validation.nextPayment':
+        return '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットを購入してください';
+      case 'homePage.tickets.invitation.validation.nextConfirmOrder':
+        return '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
+      case 'homePage.tickets.invitation.validation.dialog.ok':
+        return '決定';
+      case 'homePage.tickets.invitation.validation.dialog.cancel':
+        return 'キャンセル';
+      case 'homePage.tickets.invitation.validation.invited.title':
+        return '招待コードが正常に検証されました';
+      case 'homePage.tickets.invitation.validation.invited.description':
+        return '以下の情報を入力してください';
+      case 'homePage.tickets.invitation.validation.invited.warning':
+        return '「次へ」を押すと、情報は確定されます。変更するには、運営へお問い合わせください。';
+      case 'homePage.tickets.invitation.validation.invited.sponsor':
+        return '所属スポンサー';
+      case 'homePage.tickets.invitation.validation.invited.session':
+        return '登壇セッション';
+      case 'homePage.tickets.invitation.validation.invited.next':
+        return '次へ';
+      case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment':
+        return '少々お待ちください...';
+      case 'homePage.tickets.personalSponsor.name':
+        return '個人スポンサーチケット';
+      case 'homePage.tickets.personalSponsor.description':
+        return '個人スポンサー向けチケット';
+      case 'homePage.tickets.student.name':
+        return '学割について';
+      case 'homePage.tickets.student.description':
+        return '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
       case 'authorization.alreadyLoggedInWithMailAddress':
         return ({required Object mailAddress}) => '${mailAddress} でログイン済みです';
       case 'authorization.logOut':
@@ -634,6 +1003,25 @@ extension on Translations {
         return 'お問い合わせ';
       case 'footer.license':
         return 'ライセンス';
+      case 'error.network.status400':
+        return 'リクエストが不正です';
+      case 'error.network.status403':
+        return 'リクエストが拒否されました';
+      case 'error.network.status404':
+        return 'リクエストが見つかりません';
+      case 'error.network.status429':
+        return 'リクエストが多すぎます';
+      case 'error.network.status500':
+        return 'サーバーでエラーが発生しました';
+      case 'error.network.status503':
+        return 'サーバーが過負荷状態です';
+      case 'error.network.statusOther':
+        return ({required Object statusCode}) =>
+            'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
+      case 'error.network.tryAgain':
+        return '時間をおいて再度お試しください';
+      case 'error.network.unknown':
+        return '不明なエラーが発生しました';
       default:
         return null;
     }
@@ -657,6 +1045,14 @@ extension on _StringsEn {
         return 'November\n21(Thu) - 22(Fri)';
       case 'homePage.titleAndLogo.location':
         return 'Ariake Central Tower & Conference';
+      case 'homePage.tickets.variant.general':
+        return 'General Ticket';
+      case 'homePage.tickets.variant.sessionSpeaker':
+        return 'Session Speaker Ticket';
+      case 'homePage.tickets.variant.sponsorSession':
+        return 'Sponsor Session Speaker Ticket';
+      case 'homePage.tickets.variant.sponsorInvitation':
+        return 'Sponsor Invitation Ticket';
       case 'homePage.tickets.buyTicket':
         return 'Buy Ticket';
       case 'homePage.tickets.loginBeforeBuy':
@@ -669,16 +1065,48 @@ extension on _StringsEn {
         return ({required Object price}) => '¥${price}';
       case 'homePage.tickets.normal.description':
         return 'General admission ticket';
-      case 'homePage.tickets.invitation.name':
-        return 'Invitation Ticket';
       case 'homePage.tickets.invitation.description':
-        return 'For those who have an invitation code or coupon code';
+        return 'If you have an invitation code or coupon code, please enter it here.';
       case 'homePage.tickets.invitation.textBoxTitle':
         return 'Invitation Code or Coupon Code';
       case 'homePage.tickets.invitation.textBoxDescription':
         return 'Enter the code';
       case 'homePage.tickets.invitation.applyCodeButton':
         return 'Apply Code';
+      case 'homePage.tickets.invitation.validation.ok':
+        return 'Your code is valid!';
+      case 'homePage.tickets.invitation.validation.invalid':
+        return 'Your code is invalid.';
+      case 'homePage.tickets.invitation.validation.nextPayment':
+        return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.';
+      case 'homePage.tickets.invitation.validation.nextConfirmOrder':
+        return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
+      case 'homePage.tickets.invitation.validation.dialog.ok':
+        return 'OK';
+      case 'homePage.tickets.invitation.validation.dialog.cancel':
+        return 'Cancel';
+      case 'homePage.tickets.invitation.validation.invited.title':
+        return 'Invitation code has been successfully validated';
+      case 'homePage.tickets.invitation.validation.invited.description':
+        return 'Please enter the following information';
+      case 'homePage.tickets.invitation.validation.invited.warning':
+        return 'Pressing "Next" will finalize the information. If you need to make changes, please contact the organizers.';
+      case 'homePage.tickets.invitation.validation.invited.sponsor':
+        return 'Sponsor you are member of';
+      case 'homePage.tickets.invitation.validation.invited.session':
+        return 'Session you will speak at';
+      case 'homePage.tickets.invitation.validation.invited.next':
+        return 'Next';
+      case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment':
+        return 'Please wait a moment...';
+      case 'homePage.tickets.personalSponsor.name':
+        return 'Personal Sponsor Ticket';
+      case 'homePage.tickets.personalSponsor.description':
+        return 'Ticket for individual sponsors';
+      case 'homePage.tickets.student.name':
+        return 'Student Discount';
+      case 'homePage.tickets.student.description':
+        return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
       case 'authorization.alreadyLoggedInWithMailAddress':
         return ({required Object mailAddress}) =>
             'Already logged in with ${mailAddress}';
@@ -708,6 +1136,25 @@ extension on _StringsEn {
         return 'Contact';
       case 'footer.license':
         return 'License';
+      case 'error.network.status400':
+        return 'Bad Request';
+      case 'error.network.status403':
+        return 'Forbidden';
+      case 'error.network.status404':
+        return 'Not Found';
+      case 'error.network.status429':
+        return 'Too Many Requests';
+      case 'error.network.status500':
+        return 'Internal Server Error';
+      case 'error.network.status503':
+        return 'Service Unavailable';
+      case 'error.network.statusOther':
+        return ({required Object statusCode}) =>
+            'A network error occurred (Status Code: ${statusCode})';
+      case 'error.network.tryAgain':
+        return 'Please try again later.';
+      case 'error.network.unknown':
+        return 'An unknown error occurred.';
       default:
         return null;
     }
