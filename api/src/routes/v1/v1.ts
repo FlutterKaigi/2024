@@ -115,8 +115,6 @@ v1.get(
       code: v.string()
     })
   ),
-  // プロモーションコードの検証はRate Limitの対象とする
-  async (c, next) => rateLimiter(c.env.RATE_LIMITER)(c, next),
   async (c) => {
     const { code } = c.req.valid("query");
     const stripe = new Stripe(c.env.STRIPE_KEY);
