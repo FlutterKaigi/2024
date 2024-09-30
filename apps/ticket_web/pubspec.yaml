@@ -14,6 +14,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^2.0.10+1
   freezed_annotation: ^2.4.4
   go_router: ^14.2.7
   hooks_riverpod: ^2.5.2
@@ -61,11 +62,8 @@ flutter:
     - assets/fonts/NotoSansJP/OFL.txt
     - assets/fonts/Poppins/OFL.txt
     - path: assets/images/sns/
-      transformers:
-        - package: vector_graphics_compiler
     - path: assets/images/svg/
-      transformers:
-        - package: vector_graphics_compiler
+
   fonts:
     - family: NotoSansJP
       fonts:
@@ -81,3 +79,14 @@ flutter:
           weight: 500
         - asset: assets/fonts/Poppins/Poppins-Bold.ttf
           weight: 700
+
+flutter_gen:
+  output: lib/core/gen
+  line_length: 80
+
+  integrations:
+    flutter_svg: true
+
+  assets:
+    outputs:
+      directory_path_enabled: true
