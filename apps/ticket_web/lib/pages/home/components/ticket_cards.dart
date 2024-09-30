@@ -33,7 +33,7 @@ class TicketCards extends ConsumerWidget {
     final isLoggedIn = authState != null;
 
     final children = [
-      NormalTicketCard(
+      GeneralTicketCard(
         isLoggedIn: isLoggedIn,
         onPurchasePressed: () async =>
             ref.read(paymentServiceProvider).transitionToPayment(
