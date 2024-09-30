@@ -1,7 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
+import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
+import 'package:conference_2024_website/ui/pages/sponsor_page.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,7 @@ final class Sponsors extends HookConsumerWidget {
           i18n,
           textTheme,
         ),
-      AsyncData<List<Sponsor>>(:final value) => sponsorsSection(
+      AsyncData<List<SponsorWithSession>>(:final value) => sponsorsSection(
           value,
           theme,
           context,
@@ -36,7 +38,7 @@ final class Sponsors extends HookConsumerWidget {
 }
 
 Widget sponsorsSection(
-  List<Sponsor> sponsors,
+  List<SponsorWithSession> sponsors,
   ThemeData theme,
   BuildContext context,
 ) {
@@ -69,7 +71,7 @@ Widget sponsorsSection(
 
 Widget _sponsorListByLevel(
   ThemeData theme,
-  List<Sponsor> sponsors,
+  List<SponsorWithSession> sponsors,
   BuildContext context,
 ) {
   assert(
@@ -169,7 +171,7 @@ class _SponsorCard extends ConsumerWidget {
     required this.size,
   });
 
-  final Sponsor sponsor;
+  final SponsorWithSession sponsor;
   final double size;
 
   @override
@@ -177,7 +179,7 @@ class _SponsorCard extends ConsumerWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: () {},
+        onTap: () async => SponsorRoute(id: sponsor.id).push<void>(context),
         child: Container(
           width: size,
           height: size,
@@ -209,7 +211,7 @@ class _SponsorCard extends ConsumerWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<Sponsor>('sponsor', sponsor));
+    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
     properties.add(DoubleProperty('size', size));
   }
 }
