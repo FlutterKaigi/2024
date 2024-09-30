@@ -3,6 +3,19 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+/// GoRouterのデバッグページ
+/// 株式会社ゆめみのテンプレートプロジェクトより引用
+/// (MIT License)
+/// https://github.com/yumemi-inc/flutter-mobile-project-template/blob/5ecc5a2290bc4bdec723e6ce8aacacc42c1db6a5/packages/features/debug_mode/lib/src/ui/navigation_debug_page.dart
+class NavigationDebugRoute extends GoRouteData {
+  const NavigationDebugRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const NavigationDebugPage();
+  }
+}
+
 class NavigationDebugPage extends ConsumerWidget {
   const NavigationDebugPage({super.key});
 
