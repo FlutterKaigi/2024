@@ -19,8 +19,8 @@ import 'package:ticket_web/feature/promotion_code/ui/on_promotion_code_verified_
 import 'package:ticket_web/feature/session/data/session_provider.dart';
 import 'package:ticket_web/feature/sponsor/data/sponsor_provider.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
-import 'package:ticket_web/pages/home/components/ticket_cards/normal_ticket.dart';
-import 'package:ticket_web/pages/home/components/ticket_cards/personal_sponsor_ticket.dart';
+import 'package:ticket_web/pages/home/components/ticket_cards/general_ticket_card.dart';
+import 'package:ticket_web/pages/home/components/ticket_cards/personal_sponsor_ticket_card.dart';
 
 class TicketCards extends ConsumerWidget {
   const TicketCards({super.key});
@@ -33,7 +33,7 @@ class TicketCards extends ConsumerWidget {
     final isLoggedIn = authState != null;
 
     final children = [
-      NormalTicketCard(
+      GeneralTicketCard(
         isLoggedIn: isLoggedIn,
         onPurchasePressed: () async =>
             ref.read(paymentServiceProvider).transitionToPayment(
