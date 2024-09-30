@@ -251,6 +251,16 @@ class _StringsErrorJa {
   late final _StringsErrorNetworkJa network = _StringsErrorNetworkJa._(_root);
 }
 
+// Path: error
+class _StringsErrorJa {
+	_StringsErrorJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsErrorNetworkJa network = _StringsErrorNetworkJa._(_root);
+}
+
 // Path: homePage.titleAndLogo
 class _StringsHomePageTitleAndLogoJa {
   _StringsHomePageTitleAndLogoJa._(this._root);
@@ -342,6 +352,37 @@ class _StringsHomePageTicketsVariantJa {
   String get sessionSpeaker => 'セッション登壇者チケット';
   String get sponsorSession => 'スポンサーセッション登壇者チケット';
   String get sponsorInvitation => 'スポンサー招待チケット';
+}
+
+// Path: error.network
+class _StringsErrorNetworkJa {
+	_StringsErrorNetworkJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get status400 => 'リクエストが不正です';
+	String get status403 => 'リクエストが拒否されました';
+	String get status404 => 'リクエストが見つかりません';
+	String get status429 => 'リクエストが多すぎます';
+	String get status500 => 'サーバーでエラーが発生しました';
+	String get status503 => 'サーバーが過負荷状態です';
+	String statusOther({required Object statusCode}) => 'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
+	String get tryAgain => '時間をおいて再度お試しください';
+	String get unknown => '不明なエラーが発生しました';
+}
+
+// Path: homePage.tickets.variant
+class _StringsHomePageTicketsVariantJa {
+	_StringsHomePageTicketsVariantJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get general => '一般チケット';
+	String get sessionSpeaker => 'セッション登壇者チケット';
+	String get sponsorSession => 'スポンサーセッション登壇者チケット';
+	String get sponsorInvitation => 'スポンサー招待チケット';
 }
 
 // Path: homePage.tickets.normal
@@ -589,6 +630,16 @@ class _StringsErrorEn extends _StringsErrorJa {
   late final _StringsErrorNetworkEn network = _StringsErrorNetworkEn._(_root);
 }
 
+// Path: error
+class _StringsErrorEn extends _StringsErrorJa {
+	_StringsErrorEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsErrorNetworkEn network = _StringsErrorNetworkEn._(_root);
+}
+
 // Path: homePage.titleAndLogo
 class _StringsHomePageTitleAndLogoEn extends _StringsHomePageTitleAndLogoJa {
   _StringsHomePageTitleAndLogoEn._(_StringsEn root)
@@ -731,6 +782,37 @@ class _StringsHomePageTicketsVariantEn
   String get sponsorSession => 'Sponsor Session Speaker Ticket';
   @override
   String get sponsorInvitation => 'Sponsor Invitation Ticket';
+}
+
+// Path: error.network
+class _StringsErrorNetworkEn extends _StringsErrorNetworkJa {
+	_StringsErrorNetworkEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get status400 => 'Bad Request';
+	@override String get status403 => 'Forbidden';
+	@override String get status404 => 'Not Found';
+	@override String get status429 => 'Too Many Requests';
+	@override String get status500 => 'Internal Server Error';
+	@override String get status503 => 'Service Unavailable';
+	@override String statusOther({required Object statusCode}) => 'A network error occurred (Status Code: ${statusCode})';
+	@override String get tryAgain => 'Please try again later.';
+	@override String get unknown => 'An unknown error occurred.';
+}
+
+// Path: homePage.tickets.variant
+class _StringsHomePageTicketsVariantEn extends _StringsHomePageTicketsVariantJa {
+	_StringsHomePageTicketsVariantEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get general => 'General Ticket';
+	@override String get sessionSpeaker => 'Session Speaker Ticket';
+	@override String get sponsorSession => 'Sponsor Session Speaker Ticket';
+	@override String get sponsorInvitation => 'Sponsor Invitation Ticket';
 }
 
 // Path: homePage.tickets.normal
