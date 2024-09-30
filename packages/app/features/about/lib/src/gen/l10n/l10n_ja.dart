@@ -29,7 +29,7 @@ class L10nAboutJa extends L10nAbout {
   String get seeMore => 'もっと見る';
 
   @override
-  String get websiteAndAppContributors => 'Website/App Contributors';
+  String get websiteAndAppContributors => 'Website/App contributors';
 
   @override
   String get staffs => 'スタッフ';

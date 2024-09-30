@@ -142,7 +142,7 @@ abstract class L10nAbout {
   /// No description provided for @websiteAndAppContributors.
   ///
   /// In ja, this message translates to:
-  /// **'Website/App Contributors'**
+  /// **'Website/App contributors'**
   String get websiteAndAppContributors;
 
   /// No description provided for @staffs.
