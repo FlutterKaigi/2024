@@ -60,7 +60,7 @@ class _AuthStateCard extends ConsumerWidget {
       child = LoginBeforePurchaseCard(
         key: const ValueKey('LoginBeforePurchaseCard'),
         onSignInPressed:
-            ref.read(authNotifierProvider.notifier).signInWithGoogle,
+            ref.watch(authNotifierProvider.notifier).signInWithGoogle,
       );
     } else {
       child = AlreadyLoggedInCard(
