@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
+import 'package:ticket_web/feature/sponsor/data/sponsor_provider.dart';
 import 'package:ticket_web/pages/debug/components/navigation_debug_page.dart';
 
 class DebugRoute extends GoRouteData {
@@ -16,11 +17,11 @@ class DebugRoute extends GoRouteData {
   }
 }
 
-class DebugPage extends StatelessWidget {
+class DebugPage extends HookConsumerWidget {
   const DebugPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorSchema = Theme.of(context).colorScheme;
     final children = [
       ListTile(
@@ -41,15 +42,31 @@ class DebugPage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Consumer(
-                builder: (context, ref, child) => ListTile(
-                  title: const Text('authNotifierProvider State'),
-                  subtitle: Text(
-                    const JsonEncoder.withIndent(' ').convert(
-                      ref.watch(authNotifierProvider)?.toJson(),
-                    ),
+              ListTile(
+                title: const Text(
+                  'authNotifierProvider State '
+                  '(Tap to Sign In, Long Press to Sign Out)',
+                ),
+                subtitle: Text(
+                  const JsonEncoder.withIndent(' ').convert(
+                    ref.watch(authNotifierProvider)?.toJson(),
                   ),
                 ),
+                onTap: () async =>
+                    ref.read(authNotifierProvider.notifier).signInWithGoogle(),
+                onLongPress: () async =>
+                    ref.read(authNotifierProvider.notifier).signOut(),
+              ),
+              ListTile(
+                title: const Text(
+                  'sponsorAndSessionListProvider State '
+                  '(Long Press to Invalidate)',
+                ),
+                subtitle: Text(
+                  ref.watch(sponsorAndSessionListProvider).toString(),
+                ),
+                onLongPress: () async =>
+                    ref.invalidate(sponsorAndSessionListProvider),
               ),
             ],
           ),
