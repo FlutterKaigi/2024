@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 /// 一般チケットのカード
-class NormalTicketCard extends HookWidget {
-  const NormalTicketCard({
+class GeneralTicketCard extends HookWidget {
+  const GeneralTicketCard({
     required this.isLoggedIn,
     this.onPurchasePressed,
     this.onSignInPressed,

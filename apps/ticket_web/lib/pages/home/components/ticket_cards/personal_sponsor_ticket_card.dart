@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
-/// 一般チケットのカード
+/// 個人チケットのカード
 class PersonalSponsorTicketCard extends StatelessWidget {
   const PersonalSponsorTicketCard({
     required this.isLoggedIn,
