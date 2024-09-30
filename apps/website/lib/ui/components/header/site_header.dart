@@ -9,10 +9,12 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
     required this.onTitleTap,
     super.key,
     this.showAppBar = false,
+    this.showHeaderNavigation = true,
   });
 
   final VoidCallback onTitleTap;
   final bool showAppBar;
+  final bool showHeaderNavigation;
 
   static const double appbarHeight = 66;
 
@@ -27,6 +29,7 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
       duration: const Duration(milliseconds: 500),
       height: isMobile || showAppBar ? appbarHeight : 0,
       child: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor:
             isMobile ? Colors.transparent : Colors.white.withValues(alpha: 0.8),
         toolbarHeight: appbarHeight,
@@ -36,6 +39,7 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
             ? null
             : _HeaderBody(
                 onTitleTap: onTitleTap,
+                showHeaderNavigation: showHeaderNavigation,
               ),
         actions: [
           if (isMobile) const _DrawerButton(),
@@ -54,6 +58,12 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
       ..add(
         DiagnosticsProperty<bool>('showAppBar', showAppBar),
       );
+    properties.add(
+      DiagnosticsProperty<bool>(
+        'showHeaderNavigation',
+        showHeaderNavigation,
+      ),
+    );
   }
 }
 
@@ -73,8 +83,13 @@ final class _DrawerButton extends StatelessWidget {
 }
 
 final class _HeaderBody extends StatelessWidget {
-  const _HeaderBody({required this.onTitleTap});
+  const _HeaderBody({
+    required this.onTitleTap,
+    required this.showHeaderNavigation,
+  });
+
   final VoidCallback onTitleTap;
+  final bool showHeaderNavigation;
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +104,7 @@ final class _HeaderBody extends StatelessWidget {
         children: [
           _HeaderLogo(onTitleTap: onTitleTap),
           const Spacer(),
-          const _HeaderNavigation(),
+          if (showHeaderNavigation) const _HeaderNavigation(),
         ],
       ),
     );
@@ -100,6 +115,12 @@ final class _HeaderBody extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(
       ObjectFlagProperty<VoidCallback>.has('onTitleTap', onTitleTap),
+    );
+    properties.add(
+      DiagnosticsProperty<bool>(
+        'showHeaderNavigation',
+        showHeaderNavigation,
+      ),
     );
   }
 }

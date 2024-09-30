@@ -7,6 +7,7 @@ import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/home/components/already_logged_in_card.dart';
 import 'package:ticket_web/pages/home/components/login_before_purchase_card.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards.dart';
+import 'package:ticket_web/pages/home/components/ticket_cards/information_for_students.dart';
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
 import 'package:ticket_web/pages/home/components/transit_to_home_page.dart';
 
@@ -38,6 +39,8 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 48),
           _AuthStateCard(),
           TicketCards(),
+          SizedBox(height: 8),
+          InformationForStudents(),
           SizedBox(height: 48),
         ],
       ),
@@ -57,7 +60,7 @@ class _AuthStateCard extends ConsumerWidget {
       child = LoginBeforePurchaseCard(
         key: const ValueKey('LoginBeforePurchaseCard'),
         onSignInPressed:
-            ref.read(authNotifierProvider.notifier).signInWithGoogle,
+            ref.watch(authNotifierProvider.notifier).signInWithGoogle,
       );
     } else {
       child = AlreadyLoggedInCard(
