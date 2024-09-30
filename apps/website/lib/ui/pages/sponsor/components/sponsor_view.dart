@@ -24,7 +24,7 @@ class SponsorView extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
-    final backgroundColor = Colors.white.withValues(alpha: 0.6);
+    final backgroundColor = Colors.white.withValues(alpha: 0.9);
 
     final size = MediaQuery.sizeOf(context);
 

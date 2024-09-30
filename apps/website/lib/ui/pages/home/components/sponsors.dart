@@ -185,7 +185,7 @@ class _SponsorCard extends ConsumerWidget {
           height: size,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.6),
+            color: Colors.white.withValues(alpha: 0.9),
             boxShadow: [
               CustomBoxShadow(
                 color: Colors.black.withValues(alpha: 0.25),
