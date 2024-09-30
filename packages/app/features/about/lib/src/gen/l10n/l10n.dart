@@ -124,7 +124,7 @@ abstract class L10nAbout {
   /// No description provided for @contributors.
   ///
   /// In ja, this message translates to:
-  /// **'コントリビューター'**
+  /// **'Contributors'**
   String get contributors;
 
   /// No description provided for @sponsors.
@@ -142,7 +142,7 @@ abstract class L10nAbout {
   /// No description provided for @websiteAndAppContributors.
   ///
   /// In ja, this message translates to:
-  /// **'Website/App コントリビューター'**
+  /// **'Website/App Contributors'**
   String get websiteAndAppContributors;
 
   /// No description provided for @staffs.

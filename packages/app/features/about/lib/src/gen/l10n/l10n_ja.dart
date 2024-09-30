@@ -20,7 +20,7 @@ class L10nAboutJa extends L10nAbout {
   String get date => '2024年11月21日～22日';
 
   @override
-  String get contributors => 'コントリビューター';
+  String get contributors => 'Contributors';
 
   @override
   String get sponsors => 'スポンサー';
@@ -29,7 +29,7 @@ class L10nAboutJa extends L10nAbout {
   String get seeMore => 'もっと見る';
 
   @override
-  String get websiteAndAppContributors => 'Website/App コントリビューター';
+  String get websiteAndAppContributors => 'Website/App Contributors';
 
   @override
   String get staffs => 'スタッフ';
