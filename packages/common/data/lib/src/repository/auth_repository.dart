@@ -35,6 +35,9 @@ final class AuthRepository {
     );
   }
 
+  /// セッションがある場合、AccessTokenを返す
+  String? get accessToken => _client.auth.currentSession?.accessToken;
+
   Stream<AuthChangeEvent> get onAuthStateChange async* {
     final stream = _client.auth.onAuthStateChange;
     await for (final next in stream) {
