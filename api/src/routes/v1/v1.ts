@@ -98,18 +98,6 @@ v1.post(
         sponsorId: sponsor_id
       });
       return c.json({ ticket });
-    } else {
-      // プロモーションコードがない場合
-      // プロモーションコードがないのに、sponsor_idやsession_idが指定されている場合はエラー
-      if (sponsor_id || session_id) {
-        return c.json(
-          {
-            error:
-              "You need to set session_id or/and sponsor_id when you use promotion code."
-          },
-          400
-        );
-      }
     }
 
     const ticket = await createTicket({
