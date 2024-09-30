@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_web/core/components/responsive_content_container.dart';
+import 'package:ticket_web/core/gen/assets.gen.dart';
 import 'package:ticket_web/core/theme/extension/theme_extension.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:url_launcher/link.dart';
-import 'package:vector_graphics/vector_graphics_compat.dart';
 
 class SiteFooter extends StatelessWidget {
   const SiteFooter({super.key});
@@ -185,10 +185,9 @@ class _SnsLinks extends StatelessWidget {
       children: [
         _buildIconButton(
           // Twitterだけ余白のないクソデカアイコンなので、少し小さくしている
-          icon: const Padding(
-            padding: EdgeInsets.all(5),
-            child: VectorGraphic(
-              loader: AssetBytesLoader('assets/images/sns/x.svg'),
+          icon: Padding(
+            padding: const EdgeInsets.all(5),
+            child: Assets.images.sns.xSvg.svg(
               height: 30,
               width: 30,
             ),
@@ -196,29 +195,26 @@ class _SnsLinks extends StatelessWidget {
           url: 'https://x.com/FlutterKaigi',
         ),
         _buildIconButton(
-          icon: const VectorGraphic(
-            loader: AssetBytesLoader('assets/images/sns/github.svg'),
+          icon: Assets.images.sns.githubSvg.svg(
             height: 40,
             width: 40,
-            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
           url: 'https://github.com/FlutterKaigi/2024',
         ),
         _buildIconButton(
-          icon: const VectorGraphic(
-            loader: AssetBytesLoader('assets/images/sns/discord.svg'),
+          icon: Assets.images.sns.discordSvg.svg(
             height: 40,
             width: 40,
-            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
           url: 'https://discord.com/invite/Nr7H8JTJSF',
         ),
         _buildIconButton(
-          icon: const VectorGraphic(
-            loader: AssetBytesLoader('assets/images/sns/medium.svg'),
+          icon: Assets.images.sns.mediumSvg.svg(
             height: 40,
             width: 40,
-            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
           url: 'https://medium.com/flutterkaigi',
         ),
