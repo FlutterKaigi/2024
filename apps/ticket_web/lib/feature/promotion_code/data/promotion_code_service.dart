@@ -1,13 +1,13 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_api/model/ticket/promotion_metadata.dart';
 import 'package:ticket_api/ticket_api.dart';
-import 'package:ticket_web/core/provider/ticket_api_base_url_provider.dart';
+import 'package:ticket_web/core/provider/environment.dart';
 
 part 'promotion_code_service.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [Environment])
 PromotionCodeService promotionCodeService(PromotionCodeServiceRef ref) {
-  final baseUrl = ref.watch(ticketApiBaseUrlProvider);
+  final baseUrl = ref.watch(environmentProvider).ticketApiBaseUrl;
 
   return PromotionCodeService(
     ticketApiClient: ref.watch(ticketApiClientProvider(baseUrl)),

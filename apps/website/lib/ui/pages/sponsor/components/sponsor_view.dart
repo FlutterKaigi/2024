@@ -1,7 +1,6 @@
 import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/feature/sponsor/ui/sponsor_logo.dart';
-import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/pages/sponsor/components/sponsor_type_logo.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
@@ -19,8 +18,6 @@ class SponsorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final i18n = Translations.of(context);
-
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
@@ -29,8 +26,6 @@ class SponsorView extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
 
     final padding = size.isMobile ? 16.0 : 40.0;
-
-    print(sponsor.description);
 
     return DecoratedBox(
       decoration: const BoxDecoration(

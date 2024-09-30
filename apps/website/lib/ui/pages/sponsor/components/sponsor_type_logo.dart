@@ -1,5 +1,4 @@
 import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +25,6 @@ class SponsorTypeLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final i18n = Translations.of(context);
-
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 

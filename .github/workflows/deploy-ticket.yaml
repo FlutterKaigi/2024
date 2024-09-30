@@ -35,7 +35,7 @@ jobs:
       - name: Extract Secrets
         working-directory: apps/ticket_web
         run: |
-          echo '${{ secrets.STAGING_ENV_FOR_TICKET }}' | base64 -d > defined/staging.env
+          echo '${{ secrets.STAGING_ENV_FOR_TICKET }}' | base64 -d > defines/staging.env
 
       - name: Build Web (Production)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
