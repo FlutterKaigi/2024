@@ -1,9 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticket_api/ticket_api.dart';
+import 'package:ticket_web/core/components/error/error_card.dart';
 import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
+import 'package:ticket_web/core/provider/environment.dart';
+import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
+import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_session.dart';
+import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_sponsor.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:ticket_web/pages/verify_purchase/components/verify_purchase_processed_card.dart';
+import 'package:ticket_web/pages/verify_purchase/components/verify_purchase_processing_card.dart';
 
 class VerifyPurchaseRoute extends GoRouteData {
   const VerifyPurchaseRoute();
@@ -31,13 +42,17 @@ class VerifyPurchasePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SiteScaffold.widget(
+    return SiteScaffold.slivers(
       showFooter: false,
-      body: ResponsiveContentContainer(
-        child: _Body(
-          stripeSessionId: stripeSessionId,
+      slivers: [
+        SliverFillRemaining(
+          child: ResponsiveContentContainer(
+            child: _Body(
+              stripeSessionId: stripeSessionId,
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }
@@ -51,57 +66,57 @@ class _Body extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i18n = Translations.of(context);
+    // ignore: discarded_futures
+    final verifyPurchaseFuture = useMemoized(
+      () async {
+        final accessToken =
+            ref.read(authNotifierProvider.notifier).accessToken();
+        if (accessToken == null) {
+          throw Exception('ログインしていません');
+        }
+        final result = await ref
+            .read(
+              TicketApiClientProvider(
+                ref.watch(environmentProvider).ticketApiBaseUrl,
+              ),
+            )
+            .verifyPurchase(
+              stripeSessionId: stripeSessionId,
+              authorization: accessToken,
+              sessionId: ref.read(invitedPromotionSelectedSessionProvider),
+              sponsorId:
+                  ref.read(invitedPromotionSelectedSponsorProvider)?.toString(),
+            );
+        log('verifyPurchase result: $result');
+        // レスポンスが早いとローディングが表示されないため、1秒待つ
+        await Future<void>.delayed(
+          const Duration(seconds: 1),
+        );
+        return result;
+      },
+    );
 
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final verifyPurchaseState = useFuture(verifyPurchaseFuture);
 
-    return Card(
-      color: colorScheme.primaryContainer,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Row(),
-          Padding(
-            padding: const EdgeInsets.all(32),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  '購入処理を完了してください',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  '購入処理を完了するためには、Stripeのページに移動します。',
-                  style: TextStyle(
-                    color: colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  '移動するには以下のボタンを押してください。',
-                  style: TextStyle(
-                    color: colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () async {
-                    // StripeのセッションIDを使って購入処理を開始
-                    // この処理はStripeのAPIを呼び出すことになる
-                    // ここでは省略
-                  },
-                  child: const Text('購入処理を開始'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+    if (verifyPurchaseState.hasError) {
+      final i18n = Translations.of(context);
+
+      final error = verifyPurchaseState.error!;
+      return ErrorCard(
+        error: error,
+        title: i18n.verifyPurchase.error,
+        suffixMessage: '${i18n.verifyPurchase.errorDescription}\n'
+            '${i18n.verifyPurchase.contact}',
+        padding: const EdgeInsets.all(32),
+      );
+    }
+
+    if (verifyPurchaseState.hasData) {
+      return const VerifyPurchaseProcessedCard();
+    }
+
+    return VerifyPurchaseProcessingCard(
+      stripeSessionId: stripeSessionId,
     );
   }
 }
