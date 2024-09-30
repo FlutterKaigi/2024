@@ -24,7 +24,7 @@ class SponsorView extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
-    final backgroundColor = Colors.white.withValues(alpha: 0.9);
+    const backgroundColor = Colors.white;
 
     final size = MediaQuery.sizeOf(context);
 
@@ -33,9 +33,9 @@ class SponsorView extends StatelessWidget {
     print(sponsor.description);
 
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: backgroundColor,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
             blurRadius: 4,
             offset: Offset(2, 2),
