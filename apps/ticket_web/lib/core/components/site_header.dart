@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
-import 'package:ticket_web/gen/fonts.gen.dart';
+import 'package:ticket_web/core/gen/fonts.gen.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
