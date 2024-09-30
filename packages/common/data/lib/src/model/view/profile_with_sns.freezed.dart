@@ -24,9 +24,12 @@ mixin _$ProfileWithSns {
   String get name => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
   String get avatarName => throw _privateConstructorUsedError;
-  bool? get isAdult => throw _privateConstructorUsedError;
   List<ProfileSocialNetworkingService> get snsAccounts =>
       throw _privateConstructorUsedError;
+
+  /// `public.profile_with_sns` View以外では`null`になります
+  /// `public.profile_with_sns` Viewの場合は、常に`true`もしくは`false`になります
+  bool? get isAdult => throw _privateConstructorUsedError;
 
   /// Serializes this ProfileWithSns to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,8 +52,8 @@ abstract class $ProfileWithSnsCopyWith<$Res> {
       String name,
       String avatarUrl,
       String avatarName,
-      bool? isAdult,
-      List<ProfileSocialNetworkingService> snsAccounts});
+      List<ProfileSocialNetworkingService> snsAccounts,
+      bool? isAdult});
 }
 
 /// @nodoc
@@ -72,8 +75,8 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
     Object? name = null,
     Object? avatarUrl = null,
     Object? avatarName = null,
-    Object? isAdult = freezed,
     Object? snsAccounts = null,
+    Object? isAdult = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,14 +95,14 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
           ? _value.avatarName
           : avatarName // ignore: cast_nullable_to_non_nullable
               as String,
-      isAdult: freezed == isAdult
-          ? _value.isAdult
-          : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool?,
       snsAccounts: null == snsAccounts
           ? _value.snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
               as List<ProfileSocialNetworkingService>,
+      isAdult: freezed == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -117,8 +120,8 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
       String name,
       String avatarUrl,
       String avatarName,
-      bool? isAdult,
-      List<ProfileSocialNetworkingService> snsAccounts});
+      List<ProfileSocialNetworkingService> snsAccounts,
+      bool? isAdult});
 }
 
 /// @nodoc
@@ -138,8 +141,8 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
     Object? name = null,
     Object? avatarUrl = null,
     Object? avatarName = null,
-    Object? isAdult = freezed,
     Object? snsAccounts = null,
+    Object? isAdult = freezed,
   }) {
     return _then(_$ProfileWithSnsImpl(
       id: null == id
@@ -158,14 +161,14 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
           ? _value.avatarName
           : avatarName // ignore: cast_nullable_to_non_nullable
               as String,
-      isAdult: freezed == isAdult
-          ? _value.isAdult
-          : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool?,
       snsAccounts: null == snsAccounts
           ? _value._snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
               as List<ProfileSocialNetworkingService>,
+      isAdult: freezed == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -178,8 +181,8 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required this.name,
       required this.avatarUrl,
       required this.avatarName,
-      this.isAdult = false,
-      required final List<ProfileSocialNetworkingService> snsAccounts})
+      required final List<ProfileSocialNetworkingService> snsAccounts,
+      this.isAdult = null})
       : _snsAccounts = snsAccounts;
 
   factory _$ProfileWithSnsImpl.fromJson(Map<String, dynamic> json) =>
@@ -193,9 +196,6 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   final String avatarUrl;
   @override
   final String avatarName;
-  @override
-  @JsonKey()
-  final bool? isAdult;
   final List<ProfileSocialNetworkingService> _snsAccounts;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts {
@@ -204,9 +204,15 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
     return EqualUnmodifiableListView(_snsAccounts);
   }
 
+  /// `public.profile_with_sns` View以外では`null`になります
+  /// `public.profile_with_sns` Viewの場合は、常に`true`もしくは`false`になります
+  @override
+  @JsonKey()
+  final bool? isAdult;
+
   @override
   String toString() {
-    return 'ProfileWithSns(id: $id, name: $name, avatarUrl: $avatarUrl, avatarName: $avatarName, isAdult: $isAdult, snsAccounts: $snsAccounts)';
+    return 'ProfileWithSns(id: $id, name: $name, avatarUrl: $avatarUrl, avatarName: $avatarName, snsAccounts: $snsAccounts, isAdult: $isAdult)';
   }
 
   @override
@@ -220,15 +226,15 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
                 other.avatarUrl == avatarUrl) &&
             (identical(other.avatarName, avatarName) ||
                 other.avatarName == avatarName) &&
-            (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
             const DeepCollectionEquality()
-                .equals(other._snsAccounts, _snsAccounts));
+                .equals(other._snsAccounts, _snsAccounts) &&
+            (identical(other.isAdult, isAdult) || other.isAdult == isAdult));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, avatarUrl, avatarName,
-      isAdult, const DeepCollectionEquality().hash(_snsAccounts));
+      const DeepCollectionEquality().hash(_snsAccounts), isAdult);
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.
@@ -249,13 +255,12 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
 
 abstract class _ProfileWithSns implements ProfileWithSns {
   const factory _ProfileWithSns(
-          {required final String id,
-          required final String name,
-          required final String avatarUrl,
-          required final String avatarName,
-          final bool? isAdult,
-          required final List<ProfileSocialNetworkingService> snsAccounts}) =
-      _$ProfileWithSnsImpl;
+      {required final String id,
+      required final String name,
+      required final String avatarUrl,
+      required final String avatarName,
+      required final List<ProfileSocialNetworkingService> snsAccounts,
+      final bool? isAdult}) = _$ProfileWithSnsImpl;
 
   factory _ProfileWithSns.fromJson(Map<String, dynamic> json) =
       _$ProfileWithSnsImpl.fromJson;
@@ -269,9 +274,12 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   @override
   String get avatarName;
   @override
-  bool? get isAdult;
-  @override
   List<ProfileSocialNetworkingService> get snsAccounts;
+
+  /// `public.profile_with_sns` View以外では`null`になります
+  /// `public.profile_with_sns` Viewの場合は、常に`true`もしくは`false`になります
+  @override
+  bool? get isAdult;
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.

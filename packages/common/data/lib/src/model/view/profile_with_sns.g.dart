@@ -18,21 +18,21 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
           name: $checkedConvert('name', (v) => v as String),
           avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
           avatarName: $checkedConvert('avatar_name', (v) => v as String),
-          isAdult: $checkedConvert('is_adult', (v) => v as bool? ?? false),
           snsAccounts: $checkedConvert(
               'sns_accounts',
               (v) => (v as List<dynamic>)
                   .map((e) => ProfileSocialNetworkingService.fromJson(
                       e as Map<String, dynamic>))
                   .toList()),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool? ?? null),
         );
         return val;
       },
       fieldKeyMap: const {
         'avatarUrl': 'avatar_url',
         'avatarName': 'avatar_name',
-        'isAdult': 'is_adult',
-        'snsAccounts': 'sns_accounts'
+        'snsAccounts': 'sns_accounts',
+        'isAdult': 'is_adult'
       },
     );
 
@@ -43,6 +43,6 @@ Map<String, dynamic> _$$ProfileWithSnsImplToJson(
       'name': instance.name,
       'avatar_url': instance.avatarUrl,
       'avatar_name': instance.avatarName,
-      'is_adult': instance.isAdult,
       'sns_accounts': instance.snsAccounts,
+      'is_adult': instance.isAdult,
     };

@@ -6,7 +6,7 @@ part of 'payment_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$paymentServiceHash() => r'383edfcb63eef8263b9c1fd6bdd2a9981c44a702';
+String _$paymentServiceHash() => r'fafbc299ffab9edad369792d6bdef23fc8dd09aa';
 
 /// See also [paymentService].
 @ProviderFor(paymentService)
@@ -16,8 +16,11 @@ final paymentServiceProvider = Provider<PaymentService>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$paymentServiceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: <ProviderOrFamily>[environmentProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    environmentProvider,
+    ...?environmentProvider.allTransitiveDependencies
+  },
 );
 
 typedef PaymentServiceRef = ProviderRef<PaymentService>;
