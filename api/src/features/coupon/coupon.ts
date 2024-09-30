@@ -8,19 +8,15 @@ export const promotionCodeMetadataSchema = v.variant("type", [
   }),
   // 一般セッション登壇者
   v.object({
-    type: v.literal("session"),
-    sessionId: v.pipe(v.string(), v.uuid())
+    type: v.literal("session")
   }),
   // スポンサー招待
   v.object({
-    type: v.literal("sponsor"),
-    sponsorId: v.pipe(v.number(), v.integer(), v.minValue(0))
+    type: v.literal("sponsor")
   }),
   // スポンサーセッション登壇者
   v.object({
-    type: v.literal("sponsorSession"),
-    sponsorId: v.pipe(v.number(), v.integer(), v.minValue(0)),
-    sessionId: v.pipe(v.string(), v.uuid())
+    type: v.literal("sponsorSession")
   })
 ]);
 
@@ -71,7 +67,7 @@ function getPromotionCodePrefix(
     }
     case "general": {
       return "GN";
-      }
+    }
     default: {
       const _exhausted: never = metadata;
       return _exhausted;

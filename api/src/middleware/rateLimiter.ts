@@ -4,9 +4,8 @@ import { rateLimiter as rateLimiterMiddleware } from "hono-rate-limiter";
 
 export function rateLimiter(kv: KVNamespace) {
   return rateLimiterMiddleware<{ Bindings: Bindings }>({
-    windowMs: 1 * 60 * 1000, // 1 minute
-    limit: 10, // 1分間に10回まで
-    standardHeaders: "draft-7",
+    windowMs: 5 * 60 * 1000, // 5 minute
+    limit: 20, // 5分間に20回まで
     keyGenerator: (c) => c.req.header("cf-connecting-ip") ?? "",
     store: new WorkersKVStore({ namespace: kv }),
     skipSuccessfulRequests: true,

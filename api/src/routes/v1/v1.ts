@@ -16,7 +16,15 @@ import { rateLimiter } from "../../middleware/rateLimiter";
 const v1 = new Hono<{ Bindings: Bindings }>();
 
 const verifyPurchaseSchema = v.object({
-  session_id: v.string()
+  stripe_session_id: v.string(),
+  sponsor_id: v.optional(
+    v.pipe(
+      v.string(),
+      v.custom((input) => typeof input === "string" && !isNaN(Number(input))),
+      v.transform(parseInt)
+    )
+  ),
+  session_id: v.optional(v.string())
 });
 
 v1.post(
@@ -24,7 +32,7 @@ v1.post(
   vValidator("query", verifyPurchaseSchema),
   vValidator("header", authorizationSchema),
   async (c) => {
-    const { session_id } = c.req.valid("query");
+    const { session_id, stripe_session_id, sponsor_id } = c.req.valid("query");
     const { authorization } = c.req.valid("header");
 
     const supabase = createClient<Database>(
@@ -57,10 +65,11 @@ v1.post(
     // もし該当するセッションがない場合は、例外が返ってくるのでここでは検査しない。(app.onErrorでキャッチされる)
     const { checkoutSession, promotionCodes } = await getSessionAndPromotion(
       stripe,
-      session_id
+      stripe_session_id
     );
     const promotionCodeMetadata = promotionCodes.map((e) => e.metadata)[0];
     if (promotionCodeMetadata) {
+      // プロモーションコードがある場合
       const validatedMetdata = v.parse(
         promotionCodeMetadataSchema,
         promotionCodeMetadata
@@ -69,9 +78,20 @@ v1.post(
         supabase,
         userId: user.id,
         promotionCodeMetadata: validatedMetdata,
-        checkoutSessionId: checkoutSession.id
+        checkoutSessionId: checkoutSession.id,
+        sessionId: session_id,
+        sponsorId: sponsor_id
       });
       return c.json({ ticket });
+    } else {
+      // プロモーションコードがない場合
+      // プロモーションコードがないのに、sponsor_idやsession_idが指定されている場合はエラー
+      if (sponsor_id || session_id) {
+        return c.json(
+          { error: "sponsor_id or session_id is not allowed" },
+          400
+        );
+      }
     }
 
     const ticket = await createTicket({
@@ -95,8 +115,6 @@ v1.get(
       code: v.string()
     })
   ),
-  // プロモーションコードの検証はRate Limitの対象とする
-  async (c, next) => rateLimiter(c.env.RATE_LIMITER)(c, next),
   async (c) => {
     const { code } = c.req.valid("query");
     const stripe = new Stripe(c.env.STRIPE_KEY);
@@ -191,7 +209,9 @@ async function createTicket({
   supabase,
   promotionCodeMetadata,
   userId,
-  checkoutSessionId
+  checkoutSessionId,
+  sessionId,
+  sponsorId
 }: {
   supabase: SupabaseClient<Database>;
   promotionCodeMetadata?:
@@ -199,6 +219,8 @@ async function createTicket({
     | undefined;
   userId: string;
   checkoutSessionId: string;
+  sponsorId?: number | undefined;
+  sessionId?: string | undefined;
 }): Promise<Database["public"]["Tables"]["tickets"]["Row"]> {
   const type = getTicketType(promotionCodeMetadata);
   let ticket: Database["public"]["Tables"]["tickets"]["Insert"] = {
@@ -210,23 +232,27 @@ async function createTicket({
     promotionCodeMetadata?.type === "session" ||
     promotionCodeMetadata?.type === "sponsorSession"
   ) {
-    const id = promotionCodeMetadata.sessionId;
-    const session = await getSessionById(supabase, id);
+    if (!sessionId) {
+      throw new Error("Session ID is required");
+    }
+    const session = await getSessionById(supabase, sessionId);
     if (!session) {
       throw new Error("Session not found");
     }
-    ticket.session_id = id;
+    ticket.session_id = sessionId;
   }
   if (
     promotionCodeMetadata?.type === "sponsor" ||
     promotionCodeMetadata?.type === "sponsorSession"
   ) {
-    const id = promotionCodeMetadata.sponsorId;
-    const sponsor = await getSponsorById(supabase, id);
+    if (!sponsorId) {
+      throw new Error("Sponsor ID is required");
+    }
+    const sponsor = await getSponsorById(supabase, sponsorId);
     if (!sponsor) {
       throw new Error("Sponsor not found");
     }
-    ticket.sponsor_id = id;
+    ticket.sponsor_id = sponsorId;
   }
 
   const { data, error } = await supabase
