@@ -115,7 +115,7 @@ class SponsorsPage extends HookConsumerWidget {
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       mainAxisSpacing: spacing,
                       crossAxisSpacing: spacing,
-                      crossAxisCount: 3,
+                      crossAxisCount: 4,
                       childAspectRatio: childAspectRatio,
                     ),
                     itemCount: bronzeSponsor.length,
