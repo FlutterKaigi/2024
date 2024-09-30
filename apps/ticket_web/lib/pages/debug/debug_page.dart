@@ -7,6 +7,7 @@ import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/sponsor/data/sponsor_provider.dart';
 import 'package:ticket_web/pages/debug/components/navigation_debug_page.dart';
+import 'package:ticket_web/pages/debug/components/ticket_debug_list_tile.dart';
 
 class DebugRoute extends GoRouteData {
   const DebugRoute();
@@ -68,6 +69,7 @@ class DebugPage extends HookConsumerWidget {
                 onLongPress: () async =>
                     ref.invalidate(sponsorAndSessionListProvider),
               ),
+              const TicketDebugListTile(),
             ],
           ),
         ),
