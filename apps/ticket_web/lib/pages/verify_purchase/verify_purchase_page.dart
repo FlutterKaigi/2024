@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -9,10 +10,12 @@ import 'package:ticket_web/core/components/error/error_card.dart';
 import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/core/provider/environment.dart';
+import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_session.dart';
 import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_sponsor.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:ticket_web/pages/ticket/ticket_page.dart';
 import 'package:ticket_web/pages/verify_purchase/components/verify_purchase_processed_card.dart';
 import 'package:ticket_web/pages/verify_purchase/components/verify_purchase_processing_card.dart';
 
@@ -97,6 +100,21 @@ class _Body extends HookConsumerWidget {
     );
 
     final verifyPurchaseState = useFuture(verifyPurchaseFuture);
+
+    useEffect(
+      () {
+        if (verifyPurchaseState.hasData) {
+          unawaited(() async {
+            await Future<void>.delayed(const Duration(seconds: 2));
+            if (context.mounted) {
+              const TicketRoute().go(context);
+            }
+          }());
+        }
+        return null;
+      },
+      [verifyPurchaseState],
+    );
 
     if (verifyPurchaseState.hasError) {
       final i18n = Translations.of(context);

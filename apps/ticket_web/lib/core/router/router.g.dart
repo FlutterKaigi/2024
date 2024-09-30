@@ -28,6 +28,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           path: 'verify_purchase',
           factory: $VerifyPurchaseRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'ticket',
+          factory: $TicketRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -89,6 +93,23 @@ extension $VerifyPurchaseRouteExtension on VerifyPurchaseRoute {
 
   String get location => GoRouteData.$location(
         '/verify_purchase',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $TicketRouteExtension on TicketRoute {
+  static TicketRoute _fromState(GoRouterState state) => const TicketRoute();
+
+  String get location => GoRouteData.$location(
+        '/ticket',
       );
 
   void go(BuildContext context) => context.go(location);

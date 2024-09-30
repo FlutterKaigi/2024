@@ -178,7 +178,7 @@ class _StringsVerifyPurchaseJa {
 	// Translations
 	String get processing => '購入処理中...';
 	String get processingDescription => '購入記録とユーザを紐づけています。しばらくお待ちください。';
-	String get success => '購入処理が完了しました';
+	String get success => '購入処理が完了しました!';
 	String get error => 'チケットの購入処理中にエラーが発生しました';
 	String get errorDescription => 'エラーが発生したため、購入処理が完了できませんでした。ページを再読み込みして再試行してください。';
 	String get contact => '問題が解決しない場合は、運営にお問い合わせください';
@@ -734,7 +734,7 @@ extension on Translations {
 			case 'homePage.tickets.student.description': return '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 			case 'verifyPurchase.processing': return '購入処理中...';
 			case 'verifyPurchase.processingDescription': return '購入記録とユーザを紐づけています。しばらくお待ちください。';
-			case 'verifyPurchase.success': return '購入処理が完了しました';
+			case 'verifyPurchase.success': return '購入処理が完了しました!';
 			case 'verifyPurchase.error': return 'チケットの購入処理中にエラーが発生しました';
 			case 'verifyPurchase.errorDescription': return 'エラーが発生したため、購入処理が完了できませんでした。ページを再読み込みして再試行してください。';
 			case 'verifyPurchase.contact': return '問題が解決しない場合は、運営にお問い合わせください';
