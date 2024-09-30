@@ -32,8 +32,12 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
+      - name: Extract Secrets
+        working-directory: apps/ticket_web
+        run: |
+          echo '${{ secrets.STAGING_ENV_FOR_TICKET }}' | base64 -d > defined/staging.env
+
       - name: Build Web (Production)
-        id: build-web-production
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         working-directory: apps/ticket_web
         run: |
