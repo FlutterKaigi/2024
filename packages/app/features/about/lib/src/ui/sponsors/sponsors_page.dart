@@ -1,134 +1,140 @@
+import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
+import 'package:packages_app_features_about/src/ui/sponsors/notifier/sponsors_notifier.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/sponsors_item.dart';
 
 /// スポンサー一覧ページ
-class SponsorsPage extends StatelessWidget {
+class SponsorsPage extends HookConsumerWidget {
   const SponsorsPage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nAbout.of(context);
     const padding = EdgeInsets.only(top: 16, left: 16, right: 16);
     const spacing = 8.0;
     const childAspectRatio = 16 / 9;
 
-    // TODO:モックで対応します
-    const sponsors = Sponsors(
-      platinum: <Sponsor>[
-        Sponsor(
-          sponsorName: 'A1会社',
-          sponsorLinkUrl: 'LinkUrl',
-          sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
-          sponsorDescription:
-              // ignore: lines_longer_than_80_chars
-              'スポンサーのアブストラクトは、印刷・組版業界の単なるダミーテキストである。ロレム・イプサムは、1500年代に無名の印刷業者が活字見本帳を作るために活字のガレーを取り、スクランブルをかけたとき以来、業界の標準的なダミーテキストとなっている。',
-        ),
-      ],
-      gold: <Sponsor>[
-        Sponsor(
-          sponsorName: 'B1会社',
-          sponsorLinkUrl: 'LinkUrl',
-          sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
-          sponsorDescription: 'Demo',
-        ),
-        Sponsor(
-          sponsorName: 'B2会社',
-          sponsorLinkUrl: 'LinkUrl',
-          sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
-          sponsorDescription: 'Demo',
-        ),
-      ],
-      silver: <Sponsor>[
-        Sponsor(
-          sponsorName: 'C1会社',
-          sponsorLinkUrl: 'LinkUrl',
-          sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
-          sponsorDescription: 'Demo',
-        ),
-        Sponsor(
-          sponsorName: 'C2会社',
-          sponsorLinkUrl: 'LinkUrl',
-          sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
-          sponsorDescription: 'Demo',
-        ),
-        Sponsor(
-          sponsorName: 'C3会社',
-          sponsorLinkUrl: 'LinkUrl',
-          sponsorLogoUrl:
-              'https://miro.medium.com/v2/resize:fit:720/format:webp/1*vuzMHYEx8CK0h-WkEj09Mg.png',
-          sponsorDescription: 'Demo',
-        ),
-      ],
-    );
+    final sponsorsFuture = ref.watch(sponsorsNotifierProvider);
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar.large(
-            title: Text(
-              l.sponsors,
-            ),
-          ),
-          SliverPadding(
-            padding: padding,
-            sliver: SliverGrid.builder(
-              itemBuilder: (context, index) => SponsorItem(
-                sponsor: sponsors.platinum[index],
-                sponsorRank: SponsorRank.platinum,
+      body: sponsorsFuture.when(
+        data: (sponsorList) {
+          final platinumSponsor = sponsorList
+              .where((element) => element.type == SponsorType.platinum)
+              .toList();
+
+          final goldSponsor = sponsorList
+              .where(
+                (element) => element.type == SponsorType.gold,
+              )
+              .toList();
+
+          final silverSponsor = sponsorList
+              .where((element) => element.type == SponsorType.silver)
+              .toList();
+
+          final bronzeSponsor = sponsorList
+              .where((element) => element.type == SponsorType.bronze)
+              .toList();
+
+          return CustomScrollView(
+            slivers: [
+              SliverAppBar.large(
+                title: Text(
+                  l.sponsors,
+                ),
               ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: spacing,
-                crossAxisSpacing: spacing,
-                crossAxisCount: 1,
-                childAspectRatio: childAspectRatio,
-              ),
-              itemCount: sponsors.platinum.length,
-            ),
-          ),
-          SliverPadding(
-            padding: padding,
-            sliver: SliverGrid.builder(
-              itemBuilder: (context, index) => SponsorItem(
-                sponsor: sponsors.gold[index],
-                sponsorRank: SponsorRank.gold,
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: spacing,
-                crossAxisSpacing: spacing,
-                crossAxisCount: 2,
-                childAspectRatio: childAspectRatio,
-              ),
-              itemCount: sponsors.gold.length,
-            ),
-          ),
-          SliverPadding(
-            padding: padding,
-            sliver: SliverGrid.builder(
-              itemBuilder: (context, index) => SponsorItem(
-                sponsor: sponsors.silver[index],
-                sponsorRank: SponsorRank.silver,
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: spacing,
-                crossAxisSpacing: spacing,
-                crossAxisCount: 3,
-                childAspectRatio: childAspectRatio,
-              ),
-              itemCount: sponsors.silver.length,
-            ),
-          ),
-          const SliverGap(16),
-        ],
+              if (platinumSponsor.isNotEmpty)
+                SliverPadding(
+                  padding: padding,
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) => SponsorItem(
+                      sponsor: platinumSponsor[index],
+                      sponsorRank: SponsorType.platinum,
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: spacing,
+                      crossAxisSpacing: spacing,
+                      crossAxisCount: 1,
+                      childAspectRatio: childAspectRatio,
+                    ),
+                    itemCount: platinumSponsor.length,
+                  ),
+                ),
+              if (goldSponsor.isNotEmpty)
+                SliverPadding(
+                  padding: padding,
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) => SponsorItem(
+                      sponsor: goldSponsor[index],
+                      sponsorRank: SponsorType.gold,
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: spacing,
+                      crossAxisSpacing: spacing,
+                      crossAxisCount: 2,
+                      childAspectRatio: childAspectRatio,
+                    ),
+                    itemCount: goldSponsor.length,
+                  ),
+                ),
+              if (silverSponsor.isNotEmpty)
+                SliverPadding(
+                  padding: padding,
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) => SponsorItem(
+                      sponsor: silverSponsor[index],
+                      sponsorRank: SponsorType.silver,
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: spacing,
+                      crossAxisSpacing: spacing,
+                      crossAxisCount: 3,
+                      childAspectRatio: childAspectRatio,
+                    ),
+                    itemCount: silverSponsor.length,
+                  ),
+                ),
+              if (bronzeSponsor.isNotEmpty)
+                SliverPadding(
+                  padding: padding,
+                  sliver: SliverGrid.builder(
+                    itemBuilder: (context, index) => SponsorItem(
+                      sponsor: bronzeSponsor[index],
+                      sponsorRank: SponsorType.bronze,
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: spacing,
+                      crossAxisSpacing: spacing,
+                      crossAxisCount: 3,
+                      childAspectRatio: childAspectRatio,
+                    ),
+                    itemCount: bronzeSponsor.length,
+                  ),
+                ),
+              const SliverGap(16),
+            ],
+          );
+        },
+        error: (error, stackTrace) {
+          return Center(
+            child: Text(error.toString()),
+          );
+        },
+        loading: () {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }

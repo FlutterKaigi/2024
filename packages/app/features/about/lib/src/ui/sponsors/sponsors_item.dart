@@ -1,20 +1,20 @@
 import 'dart:async';
 
+import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/model/sponsor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SponsorItem extends StatelessWidget {
   const SponsorItem({
     required Sponsor sponsor,
-    required SponsorRank sponsorRank,
+    required SponsorType sponsorRank,
     super.key,
   })  : _sponsor = sponsor,
         _sponsorRank = sponsorRank;
   final Sponsor _sponsor;
-  final SponsorRank _sponsorRank;
+  final SponsorType _sponsorRank;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class SponsorItem extends StatelessWidget {
                 ),
                 const Gap(16),
                 Image.network(
-                  _sponsor.sponsorLogoUrl,
+                  _sponsor.logoUrl.toString(),
                   errorBuilder: (context, error, stackTrace) =>
                       const Icon(Icons.error_outline),
                   fit: BoxFit.fitWidth,
@@ -65,7 +65,7 @@ class SponsorItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _sponsor.sponsorName,
+                        _sponsor.name,
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const Gap(8),
@@ -93,7 +93,7 @@ class SponsorItem extends StatelessWidget {
                       ),
                       const Gap(8),
                       Text(
-                        _sponsor.sponsorDescription,
+                        _sponsor.description,
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const Gap(8),
@@ -103,7 +103,7 @@ class SponsorItem extends StatelessWidget {
                         ),
                         child: OutlinedButton(
                           onPressed: () async {
-                            final uri = Uri.tryParse(_sponsor.sponsorLinkUrl);
+                            final uri = Uri.tryParse(_sponsor.url.toString());
                             if (uri != null && await canLaunchUrl(uri)) {
                               await launchUrl(uri);
                             }
@@ -144,8 +144,8 @@ class SponsorItem extends StatelessWidget {
           children: [
             Positioned.fill(
               child: _WhiteBackgroundImage(
-                semanticLabel: _sponsor.sponsorName,
-                imageUrl: _sponsor.sponsorLogoUrl,
+                semanticLabel: _sponsor.name,
+                imageUrl: _sponsor.logoUrl.toString(),
                 sponsorRank: _sponsorRank,
               ),
             ),
@@ -168,14 +168,14 @@ class _WhiteBackgroundImage extends StatelessWidget {
   const _WhiteBackgroundImage({
     required String semanticLabel,
     required String imageUrl,
-    required SponsorRank sponsorRank,
+    required SponsorType sponsorRank,
   })  : _imageUrl = imageUrl,
         _semanticLabel = semanticLabel,
         _sponsorRank = sponsorRank;
 
   final String _semanticLabel;
   final String _imageUrl;
-  final SponsorRank _sponsorRank;
+  final SponsorType _sponsorRank;
 
   @override
   Widget build(BuildContext context) {
@@ -205,40 +205,27 @@ class _WhiteBackgroundImage extends StatelessWidget {
   }
 }
 
-List<Color> _getColors(SponsorRank sponsorRank) {
+List<Color> _getColors(SponsorType sponsorRank) {
   switch (sponsorRank) {
-    case SponsorRank.platinum:
+    case SponsorType.platinum:
       return [
         const Color(0xff9ACDD6),
         const Color(0xff59ADBB),
       ];
-    case SponsorRank.gold:
+    case SponsorType.gold:
       return [
         const Color(0xffE6D089),
         const Color(0xffD4AF37),
       ];
-    case SponsorRank.silver:
+    case SponsorType.silver:
       return [
         const Color(0xffB2BCBD),
         const Color(0xff819193),
       ];
-    case SponsorRank.bronze:
+    case SponsorType.bronze:
       return [
         const Color(0xffB58A69),
         const Color(0xff936949),
       ];
   }
-}
-
-enum SponsorRank {
-  platinum,
-  gold,
-  silver,
-  bronze;
-
-  String get nameUpperCase => name.replaceRange(
-        0,
-        1,
-        name[0].toUpperCase(),
-      );
 }
