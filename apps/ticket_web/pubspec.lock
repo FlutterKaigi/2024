@@ -832,7 +832,7 @@ packages:
       sha256: "5d449be6dd49a413847b6da5cf48b44f7379047bc0ddc6f301d387d2ce4633b9"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.1"
+    version: "2.3.0"
   retrofit:
     dependency: transitive
     description:
