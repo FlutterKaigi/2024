@@ -10,20 +10,58 @@
       "location": "有明セントラルタワーホール&カンファレンス"
     },
     "tickets": {
+      "variant": {
+        "general": "一般チケット",
+        "session_speaker": "セッション登壇者チケット",
+        "sponsor_session": "スポンサーセッション登壇者チケット",
+        "sponsor_invitation": "スポンサー招待チケット"
+      },
       "buyTicket": "チケットを購入",
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
       "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
+      "price": "¥$price",
       "normal": {
         "name": "一般チケット",
-        "price": "¥$price",
         "description": "一般参加者向けチケット"
       },
       "invitation": {
-        "name": "招待チケット・クーポンコード",
-        "description": "招待コードまたはクーポンコードをお持ちの方はこちら",
+        "description": "招待コードまたはクーポンコードをお持ちの方はこちらに入力してください",
         "text_box_title": "招待コード もしくは クーポンコード",
         "text_box_description": "コードを入力",
-        "apply_code_button": "コードを適用"
+        "apply_code_button": "コードを適用",
+        "error": {
+          "status404": "プロモーションコードが見つかりません",
+          "status429": "リクエストが多過ぎます 数分後に再度お試しください",
+          "status500": "サーバーでエラーが発生しました",
+          "unknown": "不明なエラーが発生しました"
+        },
+        "validation": {
+          "ok": "プロモーションコードが有効です",
+          "invalid": "プロモーションコードが無効です",
+          "next_payment": "決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットを購入してください",
+          "next_confirm_order": "決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください",
+          "dialog": {
+            "ok": "決定",
+            "cancel": "キャンセル"
+          },
+          "invited": {
+            "title": "招待コードが正常に検証されました",
+            "description": "以下の情報を入力してください",
+            "warning": "「次へ」を押すと、情報は確定されます。変更するには、運営へお問い合わせください。",
+            "sponsor": "所属スポンサー",
+            "session": "登壇セッション",
+            "next": "次へ",
+            "please_wait_for_a_moment": "少々お待ちください..."
+          }
+        }
+      },
+      "personal_sponsor": {
+        "name": "個人スポンサーチケット",
+        "description": "個人スポンサー向けチケット"
+      },
+      "student": {
+        "name": "学割について",
+        "description": "[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。"
       }
     }
   },
@@ -48,5 +86,18 @@
     "privacyPolicy": "プライバシーポリシー",
     "contact": "お問い合わせ",
     "license": "ライセンス"
+  },
+  "error": {
+    "network": {
+      "status400": "リクエストが不正です",
+      "status403": "リクエストが拒否されました",
+      "status404": "リクエストが見つかりません",
+      "status429": "リクエストが多すぎます",
+      "status500": "サーバーでエラーが発生しました",
+      "status503": "サーバーが過負荷状態です",
+      "status_other": "ネットワークエラーが発生しました (ステータスコード: $statusCode)",
+      "try_again": "時間をおいて再度お試しください",
+      "unknown": "不明なエラーが発生しました"
+    }
   }
 }

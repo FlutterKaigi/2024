@@ -27,6 +27,7 @@ mixin _$Profile {
   String get avatarName => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
+  bool get isAdult => throw _privateConstructorUsedError;
 
   /// Serializes this Profile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $ProfileCopyWith<$Res> {
       String comment,
       String avatarName,
       DateTime createdAt,
-      String avatarUrl});
+      String avatarUrl,
+      bool isAdult});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? avatarName = null,
     Object? createdAt = null,
     Object? avatarUrl = null,
+    Object? isAdult = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -104,6 +107,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      isAdult: null == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -122,7 +129,8 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       String comment,
       String avatarName,
       DateTime createdAt,
-      String avatarUrl});
+      String avatarUrl,
+      bool isAdult});
 }
 
 /// @nodoc
@@ -145,6 +153,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? avatarName = null,
     Object? createdAt = null,
     Object? avatarUrl = null,
+    Object? isAdult = null,
   }) {
     return _then(_$ProfileImpl(
       id: null == id
@@ -175,6 +184,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      isAdult: null == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -189,7 +202,8 @@ class _$ProfileImpl implements _Profile {
       required this.comment,
       required this.avatarName,
       required this.createdAt,
-      required this.avatarUrl});
+      required this.avatarUrl,
+      required this.isAdult});
 
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
@@ -208,10 +222,12 @@ class _$ProfileImpl implements _Profile {
   final DateTime createdAt;
   @override
   final String avatarUrl;
+  @override
+  final bool isAdult;
 
   @override
   String toString() {
-    return 'Profile(id: $id, name: $name, role: $role, comment: $comment, avatarName: $avatarName, createdAt: $createdAt, avatarUrl: $avatarUrl)';
+    return 'Profile(id: $id, name: $name, role: $role, comment: $comment, avatarName: $avatarName, createdAt: $createdAt, avatarUrl: $avatarUrl, isAdult: $isAdult)';
   }
 
   @override
@@ -228,13 +244,14 @@ class _$ProfileImpl implements _Profile {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl));
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.isAdult, isAdult) || other.isAdult == isAdult));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, role, comment, avatarName, createdAt, avatarUrl);
+  int get hashCode => Object.hash(runtimeType, id, name, role, comment,
+      avatarName, createdAt, avatarUrl, isAdult);
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.
@@ -260,7 +277,8 @@ abstract class _Profile implements Profile {
       required final String comment,
       required final String avatarName,
       required final DateTime createdAt,
-      required final String avatarUrl}) = _$ProfileImpl;
+      required final String avatarUrl,
+      required final bool isAdult}) = _$ProfileImpl;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
@@ -278,6 +296,8 @@ abstract class _Profile implements Profile {
   DateTime get createdAt;
   @override
   String get avatarUrl;
+  @override
+  bool get isAdult;
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.

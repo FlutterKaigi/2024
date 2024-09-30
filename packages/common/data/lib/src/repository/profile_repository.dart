@@ -92,23 +92,26 @@ class ProfileRepository {
   /// [userId] はユーザーID
   /// [name] は名前
   /// [comment] はコメント
-  /// [name] と [comment] のどちらか もしくは どちらも指定する必要があります
+  /// [isAdult] は成人しているかどうか
+  /// [name], [comment], [isAdult] のいずれかはNullではない必要があります
   /// Nullの場合は更新されません
   /// 明示的に空で更新したい場合は空文字を指定してください
   Future<Profile> updateProfile({
     required String userId,
     String? name,
     String? comment,
+    bool? isAdult,
   }) async {
     assert(
-      name != null || comment != null,
-      'name or comment must be provided',
+      name != null || comment != null || isAdult != null,
+      'name, comment, isAdult must not be null at the same time',
     );
     return _client
         .from('profiles')
         .update({
           if (name != null) 'name': name,
           if (comment != null) 'comment': comment,
+          if (isAdult != null) 'is_adult': isAdult,
         })
         .eq('id', userId)
         .select()
