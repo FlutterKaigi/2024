@@ -42,7 +42,8 @@ class PaymentService {
     final url = switch (type) {
       PaymentType.general => _environment.stripePaymentGeneralUrl,
       PaymentType.invitation => _environment.stripePaymentInvitationUrl,
-      PaymentType.personalSponsor => _environment.stripePersonalSponsorUrl,
+      PaymentType.personalSponsor =>
+        _environment.stripePaymentPersonalSponsorUrl,
     };
 
     // See https://docs.stripe.com/payment-links/customize#customize-checkout-with-url-parameters

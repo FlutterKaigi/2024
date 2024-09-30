@@ -14,7 +14,7 @@ class Environment {
     required this.supabaseAnonKey,
     required this.stripePaymentGeneralUrl,
     required this.stripePaymentInvitationUrl,
-    required this.stripePersonalSponsorUrl,
+    required this.stripePaymentPersonalSponsorUrl,
     required this.ticketApiBaseUrl,
     required this.environmentType,
   });
@@ -27,8 +27,8 @@ class Environment {
           const String.fromEnvironment('STRIPE_PAYMENT_GENERAL_URL'),
       stripePaymentInvitationUrl:
           const String.fromEnvironment('STRIPE_PAYMENT_INVITATION_URL'),
-      stripePersonalSponsorUrl:
-          const String.fromEnvironment('STRIPE_PERSONAL_SPONSOR_URL'),
+      stripePaymentPersonalSponsorUrl:
+          const String.fromEnvironment('STRIPE_PAYMENT_PERSONAL_SPONSOR_URL'),
       ticketApiBaseUrl: const String.fromEnvironment('TICKET_API_BASE_URL'),
       environmentType: EnvironmentType.values.firstWhere(
         (e) =>
@@ -47,7 +47,7 @@ class Environment {
       'STRIPE_PAYMENT_INVITATION_URL is empty',
     );
     assert(
-      result.stripePersonalSponsorUrl.isNotEmpty,
+      result.stripePaymentPersonalSponsorUrl.isNotEmpty,
       'STRIPE_PERSONAL_SPONSOR_URL is empty',
     );
     assert(result.ticketApiBaseUrl.isNotEmpty, 'TICKET_API_BASE_URL is empty');
@@ -59,7 +59,7 @@ class Environment {
   final String supabaseAnonKey;
   final String stripePaymentGeneralUrl;
   final String stripePaymentInvitationUrl;
-  final String stripePersonalSponsorUrl;
+  final String stripePaymentPersonalSponsorUrl;
   final String ticketApiBaseUrl;
   final EnvironmentType environmentType;
 }
