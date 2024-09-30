@@ -32,13 +32,24 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Build Web
+      - name: Build Web (Production)
+        id: build-web-production
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         working-directory: apps/ticket_web
         run: |
           flutter build web \
             --release \
             --wasm \
             --dart-define-from-file=defines/production.env
+
+      - name: Build Web (Staging)
+        if: github.event_name == 'pull_request'
+        working-directory: apps/ticket_web
+        run: |
+          flutter build web \
+            --release \
+            --wasm \
+            --dart-define-from-file=defines/staging.env
 
       # https://github.com/cloudflare/pages-action
       - name: Publish to Cloudflare Pages
