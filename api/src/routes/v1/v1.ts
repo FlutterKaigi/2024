@@ -94,7 +94,8 @@ v1.post(
         promotionCodeMetadata: validatedMetdata,
         checkoutSessionId: checkoutSession.id,
         sessionId: session_id,
-        sponsorId: sponsor_id
+        sponsorId: sponsor_id,
+        productType,
       });
       return c.json({ ticket });
     }
@@ -102,7 +103,8 @@ v1.post(
     const ticket = await createTicket({
       supabase,
       userId: user.id,
-      checkoutSessionId: checkoutSession.id
+      checkoutSessionId: checkoutSession.id,
+      productType
     });
     return c.json({ ticket });
   }
@@ -249,12 +251,13 @@ async function createTicket({
   sessionId?: string | undefined;
   productType: v.InferOutput<typeof productTypeSchema>;
 }): Promise<Database["public"]["Tables"]["tickets"]["Row"]> {
-  const type = getTicketType(promotionCodeMetadata);
+  const type = getTicketType(promotionCodeMetadata, productType);
   let ticket: Database["public"]["Tables"]["tickets"]["Insert"] = {
     type,
     user_id: userId,
     stripe_checkout_session_id: checkoutSessionId
   };
+  // validation
   switch (promotionCodeMetadata?.type) {
     case "general": {
       // 一般チケット用のプロモーションコードなのに、それ以外のチケットを購入した場合はエラー
@@ -356,10 +359,14 @@ async function createTicket({
 function getTicketType(
   promotionCodeMetadata:
     | v.InferOutput<typeof promotionCodeMetadataSchema>
-    | undefined
+    | undefined,
+  productType: v.InferOutput<typeof productTypeSchema>
 ): Database["public"]["Enums"]["ticket_type"] {
   if (!promotionCodeMetadata) {
     return "general";
+  }
+  if (productType === "personal_sponsor") {
+    return "individual_sponsor";
   }
   switch (promotionCodeMetadata.type) {
     case "session": {
