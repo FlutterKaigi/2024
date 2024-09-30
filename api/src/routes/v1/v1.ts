@@ -61,6 +61,7 @@ v1.post(
 
     if (data) {
       if (data.stripe_checkout_session_id === stripe_session_id) {
+        // 同じStripeセッションで購入しているので、200 OK
         return c.json({
           ticket: data,
           message:
@@ -78,10 +79,8 @@ v1.post(
     // session_idに該当する購入があるかチェック
     const stripe = new Stripe(c.env.STRIPE_KEY);
     // もし該当するセッションがない場合は、例外が返ってくるのでここでは検査しない。(app.onErrorでキャッチされる)
-    const { checkoutSession, promotionCodes } = await getSessionAndPromotion(
-      stripe,
-      stripe_session_id
-    );
+    const { checkoutSession, promotionCodes, productType } =
+      await getSessionAndPromotion(stripe, stripe_session_id);
     const promotionCodeMetadata = promotionCodes.map((e) => e.metadata)[0];
     if (promotionCodeMetadata) {
       // プロモーションコードがある場合
@@ -183,6 +182,12 @@ v1.post(
 
 export default v1;
 
+const productTypeSchema = v.picklist([
+  "general",
+  "invited",
+  "personal_sponsor"
+]);
+
 // チェックアウトセッションとその中のプロモーションコードを取得
 // プロモーションコードがない場合は空配列を返す
 async function getSessionAndPromotion(
@@ -191,15 +196,27 @@ async function getSessionAndPromotion(
 ): Promise<{
   checkoutSession: Stripe.Checkout.Session;
   promotionCodes: Stripe.PromotionCode[];
+  productType: v.InferOutput<typeof productTypeSchema>;
 }> {
   const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ["total_details.breakdown"]
   });
+  console.log(JSON.stringify(checkoutSession, null, 2));
   if (checkoutSession.status !== "complete") {
     throw new HTTPException(400, {
       message: "Checkout session is not completed"
     });
   }
+
+  // 購入した商品の識別
+  const productMetadataSchema = v.object({
+    type: productTypeSchema
+  });
+  const productMetadata = v.parse(
+    productMetadataSchema,
+    checkoutSession.metadata
+  );
+
   const promotionCodePromises =
     checkoutSession.total_details?.breakdown?.discounts
       .map((e) => e.discount.promotion_code)
@@ -208,7 +225,7 @@ async function getSessionAndPromotion(
 
   const promotionCodes = await Promise.all(promotionCodePromises);
 
-  return { checkoutSession, promotionCodes };
+  return { checkoutSession, promotionCodes, productType: productMetadata.type };
 }
 
 // チケットを作成する
@@ -219,7 +236,8 @@ async function createTicket({
   userId,
   checkoutSessionId,
   sessionId,
-  sponsorId
+  sponsorId,
+  productType
 }: {
   supabase: SupabaseClient<Database>;
   promotionCodeMetadata?:
@@ -229,6 +247,7 @@ async function createTicket({
   checkoutSessionId: string;
   sponsorId?: number | undefined;
   sessionId?: string | undefined;
+  productType: v.InferOutput<typeof productTypeSchema>;
 }): Promise<Database["public"]["Tables"]["tickets"]["Row"]> {
   const type = getTicketType(promotionCodeMetadata);
   let ticket: Database["public"]["Tables"]["tickets"]["Insert"] = {
@@ -236,6 +255,44 @@ async function createTicket({
     user_id: userId,
     stripe_checkout_session_id: checkoutSessionId
   };
+  switch (promotionCodeMetadata?.type) {
+    case "general": {
+      // 一般チケット用のプロモーションコードなのに、それ以外のチケットを購入した場合はエラー
+      if (productType !== "general") {
+        throw new HTTPException(400, {
+          message:
+            "You can't buy a ticket which is not general ticket with this promotion code. Please contact to admin to refund."
+        });
+      }
+      break;
+    }
+    case "session":
+    case "sponsor":
+    case "sponsorSession": {
+      // 招待チケット用のプロモーションコードなのに、招待チケット以外を購入した場合はエラー
+      if (productType !== "invited") {
+        throw new HTTPException(400, {
+          message:
+            "You can't buy a ticket which is not invited ticket with this promotion code."
+        });
+      }
+      break;
+    }
+    case undefined: {
+      if (productType === "invited") {
+        throw new HTTPException(400, {
+          message:
+            "You can't buy a invited ticket without promotion code. Please contact to admin to refund."
+        });
+      }
+      break;
+    }
+    default: {
+      const _exhaustiveCheck: never = promotionCodeMetadata;
+      return _exhaustiveCheck;
+    }
+  }
+
   if (
     promotionCodeMetadata?.type === "session" ||
     promotionCodeMetadata?.type === "sponsorSession"
