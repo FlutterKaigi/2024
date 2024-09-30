@@ -73,37 +73,40 @@ class $AssetsFontsPoppinsGen {
 class $AssetsImagesSnsGen {
   const $AssetsImagesSnsGen();
 
-  /// File path: assets/images/sns/discord.svg
-  SvgGenImage get discord => const SvgGenImage('assets/images/sns/discord.svg');
+  /// File path: assets/images/sns/discord.svg.vec
+  SvgGenImage get discordSvg =>
+      const SvgGenImage.vec('assets/images/sns/discord.svg.vec');
 
-  /// File path: assets/images/sns/github.svg
-  SvgGenImage get github => const SvgGenImage('assets/images/sns/github.svg');
+  /// File path: assets/images/sns/github.svg.vec
+  SvgGenImage get githubSvg =>
+      const SvgGenImage.vec('assets/images/sns/github.svg.vec');
 
-  /// File path: assets/images/sns/medium.svg
-  SvgGenImage get medium => const SvgGenImage('assets/images/sns/medium.svg');
+  /// File path: assets/images/sns/medium.svg.vec
+  SvgGenImage get mediumSvg =>
+      const SvgGenImage.vec('assets/images/sns/medium.svg.vec');
 
-  /// File path: assets/images/sns/x.svg
-  SvgGenImage get x => const SvgGenImage('assets/images/sns/x.svg');
+  /// File path: assets/images/sns/x.svg.vec
+  SvgGenImage get xSvg => const SvgGenImage.vec('assets/images/sns/x.svg.vec');
 
   /// Directory path: assets/images/sns
   String get path => 'assets/images/sns';
 
   /// List of all assets
-  List<SvgGenImage> get values => [discord, github, medium, x];
+  List<SvgGenImage> get values => [discordSvg, githubSvg, mediumSvg, xSvg];
 }
 
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
-  /// File path: assets/images/svg/sign_in_with_google.svg
-  SvgGenImage get signInWithGoogle =>
-      const SvgGenImage('assets/images/svg/sign_in_with_google.svg');
+  /// File path: assets/images/svg/sign_in_with_google.svg.vec
+  SvgGenImage get signInWithGoogleSvg =>
+      const SvgGenImage.vec('assets/images/svg/sign_in_with_google.svg.vec');
 
   /// Directory path: assets/images/svg
   String get path => 'assets/images/svg';
 
   /// List of all assets
-  List<SvgGenImage> get values => [signInWithGoogle];
+  List<SvgGenImage> get values => [signInWithGoogleSvg];
 }
 
 class Assets {
