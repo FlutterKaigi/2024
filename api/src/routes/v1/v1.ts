@@ -57,7 +57,12 @@ v1.post(
     }
 
     if (data) {
-      return c.json({ error: "Already purchased" }, 400);
+      return c.json(
+        {
+          error: "You already have a ticket. You can't purchase ticket twice."
+        },
+        400
+      );
     }
 
     // session_idに該当する購入があるかチェック
@@ -88,7 +93,10 @@ v1.post(
       // プロモーションコードがないのに、sponsor_idやsession_idが指定されている場合はエラー
       if (sponsor_id || session_id) {
         return c.json(
-          { error: "sponsor_id or session_id is not allowed" },
+          {
+            error:
+              "You need to set session_id or/and sponsor_id when you use promotion code."
+          },
           400
         );
       }
