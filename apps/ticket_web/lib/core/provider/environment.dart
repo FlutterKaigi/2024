@@ -32,7 +32,7 @@ class Environment {
       ticketApiBaseUrl: const String.fromEnvironment('TICKET_API_BASE_URL'),
       environmentType: EnvironmentType.values.firstWhere(
         (e) =>
-            e.toString() ==
+            e.name ==
             const String.fromEnvironment('ENVIRONMENT').toLowerCase(),
       ),
     );
