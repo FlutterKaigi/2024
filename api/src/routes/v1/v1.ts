@@ -11,7 +11,7 @@ import {
   promotionCodeMetadataSchema
 } from "../../features/coupon/coupon";
 import { authorizationSchema } from "../../util/authorizationSchema";
-import { rateLimiter } from "../../middleware/rateLimiter";
+import { HTTPException } from "hono/http-exception";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
 
@@ -53,10 +53,20 @@ v1.post(
       .maybeSingle();
 
     if (error) {
-      throw error;
+      throw new HTTPException(500, {
+        message: "Internal server error",
+        cause: error
+      });
     }
 
     if (data) {
+      if (data.stripe_checkout_session_id === stripe_session_id) {
+        return c.json({
+          ticket: data,
+          message:
+            "You are already purchased ticket by the same Stripe Session."
+        });
+      }
       return c.json(
         {
           error: "You already have a ticket. You can't purchase ticket twice."
@@ -198,7 +208,9 @@ async function getSessionAndPromotion(
     expand: ["total_details.breakdown"]
   });
   if (checkoutSession.status !== "complete") {
-    throw new Error("Checkout session is not completed");
+    throw new HTTPException(400, {
+      message: "Checkout session is not completed"
+    });
   }
   const promotionCodePromises =
     checkoutSession.total_details?.breakdown?.discounts
@@ -241,11 +253,15 @@ async function createTicket({
     promotionCodeMetadata?.type === "sponsorSession"
   ) {
     if (!sessionId) {
-      throw new Error("Session ID is required");
+      throw new HTTPException(400, {
+        message: "Session ID is required"
+      });
     }
     const session = await getSessionById(supabase, sessionId);
     if (!session) {
-      throw new Error("Session not found");
+      throw new HTTPException(404, {
+        message: "Session not found"
+      });
     }
     ticket.session_id = sessionId;
   }
@@ -254,11 +270,15 @@ async function createTicket({
     promotionCodeMetadata?.type === "sponsorSession"
   ) {
     if (!sponsorId) {
-      throw new Error("Sponsor ID is required");
+      throw new HTTPException(400, {
+        message: "Sponsor ID is required"
+      });
     }
     const sponsor = await getSponsorById(supabase, sponsorId);
     if (!sponsor) {
-      throw new Error("Sponsor not found");
+      throw new HTTPException(404, {
+        message: "Sponsor not found"
+      });
     }
     ticket.sponsor_id = sponsorId;
   }
@@ -269,7 +289,19 @@ async function createTicket({
     .select("*")
     .single();
   if (error) {
-    throw error;
+    console.log(error);
+    if (
+      error.code === "23505" &&
+      error.message.includes("tickets_stripe_checkout_session_id_unique")
+    ) {
+      throw new HTTPException(400, {
+        message: "This Stripe Checkout Session has already been used."
+      });
+    }
+    throw new HTTPException(500, {
+      message: "Internal server error",
+      cause: error
+    });
   }
   return data;
 }
@@ -315,7 +347,10 @@ async function getSponsorById(
     .eq("id", sponsorId)
     .maybeSingle();
   if (error) {
-    throw error;
+    throw new HTTPException(500, {
+      message: "Internal server error",
+      cause: error
+    });
   }
   return data;
 }
@@ -331,7 +366,10 @@ async function getSessionById(
     .eq("id", sessionId)
     .maybeSingle();
   if (error) {
-    throw error;
+    throw new HTTPException(500, {
+      message: "Internal server error",
+      cause: error
+    });
   }
   return data;
 }
