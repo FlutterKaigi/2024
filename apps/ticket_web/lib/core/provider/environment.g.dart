@@ -6,7 +6,7 @@ part of 'environment.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$environmentHash() => r'f23fdae2122cebb75e829637b64b22e3bd712a9e';
+String _$environmentHash() => r'53829726800f62f2bcdf5c9ca8fda5db372876b1';
 
 /// See also [environment].
 @ProviderFor(environment)
@@ -15,8 +15,8 @@ final environmentProvider = Provider<Environment>.internal(
   name: r'environmentProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$environmentHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 typedef EnvironmentRef = ProviderRef<Environment>;

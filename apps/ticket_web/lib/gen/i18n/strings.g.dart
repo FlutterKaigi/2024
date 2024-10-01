@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 126 (63 per locale)
+/// Strings: 138 (69 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get officialSite => '公式サイト';
 	String get ticketSite => 'チケットサイト';
 	late final _StringsHomePageJa homePage = _StringsHomePageJa._(_root);
+	late final _StringsVerifyPurchaseJa verifyPurchase = _StringsVerifyPurchaseJa._(_root);
 	late final _StringsAuthorizationJa authorization = _StringsAuthorizationJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsErrorJa error = _StringsErrorJa._(_root);
@@ -166,6 +167,21 @@ class _StringsHomePageJa {
 	// Translations
 	late final _StringsHomePageTitleAndLogoJa titleAndLogo = _StringsHomePageTitleAndLogoJa._(_root);
 	late final _StringsHomePageTicketsJa tickets = _StringsHomePageTicketsJa._(_root);
+}
+
+// Path: verifyPurchase
+class _StringsVerifyPurchaseJa {
+	_StringsVerifyPurchaseJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get processing => '購入処理中...';
+	String get processingDescription => '購入記録とユーザを紐づけています。しばらくお待ちください。';
+	String get success => '購入処理が完了しました!';
+	String get error => 'チケットの購入処理中にエラーが発生しました';
+	String get errorDescription => 'エラーが発生したため、購入処理が完了できませんでした。ページを再読み込みして再試行してください。';
+	String get contact => '問題が解決しない場合は、運営にお問い合わせください';
 }
 
 // Path: authorization
@@ -425,6 +441,7 @@ class _StringsEn extends Translations {
 	@override String get officialSite => 'Official Site';
 	@override String get ticketSite => 'Ticket Site';
 	@override late final _StringsHomePageEn homePage = _StringsHomePageEn._(_root);
+	@override late final _StringsVerifyPurchaseEn verifyPurchase = _StringsVerifyPurchaseEn._(_root);
 	@override late final _StringsAuthorizationEn authorization = _StringsAuthorizationEn._(_root);
 	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
 	@override late final _StringsErrorEn error = _StringsErrorEn._(_root);
@@ -439,6 +456,21 @@ class _StringsHomePageEn extends _StringsHomePageJa {
 	// Translations
 	@override late final _StringsHomePageTitleAndLogoEn titleAndLogo = _StringsHomePageTitleAndLogoEn._(_root);
 	@override late final _StringsHomePageTicketsEn tickets = _StringsHomePageTicketsEn._(_root);
+}
+
+// Path: verifyPurchase
+class _StringsVerifyPurchaseEn extends _StringsVerifyPurchaseJa {
+	_StringsVerifyPurchaseEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get processing => 'Verifying purchase...';
+	@override String get processingDescription => 'Linking your purchase record and user. Please wait a moment...';
+	@override String get success => 'Purchase verification completed';
+	@override String get error => 'An error occurred while verifying the purchase of the ticket.';
+	@override String get errorDescription => 'The purchase could not be completed due to an error. Please refresh the page and try again.';
+	@override String get contact => 'If the problem persists, please contact the organizers.';
 }
 
 // Path: authorization
@@ -700,6 +732,12 @@ extension on Translations {
 			case 'homePage.tickets.personalSponsor.description': return '個人スポンサー向けチケット';
 			case 'homePage.tickets.student.name': return '学割について';
 			case 'homePage.tickets.student.description': return '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+			case 'verifyPurchase.processing': return '購入処理中...';
+			case 'verifyPurchase.processingDescription': return '購入記録とユーザを紐づけています。しばらくお待ちください。';
+			case 'verifyPurchase.success': return '購入処理が完了しました!';
+			case 'verifyPurchase.error': return 'チケットの購入処理中にエラーが発生しました';
+			case 'verifyPurchase.errorDescription': return 'エラーが発生したため、購入処理が完了できませんでした。ページを再読み込みして再試行してください。';
+			case 'verifyPurchase.contact': return '問題が解決しない場合は、運営にお問い合わせください';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => '${mailAddress} でログイン済みです';
 			case 'authorization.logOut': return 'ログアウト';
 			case 'authorization.logOutDialog.title': return 'ログアウトしますか？';
@@ -769,6 +807,12 @@ extension on _StringsEn {
 			case 'homePage.tickets.personalSponsor.description': return 'Ticket for individual sponsors';
 			case 'homePage.tickets.student.name': return 'Student Discount';
 			case 'homePage.tickets.student.description': return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
+			case 'verifyPurchase.processing': return 'Verifying purchase...';
+			case 'verifyPurchase.processingDescription': return 'Linking your purchase record and user. Please wait a moment...';
+			case 'verifyPurchase.success': return 'Purchase verification completed';
+			case 'verifyPurchase.error': return 'An error occurred while verifying the purchase of the ticket.';
+			case 'verifyPurchase.errorDescription': return 'The purchase could not be completed due to an error. Please refresh the page and try again.';
+			case 'verifyPurchase.contact': return 'If the problem persists, please contact the organizers.';
 			case 'authorization.alreadyLoggedInWithMailAddress': return ({required Object mailAddress}) => 'Already logged in with ${mailAddress}';
 			case 'authorization.logOut': return 'Log Out';
 			case 'authorization.logOutDialog.title': return 'Are you sure you want to log out?';

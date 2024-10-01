@@ -59,6 +59,14 @@
       }
     }
   },
+  "verify_purchase": {
+    "processing": "Verifying purchase...",
+    "processing_description": "Linking your purchase record and user. Please wait a moment...",
+    "success": "Purchase verification completed",
+    "error": "An error occurred while verifying the purchase of the ticket.",
+    "error_description": "The purchase could not be completed due to an error. Please refresh the page and try again.",
+    "contact": "If the problem persists, please contact the organizers."
+  },
   "authorization": {
     "already_logged_in_with_mail_address": "Already logged in with $mailAddress",
     "log_out": "Log Out",

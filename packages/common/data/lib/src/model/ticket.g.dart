@@ -47,10 +47,10 @@ Map<String, dynamic> _$$TicketImplToJson(_$TicketImpl instance) =>
     };
 
 const _$TicketTypeEnumMap = {
-  TicketType.sponsorBooth: 'sponsorBooth',
-  TicketType.sponsorInvited: 'sponsorInvited',
-  TicketType.individualSponsor: 'individualSponsor',
+  TicketType.sponsorBooth: 'sponsor_booth',
+  TicketType.sponsorInvited: 'sponsor_invited',
+  TicketType.individualSponsor: 'individual_sponsor',
   TicketType.general: 'general',
-  TicketType.regularSpeaker: 'regularSpeaker',
-  TicketType.sponsorSpeaker: 'sponsorSpeaker',
+  TicketType.regularSpeaker: 'regular_speaker',
+  TicketType.sponsorSpeaker: 'sponsor_speaker',
 };
