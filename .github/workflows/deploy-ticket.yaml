@@ -42,22 +42,18 @@ jobs:
         id: define-matrix
         run: |
           environments=()
-          # workflow_dispatchでなにかが選択されていた場合
-          if [ "${{ github.event_name == 'workflow_dispatch' }}" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             environments+=("${{ github.event.inputs.environment }}")
-          # mainブランチへのpushではproductionとstagingの両方をデプロイする
-          elif [ "${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}" ]; then
+          elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
             environments+=("production")
             environments+=("staging")
-          # それ以外はstaging
           else
-            echo "doesn't match any condition so deploy to staging"
+            echo "他の条件に一致しないため、stagingにデプロイします"
             environments+=("staging")
           fi
 
-          echo "Deploy to $environments!"
-          # JSON Arrayにして出力
-          list=$(printf '%s\n' "${environments[@]}" | jq -R . | jq -s .)
+          echo "デプロイ先: ${environments[@]}"
+          list=$(jq -c -n '$ARGS.positional' --args "${environments[@]}")
           echo "values=$list" >> $GITHUB_OUTPUT
 
   build-ticket-web:
