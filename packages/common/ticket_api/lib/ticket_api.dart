@@ -6,6 +6,8 @@ import 'package:ticket_api/model/ticket/post_promotion_request.dart';
 import 'package:ticket_api/model/ticket/post_promotion_response.dart';
 import 'package:ticket_api/model/verify_purchase_response.dart';
 
+export 'package:dio/dio.dart' show DioException, DioExceptionType;
+
 part 'ticket_api.g.dart';
 
 @Riverpod(keepAlive: true)
@@ -33,8 +35,10 @@ abstract class TicketApiClient {
 
   @POST('/v1/verify_purchase')
   Future<VerifyPurchaseResponse> verifyPurchase({
-    @Query('session_id') required String sessionId,
+    @Query('stripe_session_id') required String stripeSessionId,
     @Header('Authorization') required String authorization,
+    @Query('sponsor_id') String? sponsorId,
+    @Query('session_id') String? sessionId,
   });
 
   @GET('/v1/promotion')

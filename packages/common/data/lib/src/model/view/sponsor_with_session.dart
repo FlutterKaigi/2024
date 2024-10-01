@@ -14,6 +14,7 @@ class SponsorWithSessionView with _$SponsorWithSessionView {
     required String description,
     required Uri? url,
     required SponsorType type,
+    required List<SessionWithSpeakerAndVenue> sessions,
   }) = _SponsorWithSessionView;
 
   factory SponsorWithSessionView.fromJson(Map<String, dynamic> json) =>
@@ -29,6 +30,7 @@ class SponsorWithSession with _$SponsorWithSession {
     required String description,
     required Uri? url,
     required SponsorType type,
+    required List<SessionWithSpeakerAndVenue> sessions,
   }) = _SponsorWithSession;
 
   factory SponsorWithSession.fromJson(Map<String, dynamic> json) =>

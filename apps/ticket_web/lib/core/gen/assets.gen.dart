@@ -7,7 +7,10 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart' as _svg;
+import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
@@ -17,6 +20,9 @@ class $AssetsFontsGen {
 
   /// Directory path: assets/fonts/Poppins
   $AssetsFontsPoppinsGen get poppins => const $AssetsFontsPoppinsGen();
+
+  /// Directory path: assets/fonts
+  String get path => 'assets/fonts';
 }
 
 class $AssetsImagesGen {
@@ -31,6 +37,9 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/svg
   $AssetsImagesSvgGen get svg => const $AssetsImagesSvgGen();
 
+  /// Directory path: assets/images
+  String get path => 'assets/images';
+
   /// List of all assets
   List<AssetGenImage> get values => [icon];
 }
@@ -40,6 +49,9 @@ class $AssetsFontsNotoSansJPGen {
 
   /// File path: assets/fonts/NotoSansJP/OFL.txt
   String get ofl => 'assets/fonts/NotoSansJP/OFL.txt';
+
+  /// Directory path: assets/fonts/NotoSansJP
+  String get path => 'assets/fonts/NotoSansJP';
 
   /// List of all assets
   List<String> get values => [ofl];
@@ -51,6 +63,9 @@ class $AssetsFontsPoppinsGen {
   /// File path: assets/fonts/Poppins/OFL.txt
   String get ofl => 'assets/fonts/Poppins/OFL.txt';
 
+  /// Directory path: assets/fonts/Poppins
+  String get path => 'assets/fonts/Poppins';
+
   /// List of all assets
   List<String> get values => [ofl];
 }
@@ -58,30 +73,40 @@ class $AssetsFontsPoppinsGen {
 class $AssetsImagesSnsGen {
   const $AssetsImagesSnsGen();
 
-  /// File path: assets/images/sns/discord.svg
-  String get discord => 'assets/images/sns/discord.svg';
+  /// File path: assets/images/sns/discord.svg.vec
+  SvgGenImage get discordSvg =>
+      const SvgGenImage.vec('assets/images/sns/discord.svg.vec');
 
-  /// File path: assets/images/sns/github.svg
-  String get github => 'assets/images/sns/github.svg';
+  /// File path: assets/images/sns/github.svg.vec
+  SvgGenImage get githubSvg =>
+      const SvgGenImage.vec('assets/images/sns/github.svg.vec');
 
-  /// File path: assets/images/sns/medium.svg
-  String get medium => 'assets/images/sns/medium.svg';
+  /// File path: assets/images/sns/medium.svg.vec
+  SvgGenImage get mediumSvg =>
+      const SvgGenImage.vec('assets/images/sns/medium.svg.vec');
 
-  /// File path: assets/images/sns/x.svg
-  String get x => 'assets/images/sns/x.svg';
+  /// File path: assets/images/sns/x.svg.vec
+  SvgGenImage get xSvg => const SvgGenImage.vec('assets/images/sns/x.svg.vec');
+
+  /// Directory path: assets/images/sns
+  String get path => 'assets/images/sns';
 
   /// List of all assets
-  List<String> get values => [discord, github, medium, x];
+  List<SvgGenImage> get values => [discordSvg, githubSvg, mediumSvg, xSvg];
 }
 
 class $AssetsImagesSvgGen {
   const $AssetsImagesSvgGen();
 
-  /// File path: assets/images/svg/sign_in_with_google.svg
-  String get signInWithGoogle => 'assets/images/svg/sign_in_with_google.svg';
+  /// File path: assets/images/svg/sign_in_with_google.svg.vec
+  SvgGenImage get signInWithGoogleSvg =>
+      const SvgGenImage.vec('assets/images/svg/sign_in_with_google.svg.vec');
+
+  /// Directory path: assets/images/svg
+  String get path => 'assets/images/svg';
 
   /// List of all assets
-  List<String> get values => [signInWithGoogle];
+  List<SvgGenImage> get values => [signInWithGoogleSvg];
 }
 
 class Assets {
@@ -164,6 +189,83 @@ class AssetGenImage {
       _assetName,
       bundle: bundle,
       package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = false;
+
+  const SvgGenImage.vec(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  }) : _isVecFormat = true;
+
+  final String _assetName;
+  final Size? size;
+  final Set<String> flavors;
+  final bool _isVecFormat;
+
+  _svg.SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    _svg.SvgTheme? theme,
+    ColorFilter? colorFilter,
+    Clip clipBehavior = Clip.hardEdge,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated bool cacheColorFilter = false,
+  }) {
+    final _svg.BytesLoader loader;
+    if (_isVecFormat) {
+      loader = _vg.AssetBytesLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+      );
+    } else {
+      loader = _svg.SvgAssetLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+        theme: theme,
+      );
+    }
+    return _svg.SvgPicture(
+      loader,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      colorFilter: colorFilter ??
+          (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
     );
   }
 

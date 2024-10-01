@@ -23,6 +23,12 @@ _$SponsorWithSessionViewImpl _$$SponsorWithSessionViewImplFromJson(
               'url', (v) => v == null ? null : Uri.parse(v as String)),
           type: $checkedConvert(
               'type', (v) => $enumDecode(_$SponsorTypeEnumMap, v)),
+          sessions: $checkedConvert(
+              'sessions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SessionWithSpeakerAndVenue.fromJson(
+                      e as Map<String, dynamic>))
+                  .toList()),
         );
         return val;
       },
@@ -38,6 +44,7 @@ Map<String, dynamic> _$$SponsorWithSessionViewImplToJson(
       'description': instance.description,
       'url': instance.url?.toString(),
       'type': _$SponsorTypeEnumMap[instance.type]!,
+      'sessions': instance.sessions,
     };
 
 const _$SponsorTypeEnumMap = {
@@ -63,6 +70,12 @@ _$SponsorWithSessionImpl _$$SponsorWithSessionImplFromJson(
               'url', (v) => v == null ? null : Uri.parse(v as String)),
           type: $checkedConvert(
               'type', (v) => $enumDecode(_$SponsorTypeEnumMap, v)),
+          sessions: $checkedConvert(
+              'sessions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SessionWithSpeakerAndVenue.fromJson(
+                      e as Map<String, dynamic>))
+                  .toList()),
         );
         return val;
       },
@@ -78,6 +91,7 @@ Map<String, dynamic> _$$SponsorWithSessionImplToJson(
       'description': instance.description,
       'url': instance.url?.toString(),
       'type': _$SponsorTypeEnumMap[instance.type]!,
+      'sessions': instance.sessions,
     };
 
 _$SessionWithSpeakerAndVenueImpl _$$SessionWithSpeakerAndVenueImplFromJson(
