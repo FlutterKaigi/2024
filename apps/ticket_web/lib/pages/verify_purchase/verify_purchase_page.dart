@@ -77,11 +77,10 @@ class _Body extends HookConsumerWidget {
         if (accessToken == null) {
           throw Exception('ログインしていません');
         }
+        final baseUrl = ref.read(environmentProvider).ticketApiBaseUrl;
         final result = await ref
             .read(
-              TicketApiClientProvider(
-                ref.watch(environmentProvider).ticketApiBaseUrl,
-              ),
+              ticketApiClientProvider(baseUrl),
             )
             .verifyPurchase(
               stripeSessionId: stripeSessionId,
