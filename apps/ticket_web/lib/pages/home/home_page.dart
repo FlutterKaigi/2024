@@ -38,7 +38,8 @@ class HomePage extends ConsumerWidget {
             data: (ticket) {
               if (ticket != null) {
                 return AlreadyPurchasedCard(
-                  onTicketPagePressed: () async => TicketRoute().push<void>(context),
+                  onTicketPagePressed: () async =>
+                      const TicketRoute().push<void>(context),
                 );
               } else {
                 return const TicketCards();
@@ -48,7 +49,6 @@ class HomePage extends ConsumerWidget {
             error: (error, __) => ErrorCard(
               error: error,
               title: i18n.homePage.tickets.alreadyPurchasedCard.verifyError,
-
             ),
           ),
           const SizedBox(height: 8),

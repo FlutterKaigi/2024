@@ -64,12 +64,13 @@ const _$RoleEnumMap = {
   Role.speaker: 'speaker',
 };
 
-_$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
+_$ProfileWithSnsViewImpl _$$ProfileWithSnsViewImplFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$ProfileWithSnsImpl',
+      r'_$ProfileWithSnsViewImpl',
       json,
       ($checkedConvert) {
-        final val = _$ProfileWithSnsImpl(
+        final val = _$ProfileWithSnsViewImpl(
           id: $checkedConvert('id', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           role: $checkedConvert('role', (v) => $enumDecode(_$RoleEnumMap, v)),
@@ -98,8 +99,8 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$ProfileWithSnsImplToJson(
-        _$ProfileWithSnsImpl instance) =>
+Map<String, dynamic> _$$ProfileWithSnsViewImplToJson(
+        _$ProfileWithSnsViewImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -363,7 +363,7 @@ abstract class _ProfileWithSns implements ProfileWithSns {
 }
 
 ProfileWithSnsView _$ProfileWithSnsViewFromJson(Map<String, dynamic> json) {
-  return _ProfileWithSns.fromJson(json);
+  return _ProfileWithSnsView.fromJson(json);
 }
 
 /// @nodoc
@@ -474,11 +474,11 @@ class _$ProfileWithSnsViewCopyWithImpl<$Res, $Val extends ProfileWithSnsView>
 }
 
 /// @nodoc
-abstract class _$$ProfileWithSnsImplCopyWith<$Res>
+abstract class _$$ProfileWithSnsViewImplCopyWith<$Res>
     implements $ProfileWithSnsViewCopyWith<$Res> {
-  factory _$$ProfileWithSnsImplCopyWith(_$ProfileWithSnsImpl value,
-          $Res Function(_$ProfileWithSnsImpl) then) =
-      __$$ProfileWithSnsImplCopyWithImpl<$Res>;
+  factory _$$ProfileWithSnsViewImplCopyWith(_$ProfileWithSnsViewImpl value,
+          $Res Function(_$ProfileWithSnsViewImpl) then) =
+      __$$ProfileWithSnsViewImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -494,11 +494,11 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ProfileWithSnsImplCopyWithImpl<$Res>
-    extends _$ProfileWithSnsViewCopyWithImpl<$Res, _$ProfileWithSnsImpl>
-    implements _$$ProfileWithSnsImplCopyWith<$Res> {
-  __$$ProfileWithSnsImplCopyWithImpl(
-      _$ProfileWithSnsImpl _value, $Res Function(_$ProfileWithSnsImpl) _then)
+class __$$ProfileWithSnsViewImplCopyWithImpl<$Res>
+    extends _$ProfileWithSnsViewCopyWithImpl<$Res, _$ProfileWithSnsViewImpl>
+    implements _$$ProfileWithSnsViewImplCopyWith<$Res> {
+  __$$ProfileWithSnsViewImplCopyWithImpl(_$ProfileWithSnsViewImpl _value,
+      $Res Function(_$ProfileWithSnsViewImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ProfileWithSnsView
@@ -516,7 +516,7 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
     Object? isAdult = null,
     Object? snsAccounts = null,
   }) {
-    return _then(_$ProfileWithSnsImpl(
+    return _then(_$ProfileWithSnsViewImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -559,8 +559,8 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProfileWithSnsImpl implements _ProfileWithSns {
-  const _$ProfileWithSnsImpl(
+class _$ProfileWithSnsViewImpl implements _ProfileWithSnsView {
+  const _$ProfileWithSnsViewImpl(
       {required this.id,
       required this.name,
       required this.role,
@@ -572,8 +572,8 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required final List<ProfileSocialNetworkingService> snsAccounts})
       : _snsAccounts = snsAccounts;
 
-  factory _$ProfileWithSnsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProfileWithSnsImplFromJson(json);
+  factory _$ProfileWithSnsViewImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProfileWithSnsViewImplFromJson(json);
 
   @override
   final String id;
@@ -608,7 +608,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProfileWithSnsImpl &&
+            other is _$ProfileWithSnsViewImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.role, role) || other.role == role) &&
@@ -643,20 +643,20 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ProfileWithSnsImplCopyWith<_$ProfileWithSnsImpl> get copyWith =>
-      __$$ProfileWithSnsImplCopyWithImpl<_$ProfileWithSnsImpl>(
+  _$$ProfileWithSnsViewImplCopyWith<_$ProfileWithSnsViewImpl> get copyWith =>
+      __$$ProfileWithSnsViewImplCopyWithImpl<_$ProfileWithSnsViewImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ProfileWithSnsImplToJson(
+    return _$$ProfileWithSnsViewImplToJson(
       this,
     );
   }
 }
 
-abstract class _ProfileWithSns implements ProfileWithSnsView {
-  const factory _ProfileWithSns(
+abstract class _ProfileWithSnsView implements ProfileWithSnsView {
+  const factory _ProfileWithSnsView(
           {required final String id,
           required final String name,
           required final Role role,
@@ -666,10 +666,10 @@ abstract class _ProfileWithSns implements ProfileWithSnsView {
           required final Uri? avatarUrl,
           required final bool isAdult,
           required final List<ProfileSocialNetworkingService> snsAccounts}) =
-      _$ProfileWithSnsImpl;
+      _$ProfileWithSnsViewImpl;
 
-  factory _ProfileWithSns.fromJson(Map<String, dynamic> json) =
-      _$ProfileWithSnsImpl.fromJson;
+  factory _ProfileWithSnsView.fromJson(Map<String, dynamic> json) =
+      _$ProfileWithSnsViewImpl.fromJson;
 
   @override
   String get id;
@@ -694,6 +694,6 @@ abstract class _ProfileWithSns implements ProfileWithSnsView {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProfileWithSnsImplCopyWith<_$ProfileWithSnsImpl> get copyWith =>
+  _$$ProfileWithSnsViewImplCopyWith<_$ProfileWithSnsViewImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

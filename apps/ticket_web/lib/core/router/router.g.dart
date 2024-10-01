@@ -126,7 +126,7 @@ extension $TicketRouteExtension on TicketRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'32e7c6c2258e8b4ae24afdd0268cb93636e16502';
+String _$routerHash() => r'59be84a020480836d1b1c1761779a43d88461f8e';
 
 /// See also [router].
 @ProviderFor(router)

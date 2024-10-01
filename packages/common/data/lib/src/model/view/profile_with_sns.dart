@@ -38,7 +38,7 @@ class ProfileWithSnsView with _$ProfileWithSnsView {
     required Uri? avatarUrl,
     required bool isAdult,
     required List<ProfileSocialNetworkingService> snsAccounts,
-  }) = _ProfileWithSns;
+  }) = _ProfileWithSnsView;
 
   factory ProfileWithSnsView.fromJson(Map<String, dynamic> json) =>
       _$ProfileWithSnsViewFromJson(json);
