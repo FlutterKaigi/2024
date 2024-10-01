@@ -51,6 +51,7 @@ jobs:
             environments+=("staging")
           # それ以外はstaging
           else
+            echo "doesn't match any condition so deploy to staging"
             environments+=("staging")
           fi
 
