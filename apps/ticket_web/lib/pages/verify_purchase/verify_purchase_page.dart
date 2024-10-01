@@ -24,14 +24,19 @@ class VerifyPurchaseRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    final sessionId = state.uri.queryParameters['sessionId'];
-    if (sessionId == null) {
-      throw Exception('sessionIdが指定されていません: ${state.pathParameters}');
-    }
-
+    final sessionId = state.uri.queryParameters['sessionId']!;
     return VerifyPurchasePage(
       stripeSessionId: sessionId,
     );
+  }
+
+  @override
+  Future<String?> redirect(BuildContext context, GoRouterState state) async {
+    final sessionId = state.uri.queryParameters['sessionId'];
+    if (sessionId == null) {
+      return '/';
+    }
+    return null;
   }
 }
 
@@ -77,10 +82,11 @@ class _Body extends HookConsumerWidget {
         if (accessToken == null) {
           throw Exception('ログインしていません');
         }
-        final baseUrl = ref.read(environmentProvider).ticketApiBaseUrl;
         final result = await ref
             .read(
-              ticketApiClientProvider(baseUrl),
+              TicketApiClientProvider(
+                ref.watch(environmentProvider).ticketApiBaseUrl,
+              ),
             )
             .verifyPurchase(
               stripeSessionId: stripeSessionId,
