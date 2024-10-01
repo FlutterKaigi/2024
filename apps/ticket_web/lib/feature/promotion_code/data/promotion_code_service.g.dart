@@ -7,7 +7,7 @@ part of 'promotion_code_service.dart';
 // **************************************************************************
 
 String _$promotionCodeServiceHash() =>
-    r'2c949891d5232f6168e32b9f1357b2146b7d56a0';
+    r'63ffb049b571c2022c50976ebaac27cc61a9e68f';
 
 /// See also [promotionCodeService].
 @ProviderFor(promotionCodeService)
@@ -17,8 +17,11 @@ final promotionCodeServiceProvider = Provider<PromotionCodeService>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$promotionCodeServiceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: <ProviderOrFamily>[environmentProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    environmentProvider,
+    ...?environmentProvider.allTransitiveDependencies
+  },
 );
 
 typedef PromotionCodeServiceRef = ProviderRef<PromotionCodeService>;
