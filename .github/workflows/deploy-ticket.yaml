@@ -135,3 +135,33 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: ${{ steps.set-project-name.outputs.projectName }}
           directory: ./
+
+  deploy-ticket-api:
+    needs:
+      - define-matrix
+    strategy:
+      matrix:
+        environment: ${{ fromJson(needs.define-matrix.outputs.environments) }}
+      fail-fast: false
+    concurrency:
+      group: "deploy-ticket-api"
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+
+      # https://github.com/pnpm/action-setup
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: |
+            - cwd: api
+
+      - name: Deploy to Cloudflare Workers
+        run: pnpm run deploy --minify -e ${{ matrix.environment }}
+        working-directory: api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
