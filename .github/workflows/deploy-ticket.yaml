@@ -32,34 +32,40 @@ permissions:
   deployments: write
 
 jobs:
-  decide-environment:
+  define-matrix:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     outputs:
-      environment: ${{ steps.decide-environment.outputs.environment }}
+      environments: ${{ steps.define-matrix.outputs.values }}
     steps:
-      - name: Decide Environment
-        id: decide-environment
+      - name: Decide which environment to deploy
+        id: define-matrix
         run: |
-          # workflow_dispatchでなにかが選択されたら
+          environments=()
+          # workflow_dispatchでなにかが選択されていた場合
           if [ "${{ github.event_name == 'workflow_dispatch' }}" ]; then
-            echo "environment=${{ github.event.inputs.environment }}" >> $GITHUB_OUTPUT
-          fi
-          # mainブランチへのpushではproduction
-          if [ "${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}" ]; then
-            echo "environment=production" >> $GITHUB_OUTPUT
-          fi
+            environments+=("${{ github.event.inputs.environment }}")
+          # mainブランチへのpushではproductionとstagingの両方をデプロイする
+          elif [ "${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}" ]; then
+            environments+=("production")
+            environments+=("staging")
           # それ以外はstaging
-          if [ "${{ github.event_name != 'workflow_dispatch' && github.event_name != 'push' }}" ]; then
-            echo "environment=staging" >> $GITHUB_OUTPUT
+          else [ "${{ github.event_name != 'workflow_dispatch' && github.event_name != 'push' }}" ]; then
+            environments+=("staging")
           fi
+
+          echo "Deploy to $environments!"
+          # JSON Arrayにして出力
+          list=$(printf '%s\n' "${environments[@]}" | jq -R . | jq -s .)
+          echo "values=$list" >> $GITHUB_OUTPUT
 
   build-ticket-web:
     runs-on: ubuntu-latest
-    needs: decide-environment
-    env:
-      TARGET_ENVIRONMENT: ${{ needs.decide-environment.outputs.environment }}
-
+    needs: define-matrix
+    strategy:
+      matrix:
+        environment: ${{ fromJson(needs.define-matrix.outputs.environments) }}
+      fail-fast: false
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
@@ -79,36 +85,40 @@ jobs:
           flutter build web \
             --release \
             --wasm \
-            --dart-define-from-file=defines/${{ needs.decide-environment.outputs.environment }}.env
+            --dart-define-from-file=defines/${{ matrix.environment }}.env
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
         with:
-          name: ticket-web-${{ needs.decide-environment.outputs.environment }}
+          name: ticket-web-${{ matrix.environment}}
           path: apps/ticket_web/build/web
 
   deploy-ticket-web:
     runs-on: ubuntu-latest
     needs:
-      - decide-environment
+      - define-matrix
       - build-ticket-web
-    env:
-      TARGET_ENVIRONMENT: ${{ needs.decide-environment.outputs.environment }}
+    strategy:
+      matrix:
+        environment: ${{ fromJson(needs.define-matrix.outputs.environments) }}
+      fail-fast: false
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
-          name: ticket-web-${{ needs.decide-environment.outputs.environment }}
+          name: ticket-web-${{ matrix.environment }}
           path: ./
 
       - name: Set Project Name
         id: set-project-name
         run: |
-          if [ "${{ needs.decide-environment.outputs.environment == 'production' }}" ]; then
+          if [ "${{ matrix.environment == 'production' }}" ]; then
             echo "projectName=flutterkaigi-ticket-2024" >> $GITHUB_OUTPUT
-          fi
-          if [ "${{ needs.decide-environment.outputs.environment == 'staging' }}" ]; then
+          elif [ "${{ matrix.environment == 'staging' }}" ]; then
             echo "projectName=flutterkaigi-ticket-2024-staging" >> $GITHUB_OUTPUT
+          else
+            echo "Invalid environment: ${{ matrix.environment }}"
+            return 1
           fi
 
       # https://github.com/cloudflare/pages-action
