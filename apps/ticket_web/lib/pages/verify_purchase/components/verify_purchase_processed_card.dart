@@ -27,11 +27,13 @@ class VerifyPurchaseProcessedCard extends StatelessWidget {
               color: colorScheme.onSecondaryContainer,
             ),
             const SizedBox(width: 16),
-            Text(
-              i18n.verifyPurchase.success,
-              style: theme.textTheme.displaySmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: colorScheme.onSecondaryContainer,
+            Flexible(
+              child: Text(
+                i18n.verifyPurchase.success,
+                style: theme.textTheme.displaySmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: colorScheme.onSecondaryContainer,
+                ),
               ),
             ),
           ],

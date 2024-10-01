@@ -47,10 +47,12 @@ class VerifyPurchaseProcessingCard extends StatelessWidget {
           children: [
             title,
             const SizedBox(height: 16),
-            Text(
-              i18n.verifyPurchase.processingDescription,
-              style: theme.textTheme.bodyLarge?.copyWith(
-                color: colorScheme.onSurface.withValues(alpha: 0.7),
+            Flexible(
+              child: Text(
+                i18n.verifyPurchase.processingDescription,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  color: colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
               ),
             ),
           ],
