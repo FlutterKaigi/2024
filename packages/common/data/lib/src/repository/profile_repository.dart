@@ -45,7 +45,7 @@ class ProfileRepository {
   /// 取得可能なプロフィールがない場合は`null`を返します
   Future<ProfileWithSns?> fetchProfileWithSnsByUserId(String userId) async {
     final response = await _client
-        .from('profile_with_sns')
+        .from('profiles_with_sns')
         .select()
         .eq('id', userId)
         .maybeSingle()

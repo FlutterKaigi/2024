@@ -22,18 +22,22 @@ class TicketCard extends StatelessWidget {
   final bool isSpeaker;
   final bool isAdult;
 
-
   @override
   Widget build(BuildContext context) {
-    return Text('''
+    return Column(
+      children: [
+        Text('''
     name: $name
-    description: $description
-    xUri: $xUri
-    avatarImageUri: $avatarImageUri
-    sponsorImageUri: $sponsorImageUri
-    isSponsor: $isSponsor
-    isSpeaker: $isSpeaker
-    isAdult: $isAdult
-    ''');
+        description: $description
+        xUri: $xUri
+        avatarImageUri: $avatarImageUri
+        sponsorImageUri: $sponsorImageUri
+        isSponsor: $isSponsor
+        isSpeaker: $isSpeaker
+        isAdult: $isAdult
+        '''),
+        if (avatarImageUri != null) Image.network(avatarImageUri.toString()),
+      ],
+    );
   }
 }
