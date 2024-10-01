@@ -55,8 +55,11 @@ class VerifyPurchasePage extends StatelessWidget {
       slivers: [
         SliverFillRemaining(
           child: ResponsiveContentContainer(
-            child: _Body(
-              stripeSessionId: stripeSessionId,
+            child: Center(
+              child: _Body(
+                key: GlobalObjectKey(stripeSessionId),
+                stripeSessionId: stripeSessionId,
+              ),
             ),
           ),
         ),
@@ -68,6 +71,7 @@ class VerifyPurchasePage extends StatelessWidget {
 class _Body extends HookConsumerWidget {
   const _Body({
     required this.stripeSessionId,
+    super.key,
   });
 
   final String stripeSessionId;
@@ -102,6 +106,7 @@ class _Body extends HookConsumerWidget {
         );
         return result;
       },
+      [],
     );
 
     final verifyPurchaseState = useFuture(verifyPurchaseFuture);

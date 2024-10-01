@@ -42,6 +42,7 @@ class VerifyPurchaseProcessingCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(32),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             title,
