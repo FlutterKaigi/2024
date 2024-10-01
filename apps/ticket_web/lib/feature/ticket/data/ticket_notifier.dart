@@ -10,12 +10,15 @@ class TicketNotifier extends _$TicketNotifier {
   Future<Ticket?> build() async {
     final api = ref.watch(ticketRepositoryProvider);
     final ticket = await api.fetchSelfTicket();
-    // ログインしたら取得
     ref.listen(
       authNotifierProvider,
       (_, next) {
         if (next != null) {
+          // ログインしたら再取得
           ref.invalidateSelf();
+        } else {
+          // ログアウトしたらnullにする
+          state = const AsyncData(null);
         }
       },
     );

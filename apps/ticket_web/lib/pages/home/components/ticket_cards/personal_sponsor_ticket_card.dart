@@ -31,7 +31,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
             const Row(),
             Text(
               i18n.homePage.tickets.personalSponsor.name,
-              style: textTheme.displaySmall?.copyWith(
+              style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),

@@ -19,6 +19,12 @@
       "buyTicket": "Buy Ticket",
       "loginBeforeBuy": "Please login with your Google account to buy or register a ticket.",
       "ticketManagedByGoogleAccount": "After purchase or registration, tickets will be managed by your Google account.",
+      "already_purchased_card": {
+        "title": "Thank you for purchasing a ticket!",
+        "description": "You already have a ticket. Please check your ticket and edit your name card from the ticket page.",
+        "button": "Ticket Page",
+        "verify_error": "An error occurred while verifying whether you have a ticket."
+      },
       "normal": {
         "name": "Normal Ticket",
         "price": "¥$price",
