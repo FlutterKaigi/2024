@@ -149,15 +149,15 @@ jobs:
         id: set-project-name
         run: |
           project_name=""
-          if [ "${{ matrix.environment == 'production' }}" ]; then
+          if [ "${{ matrix.environment }}" = "production" ]; then
             project_name="flutterkaigi-ticket-2024"
-          elif [ "${{ matrix.environment == 'staging' }}" ]; then
+          elif [ "${{ matrix.environment }}" = "staging" ]; then
             project_name="flutterkaigi-ticket-2024-staging"
           else
-            echo "Invalid environment: ${{ matrix.environment }}"
-            return 1
+            echo "無効な環境: ${{ matrix.environment }}"
+            exit 1
           fi
-          echo "Deploying to $project_name!"
+          echo "デプロイ先: $project_name"
           echo "project_name=$project_name" >> $GITHUB_OUTPUT
 
       # https://github.com/cloudflare/pages-action
