@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/provider/environment.dart';
@@ -21,7 +22,7 @@ class App extends ConsumerWidget {
         routerConfig: router,
         theme: lightTheme,
         builder: (context, child) {
-          if (environment == EnvironmentType.production) {
+          if (environment == EnvironmentType.production || kDebugMode) {
             return child!;
           }
           return Banner(
@@ -39,19 +40,20 @@ class App extends ConsumerWidget {
             child: Stack(
               children: [
                 if (child != null) child,
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: FloatingActionButton.small(
-                      onPressed: () async =>
-                          router.push(const DebugRoute().location),
-                      child: const Icon(
-                        Icons.bug_report_outlined,
+                if (kDebugMode)
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: FloatingActionButton.small(
+                        onPressed: () async =>
+                            router.push(const DebugRoute().location),
+                        child: const Icon(
+                          Icons.bug_report_outlined,
+                        ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           );
