@@ -148,14 +148,17 @@ jobs:
       - name: Set Project Name
         id: set-project-name
         run: |
+          project_name=""
           if [ "${{ matrix.environment == 'production' }}" ]; then
-            echo "projectName=flutterkaigi-ticket-2024" >> $GITHUB_OUTPUT
+            project_name="flutterkaigi-ticket-2024"
           elif [ "${{ matrix.environment == 'staging' }}" ]; then
-            echo "projectName=flutterkaigi-ticket-2024-staging" >> $GITHUB_OUTPUT
+            project_name="flutterkaigi-ticket-2024-staging"
           else
             echo "Invalid environment: ${{ matrix.environment }}"
             return 1
           fi
+          echo "Deploying to $project_name!"
+          echo "project_name=$project_name" >> $GITHUB_OUTPUT
 
       # https://github.com/cloudflare/pages-action
       - name: Publish to Cloudflare Pages
@@ -164,7 +167,8 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: ${{ steps.set-project-name.outputs.projectName }}
+          projectName: ${{ steps.set-project-name.outputs.project_name }}
+          branch: ${{ github.ref_name }}
           directory: ./
 
   deploy-ticket-api:
