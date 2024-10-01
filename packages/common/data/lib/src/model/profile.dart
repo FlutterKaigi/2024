@@ -13,6 +13,7 @@ class Profile with _$Profile {
     required String avatarName,
     required DateTime createdAt,
     required String avatarUrl,
+    required bool isAdult,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

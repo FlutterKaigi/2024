@@ -12,6 +12,10 @@ class ProfileWithSns with _$ProfileWithSns {
     required String avatarUrl,
     required String avatarName,
     required List<ProfileSocialNetworkingService> snsAccounts,
+
+    /// `public.profile_with_sns` View以外では`null`になります
+    /// `public.profile_with_sns` Viewの場合は、常に`true`もしくは`false`になります
+    @Default(null) bool? isAdult,
   }) = _ProfileWithSns;
 
   factory ProfileWithSns.fromJson(Map<String, dynamic> json) =>
