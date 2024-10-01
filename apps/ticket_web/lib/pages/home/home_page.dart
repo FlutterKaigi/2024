@@ -11,18 +11,6 @@ import 'package:ticket_web/pages/home/components/ticket_cards/information_for_st
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
 import 'package:ticket_web/pages/home/components/transit_to_home_page.dart';
 
-part 'home_page.g.dart';
-
-@TypedGoRoute<HomeRoute>(
-  path: '/',
-)
-class HomeRoute extends GoRouteData {
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const HomePage();
-  }
-}
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
