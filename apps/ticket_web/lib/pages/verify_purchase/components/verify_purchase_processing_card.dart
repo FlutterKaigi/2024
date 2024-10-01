@@ -16,45 +16,44 @@ class VerifyPurchaseProcessingCard extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return Card(
-      color: colorScheme.primaryContainer,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Row(),
-          Padding(
-            padding: const EdgeInsets.all(32),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(
-                      height: 32,
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
-                    const SizedBox(width: 16),
-                    Text(
-                      i18n.verifyPurchase.processing,
-                      style: theme.textTheme.displaySmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: colorScheme.onPrimaryContainer,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  i18n.verifyPurchase.processingDescription,
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                ),
-              ],
+    final title = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(
+          height: 32,
+          child: CircularProgressIndicator.adaptive(),
+        ),
+        const SizedBox(width: 16),
+        Flexible(
+          child: Text(
+            i18n.verifyPurchase.processing,
+            style: theme.textTheme.displaySmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: colorScheme.onPrimaryContainer,
             ),
           ),
-        ],
+        ),
+      ],
+    );
+
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: colorScheme.primaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            title,
+            const SizedBox(height: 16),
+            Text(
+              i18n.verifyPurchase.processingDescription,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
