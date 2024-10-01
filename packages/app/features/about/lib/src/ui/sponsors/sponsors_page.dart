@@ -19,7 +19,7 @@ class SponsorsPage extends HookConsumerWidget {
     const spacing = 8.0;
     const childAspectRatio = 16 / 9;
 
-    final sponsorsFuture = ref.watch(sponsorsNotifierProvider);
+    final sponsorsFuture = ref.watch(sponsorsFutureProvider);
 
     return Scaffold(
       body: sponsorsFuture.when(
