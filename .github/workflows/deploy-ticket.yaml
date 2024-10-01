@@ -10,6 +10,7 @@ on:
         options:
           - production
           - staging
+          - all
 
   pull_request:
     types:
@@ -43,7 +44,14 @@ jobs:
         run: |
           environments=()
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            environments+=("${{ github.event.inputs.environment }}")
+            # すべての環境にデプロイする場合
+            if [ "${{ github.event.inputs.environment }}" = "all" ]; then
+              environments+=("production")
+              environments+=("staging")
+            else
+              # 指定された環境にデプロイする場合
+              environments+=("${{ github.event.inputs.environment }}")
+            fi
           elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
             environments+=("production")
             environments+=("staging")
