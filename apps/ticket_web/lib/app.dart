@@ -22,7 +22,7 @@ class App extends ConsumerWidget {
         routerConfig: router,
         theme: lightTheme,
         builder: (context, child) {
-          if (environment == EnvironmentType.production || kDebugMode) {
+          if (environment == EnvironmentType.production) {
             return child!;
           }
           return Banner(

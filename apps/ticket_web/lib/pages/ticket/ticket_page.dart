@@ -9,16 +9,7 @@ class TicketRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return Consumer(
-      builder: (context, ref, child) {
-        final currentUser = ref.watch(authNotifierProvider);
-        if (currentUser == null) {
-          throw Exception('ログインしていません');
-        }
-        return child!;
-      },
-      child: const TicketPage(),
-    );
+    return const TicketPage();
   }
 }
 
