@@ -50,7 +50,7 @@ jobs:
             environments+=("production")
             environments+=("staging")
           # それ以外はstaging
-          else [ "${{ github.event_name != 'workflow_dispatch' && github.event_name != 'push' }}" ]; then
+          else
             environments+=("staging")
           fi
 
