@@ -26,10 +26,3 @@ dev_dependencies:
   riverpod_lint: ^2.3.13
   shared_preferences: ^2.2.3
   test: ^1.24.0
-
-dependency_overrides:
-  yet_another_json_isolate:
-    git:
-      url: https://github.com/YumNumm/supabase-flutter.git
-      ref: 4edc00b3b70621d37814b8c1fbef448655a4b222
-      path: packages/yet_another_json_isolate
