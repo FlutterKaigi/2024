@@ -50,72 +50,36 @@ class SponsorsPage extends HookConsumerWidget {
                 ),
               ),
               if (platinumSponsor.isNotEmpty)
-                SliverPadding(
+                _sponsorWidget(
                   padding: padding,
-                  sliver: SliverGrid.builder(
-                    itemBuilder: (context, index) => SponsorItem(
-                      sponsor: platinumSponsor[index],
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: spacing,
-                      crossAxisSpacing: spacing,
-                      crossAxisCount: 1,
-                      childAspectRatio: childAspectRatio,
-                    ),
-                    itemCount: platinumSponsor.length,
-                  ),
+                  spacing: spacing,
+                  childAspectRatio: childAspectRatio,
+                  sponsor: platinumSponsor,
+                  crossAxisCount: 1,
                 ),
               if (goldSponsor.isNotEmpty)
-                SliverPadding(
+                _sponsorWidget(
                   padding: padding,
-                  sliver: SliverGrid.builder(
-                    itemBuilder: (context, index) => SponsorItem(
-                      sponsor: goldSponsor[index],
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: spacing,
-                      crossAxisSpacing: spacing,
-                      crossAxisCount: 2,
-                      childAspectRatio: childAspectRatio,
-                    ),
-                    itemCount: goldSponsor.length,
-                  ),
+                  spacing: spacing,
+                  childAspectRatio: childAspectRatio,
+                  sponsor: goldSponsor,
+                  crossAxisCount: 2,
                 ),
               if (silverSponsor.isNotEmpty)
-                SliverPadding(
+                _sponsorWidget(
                   padding: padding,
-                  sliver: SliverGrid.builder(
-                    itemBuilder: (context, index) => SponsorItem(
-                      sponsor: silverSponsor[index],
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: spacing,
-                      crossAxisSpacing: spacing,
-                      crossAxisCount: 3,
-                      childAspectRatio: childAspectRatio,
-                    ),
-                    itemCount: silverSponsor.length,
-                  ),
+                  spacing: spacing,
+                  childAspectRatio: childAspectRatio,
+                  sponsor: silverSponsor,
+                  crossAxisCount: 3,
                 ),
               if (bronzeSponsor.isNotEmpty)
-                SliverPadding(
+                _sponsorWidget(
                   padding: padding,
-                  sliver: SliverGrid.builder(
-                    itemBuilder: (context, index) => SponsorItem(
-                      sponsor: bronzeSponsor[index],
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: spacing,
-                      crossAxisSpacing: spacing,
-                      crossAxisCount: 4,
-                      childAspectRatio: childAspectRatio,
-                    ),
-                    itemCount: bronzeSponsor.length,
-                  ),
+                  spacing: spacing,
+                  childAspectRatio: childAspectRatio,
+                  sponsor: bronzeSponsor,
+                  crossAxisCount: 4,
                 ),
               const SliverGap(16),
             ],
@@ -131,6 +95,30 @@ class SponsorsPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
+      ),
+    );
+  }
+
+  SliverPadding _sponsorWidget({
+    required EdgeInsetsGeometry padding,
+    required double spacing,
+    required double childAspectRatio,
+    required List<Sponsor> sponsor,
+    required int crossAxisCount,
+  }) {
+    return SliverPadding(
+      padding: padding,
+      sliver: SliverGrid.builder(
+        itemBuilder: (context, index) => SponsorItem(
+          sponsor: sponsor[index],
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisSpacing: spacing,
+          crossAxisSpacing: spacing,
+          crossAxisCount: crossAxisCount,
+          childAspectRatio: childAspectRatio,
+        ),
+        itemCount: sponsor.length,
       ),
     );
   }
