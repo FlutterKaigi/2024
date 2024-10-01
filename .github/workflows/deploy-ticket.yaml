@@ -144,7 +144,7 @@ jobs:
         environment: ${{ fromJson(needs.define-matrix.outputs.environments) }}
       fail-fast: false
     concurrency:
-      group: "deploy-ticket-api"
+      group: "deploy-ticket-api-${{ matrix.environment }}"
       cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
