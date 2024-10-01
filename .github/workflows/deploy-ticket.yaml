@@ -45,9 +45,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     outputs:
-      environments: ${{ steps.define-matrix.outputs.environments }}
-      deploy-web: ${{ steps.define-matrix.outputs.deploy-web }}
-      deploy-api: ${{ steps.define-matrix.outputs.deploy-api }}
+      environments: ${{ steps.define-environment-matrix.outputs.environments }}
+      deploy-web: ${{ steps.define-target.outputs.deploy-web }}
+      deploy-api: ${{ steps.define-target.outputs.deploy-api }}
     steps:
       - name: Decide which environment to deploy
         id: define-environment-matrix
