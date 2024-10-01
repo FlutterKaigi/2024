@@ -55,7 +55,6 @@ class SponsorsPage extends HookConsumerWidget {
                   sliver: SliverGrid.builder(
                     itemBuilder: (context, index) => SponsorItem(
                       sponsor: platinumSponsor[index],
-                      sponsorRank: SponsorType.platinum,
                     ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -73,7 +72,6 @@ class SponsorsPage extends HookConsumerWidget {
                   sliver: SliverGrid.builder(
                     itemBuilder: (context, index) => SponsorItem(
                       sponsor: goldSponsor[index],
-                      sponsorRank: SponsorType.gold,
                     ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -91,7 +89,6 @@ class SponsorsPage extends HookConsumerWidget {
                   sliver: SliverGrid.builder(
                     itemBuilder: (context, index) => SponsorItem(
                       sponsor: silverSponsor[index],
-                      sponsorRank: SponsorType.silver,
                     ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -109,7 +106,6 @@ class SponsorsPage extends HookConsumerWidget {
                   sliver: SliverGrid.builder(
                     itemBuilder: (context, index) => SponsorItem(
                       sponsor: bronzeSponsor[index],
-                      sponsorRank: SponsorType.bronze,
                     ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

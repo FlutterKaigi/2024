@@ -10,18 +10,15 @@ import 'package:url_launcher/url_launcher.dart';
 class SponsorItem extends StatelessWidget {
   const SponsorItem({
     required Sponsor sponsor,
-    required SponsorType sponsorRank,
     super.key,
-  })  : _sponsor = sponsor,
-        _sponsorRank = sponsorRank;
+  }) : _sponsor = sponsor;
   final Sponsor _sponsor;
-  final SponsorType _sponsorRank;
 
   @override
   Widget build(BuildContext context) {
     final l = L10nAbout.of(context);
     void onTap() {
-      final colors = _getColors(_sponsorRank);
+      final colors = _getColors(_sponsor.type);
       unawaited(
         showModalBottomSheet(
           context: context,
@@ -147,7 +144,7 @@ class SponsorItem extends StatelessWidget {
               child: _WhiteBackgroundImage(
                 semanticLabel: _sponsor.name,
                 imageUrl: _sponsor.logoUrl.toString(),
-                sponsorRank: _sponsorRank,
+                sponsorRank: _sponsor.type,
               ),
             ),
             Positioned.fill(
