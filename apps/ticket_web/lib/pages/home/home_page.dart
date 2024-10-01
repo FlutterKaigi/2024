@@ -38,8 +38,7 @@ class HomePage extends ConsumerWidget {
             data: (ticket) {
               if (ticket != null) {
                 return AlreadyPurchasedCard(
-                  onTicketPagePressed: () async =>
-                      const TicketRoute().push<void>(context),
+                  onTicketPagePressed: () async => TicketRoute().push<void>(context),
                 );
               } else {
                 return const TicketCards();
@@ -49,6 +48,7 @@ class HomePage extends ConsumerWidget {
             error: (error, __) => ErrorCard(
               error: error,
               title: i18n.homePage.tickets.alreadyPurchasedCard.verifyError,
+
             ),
           ),
           const SizedBox(height: 8),
@@ -120,10 +120,7 @@ class _AuthStateCard extends ConsumerWidget {
           if (currentChild != null) currentChild,
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: child,
-      ),
+      child: child,
     );
   }
 }
