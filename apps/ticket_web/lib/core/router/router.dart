@@ -22,9 +22,14 @@ GoRouter router(RouterRef ref) {
       if (state.path == HomeRoute().location) {
         return null;
       }
-      // デバッグ時はデバッグ画面にアクセス可能
-      if (kDebugMode && (state.path?.contains('debug') ?? false)) {
-        return null;
+      // デバッグ画面はデバッグ時のみアクセス可能
+      final isDebugRoute = state.path?.startsWith('/debug') ?? false;
+      if(isDebugRoute) {
+        if(kDebugMode){
+          return null;
+        } else {
+          return HomeRoute().location;
+        }
       }
       // それ以外はログインしている場合のみアクセス可能
       final isLoggedIn = ref.read(authNotifierProvider) != null;
