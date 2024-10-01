@@ -1,23 +1,22 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:ticket_web/feature/payment/data/model/payment_url.dart';
-import 'package:ticket_web/feature/payment/data/payment_url_provider.dart';
+import 'package:ticket_web/core/provider/environment.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part 'payment_service.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [Environment])
 PaymentService paymentService(PaymentServiceRef ref) {
   return PaymentService(
-    url: ref.watch(paymentUrlProvider),
+    environment: ref.watch(environmentProvider),
   );
 }
 
 class PaymentService {
   PaymentService({
-    required PaymentUrl url,
-  }) : _url = url;
+    required Environment environment,
+  }) : _environment = environment;
 
-  final PaymentUrl _url;
+  final Environment _environment;
 
   Future<bool> transitionToPayment({
     required PaymentType type,
@@ -41,8 +40,10 @@ class PaymentService {
     String? promotionCode,
   }) {
     final url = switch (type) {
-      PaymentType.general => _url.general,
-      PaymentType.invitation => _url.invitation,
+      PaymentType.general => _environment.stripePaymentGeneralUrl,
+      PaymentType.invitation => _environment.stripePaymentInvitationUrl,
+      PaymentType.personalSponsor =>
+        _environment.stripePaymentPersonalSponsorUrl,
     };
 
     // See https://docs.stripe.com/payment-links/customize#customize-checkout-with-url-parameters
@@ -59,5 +60,6 @@ class PaymentService {
 enum PaymentType {
   general,
   invitation,
+  personalSponsor,
   ;
 }

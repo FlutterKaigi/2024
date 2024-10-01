@@ -229,7 +229,7 @@ class TicketCards extends ConsumerWidget {
         onPurchasePressed: () async =>
             ref.read(paymentServiceProvider).transitionToPayment(
                   mailAddress: authState!.email!,
-                  type: PaymentType.invitation,
+                  type: PaymentType.personalSponsor,
                 ),
       ),
     ];
