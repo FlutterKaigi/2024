@@ -34,7 +34,6 @@ on:
   push:
     branches:
       - main
-      - fix/ticket-web-deploy # デバッグ用
 
 permissions:
   contents: read
