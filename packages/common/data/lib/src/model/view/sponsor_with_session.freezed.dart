@@ -601,7 +601,7 @@ mixin _$SessionWithSpeakerAndVenue {
   DateTime get startsAt => throw _privateConstructorUsedError;
   DateTime get endsAt => throw _privateConstructorUsedError;
   bool get isLightningTalk => throw _privateConstructorUsedError;
-  List<ProfileWithSns> get speakers => throw _privateConstructorUsedError;
+  List<ProfileWithSnsView> get speakers => throw _privateConstructorUsedError;
   SessionVenue get venue => throw _privateConstructorUsedError;
 
   /// Serializes this SessionWithSpeakerAndVenue to a JSON map.
@@ -628,7 +628,7 @@ abstract class $SessionWithSpeakerAndVenueCopyWith<$Res> {
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSns> speakers,
+      List<ProfileWithSnsView> speakers,
       SessionVenue venue});
 
   $SessionVenueCopyWith<$Res> get venue;
@@ -687,7 +687,7 @@ class _$SessionWithSpeakerAndVenueCopyWithImpl<$Res,
       speakers: null == speakers
           ? _value.speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<ProfileWithSnsView>,
       venue: null == venue
           ? _value.venue
           : venue // ignore: cast_nullable_to_non_nullable
@@ -722,7 +722,7 @@ abstract class _$$SessionWithSpeakerAndVenueImplCopyWith<$Res>
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSns> speakers,
+      List<ProfileWithSnsView> speakers,
       SessionVenue venue});
 
   @override
@@ -781,7 +781,7 @@ class __$$SessionWithSpeakerAndVenueImplCopyWithImpl<$Res>
       speakers: null == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<ProfileWithSnsView>,
       venue: null == venue
           ? _value.venue
           : venue // ignore: cast_nullable_to_non_nullable
@@ -800,7 +800,7 @@ class _$SessionWithSpeakerAndVenueImpl implements _SessionWithSpeakerAndVenue {
       required this.startsAt,
       required this.endsAt,
       required this.isLightningTalk,
-      required final List<ProfileWithSns> speakers,
+      required final List<ProfileWithSnsView> speakers,
       required this.venue})
       : _speakers = speakers;
 
@@ -820,9 +820,9 @@ class _$SessionWithSpeakerAndVenueImpl implements _SessionWithSpeakerAndVenue {
   final DateTime endsAt;
   @override
   final bool isLightningTalk;
-  final List<ProfileWithSns> _speakers;
+  final List<ProfileWithSnsView> _speakers;
   @override
-  List<ProfileWithSns> get speakers {
+  List<ProfileWithSnsView> get speakers {
     if (_speakers is EqualUnmodifiableListView) return _speakers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_speakers);
@@ -893,7 +893,7 @@ abstract class _SessionWithSpeakerAndVenue
       required final DateTime startsAt,
       required final DateTime endsAt,
       required final bool isLightningTalk,
-      required final List<ProfileWithSns> speakers,
+      required final List<ProfileWithSnsView> speakers,
       required final SessionVenue venue}) = _$SessionWithSpeakerAndVenueImpl;
 
   factory _SessionWithSpeakerAndVenue.fromJson(Map<String, dynamic> json) =
@@ -912,7 +912,7 @@ abstract class _SessionWithSpeakerAndVenue
   @override
   bool get isLightningTalk;
   @override
-  List<ProfileWithSns> get speakers;
+  List<ProfileWithSnsView> get speakers;
   @override
   SessionVenue get venue;
 
