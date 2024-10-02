@@ -175,6 +175,7 @@ class ProfileRepository {
     required Uint8List avatarData,
     required String fileExtension,
     required String userId,
+    String? currentAvatarName,
   }) async {
     assert(
       fileExtension == 'png' ||
@@ -190,6 +191,7 @@ class ProfileRepository {
           fileOptions: FileOptions(
             contentType: 'image/$fileExtension',
             upsert: true,
+            cacheControl: '0',
           ),
         );
 
@@ -236,7 +238,12 @@ class ProfileRepository {
         createdAt: profileTable.createdAt,
         googleAvatarUri: profileTable.avatarUrl,
         userAvatarUri: profileTable.avatarName != null
-            ? Uri.parse(_getProfileAvatarUrl(profileTable.id))
+            ? Uri.parse(_getProfileAvatarUrl(profileTable.id)).replace(
+                queryParameters: {
+                  // キャッシュを無効にする
+                  't': DateTime.now().millisecondsSinceEpoch.toString(),
+                },
+              )
             : null,
         isAdult: profileTable.isAdult,
       );
@@ -250,7 +257,12 @@ class ProfileRepository {
         createdAt: profileWithSnsView.createdAt,
         googleAvatarUri: profileWithSnsView.avatarUrl,
         userAvatarUri: profileWithSnsView.avatarName != null
-            ? Uri.parse(_getProfileAvatarUrl(profileWithSnsView.id))
+            ? Uri.parse(_getProfileAvatarUrl(profileWithSnsView.id)).replace(
+                queryParameters: {
+                  // キャッシュを無効にする
+                  't': DateTime.now().millisecondsSinceEpoch.toString(),
+                },
+              )
             : null,
         isAdult: profileWithSnsView.isAdult,
         snsAccounts: profileWithSnsView.snsAccounts,

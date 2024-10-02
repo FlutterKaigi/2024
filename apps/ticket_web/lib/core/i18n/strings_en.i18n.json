@@ -137,22 +137,43 @@
       },
       "name": {
         "title": "Name",
-        "description": "Please enter your name. (20 characters or less, no special characters allowed)"
+        "description": "Please enter your name. (20 characters or less, no special characters allowed)",
+        "validation": {
+          "too_long": "Name must be 20 characters or less",
+          "invalid_characters": "Name must be alphanumeric"
+        }
       },
       "comment": {
         "title": "Comment",
-        "description": "Please enter your comment. (80 characters or less, no special characters allowed)"
+        "description": "Please enter your comment. (80 characters or less, no special characters allowed)",
+        "validation": {
+          "too_long": "Comment must be 80 characters or less",
+          "invalid_characters": "Comment must be alphanumeric"
+        }
       },
       "x_account": {
         "title": "X Account",
         "description": "Please enter your X account. (No @ symbol allowed)",
-        "placeholder": "X Account"
+        "placeholder": "X Account",
+        "delete_button": "Delete X Account Entry",
+        "validation": {
+          "too_long": "X Account must be 40 characters or less",
+          "invalid_characters": "X Account must be alphanumeric"
+        }
       },
       "avatar": {
         "title": "Profile Image",
         "description": "Please upload your profile image. (PNG, JPG format, up to 2MB)",
         "upload_button": "Upload Image",
-        "remove_button": "Remove Image"
+        "remove_button": "Reset to Default (Google Account Image)",
+        "upload_success": "Profile image uploaded successfully",
+        "delete_success": "Profile image reset to default successfully",
+        "upload_error": "Profile image upload failed",
+        "delete_error": "Profile image reset to default failed"
+      },
+      "results": {
+        "success": "Profile information updated successfully",
+        "error": "Profile information update failed"
       }
     }
   }

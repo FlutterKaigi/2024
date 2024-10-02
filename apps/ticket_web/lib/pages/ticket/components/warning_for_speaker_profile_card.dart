@@ -35,7 +35,8 @@ class WarningForSpeakerProfileCard extends StatelessWidget {
             Text(
               i18n.ticketPage.warningForSpeakerProfile.description,
               style: textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onErrorContainer.withValues( alpha: 0.7),
+                color:
+                    theme.colorScheme.onErrorContainer.withValues(alpha: 0.7),
               ),
             ),
           ],

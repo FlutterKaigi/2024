@@ -3,6 +3,7 @@ import 'package:common_data/profile.dart';
 import 'package:common_data/ticket.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticket_web/core/extension/is_mobile.dart';
 import 'package:ticket_web/feature/ticket/ui/ticket_card.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
@@ -22,35 +23,47 @@ class ProfileEditCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
+
     return Card.outlined(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       color: theme.colorScheme.secondaryContainer,
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              i18n.ticketPage.informationForProfileEdit.title,
-              style: textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onTertiaryContainer,
+        child: IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                i18n.ticketPage.informationForProfileEdit.title,
+                style: (isMobile ? textTheme.titleMedium : textTheme.titleLarge)
+                    ?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: theme.colorScheme.onTertiaryContainer,
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              i18n.ticketPage.informationForProfileEdit.description,
-              style: textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onTertiaryContainer
-                    .withValues(alpha: 0.7),
+              const SizedBox(height: 8),
+              Text(
+                i18n.ticketPage.informationForProfileEdit.description,
+                style: (isMobile ? textTheme.bodySmall : textTheme.bodyMedium)
+                    ?.copyWith(
+                  color: theme.colorScheme.onTertiaryContainer
+                      .withValues(alpha: 0.7),
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            _ProfileCard(
-              profile: profile,
-              ticket: ticket,
-            ),
-          ],
+              const SizedBox(height: 8),
+              const Text('TODO: XX/XX 以降は編集不可になりますみたいな文'),
+              const SizedBox(height: 8),
+              Center(
+                child: _ProfileCard(
+                  profile: profile,
+                  ticket: ticket,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text('TODO: デザインは変わるかもです〜 みたいな文'),
+            ],
+          ),
         ),
       ),
     );
@@ -94,10 +107,6 @@ class _ProfileCard extends ConsumerWidget {
       },
       isSpeaker: isSpeaker,
       isAdult: profile.isAdult,
-
-      onDescriptionUpdated: print,
-      onXAccountUpdated: print,
-      onNameUpdated: print,
     );
   }
 }

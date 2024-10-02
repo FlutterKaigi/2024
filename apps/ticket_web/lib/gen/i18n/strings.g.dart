@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 192 (96 per locale)
+/// Strings: 222 (111 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -365,6 +365,7 @@ class _StringsTicketPageEditFieldsJa {
 	late final _StringsTicketPageEditFieldsCommentJa comment = _StringsTicketPageEditFieldsCommentJa._(_root);
 	late final _StringsTicketPageEditFieldsXAccountJa xAccount = _StringsTicketPageEditFieldsXAccountJa._(_root);
 	late final _StringsTicketPageEditFieldsAvatarJa avatar = _StringsTicketPageEditFieldsAvatarJa._(_root);
+	late final _StringsTicketPageEditFieldsResultsJa results = _StringsTicketPageEditFieldsResultsJa._(_root);
 }
 
 // Path: homePage.tickets.variant
@@ -474,6 +475,7 @@ class _StringsTicketPageEditFieldsNameJa {
 	// Translations
 	String get title => '名前';
 	String get description => '名前を入力してください。(20文字以内 特殊文字は使用できません)';
+	late final _StringsTicketPageEditFieldsNameValidationJa validation = _StringsTicketPageEditFieldsNameValidationJa._(_root);
 }
 
 // Path: ticketPage.editFields.comment
@@ -485,6 +487,7 @@ class _StringsTicketPageEditFieldsCommentJa {
 	// Translations
 	String get title => 'ひとこと';
 	String get description => 'ひとことを入力してください。(80文字以内 特殊文字は使用できません)';
+	late final _StringsTicketPageEditFieldsCommentValidationJa validation = _StringsTicketPageEditFieldsCommentValidationJa._(_root);
 }
 
 // Path: ticketPage.editFields.xAccount
@@ -497,6 +500,8 @@ class _StringsTicketPageEditFieldsXAccountJa {
 	String get title => 'Xアカウント';
 	String get description => 'Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)';
 	String get placeholder => 'Xアカウント';
+	String get deleteButton => 'Xアカウントの記載を削除';
+	late final _StringsTicketPageEditFieldsXAccountValidationJa validation = _StringsTicketPageEditFieldsXAccountValidationJa._(_root);
 }
 
 // Path: ticketPage.editFields.avatar
@@ -509,7 +514,22 @@ class _StringsTicketPageEditFieldsAvatarJa {
 	String get title => 'プロフィール画像';
 	String get description => 'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。';
 	String get uploadButton => '画像を選択';
-	String get removeButton => '画像を削除';
+	String get removeButton => 'デフォルトに戻す(Googleアカウントの画像になります)';
+	String get uploadSuccess => 'プロフィール画像をアップロードしました';
+	String get deleteSuccess => 'プロフィール画像をデフォルトに戻しました';
+	String get uploadError => 'プロフィール画像のアップロードに失敗しました';
+	String get deleteError => 'プロフィール画像をデフォルトに戻す最中にエラーが発生しました';
+}
+
+// Path: ticketPage.editFields.results
+class _StringsTicketPageEditFieldsResultsJa {
+	_StringsTicketPageEditFieldsResultsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get success => 'プロフィール情報を更新しました';
+	String get error => 'プロフィール情報の更新に失敗しました';
 }
 
 // Path: homePage.tickets.invitation.error
@@ -538,6 +558,41 @@ class _StringsHomePageTicketsInvitationValidationJa {
 	String get nextConfirmOrder => '決定を押すと、Stripeへ遷移します。プロモーションコードが適用されていることを確認してチケットの注文を確定してください';
 	late final _StringsHomePageTicketsInvitationValidationDialogJa dialog = _StringsHomePageTicketsInvitationValidationDialogJa._(_root);
 	late final _StringsHomePageTicketsInvitationValidationInvitedJa invited = _StringsHomePageTicketsInvitationValidationInvitedJa._(_root);
+}
+
+// Path: ticketPage.editFields.name.validation
+class _StringsTicketPageEditFieldsNameValidationJa {
+	_StringsTicketPageEditFieldsNameValidationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tooLong => '名前は20文字以内で入力してください';
+	String get invalidCharacters => '名前には特殊文字は使用できません';
+	String get empty => '名前を入力してください';
+}
+
+// Path: ticketPage.editFields.comment.validation
+class _StringsTicketPageEditFieldsCommentValidationJa {
+	_StringsTicketPageEditFieldsCommentValidationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tooLong => 'ひとことは80文字以内で入力してください';
+	String get invalidCharacters => 'ひとことには特殊文字は使用できません';
+	String get empty => 'ひとことを入力してください';
+}
+
+// Path: ticketPage.editFields.xAccount.validation
+class _StringsTicketPageEditFieldsXAccountValidationJa {
+	_StringsTicketPageEditFieldsXAccountValidationJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tooLong => 'Xアカウントは40文字以内で入力してください';
+	String get invalidCharacters => 'Xアカウントには英数字以外の文字は使用できません';
 }
 
 // Path: homePage.tickets.invitation.validation.dialog
@@ -811,6 +866,7 @@ class _StringsTicketPageEditFieldsEn extends _StringsTicketPageEditFieldsJa {
 	@override late final _StringsTicketPageEditFieldsCommentEn comment = _StringsTicketPageEditFieldsCommentEn._(_root);
 	@override late final _StringsTicketPageEditFieldsXAccountEn xAccount = _StringsTicketPageEditFieldsXAccountEn._(_root);
 	@override late final _StringsTicketPageEditFieldsAvatarEn avatar = _StringsTicketPageEditFieldsAvatarEn._(_root);
+	@override late final _StringsTicketPageEditFieldsResultsEn results = _StringsTicketPageEditFieldsResultsEn._(_root);
 }
 
 // Path: homePage.tickets.variant
@@ -824,6 +880,8 @@ class _StringsHomePageTicketsVariantEn extends _StringsHomePageTicketsVariantJa 
 	@override String get sessionSpeaker => 'Session Speaker Ticket';
 	@override String get sponsorSession => 'Sponsor Session Speaker Ticket';
 	@override String get sponsorInvitation => 'Sponsor Invitation Ticket';
+	@override String get sponsorBooth => 'Sponsor Booth Ticket';
+	@override String get personalSponsor => 'Personal Sponsor Ticket';
 }
 
 // Path: homePage.tickets.alreadyPurchasedCard
@@ -918,6 +976,7 @@ class _StringsTicketPageEditFieldsNameEn extends _StringsTicketPageEditFieldsNam
 	// Translations
 	@override String get title => 'Name';
 	@override String get description => 'Please enter your name. (20 characters or less, no special characters allowed)';
+	@override late final _StringsTicketPageEditFieldsNameValidationEn validation = _StringsTicketPageEditFieldsNameValidationEn._(_root);
 }
 
 // Path: ticketPage.editFields.comment
@@ -929,6 +988,7 @@ class _StringsTicketPageEditFieldsCommentEn extends _StringsTicketPageEditFields
 	// Translations
 	@override String get title => 'Comment';
 	@override String get description => 'Please enter your comment. (80 characters or less, no special characters allowed)';
+	@override late final _StringsTicketPageEditFieldsCommentValidationEn validation = _StringsTicketPageEditFieldsCommentValidationEn._(_root);
 }
 
 // Path: ticketPage.editFields.xAccount
@@ -941,6 +1001,8 @@ class _StringsTicketPageEditFieldsXAccountEn extends _StringsTicketPageEditField
 	@override String get title => 'X Account';
 	@override String get description => 'Please enter your X account. (No @ symbol allowed)';
 	@override String get placeholder => 'X Account';
+	@override String get deleteButton => 'Delete X Account Entry';
+	@override late final _StringsTicketPageEditFieldsXAccountValidationEn validation = _StringsTicketPageEditFieldsXAccountValidationEn._(_root);
 }
 
 // Path: ticketPage.editFields.avatar
@@ -953,7 +1015,22 @@ class _StringsTicketPageEditFieldsAvatarEn extends _StringsTicketPageEditFieldsA
 	@override String get title => 'Profile Image';
 	@override String get description => 'Please upload your profile image. (PNG, JPG format, up to 2MB)';
 	@override String get uploadButton => 'Upload Image';
-	@override String get removeButton => 'Remove Image';
+	@override String get removeButton => 'Reset to Default (Google Account Image)';
+	@override String get uploadSuccess => 'Profile image uploaded successfully';
+	@override String get deleteSuccess => 'Profile image reset to default successfully';
+	@override String get uploadError => 'Profile image upload failed';
+	@override String get deleteError => 'Profile image reset to default failed';
+}
+
+// Path: ticketPage.editFields.results
+class _StringsTicketPageEditFieldsResultsEn extends _StringsTicketPageEditFieldsResultsJa {
+	_StringsTicketPageEditFieldsResultsEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get success => 'Profile information updated successfully';
+	@override String get error => 'Profile information update failed';
 }
 
 // Path: homePage.tickets.invitation.validation
@@ -969,6 +1046,39 @@ class _StringsHomePageTicketsInvitationValidationEn extends _StringsHomePageTick
 	@override String get nextConfirmOrder => 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
 	@override late final _StringsHomePageTicketsInvitationValidationDialogEn dialog = _StringsHomePageTicketsInvitationValidationDialogEn._(_root);
 	@override late final _StringsHomePageTicketsInvitationValidationInvitedEn invited = _StringsHomePageTicketsInvitationValidationInvitedEn._(_root);
+}
+
+// Path: ticketPage.editFields.name.validation
+class _StringsTicketPageEditFieldsNameValidationEn extends _StringsTicketPageEditFieldsNameValidationJa {
+	_StringsTicketPageEditFieldsNameValidationEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get tooLong => 'Name must be 20 characters or less';
+	@override String get invalidCharacters => 'Name must be alphanumeric';
+}
+
+// Path: ticketPage.editFields.comment.validation
+class _StringsTicketPageEditFieldsCommentValidationEn extends _StringsTicketPageEditFieldsCommentValidationJa {
+	_StringsTicketPageEditFieldsCommentValidationEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get tooLong => 'Comment must be 80 characters or less';
+	@override String get invalidCharacters => 'Comment must be alphanumeric';
+}
+
+// Path: ticketPage.editFields.xAccount.validation
+class _StringsTicketPageEditFieldsXAccountValidationEn extends _StringsTicketPageEditFieldsXAccountValidationJa {
+	_StringsTicketPageEditFieldsXAccountValidationEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get tooLong => 'X Account must be 40 characters or less';
+	@override String get invalidCharacters => 'X Account must be alphanumeric';
 }
 
 // Path: homePage.tickets.invitation.validation.dialog
@@ -1094,15 +1204,30 @@ extension on Translations {
 			case 'ticketPage.editFields.dialog.cancel': return 'キャンセル';
 			case 'ticketPage.editFields.name.title': return '名前';
 			case 'ticketPage.editFields.name.description': return '名前を入力してください。(20文字以内 特殊文字は使用できません)';
+			case 'ticketPage.editFields.name.validation.tooLong': return '名前は20文字以内で入力してください';
+			case 'ticketPage.editFields.name.validation.invalidCharacters': return '名前には特殊文字は使用できません';
+			case 'ticketPage.editFields.name.validation.empty': return '名前を入力してください';
 			case 'ticketPage.editFields.comment.title': return 'ひとこと';
 			case 'ticketPage.editFields.comment.description': return 'ひとことを入力してください。(80文字以内 特殊文字は使用できません)';
+			case 'ticketPage.editFields.comment.validation.tooLong': return 'ひとことは80文字以内で入力してください';
+			case 'ticketPage.editFields.comment.validation.invalidCharacters': return 'ひとことには特殊文字は使用できません';
+			case 'ticketPage.editFields.comment.validation.empty': return 'ひとことを入力してください';
 			case 'ticketPage.editFields.xAccount.title': return 'Xアカウント';
 			case 'ticketPage.editFields.xAccount.description': return 'Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)';
 			case 'ticketPage.editFields.xAccount.placeholder': return 'Xアカウント';
+			case 'ticketPage.editFields.xAccount.deleteButton': return 'Xアカウントの記載を削除';
+			case 'ticketPage.editFields.xAccount.validation.tooLong': return 'Xアカウントは40文字以内で入力してください';
+			case 'ticketPage.editFields.xAccount.validation.invalidCharacters': return 'Xアカウントには英数字以外の文字は使用できません';
 			case 'ticketPage.editFields.avatar.title': return 'プロフィール画像';
 			case 'ticketPage.editFields.avatar.description': return 'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。';
 			case 'ticketPage.editFields.avatar.uploadButton': return '画像を選択';
-			case 'ticketPage.editFields.avatar.removeButton': return '画像を削除';
+			case 'ticketPage.editFields.avatar.removeButton': return 'デフォルトに戻す(Googleアカウントの画像になります)';
+			case 'ticketPage.editFields.avatar.uploadSuccess': return 'プロフィール画像をアップロードしました';
+			case 'ticketPage.editFields.avatar.deleteSuccess': return 'プロフィール画像をデフォルトに戻しました';
+			case 'ticketPage.editFields.avatar.uploadError': return 'プロフィール画像のアップロードに失敗しました';
+			case 'ticketPage.editFields.avatar.deleteError': return 'プロフィール画像をデフォルトに戻す最中にエラーが発生しました';
+			case 'ticketPage.editFields.results.success': return 'プロフィール情報を更新しました';
+			case 'ticketPage.editFields.results.error': return 'プロフィール情報の更新に失敗しました';
 			default: return null;
 		}
 	}
@@ -1121,6 +1246,8 @@ extension on _StringsEn {
 			case 'homePage.tickets.variant.sessionSpeaker': return 'Session Speaker Ticket';
 			case 'homePage.tickets.variant.sponsorSession': return 'Sponsor Session Speaker Ticket';
 			case 'homePage.tickets.variant.sponsorInvitation': return 'Sponsor Invitation Ticket';
+			case 'homePage.tickets.variant.sponsorBooth': return 'Sponsor Booth Ticket';
+			case 'homePage.tickets.variant.personalSponsor': return 'Personal Sponsor Ticket';
 			case 'homePage.tickets.buyTicket': return 'Buy Ticket';
 			case 'homePage.tickets.loginBeforeBuy': return 'Please login with your Google account to buy or register a ticket.';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return 'After purchase or registration, tickets will be managed by your Google account.';
@@ -1195,15 +1322,28 @@ extension on _StringsEn {
 			case 'ticketPage.editFields.dialog.cancel': return 'Cancel';
 			case 'ticketPage.editFields.name.title': return 'Name';
 			case 'ticketPage.editFields.name.description': return 'Please enter your name. (20 characters or less, no special characters allowed)';
+			case 'ticketPage.editFields.name.validation.tooLong': return 'Name must be 20 characters or less';
+			case 'ticketPage.editFields.name.validation.invalidCharacters': return 'Name must be alphanumeric';
 			case 'ticketPage.editFields.comment.title': return 'Comment';
 			case 'ticketPage.editFields.comment.description': return 'Please enter your comment. (80 characters or less, no special characters allowed)';
+			case 'ticketPage.editFields.comment.validation.tooLong': return 'Comment must be 80 characters or less';
+			case 'ticketPage.editFields.comment.validation.invalidCharacters': return 'Comment must be alphanumeric';
 			case 'ticketPage.editFields.xAccount.title': return 'X Account';
 			case 'ticketPage.editFields.xAccount.description': return 'Please enter your X account. (No @ symbol allowed)';
 			case 'ticketPage.editFields.xAccount.placeholder': return 'X Account';
+			case 'ticketPage.editFields.xAccount.deleteButton': return 'Delete X Account Entry';
+			case 'ticketPage.editFields.xAccount.validation.tooLong': return 'X Account must be 40 characters or less';
+			case 'ticketPage.editFields.xAccount.validation.invalidCharacters': return 'X Account must be alphanumeric';
 			case 'ticketPage.editFields.avatar.title': return 'Profile Image';
 			case 'ticketPage.editFields.avatar.description': return 'Please upload your profile image. (PNG, JPG format, up to 2MB)';
 			case 'ticketPage.editFields.avatar.uploadButton': return 'Upload Image';
-			case 'ticketPage.editFields.avatar.removeButton': return 'Remove Image';
+			case 'ticketPage.editFields.avatar.removeButton': return 'Reset to Default (Google Account Image)';
+			case 'ticketPage.editFields.avatar.uploadSuccess': return 'Profile image uploaded successfully';
+			case 'ticketPage.editFields.avatar.deleteSuccess': return 'Profile image reset to default successfully';
+			case 'ticketPage.editFields.avatar.uploadError': return 'Profile image upload failed';
+			case 'ticketPage.editFields.avatar.deleteError': return 'Profile image reset to default failed';
+			case 'ticketPage.editFields.results.success': return 'Profile information updated successfully';
+			case 'ticketPage.editFields.results.error': return 'Profile information update failed';
 			default: return null;
 		}
 	}

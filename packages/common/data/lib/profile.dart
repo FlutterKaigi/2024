@@ -1,4 +1,5 @@
 export 'package:common_data/src/model/sns.dart' show SnsType;
+export 'package:supabase_flutter/supabase_flutter.dart' show StorageException;
 
 export 'src/model/profile.dart' show $ProfileCopyWith, Profile, Role;
 export 'src/model/profile_social_networking_service.dart'

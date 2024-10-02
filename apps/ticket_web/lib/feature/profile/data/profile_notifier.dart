@@ -44,7 +44,8 @@ class ProfileNotifier extends _$ProfileNotifier {
   Future<void> uploadProfileAvatarWithFilePicker() async {
     final pickedFile = await FilePicker.platform.pickFiles(
       allowedExtensions: ['png', 'jpg', 'jpeg'],
-      type: FileType.image,
+      type: FileType.custom,
+      lockParentWindow: true,
     );
     if (pickedFile == null) {
       return;
@@ -66,6 +67,7 @@ class ProfileNotifier extends _$ProfileNotifier {
       avatarData: bytes,
       fileExtension: fileExtension,
     );
+    ref.invalidateSelf();
   }
 
   Future<void> deleteProfileAvatar() async {
@@ -74,5 +76,33 @@ class ProfileNotifier extends _$ProfileNotifier {
       ref.read(authNotifierProvider)!.id,
       state.valueOrNull!.userAvatarUri!.path.split('/').last,
     );
+    ref.invalidateSelf();
+  }
+
+  Future<void> updateProfileName(String name) async {
+    final profileRepository = ref.read(profileRepositoryProvider);
+    await profileRepository.updateProfile(
+      userId: ref.read(authNotifierProvider)!.id,
+      name: name,
+    );
+    ref.invalidateSelf();
+  }
+
+  Future<void> updateProfileDescription(String description) async {
+    final profileRepository = ref.read(profileRepositoryProvider);
+    await profileRepository.updateProfile(
+      userId: ref.read(authNotifierProvider)!.id,
+      comment: description,
+    );
+    ref.invalidateSelf();
+  }
+
+  Future<void> updateProfileIsAdult({required bool isAdult}) async {
+    final profileRepository = ref.read(profileRepositoryProvider);
+    await profileRepository.updateProfile(
+      userId: ref.read(authNotifierProvider)!.id,
+      isAdult: isAdult,
+    );
+    ref.invalidateSelf();
   }
 }
