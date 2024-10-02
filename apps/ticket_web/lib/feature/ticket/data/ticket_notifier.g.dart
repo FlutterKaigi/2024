@@ -6,12 +6,12 @@ part of 'ticket_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ticketNotifierHash() => r'5cee02a364eb6a722e43aeddca35cd055c1b5472';
+String _$ticketNotifierHash() => r'1886aadae52992103b3dc900ccec9a540c21296d';
 
 /// See also [TicketNotifier].
 @ProviderFor(TicketNotifier)
 final ticketNotifierProvider =
-    AsyncNotifierProvider<TicketNotifier, Ticket?>.internal(
+    AutoDisposeAsyncNotifierProvider<TicketNotifier, Ticket?>.internal(
   TicketNotifier.new,
   name: r'ticketNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final ticketNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$TicketNotifier = AsyncNotifier<Ticket?>;
+typedef _$TicketNotifier = AutoDisposeAsyncNotifier<Ticket?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

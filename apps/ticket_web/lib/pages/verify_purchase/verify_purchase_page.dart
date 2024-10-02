@@ -24,14 +24,19 @@ class VerifyPurchaseRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    final sessionId = state.uri.queryParameters['sessionId'];
-    if (sessionId == null) {
-      throw Exception('sessionIdが指定されていません: ${state.pathParameters}');
-    }
-
+    final sessionId = state.uri.queryParameters['sessionId']!;
     return VerifyPurchasePage(
       stripeSessionId: sessionId,
     );
+  }
+
+  @override
+  Future<String?> redirect(BuildContext context, GoRouterState state) async {
+    final sessionId = state.uri.queryParameters['sessionId'];
+    if (sessionId == null) {
+      return '/';
+    }
+    return null;
   }
 }
 
@@ -50,8 +55,11 @@ class VerifyPurchasePage extends StatelessWidget {
       slivers: [
         SliverFillRemaining(
           child: ResponsiveContentContainer(
-            child: _Body(
-              stripeSessionId: stripeSessionId,
+            child: Center(
+              child: _Body(
+                key: GlobalObjectKey(stripeSessionId),
+                stripeSessionId: stripeSessionId,
+              ),
             ),
           ),
         ),
@@ -63,6 +71,7 @@ class VerifyPurchasePage extends StatelessWidget {
 class _Body extends HookConsumerWidget {
   const _Body({
     required this.stripeSessionId,
+    super.key,
   });
 
   final String stripeSessionId;
@@ -96,6 +105,7 @@ class _Body extends HookConsumerWidget {
         );
         return result;
       },
+      [],
     );
 
     final verifyPurchaseState = useFuture(verifyPurchaseFuture);
