@@ -10,7 +10,8 @@ class ErrorCard extends StatelessWidget {
     this.color,
     this.suffixMessage,
     this.title,
-    this.padding,
+    this.padding = const EdgeInsets.all(16),
+    this.margin = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   });
 
   final Object error;
@@ -18,6 +19,7 @@ class ErrorCard extends StatelessWidget {
   final String? title;
   final String? suffixMessage;
   final EdgeInsets? padding;
+  final EdgeInsets? margin;
 
   /// DioExceptionで、StatusCodeがある時に　エラーメッセージを上書きする
   final String? Function(int statusCode)? onDioExceptionStatusOverride;
@@ -31,9 +33,10 @@ class ErrorCard extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Card(
+      margin: margin,
       color: color ?? theme.colorScheme.errorContainer,
       child: Padding(
-        padding: padding ?? const EdgeInsets.all(16),
+        padding: padding ?? EdgeInsets.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -47,11 +50,13 @@ class ErrorCard extends StatelessWidget {
                   color: colorScheme.error,
                 ),
                 const SizedBox(width: 16),
-                Text(
-                  title ?? 'ERROR!',
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: colorScheme.onErrorContainer,
+                Flexible(
+                  child: Text(
+                    title ?? 'ERROR!',
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: colorScheme.onErrorContainer,
+                    ),
                   ),
                 ),
               ],

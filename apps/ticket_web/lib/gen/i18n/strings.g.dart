@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 138 (69 per locale)
+/// Strings: 145 (72 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -146,7 +146,6 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	String get hello => 'こんにちは、世界';
 	String get flutterKaigi => 'FlutterKaigi';
 	String get year => '2024';
 	String get officialSite => '公式サイト';
@@ -244,6 +243,7 @@ class _StringsHomePageTicketsJa {
 	String get loginBeforeBuy => 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 	String get ticketManagedByGoogleAccount => '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 	String price({required Object price}) => '¥${price}';
+	late final _StringsHomePageTicketsAlreadyPurchasedCardJa alreadyPurchasedCard = _StringsHomePageTicketsAlreadyPurchasedCardJa._(_root);
 	late final _StringsHomePageTicketsNormalJa normal = _StringsHomePageTicketsNormalJa._(_root);
 	late final _StringsHomePageTicketsInvitationJa invitation = _StringsHomePageTicketsInvitationJa._(_root);
 	late final _StringsHomePageTicketsPersonalSponsorJa personalSponsor = _StringsHomePageTicketsPersonalSponsorJa._(_root);
@@ -304,6 +304,19 @@ class _StringsHomePageTicketsVariantJa {
 	String get sessionSpeaker => 'セッション登壇者チケット';
 	String get sponsorSession => 'スポンサーセッション登壇者チケット';
 	String get sponsorInvitation => 'スポンサー招待チケット';
+}
+
+// Path: homePage.tickets.alreadyPurchasedCard
+class _StringsHomePageTicketsAlreadyPurchasedCardJa {
+	_StringsHomePageTicketsAlreadyPurchasedCardJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'チケットを購入いただきありがとうございます';
+	String get description => 'あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームカードの編集を行ってください。';
+	String get button => 'チケットページへ';
+	String get verifyError => 'チケットをお持ちかどうかの確認中にエラーが発生しました。';
 }
 
 // Path: homePage.tickets.normal
@@ -532,6 +545,7 @@ class _StringsHomePageTicketsEn extends _StringsHomePageTicketsJa {
 	@override String get buyTicket => 'Buy Ticket';
 	@override String get loginBeforeBuy => 'Please login with your Google account to buy or register a ticket.';
 	@override String get ticketManagedByGoogleAccount => 'After purchase or registration, tickets will be managed by your Google account.';
+	@override late final _StringsHomePageTicketsAlreadyPurchasedCardEn alreadyPurchasedCard = _StringsHomePageTicketsAlreadyPurchasedCardEn._(_root);
 	@override late final _StringsHomePageTicketsNormalEn normal = _StringsHomePageTicketsNormalEn._(_root);
 	@override late final _StringsHomePageTicketsInvitationEn invitation = _StringsHomePageTicketsInvitationEn._(_root);
 	@override late final _StringsHomePageTicketsPersonalSponsorEn personalSponsor = _StringsHomePageTicketsPersonalSponsorEn._(_root);
@@ -592,6 +606,19 @@ class _StringsHomePageTicketsVariantEn extends _StringsHomePageTicketsVariantJa 
 	@override String get sessionSpeaker => 'Session Speaker Ticket';
 	@override String get sponsorSession => 'Sponsor Session Speaker Ticket';
 	@override String get sponsorInvitation => 'Sponsor Invitation Ticket';
+}
+
+// Path: homePage.tickets.alreadyPurchasedCard
+class _StringsHomePageTicketsAlreadyPurchasedCardEn extends _StringsHomePageTicketsAlreadyPurchasedCardJa {
+	_StringsHomePageTicketsAlreadyPurchasedCardEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Thank you for purchasing a ticket!';
+	@override String get description => 'You already have a ticket. Please check your ticket and edit your name card from the ticket page.';
+	@override String get button => 'Ticket Page';
+	@override String get verifyError => 'An error occurred while verifying whether you have a ticket.';
 }
 
 // Path: homePage.tickets.normal
@@ -690,7 +717,6 @@ class _StringsHomePageTicketsInvitationValidationInvitedEn extends _StringsHomeP
 extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'hello': return 'こんにちは、世界';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
 			case 'officialSite': return '公式サイト';
@@ -705,6 +731,10 @@ extension on Translations {
 			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 			case 'homePage.tickets.price': return ({required Object price}) => '¥${price}';
+			case 'homePage.tickets.alreadyPurchasedCard.title': return 'チケットを購入いただきありがとうございます';
+			case 'homePage.tickets.alreadyPurchasedCard.description': return 'あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームカードの編集を行ってください。';
+			case 'homePage.tickets.alreadyPurchasedCard.button': return 'チケットページへ';
+			case 'homePage.tickets.alreadyPurchasedCard.verifyError': return 'チケットをお持ちかどうかの確認中にエラーが発生しました。';
 			case 'homePage.tickets.normal.name': return '一般チケット';
 			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
 			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
@@ -783,6 +813,10 @@ extension on _StringsEn {
 			case 'homePage.tickets.buyTicket': return 'Buy Ticket';
 			case 'homePage.tickets.loginBeforeBuy': return 'Please login with your Google account to buy or register a ticket.';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return 'After purchase or registration, tickets will be managed by your Google account.';
+			case 'homePage.tickets.alreadyPurchasedCard.title': return 'Thank you for purchasing a ticket!';
+			case 'homePage.tickets.alreadyPurchasedCard.description': return 'You already have a ticket. Please check your ticket and edit your name card from the ticket page.';
+			case 'homePage.tickets.alreadyPurchasedCard.button': return 'Ticket Page';
+			case 'homePage.tickets.alreadyPurchasedCard.verifyError': return 'An error occurred while verifying whether you have a ticket.';
 			case 'homePage.tickets.normal.name': return 'Normal Ticket';
 			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.normal.description': return 'General admission ticket';

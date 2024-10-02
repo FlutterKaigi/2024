@@ -12,26 +12,31 @@ class InformationForStudents extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Card(
-      color: colorScheme.secondaryContainer,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: colorScheme.tertiaryContainer,
       elevation: 1,
       child: DefaultTextStyle(
         style: TextStyle(
-          color: colorScheme.onSecondaryContainer,
+          color: colorScheme.onTertiaryContainer,
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 i18n.homePage.tickets.student.name,
                 style: theme.textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
+                  color: colorScheme.onTertiaryContainer,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 i18n.homePage.tickets.student.description,
-                style: theme.textTheme.bodyMedium,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onTertiaryContainer.withValues(alpha: 0.7),
+                ),
               ),
             ],
           ),

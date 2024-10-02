@@ -1,5 +1,4 @@
 {
-  "hello": "こんにちは、世界",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
   "official_site": "公式サイト",
@@ -20,6 +19,12 @@
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
       "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
       "price": "¥$price",
+      "already_purchased_card": {
+        "title": "チケットを購入いただきありがとうございます",
+        "description": "あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームカードの編集を行ってください。",
+        "button": "チケットページへ",
+        "verify_error": "チケットをお持ちかどうかの確認中にエラーが発生しました。"
+      },
       "normal": {
         "name": "一般チケット",
         "description": "一般参加者向けチケット"
