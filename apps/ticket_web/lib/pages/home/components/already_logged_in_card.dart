@@ -19,6 +19,7 @@ class AlreadyLoggedInCard extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return Card.outlined(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: BorderSide(

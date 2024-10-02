@@ -18,6 +18,7 @@ class Ticket with _$Ticket {
   factory Ticket.fromJson(Map<String, dynamic> json) => _$TicketFromJson(json);
 }
 
+@JsonEnum(fieldRename: FieldRename.snake)
 enum TicketType {
   /// スポンサーブースの運営来場
   sponsorBooth,

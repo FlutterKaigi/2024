@@ -1,0 +1,2 @@
+ALTER TABLE tickets
+ADD CONSTRAINT tickets_stripe_checkout_session_id_unique UNIQUE (stripe_checkout_session_id);

@@ -7,9 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ticket_web/app.dart';
 import 'package:ticket_web/core/provider/environment.dart';
 import 'package:ticket_web/core/provider/shared_preferences.dart';
+import 'package:ticket_web/core/util/setup_web_environment.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  setupWebEnvironment();
 
   LicenseRegistry.addLicense(() async* {
     final licenseFiles = [

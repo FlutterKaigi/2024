@@ -6,6 +6,7 @@ export async function getUser(
   supabase: SupabaseClient<Database>
 ): Promise<User | null> {
   const jwt = authorizationHeader.replace("Bearer ", "");
+  console.log(jwt);
   const {
     data: { user }
   } = await supabase.auth.getUser(jwt);

@@ -24,6 +24,14 @@ RouteBase get $homeRoute => GoRouteData.$route(
             ),
           ],
         ),
+        GoRouteData.$route(
+          path: 'verify_purchase',
+          factory: $VerifyPurchaseRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: 'ticket',
+          factory: $TicketRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -67,6 +75,41 @@ extension $NavigationDebugRouteExtension on NavigationDebugRoute {
 
   String get location => GoRouteData.$location(
         '/debug/navigation',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $VerifyPurchaseRouteExtension on VerifyPurchaseRoute {
+  static VerifyPurchaseRoute _fromState(GoRouterState state) =>
+      const VerifyPurchaseRoute();
+
+  String get location => GoRouteData.$location(
+        '/verify_purchase',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $TicketRouteExtension on TicketRoute {
+  static TicketRoute _fromState(GoRouterState state) => const TicketRoute();
+
+  String get location => GoRouteData.$location(
+        '/ticket',
       );
 
   void go(BuildContext context) => context.go(location);

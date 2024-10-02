@@ -38,7 +38,7 @@ class GeneralTicketCard extends HookWidget {
             const Row(),
             Text(
               i18n.homePage.tickets.normal.name,
-              style: textTheme.displaySmall?.copyWith(
+              style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),

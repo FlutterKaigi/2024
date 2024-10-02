@@ -1,5 +1,4 @@
 {
-  "hello": "こんにちは、世界",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
   "official_site": "公式サイト",
@@ -20,6 +19,12 @@
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
       "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
       "price": "¥$price",
+      "already_purchased_card": {
+        "title": "チケットを購入いただきありがとうございます",
+        "description": "あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームカードの編集を行ってください。",
+        "button": "チケットページへ",
+        "verify_error": "チケットをお持ちかどうかの確認中にエラーが発生しました。"
+      },
       "normal": {
         "name": "一般チケット",
         "description": "一般参加者向けチケット"
@@ -64,6 +69,14 @@
         "description": "[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。"
       }
     }
+  },
+  "verify_purchase": {
+    "processing": "購入処理中...",
+    "processing_description": "購入記録とユーザを紐づけています。しばらくお待ちください。",
+    "success": "購入処理が完了しました!",
+    "error": "チケットの購入処理中にエラーが発生しました",
+    "error_description": "エラーが発生したため、購入処理が完了できませんでした。ページを再読み込みして再試行してください。",
+    "contact": "問題が解決しない場合は、運営にお問い合わせください"
   },
   "authorization": {
     "already_logged_in_with_mail_address": "$mailAddress でログイン済みです",
