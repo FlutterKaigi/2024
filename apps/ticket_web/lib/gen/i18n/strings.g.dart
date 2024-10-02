@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 145 (72 per locale)
+/// Strings: 192 (96 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -155,6 +155,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsAuthorizationJa authorization = _StringsAuthorizationJa._(_root);
 	late final _StringsFooterJa footer = _StringsFooterJa._(_root);
 	late final _StringsErrorJa error = _StringsErrorJa._(_root);
+	late final _StringsTicketPageJa ticketPage = _StringsTicketPageJa._(_root);
 }
 
 // Path: homePage
@@ -218,6 +219,20 @@ class _StringsErrorJa {
 
 	// Translations
 	late final _StringsErrorNetworkJa network = _StringsErrorNetworkJa._(_root);
+}
+
+// Path: ticketPage
+class _StringsTicketPageJa {
+	_StringsTicketPageJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsTicketPageThankYouCardJa thankYouCard = _StringsTicketPageThankYouCardJa._(_root);
+	late final _StringsTicketPageWarningForSpeakerProfileJa warningForSpeakerProfile = _StringsTicketPageWarningForSpeakerProfileJa._(_root);
+	late final _StringsTicketPageWarningForPersonalSponsorJa warningForPersonalSponsor = _StringsTicketPageWarningForPersonalSponsorJa._(_root);
+	late final _StringsTicketPageInformationForProfileEditJa informationForProfileEdit = _StringsTicketPageInformationForProfileEditJa._(_root);
+	late final _StringsTicketPageEditFieldsJa editFields = _StringsTicketPageEditFieldsJa._(_root);
 }
 
 // Path: homePage.titleAndLogo
@@ -293,6 +308,65 @@ class _StringsErrorNetworkJa {
 	String get unknown => '不明なエラーが発生しました';
 }
 
+// Path: ticketPage.thankYouCard
+class _StringsTicketPageThankYouCardJa {
+	_StringsTicketPageThankYouCardJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'チケットを購入いただき、ありがとうございます!';
+	String description({required Object type}) => '${type} チケットをお持ちです';
+}
+
+// Path: ticketPage.warningForSpeakerProfile
+class _StringsTicketPageWarningForSpeakerProfileJa {
+	_StringsTicketPageWarningForSpeakerProfileJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => '登壇者のプロフィール情報についての注意';
+	String get description => '登壇者のプロフィールは、FlutterKaigi公式サイトに公開されます。注意してください';
+}
+
+// Path: ticketPage.warningForPersonalSponsor
+class _StringsTicketPageWarningForPersonalSponsorJa {
+	_StringsTicketPageWarningForPersonalSponsorJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => '個人スポンサーのプロフィール情報についての注意';
+	String get description => 'あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます';
+	late final _StringsTicketPageWarningForPersonalSponsorButtonsJa buttons = _StringsTicketPageWarningForPersonalSponsorButtonsJa._(_root);
+}
+
+// Path: ticketPage.informationForProfileEdit
+class _StringsTicketPageInformationForProfileEditJa {
+	_StringsTicketPageInformationForProfileEditJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'プロフィール情報について';
+	String get description => 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
+}
+
+// Path: ticketPage.editFields
+class _StringsTicketPageEditFieldsJa {
+	_StringsTicketPageEditFieldsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsTicketPageEditFieldsDialogJa dialog = _StringsTicketPageEditFieldsDialogJa._(_root);
+	late final _StringsTicketPageEditFieldsNameJa name = _StringsTicketPageEditFieldsNameJa._(_root);
+	late final _StringsTicketPageEditFieldsCommentJa comment = _StringsTicketPageEditFieldsCommentJa._(_root);
+	late final _StringsTicketPageEditFieldsXAccountJa xAccount = _StringsTicketPageEditFieldsXAccountJa._(_root);
+	late final _StringsTicketPageEditFieldsAvatarJa avatar = _StringsTicketPageEditFieldsAvatarJa._(_root);
+}
+
 // Path: homePage.tickets.variant
 class _StringsHomePageTicketsVariantJa {
 	_StringsHomePageTicketsVariantJa._(this._root);
@@ -304,6 +378,8 @@ class _StringsHomePageTicketsVariantJa {
 	String get sessionSpeaker => 'セッション登壇者チケット';
 	String get sponsorSession => 'スポンサーセッション登壇者チケット';
 	String get sponsorInvitation => 'スポンサー招待チケット';
+	String get sponsorBooth => 'スポンサーブースチケット';
+	String get personalSponsor => '個人スポンサーチケット';
 }
 
 // Path: homePage.tickets.alreadyPurchasedCard
@@ -365,6 +441,75 @@ class _StringsHomePageTicketsStudentJa {
 	// Translations
 	String get name => '学割について';
 	String get description => '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+}
+
+// Path: ticketPage.warningForPersonalSponsor.buttons
+class _StringsTicketPageWarningForPersonalSponsorButtonsJa {
+	_StringsTicketPageWarningForPersonalSponsorButtonsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get publishProfile => 'プロフィールを公開する';
+	String get doNotPublishProfile => 'プロフィールを非公開にする';
+}
+
+// Path: ticketPage.editFields.dialog
+class _StringsTicketPageEditFieldsDialogJa {
+	_StringsTicketPageEditFieldsDialogJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get ok => '決定';
+	String get cancel => 'キャンセル';
+}
+
+// Path: ticketPage.editFields.name
+class _StringsTicketPageEditFieldsNameJa {
+	_StringsTicketPageEditFieldsNameJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => '名前';
+	String get description => '名前を入力してください。(20文字以内 特殊文字は使用できません)';
+}
+
+// Path: ticketPage.editFields.comment
+class _StringsTicketPageEditFieldsCommentJa {
+	_StringsTicketPageEditFieldsCommentJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'ひとこと';
+	String get description => 'ひとことを入力してください。(80文字以内 特殊文字は使用できません)';
+}
+
+// Path: ticketPage.editFields.xAccount
+class _StringsTicketPageEditFieldsXAccountJa {
+	_StringsTicketPageEditFieldsXAccountJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Xアカウント';
+	String get description => 'Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)';
+	String get placeholder => 'Xアカウント';
+}
+
+// Path: ticketPage.editFields.avatar
+class _StringsTicketPageEditFieldsAvatarJa {
+	_StringsTicketPageEditFieldsAvatarJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'プロフィール画像';
+	String get description => 'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。';
+	String get uploadButton => '画像を選択';
+	String get removeButton => '画像を削除';
 }
 
 // Path: homePage.tickets.invitation.error
@@ -448,7 +593,6 @@ class _StringsEn extends Translations {
 	@override late final _StringsEn _root = this; // ignore: unused_field
 
 	// Translations
-	@override String get hello => 'Hello, World!';
 	@override String get flutterKaigi => 'FlutterKaigi';
 	@override String get year => '2024';
 	@override String get officialSite => 'Official Site';
@@ -458,6 +602,7 @@ class _StringsEn extends Translations {
 	@override late final _StringsAuthorizationEn authorization = _StringsAuthorizationEn._(_root);
 	@override late final _StringsFooterEn footer = _StringsFooterEn._(_root);
 	@override late final _StringsErrorEn error = _StringsErrorEn._(_root);
+	@override late final _StringsTicketPageEn ticketPage = _StringsTicketPageEn._(_root);
 }
 
 // Path: homePage
@@ -521,6 +666,20 @@ class _StringsErrorEn extends _StringsErrorJa {
 
 	// Translations
 	@override late final _StringsErrorNetworkEn network = _StringsErrorNetworkEn._(_root);
+}
+
+// Path: ticketPage
+class _StringsTicketPageEn extends _StringsTicketPageJa {
+	_StringsTicketPageEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsTicketPageThankYouCardEn thankYouCard = _StringsTicketPageThankYouCardEn._(_root);
+	@override late final _StringsTicketPageWarningForSpeakerProfileEn warningForSpeakerProfile = _StringsTicketPageWarningForSpeakerProfileEn._(_root);
+	@override late final _StringsTicketPageWarningForPersonalSponsorEn warningForPersonalSponsor = _StringsTicketPageWarningForPersonalSponsorEn._(_root);
+	@override late final _StringsTicketPageInformationForProfileEditEn informationForProfileEdit = _StringsTicketPageInformationForProfileEditEn._(_root);
+	@override late final _StringsTicketPageEditFieldsEn editFields = _StringsTicketPageEditFieldsEn._(_root);
 }
 
 // Path: homePage.titleAndLogo
@@ -593,6 +752,65 @@ class _StringsErrorNetworkEn extends _StringsErrorNetworkJa {
 	@override String statusOther({required Object statusCode}) => 'A network error occurred (Status Code: ${statusCode})';
 	@override String get tryAgain => 'Please try again later.';
 	@override String get unknown => 'An unknown error occurred.';
+}
+
+// Path: ticketPage.thankYouCard
+class _StringsTicketPageThankYouCardEn extends _StringsTicketPageThankYouCardJa {
+	_StringsTicketPageThankYouCardEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Thank you for purchasing a ticket!';
+	@override String description({required Object type}) => 'You have a ${type} ticket.';
+}
+
+// Path: ticketPage.warningForSpeakerProfile
+class _StringsTicketPageWarningForSpeakerProfileEn extends _StringsTicketPageWarningForSpeakerProfileJa {
+	_StringsTicketPageWarningForSpeakerProfileEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Note on Speaker Profile';
+	@override String get description => 'Speaker profiles will be published on the FlutterKaigi official site. Please be careful.';
+}
+
+// Path: ticketPage.warningForPersonalSponsor
+class _StringsTicketPageWarningForPersonalSponsorEn extends _StringsTicketPageWarningForPersonalSponsorJa {
+	_StringsTicketPageWarningForPersonalSponsorEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Note on Personal Sponsor Profile';
+	@override String get description => 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.';
+	@override late final _StringsTicketPageWarningForPersonalSponsorButtonsEn buttons = _StringsTicketPageWarningForPersonalSponsorButtonsEn._(_root);
+}
+
+// Path: ticketPage.informationForProfileEdit
+class _StringsTicketPageInformationForProfileEditEn extends _StringsTicketPageInformationForProfileEditJa {
+	_StringsTicketPageInformationForProfileEditEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Note on Profile Information';
+	@override String get description => 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+}
+
+// Path: ticketPage.editFields
+class _StringsTicketPageEditFieldsEn extends _StringsTicketPageEditFieldsJa {
+	_StringsTicketPageEditFieldsEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsTicketPageEditFieldsDialogEn dialog = _StringsTicketPageEditFieldsDialogEn._(_root);
+	@override late final _StringsTicketPageEditFieldsNameEn name = _StringsTicketPageEditFieldsNameEn._(_root);
+	@override late final _StringsTicketPageEditFieldsCommentEn comment = _StringsTicketPageEditFieldsCommentEn._(_root);
+	@override late final _StringsTicketPageEditFieldsXAccountEn xAccount = _StringsTicketPageEditFieldsXAccountEn._(_root);
+	@override late final _StringsTicketPageEditFieldsAvatarEn avatar = _StringsTicketPageEditFieldsAvatarEn._(_root);
 }
 
 // Path: homePage.tickets.variant
@@ -669,6 +887,75 @@ class _StringsHomePageTicketsStudentEn extends _StringsHomePageTicketsStudentJa 
 	@override String get description => 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
 }
 
+// Path: ticketPage.warningForPersonalSponsor.buttons
+class _StringsTicketPageWarningForPersonalSponsorButtonsEn extends _StringsTicketPageWarningForPersonalSponsorButtonsJa {
+	_StringsTicketPageWarningForPersonalSponsorButtonsEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get publishProfile => 'Publish Profile';
+	@override String get doNotPublishProfile => 'DO NOT Publish Profile';
+}
+
+// Path: ticketPage.editFields.dialog
+class _StringsTicketPageEditFieldsDialogEn extends _StringsTicketPageEditFieldsDialogJa {
+	_StringsTicketPageEditFieldsDialogEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get ok => 'OK';
+	@override String get cancel => 'Cancel';
+}
+
+// Path: ticketPage.editFields.name
+class _StringsTicketPageEditFieldsNameEn extends _StringsTicketPageEditFieldsNameJa {
+	_StringsTicketPageEditFieldsNameEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Name';
+	@override String get description => 'Please enter your name. (20 characters or less, no special characters allowed)';
+}
+
+// Path: ticketPage.editFields.comment
+class _StringsTicketPageEditFieldsCommentEn extends _StringsTicketPageEditFieldsCommentJa {
+	_StringsTicketPageEditFieldsCommentEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Comment';
+	@override String get description => 'Please enter your comment. (80 characters or less, no special characters allowed)';
+}
+
+// Path: ticketPage.editFields.xAccount
+class _StringsTicketPageEditFieldsXAccountEn extends _StringsTicketPageEditFieldsXAccountJa {
+	_StringsTicketPageEditFieldsXAccountEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'X Account';
+	@override String get description => 'Please enter your X account. (No @ symbol allowed)';
+	@override String get placeholder => 'X Account';
+}
+
+// Path: ticketPage.editFields.avatar
+class _StringsTicketPageEditFieldsAvatarEn extends _StringsTicketPageEditFieldsAvatarJa {
+	_StringsTicketPageEditFieldsAvatarEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Profile Image';
+	@override String get description => 'Please upload your profile image. (PNG, JPG format, up to 2MB)';
+	@override String get uploadButton => 'Upload Image';
+	@override String get removeButton => 'Remove Image';
+}
+
 // Path: homePage.tickets.invitation.validation
 class _StringsHomePageTicketsInvitationValidationEn extends _StringsHomePageTicketsInvitationValidationJa {
 	_StringsHomePageTicketsInvitationValidationEn._(_StringsEn root) : this._root = root, super._(root);
@@ -727,6 +1014,8 @@ extension on Translations {
 			case 'homePage.tickets.variant.sessionSpeaker': return 'セッション登壇者チケット';
 			case 'homePage.tickets.variant.sponsorSession': return 'スポンサーセッション登壇者チケット';
 			case 'homePage.tickets.variant.sponsorInvitation': return 'スポンサー招待チケット';
+			case 'homePage.tickets.variant.sponsorBooth': return 'スポンサーブースチケット';
+			case 'homePage.tickets.variant.personalSponsor': return '個人スポンサーチケット';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
 			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
@@ -791,6 +1080,29 @@ extension on Translations {
 			case 'error.network.statusOther': return ({required Object statusCode}) => 'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
 			case 'error.network.tryAgain': return '時間をおいて再度お試しください';
 			case 'error.network.unknown': return '不明なエラーが発生しました';
+			case 'ticketPage.thankYouCard.title': return 'チケットを購入いただき、ありがとうございます!';
+			case 'ticketPage.thankYouCard.description': return ({required Object type}) => '${type} チケットをお持ちです';
+			case 'ticketPage.warningForSpeakerProfile.title': return '登壇者のプロフィール情報についての注意';
+			case 'ticketPage.warningForSpeakerProfile.description': return '登壇者のプロフィールは、FlutterKaigi公式サイトに公開されます。注意してください';
+			case 'ticketPage.warningForPersonalSponsor.title': return '個人スポンサーのプロフィール情報についての注意';
+			case 'ticketPage.warningForPersonalSponsor.description': return 'あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます';
+			case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile': return 'プロフィールを公開する';
+			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'プロフィールを非公開にする';
+			case 'ticketPage.informationForProfileEdit.title': return 'プロフィール情報について';
+			case 'ticketPage.informationForProfileEdit.description': return 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
+			case 'ticketPage.editFields.dialog.ok': return '決定';
+			case 'ticketPage.editFields.dialog.cancel': return 'キャンセル';
+			case 'ticketPage.editFields.name.title': return '名前';
+			case 'ticketPage.editFields.name.description': return '名前を入力してください。(20文字以内 特殊文字は使用できません)';
+			case 'ticketPage.editFields.comment.title': return 'ひとこと';
+			case 'ticketPage.editFields.comment.description': return 'ひとことを入力してください。(80文字以内 特殊文字は使用できません)';
+			case 'ticketPage.editFields.xAccount.title': return 'Xアカウント';
+			case 'ticketPage.editFields.xAccount.description': return 'Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)';
+			case 'ticketPage.editFields.xAccount.placeholder': return 'Xアカウント';
+			case 'ticketPage.editFields.avatar.title': return 'プロフィール画像';
+			case 'ticketPage.editFields.avatar.description': return 'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。';
+			case 'ticketPage.editFields.avatar.uploadButton': return '画像を選択';
+			case 'ticketPage.editFields.avatar.removeButton': return '画像を削除';
 			default: return null;
 		}
 	}
@@ -799,7 +1111,6 @@ extension on Translations {
 extension on _StringsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
-			case 'hello': return 'Hello, World!';
 			case 'flutterKaigi': return 'FlutterKaigi';
 			case 'year': return '2024';
 			case 'officialSite': return 'Official Site';
@@ -870,6 +1181,29 @@ extension on _StringsEn {
 			case 'error.network.statusOther': return ({required Object statusCode}) => 'A network error occurred (Status Code: ${statusCode})';
 			case 'error.network.tryAgain': return 'Please try again later.';
 			case 'error.network.unknown': return 'An unknown error occurred.';
+			case 'ticketPage.thankYouCard.title': return 'Thank you for purchasing a ticket!';
+			case 'ticketPage.thankYouCard.description': return ({required Object type}) => 'You have a ${type} ticket.';
+			case 'ticketPage.warningForSpeakerProfile.title': return 'Note on Speaker Profile';
+			case 'ticketPage.warningForSpeakerProfile.description': return 'Speaker profiles will be published on the FlutterKaigi official site. Please be careful.';
+			case 'ticketPage.warningForPersonalSponsor.title': return 'Note on Personal Sponsor Profile';
+			case 'ticketPage.warningForPersonalSponsor.description': return 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.';
+			case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile': return 'Publish Profile';
+			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'DO NOT Publish Profile';
+			case 'ticketPage.informationForProfileEdit.title': return 'Note on Profile Information';
+			case 'ticketPage.informationForProfileEdit.description': return 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+			case 'ticketPage.editFields.dialog.ok': return 'OK';
+			case 'ticketPage.editFields.dialog.cancel': return 'Cancel';
+			case 'ticketPage.editFields.name.title': return 'Name';
+			case 'ticketPage.editFields.name.description': return 'Please enter your name. (20 characters or less, no special characters allowed)';
+			case 'ticketPage.editFields.comment.title': return 'Comment';
+			case 'ticketPage.editFields.comment.description': return 'Please enter your comment. (80 characters or less, no special characters allowed)';
+			case 'ticketPage.editFields.xAccount.title': return 'X Account';
+			case 'ticketPage.editFields.xAccount.description': return 'Please enter your X account. (No @ symbol allowed)';
+			case 'ticketPage.editFields.xAccount.placeholder': return 'X Account';
+			case 'ticketPage.editFields.avatar.title': return 'Profile Image';
+			case 'ticketPage.editFields.avatar.description': return 'Please upload your profile image. (PNG, JPG format, up to 2MB)';
+			case 'ticketPage.editFields.avatar.uploadButton': return 'Upload Image';
+			case 'ticketPage.editFields.avatar.removeButton': return 'Remove Image';
 			default: return null;
 		}
 	}

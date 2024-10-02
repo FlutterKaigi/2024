@@ -13,7 +13,9 @@
         "general": "一般チケット",
         "session_speaker": "セッション登壇者チケット",
         "sponsor_session": "スポンサーセッション登壇者チケット",
-        "sponsor_invitation": "スポンサー招待チケット"
+        "sponsor_invitation": "スポンサー招待チケット",
+        "sponsor_booth": "スポンサーブースチケット",
+        "personal_sponsor": "個人スポンサーチケット"
       },
       "buyTicket": "チケットを購入",
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",

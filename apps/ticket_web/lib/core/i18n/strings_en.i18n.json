@@ -13,7 +13,9 @@
         "general": "General Ticket",
         "session_speaker": "Session Speaker Ticket",
         "sponsor_session": "Sponsor Session Speaker Ticket",
-        "sponsor_invitation": "Sponsor Invitation Ticket"
+        "sponsor_invitation": "Sponsor Invitation Ticket",
+        "sponsor_booth": "Sponsor Booth Ticket",
+        "personal_sponsor": "Personal Sponsor Ticket"
       },
       "buyTicket": "Buy Ticket",
       "loginBeforeBuy": "Please login with your Google account to buy or register a ticket.",
