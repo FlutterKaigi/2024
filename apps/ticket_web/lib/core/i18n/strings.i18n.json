@@ -112,5 +112,52 @@
       "try_again": "時間をおいて再度お試しください",
       "unknown": "不明なエラーが発生しました"
     }
+  },
+  "ticketPage": {
+    "thankYouCard": {
+      "title": "チケットを購入いただき、ありがとうございます!",
+      "description": "$type チケットをお持ちです"
+    },
+    "warning_for_speaker_profile": {
+      "title": "登壇者のプロフィール情報についての注意",
+      "description": "登壇者のプロフィールは、FlutterKaigi公式サイトに公開されます。注意してください"
+    },
+    "warning_for_personal_sponsor": {
+      "title": "個人スポンサーのプロフィール情報についての注意",
+      "description": "あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます",
+      "buttons": {
+        "publish_profile": "プロフィールを公開する",
+        "do_not_publish_profile": "プロフィールを非公開にする"
+      }
+    },
+    "information_for_profile_edit": {
+      "title": "プロフィール情報について",
+      "description": "ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。"
+    },
+    "edit_fields": {
+      "dialog": {
+        "ok": "決定",
+        "cancel": "キャンセル"
+      },
+      "name": {
+        "title": "名前",
+        "description": "名前を入力してください。(20文字以内 特殊文字は使用できません)"
+      },
+      "comment": {
+        "title": "ひとこと",
+        "description": "ひとことを入力してください。(80文字以内 特殊文字は使用できません)"
+      },
+      "x_account": {
+        "title": "Xアカウント",
+        "description": "Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)",
+        "placeholder": "Xアカウント"
+      },
+      "avatar": {
+        "title": "プロフィール画像",
+        "description": "プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。",
+        "upload_button": "画像を選択",
+        "remove_button": "画像を削除"
+      }
+    }
   }
 }

@@ -1,5 +1,4 @@
 {
-  "hello": "Hello, World!",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
   "official_site": "Official Site",
@@ -106,6 +105,53 @@
       "status_other": "A network error occurred (Status Code: $statusCode)",
       "try_again": "Please try again later.",
       "unknown": "An unknown error occurred."
+    }
+  },
+  "ticketPage": {
+    "thankYouCard": {
+      "title": "Thank you for purchasing a ticket!",
+      "description": "You have a $type ticket."
+    },
+    "warning_for_speaker_profile": {
+      "title": "Note on Speaker Profile",
+      "description": "Speaker profiles will be published on the FlutterKaigi official site. Please be careful."
+    },
+    "warning_for_personal_sponsor": {
+      "title": "Note on Personal Sponsor Profile",
+      "description": "You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.",
+      "buttons": {
+        "publish_profile": "Publish Profile",
+        "do_not_publish_profile": "DO NOT Publish Profile"
+      }
+    },
+    "information_for_profile_edit": {
+      "title": "Note on Profile Information",
+      "description": "The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image."
+    },
+    "edit_fields": {
+      "dialog": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
+      "name": {
+        "title": "Name",
+        "description": "Please enter your name. (20 characters or less, no special characters allowed)"
+      },
+      "comment": {
+        "title": "Comment",
+        "description": "Please enter your comment. (80 characters or less, no special characters allowed)"
+      },
+      "x_account": {
+        "title": "X Account",
+        "description": "Please enter your X account. (No @ symbol allowed)",
+        "placeholder": "X Account"
+      },
+      "avatar": {
+        "title": "Profile Image",
+        "description": "Please upload your profile image. (PNG, JPG format, up to 2MB)",
+        "upload_button": "Upload Image",
+        "remove_button": "Remove Image"
+      }
     }
   }
 }
