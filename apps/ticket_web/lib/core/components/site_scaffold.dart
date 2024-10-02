@@ -13,6 +13,7 @@ class SiteScaffold extends StatelessWidget {
     required this.showFooter,
     required this.onHeaderTitleTap,
     required this.slivers,
+    required this.headerAutomaticallyImplyLeading,
   }) : assert(
           showHeader || onHeaderTitleTap == null,
           'onHeaderTitleTapはshowHeaderがtrueのときのみ指定できます',
@@ -24,11 +25,13 @@ class SiteScaffold extends StatelessWidget {
     bool showHeader = true,
     bool showFooter = true,
     VoidCallback? onHeaderTitleTap,
+    bool headerAutomaticallyImplyLeading = false,
   }) =>
       SiteScaffold._(
         showHeader: showHeader,
         showFooter: showFooter,
         onHeaderTitleTap: onHeaderTitleTap,
+        headerAutomaticallyImplyLeading: headerAutomaticallyImplyLeading,
         slivers: [
           SliverToBoxAdapter(
             child: body,
@@ -41,12 +44,14 @@ class SiteScaffold extends StatelessWidget {
     bool showHeader = true,
     bool showFooter = true,
     VoidCallback? onHeaderTitleTap,
+    bool headerAutomaticallyImplyLeading = false,
   }) =>
       SiteScaffold._(
         showHeader: showHeader,
         showFooter: showFooter,
         onHeaderTitleTap: onHeaderTitleTap,
         slivers: slivers,
+        headerAutomaticallyImplyLeading: headerAutomaticallyImplyLeading,
       );
 
   final bool showHeader;
@@ -55,6 +60,8 @@ class SiteScaffold extends StatelessWidget {
   final VoidCallback? onHeaderTitleTap;
 
   final List<Widget> slivers;
+
+  final bool headerAutomaticallyImplyLeading;
 
   @override
   Widget build(BuildContext context) {

@@ -23,4 +23,6 @@ class AuthNotifier extends _$AuthNotifier {
           );
 
   Future<void> signOut() async => ref.read(authRepositoryProvider).signOut();
+
+  String? accessToken() => ref.read(authRepositoryProvider).accessToken;
 }
