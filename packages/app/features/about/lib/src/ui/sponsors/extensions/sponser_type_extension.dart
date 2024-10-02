@@ -1,6 +1,6 @@
 import 'package:common_data/sponsor.dart';
 
-extension SponsorExtension on Sponsor {
+extension SponsorTypeExtension on SponsorType {
   String get nameUpperCase => name.replaceRange(
         0,
         1,
