@@ -10,6 +10,7 @@ dependencies:
   collection: ^1.19.0
   common_data:
     path: ../../packages/common/data
+  file_picker: ^8.1.2
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
