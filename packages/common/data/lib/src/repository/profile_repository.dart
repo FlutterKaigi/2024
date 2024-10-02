@@ -206,6 +206,22 @@ class ProfileRepository {
     return _toProfile(result);
   }
 
+  Future<void> deleteProfileAvatar(String userId, String fileName) async {
+    await _client.storage.from('profile_avatars').remove([
+      '$userId/$fileName',
+    ]);
+
+    await _client
+        .from('profiles')
+        .update({
+          'avatar_name': null,
+        })
+        .eq('id', userId)
+        .select()
+        .single()
+        .withConverter(ProfileTable.fromJson);
+  }
+
   /// プロフィールのアバターのURLを取得します
   /// [userId] はユーザーID
   /// 当該ファイルが存在するかどうかは検証しないため、URLをFetchしても404が返ることがあります
