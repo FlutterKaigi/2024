@@ -31,6 +31,8 @@ class ProfileAvatarChoiceDialog extends ConsumerWidget {
     final avatarImageUri = profile.valueOrNull?.userAvatarUri;
     final googleAvatarUri = profile.valueOrNull?.googleAvatarUri;
 
+    final i18n = Translations.of(context);
+
     return AlertDialog(
       title: Text(t.ticketPage.editFields.avatar.title),
       content: Column(
@@ -60,7 +62,7 @@ class ProfileAvatarChoiceDialog extends ConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            t.ticketPage.editFields.avatar.deleteSuccess,
+                            i18n.ticketPage.editFields.avatar.deleteSuccess,
                           ),
                         ),
                       );
@@ -71,7 +73,7 @@ class ProfileAvatarChoiceDialog extends ConsumerWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            '${t.ticketPage.editFields.avatar.deleteError} '
+                            '${i18n.ticketPage.editFields.avatar.deleteError} '
                             '(${e.runtimeType})',
                           ),
                         ),
@@ -81,7 +83,7 @@ class ProfileAvatarChoiceDialog extends ConsumerWidget {
                   }
                 },
                 child: Text(
-                  t.ticketPage.editFields.avatar.removeButton,
+                  i18n.ticketPage.editFields.avatar.removeButton,
                   style: TextStyle(color: theme.colorScheme.error),
                 ),
               ),

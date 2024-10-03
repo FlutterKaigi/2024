@@ -51,6 +51,7 @@ class TicketCardEditDialog extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: initialValue);
+    final i18n = Translations.of(context);
 
     final formKey = useRef(GlobalKey<FormState>());
 
@@ -85,7 +86,7 @@ class TicketCardEditDialog extends HookWidget {
                 if (value == null || value.isEmpty) {
                   return switch (type) {
                     EditDialogType.name =>
-                      t.ticketPage.editFields.name.validation.empty,
+                      i18n.ticketPage.editFields.name.validation.empty,
                     EditDialogType.comment => null,
                     EditDialogType.xAccount => null,
                   };
@@ -93,10 +94,10 @@ class TicketCardEditDialog extends HookWidget {
 
                 final invalidCharacters = switch (type) {
                   EditDialogType.name =>
-                    t.ticketPage.editFields.name.validation.invalidCharacters,
-                  EditDialogType.comment => t.ticketPage.editFields.comment
+                    i18n.ticketPage.editFields.name.validation.invalidCharacters,
+                  EditDialogType.comment => i18n.ticketPage.editFields.comment
                       .validation.invalidCharacters,
-                  EditDialogType.xAccount => t.ticketPage.editFields.xAccount
+                  EditDialogType.xAccount => i18n.ticketPage.editFields.xAccount
                       .validation.invalidCharacters,
                 };
                 if (isOnlyEnglish) {
@@ -127,7 +128,7 @@ class TicketCardEditDialog extends HookWidget {
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: Text(t.ticketPage.editFields.dialog.cancel),
+          child: Text(i18n.ticketPage.editFields.dialog.cancel),
         ),
         TextButton(
           onPressed: isValidated.value
@@ -136,7 +137,7 @@ class TicketCardEditDialog extends HookWidget {
                   Navigator.of(context).pop();
                 }
               : null,
-          child: Text(t.ticketPage.editFields.dialog.ok),
+          child: Text(i18n.ticketPage.editFields.dialog.ok),
         ),
       ],
     );

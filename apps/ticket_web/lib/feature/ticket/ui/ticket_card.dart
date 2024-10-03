@@ -77,12 +77,13 @@ class TicketCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final i18n = Translations.of(context);
     Future<void> onUpdated() async {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              t.ticketPage.editFields.results.success,
+              i18n.ticketPage.editFields.results.success,
             ),
           ),
         );
@@ -94,7 +95,7 @@ class TicketCard extends ConsumerWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              t.ticketPage.editFields.results.error +
+              i18n.ticketPage.editFields.results.error +
                   (message != null ? '($message)' : ''),
             ),
           ),
