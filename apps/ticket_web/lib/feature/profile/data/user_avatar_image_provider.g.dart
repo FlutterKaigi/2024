@@ -6,7 +6,7 @@ part of 'user_avatar_image_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userAvatarImageHash() => r'2a465faec46d9696aa0ac0acc83cd9a8de5ce327';
+String _$userAvatarImageHash() => r'06d38155ad58d6a7b29578b8c913a78dbdb6d893';
 
 /// See also [userAvatarImage].
 @ProviderFor(userAvatarImage)
