@@ -351,7 +351,7 @@ class _StringsTicketPageInformationForProfileEditJa {
 
 	// Translations
 	String get title => 'プロフィール情報について';
-	String get description => 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
+	String get description => 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームプレートに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
 }
 
 // Path: ticketPage.profileEditRestriction
@@ -403,7 +403,7 @@ class _StringsHomePageTicketsAlreadyPurchasedCardJa {
 
 	// Translations
 	String get title => 'チケットを購入いただきありがとうございます';
-	String get description => 'あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームカードの編集を行ってください。';
+	String get description => 'あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームプレートの編集を行ってください。';
 	String get button => 'チケットページへ';
 	String get verifyError => 'チケットをお持ちかどうかの確認中にエラーが発生しました。';
 }
@@ -1156,7 +1156,7 @@ extension on Translations {
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
 			case 'homePage.tickets.price': return ({required Object price}) => '¥${price}';
 			case 'homePage.tickets.alreadyPurchasedCard.title': return 'チケットを購入いただきありがとうございます';
-			case 'homePage.tickets.alreadyPurchasedCard.description': return 'あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームカードの編集を行ってください。';
+			case 'homePage.tickets.alreadyPurchasedCard.description': return 'あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームプレートの編集を行ってください。';
 			case 'homePage.tickets.alreadyPurchasedCard.button': return 'チケットページへ';
 			case 'homePage.tickets.alreadyPurchasedCard.verifyError': return 'チケットをお持ちかどうかの確認中にエラーが発生しました。';
 			case 'homePage.tickets.normal.name': return '一般チケット';
@@ -1224,7 +1224,7 @@ extension on Translations {
 			case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile': return 'プロフィールを公開する';
 			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'プロフィールを非公開にする';
 			case 'ticketPage.informationForProfileEdit.title': return 'プロフィール情報について';
-			case 'ticketPage.informationForProfileEdit.description': return 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
+			case 'ticketPage.informationForProfileEdit.description': return 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームプレートに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
 			case 'ticketPage.profileEditRestriction.title': return 'プロフィール編集の注意';
 			case 'ticketPage.profileEditRestriction.description': return '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**10月21日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
 			case 'ticketPage.editFields.dialog.ok': return '決定';
