@@ -7,6 +7,8 @@ on:
         value: ${{ jobs.changes.outputs.any }}
       database:
         value: ${{ jobs.changes.outputs.database }}
+      diff:
+        value: ${{ jobs.changes.outputs.diff }}
       markdownlint:
         value: ${{ jobs.changes.outputs.markdownlint }}
       prettier:
@@ -26,6 +28,7 @@ jobs:
     outputs:
       any: ${{ steps.filter.outputs.changes != '[]' }}
       database: ${{ steps.filter.outputs.database }}
+      diff: ${{ steps.filter.outputs.diff }}
       markdownlint: ${{ steps.filter.outputs.markdownlint }}
       prettier: ${{ steps.filter.outputs.prettier }}
       sql-format: ${{ steps.filter.outputs.sql-format }}
@@ -43,6 +46,10 @@ jobs:
           filters: |
             database:
               - "packages/common/data/**.sql"
+            diff:
+              - "**.dart"
+              - "**.yaml"
+              - "**.pubspec.lock"
             markdownlint:
               - "**.md"
             prettier:
