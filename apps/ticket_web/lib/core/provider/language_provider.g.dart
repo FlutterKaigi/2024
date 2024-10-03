@@ -21,12 +21,12 @@ final supportedLocalesProvider = Provider<List<AppLocale>>.internal(
 );
 
 typedef SupportedLocalesRef = ProviderRef<List<AppLocale>>;
-String _$languageProviderHash() => r'79b8c870b536e9aa5e282deee72f5568afaab592';
+String _$languageProviderHash() => r'ebe179d4c7626fb14f8943c904f50f7ab63b5e8e';
 
 /// See also [LanguageProvider].
 @ProviderFor(LanguageProvider)
 final languageProviderProvider =
-    AutoDisposeNotifierProvider<LanguageProvider, AppLocale>.internal(
+    NotifierProvider<LanguageProvider, AppLocale>.internal(
   LanguageProvider.new,
   name: r'languageProviderProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -36,6 +36,6 @@ final languageProviderProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$LanguageProvider = AutoDisposeNotifier<AppLocale>;
+typedef _$LanguageProvider = Notifier<AppLocale>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
