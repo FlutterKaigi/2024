@@ -154,14 +154,14 @@ class ProfileRepository {
   /// 既存のSNSアカウント登録を全て削除し、[snsAccounts]を登録します
   Future<void> updateSnsAccounts({
     required String userId,
-    required List<ProfileSocialNetworkingService> snsAccounts,
+    required List<(SnsType, String)> snsAccounts,
   }) async =>
       _client.rpc<void>(
         'replace_sns_accounts',
         params: {
           'user_id': userId,
           'sns_accounts': snsAccounts
-              .map((e) => {'type': e.type.name, 'value': e.id})
+              .map((e) => {'type': e.$1.name, 'value': e.$2})
               .toList(),
         },
       );

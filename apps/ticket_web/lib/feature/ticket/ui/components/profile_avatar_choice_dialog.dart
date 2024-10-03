@@ -104,6 +104,8 @@ class ProfileAvatarChoiceDialog extends ConsumerWidget {
                     );
                     Navigator.of(context).pop();
                   }
+                } on ProfileAvatarException {
+                  return;
                 } on StorageException catch (e) {
                   log(e.toString());
                   if (context.mounted) {

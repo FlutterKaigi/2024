@@ -129,6 +129,10 @@
       "title": "Note on Profile Information",
       "description": "The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image."
     },
+    "profile_edit_restriction": {
+      "title": "Note on Profile Editing",
+      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons."
+    },
     "edit_fields": {
       "dialog": {
         "ok": "OK",
@@ -144,9 +148,9 @@
       },
       "comment": {
         "title": "Comment",
-        "description": "Please enter your comment. (80 characters or less, no special characters allowed)",
+        "description": "Please enter your comment. (40 characters or less, no special characters allowed)",
         "validation": {
-          "too_long": "Comment must be 80 characters or less",
+          "too_long": "Comment must be 40 characters or less",
           "invalid_characters": "Comment must be alphanumeric"
         }
       },

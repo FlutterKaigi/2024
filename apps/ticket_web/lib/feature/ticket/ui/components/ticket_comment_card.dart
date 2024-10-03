@@ -17,7 +17,7 @@ class TicketCommentCard extends ConsumerWidget {
   final String comment;
   final bool isEditable;
   final void Function() onUpdated;
-  final void Function(String) onUpdateFailed;
+  final void Function(String errorMessage) onUpdateFailed;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -8,10 +8,8 @@ import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
-import 'package:ticket_web/pages/ticket/components/profile_edit_card.dart';
+import 'package:ticket_web/pages/ticket/components/about_profile_information_card.dart';
 import 'package:ticket_web/pages/ticket/components/thank_you_for_purchase_ticket.dart';
-import 'package:ticket_web/pages/ticket/components/warning_for_personal_sponsor_card.dart';
-import 'package:ticket_web/pages/ticket/components/warning_for_speaker_profile_card.dart';
 
 class TicketRoute extends GoRouteData {
   const TicketRoute();
@@ -75,23 +73,16 @@ class _BodyWithTicket extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isSpeaker = switch (ticket.type) {
-      TicketType.regularSpeaker || TicketType.sponsorSpeaker => true,
-      _ => false,
-    };
-    final isPersonalSponsor = ticket.type == TicketType.individualSponsor;
-
     return Column(
       children: [
         ThankYouForPurchaseTicketCard(
           ticketType: ticket.type,
         ),
-        if (isSpeaker) const WarningForSpeakerProfileCard(),
-        if (isPersonalSponsor) const WarningForPersonalSponsorCard(),
-        ProfileEditCard(
+        AboutProfileInformation(
           ticket: ticket,
           profile: profile,
         ),
+        const SizedBox(height: 48),
       ],
     );
   }

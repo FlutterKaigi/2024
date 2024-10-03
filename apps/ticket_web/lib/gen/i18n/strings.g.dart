@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 223 (111 per locale)
+/// Strings: 227 (113 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -232,6 +232,7 @@ class _StringsTicketPageJa {
 	late final _StringsTicketPageWarningForSpeakerProfileJa warningForSpeakerProfile = _StringsTicketPageWarningForSpeakerProfileJa._(_root);
 	late final _StringsTicketPageWarningForPersonalSponsorJa warningForPersonalSponsor = _StringsTicketPageWarningForPersonalSponsorJa._(_root);
 	late final _StringsTicketPageInformationForProfileEditJa informationForProfileEdit = _StringsTicketPageInformationForProfileEditJa._(_root);
+	late final _StringsTicketPageProfileEditRestrictionJa profileEditRestriction = _StringsTicketPageProfileEditRestrictionJa._(_root);
 	late final _StringsTicketPageEditFieldsJa editFields = _StringsTicketPageEditFieldsJa._(_root);
 }
 
@@ -351,6 +352,17 @@ class _StringsTicketPageInformationForProfileEditJa {
 	// Translations
 	String get title => 'プロフィール情報について';
 	String get description => 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
+}
+
+// Path: ticketPage.profileEditRestriction
+class _StringsTicketPageProfileEditRestrictionJa {
+	_StringsTicketPageProfileEditRestrictionJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'プロフィール編集の注意';
+	String get description => '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**10月21日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
 }
 
 // Path: ticketPage.editFields
@@ -486,7 +498,7 @@ class _StringsTicketPageEditFieldsCommentJa {
 
 	// Translations
 	String get title => 'ひとこと';
-	String get description => 'ひとことを入力してください。(80文字以内 特殊文字は使用できません)';
+	String get description => 'ひとことを入力してください。(40文字以内 特殊文字は使用できません)';
 	late final _StringsTicketPageEditFieldsCommentValidationJa validation = _StringsTicketPageEditFieldsCommentValidationJa._(_root);
 }
 
@@ -580,7 +592,7 @@ class _StringsTicketPageEditFieldsCommentValidationJa {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get tooLong => 'ひとことは80文字以内で入力してください';
+	String get tooLong => 'ひとことは40文字以内で入力してください';
 	String get invalidCharacters => 'ひとことには特殊文字は使用できません';
 	String get empty => 'ひとことを入力してください';
 }
@@ -735,6 +747,7 @@ class _StringsTicketPageEn extends _StringsTicketPageJa {
 	@override late final _StringsTicketPageWarningForSpeakerProfileEn warningForSpeakerProfile = _StringsTicketPageWarningForSpeakerProfileEn._(_root);
 	@override late final _StringsTicketPageWarningForPersonalSponsorEn warningForPersonalSponsor = _StringsTicketPageWarningForPersonalSponsorEn._(_root);
 	@override late final _StringsTicketPageInformationForProfileEditEn informationForProfileEdit = _StringsTicketPageInformationForProfileEditEn._(_root);
+	@override late final _StringsTicketPageProfileEditRestrictionEn profileEditRestriction = _StringsTicketPageProfileEditRestrictionEn._(_root);
 	@override late final _StringsTicketPageEditFieldsEn editFields = _StringsTicketPageEditFieldsEn._(_root);
 }
 
@@ -853,6 +866,17 @@ class _StringsTicketPageInformationForProfileEditEn extends _StringsTicketPageIn
 	// Translations
 	@override String get title => 'Note on Profile Information';
 	@override String get description => 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+}
+
+// Path: ticketPage.profileEditRestriction
+class _StringsTicketPageProfileEditRestrictionEn extends _StringsTicketPageProfileEditRestrictionJa {
+	_StringsTicketPageProfileEditRestrictionEn._(_StringsEn root) : this._root = root, super._(root);
+
+	@override final _StringsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Note on Profile Editing';
+	@override String get description => '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
 }
 
 // Path: ticketPage.editFields
@@ -987,7 +1011,7 @@ class _StringsTicketPageEditFieldsCommentEn extends _StringsTicketPageEditFields
 
 	// Translations
 	@override String get title => 'Comment';
-	@override String get description => 'Please enter your comment. (80 characters or less, no special characters allowed)';
+	@override String get description => 'Please enter your comment. (40 characters or less, no special characters allowed)';
 	@override late final _StringsTicketPageEditFieldsCommentValidationEn validation = _StringsTicketPageEditFieldsCommentValidationEn._(_root);
 }
 
@@ -1067,7 +1091,7 @@ class _StringsTicketPageEditFieldsCommentValidationEn extends _StringsTicketPage
 	@override final _StringsEn _root; // ignore: unused_field
 
 	// Translations
-	@override String get tooLong => 'Comment must be 80 characters or less';
+	@override String get tooLong => 'Comment must be 40 characters or less';
 	@override String get invalidCharacters => 'Comment must be alphanumeric';
 }
 
@@ -1201,6 +1225,8 @@ extension on Translations {
 			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'プロフィールを非公開にする';
 			case 'ticketPage.informationForProfileEdit.title': return 'プロフィール情報について';
 			case 'ticketPage.informationForProfileEdit.description': return 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームカードに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
+			case 'ticketPage.profileEditRestriction.title': return 'プロフィール編集の注意';
+			case 'ticketPage.profileEditRestriction.description': return '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**10月21日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
 			case 'ticketPage.editFields.dialog.ok': return '決定';
 			case 'ticketPage.editFields.dialog.cancel': return 'キャンセル';
 			case 'ticketPage.editFields.name.title': return '名前';
@@ -1209,8 +1235,8 @@ extension on Translations {
 			case 'ticketPage.editFields.name.validation.invalidCharacters': return '名前には特殊文字は使用できません';
 			case 'ticketPage.editFields.name.validation.empty': return '名前を入力してください';
 			case 'ticketPage.editFields.comment.title': return 'ひとこと';
-			case 'ticketPage.editFields.comment.description': return 'ひとことを入力してください。(80文字以内 特殊文字は使用できません)';
-			case 'ticketPage.editFields.comment.validation.tooLong': return 'ひとことは80文字以内で入力してください';
+			case 'ticketPage.editFields.comment.description': return 'ひとことを入力してください。(40文字以内 特殊文字は使用できません)';
+			case 'ticketPage.editFields.comment.validation.tooLong': return 'ひとことは40文字以内で入力してください';
 			case 'ticketPage.editFields.comment.validation.invalidCharacters': return 'ひとことには特殊文字は使用できません';
 			case 'ticketPage.editFields.comment.validation.empty': return 'ひとことを入力してください';
 			case 'ticketPage.editFields.xAccount.title': return 'Xアカウント';
@@ -1319,6 +1345,8 @@ extension on _StringsEn {
 			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'DO NOT Publish Profile';
 			case 'ticketPage.informationForProfileEdit.title': return 'Note on Profile Information';
 			case 'ticketPage.informationForProfileEdit.description': return 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+			case 'ticketPage.profileEditRestriction.title': return 'Note on Profile Editing';
+			case 'ticketPage.profileEditRestriction.description': return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
 			case 'ticketPage.editFields.dialog.ok': return 'OK';
 			case 'ticketPage.editFields.dialog.cancel': return 'Cancel';
 			case 'ticketPage.editFields.name.title': return 'Name';
@@ -1326,8 +1354,8 @@ extension on _StringsEn {
 			case 'ticketPage.editFields.name.validation.tooLong': return 'Name must be 20 characters or less';
 			case 'ticketPage.editFields.name.validation.invalidCharacters': return 'Name must be alphanumeric';
 			case 'ticketPage.editFields.comment.title': return 'Comment';
-			case 'ticketPage.editFields.comment.description': return 'Please enter your comment. (80 characters or less, no special characters allowed)';
-			case 'ticketPage.editFields.comment.validation.tooLong': return 'Comment must be 80 characters or less';
+			case 'ticketPage.editFields.comment.description': return 'Please enter your comment. (40 characters or less, no special characters allowed)';
+			case 'ticketPage.editFields.comment.validation.tooLong': return 'Comment must be 40 characters or less';
 			case 'ticketPage.editFields.comment.validation.invalidCharacters': return 'Comment must be alphanumeric';
 			case 'ticketPage.editFields.xAccount.title': return 'X Account';
 			case 'ticketPage.editFields.xAccount.description': return 'Please enter your X account. (No @ symbol allowed)';

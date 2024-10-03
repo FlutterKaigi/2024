@@ -24,6 +24,7 @@ class WarningForSpeakerProfileCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Row(),
             Text(
               i18n.ticketPage.warningForSpeakerProfile.title,
               style: textTheme.titleLarge?.copyWith(

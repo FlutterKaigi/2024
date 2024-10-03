@@ -87,6 +87,7 @@ class TicketCardEditDialog extends HookWidget {
                     EditDialogType.name =>
                       t.ticketPage.editFields.name.validation.empty,
                     EditDialogType.comment => null,
+                    EditDialogType.xAccount => null,
                   };
                 }
 
@@ -94,6 +95,8 @@ class TicketCardEditDialog extends HookWidget {
                   EditDialogType.name =>
                     t.ticketPage.editFields.name.validation.invalidCharacters,
                   EditDialogType.comment => t.ticketPage.editFields.comment
+                      .validation.invalidCharacters,
+                  EditDialogType.xAccount => t.ticketPage.editFields.xAccount
                       .validation.invalidCharacters,
                 };
                 if (isOnlyEnglish) {
@@ -143,5 +146,6 @@ class TicketCardEditDialog extends HookWidget {
 enum EditDialogType {
   name,
   comment,
+  xAccount,
   ;
 }

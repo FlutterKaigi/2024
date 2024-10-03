@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:common_data/profile.dart';
@@ -48,19 +47,17 @@ class ProfileNotifier extends _$ProfileNotifier {
       lockParentWindow: true,
     );
     if (pickedFile == null) {
-      return;
+      throw ProfileAvatarException('Error: pickedFile is null');
     }
     final file = pickedFile.files.single;
     final bytes = file.bytes;
     if (bytes == null) {
-      log('Error: bytes is null');
-      return;
+      throw ProfileAvatarException('Error: bytes is null');
     }
 
     final fileExtension = file.extension;
     if (fileExtension == null) {
-      log('Error: file extension is null');
-      return;
+      throw ProfileAvatarException('Error: file extension is null');
     }
 
     await updateProfileAvatar(
@@ -105,4 +102,20 @@ class ProfileNotifier extends _$ProfileNotifier {
     );
     ref.invalidateSelf();
   }
+
+  Future<void> updateSnsAccounts({
+    required List<(SnsType, String)> snsAccounts,
+  }) async {
+    final respository = ref.read(profileRepositoryProvider);
+    await respository.updateSnsAccounts(
+      userId: ref.read(authNotifierProvider)!.id,
+      snsAccounts: snsAccounts,
+    );
+    ref.invalidateSelf();
+  }
+}
+
+class ProfileAvatarException implements Exception {
+  ProfileAvatarException(this.message);
+  final String message;
 }

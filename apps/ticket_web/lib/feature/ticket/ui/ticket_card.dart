@@ -105,11 +105,18 @@ class TicketCard extends ConsumerWidget {
       }
     }
 
+    final theme = Theme.of(context);
+
     return SizedBox(
       height: 400,
       width: 300,
       child: Material(
-        borderRadius: BorderRadius.circular(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: BorderSide(
+            color: theme.colorScheme.primary,
+          ),
+        ),
         clipBehavior: Clip.antiAlias,
         type: MaterialType.card,
         child: Column(
@@ -191,6 +198,9 @@ class _TicketCardBody extends ConsumerWidget {
             const Spacer(),
             TicketCardXAccount(
               xAccount: xAccount,
+              isEditable: isEditable,
+              onUpdated: onUpdated,
+              onUpdateFailed: onUpdateFailed,
             ),
             // ひとことカード
             TicketCommentCard(
