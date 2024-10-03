@@ -12,9 +12,11 @@ class ProfileWithSns with _$ProfileWithSns {
     required String name,
     required Role role,
     required String comment,
+
     /// ユーザがセットしたアバター画像のURL
     required Uri? userAvatarUri,
     required DateTime createdAt,
+
     /// Googleアカウントのアバター画像のURL
     required Uri? googleAvatarUri,
     required bool isAdult,
