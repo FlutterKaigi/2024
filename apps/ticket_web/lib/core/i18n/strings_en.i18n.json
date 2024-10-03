@@ -119,7 +119,7 @@
     },
     "warning_for_personal_sponsor": {
       "title": "Note on Personal Sponsor Profile",
-      "description": "You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.",
+      "description": "You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.\nThe profile will be published in mid-October.",
       "buttons": {
         "publish_profile": "Publish Profile",
         "do_not_publish_profile": "DO NOT Publish Profile"

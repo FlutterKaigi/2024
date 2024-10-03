@@ -126,7 +126,7 @@
     },
     "warning_for_personal_sponsor": {
       "title": "個人スポンサーのプロフィール情報についての注意",
-      "description": "あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます",
+      "description": "あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます\nプロフィールの掲載は10月下旬を予定しています",
       "buttons": {
         "publish_profile": "プロフィールを公開する",
         "do_not_publish_profile": "プロフィールを非公開にする"

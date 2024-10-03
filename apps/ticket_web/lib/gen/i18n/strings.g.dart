@@ -340,7 +340,7 @@ class _StringsTicketPageWarningForPersonalSponsorJa {
 
 	// Translations
 	String get title => '個人スポンサーのプロフィール情報についての注意';
-	String get description => 'あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます';
+	String get description => 'あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます\nプロフィールの掲載は10月下旬を予定しています';
 	late final _StringsTicketPageWarningForPersonalSponsorButtonsJa buttons = _StringsTicketPageWarningForPersonalSponsorButtonsJa._(_root);
 }
 
@@ -855,7 +855,7 @@ class _StringsTicketPageWarningForPersonalSponsorEn extends _StringsTicketPageWa
 
 	// Translations
 	@override String get title => 'Note on Personal Sponsor Profile';
-	@override String get description => 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.';
+	@override String get description => 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.\nThe profile will be published in mid-October.';
 	@override late final _StringsTicketPageWarningForPersonalSponsorButtonsEn buttons = _StringsTicketPageWarningForPersonalSponsorButtonsEn._(_root);
 }
 
@@ -1222,7 +1222,7 @@ extension on Translations {
 			case 'ticketPage.warningForSpeakerProfile.title': return '登壇者のプロフィール情報についての注意';
 			case 'ticketPage.warningForSpeakerProfile.description': return '登壇者のプロフィールは、FlutterKaigi公式サイトに公開されます。注意してください';
 			case 'ticketPage.warningForPersonalSponsor.title': return '個人スポンサーのプロフィール情報についての注意';
-			case 'ticketPage.warningForPersonalSponsor.description': return 'あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます';
+			case 'ticketPage.warningForPersonalSponsor.description': return 'あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます\nプロフィールの掲載は10月下旬を予定しています';
 			case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile': return 'プロフィールを公開する';
 			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'プロフィールを非公開にする';
 			case 'ticketPage.informationForProfileEdit.title': return 'プロフィール情報について';
@@ -1343,7 +1343,7 @@ extension on _StringsEn {
 			case 'ticketPage.warningForSpeakerProfile.title': return 'Note on Speaker Profile';
 			case 'ticketPage.warningForSpeakerProfile.description': return 'Speaker profiles will be published on the FlutterKaigi official site. Please be careful.';
 			case 'ticketPage.warningForPersonalSponsor.title': return 'Note on Personal Sponsor Profile';
-			case 'ticketPage.warningForPersonalSponsor.description': return 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.';
+			case 'ticketPage.warningForPersonalSponsor.description': return 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.\nThe profile will be published in mid-October.';
 			case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile': return 'Publish Profile';
 			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'DO NOT Publish Profile';
 			case 'ticketPage.informationForProfileEdit.title': return 'Note on Profile Information';

@@ -36,8 +36,8 @@ class WarningForPersonalSponsorCard extends StatelessWidget {
                     child: Text(
                       i18n.ticketPage.warningForPersonalSponsor.title,
                       style: (isMobile
-                              ? textTheme.titleMedium
-                              : textTheme.titleLarge)
+                              ? textTheme.titleSmall
+                              : textTheme.titleMedium)
                           ?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: theme.colorScheme.onErrorContainer,
@@ -49,7 +49,8 @@ class WarningForPersonalSponsorCard extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 i18n.ticketPage.warningForPersonalSponsor.description,
-                style: textTheme.bodyMedium?.copyWith(
+                style: (isMobile ? textTheme.bodySmall : textTheme.bodyMedium)
+                    ?.copyWith(
                   color:
                       theme.colorScheme.onErrorContainer.withValues(alpha: 0.7),
                 ),
