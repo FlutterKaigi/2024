@@ -61,7 +61,9 @@ class TicketCardXAccount extends ConsumerWidget {
                           profileNotifierProvider.notifier,
                         )
                             .updateSnsAccounts(
-                          snsAccounts: [(SnsType.x, value)],
+                          snsAccounts: [
+                            if (value.isNotEmpty) (SnsType.x, value),
+                          ],
                         ),
                       );
                       onUpdated();

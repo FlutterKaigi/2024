@@ -24,8 +24,8 @@ GoRouter router(RouterRef ref) {
       }
       // デバッグ画面はデバッグ時のみアクセス可能
       final isDebugRoute = state.path?.startsWith('/debug') ?? false;
-      if(isDebugRoute) {
-        if(kDebugMode){
+      if (isDebugRoute) {
+        if (kDebugMode) {
           return null;
         } else {
           return HomeRoute().location;

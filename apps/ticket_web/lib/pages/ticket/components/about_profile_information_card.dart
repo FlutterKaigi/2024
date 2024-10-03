@@ -94,7 +94,7 @@ class AboutProfileInformation extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              const Text('TODO: デザインは変わるかもです〜 みたいな文'),
+              Text(t.ticketPage.designMayBeChanged),
             ],
           ),
         ),
@@ -119,6 +119,15 @@ class _ProfileCard extends ConsumerWidget {
       _ => false,
     };
 
+    final isSponsor = switch (ticket.type) {
+      TicketType.individualSponsor ||
+      TicketType.sponsorBooth ||
+      TicketType.sponsorInvited ||
+      TicketType.sponsorSpeaker =>
+        true,
+      TicketType.general || TicketType.regularSpeaker => false,
+    };
+
     return TicketCard.editable(
       name: profile.name,
       description: profile.comment,
@@ -130,14 +139,7 @@ class _ProfileCard extends ConsumerWidget {
           .last,
       avatarImageUri: profile.userAvatarUri ?? profile.googleAvatarUri,
       sponsorImageUri: null, // TODO(YumNumm): スポンサー画像
-      isSponsor: switch (ticket.type) {
-        TicketType.individualSponsor ||
-        TicketType.sponsorBooth ||
-        TicketType.sponsorInvited ||
-        TicketType.sponsorInvited =>
-          true,
-        _ => false,
-      },
+      isSponsor: isSponsor,
       isSpeaker: isSpeaker,
       isAdult: profile.isAdult,
     );
