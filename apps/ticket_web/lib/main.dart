@@ -47,7 +47,6 @@ Future<void> main() async {
       observers: [
         if (kDebugMode) RiverpodObserver(),
       ],
-
       child: const App(),
     ),
   );
