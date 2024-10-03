@@ -58,36 +58,38 @@ class TicketWillBeOnSaleCard extends HookWidget {
       color: theme.colorScheme.primaryContainer,
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.info,
-                  color: theme.colorScheme.onPrimaryContainer,
-                ),
-                const SizedBox(width: 8),
-                Flexible(
-                  child: Text(
-                    i18n.homePage.ticketWillBeOnSaleCard.title,
-                    style: textTheme.titleLarge?.copyWith(
-                      color: theme.colorScheme.onPrimaryContainer,
-                      fontWeight: FontWeight.bold,
+        child: IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.info,
+                    color: theme.colorScheme.onPrimaryContainer,
+                  ),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Text(
+                      i18n.homePage.ticketWillBeOnSaleCard.title,
+                      style: textTheme.titleLarge?.copyWith(
+                        color: theme.colorScheme.onPrimaryContainer,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Text(
-              i18n.homePage.ticketWillBeOnSaleCard.description,
-              style: textTheme.bodyMedium,
-            ),
-            const SizedBox(height: 16),
-            button,
-          ],
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text(
+                i18n.homePage.ticketWillBeOnSaleCard.description,
+                style: textTheme.bodyMedium,
+              ),
+              const SizedBox(height: 16),
+              Center(child: button),
+            ],
+          ),
         ),
       ),
     );
