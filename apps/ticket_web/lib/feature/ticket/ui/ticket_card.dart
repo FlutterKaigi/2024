@@ -1,3 +1,4 @@
+import 'package:common_data/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/feature/ticket/ui/components/profile_avatar.dart';
@@ -11,7 +12,7 @@ class TicketCard extends ConsumerWidget {
     required this.name,
     required this.description,
     required this.xAccount,
-    required this.avatarImageUri,
+    required this.profile,
     required this.sponsorImageUri,
     required this.isSponsor,
     required this.isSpeaker,
@@ -24,7 +25,7 @@ class TicketCard extends ConsumerWidget {
     required String name,
     required String description,
     required String? xAccount,
-    required Uri? avatarImageUri,
+    required ProfileWithSns profile,
     required Uri? sponsorImageUri,
     required bool isSponsor,
     required bool isSpeaker,
@@ -34,7 +35,7 @@ class TicketCard extends ConsumerWidget {
       name: name,
       description: description,
       xAccount: xAccount,
-      avatarImageUri: avatarImageUri,
+      profile: profile,
       sponsorImageUri: sponsorImageUri,
       isSponsor: isSponsor,
       isSpeaker: isSpeaker,
@@ -46,7 +47,7 @@ class TicketCard extends ConsumerWidget {
     required String name,
     required String description,
     required String? xAccount,
-    required Uri? avatarImageUri,
+    required ProfileWithSns profile,
     required Uri? sponsorImageUri,
     required bool isSponsor,
     required bool isSpeaker,
@@ -56,7 +57,7 @@ class TicketCard extends ConsumerWidget {
       name: name,
       description: description,
       xAccount: xAccount,
-      avatarImageUri: avatarImageUri,
+      profile: profile,
       sponsorImageUri: sponsorImageUri,
       isSponsor: isSponsor,
       isSpeaker: isSpeaker,
@@ -68,7 +69,7 @@ class TicketCard extends ConsumerWidget {
   final String name;
   final String description;
   final String? xAccount;
-  final Uri? avatarImageUri;
+  final ProfileWithSns profile;
   final Uri? sponsorImageUri;
   final bool isSponsor;
   final bool isSpeaker;
@@ -152,7 +153,7 @@ class TicketCard extends ConsumerWidget {
             _TicketCardBody(
               name: name,
               description: description,
-              avatarImageUri: avatarImageUri,
+              profile: profile,
               xAccount: xAccount,
               isEditable: isEditable,
               onUpdated: onUpdated,
@@ -170,7 +171,7 @@ class _TicketCardBody extends ConsumerWidget {
     required this.name,
     required this.description,
     required this.xAccount,
-    required this.avatarImageUri,
+    required this.profile,
     required this.isEditable,
     required this.onUpdated,
     required this.onUpdateFailed,
@@ -179,7 +180,7 @@ class _TicketCardBody extends ConsumerWidget {
   final String name;
   final String description;
   final String? xAccount;
-  final Uri? avatarImageUri;
+  final ProfileWithSns profile;
   final bool isEditable;
 
   final void Function() onUpdated;
@@ -192,10 +193,9 @@ class _TicketCardBody extends ConsumerWidget {
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            if (avatarImageUri != null)
-              ProfileAvatar(
-                avatarImageUri: avatarImageUri!,
-              ),
+            ProfileAvatar(
+              profile: profile,
+            ),
             const Spacer(),
             TicketCardXAccount(
               xAccount: xAccount,

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:common_data/profile.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,15 +14,16 @@ class ProfileWithSns with _$ProfileWithSns {
     required String name,
     required Role role,
     required String comment,
-
-    /// ユーザがセットしたアバター画像のURL
-    required Uri? userAvatarUri,
     required DateTime createdAt,
 
     /// Googleアカウントのアバター画像のURL
     required Uri? googleAvatarUri,
     required bool isAdult,
     required List<ProfileSocialNetworkingService> snsAccounts,
+
+    /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
+    @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+    Future<Uint8List?> Function()? userAvatarFetch,
   }) = _ProfileWithSns;
 
   factory ProfileWithSns.fromJson(Map<String, dynamic> json) =>
