@@ -40,7 +40,7 @@ class TicketCardAppBar extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'NAME',
+                        t.ticketPage.editFields.name.title,
                         style: textTheme.bodySmall?.copyWith(
                           color: Colors.white.withValues(alpha: 0.5),
                         ),
