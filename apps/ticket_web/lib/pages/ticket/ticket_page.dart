@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:common_data/profile.dart';
 import 'package:common_data/ticket.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +42,8 @@ class _Body extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ticketState = ref.watch(ticketNotifierProvider);
     final profileState = ref.watch(profileNotifierProvider);
+    log('ticketState: $ticketState');
+    log('profileState: $profileState');
 
     return switch ((ticketState, profileState)) {
       (AsyncError(:final error), _) || (_, AsyncError(:final error)) => Center(

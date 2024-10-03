@@ -1,19 +1,19 @@
 import 'package:common_data/ticket.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
+import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 
 part 'ticket_notifier.g.dart';
 
-@Riverpod()
+@Riverpod(keepAlive: true)
 class TicketNotifier extends _$TicketNotifier {
   @override
   Future<Ticket?> build() async {
     final api = ref.watch(ticketRepositoryProvider);
     final ticket = await api.fetchSelfTicket();
     ref.listen(
-      authNotifierProvider,
+      profileNotifierProvider,
       (_, next) {
-        if (next != null) {
+        if (next case AsyncData()) {
           // ログインしたら再取得
           ref.invalidateSelf();
         } else {
