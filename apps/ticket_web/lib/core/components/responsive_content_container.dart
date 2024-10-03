@@ -5,14 +5,10 @@ import 'package:ticket_web/core/extension/is_mobile.dart';
 class ResponsiveContentContainer extends StatelessWidget {
   const ResponsiveContentContainer({
     required this.child,
-    this.padding = 16,
     super.key,
   });
 
   final Widget child;
-
-  /// 左右の余白
-  final double padding;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +27,8 @@ class ResponsiveContentContainer extends StatelessWidget {
       );
     }
 
-    if (padding == 0) {
-      return inner;
-    }
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: padding),
+      padding: EdgeInsets.symmetric(horizontal: isMobile ? 0 : 16),
       child: inner,
     );
   }

@@ -23,6 +23,8 @@ class TicketCardXAccount extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final i18n = Translations.of(context);
+
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Row(
@@ -38,7 +40,7 @@ class TicketCardXAccount extends ConsumerWidget {
             )
           else
             Flexible(
-              child: Text(t.ticketPage.editFields.xAccount.unknown),
+              child: Text(i18n.ticketPage.editFields.xAccount.unknown),
             ),
           if (isEditable)
             Align(
@@ -49,8 +51,8 @@ class TicketCardXAccount extends ConsumerWidget {
                   type: EditDialogType.xAccount,
                   isOnlyEnglish: true,
                   initialValue: xAccount ?? '',
-                  title: t.ticketPage.editFields.xAccount.title,
-                  description: t.ticketPage.editFields.xAccount.description,
+                  title: i18n.ticketPage.editFields.xAccount.title,
+                  description: i18n.ticketPage.editFields.xAccount.description,
                   maxLength: 40,
                   onUpdated: (value) async {
                     try {

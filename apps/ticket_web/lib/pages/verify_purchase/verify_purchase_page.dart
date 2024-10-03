@@ -14,6 +14,7 @@ import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_session.dart';
 import 'package:ticket_web/feature/promotion_code/data/invited_promotion_selected_sponsor.dart';
+import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/ticket/ticket_page.dart';
 import 'package:ticket_web/pages/verify_purchase/components/verify_purchase_processed_card.dart';
@@ -99,6 +100,7 @@ class _Body extends HookConsumerWidget {
                   ref.read(invitedPromotionSelectedSponsorProvider)?.toString(),
             );
         log('verifyPurchase result: $result');
+        ref.invalidate(ticketNotifierProvider);
         // レスポンスが早いとローディングが表示されないため、1秒待つ
         await Future<void>.delayed(
           const Duration(seconds: 1),

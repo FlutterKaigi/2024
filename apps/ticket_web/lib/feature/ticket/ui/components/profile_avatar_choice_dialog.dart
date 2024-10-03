@@ -39,6 +39,8 @@ class ProfileAvatarChoiceDialog extends HookConsumerWidget {
 
     final theme = Theme.of(context);
 
+    final i18n = Translations.of(context);
+
     return AlertDialog(
       title: Text(t.ticketPage.editFields.avatar.title),
       content: Column(
