@@ -40,7 +40,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               i18n.homePage.tickets.price(
-                price: NumberFormat('#,###').format(123456),
+                price: NumberFormat('#,###').format(30000),
               ),
               style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,

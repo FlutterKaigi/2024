@@ -51,7 +51,7 @@ class GeneralTicketCard extends HookWidget {
             const SizedBox(height: 4),
             Text(
               i18n.homePage.tickets.price(
-                price: NumberFormat('#,###').format(3000),
+                price: NumberFormat('#,###').format(6000),
               ),
               style: (isMobile ? textTheme.titleMedium : textTheme.titleLarge)
                   ?.copyWith(

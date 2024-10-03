@@ -28,8 +28,7 @@
       },
       "normal": {
         "name": "Normal Ticket",
-        "price": "¥$price",
-        "description": "General admission ticket"
+        "description": "**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**"
       },
       "invitation": {
         "description": "If you have an invitation code or coupon code, please enter it here.",
@@ -58,7 +57,7 @@
       },
       "personal_sponsor": {
         "name": "Personal Sponsor Ticket",
-        "description": "Ticket for individual sponsors"
+        "description": "- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**"
       },
       "student": {
         "name": "Student Discount",

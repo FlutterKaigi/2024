@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 224 (112 per locale)
+/// Strings: 223 (111 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -906,8 +906,7 @@ class _StringsHomePageTicketsNormalEn extends _StringsHomePageTicketsNormalJa {
 
 	// Translations
 	@override String get name => 'Normal Ticket';
-	@override String price({required Object price}) => '¥${price}';
-	@override String get description => 'General admission ticket';
+	@override String get description => '**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**';
 }
 
 // Path: homePage.tickets.invitation
@@ -932,7 +931,7 @@ class _StringsHomePageTicketsPersonalSponsorEn extends _StringsHomePageTicketsPe
 
 	// Translations
 	@override String get name => 'Personal Sponsor Ticket';
-	@override String get description => 'Ticket for individual sponsors';
+	@override String get description => '- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**';
 }
 
 // Path: homePage.tickets.student
@@ -1259,8 +1258,7 @@ extension on _StringsEn {
 			case 'homePage.tickets.alreadyPurchasedCard.button': return 'Ticket Page';
 			case 'homePage.tickets.alreadyPurchasedCard.verifyError': return 'An error occurred while verifying whether you have a ticket.';
 			case 'homePage.tickets.normal.name': return 'Normal Ticket';
-			case 'homePage.tickets.normal.price': return ({required Object price}) => '¥${price}';
-			case 'homePage.tickets.normal.description': return 'General admission ticket';
+			case 'homePage.tickets.normal.description': return '**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**';
 			case 'homePage.tickets.invitation.description': return 'If you have an invitation code or coupon code, please enter it here.';
 			case 'homePage.tickets.invitation.textBoxTitle': return 'Invitation Code or Coupon Code';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'Enter the code';
@@ -1279,7 +1277,7 @@ extension on _StringsEn {
 			case 'homePage.tickets.invitation.validation.invited.next': return 'Next';
 			case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment': return 'Please wait a moment...';
 			case 'homePage.tickets.personalSponsor.name': return 'Personal Sponsor Ticket';
-			case 'homePage.tickets.personalSponsor.description': return 'Ticket for individual sponsors';
+			case 'homePage.tickets.personalSponsor.description': return '- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**';
 			case 'homePage.tickets.student.name': return 'Student Discount';
 			case 'homePage.tickets.student.description': return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
 			case 'verifyPurchase.processing': return 'Verifying purchase...';
