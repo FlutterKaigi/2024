@@ -94,7 +94,7 @@ class AboutProfileInformation extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              const Text('TODO: デザインは変わるかもです〜 みたいな文'),
+              Text(t.ticketPage.designMayBeChanged),
             ],
           ),
         ),

@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 227 (113 per locale)
+/// Strings: 229 (114 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -233,6 +233,7 @@ class _StringsTicketPageJa {
 	late final _StringsTicketPageWarningForPersonalSponsorJa warningForPersonalSponsor = _StringsTicketPageWarningForPersonalSponsorJa._(_root);
 	late final _StringsTicketPageInformationForProfileEditJa informationForProfileEdit = _StringsTicketPageInformationForProfileEditJa._(_root);
 	late final _StringsTicketPageProfileEditRestrictionJa profileEditRestriction = _StringsTicketPageProfileEditRestrictionJa._(_root);
+	String get designMayBeChanged => '※FlutterKaigi 2024当日に配布するネームプレートのデザインは、変更される可能性があります。';
 	late final _StringsTicketPageEditFieldsJa editFields = _StringsTicketPageEditFieldsJa._(_root);
 }
 
@@ -748,6 +749,7 @@ class _StringsTicketPageEn extends _StringsTicketPageJa {
 	@override late final _StringsTicketPageWarningForPersonalSponsorEn warningForPersonalSponsor = _StringsTicketPageWarningForPersonalSponsorEn._(_root);
 	@override late final _StringsTicketPageInformationForProfileEditEn informationForProfileEdit = _StringsTicketPageInformationForProfileEditEn._(_root);
 	@override late final _StringsTicketPageProfileEditRestrictionEn profileEditRestriction = _StringsTicketPageProfileEditRestrictionEn._(_root);
+	@override String get designMayBeChanged => '※The design of the name card may be changed on the day of FlutterKaigi 2024.';
 	@override late final _StringsTicketPageEditFieldsEn editFields = _StringsTicketPageEditFieldsEn._(_root);
 }
 
@@ -1227,6 +1229,7 @@ extension on Translations {
 			case 'ticketPage.informationForProfileEdit.description': return 'ここで入力したプロフィール情報は、FlutterKaigi当日のネームプレートに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。';
 			case 'ticketPage.profileEditRestriction.title': return 'プロフィール編集の注意';
 			case 'ticketPage.profileEditRestriction.description': return '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**10月21日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
+			case 'ticketPage.designMayBeChanged': return '※FlutterKaigi 2024当日に配布するネームプレートのデザインは、変更される可能性があります。';
 			case 'ticketPage.editFields.dialog.ok': return '決定';
 			case 'ticketPage.editFields.dialog.cancel': return 'キャンセル';
 			case 'ticketPage.editFields.name.title': return '名前';
@@ -1347,6 +1350,7 @@ extension on _StringsEn {
 			case 'ticketPage.informationForProfileEdit.description': return 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
 			case 'ticketPage.profileEditRestriction.title': return 'Note on Profile Editing';
 			case 'ticketPage.profileEditRestriction.description': return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
+			case 'ticketPage.designMayBeChanged': return '※The design of the name card may be changed on the day of FlutterKaigi 2024.';
 			case 'ticketPage.editFields.dialog.ok': return 'OK';
 			case 'ticketPage.editFields.dialog.cancel': return 'Cancel';
 			case 'ticketPage.editFields.name.title': return 'Name';
