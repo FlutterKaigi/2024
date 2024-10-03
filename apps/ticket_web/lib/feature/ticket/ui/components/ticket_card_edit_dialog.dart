@@ -93,8 +93,8 @@ class TicketCardEditDialog extends HookWidget {
                 }
 
                 final invalidCharacters = switch (type) {
-                  EditDialogType.name =>
-                    i18n.ticketPage.editFields.name.validation.invalidCharacters,
+                  EditDialogType.name => i18n
+                      .ticketPage.editFields.name.validation.invalidCharacters,
                   EditDialogType.comment => i18n.ticketPage.editFields.comment
                       .validation.invalidCharacters,
                   EditDialogType.xAccount => i18n.ticketPage.editFields.xAccount

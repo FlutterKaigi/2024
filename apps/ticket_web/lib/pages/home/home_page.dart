@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/components/error/error_card.dart';
+import 'package:ticket_web/core/components/language_selector.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
@@ -22,6 +23,9 @@ class HomePage extends ConsumerWidget {
     final i18n = Translations.of(context);
 
     return SiteScaffold.widget(
+      actions: const [
+        LanguageSelector(),
+      ],
       body: Column(
         children: [
           const Padding(
