@@ -27,7 +27,7 @@ class TicketCardAppBar extends ConsumerWidget {
     return ColoredBox(
       color: const Color(0xFF2196F3),
       child: SizedBox(
-        height: 40,
+        height: kToolbarHeight,
         child: Row(
           children: [
             Expanded(
