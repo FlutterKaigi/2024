@@ -8,10 +8,12 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
     this.onHeaderTitleTap,
     this.automaticallyImplyLeading = false,
     super.key,
+    this.actions,
   });
 
   final VoidCallback? onHeaderTitleTap;
   final bool automaticallyImplyLeading;
+  final List<Widget>? actions;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -48,6 +50,7 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
       ),
+      actions: actions,
     );
   }
 }

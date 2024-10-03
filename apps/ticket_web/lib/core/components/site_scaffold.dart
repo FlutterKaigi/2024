@@ -14,6 +14,7 @@ class SiteScaffold extends StatelessWidget {
     required this.onHeaderTitleTap,
     required this.slivers,
     required this.headerAutomaticallyImplyLeading,
+    this.actions,
   }) : assert(
           showHeader || onHeaderTitleTap == null,
           'onHeaderTitleTapはshowHeaderがtrueのときのみ指定できます',
@@ -26,6 +27,7 @@ class SiteScaffold extends StatelessWidget {
     bool showFooter = true,
     VoidCallback? onHeaderTitleTap,
     bool headerAutomaticallyImplyLeading = false,
+    List<Widget>? actions,
   }) =>
       SiteScaffold._(
         showHeader: showHeader,
@@ -37,6 +39,7 @@ class SiteScaffold extends StatelessWidget {
             child: body,
           ),
         ],
+        actions: actions,
       );
 
   factory SiteScaffold.slivers({
@@ -45,6 +48,7 @@ class SiteScaffold extends StatelessWidget {
     bool showFooter = true,
     VoidCallback? onHeaderTitleTap,
     bool headerAutomaticallyImplyLeading = false,
+    List<Widget>? actions,
   }) =>
       SiteScaffold._(
         showHeader: showHeader,
@@ -52,6 +56,7 @@ class SiteScaffold extends StatelessWidget {
         onHeaderTitleTap: onHeaderTitleTap,
         slivers: slivers,
         headerAutomaticallyImplyLeading: headerAutomaticallyImplyLeading,
+        actions: actions,
       );
 
   final bool showHeader;
@@ -62,6 +67,7 @@ class SiteScaffold extends StatelessWidget {
   final List<Widget> slivers;
 
   final bool headerAutomaticallyImplyLeading;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +75,7 @@ class SiteScaffold extends StatelessWidget {
       appBar: showHeader
           ? SiteHeader(
               onHeaderTitleTap: onHeaderTitleTap,
+              actions: actions,
             )
           : null,
       body: CustomScrollView(
