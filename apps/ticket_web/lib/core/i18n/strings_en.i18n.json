@@ -156,6 +156,7 @@
         "description": "Please enter your X account. (No @ symbol allowed)",
         "placeholder": "X Account",
         "delete_button": "Delete X Account Entry",
+        "unknown": "Unknown",
         "validation": {
           "too_long": "X Account must be 40 characters or less",
           "invalid_characters": "X Account must be alphanumeric"
