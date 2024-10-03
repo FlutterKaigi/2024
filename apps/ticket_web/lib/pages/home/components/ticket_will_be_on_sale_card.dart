@@ -38,7 +38,7 @@ class TicketWillBeOnSaleCard extends HookWidget {
             ),
           ),
           child: Text(
-            '${i18n.flutterKaigi} ${i18n.officialSite}',
+            i18n.homePage.ticketWillBeOnSaleCard.button,
             style: theme.textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.bold,
             ),

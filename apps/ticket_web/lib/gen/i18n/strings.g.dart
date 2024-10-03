@@ -786,7 +786,7 @@ class _StringsHomePageTicketWillBeOnSaleCardEn extends _StringsHomePageTicketWil
 
 	// Translations
 	@override String get title => 'Tickets are not on sale yet';
-	@override String get description => 'Ticket sales will start on October 7 (Monday) at 10:00. Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).';
+	@override String get description => 'Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).';
 	@override String get button => 'Go to the FlutterKaigi official X account';
 }
 
@@ -1303,7 +1303,7 @@ extension on _StringsEn {
 			case 'homePage.titleAndLogo.date': return 'November\n21(Thu) - 22(Fri)';
 			case 'homePage.titleAndLogo.location': return 'Ariake Central Tower & Conference';
 			case 'homePage.ticketWillBeOnSaleCard.title': return 'Tickets are not on sale yet';
-			case 'homePage.ticketWillBeOnSaleCard.description': return 'Ticket sales will start on October 7 (Monday) at 10:00. Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).';
+			case 'homePage.ticketWillBeOnSaleCard.description': return 'Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).';
 			case 'homePage.ticketWillBeOnSaleCard.button': return 'Go to the FlutterKaigi official X account';
 			case 'homePage.tickets.variant.general': return 'General Ticket';
 			case 'homePage.tickets.variant.sessionSpeaker': return 'Session Speaker Ticket';

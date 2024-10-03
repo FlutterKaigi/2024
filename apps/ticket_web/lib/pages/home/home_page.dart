@@ -40,6 +40,7 @@ class HomePage extends ConsumerWidget {
           const SizedBox(height: 48),
           const TicketWillBeOnSaleCard(),
           const SizedBox(height: 16),
+          // TODO(YumNumm): チケット販売開始時にコメントアウト
           // const AuthStateCard(),
           ticketState.when(
             data: (ticket) {

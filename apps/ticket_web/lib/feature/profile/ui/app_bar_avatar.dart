@@ -138,10 +138,12 @@ class _LoginButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return IconButton.filled(
-      onPressed: () async =>
-          ref.read(authNotifierProvider.notifier).signInWithGoogle(),
-      icon: const Icon(
+    return const IconButton.filled(
+      onPressed: null,
+      // TODO(YumNumm): チケット販売開始時にコメントアウト
+      // () async =>
+      //    ref.read(authNotifierProvider.notifier).signInWithGoogle(),
+      icon: Icon(
         Icons.login,
         color: Colors.white,
       ),
