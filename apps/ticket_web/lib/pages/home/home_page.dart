@@ -12,6 +12,7 @@ import 'package:ticket_web/pages/home/components/already_purchased_card.dart';
 import 'package:ticket_web/pages/home/components/login_before_purchase_card.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/information_for_students.dart';
+import 'package:ticket_web/pages/home/components/ticket_will_be_on_sale_card.dart';
 import 'package:ticket_web/pages/home/components/title_and_logo.dart';
 import 'package:ticket_web/pages/home/components/transit_to_home_page.dart';
 import 'package:ticket_web/pages/ticket/ticket_page.dart';
@@ -33,7 +34,9 @@ class HomePage extends ConsumerWidget {
           ),
           const TransitToHomePage(),
           const SizedBox(height: 48),
-          const _AuthStateCard(),
+          const TicketWillBeOnSaleCard(),
+          const SizedBox(height: 16),
+          // const _AuthStateCard(),
           ticketState.when(
             data: (ticket) {
               if (ticket != null) {
