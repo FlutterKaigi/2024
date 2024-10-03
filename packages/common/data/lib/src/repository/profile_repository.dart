@@ -224,11 +224,11 @@ class ProfileRepository {
         .withConverter(ProfileTable.fromJson);
   }
 
-  /// プロフィールのアバターのURLを取得します
+  /// プロフィールのアバターのバイナリデータを取得する関数を返す
   /// [userId] はユーザーID
-  /// 当該ファイルが存在するかどうかは検証しないため、URLをFetchしても404が返ることがあります
-  String _getProfileAvatarUrl(String userId) =>
-      _client.storage.from('profile_avatars').getPublicUrl('$userId/avatar');
+  /// ファイルが存在しない場合は`null`を返す
+  Future<Uint8List?> _getProfileAvatarFetch(String userId) =>
+      _client.storage.from('profile_avatars').download('$userId/avatar');
 
   Profile _toProfile(ProfileTable profileTable) => Profile(
         id: profileTable.id,
@@ -237,13 +237,8 @@ class ProfileRepository {
         comment: profileTable.comment,
         createdAt: profileTable.createdAt,
         googleAvatarUri: profileTable.avatarUrl,
-        userAvatarUri: profileTable.avatarName != null
-            ? Uri.parse(_getProfileAvatarUrl(profileTable.id)).replace(
-                queryParameters: {
-                  // キャッシュを無効にする
-                  't': DateTime.now().millisecondsSinceEpoch.toString(),
-                },
-              )
+        userAvatarFetch: profileTable.avatarName != null
+            ? () async => _getProfileAvatarFetch(profileTable.id)
             : null,
         isAdult: profileTable.isAdult,
       );
@@ -256,13 +251,8 @@ class ProfileRepository {
         comment: profileWithSnsView.comment,
         createdAt: profileWithSnsView.createdAt,
         googleAvatarUri: profileWithSnsView.avatarUrl,
-        userAvatarUri: profileWithSnsView.avatarName != null
-            ? Uri.parse(_getProfileAvatarUrl(profileWithSnsView.id)).replace(
-                queryParameters: {
-                  // キャッシュを無効にする
-                  't': DateTime.now().millisecondsSinceEpoch.toString(),
-                },
-              )
+        userAvatarFetch: profileWithSnsView.avatarName != null
+            ? () async => _getProfileAvatarFetch(profileWithSnsView.id)
             : null,
         isAdult: profileWithSnsView.isAdult,
         snsAccounts: profileWithSnsView.snsAccounts,

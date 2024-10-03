@@ -20,6 +20,20 @@ class ProfileAvatar extends HookWidget {
       fit: BoxFit.cover,
       width: size,
       height: size,
+
+      /* errorBuilder: (context, error, stackTrace) => DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.7),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(
+            Icons.person,
+            color: Colors.white,
+            size: size - 16,
+          ),
+        ),
+      ),*/
     );
 
     final isHover = useState(false);
