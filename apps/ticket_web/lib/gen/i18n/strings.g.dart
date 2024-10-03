@@ -891,18 +891,9 @@ class _StringsTicketPageInformationForProfileEditEn extends _StringsTicketPageIn
 
 	@override final _StringsEn _root; // ignore: unused_field
 
-<<<<<<< HEAD
 	// Translations
 	@override String get title => 'Note on Profile Information';
-	@override String get description => 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
-=======
-  // Translations
-  @override
-  String get title => 'Note on Profile Information';
-  @override
-  String get description =>
-      'The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image.';
->>>>>>> 7ef784f85080dd6da2ae5e026ac10c048df5ce2a
+	@override String get description => 'The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image.';
 }
 
 // Path: ticketPage.profileEditRestriction
@@ -911,18 +902,9 @@ class _StringsTicketPageProfileEditRestrictionEn extends _StringsTicketPageProfi
 
 	@override final _StringsEn _root; // ignore: unused_field
 
-<<<<<<< HEAD
 	// Translations
 	@override String get title => 'Note on Profile Editing';
-	@override String get description => '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
-=======
-  // Translations
-  @override
-  String get title => 'Note on Profile Editing';
-  @override
-  String get description =>
-      '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
->>>>>>> 7ef784f85080dd6da2ae5e026ac10c048df5ce2a
+	@override String get description => '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
 }
 
 // Path: ticketPage.editFields
@@ -1312,7 +1294,6 @@ extension on Translations {
 }
 
 extension on _StringsEn {
-<<<<<<< HEAD
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'flutterKaigi': return 'FlutterKaigi';
@@ -1398,9 +1379,9 @@ extension on _StringsEn {
 			case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile': return 'Publish Profile';
 			case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile': return 'DO NOT Publish Profile';
 			case 'ticketPage.informationForProfileEdit.title': return 'Note on Profile Information';
-			case 'ticketPage.informationForProfileEdit.description': return 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+			case 'ticketPage.informationForProfileEdit.description': return 'The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image.';
 			case 'ticketPage.profileEditRestriction.title': return 'Note on Profile Editing';
-			case 'ticketPage.profileEditRestriction.description': return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
+			case 'ticketPage.profileEditRestriction.description': return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
 			case 'ticketPage.designMayBeChanged': return '※The design of the name card may be changed on the day of FlutterKaigi 2024.';
 			case 'ticketPage.editFields.dialog.ok': return 'OK';
 			case 'ticketPage.editFields.dialog.cancel': return 'Cancel';
@@ -1432,236 +1413,4 @@ extension on _StringsEn {
 			default: return null;
 		}
 	}
-=======
-  dynamic _flatMapFunction(String path) {
-    switch (path) {
-      case 'flutterKaigi':
-        return 'FlutterKaigi';
-      case 'year':
-        return '2024';
-      case 'officialSite':
-        return 'Official Site';
-      case 'ticketSite':
-        return 'Ticket Site';
-      case 'homePage.titleAndLogo.date':
-        return 'November\n21(Thu) - 22(Fri)';
-      case 'homePage.titleAndLogo.location':
-        return 'Ariake Central Tower & Conference';
-      case 'homePage.tickets.variant.general':
-        return 'General Ticket';
-      case 'homePage.tickets.variant.sessionSpeaker':
-        return 'Session Speaker Ticket';
-      case 'homePage.tickets.variant.sponsorSession':
-        return 'Sponsor Session Speaker Ticket';
-      case 'homePage.tickets.variant.sponsorInvitation':
-        return 'Sponsor Invitation Ticket';
-      case 'homePage.tickets.variant.sponsorBooth':
-        return 'Sponsor Booth Ticket';
-      case 'homePage.tickets.variant.personalSponsor':
-        return 'Personal Sponsor Ticket';
-      case 'homePage.tickets.buyTicket':
-        return 'Buy Ticket';
-      case 'homePage.tickets.loginBeforeBuy':
-        return 'Please login with your Google account to buy or register a ticket.';
-      case 'homePage.tickets.ticketManagedByGoogleAccount':
-        return 'After purchase or registration, tickets will be managed by your Google account.';
-      case 'homePage.tickets.alreadyPurchasedCard.title':
-        return 'Thank you for purchasing a ticket!';
-      case 'homePage.tickets.alreadyPurchasedCard.description':
-        return 'You already have a ticket. Please check your ticket and edit your name card from the ticket page.';
-      case 'homePage.tickets.alreadyPurchasedCard.button':
-        return 'Ticket Page';
-      case 'homePage.tickets.alreadyPurchasedCard.verifyError':
-        return 'An error occurred while verifying whether you have a ticket.';
-      case 'homePage.tickets.normal.name':
-        return 'Normal Ticket';
-      case 'homePage.tickets.normal.description':
-        return '**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**';
-      case 'homePage.tickets.invitation.description':
-        return 'If you have an invitation code or coupon code, please enter it here.';
-      case 'homePage.tickets.invitation.textBoxTitle':
-        return 'Invitation Code or Coupon Code';
-      case 'homePage.tickets.invitation.textBoxDescription':
-        return 'Enter the code';
-      case 'homePage.tickets.invitation.applyCodeButton':
-        return 'Apply Code';
-      case 'homePage.tickets.invitation.validation.ok':
-        return 'Your code is valid!';
-      case 'homePage.tickets.invitation.validation.invalid':
-        return 'Your code is invalid.';
-      case 'homePage.tickets.invitation.validation.nextPayment':
-        return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and purchase the ticket.';
-      case 'homePage.tickets.invitation.validation.nextConfirmOrder':
-        return 'By pressing OK, you will be redirected to Stripe. Please confirm that the promotion code is applied and confirm the order.';
-      case 'homePage.tickets.invitation.validation.dialog.ok':
-        return 'OK';
-      case 'homePage.tickets.invitation.validation.dialog.cancel':
-        return 'Cancel';
-      case 'homePage.tickets.invitation.validation.invited.title':
-        return 'Invitation code has been successfully validated';
-      case 'homePage.tickets.invitation.validation.invited.description':
-        return 'Please enter the following information';
-      case 'homePage.tickets.invitation.validation.invited.warning':
-        return 'Pressing "Next" will finalize the information. If you need to make changes, please contact the organizers.';
-      case 'homePage.tickets.invitation.validation.invited.sponsor':
-        return 'Sponsor you are member of';
-      case 'homePage.tickets.invitation.validation.invited.session':
-        return 'Session you will speak at';
-      case 'homePage.tickets.invitation.validation.invited.next':
-        return 'Next';
-      case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment':
-        return 'Please wait a moment...';
-      case 'homePage.tickets.personalSponsor.name':
-        return 'Personal Sponsor Ticket';
-      case 'homePage.tickets.personalSponsor.description':
-        return '- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**';
-      case 'homePage.tickets.student.name':
-        return 'Student Discount';
-      case 'homePage.tickets.student.description':
-        return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
-      case 'verifyPurchase.processing':
-        return 'Verifying purchase...';
-      case 'verifyPurchase.processingDescription':
-        return 'Linking your purchase record and user. Please wait a moment...';
-      case 'verifyPurchase.success':
-        return 'Purchase verification completed';
-      case 'verifyPurchase.error':
-        return 'An error occurred while verifying the purchase of the ticket.';
-      case 'verifyPurchase.errorDescription':
-        return 'The purchase could not be completed due to an error. Please refresh the page and try again.';
-      case 'verifyPurchase.contact':
-        return 'If the problem persists, please contact the organizers.';
-      case 'authorization.alreadyLoggedInWithMailAddress':
-        return ({required Object mailAddress}) =>
-            'Already logged in with ${mailAddress}';
-      case 'authorization.logOut':
-        return 'Log Out';
-      case 'authorization.logOutDialog.title':
-        return 'Are you sure you want to log out?';
-      case 'authorization.logOutDialog.description':
-        return 'Logging out will prevent you from purchasing or registering tickets until you log in again.';
-      case 'authorization.logOutDialog.cancel':
-        return 'Cancel';
-      case 'authorization.logOutDialog.logout':
-        return 'Log Out';
-      case 'footer.copyRight':
-        return '@ FlutterKaigi 2024 Organizing Committee';
-      case 'footer.googleCopyright.text0':
-        return 'Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.';
-      case 'footer.googleCopyright.text1':
-        return 'The Flutter name and the Flutter logo';
-      case 'footer.googleCopyright.text2':
-        return 'are trademarks of Google LLC.';
-      case 'footer.codeOfConduct':
-        return 'Code of Conduct';
-      case 'footer.privacyPolicy':
-        return 'Privacy Policy';
-      case 'footer.contact':
-        return 'Contact';
-      case 'footer.license':
-        return 'License';
-      case 'error.network.status400':
-        return 'Bad Request';
-      case 'error.network.status403':
-        return 'Forbidden';
-      case 'error.network.status404':
-        return 'Not Found';
-      case 'error.network.status429':
-        return 'Too Many Requests';
-      case 'error.network.status500':
-        return 'Internal Server Error';
-      case 'error.network.status503':
-        return 'Service Unavailable';
-      case 'error.network.statusOther':
-        return ({required Object statusCode}) =>
-            'A network error occurred (Status Code: ${statusCode})';
-      case 'error.network.tryAgain':
-        return 'Please try again later.';
-      case 'error.network.unknown':
-        return 'An unknown error occurred.';
-      case 'ticketPage.thankYouCard.title':
-        return 'Thank you for purchasing a ticket!';
-      case 'ticketPage.thankYouCard.description':
-        return ({required Object type}) => 'You have a ${type} ticket.';
-      case 'ticketPage.warningForSpeakerProfile.title':
-        return 'Note on Speaker Profile';
-      case 'ticketPage.warningForSpeakerProfile.description':
-        return 'Speaker profiles will be published on the FlutterKaigi official site. Please be careful.';
-      case 'ticketPage.warningForPersonalSponsor.title':
-        return 'Note on Personal Sponsor Profile';
-      case 'ticketPage.warningForPersonalSponsor.description':
-        return 'You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.\nThe profile will be published in mid-October.';
-      case 'ticketPage.warningForPersonalSponsor.buttons.publishProfile':
-        return 'Publish Profile';
-      case 'ticketPage.warningForPersonalSponsor.buttons.doNotPublishProfile':
-        return 'DO NOT Publish Profile';
-      case 'ticketPage.informationForProfileEdit.title':
-        return 'Note on Profile Information';
-      case 'ticketPage.informationForProfileEdit.description':
-        return 'The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image.';
-      case 'ticketPage.profileEditRestriction.title':
-        return 'Note on Profile Editing';
-      case 'ticketPage.profileEditRestriction.description':
-        return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
-      case 'ticketPage.designMayBeChanged':
-        return '※The design of the name card may be changed on the day of FlutterKaigi 2024.';
-      case 'ticketPage.editFields.dialog.ok':
-        return 'OK';
-      case 'ticketPage.editFields.dialog.cancel':
-        return 'Cancel';
-      case 'ticketPage.editFields.name.title':
-        return 'Name';
-      case 'ticketPage.editFields.name.description':
-        return 'Please enter your name. (20 characters or less, no special characters allowed)';
-      case 'ticketPage.editFields.name.validation.tooLong':
-        return 'Name must be 20 characters or less';
-      case 'ticketPage.editFields.name.validation.invalidCharacters':
-        return 'Name must be alphanumeric';
-      case 'ticketPage.editFields.comment.title':
-        return 'Comment';
-      case 'ticketPage.editFields.comment.description':
-        return 'Please enter your comment. (40 characters or less, no special characters allowed)';
-      case 'ticketPage.editFields.comment.validation.tooLong':
-        return 'Comment must be 40 characters or less';
-      case 'ticketPage.editFields.comment.validation.invalidCharacters':
-        return 'Comment must be alphanumeric';
-      case 'ticketPage.editFields.xAccount.title':
-        return 'X Account';
-      case 'ticketPage.editFields.xAccount.description':
-        return 'Please enter your X account. (No @ symbol allowed)';
-      case 'ticketPage.editFields.xAccount.placeholder':
-        return 'X Account';
-      case 'ticketPage.editFields.xAccount.deleteButton':
-        return 'Delete X Account Entry';
-      case 'ticketPage.editFields.xAccount.unknown':
-        return 'Unknown';
-      case 'ticketPage.editFields.xAccount.validation.tooLong':
-        return 'X Account must be 40 characters or less';
-      case 'ticketPage.editFields.xAccount.validation.invalidCharacters':
-        return 'X Account must be alphanumeric';
-      case 'ticketPage.editFields.avatar.title':
-        return 'Profile Image';
-      case 'ticketPage.editFields.avatar.description':
-        return 'Please upload your profile image. (PNG, JPG format, up to 2MB)';
-      case 'ticketPage.editFields.avatar.uploadButton':
-        return 'Upload Image';
-      case 'ticketPage.editFields.avatar.removeButton':
-        return 'Reset to Default (Google Account Image)';
-      case 'ticketPage.editFields.avatar.uploadSuccess':
-        return 'Profile image uploaded successfully';
-      case 'ticketPage.editFields.avatar.deleteSuccess':
-        return 'Profile image reset to default successfully';
-      case 'ticketPage.editFields.avatar.uploadError':
-        return 'Profile image upload failed';
-      case 'ticketPage.editFields.avatar.deleteError':
-        return 'Profile image reset to default failed';
-      case 'ticketPage.editFields.results.success':
-        return 'Profile information updated successfully';
-      case 'ticketPage.editFields.results.error':
-        return 'Profile information update failed';
-      default:
-        return null;
-    }
-  }
->>>>>>> 7ef784f85080dd6da2ae5e026ac10c048df5ce2a
 }
