@@ -208,9 +208,9 @@ class ProfileRepository {
     return _toProfile(result);
   }
 
-  Future<void> deleteProfileAvatar(String userId, String fileName) async {
+  Future<void> deleteProfileAvatar(String userId) async {
     await _client.storage.from('profile_avatars').remove([
-      '$userId/$fileName',
+      '$userId/avatar',
     ]);
 
     await _client

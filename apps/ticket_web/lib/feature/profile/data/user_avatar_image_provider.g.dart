@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_notifier.dart';
+part of 'user_avatar_image_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileNotifierHash() => r'acebe826cf48299f34621b887bab95499666e25a';
+String _$userAvatarImageHash() => r'2a465faec46d9696aa0ac0acc83cd9a8de5ce327';
 
-/// See also [ProfileNotifier].
-@ProviderFor(ProfileNotifier)
-final profileNotifierProvider =
-    AsyncNotifierProvider<ProfileNotifier, ProfileWithSns?>.internal(
-  ProfileNotifier.new,
-  name: r'profileNotifierProvider',
+/// See also [userAvatarImage].
+@ProviderFor(userAvatarImage)
+final userAvatarImageProvider = FutureProvider<Uint8List?>.internal(
+  userAvatarImage,
+  name: r'userAvatarImageProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$profileNotifierHash,
+      : _$userAvatarImageHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ProfileNotifier = AsyncNotifier<ProfileWithSns?>;
+typedef UserAvatarImageRef = FutureProviderRef<Uint8List?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
