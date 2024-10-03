@@ -44,7 +44,7 @@ class LanguageSelector extends ConsumerWidget {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
       child: KeyedSubtree(
-        key: ValueKey((state, isMobile)),
+        key: ValueKey(isMobile),
         child: card,
       ),
       layoutBuilder: (currentChild, previousChildren) => Stack(
@@ -102,21 +102,16 @@ class _LanguageSelectorMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(6),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (state != AppLocale.ja)
-            const _LanguageText(
-              locale: AppLocale.ja,
-              isSelected: true,
-            ),
-          if (state != AppLocale.en)
-            const _LanguageText(
-              locale: AppLocale.en,
-              isSelected: true,
-            ),
-        ],
-      ),
+      child: switch (state) {
+        AppLocale.ja => const _LanguageText(
+            locale: AppLocale.ja,
+            isSelected: true,
+          ),
+        AppLocale.en => const _LanguageText(
+            locale: AppLocale.en,
+            isSelected: true,
+          ),
+      },
     );
   }
 }
@@ -135,15 +130,21 @@ class _LanguageText extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final isMobile = MediaQuery.of(context).size.isMobile;
+    final defaultStyle =
+        (isMobile ? textTheme.titleSmall : textTheme.titleMedium);
 
-    return Text(
-      locale.languageCode.toUpperCase(),
-      style:
-          (isMobile ? textTheme.titleSmall : textTheme.titleMedium)?.copyWith(
+    return AnimatedDefaultTextStyle(
+      style: defaultStyle!.copyWith(
         fontWeight: isSelected ? FontWeight.bold : null,
         color:
             theme.colorScheme.onSurface.withValues(alpha: isSelected ? 1 : 0.5),
         fontFamily: FontFamily.poppins,
+        fontSize: (defaultStyle.fontSize ?? 16) * (isSelected ? 1.0 : 0.8),
+      ),
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+      child: Text(
+        locale.languageCode.toUpperCase(),
       ),
     );
   }
