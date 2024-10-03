@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
+import 'package:ticket_web/core/extension/is_mobile.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 /// 一般チケットのカード
@@ -23,6 +25,8 @@ class GeneralTicketCard extends HookWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
+
     final i18n = Translations.of(context);
 
     final textEditingController = useTextEditingController();
@@ -38,7 +42,8 @@ class GeneralTicketCard extends HookWidget {
             const Row(),
             Text(
               i18n.homePage.tickets.normal.name,
-              style: textTheme.titleLarge?.copyWith(
+              style: (isMobile ? textTheme.titleMedium : textTheme.titleLarge)
+                  ?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),
@@ -46,11 +51,23 @@ class GeneralTicketCard extends HookWidget {
             const SizedBox(height: 4),
             Text(
               i18n.homePage.tickets.price(
-                price: NumberFormat('#,###').format(3000),
+                price: NumberFormat('#,###').format(6000),
               ),
-              style: textTheme.titleLarge?.copyWith(
+              style: (isMobile ? textTheme.titleMedium : textTheme.titleLarge)
+                  ?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
+            ),
+            const SizedBox(height: 4),
+            MarkdownBody(
+              data: i18n.homePage.tickets.normal.description,
+              styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
+                p: (isMobile ? textTheme.bodyMedium : textTheme.bodyLarge)
+                    ?.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
+              ),
+              softLineBreak: true,
             ),
             const SizedBox(height: 16),
             FilledButton.icon(
@@ -67,7 +84,8 @@ class GeneralTicketCard extends HookWidget {
             const SizedBox(height: 8),
             Text(
               i18n.homePage.tickets.invitation.description,
-              style: textTheme.bodyLarge?.copyWith(
+              style: (isMobile ? textTheme.bodyMedium : textTheme.bodyLarge)
+                  ?.copyWith(
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),

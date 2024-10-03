@@ -1,5 +1,4 @@
 {
-  "hello": "Hello, World!",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
   "official_site": "Official Site",
@@ -14,7 +13,9 @@
         "general": "General Ticket",
         "session_speaker": "Session Speaker Ticket",
         "sponsor_session": "Sponsor Session Speaker Ticket",
-        "sponsor_invitation": "Sponsor Invitation Ticket"
+        "sponsor_invitation": "Sponsor Invitation Ticket",
+        "sponsor_booth": "Sponsor Booth Ticket",
+        "personal_sponsor": "Personal Sponsor Ticket"
       },
       "buyTicket": "Buy Ticket",
       "loginBeforeBuy": "Please login with your Google account to buy or register a ticket.",
@@ -27,8 +28,7 @@
       },
       "normal": {
         "name": "Normal Ticket",
-        "price": "¥$price",
-        "description": "General admission ticket"
+        "description": "**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**"
       },
       "invitation": {
         "description": "If you have an invitation code or coupon code, please enter it here.",
@@ -57,7 +57,7 @@
       },
       "personal_sponsor": {
         "name": "Personal Sponsor Ticket",
-        "description": "Ticket for individual sponsors"
+        "description": "- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**"
       },
       "student": {
         "name": "Student Discount",
@@ -106,6 +106,79 @@
       "status_other": "A network error occurred (Status Code: $statusCode)",
       "try_again": "Please try again later.",
       "unknown": "An unknown error occurred."
+    }
+  },
+  "ticketPage": {
+    "thankYouCard": {
+      "title": "Thank you for purchasing a ticket!",
+      "description": "You have a $type ticket."
+    },
+    "warning_for_speaker_profile": {
+      "title": "Note on Speaker Profile",
+      "description": "Speaker profiles will be published on the FlutterKaigi official site. Please be careful."
+    },
+    "warning_for_personal_sponsor": {
+      "title": "Note on Personal Sponsor Profile",
+      "description": "You have a personal sponsor ticket. You can choose to publish your profile on the FlutterKaigi official site.",
+      "buttons": {
+        "publish_profile": "Publish Profile",
+        "do_not_publish_profile": "DO NOT Publish Profile"
+      }
+    },
+    "information_for_profile_edit": {
+      "title": "Note on Profile Information",
+      "description": "The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image."
+    },
+    "profile_edit_restriction": {
+      "title": "Note on Profile Editing",
+      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons."
+    },
+    "edit_fields": {
+      "dialog": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
+      "name": {
+        "title": "Name",
+        "description": "Please enter your name. (20 characters or less, no special characters allowed)",
+        "validation": {
+          "too_long": "Name must be 20 characters or less",
+          "invalid_characters": "Name must be alphanumeric"
+        }
+      },
+      "comment": {
+        "title": "Comment",
+        "description": "Please enter your comment. (40 characters or less, no special characters allowed)",
+        "validation": {
+          "too_long": "Comment must be 40 characters or less",
+          "invalid_characters": "Comment must be alphanumeric"
+        }
+      },
+      "x_account": {
+        "title": "X Account",
+        "description": "Please enter your X account. (No @ symbol allowed)",
+        "placeholder": "X Account",
+        "delete_button": "Delete X Account Entry",
+        "unknown": "Unknown",
+        "validation": {
+          "too_long": "X Account must be 40 characters or less",
+          "invalid_characters": "X Account must be alphanumeric"
+        }
+      },
+      "avatar": {
+        "title": "Profile Image",
+        "description": "Please upload your profile image. (PNG, JPG format, up to 2MB)",
+        "upload_button": "Upload Image",
+        "remove_button": "Reset to Default (Google Account Image)",
+        "upload_success": "Profile image uploaded successfully",
+        "delete_success": "Profile image reset to default successfully",
+        "upload_error": "Profile image upload failed",
+        "delete_error": "Profile image reset to default failed"
+      },
+      "results": {
+        "success": "Profile information updated successfully",
+        "error": "Profile information update failed"
+      }
     }
   }
 }

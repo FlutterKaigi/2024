@@ -48,8 +48,8 @@ _$SessionWithSpeakerAndSponsorImpl _$$SessionWithSpeakerAndSponsorImplFromJson(
           speakers: $checkedConvert(
               'speakers',
               (v) => (v as List<dynamic>)
-                  .map(
-                      (e) => ProfileWithSns.fromJson(e as Map<String, dynamic>))
+                  .map((e) =>
+                      ProfileWithSnsView.fromJson(e as Map<String, dynamic>))
                   .toList()),
           sponsors: $checkedConvert(
               'sponsors',

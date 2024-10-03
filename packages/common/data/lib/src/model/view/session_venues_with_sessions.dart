@@ -25,7 +25,7 @@ class SessionWithSpeakerAndSponsor with _$SessionWithSpeakerAndSponsor {
     required DateTime startsAt,
     required DateTime endsAt,
     required bool isLightningTalk,
-    required List<ProfileWithSns> speakers,
+    required List<ProfileWithSnsView> speakers,
     required List<Sponsor> sponsors,
   }) = _SessionWithSpeakerAndSponsor;
 

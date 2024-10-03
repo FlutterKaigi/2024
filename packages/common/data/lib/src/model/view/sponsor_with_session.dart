@@ -46,7 +46,7 @@ class SessionWithSpeakerAndVenue with _$SessionWithSpeakerAndVenue {
     required DateTime startsAt,
     required DateTime endsAt,
     required bool isLightningTalk,
-    required List<ProfileWithSns> speakers,
+    required List<ProfileWithSnsView> speakers,
     required SessionVenue venue,
   }) = _SessionWithSpeakerAndVenue;
 

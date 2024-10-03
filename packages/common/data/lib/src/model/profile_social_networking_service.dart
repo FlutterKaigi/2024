@@ -15,3 +15,7 @@ class ProfileSocialNetworkingService with _$ProfileSocialNetworkingService {
   factory ProfileSocialNetworkingService.fromJson(Map<String, dynamic> json) =>
       _$ProfileSocialNetworkingServiceFromJson(json);
 }
+
+extension ProfileSocialNetworkingServiceEx on ProfileSocialNetworkingService {
+  Uri get uri => type.toUri(value);
+}

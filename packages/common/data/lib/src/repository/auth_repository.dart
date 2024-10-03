@@ -49,6 +49,7 @@ final class AuthRepository {
         sb.AuthChangeEvent.signedOut => AuthChangeEvent.signedOut,
         sb.AuthChangeEvent.tokenRefreshed => AuthChangeEvent.tokenRefreshed,
         sb.AuthChangeEvent.userUpdated => AuthChangeEvent.userUpdated,
+        // ignore: deprecated_member_use
         sb.AuthChangeEvent.userDeleted => AuthChangeEvent.userDeleted,
         sb.AuthChangeEvent.mfaChallengeVerified =>
           AuthChangeEvent.mfaChallengeVerified,
