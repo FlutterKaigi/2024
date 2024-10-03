@@ -34,6 +34,7 @@ class App extends HookConsumerWidget {
 
     return TranslationProvider(
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         title: 'Ticket System',
         routerConfig: router,
         theme: lightTheme,

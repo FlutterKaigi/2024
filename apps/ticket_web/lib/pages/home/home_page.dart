@@ -4,6 +4,7 @@ import 'package:ticket_web/core/components/error/error_card.dart';
 import 'package:ticket_web/core/components/language_selector.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/core/router/router.dart';
+import 'package:ticket_web/feature/profile/ui/app_bar_avatar.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/home/components/already_purchased_card.dart';
@@ -25,6 +26,8 @@ class HomePage extends ConsumerWidget {
     return SiteScaffold.widget(
       actions: const [
         LanguageSelector(),
+        AppBarAvatar(),
+        SizedBox(width: 8),
       ],
       body: Column(
         children: [
