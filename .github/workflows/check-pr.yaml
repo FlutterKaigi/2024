@@ -29,6 +29,11 @@ jobs:
     if: ${{ needs.changes.outputs.database == 'true' }}
     uses: ./.github/workflows/wc-check-database.yaml
 
+  check-diff:
+    needs: changes
+    if: ${{ needs.changes.outputs.diff == 'true' }}
+    uses: ./.github/workflows/wc-check-diff.yaml
+
   check-markdownlint:
     needs: changes
     if: ${{ needs.changes.outputs.markdownlint == 'true' }}
@@ -53,6 +58,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs:
       - check-database
+      - check-diff
       - check-markdownlint
       - check-prettier
       - check-sql-format
