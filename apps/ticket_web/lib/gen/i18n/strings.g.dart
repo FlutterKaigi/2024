@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 222 (111 per locale)
+/// Strings: 224 (112 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -380,7 +380,7 @@ class _StringsHomePageTicketsVariantJa {
 	String get sponsorSession => 'スポンサーセッション登壇者チケット';
 	String get sponsorInvitation => 'スポンサー招待チケット';
 	String get sponsorBooth => 'スポンサーブースチケット';
-	String get personalSponsor => '個人スポンサーチケット';
+	String get personalSponsor => '個人スポンサー付き参加チケット';
 }
 
 // Path: homePage.tickets.alreadyPurchasedCard
@@ -404,7 +404,7 @@ class _StringsHomePageTicketsNormalJa {
 
 	// Translations
 	String get name => '一般チケット';
-	String get description => '一般参加者向けチケット';
+	String get description => '**[一般チケットの特典]**\n- **本編への参加**\n- **懇親会への参加**\n- **各種ノベルティ**';
 }
 
 // Path: homePage.tickets.invitation
@@ -429,8 +429,8 @@ class _StringsHomePageTicketsPersonalSponsorJa {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get name => '個人スポンサーチケット';
-	String get description => '個人スポンサー向けチケット';
+	String get name => '個人スポンサー付き参加チケット';
+	String get description => '- 個人スポンサー付き参加チケットは、一般チケットを内包します\n\n**[個人スポンサーの特典]**\n- **専用Viewing Area**: セッションルーム前方に専用エリアを設置\n- **専用FlutterKaigiグッズ**\n- **開会式でのメッセージ紹介**\n- **Webサイトへのアイコン掲載**';
 }
 
 // Path: homePage.tickets.student
@@ -441,7 +441,7 @@ class _StringsHomePageTicketsStudentJa {
 
 	// Translations
 	String get name => '学割について';
-	String get description => '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+	String get description => 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -501,6 +501,7 @@ class _StringsTicketPageEditFieldsXAccountJa {
 	String get description => 'Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)';
 	String get placeholder => 'Xアカウント';
 	String get deleteButton => 'Xアカウントの記載を削除';
+	String get unknown => '未設定';
 	late final _StringsTicketPageEditFieldsXAccountValidationJa validation = _StringsTicketPageEditFieldsXAccountValidationJa._(_root);
 }
 
@@ -1002,6 +1003,7 @@ class _StringsTicketPageEditFieldsXAccountEn extends _StringsTicketPageEditField
 	@override String get description => 'Please enter your X account. (No @ symbol allowed)';
 	@override String get placeholder => 'X Account';
 	@override String get deleteButton => 'Delete X Account Entry';
+	@override String get unknown => 'Unknown';
 	@override late final _StringsTicketPageEditFieldsXAccountValidationEn validation = _StringsTicketPageEditFieldsXAccountValidationEn._(_root);
 }
 
@@ -1125,7 +1127,7 @@ extension on Translations {
 			case 'homePage.tickets.variant.sponsorSession': return 'スポンサーセッション登壇者チケット';
 			case 'homePage.tickets.variant.sponsorInvitation': return 'スポンサー招待チケット';
 			case 'homePage.tickets.variant.sponsorBooth': return 'スポンサーブースチケット';
-			case 'homePage.tickets.variant.personalSponsor': return '個人スポンサーチケット';
+			case 'homePage.tickets.variant.personalSponsor': return '個人スポンサー付き参加チケット';
 			case 'homePage.tickets.buyTicket': return 'チケットを購入';
 			case 'homePage.tickets.loginBeforeBuy': return 'チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。';
 			case 'homePage.tickets.ticketManagedByGoogleAccount': return '購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。';
@@ -1135,7 +1137,7 @@ extension on Translations {
 			case 'homePage.tickets.alreadyPurchasedCard.button': return 'チケットページへ';
 			case 'homePage.tickets.alreadyPurchasedCard.verifyError': return 'チケットをお持ちかどうかの確認中にエラーが発生しました。';
 			case 'homePage.tickets.normal.name': return '一般チケット';
-			case 'homePage.tickets.normal.description': return '一般参加者向けチケット';
+			case 'homePage.tickets.normal.description': return '**[一般チケットの特典]**\n- **本編への参加**\n- **懇親会への参加**\n- **各種ノベルティ**';
 			case 'homePage.tickets.invitation.description': return '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
 			case 'homePage.tickets.invitation.textBoxTitle': return '招待コード もしくは クーポンコード';
 			case 'homePage.tickets.invitation.textBoxDescription': return 'コードを入力';
@@ -1157,10 +1159,10 @@ extension on Translations {
 			case 'homePage.tickets.invitation.validation.invited.session': return '登壇セッション';
 			case 'homePage.tickets.invitation.validation.invited.next': return '次へ';
 			case 'homePage.tickets.invitation.validation.invited.pleaseWaitForAMoment': return '少々お待ちください...';
-			case 'homePage.tickets.personalSponsor.name': return '個人スポンサーチケット';
-			case 'homePage.tickets.personalSponsor.description': return '個人スポンサー向けチケット';
+			case 'homePage.tickets.personalSponsor.name': return '個人スポンサー付き参加チケット';
+			case 'homePage.tickets.personalSponsor.description': return '- 個人スポンサー付き参加チケットは、一般チケットを内包します\n\n**[個人スポンサーの特典]**\n- **専用Viewing Area**: セッションルーム前方に専用エリアを設置\n- **専用FlutterKaigiグッズ**\n- **開会式でのメッセージ紹介**\n- **Webサイトへのアイコン掲載**';
 			case 'homePage.tickets.student.name': return '学割について';
-			case 'homePage.tickets.student.description': return '[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+			case 'homePage.tickets.student.description': return 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 			case 'verifyPurchase.processing': return '購入処理中...';
 			case 'verifyPurchase.processingDescription': return '購入記録とユーザを紐づけています。しばらくお待ちください。';
 			case 'verifyPurchase.success': return '購入処理が完了しました!';
@@ -1216,6 +1218,7 @@ extension on Translations {
 			case 'ticketPage.editFields.xAccount.description': return 'Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)';
 			case 'ticketPage.editFields.xAccount.placeholder': return 'Xアカウント';
 			case 'ticketPage.editFields.xAccount.deleteButton': return 'Xアカウントの記載を削除';
+			case 'ticketPage.editFields.xAccount.unknown': return '未設定';
 			case 'ticketPage.editFields.xAccount.validation.tooLong': return 'Xアカウントは40文字以内で入力してください';
 			case 'ticketPage.editFields.xAccount.validation.invalidCharacters': return 'Xアカウントには英数字以外の文字は使用できません';
 			case 'ticketPage.editFields.avatar.title': return 'プロフィール画像';
@@ -1332,6 +1335,7 @@ extension on _StringsEn {
 			case 'ticketPage.editFields.xAccount.description': return 'Please enter your X account. (No @ symbol allowed)';
 			case 'ticketPage.editFields.xAccount.placeholder': return 'X Account';
 			case 'ticketPage.editFields.xAccount.deleteButton': return 'Delete X Account Entry';
+			case 'ticketPage.editFields.xAccount.unknown': return 'Unknown';
 			case 'ticketPage.editFields.xAccount.validation.tooLong': return 'X Account must be 40 characters or less';
 			case 'ticketPage.editFields.xAccount.validation.invalidCharacters': return 'X Account must be alphanumeric';
 			case 'ticketPage.editFields.avatar.title': return 'Profile Image';

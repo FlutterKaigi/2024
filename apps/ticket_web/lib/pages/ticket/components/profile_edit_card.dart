@@ -34,13 +34,26 @@ class ProfileEditCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                i18n.ticketPage.informationForProfileEdit.title,
-                style: (isMobile ? textTheme.titleMedium : textTheme.titleLarge)
-                    ?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: theme.colorScheme.onTertiaryContainer,
-                ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.person,
+                    color: theme.colorScheme.onSecondaryContainer,
+                  ),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Text(
+                      i18n.ticketPage.informationForProfileEdit.title,
+                      style: (isMobile
+                              ? textTheme.titleMedium
+                              : textTheme.titleLarge)
+                          ?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.onTertiaryContainer,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 8),
               Text(
