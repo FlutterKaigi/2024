@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
+import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 import 'package:ticket_web/feature/ticket/ui/components/profile_avatar.dart';
@@ -120,8 +121,12 @@ class _MenuItem extends ConsumerWidget {
               const Divider(),
               TextButton.icon(
                 icon: const Icon(Icons.logout),
-                onPressed: () async =>
-                    ref.read(authNotifierProvider.notifier).signOut(),
+                onPressed: () async {
+                  await ref.read(authNotifierProvider.notifier).signOut();
+                  if (context.mounted) {
+                    HomeRoute().go(context);
+                  }
+                },
                 label: Text(i18n.authorization.logOut),
               ),
             ],
