@@ -19,8 +19,7 @@ class AppBarAvatar extends ConsumerWidget {
       AsyncData(:final value) when value != null => _Avatar(
           profile: value,
         ),
-      AsyncData() => const _LoginButton(),
-      AsyncError() => const SizedBox.shrink(),
+      AsyncData() || AsyncError() => const SizedBox.shrink(),
       _ => const CircularProgressIndicator.adaptive(),
     };
   }
@@ -128,24 +127,6 @@ class _MenuItem extends ConsumerWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _LoginButton extends ConsumerWidget {
-  const _LoginButton();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return const IconButton.filled(
-      onPressed: null,
-      // TODO(YumNumm): チケット販売開始時にコメントアウト
-      // () async =>
-      //    ref.read(authNotifierProvider.notifier).signInWithGoogle(),
-      icon: Icon(
-        Icons.login,
-        color: Colors.white,
       ),
     );
   }
