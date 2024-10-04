@@ -8,7 +8,6 @@ import 'package:ticket_web/feature/profile/ui/app_bar_avatar.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/home/components/already_purchased_card.dart';
-import 'package:ticket_web/pages/home/components/auth_state_card.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/information_for_students.dart';
 import 'package:ticket_web/pages/home/components/ticket_will_be_on_sale_card.dart';
