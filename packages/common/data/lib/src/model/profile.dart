@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'profile.freezed.dart';
@@ -10,14 +12,15 @@ class Profile with _$Profile {
     required String name,
     required Role role,
     required String comment,
-
-    /// ユーザがセットしたアバター画像のURL
-    required Uri? userAvatarUri,
     required DateTime createdAt,
+    required bool isAdult,
+
+    /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
+    @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+    Future<Uint8List?> Function()? userAvatarFetch,
 
     /// Googleアカウントのアバター画像のURL
-    required Uri? googleAvatarUri,
-    required bool isAdult,
+    Uri? googleAvatarUri,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

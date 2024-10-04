@@ -8,6 +8,11 @@
       "date": "November\n21(Thu) - 22(Fri)",
       "location": "Ariake Central Tower & Conference"
     },
+    "ticket_will_be_on_sale_card": {
+      "title": "Tickets are not on sale yet",
+      "description": "Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).",
+      "button": "Go to the FlutterKaigi official X account"
+    },
     "tickets": {
       "variant": {
         "general": "General Ticket",
@@ -127,11 +132,11 @@
     },
     "information_for_profile_edit": {
       "title": "Note on Profile Information",
-      "description": "The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image."
+      "description": "The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image."
     },
     "profile_edit_restriction": {
       "title": "Note on Profile Editing",
-      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons."
+      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons."
     },
     "design_may_be_changed": "※The design of the name card may be changed on the day of FlutterKaigi 2024.",
     "edit_fields": {

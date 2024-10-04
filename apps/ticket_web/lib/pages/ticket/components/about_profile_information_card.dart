@@ -37,13 +37,13 @@ class AboutProfileInformation extends StatelessWidget {
     return Card.outlined(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(isMobile ? 4 : 16),
         side: BorderSide(
           color: theme.colorScheme.surfaceDim,
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(isMobile ? 8 : 16),
         child: IntrinsicWidth(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,9 +88,12 @@ class AboutProfileInformation extends StatelessWidget {
               if (isPersonalSponsor)
                 const Center(child: WarningForPersonalSponsorCard()),
               Center(
-                child: _ProfileCard(
-                  profile: profile,
-                  ticket: ticket,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: _ProfileCard(
+                    profile: profile,
+                    ticket: ticket,
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
@@ -137,7 +140,7 @@ class _ProfileCard extends ConsumerWidget {
           .path
           .split('/')
           .last,
-      avatarImageUri: profile.userAvatarUri ?? profile.googleAvatarUri,
+      profile: profile,
       sponsorImageUri: null, // TODO(YumNumm): スポンサー画像
       isSponsor: isSponsor,
       isSpeaker: isSpeaker,

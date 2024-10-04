@@ -8,6 +8,11 @@
       "date": "November\n21(Thu) - 22(Fri)",
       "location": "有明セントラルタワーホール&カンファレンス"
     },
+    "ticket_will_be_on_sale_card": {
+      "title": "チケットはまだ販売されていません",
+      "description": "チケットの販売は、10月7日(月) から開始されます。\nそれまでしばらくお待ちください。\n\n最新情報はFlutterKaigi公式Xアカウントでもお知らせします(@FlutterKaigi)",
+      "button": "公式Xアカウントへ"
+    },
     "tickets": {
       "variant": {
         "general": "一般チケット",

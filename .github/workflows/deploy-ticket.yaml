@@ -62,7 +62,7 @@ jobs:
               environments+=("${{ github.event.inputs.environment }}")
             fi
           elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            environments+=("production")
+            #environments+=("production")
             environments+=("staging")
           else
             echo "他の条件に一致しないため、stagingにデプロイします"

@@ -24,6 +24,8 @@ class TicketCommentCard extends ConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
+    final i18n = Translations.of(context);
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8),
@@ -32,7 +34,7 @@ class TicketCommentCard extends ConsumerWidget {
           children: [
             const Row(),
             Text(
-              t.ticketPage.editFields.comment.title,
+              i18n.ticketPage.editFields.comment.title,
               style: textTheme.bodySmall?.copyWith(
                 color: Colors.grey,
               ),
@@ -47,8 +49,8 @@ class TicketCommentCard extends ConsumerWidget {
                   onPressed: () async => TicketCardEditDialog.show(
                     type: EditDialogType.comment,
                     initialValue: comment,
-                    title: t.ticketPage.editFields.comment.title,
-                    description: t.ticketPage.editFields.comment.description,
+                    title: i18n.ticketPage.editFields.comment.title,
+                    description: i18n.ticketPage.editFields.comment.description,
                     maxLength: 40,
                     onUpdated: (value) async {
                       try {

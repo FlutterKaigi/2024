@@ -24,6 +24,8 @@ class TicketCardAppBar extends ConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
+    final i18n = Translations.of(context);
+
     return ColoredBox(
       color: const Color(0xFF2196F3),
       child: SizedBox(
@@ -40,7 +42,7 @@ class TicketCardAppBar extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        t.ticketPage.editFields.name.title,
+                        i18n.ticketPage.editFields.name.title,
                         style: textTheme.bodySmall?.copyWith(
                           color: Colors.white.withValues(alpha: 0.5),
                         ),
@@ -65,8 +67,8 @@ class TicketCardAppBar extends ConsumerWidget {
                 onPressed: () async => TicketCardEditDialog.show(
                   type: EditDialogType.name,
                   initialValue: name,
-                  title: t.ticketPage.editFields.name.title,
-                  description: t.ticketPage.editFields.name.description,
+                  title: i18n.ticketPage.editFields.name.title,
+                  description: i18n.ticketPage.editFields.name.description,
                   maxLength: 20,
                   onUpdated: (value) async {
                     try {

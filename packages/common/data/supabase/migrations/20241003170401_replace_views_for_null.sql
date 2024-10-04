@@ -18,7 +18,9 @@ GROUP BY
 
 DROP VIEW public.session_venues_with_sessions;
 
-CREATE VIEW public.session_venues_with_sessions AS
+CREATE VIEW public.session_venues_with_sessions
+WITH
+  (security_invoker = TRUE) AS
 SELECT
   v.id,
   v.name,
