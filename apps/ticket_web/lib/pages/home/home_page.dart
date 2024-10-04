@@ -38,8 +38,6 @@ class HomePage extends ConsumerWidget {
           ),
           const TransitToHomePage(),
           const SizedBox(height: 48),
-          const TicketWillBeOnSaleCard(),
-          const SizedBox(height: 16),
           const AuthStateCard(),
           ticketState.when(
             data: (ticket) {
