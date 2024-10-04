@@ -1,6 +1,5 @@
 -- Nullの時に不正な値を返すVIEWが多かったので、空配列を返すように変更
-DROP VIEW public.profiles_with_sns;
-CREATE VIEW public.profiles_with_sns AS
+CREATE OR REPLACE VIEW public.profiles_with_sns AS
 SELECT
   p.*,
   coalesce(
