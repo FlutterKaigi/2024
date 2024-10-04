@@ -71,7 +71,6 @@ class ProfileNotifier extends _$ProfileNotifier {
     final profileRepository = ref.read(profileRepositoryProvider);
     await profileRepository.deleteProfileAvatar(
       ref.read(authNotifierProvider)!.id,
-      state.valueOrNull!.userAvatarUri!.path.split('/').last,
     );
     ref.invalidateSelf();
   }
