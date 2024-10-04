@@ -31,6 +31,19 @@
       ]
     },
     {
+      "name": "ticket-web-staging-debug-wasm",
+      "cwd": "apps/ticket_web",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--wasm",
+        "--dart-define-from-file=defines/staging.env"
+      ]
+    },
+    {
       "name": "ticket-web-production-debug-wasm",
       "cwd": "apps/ticket_web",
       "request": "launch",
@@ -41,6 +54,20 @@
         "8080",
         "--wasm",
         "--dart-define-from-file=defines/production.env"
+      ]
+    },
+    {
+      "name": "ticket-web-staging-debug",
+      "cwd": "apps/ticket_web",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--dart-define-from-file=defines/staging.env",
+        "-d",
+        "macos"
       ]
     },
     {
