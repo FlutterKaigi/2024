@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 229 (114 per locale)
+/// Strings: 235 (117 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -209,6 +209,8 @@ class _StringsHomePageJa {
   // Translations
   late final _StringsHomePageTitleAndLogoJa titleAndLogo =
       _StringsHomePageTitleAndLogoJa._(_root);
+  late final _StringsHomePageTicketWillBeOnSaleCardJa ticketWillBeOnSaleCard =
+      _StringsHomePageTicketWillBeOnSaleCardJa._(_root);
   late final _StringsHomePageTicketsJa tickets =
       _StringsHomePageTicketsJa._(_root);
 }
@@ -304,6 +306,19 @@ class _StringsHomePageTitleAndLogoJa {
   // Translations
   String get date => 'November\n21(Thu) - 22(Fri)';
   String get location => '有明セントラルタワーホール&カンファレンス';
+}
+
+// Path: homePage.ticketWillBeOnSaleCard
+class _StringsHomePageTicketWillBeOnSaleCardJa {
+  _StringsHomePageTicketWillBeOnSaleCardJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'チケットはまだ販売されていません';
+  String get description =>
+      'チケットの販売は、10月7日(月) から開始されます。\nそれまでしばらくお待ちください。\n\n最新情報はFlutterKaigi公式Xアカウントでもお知らせします(@FlutterKaigi)';
+  String get button => '公式Xアカウントへ';
 }
 
 // Path: homePage.tickets
@@ -804,6 +819,9 @@ class _StringsHomePageEn extends _StringsHomePageJa {
   late final _StringsHomePageTitleAndLogoEn titleAndLogo =
       _StringsHomePageTitleAndLogoEn._(_root);
   @override
+  late final _StringsHomePageTicketWillBeOnSaleCardEn ticketWillBeOnSaleCard =
+      _StringsHomePageTicketWillBeOnSaleCardEn._(_root);
+  @override
   late final _StringsHomePageTicketsEn tickets =
       _StringsHomePageTicketsEn._(_root);
 }
@@ -945,6 +963,26 @@ class _StringsHomePageTitleAndLogoEn extends _StringsHomePageTitleAndLogoJa {
   String get date => 'November\n21(Thu) - 22(Fri)';
   @override
   String get location => 'Ariake Central Tower & Conference';
+}
+
+// Path: homePage.ticketWillBeOnSaleCard
+class _StringsHomePageTicketWillBeOnSaleCardEn
+    extends _StringsHomePageTicketWillBeOnSaleCardJa {
+  _StringsHomePageTicketWillBeOnSaleCardEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Tickets are not on sale yet';
+  @override
+  String get description =>
+      'Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).';
+  @override
+  String get button => 'Go to the FlutterKaigi official X account';
 }
 
 // Path: homePage.tickets
@@ -1599,6 +1637,12 @@ extension on Translations {
         return 'November\n21(Thu) - 22(Fri)';
       case 'homePage.titleAndLogo.location':
         return '有明セントラルタワーホール&カンファレンス';
+      case 'homePage.ticketWillBeOnSaleCard.title':
+        return 'チケットはまだ販売されていません';
+      case 'homePage.ticketWillBeOnSaleCard.description':
+        return 'チケットの販売は、10月7日(月) から開始されます。\nそれまでしばらくお待ちください。\n\n最新情報はFlutterKaigi公式Xアカウントでもお知らせします(@FlutterKaigi)';
+      case 'homePage.ticketWillBeOnSaleCard.button':
+        return '公式Xアカウントへ';
       case 'homePage.tickets.variant.general':
         return '一般チケット';
       case 'homePage.tickets.variant.sessionSpeaker':
@@ -1845,6 +1889,12 @@ extension on _StringsEn {
         return 'November\n21(Thu) - 22(Fri)';
       case 'homePage.titleAndLogo.location':
         return 'Ariake Central Tower & Conference';
+      case 'homePage.ticketWillBeOnSaleCard.title':
+        return 'Tickets are not on sale yet';
+      case 'homePage.ticketWillBeOnSaleCard.description':
+        return 'Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).';
+      case 'homePage.ticketWillBeOnSaleCard.button':
+        return 'Go to the FlutterKaigi official X account';
       case 'homePage.tickets.variant.general':
         return 'General Ticket';
       case 'homePage.tickets.variant.sessionSpeaker':
