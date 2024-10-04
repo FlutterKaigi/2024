@@ -24,15 +24,17 @@ mixin _$ProfileWithSns {
   String get name => throw _privateConstructorUsedError;
   Role get role => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
-
-  /// ユーザがセットしたアバター画像のURL
-  Uri? get userAvatarUri => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Googleアカウントのアバター画像のURL
   Uri? get googleAvatarUri => throw _privateConstructorUsedError;
   bool get isAdult => throw _privateConstructorUsedError;
   List<ProfileSocialNetworkingService> get snsAccounts =>
+      throw _privateConstructorUsedError;
+
+  /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
+  @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+  Future<Uint8List?> Function()? get userAvatarFetch =>
       throw _privateConstructorUsedError;
 
   /// Serializes this ProfileWithSns to a JSON map.
@@ -56,11 +58,12 @@ abstract class $ProfileWithSnsCopyWith<$Res> {
       String name,
       Role role,
       String comment,
-      Uri? userAvatarUri,
       DateTime createdAt,
       Uri? googleAvatarUri,
       bool isAdult,
-      List<ProfileSocialNetworkingService> snsAccounts});
+      List<ProfileSocialNetworkingService> snsAccounts,
+      @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+      Future<Uint8List?> Function()? userAvatarFetch});
 }
 
 /// @nodoc
@@ -82,11 +85,11 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
     Object? name = null,
     Object? role = null,
     Object? comment = null,
-    Object? userAvatarUri = freezed,
     Object? createdAt = null,
     Object? googleAvatarUri = freezed,
     Object? isAdult = null,
     Object? snsAccounts = null,
+    Object? userAvatarFetch = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -105,10 +108,6 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      userAvatarUri: freezed == userAvatarUri
-          ? _value.userAvatarUri
-          : userAvatarUri // ignore: cast_nullable_to_non_nullable
-              as Uri?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -125,6 +124,10 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
           ? _value.snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
               as List<ProfileSocialNetworkingService>,
+      userAvatarFetch: freezed == userAvatarFetch
+          ? _value.userAvatarFetch
+          : userAvatarFetch // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?> Function()?,
     ) as $Val);
   }
 }
@@ -142,11 +145,12 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
       String name,
       Role role,
       String comment,
-      Uri? userAvatarUri,
       DateTime createdAt,
       Uri? googleAvatarUri,
       bool isAdult,
-      List<ProfileSocialNetworkingService> snsAccounts});
+      List<ProfileSocialNetworkingService> snsAccounts,
+      @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+      Future<Uint8List?> Function()? userAvatarFetch});
 }
 
 /// @nodoc
@@ -166,11 +170,11 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
     Object? name = null,
     Object? role = null,
     Object? comment = null,
-    Object? userAvatarUri = freezed,
     Object? createdAt = null,
     Object? googleAvatarUri = freezed,
     Object? isAdult = null,
     Object? snsAccounts = null,
+    Object? userAvatarFetch = freezed,
   }) {
     return _then(_$ProfileWithSnsImpl(
       id: null == id
@@ -189,10 +193,6 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
               as String,
-      userAvatarUri: freezed == userAvatarUri
-          ? _value.userAvatarUri
-          : userAvatarUri // ignore: cast_nullable_to_non_nullable
-              as Uri?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -209,6 +209,10 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
           ? _value._snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
               as List<ProfileSocialNetworkingService>,
+      userAvatarFetch: freezed == userAvatarFetch
+          ? _value.userAvatarFetch
+          : userAvatarFetch // ignore: cast_nullable_to_non_nullable
+              as Future<Uint8List?> Function()?,
     ));
   }
 }
@@ -221,11 +225,12 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required this.name,
       required this.role,
       required this.comment,
-      required this.userAvatarUri,
       required this.createdAt,
       required this.googleAvatarUri,
       required this.isAdult,
-      required final List<ProfileSocialNetworkingService> snsAccounts})
+      required final List<ProfileSocialNetworkingService> snsAccounts,
+      @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+      this.userAvatarFetch})
       : _snsAccounts = snsAccounts;
 
   factory _$ProfileWithSnsImpl.fromJson(Map<String, dynamic> json) =>
@@ -239,10 +244,6 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   final Role role;
   @override
   final String comment;
-
-  /// ユーザがセットしたアバター画像のURL
-  @override
-  final Uri? userAvatarUri;
   @override
   final DateTime createdAt;
 
@@ -259,9 +260,14 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
     return EqualUnmodifiableListView(_snsAccounts);
   }
 
+  /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+  final Future<Uint8List?> Function()? userAvatarFetch;
+
   @override
   String toString() {
-    return 'ProfileWithSns(id: $id, name: $name, role: $role, comment: $comment, userAvatarUri: $userAvatarUri, createdAt: $createdAt, googleAvatarUri: $googleAvatarUri, isAdult: $isAdult, snsAccounts: $snsAccounts)';
+    return 'ProfileWithSns(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, googleAvatarUri: $googleAvatarUri, isAdult: $isAdult, snsAccounts: $snsAccounts, userAvatarFetch: $userAvatarFetch)';
   }
 
   @override
@@ -273,15 +279,15 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.comment, comment) || other.comment == comment) &&
-            (identical(other.userAvatarUri, userAvatarUri) ||
-                other.userAvatarUri == userAvatarUri) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.googleAvatarUri, googleAvatarUri) ||
                 other.googleAvatarUri == googleAvatarUri) &&
             (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
             const DeepCollectionEquality()
-                .equals(other._snsAccounts, _snsAccounts));
+                .equals(other._snsAccounts, _snsAccounts) &&
+            (identical(other.userAvatarFetch, userAvatarFetch) ||
+                other.userAvatarFetch == userAvatarFetch));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -292,11 +298,11 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       name,
       role,
       comment,
-      userAvatarUri,
       createdAt,
       googleAvatarUri,
       isAdult,
-      const DeepCollectionEquality().hash(_snsAccounts));
+      const DeepCollectionEquality().hash(_snsAccounts),
+      userAvatarFetch);
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.
@@ -321,11 +327,13 @@ abstract class _ProfileWithSns implements ProfileWithSns {
           required final String name,
           required final Role role,
           required final String comment,
-          required final Uri? userAvatarUri,
           required final DateTime createdAt,
           required final Uri? googleAvatarUri,
           required final bool isAdult,
-          required final List<ProfileSocialNetworkingService> snsAccounts}) =
+          required final List<ProfileSocialNetworkingService> snsAccounts,
+          @JsonKey(
+              includeFromJson: false, includeToJson: false, defaultValue: null)
+          final Future<Uint8List?> Function()? userAvatarFetch}) =
       _$ProfileWithSnsImpl;
 
   factory _ProfileWithSns.fromJson(Map<String, dynamic> json) =
@@ -339,10 +347,6 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   Role get role;
   @override
   String get comment;
-
-  /// ユーザがセットしたアバター画像のURL
-  @override
-  Uri? get userAvatarUri;
   @override
   DateTime get createdAt;
 
@@ -353,6 +357,11 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   bool get isAdult;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts;
+
+  /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+  Future<Uint8List?> Function()? get userAvatarFetch;
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.
