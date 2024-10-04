@@ -45,7 +45,7 @@ class LoginBeforePurchaseCard extends StatelessWidget {
           color: theme.colorScheme.error,
         ),
       ),
-      margin: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       color: theme.colorScheme.errorContainer,
       child: DefaultTextStyle(
         style: TextStyle(

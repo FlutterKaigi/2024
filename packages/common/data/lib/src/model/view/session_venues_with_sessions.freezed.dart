@@ -200,7 +200,7 @@ mixin _$SessionWithSpeakerAndSponsor {
   DateTime get startsAt => throw _privateConstructorUsedError;
   DateTime get endsAt => throw _privateConstructorUsedError;
   bool get isLightningTalk => throw _privateConstructorUsedError;
-  List<ProfileWithSns> get speakers => throw _privateConstructorUsedError;
+  List<ProfileWithSnsView> get speakers => throw _privateConstructorUsedError;
   List<Sponsor> get sponsors => throw _privateConstructorUsedError;
 
   /// Serializes this SessionWithSpeakerAndSponsor to a JSON map.
@@ -228,7 +228,7 @@ abstract class $SessionWithSpeakerAndSponsorCopyWith<$Res> {
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSns> speakers,
+      List<ProfileWithSnsView> speakers,
       List<Sponsor> sponsors});
 }
 
@@ -285,7 +285,7 @@ class _$SessionWithSpeakerAndSponsorCopyWithImpl<$Res,
       speakers: null == speakers
           ? _value.speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<ProfileWithSnsView>,
       sponsors: null == sponsors
           ? _value.sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -310,7 +310,7 @@ abstract class _$$SessionWithSpeakerAndSponsorImplCopyWith<$Res>
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSns> speakers,
+      List<ProfileWithSnsView> speakers,
       List<Sponsor> sponsors});
 }
 
@@ -366,7 +366,7 @@ class __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>
       speakers: null == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<ProfileWithSnsView>,
       sponsors: null == sponsors
           ? _value._sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -386,7 +386,7 @@ class _$SessionWithSpeakerAndSponsorImpl
       required this.startsAt,
       required this.endsAt,
       required this.isLightningTalk,
-      required final List<ProfileWithSns> speakers,
+      required final List<ProfileWithSnsView> speakers,
       required final List<Sponsor> sponsors})
       : _speakers = speakers,
         _sponsors = sponsors;
@@ -407,9 +407,9 @@ class _$SessionWithSpeakerAndSponsorImpl
   final DateTime endsAt;
   @override
   final bool isLightningTalk;
-  final List<ProfileWithSns> _speakers;
+  final List<ProfileWithSnsView> _speakers;
   @override
-  List<ProfileWithSns> get speakers {
+  List<ProfileWithSnsView> get speakers {
     if (_speakers is EqualUnmodifiableListView) return _speakers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_speakers);
@@ -486,7 +486,7 @@ abstract class _SessionWithSpeakerAndSponsor
           required final DateTime startsAt,
           required final DateTime endsAt,
           required final bool isLightningTalk,
-          required final List<ProfileWithSns> speakers,
+          required final List<ProfileWithSnsView> speakers,
           required final List<Sponsor> sponsors}) =
       _$SessionWithSpeakerAndSponsorImpl;
 
@@ -506,7 +506,7 @@ abstract class _SessionWithSpeakerAndSponsor
   @override
   bool get isLightningTalk;
   @override
-  List<ProfileWithSns> get speakers;
+  List<ProfileWithSnsView> get speakers;
   @override
   List<Sponsor> get sponsors;
 

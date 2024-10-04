@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
@@ -31,7 +32,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
             const Row(),
             Text(
               i18n.homePage.tickets.personalSponsor.name,
-              style: textTheme.displaySmall?.copyWith(
+              style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 32,
               ),
@@ -39,18 +40,21 @@ class PersonalSponsorTicketCard extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               i18n.homePage.tickets.price(
-                price: NumberFormat('#,###').format(123456),
+                price: NumberFormat('#,###').format(30000),
               ),
               style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              i18n.homePage.tickets.personalSponsor.description,
-              style: textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+            MarkdownBody(
+              data: i18n.homePage.tickets.personalSponsor.description,
+              styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
+                p: textTheme.bodyLarge?.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
               ),
+              softLineBreak: true,
             ),
             const SizedBox(height: 16),
             FilledButton.icon(

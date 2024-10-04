@@ -6,10 +6,14 @@ import 'package:ticket_web/gen/i18n/strings.g.dart';
 class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
   const SiteHeader({
     this.onHeaderTitleTap,
+    this.automaticallyImplyLeading = false,
     super.key,
+    this.actions,
   });
 
   final VoidCallback? onHeaderTitleTap;
+  final bool automaticallyImplyLeading;
+  final List<Widget>? actions;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -21,6 +25,7 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       forceMaterialTransparency: true,
+      automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: false,
       title: AnimatedSwitcher(
         layoutBuilder: (currentChild, previousChildren) => Stack(
@@ -45,6 +50,7 @@ class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
       ),
+      actions: actions,
     );
   }
 }

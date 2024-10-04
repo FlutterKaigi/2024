@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 part 'payment_service.g.dart';
 
-@Riverpod(keepAlive: true, dependencies: [Environment])
+@Riverpod(keepAlive: true, dependencies: [environment])
 PaymentService paymentService(PaymentServiceRef ref) {
   return PaymentService(
     environment: ref.watch(environmentProvider),

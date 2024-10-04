@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:common_data/session.dart';
 import 'package:common_data/src/model/profile.dart';
+import 'package:common_data/src/model/view/profile_with_sns.dart';
 import 'package:common_data/supabase_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -25,24 +26,47 @@ class ProfileRepository {
   /// [userId] はユーザーID
   /// `role`が`admin`以外の場合は、自分のプロフィールしか取得できません
   /// 取得可能なプロフィールがない場合は`null`を返します
-  Future<Profile?> fetchProfileByUserId(String userId) async => _client
-      .from('profiles')
-      .select()
-      .eq('id', userId)
-      .maybeSingle()
-      .withConverter((e) => e != null ? Profile.fromJson(e) : null);
+  Future<Profile?> fetchProfileByUserId(String userId) async {
+    final response = await _client
+        .from('profiles')
+        .select()
+        .eq('id', userId)
+        .maybeSingle()
+        .withConverter((e) => e != null ? ProfileTable.fromJson(e) : null);
+    if (response == null) {
+      return null;
+    }
+    return _toProfile(response);
+  }
 
   /// プロフィールとそれに紐づくSNSアカウントを取得します
   /// [userId] はユーザーID
   /// `role`が`admin`以外の場合は、自分のプロフィールしか取得できません
   /// 取得可能なプロフィールがない場合は`null`を返します
-  Future<ProfileWithSns?> fetchProfileWithSnsByUserId(String userId) async =>
-      _client
-          .from('profiles')
-          .select()
-          .eq('id', userId)
-          .maybeSingle()
-          .withConverter((e) => e != null ? ProfileWithSns.fromJson(e) : null);
+  Future<ProfileWithSns?> fetchProfileWithSnsByUserId(String userId) async {
+    final response = await _client
+        .from('profiles_with_sns')
+        .select()
+        .eq('id', userId)
+        .maybeSingle()
+        .withConverter(
+          (data) => data != null ? ProfileWithSnsView.fromJson(data) : null,
+        );
+    if (response == null) {
+      return null;
+    }
+    return _toProfileWithSns(response);
+  }
+
+  /// 自分のプロフィールとそれに紐づくSNSアカウントを取得する
+  /// ログインしていない場合は`null`を返す
+  Future<ProfileWithSns?> fetchMyProfileWithSns() async {
+    final user = _client.auth.currentUser;
+    if (user == null) {
+      return null;
+    }
+    return fetchProfileWithSnsByUserId(user.id);
+  }
 
   /// プロフィールを取得します
   /// [limit] は取得する件数
@@ -58,10 +82,12 @@ class ProfileRepository {
         .select()
         .range(offset, offset + limit)
         .count(CountOption.exact)
-        .withConverter((e) => e.map(Profile.fromJson).toList());
+        .withConverter(
+          (e) => e.map(ProfileTable.fromJson).toList(),
+        );
 
     return PagingResult(
-      data: result.data,
+      data: result.data.map(_toProfile).toList(),
       totalCount: result.count,
     );
   }
@@ -80,10 +106,10 @@ class ProfileRepository {
         .select()
         .range(offset, offset + limit)
         .count(CountOption.exact)
-        .withConverter((e) => e.map(ProfileWithSns.fromJson).toList());
+        .withConverter((e) => e.map(ProfileWithSnsView.fromJson).toList());
 
     return PagingResult(
-      data: result.data,
+      data: result.data.map(_toProfileWithSns).toList(),
       totalCount: result.count,
     );
   }
@@ -106,7 +132,7 @@ class ProfileRepository {
       name != null || comment != null || isAdult != null,
       'name, comment, isAdult must not be null at the same time',
     );
-    return _client
+    final result = await _client
         .from('profiles')
         .update({
           if (name != null) 'name': name,
@@ -117,8 +143,9 @@ class ProfileRepository {
         .select()
         .single()
         .withConverter(
-          Profile.fromJson,
+          ProfileTable.fromJson,
         );
+    return _toProfile(result);
   }
 
   /// プロフィールのSNSアカウントを全て更新します
@@ -127,14 +154,14 @@ class ProfileRepository {
   /// 既存のSNSアカウント登録を全て削除し、[snsAccounts]を登録します
   Future<void> updateSnsAccounts({
     required String userId,
-    required List<ProfileSocialNetworkingService> snsAccounts,
+    required List<(SnsType, String)> snsAccounts,
   }) async =>
       _client.rpc<void>(
         'replace_sns_accounts',
         params: {
           'user_id': userId,
           'sns_accounts': snsAccounts
-              .map((e) => {'type': e.type.name, 'value': e.id})
+              .map((e) => {'type': e.$1.name, 'value': e.$2})
               .toList(),
         },
       );
@@ -148,6 +175,7 @@ class ProfileRepository {
     required Uint8List avatarData,
     required String fileExtension,
     required String userId,
+    String? currentAvatarName,
   }) async {
     assert(
       fileExtension == 'png' ||
@@ -163,11 +191,12 @@ class ProfileRepository {
           fileOptions: FileOptions(
             contentType: 'image/$fileExtension',
             upsert: true,
+            cacheControl: '0',
           ),
         );
 
     // データの更新
-    return _client
+    final result = await _client
         .from('profiles')
         .update({
           'avatar_name': path,
@@ -175,14 +204,59 @@ class ProfileRepository {
         .eq('id', userId)
         .select()
         .single()
-        .withConverter(Profile.fromJson);
+        .withConverter(ProfileTable.fromJson);
+    return _toProfile(result);
   }
 
-  /// プロフィールのアバターのURLを取得します
+  Future<void> deleteProfileAvatar(String userId) async {
+    await _client.storage.from('profile_avatars').remove([
+      '$userId/avatar',
+    ]);
+
+    await _client
+        .from('profiles')
+        .update({
+          'avatar_name': null,
+        })
+        .eq('id', userId)
+        .select()
+        .single()
+        .withConverter(ProfileTable.fromJson);
+  }
+
+  /// プロフィールのアバターのバイナリデータを取得する関数を返す
   /// [userId] はユーザーID
-  /// 当該ファイルが存在するかどうかは検証しないため、URLをFetchしても404が返ることがあります
-  String getProfileAvatarUrl(String userId) =>
-      _client.storage.from('profile_avatars').getPublicUrl('$userId/avatar');
+  /// ファイルが存在しない場合は`null`を返す
+  Future<Uint8List?> _getProfileAvatarFetch(String userId) =>
+      _client.storage.from('profile_avatars').download('$userId/avatar');
+
+  Profile _toProfile(ProfileTable profileTable) => Profile(
+        id: profileTable.id,
+        name: profileTable.name,
+        role: profileTable.role,
+        comment: profileTable.comment,
+        createdAt: profileTable.createdAt,
+        googleAvatarUri: profileTable.avatarUrl,
+        userAvatarFetch: profileTable.avatarName != null
+            ? () async => _getProfileAvatarFetch(profileTable.id)
+            : null,
+        isAdult: profileTable.isAdult,
+      );
+
+  ProfileWithSns _toProfileWithSns(ProfileWithSnsView profileWithSnsView) =>
+      ProfileWithSns(
+        id: profileWithSnsView.id,
+        name: profileWithSnsView.name,
+        role: profileWithSnsView.role,
+        comment: profileWithSnsView.comment,
+        createdAt: profileWithSnsView.createdAt,
+        googleAvatarUri: profileWithSnsView.avatarUrl,
+        userAvatarFetch: profileWithSnsView.avatarName != null
+            ? () async => _getProfileAvatarFetch(profileWithSnsView.id)
+            : null,
+        isAdult: profileWithSnsView.isAdult,
+        snsAccounts: profileWithSnsView.snsAccounts,
+      );
 }
 
 /// ページング用のクラス

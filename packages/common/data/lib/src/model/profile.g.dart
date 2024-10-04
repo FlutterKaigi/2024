@@ -18,10 +18,54 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
           name: $checkedConvert('name', (v) => v as String),
           role: $checkedConvert('role', (v) => $enumDecode(_$RoleEnumMap, v)),
           comment: $checkedConvert('comment', (v) => v as String),
-          avatarName: $checkedConvert('avatar_name', (v) => v as String),
           createdAt:
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
-          avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool),
+          googleAvatarUri: $checkedConvert('google_avatar_uri',
+              (v) => v == null ? null : Uri.parse(v as String)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'createdAt': 'created_at',
+        'isAdult': 'is_adult',
+        'googleAvatarUri': 'google_avatar_uri'
+      },
+    );
+
+Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'role': _$RoleEnumMap[instance.role]!,
+      'comment': instance.comment,
+      'created_at': instance.createdAt.toIso8601String(),
+      'is_adult': instance.isAdult,
+      'google_avatar_uri': instance.googleAvatarUri?.toString(),
+    };
+
+const _$RoleEnumMap = {
+  Role.admin: 'admin',
+  Role.user: 'user',
+  Role.sponsor: 'sponsor',
+  Role.speaker: 'speaker',
+};
+
+_$ProfileTableImpl _$$ProfileTableImplFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$ProfileTableImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$ProfileTableImpl(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          role: $checkedConvert('role', (v) => $enumDecode(_$RoleEnumMap, v)),
+          comment: $checkedConvert('comment', (v) => v as String),
+          avatarName: $checkedConvert('avatar_name', (v) => v as String?),
+          createdAt:
+              $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
+          avatarUrl: $checkedConvert(
+              'avatar_url', (v) => v == null ? null : Uri.parse(v as String)),
           isAdult: $checkedConvert('is_adult', (v) => v as bool),
         );
         return val;
@@ -34,7 +78,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
+Map<String, dynamic> _$$ProfileTableImplToJson(_$ProfileTableImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -42,13 +86,6 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
       'comment': instance.comment,
       'avatar_name': instance.avatarName,
       'created_at': instance.createdAt.toIso8601String(),
-      'avatar_url': instance.avatarUrl,
+      'avatar_url': instance.avatarUrl?.toString(),
       'is_adult': instance.isAdult,
     };
-
-const _$RoleEnumMap = {
-  Role.admin: 'admin',
-  Role.user: 'user',
-  Role.sponsor: 'sponsor',
-  Role.speaker: 'speaker',
-};

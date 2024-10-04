@@ -1,21 +1,40 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/provider/environment.dart';
+import 'package:ticket_web/core/provider/language_provider.dart';
 import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/core/theme/theme.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:ticket_web/pages/debug/debug_page.dart';
 
-class App extends ConsumerWidget {
-  const App({super.key});
+class App extends HookConsumerWidget {
+  const App({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    useEffect(
+      () {
+        // ignore: discarded_futures
+        WidgetsBinding.instance.endOfFrame.then((_) {
+          final initialLocale = ref.read(languageProviderProvider);
+          LocaleSettings.setLocale(initialLocale);
+        });
+        return null;
+      },
+      [],
+    );
+
     final router = ref.watch(routerProvider);
 
     final environment = ref.watch(environmentProvider).environmentType;
 
     return TranslationProvider(
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         title: 'Ticket System',
         routerConfig: router,
         theme: lightTheme,
@@ -35,7 +54,25 @@ class App extends ConsumerWidget {
               EnvironmentType.staging => Colors.orange,
               EnvironmentType.production => throw UnimplementedError(),
             },
-            child: child,
+            child: Stack(
+              children: [
+                if (child != null) child,
+                if (kDebugMode)
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: FloatingActionButton.small(
+                        onPressed: () async =>
+                            router.push(const DebugRoute().location),
+                        child: const Icon(
+                          Icons.bug_report_outlined,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           );
         },
       ),

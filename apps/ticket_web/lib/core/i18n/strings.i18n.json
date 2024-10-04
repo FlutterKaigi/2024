@@ -1,5 +1,4 @@
 {
-  "hello": "こんにちは、世界",
   "flutter_kaigi": "FlutterKaigi",
   "year": "2024",
   "official_site": "公式サイト",
@@ -9,20 +8,33 @@
       "date": "November\n21(Thu) - 22(Fri)",
       "location": "有明セントラルタワーホール&カンファレンス"
     },
+    "ticket_will_be_on_sale_card": {
+      "title": "チケットはまだ販売されていません",
+      "description": "チケットの販売は、10月7日(月) から開始されます。\nそれまでしばらくお待ちください。\n\n最新情報はFlutterKaigi公式Xアカウントでもお知らせします(@FlutterKaigi)",
+      "button": "公式Xアカウントへ"
+    },
     "tickets": {
       "variant": {
         "general": "一般チケット",
         "session_speaker": "セッション登壇者チケット",
         "sponsor_session": "スポンサーセッション登壇者チケット",
-        "sponsor_invitation": "スポンサー招待チケット"
+        "sponsor_invitation": "スポンサー招待チケット",
+        "sponsor_booth": "スポンサーブースチケット",
+        "personal_sponsor": "個人スポンサー付き参加チケット"
       },
       "buyTicket": "チケットを購入",
       "loginBeforeBuy": "チケットを購入・登録するためには、お手持ちのGoogleアカウントでログインしてください。",
       "ticketManagedByGoogleAccount": "購入もしくは登録後に、チケットはGoogleアカウントに紐づいて管理されます。",
       "price": "¥$price",
+      "already_purchased_card": {
+        "title": "チケットを購入いただきありがとうございます",
+        "description": "あなたは既にチケットをお持ちです。チケットページから、チケットの確認・ネームプレートの編集を行ってください。",
+        "button": "チケットページへ",
+        "verify_error": "チケットをお持ちかどうかの確認中にエラーが発生しました。"
+      },
       "normal": {
         "name": "一般チケット",
-        "description": "一般参加者向けチケット"
+        "description": "**[一般チケットの特典]**\n- **本編への参加**\n- **懇親会への参加**\n- **各種ノベルティ**"
       },
       "invitation": {
         "description": "招待コードまたはクーポンコードをお持ちの方はこちらに入力してください",
@@ -56,14 +68,22 @@
         }
       },
       "personal_sponsor": {
-        "name": "個人スポンサーチケット",
-        "description": "個人スポンサー向けチケット"
+        "name": "個人スポンサー付き参加チケット",
+        "description": "- 個人スポンサー付き参加チケットは、一般チケットを内包します\n\n**[個人スポンサーの特典]**\n- **優先Viewing Area**: セッションルーム前方に優先エリアを設置\n- **専用FlutterKaigiグッズ**\n- **開会式でのメッセージ紹介**\n- **Webサイトへのアイコン掲載**"
       },
       "student": {
         "name": "学割について",
-        "description": "[仮]FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。"
+        "description": "FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。"
       }
     }
+  },
+  "verify_purchase": {
+    "processing": "購入処理中...",
+    "processing_description": "購入記録とユーザを紐づけています。しばらくお待ちください。",
+    "success": "購入処理が完了しました!",
+    "error": "チケットの購入処理中にエラーが発生しました",
+    "error_description": "エラーが発生したため、購入処理が完了できませんでした。ページを再読み込みして再試行してください。",
+    "contact": "問題が解決しない場合は、運営にお問い合わせください"
   },
   "authorization": {
     "already_logged_in_with_mail_address": "$mailAddress でログイン済みです",
@@ -98,6 +118,82 @@
       "status_other": "ネットワークエラーが発生しました (ステータスコード: $statusCode)",
       "try_again": "時間をおいて再度お試しください",
       "unknown": "不明なエラーが発生しました"
+    }
+  },
+  "ticketPage": {
+    "thankYouCard": {
+      "title": "チケットを購入いただき、ありがとうございます!",
+      "description": "$type チケットをお持ちです"
+    },
+    "warning_for_speaker_profile": {
+      "title": "登壇者のプロフィール情報についての注意",
+      "description": "登壇者のプロフィールは、FlutterKaigi公式サイトに公開されます。注意してください"
+    },
+    "warning_for_personal_sponsor": {
+      "title": "個人スポンサーのプロフィール情報についての注意",
+      "description": "あなたは個人スポンサーのチケットをお持ちです。FlutterKaigi公式サイトにプロフィール情報を掲載するかどうかを選ぶことができます\nプロフィールの掲載は10月下旬を予定しています",
+      "buttons": {
+        "publish_profile": "プロフィールを公開する",
+        "do_not_publish_profile": "プロフィールを非公開にする"
+      }
+    },
+    "information_for_profile_edit": {
+      "title": "プロフィール情報について",
+      "description": "ここで入力したプロフィール情報は、FlutterKaigi当日のネームプレートに印刷されます。\n名前・ひとこと・Xアカウント・プロフィール画像を編集できます。"
+    },
+    "profile_edit_restriction": {
+      "title": "プロフィール編集の注意",
+      "description": "- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**10月21日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**"
+    },
+    "design_may_be_changed": "※FlutterKaigi 2024当日に配布するネームプレートのデザインは、変更される可能性があります。",
+    "edit_fields": {
+      "dialog": {
+        "ok": "決定",
+        "cancel": "キャンセル"
+      },
+      "name": {
+        "title": "名前",
+        "description": "名前を入力してください。(20文字以内 特殊文字は使用できません)",
+        "validation": {
+          "too_long": "名前は20文字以内で入力してください",
+          "invalid_characters": "名前には特殊文字は使用できません",
+          "empty": "名前を入力してください"
+        }
+      },
+      "comment": {
+        "title": "ひとこと",
+        "description": "ひとことを入力してください。(40文字以内 特殊文字は使用できません)",
+        "validation": {
+          "too_long": "ひとことは40文字以内で入力してください",
+          "invalid_characters": "ひとことには特殊文字は使用できません",
+          "empty": "ひとことを入力してください"
+        }
+      },
+      "x_account": {
+        "title": "Xアカウント",
+        "description": "Xアカウントを入力してください。\n※Xアカウントは、@は含めず入力してください。(例: @FlutterKaigi -> FlutterKaigi)",
+        "placeholder": "Xアカウント",
+        "delete_button": "Xアカウントの記載を削除",
+        "unknown": "未設定",
+        "validation": {
+          "too_long": "Xアカウントは40文字以内で入力してください",
+          "invalid_characters": "Xアカウントには英数字以外の文字は使用できません"
+        }
+      },
+      "avatar": {
+        "title": "プロフィール画像",
+        "description": "プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。",
+        "upload_button": "画像を選択",
+        "remove_button": "デフォルトに戻す(Googleアカウントの画像になります)",
+        "upload_success": "プロフィール画像をアップロードしました",
+        "delete_success": "プロフィール画像をデフォルトに戻しました",
+        "upload_error": "プロフィール画像のアップロードに失敗しました",
+        "delete_error": "プロフィール画像をデフォルトに戻す最中にエラーが発生しました"
+      },
+      "results": {
+        "success": "プロフィール情報を更新しました",
+        "error": "プロフィール情報の更新に失敗しました"
+      }
     }
   }
 }

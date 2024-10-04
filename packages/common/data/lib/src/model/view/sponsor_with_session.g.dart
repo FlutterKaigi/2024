@@ -113,8 +113,8 @@ _$SessionWithSpeakerAndVenueImpl _$$SessionWithSpeakerAndVenueImplFromJson(
           speakers: $checkedConvert(
               'speakers',
               (v) => (v as List<dynamic>)
-                  .map(
-                      (e) => ProfileWithSns.fromJson(e as Map<String, dynamic>))
+                  .map((e) =>
+                      ProfileWithSnsView.fromJson(e as Map<String, dynamic>))
                   .toList()),
           venue: $checkedConvert(
               'venue', (v) => SessionVenue.fromJson(v as Map<String, dynamic>)),

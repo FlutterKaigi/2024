@@ -32,8 +32,7 @@ class Environment {
       ticketApiBaseUrl: const String.fromEnvironment('TICKET_API_BASE_URL'),
       environmentType: EnvironmentType.values.firstWhere(
         (e) =>
-            e.name ==
-            const String.fromEnvironment('ENVIRONMENT').toLowerCase(),
+            e.name == const String.fromEnvironment('ENVIRONMENT').toLowerCase(),
       ),
     );
     assert(result.supabaseUrl.isNotEmpty, 'SUPABASE_URL is empty');
