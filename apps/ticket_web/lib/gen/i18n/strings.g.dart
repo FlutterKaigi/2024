@@ -1129,7 +1129,7 @@ class _StringsTicketPageInformationForProfileEditEn
   String get title => 'Note on Profile Information';
   @override
   String get description =>
-      'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+      'The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image.';
 }
 
 // Path: ticketPage.profileEditRestriction
@@ -1147,7 +1147,7 @@ class _StringsTicketPageProfileEditRestrictionEn
   String get title => 'Note on Profile Editing';
   @override
   String get description =>
-      '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
+      '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
 }
 
 // Path: ticketPage.editFields
@@ -1996,11 +1996,11 @@ extension on _StringsEn {
       case 'ticketPage.informationForProfileEdit.title':
         return 'Note on Profile Information';
       case 'ticketPage.informationForProfileEdit.description':
-        return 'The profile information you enter here will be printed on your name card at FlutterKaigi. You can edit your name, comment, X account, and profile image.';
+        return 'The profile information you enter here will be printed on your name card at FlutterKaigi.\nYou can edit your name, comment, X account, and profile image.';
       case 'ticketPage.profileEditRestriction.title':
         return 'Note on Profile Editing';
       case 'ticketPage.profileEditRestriction.description':
-        return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **10月21日(月) 10:00**. After that, you will **not be able to edit your profile** due to printing reasons.';
+        return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
       case 'ticketPage.designMayBeChanged':
         return '※The design of the name card may be changed on the day of FlutterKaigi 2024.';
       case 'ticketPage.editFields.dialog.ok':

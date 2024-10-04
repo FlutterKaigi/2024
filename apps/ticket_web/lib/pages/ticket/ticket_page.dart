@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/components/error/error_card.dart';
+import 'package:ticket_web/core/components/language_selector.dart';
 import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
+import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
 import 'package:ticket_web/pages/ticket/components/about_profile_information_card.dart';
@@ -26,6 +28,10 @@ class TicketPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SiteScaffold.widget(
+      actions: const [
+        LanguageSelector(),
+      ],
+      onHeaderTitleTap: () => HomeRoute().go(context),
       body: const ResponsiveContentContainer(
         child: _Body(),
       ),

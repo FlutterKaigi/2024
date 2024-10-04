@@ -30,7 +30,7 @@ class ProfileEditRestriction extends StatelessWidget {
         ),
         color: theme.colorScheme.primaryContainer,
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(isMobile ? 8 : 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
