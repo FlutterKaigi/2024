@@ -140,7 +140,7 @@ class _ProfileCard extends ConsumerWidget {
           .path
           .split('/')
           .last,
-      avatarImageUri: profile.userAvatarUri ?? profile.googleAvatarUri,
+      profile: profile,
       sponsorImageUri: null, // TODO(YumNumm): スポンサー画像
       isSponsor: isSponsor,
       isSpeaker: isSpeaker,
