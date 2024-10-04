@@ -57,6 +57,10 @@ class ProfileAvatar extends HookConsumerWidget {
       _ => const CircularProgressIndicator.adaptive(),
     };
 
+    if (!canEdit) {
+      return ClipOval(child: image);
+    }
+
     final isHover = useState(false);
 
     // カーソルが乗ったときは、編集アイコンを出す

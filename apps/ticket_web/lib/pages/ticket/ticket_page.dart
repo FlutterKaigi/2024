@@ -9,6 +9,7 @@ import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
+import 'package:ticket_web/feature/profile/ui/app_bar_avatar.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
 import 'package:ticket_web/pages/ticket/components/about_profile_information_card.dart';
 import 'package:ticket_web/pages/ticket/components/thank_you_for_purchase_ticket.dart';
@@ -30,6 +31,8 @@ class TicketPage extends StatelessWidget {
     return SiteScaffold.widget(
       actions: const [
         LanguageSelector(),
+        AppBarAvatar(),
+        SizedBox(width: 8),
       ],
       onHeaderTitleTap: () => HomeRoute().go(context),
       body: const ResponsiveContentContainer(
