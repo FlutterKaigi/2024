@@ -22,7 +22,8 @@ app.use(
     origin: (origin) => {
       if (
         origin.startsWith("https://") &&
-        origin.endsWith("flutterkaigi-ticket-2024.pages.dev")
+        (origin.endsWith("flutterkaigi-ticket-2024.pages.dev") ||
+          origin.endsWith("flutterkaigi-ticket-2024-staging.pages.dev"))
       ) {
         return origin;
       }

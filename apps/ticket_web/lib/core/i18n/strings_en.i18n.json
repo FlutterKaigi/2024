@@ -136,7 +136,7 @@
     },
     "profile_edit_restriction": {
       "title": "Note on Profile Editing",
-      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons."
+      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **Nov 7 (Mon) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons."
     },
     "design_may_be_changed": "※The design of the name card may be changed on the day of FlutterKaigi 2024.",
     "edit_fields": {

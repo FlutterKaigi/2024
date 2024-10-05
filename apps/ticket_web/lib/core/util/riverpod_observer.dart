@@ -32,7 +32,9 @@ class RiverpodObserver implements ProviderObserver {
     ProviderContainer container,
   ) =>
       log(
-        '$provider: $newValue',
+        provider.name == 'userAvatarImageProvider'
+            ? '$provider: ${newValue.runtimeType}'
+            : '$provider: $newValue',
         name: 'didUpdateProvider',
       );
 
