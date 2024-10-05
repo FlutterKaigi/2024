@@ -34,6 +34,7 @@ class TicketPage extends StatelessWidget {
         AppBarAvatar(),
         SizedBox(width: 8),
       ],
+      headerAutomaticallyImplyLeading: true,
       onHeaderTitleTap: () => HomeRoute().go(context),
       body: const ResponsiveContentContainer(
         child: _Body(),

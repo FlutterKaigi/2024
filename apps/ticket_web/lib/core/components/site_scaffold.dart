@@ -76,6 +76,7 @@ class SiteScaffold extends StatelessWidget {
           ? SiteHeader(
               onHeaderTitleTap: onHeaderTitleTap,
               actions: actions,
+              automaticallyImplyLeading: headerAutomaticallyImplyLeading,
             )
           : null,
       body: CustomScrollView(
