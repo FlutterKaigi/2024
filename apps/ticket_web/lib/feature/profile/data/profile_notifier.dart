@@ -44,7 +44,6 @@ class ProfileNotifier extends _$ProfileNotifier {
     final pickedFile = await FilePicker.platform.pickFiles(
       allowedExtensions: ['png', 'jpg', 'jpeg'],
       type: FileType.custom,
-      lockParentWindow: true,
     );
     if (pickedFile == null) {
       throw ProfileAvatarException('Error: pickedFile is null');
