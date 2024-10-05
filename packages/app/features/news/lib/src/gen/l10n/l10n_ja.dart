@@ -10,5 +10,5 @@ class L10nNewsJa extends L10nNews {
   String get newsPageTitle => 'News';
 
   @override
-  String get newsIsEmpty => '現在、新しいニュースはありません。';
+  String get newsIsEmpty => '現在、新しいお知らせはありません。';
 }
