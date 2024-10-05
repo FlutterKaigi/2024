@@ -24,7 +24,6 @@ class ProfileWithSns with _$ProfileWithSns {
     /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
     @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
     Future<Uint8List?> Function()? userAvatarFetch,
-
     String? avatarName,
   }) = _ProfileWithSns;
 
