@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -57,20 +56,19 @@ class App extends HookConsumerWidget {
             child: Stack(
               children: [
                 if (child != null) child,
-                if (kDebugMode)
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: FloatingActionButton.small(
-                        onPressed: () async =>
-                            router.push(const DebugRoute().location),
-                        child: const Icon(
-                          Icons.bug_report_outlined,
-                        ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: FloatingActionButton.small(
+                      onPressed: () async =>
+                          router.push(const DebugRoute().location),
+                      child: const Icon(
+                        Icons.bug_report_outlined,
                       ),
                     ),
                   ),
+                ),
               ],
             ),
           );
