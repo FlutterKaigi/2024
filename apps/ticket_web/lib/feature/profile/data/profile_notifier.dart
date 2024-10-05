@@ -39,32 +39,39 @@ class ProfileNotifier extends _$ProfileNotifier {
       userId: ref.read(authNotifierProvider)!.id,
       currentAvatarName: state.value?.avatarName,
     );
+    ref.invalidateSelf();
   }
 
-  Future<void> uploadProfileAvatarWithFilePicker() async {
+  Future<(Uint8List, String)> pickImage() async {
     final imagePicker = ref.read(imagePickerProvider);
     final image = await imagePicker.pickImage(
       source: ImageSource.gallery,
     );
-
     if (image == null) {
-      throw ProfileAvatarException('Error: image is null');
+      throw ProfileAvatarException(
+        message: 'Error: image is null',
+      );
     }
-
     final bytes = await image.readAsBytes();
-    final mimeType = image.mimeType ?? 'image/jpeg';
-
-    await updateProfileAvatar(
-      avatarData: bytes,
-      mimeType: mimeType,
-    );
-    ref.invalidateSelf();
+    final mimeType = image.mimeType ?? "image/${image.path.split('.').last}";
+    return switch (mimeType) {
+      'image/png' || 'image/jpg' || 'image/jpeg' => (bytes, mimeType),
+      _ => throw ProfileAvatarException(
+          message: 'Unsupported image type',
+          showMessage: true,
+        ),
+    };
   }
 
   Future<void> deleteProfileAvatar() async {
     final profileRepository = ref.read(profileRepositoryProvider);
+    final avatarName = state.value?.avatarName;
+    if (avatarName == null) {
+      return;
+    }
     await profileRepository.deleteProfileAvatar(
       ref.read(authNotifierProvider)!.id,
+      avatarName,
     );
     ref.invalidateSelf();
   }
@@ -109,6 +116,11 @@ class ProfileNotifier extends _$ProfileNotifier {
 }
 
 class ProfileAvatarException implements Exception {
-  ProfileAvatarException(this.message);
+  ProfileAvatarException({
+    required this.message,
+    this.showMessage = false,
+  });
+
   final String message;
+  final bool showMessage;
 }

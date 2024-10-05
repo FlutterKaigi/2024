@@ -173,13 +173,17 @@
       },
       "avatar": {
         "title": "Profile Image",
-        "description": "Please upload your profile image. (PNG, JPG format, up to 2MB)",
+        "description": "Please upload your profile image. (PNG, JPG format)",
         "upload_button": "Upload Image",
         "remove_button": "Reset to Default (Google Account Image)",
         "upload_success": "Profile image uploaded successfully",
         "delete_success": "Profile image reset to default successfully",
         "upload_error": "Profile image upload failed",
-        "delete_error": "Profile image reset to default failed"
+        "delete_error": "Profile image reset to default failed",
+        "crop": {
+          "title": "Please crop the image",
+          "crop_button": "Crop"
+        }
       },
       "results": {
         "success": "Profile information updated successfully",

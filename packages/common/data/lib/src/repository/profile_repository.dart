@@ -187,7 +187,7 @@ class ProfileRepository {
 
     if (currentAvatarName != null) {
       await _client.storage.from('profile_avatars').remove([
-        '$userId/currentAvatarName',
+        '$userId/$currentAvatarName',
       ]);
     }
 
@@ -217,9 +217,9 @@ class ProfileRepository {
     return _toProfile(result);
   }
 
-  Future<void> deleteProfileAvatar(String userId) async {
+  Future<void> deleteProfileAvatar(String userId, String avatarName) async {
     await _client.storage.from('profile_avatars').remove([
-      '$userId/avatar',
+      '$userId/$avatarName',
     ]);
 
     await _client
@@ -237,7 +237,6 @@ class ProfileRepository {
   /// [userId] はユーザーID
   /// ファイルが存在しない場合は`null`を返す
   Future<Uint8List?> _getProfileAvatarFetch(String userId, String avatarName) {
-    print('---- Download $userId/$avatarName');
     return _client.storage
         .from('profile_avatars')
         .download('$userId/$avatarName');

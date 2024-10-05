@@ -1,6 +1,5 @@
 import 'package:common_data/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/feature/profile/data/user_avatar_image_provider.dart';
 import 'package:ticket_web/feature/ticket/ui/components/profile_avatar_choice_dialog.dart';
@@ -9,12 +8,14 @@ class ProfileAvatar extends HookConsumerWidget {
   const ProfileAvatar({
     required this.profile,
     this.canEdit = true,
+    this.showEditIcon = true,
     super.key,
     this.size = 100,
   });
 
   final ProfileWithSns profile;
   final bool canEdit;
+  final bool showEditIcon;
 
   final double size;
 
@@ -61,48 +62,29 @@ class ProfileAvatar extends HookConsumerWidget {
       return ClipOval(child: image);
     }
 
-    final isHover = useState(false);
-
     // カーソルが乗ったときは、編集アイコンを出す
     return GestureDetector(
       onTap: () async => ProfileAvatarChoiceDialog.show(
         context: context,
         profile: profile,
       ),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        onEnter: (_) => isHover.value = true,
-        onExit: (_) => isHover.value = false,
-        child: ClipOval(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              image,
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
-                child: isHover.value
-                    ? GestureDetector(
-                        onTap: () async => ProfileAvatarChoiceDialog.show(
-                          context: context,
-                          profile: profile,
-                        ),
-                        child: ColoredBox(
-                          color: Colors.black.withValues(alpha: 0.5),
-                          child: SizedBox(
-                            width: size,
-                            height: size,
-                            child: const Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      )
-                    : null,
-              ),
-            ],
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          ClipOval(
+            child: image,
           ),
-        ),
+          if (showEditIcon)
+            IconButton(
+              onPressed: () async => ProfileAvatarChoiceDialog.show(
+                context: context,
+                profile: profile,
+              ),
+              icon: const Icon(Icons.edit),
+            ),
+        ],
       ),
     );
   }

@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 235 (117 per locale)
+/// Strings: 239 (119 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -630,13 +630,15 @@ class _StringsTicketPageEditFieldsAvatarJa {
   // Translations
   String get title => 'プロフィール画像';
   String get description =>
-      'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。';
+      'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。';
   String get uploadButton => '画像を選択';
   String get removeButton => 'デフォルトに戻す(Googleアカウントの画像になります)';
   String get uploadSuccess => 'プロフィール画像をアップロードしました';
   String get deleteSuccess => 'プロフィール画像をデフォルトに戻しました';
   String get uploadError => 'プロフィール画像のアップロードに失敗しました';
   String get deleteError => 'プロフィール画像をデフォルトに戻す最中にエラーが発生しました';
+  late final _StringsTicketPageEditFieldsAvatarCropJa crop =
+      _StringsTicketPageEditFieldsAvatarCropJa._(_root);
 }
 
 // Path: ticketPage.editFields.results
@@ -715,6 +717,17 @@ class _StringsTicketPageEditFieldsXAccountValidationJa {
   // Translations
   String get tooLong => 'Xアカウントは40文字以内で入力してください';
   String get invalidCharacters => 'Xアカウントには英数字以外の文字は使用できません';
+}
+
+// Path: ticketPage.editFields.avatar.crop
+class _StringsTicketPageEditFieldsAvatarCropJa {
+  _StringsTicketPageEditFieldsAvatarCropJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => '画像を切り取ってください';
+  String get cropButton => '切り取る';
 }
 
 // Path: homePage.tickets.invitation.validation.dialog
@@ -1462,7 +1475,7 @@ class _StringsTicketPageEditFieldsAvatarEn
   String get title => 'Profile Image';
   @override
   String get description =>
-      'Please upload your profile image. (PNG, JPG format, up to 2MB)';
+      'Please upload your profile image. (PNG, JPG format)';
   @override
   String get uploadButton => 'Upload Image';
   @override
@@ -1475,6 +1488,9 @@ class _StringsTicketPageEditFieldsAvatarEn
   String get uploadError => 'Profile image upload failed';
   @override
   String get deleteError => 'Profile image reset to default failed';
+  @override
+  late final _StringsTicketPageEditFieldsAvatarCropEn crop =
+      _StringsTicketPageEditFieldsAvatarCropEn._(_root);
 }
 
 // Path: ticketPage.editFields.results
@@ -1572,6 +1588,23 @@ class _StringsTicketPageEditFieldsXAccountValidationEn
   String get tooLong => 'X Account must be 40 characters or less';
   @override
   String get invalidCharacters => 'X Account must be alphanumeric';
+}
+
+// Path: ticketPage.editFields.avatar.crop
+class _StringsTicketPageEditFieldsAvatarCropEn
+    extends _StringsTicketPageEditFieldsAvatarCropJa {
+  _StringsTicketPageEditFieldsAvatarCropEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Please crop the image';
+  @override
+  String get cropButton => 'Crop';
 }
 
 // Path: homePage.tickets.invitation.validation.dialog
@@ -1851,7 +1884,7 @@ extension on Translations {
       case 'ticketPage.editFields.avatar.title':
         return 'プロフィール画像';
       case 'ticketPage.editFields.avatar.description':
-        return 'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。\n※アップロードできる画像のサイズは、2MBまでです。';
+        return 'プロフィール画像をアップロードしてください。\n※アップロードできる画像は、PNG, JPG形式の画像のみです。';
       case 'ticketPage.editFields.avatar.uploadButton':
         return '画像を選択';
       case 'ticketPage.editFields.avatar.removeButton':
@@ -1864,6 +1897,10 @@ extension on Translations {
         return 'プロフィール画像のアップロードに失敗しました';
       case 'ticketPage.editFields.avatar.deleteError':
         return 'プロフィール画像をデフォルトに戻す最中にエラーが発生しました';
+      case 'ticketPage.editFields.avatar.crop.title':
+        return '画像を切り取ってください';
+      case 'ticketPage.editFields.avatar.crop.cropButton':
+        return '切り取る';
       case 'ticketPage.editFields.results.success':
         return 'プロフィール情報を更新しました';
       case 'ticketPage.editFields.results.error':
@@ -2090,7 +2127,7 @@ extension on _StringsEn {
       case 'ticketPage.editFields.avatar.title':
         return 'Profile Image';
       case 'ticketPage.editFields.avatar.description':
-        return 'Please upload your profile image. (PNG, JPG format, up to 2MB)';
+        return 'Please upload your profile image. (PNG, JPG format)';
       case 'ticketPage.editFields.avatar.uploadButton':
         return 'Upload Image';
       case 'ticketPage.editFields.avatar.removeButton':
@@ -2103,6 +2140,10 @@ extension on _StringsEn {
         return 'Profile image upload failed';
       case 'ticketPage.editFields.avatar.deleteError':
         return 'Profile image reset to default failed';
+      case 'ticketPage.editFields.avatar.crop.title':
+        return 'Please crop the image';
+      case 'ticketPage.editFields.avatar.crop.cropButton':
+        return 'Crop';
       case 'ticketPage.editFields.results.success':
         return 'Profile information updated successfully';
       case 'ticketPage.editFields.results.error':
