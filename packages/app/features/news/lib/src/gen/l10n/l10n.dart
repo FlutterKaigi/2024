@@ -106,7 +106,7 @@ abstract class L10nNews {
   /// No description provided for @newsIsEmpty.
   ///
   /// In ja, this message translates to:
-  /// **'現在、新しいニュースはありません。'**
+  /// **'現在、新しいお知らせはありません。'**
   String get newsIsEmpty;
 }
 
