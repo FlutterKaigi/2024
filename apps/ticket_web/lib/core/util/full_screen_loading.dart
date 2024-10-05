@@ -13,6 +13,7 @@ class FullScreenCircularProgressIndicator extends StatelessWidget {
       showDialog<void>(
         context: context,
         builder: (context) => const FullScreenCircularProgressIndicator(),
+        barrierDismissible: false,
       ),
     );
     final T result;
@@ -28,6 +29,8 @@ class FullScreenCircularProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator.adaptive();
+    return const Center(
+      child: CircularProgressIndicator.adaptive(),
+    );
   }
 }
