@@ -50,6 +50,7 @@ class ProfileAvatarChoiceDialog extends HookConsumerWidget {
           const SizedBox(height: 16),
           ProfileAvatar(
             profile: profile.valueOrNull!,
+            canEdit: false,
           ),
           const SizedBox(height: 8),
           if (userAvatarState.valueOrNull != null)
