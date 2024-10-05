@@ -88,12 +88,9 @@ class AboutProfileInformation extends StatelessWidget {
               if (isPersonalSponsor)
                 const Center(child: WarningForPersonalSponsorCard()),
               Center(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: _ProfileCard(
-                    profile: profile,
-                    ticket: ticket,
-                  ),
+                child: _ProfileCard(
+                  profile: profile,
+                  ticket: ticket,
                 ),
               ),
               const SizedBox(height: 8),

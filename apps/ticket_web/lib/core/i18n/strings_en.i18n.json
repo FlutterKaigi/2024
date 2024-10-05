@@ -185,6 +185,13 @@
           "crop_button": "Crop"
         }
       },
+      "is_adult": {
+        "title": "Are you 20 or older on November 21, 2024?",
+        "description": "Alcohol will be served at the party for 20 or older attendees.",
+        "yes": "Yes",
+        "no": "No",
+        "ok": "OK"
+      },
       "results": {
         "success": "Profile information updated successfully",
         "error": "Profile information update failed"
