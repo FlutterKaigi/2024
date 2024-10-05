@@ -6,11 +6,11 @@ part of 'image_picker_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$imagePickerHash() => r'8c34a59b8a3cf6597ab76ddbb44106e4c39e2813';
+String _$imagePickerHash() => r'fd4be1d8c92ddc77e361e07c6e4ac4f58219a831';
 
 /// See also [imagePicker].
 @ProviderFor(imagePicker)
-final imagePickerProvider = Provider<ImagePicker>.internal(
+final imagePickerProvider = Provider<ImagePickerPlugin>.internal(
   imagePicker,
   name: r'imagePickerProvider',
   debugGetCreateSourceHash:
@@ -19,6 +19,6 @@ final imagePickerProvider = Provider<ImagePicker>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef ImagePickerRef = ProviderRef<ImagePicker>;
+typedef ImagePickerRef = ProviderRef<ImagePickerPlugin>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -44,7 +44,7 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   Future<(Uint8List, String)> pickImage() async {
     final imagePicker = ref.read(imagePickerProvider);
-    final image = await imagePicker.pickImage(
+    final image = await imagePicker.getImageFromSource(
       source: ImageSource.gallery,
     );
     if (image == null) {
@@ -57,7 +57,7 @@ class ProfileNotifier extends _$ProfileNotifier {
     return switch (mimeType) {
       'image/png' || 'image/jpg' || 'image/jpeg' => (bytes, mimeType),
       _ => throw ProfileAvatarException(
-          message: 'Unsupported image type',
+          message: 'Unsupported image type: $mimeType',
           showMessage: true,
         ),
     };
