@@ -23,13 +23,15 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
           isAdult: $checkedConvert('is_adult', (v) => v as bool),
           googleAvatarUri: $checkedConvert('google_avatar_uri',
               (v) => v == null ? null : Uri.parse(v as String)),
+          avatarName: $checkedConvert('avatar_name', (v) => v as String?),
         );
         return val;
       },
       fieldKeyMap: const {
         'createdAt': 'created_at',
         'isAdult': 'is_adult',
-        'googleAvatarUri': 'google_avatar_uri'
+        'googleAvatarUri': 'google_avatar_uri',
+        'avatarName': 'avatar_name'
       },
     );
 
@@ -42,6 +44,7 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
       'created_at': instance.createdAt.toIso8601String(),
       'is_adult': instance.isAdult,
       'google_avatar_uri': instance.googleAvatarUri?.toString(),
+      'avatar_name': instance.avatarName,
     };
 
 const _$RoleEnumMap = {

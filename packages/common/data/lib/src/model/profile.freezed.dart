@@ -34,6 +34,7 @@ mixin _$Profile {
 
   /// Googleアカウントのアバター画像のURL
   Uri? get googleAvatarUri => throw _privateConstructorUsedError;
+  String? get avatarName => throw _privateConstructorUsedError;
 
   /// Serializes this Profile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,7 +59,8 @@ abstract class $ProfileCopyWith<$Res> {
       bool isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
-      Uri? googleAvatarUri});
+      Uri? googleAvatarUri,
+      String? avatarName});
 }
 
 /// @nodoc
@@ -84,6 +86,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? isAdult = null,
     Object? userAvatarFetch = freezed,
     Object? googleAvatarUri = freezed,
+    Object? avatarName = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -118,6 +121,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.googleAvatarUri
           : googleAvatarUri // ignore: cast_nullable_to_non_nullable
               as Uri?,
+      avatarName: freezed == avatarName
+          ? _value.avatarName
+          : avatarName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -138,7 +145,8 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       bool isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
-      Uri? googleAvatarUri});
+      Uri? googleAvatarUri,
+      String? avatarName});
 }
 
 /// @nodoc
@@ -162,6 +170,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? isAdult = null,
     Object? userAvatarFetch = freezed,
     Object? googleAvatarUri = freezed,
+    Object? avatarName = freezed,
   }) {
     return _then(_$ProfileImpl(
       id: null == id
@@ -196,6 +205,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.googleAvatarUri
           : googleAvatarUri // ignore: cast_nullable_to_non_nullable
               as Uri?,
+      avatarName: freezed == avatarName
+          ? _value.avatarName
+          : avatarName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -212,7 +225,8 @@ class _$ProfileImpl implements _Profile {
       required this.isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       this.userAvatarFetch,
-      this.googleAvatarUri});
+      this.googleAvatarUri,
+      this.avatarName});
 
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
@@ -238,10 +252,12 @@ class _$ProfileImpl implements _Profile {
   /// Googleアカウントのアバター画像のURL
   @override
   final Uri? googleAvatarUri;
+  @override
+  final String? avatarName;
 
   @override
   String toString() {
-    return 'Profile(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, isAdult: $isAdult, userAvatarFetch: $userAvatarFetch, googleAvatarUri: $googleAvatarUri)';
+    return 'Profile(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, isAdult: $isAdult, userAvatarFetch: $userAvatarFetch, googleAvatarUri: $googleAvatarUri, avatarName: $avatarName)';
   }
 
   @override
@@ -259,13 +275,15 @@ class _$ProfileImpl implements _Profile {
             (identical(other.userAvatarFetch, userAvatarFetch) ||
                 other.userAvatarFetch == userAvatarFetch) &&
             (identical(other.googleAvatarUri, googleAvatarUri) ||
-                other.googleAvatarUri == googleAvatarUri));
+                other.googleAvatarUri == googleAvatarUri) &&
+            (identical(other.avatarName, avatarName) ||
+                other.avatarName == avatarName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, role, comment,
-      createdAt, isAdult, userAvatarFetch, googleAvatarUri);
+      createdAt, isAdult, userAvatarFetch, googleAvatarUri, avatarName);
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.
@@ -293,7 +311,8 @@ abstract class _Profile implements Profile {
       required final bool isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       final Future<Uint8List?> Function()? userAvatarFetch,
-      final Uri? googleAvatarUri}) = _$ProfileImpl;
+      final Uri? googleAvatarUri,
+      final String? avatarName}) = _$ProfileImpl;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
@@ -318,6 +337,8 @@ abstract class _Profile implements Profile {
   /// Googleアカウントのアバター画像のURL
   @override
   Uri? get googleAvatarUri;
+  @override
+  String? get avatarName;
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.

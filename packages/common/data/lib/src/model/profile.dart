@@ -21,6 +21,7 @@ class Profile with _$Profile {
 
     /// Googleアカウントのアバター画像のURL
     Uri? googleAvatarUri,
+    String? avatarName,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>

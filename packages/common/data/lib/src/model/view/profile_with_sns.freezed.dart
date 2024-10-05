@@ -36,6 +36,7 @@ mixin _$ProfileWithSns {
   @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
   Future<Uint8List?> Function()? get userAvatarFetch =>
       throw _privateConstructorUsedError;
+  String? get avatarName => throw _privateConstructorUsedError;
 
   /// Serializes this ProfileWithSns to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,7 +64,8 @@ abstract class $ProfileWithSnsCopyWith<$Res> {
       bool isAdult,
       List<ProfileSocialNetworkingService> snsAccounts,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
-      Future<Uint8List?> Function()? userAvatarFetch});
+      Future<Uint8List?> Function()? userAvatarFetch,
+      String? avatarName});
 }
 
 /// @nodoc
@@ -90,6 +92,7 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
     Object? isAdult = null,
     Object? snsAccounts = null,
     Object? userAvatarFetch = freezed,
+    Object? avatarName = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -128,6 +131,10 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
               as Future<Uint8List?> Function()?,
+      avatarName: freezed == avatarName
+          ? _value.avatarName
+          : avatarName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -150,7 +157,8 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
       bool isAdult,
       List<ProfileSocialNetworkingService> snsAccounts,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
-      Future<Uint8List?> Function()? userAvatarFetch});
+      Future<Uint8List?> Function()? userAvatarFetch,
+      String? avatarName});
 }
 
 /// @nodoc
@@ -175,6 +183,7 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
     Object? isAdult = null,
     Object? snsAccounts = null,
     Object? userAvatarFetch = freezed,
+    Object? avatarName = freezed,
   }) {
     return _then(_$ProfileWithSnsImpl(
       id: null == id
@@ -213,6 +222,10 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
               as Future<Uint8List?> Function()?,
+      avatarName: freezed == avatarName
+          ? _value.avatarName
+          : avatarName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -230,7 +243,8 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required this.isAdult,
       required final List<ProfileSocialNetworkingService> snsAccounts,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
-      this.userAvatarFetch})
+      this.userAvatarFetch,
+      this.avatarName})
       : _snsAccounts = snsAccounts;
 
   factory _$ProfileWithSnsImpl.fromJson(Map<String, dynamic> json) =>
@@ -264,10 +278,12 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
   final Future<Uint8List?> Function()? userAvatarFetch;
+  @override
+  final String? avatarName;
 
   @override
   String toString() {
-    return 'ProfileWithSns(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, googleAvatarUri: $googleAvatarUri, isAdult: $isAdult, snsAccounts: $snsAccounts, userAvatarFetch: $userAvatarFetch)';
+    return 'ProfileWithSns(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, googleAvatarUri: $googleAvatarUri, isAdult: $isAdult, snsAccounts: $snsAccounts, userAvatarFetch: $userAvatarFetch, avatarName: $avatarName)';
   }
 
   @override
@@ -287,7 +303,9 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
             const DeepCollectionEquality()
                 .equals(other._snsAccounts, _snsAccounts) &&
             (identical(other.userAvatarFetch, userAvatarFetch) ||
-                other.userAvatarFetch == userAvatarFetch));
+                other.userAvatarFetch == userAvatarFetch) &&
+            (identical(other.avatarName, avatarName) ||
+                other.avatarName == avatarName));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -302,7 +320,8 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       googleAvatarUri,
       isAdult,
       const DeepCollectionEquality().hash(_snsAccounts),
-      userAvatarFetch);
+      userAvatarFetch,
+      avatarName);
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.
@@ -323,18 +342,17 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
 
 abstract class _ProfileWithSns implements ProfileWithSns {
   const factory _ProfileWithSns(
-          {required final String id,
-          required final String name,
-          required final Role role,
-          required final String comment,
-          required final DateTime createdAt,
-          required final Uri? googleAvatarUri,
-          required final bool isAdult,
-          required final List<ProfileSocialNetworkingService> snsAccounts,
-          @JsonKey(
-              includeFromJson: false, includeToJson: false, defaultValue: null)
-          final Future<Uint8List?> Function()? userAvatarFetch}) =
-      _$ProfileWithSnsImpl;
+      {required final String id,
+      required final String name,
+      required final Role role,
+      required final String comment,
+      required final DateTime createdAt,
+      required final Uri? googleAvatarUri,
+      required final bool isAdult,
+      required final List<ProfileSocialNetworkingService> snsAccounts,
+      @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
+      final Future<Uint8List?> Function()? userAvatarFetch,
+      final String? avatarName}) = _$ProfileWithSnsImpl;
 
   factory _ProfileWithSns.fromJson(Map<String, dynamic> json) =
       _$ProfileWithSnsImpl.fromJson;
@@ -362,6 +380,8 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
   Future<Uint8List?> Function()? get userAvatarFetch;
+  @override
+  String? get avatarName;
 
   /// Create a copy of ProfileWithSns
   /// with the given fields replaced by the non-null parameter values.

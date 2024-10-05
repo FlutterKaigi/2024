@@ -29,6 +29,7 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
                   .map((e) => ProfileSocialNetworkingService.fromJson(
                       e as Map<String, dynamic>))
                   .toList()),
+          avatarName: $checkedConvert('avatar_name', (v) => v as String?),
         );
         return val;
       },
@@ -36,7 +37,8 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
         'createdAt': 'created_at',
         'googleAvatarUri': 'google_avatar_uri',
         'isAdult': 'is_adult',
-        'snsAccounts': 'sns_accounts'
+        'snsAccounts': 'sns_accounts',
+        'avatarName': 'avatar_name'
       },
     );
 
@@ -51,6 +53,7 @@ Map<String, dynamic> _$$ProfileWithSnsImplToJson(
       'google_avatar_uri': instance.googleAvatarUri?.toString(),
       'is_adult': instance.isAdult,
       'sns_accounts': instance.snsAccounts,
+      'avatar_name': instance.avatarName,
     };
 
 const _$RoleEnumMap = {
