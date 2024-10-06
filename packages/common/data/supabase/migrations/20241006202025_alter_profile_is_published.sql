@@ -1,7 +1,6 @@
 ALTER TABLE public.profiles
 ADD COLUMN is_published boolean DEFAULT NULL;
 
--- Nullの時に不正な値を返すVIEWが多かったので、空配列を返すように変更
 DROP VIEW public.profiles_with_sns;
 CREATE OR REPLACE VIEW public.profiles_with_sns AS
 SELECT
