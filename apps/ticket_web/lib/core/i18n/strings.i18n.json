@@ -13,6 +13,11 @@
       "description": "チケットの販売は、2024年10月7日(月) 10:00 JST から開始されます。\nそれまでしばらくお待ちください。\n\n最新情報はFlutterKaigi公式Xアカウントでもお知らせします(@FlutterKaigi)",
       "button": "公式Xアカウントへ"
     },
+    "pre_purchase_warning_dialog": {
+      "title": "チケット購入前の注意事項",
+      "accept": "同意する",
+      "unaccept": "同意しない"
+    },
     "tickets": {
       "variant": {
         "general": "一般チケット",
