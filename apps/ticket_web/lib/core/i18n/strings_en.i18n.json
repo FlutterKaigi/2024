@@ -116,7 +116,7 @@
   "ticketPage": {
     "thankYouCard": {
       "title": "Thank you for purchasing a ticket!",
-      "description": "You have a $type ticket."
+      "description": "You have a $type."
     },
     "warning_for_speaker_profile": {
       "title": "Note on Speaker Profile",

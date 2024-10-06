@@ -123,7 +123,7 @@
   "ticketPage": {
     "thankYouCard": {
       "title": "チケットを購入いただき、ありがとうございます!",
-      "description": "$type チケットをお持ちです"
+      "description": "$type をお持ちです"
     },
     "warning_for_speaker_profile": {
       "title": "登壇者のプロフィール情報についての注意",
