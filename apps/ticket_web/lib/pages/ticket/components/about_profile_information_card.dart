@@ -141,7 +141,7 @@ class _ProfileCard extends ConsumerWidget {
       sponsorImageUri: null, // TODO(YumNumm): スポンサー画像
       isSponsor: isSponsor,
       isSpeaker: isSpeaker,
-      isAdult: profile.isAdult,
+      isAdult: profile.isAdult ?? false,
     );
   }
 }

@@ -18,8 +18,8 @@ class ProfileWithSns with _$ProfileWithSns {
 
     /// Googleアカウントのアバター画像のURL
     required Uri? googleAvatarUri,
-    required bool isAdult,
     required List<ProfileSocialNetworkingService> snsAccounts,
+    required bool? isAdult,
 
     /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
     @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
@@ -42,7 +42,7 @@ class ProfileWithSnsView with _$ProfileWithSnsView {
     required String? avatarName,
     required DateTime createdAt,
     required Uri? avatarUrl,
-    required bool isAdult,
+    required bool? isAdult,
     required List<ProfileSocialNetworkingService> snsAccounts,
   }) = _ProfileWithSnsView;
 

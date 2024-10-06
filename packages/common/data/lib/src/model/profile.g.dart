@@ -20,7 +20,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
           comment: $checkedConvert('comment', (v) => v as String),
           createdAt:
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
-          isAdult: $checkedConvert('is_adult', (v) => v as bool),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool?),
           googleAvatarUri: $checkedConvert('google_avatar_uri',
               (v) => v == null ? null : Uri.parse(v as String)),
           avatarName: $checkedConvert('avatar_name', (v) => v as String?),
@@ -69,7 +69,7 @@ _$ProfileTableImpl _$$ProfileTableImplFromJson(Map<String, dynamic> json) =>
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
           avatarUrl: $checkedConvert(
               'avatar_url', (v) => v == null ? null : Uri.parse(v as String)),
-          isAdult: $checkedConvert('is_adult', (v) => v as bool),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool?),
         );
         return val;
       },
