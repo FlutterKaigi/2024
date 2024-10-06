@@ -11,12 +11,14 @@ class CropWidget extends HookWidget {
     required this.imageBytes,
     required this.isCropping,
     required this.controller,
+    required this.onResized,
     super.key,
   });
 
   final Uint8List imageBytes;
   final ValueNotifier<bool> isCropping;
   final CropController controller;
+  final void Function(Uint8List resizedImageBytes) onResized;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,7 @@ class CropWidget extends HookWidget {
         worker.onmessage = ((web.MessageEvent message) {
           final resizedImageBytes =
               (message.data as JSUint8Array?)?.toDart ?? Uint8List.fromList([]);
-          if (context.mounted) {
-            isCropping.value = false;
-            Navigator.of(context).pop(resizedImageBytes);
-          }
+          onResized(resizedImageBytes);
         }).toJS;
         return null;
       },

@@ -60,6 +60,12 @@ class ImageCropperDialog extends HookWidget {
                   imageBytes: imageBytes,
                   isCropping: isCropping,
                   controller: controller.value,
+                  onResized: (resizedImageBytes) {
+                    if (context.mounted) {
+                      isCropping.value = false;
+                      Navigator.of(context).pop(resizedImageBytes);
+                    }
+                  },
                 ),
               ),
       ),
