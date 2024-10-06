@@ -2,7 +2,10 @@ ALTER TABLE public.profiles
 ADD COLUMN is_published boolean DEFAULT NULL;
 
 DROP VIEW public.profiles_with_sns;
-CREATE OR REPLACE VIEW public.profiles_with_sns AS
+
+CREATE OR REPLACE VIEW public.profiles_with_sns
+WITH
+  (security_invoker = TRUE) AS
 SELECT
   p.*,
   coalesce(
