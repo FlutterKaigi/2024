@@ -468,7 +468,7 @@ class _StringsHomePageTicketsStudentJa {
 
 	// Translations
 	String get name => '学割について';
-	String get description => 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+	String get description => 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -1022,7 +1022,7 @@ class _StringsHomePageTicketsStudentEn extends _StringsHomePageTicketsStudentJa 
 
 	// Translations
 	@override String get name => 'Student Discount';
-	@override String get description => 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
+	@override String get description => 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible.';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -1270,7 +1270,7 @@ extension on Translations {
 			case 'homePage.tickets.personalSponsor.name': return '個人スポンサー付き参加チケット';
 			case 'homePage.tickets.personalSponsor.description': return '- 個人スポンサー付き参加チケットは、一般チケットを内包します\n\n**[個人スポンサーの特典]**\n- **優先Viewing Area**: セッションルーム前方に優先エリアを設置\n- **専用FlutterKaigiグッズ**\n- **開会式でのメッセージ紹介**\n- **Webサイトへのアイコン掲載**';
 			case 'homePage.tickets.student.name': return '学割について';
-			case 'homePage.tickets.student.description': return 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+			case 'homePage.tickets.student.description': return 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 			case 'verifyPurchase.processing': return '購入処理中...';
 			case 'verifyPurchase.processingDescription': return '購入記録とユーザを紐づけています。しばらくお待ちください。';
 			case 'verifyPurchase.success': return '購入処理が完了しました!';
@@ -1401,7 +1401,7 @@ extension on _StringsEn {
 			case 'homePage.tickets.personalSponsor.name': return 'Personal Sponsor Ticket';
 			case 'homePage.tickets.personalSponsor.description': return '- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**';
 			case 'homePage.tickets.student.name': return 'Student Discount';
-			case 'homePage.tickets.student.description': return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
+			case 'homePage.tickets.student.description': return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible.';
 			case 'verifyPurchase.processing': return 'Verifying purchase...';
 			case 'verifyPurchase.processingDescription': return 'Linking your purchase record and user. Please wait a moment...';
 			case 'verifyPurchase.success': return 'Purchase verification completed';
