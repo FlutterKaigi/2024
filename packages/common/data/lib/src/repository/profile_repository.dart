@@ -120,7 +120,8 @@ class ProfileRepository {
   /// [name] は名前
   /// [comment] はコメント
   /// [isAdult] は成人しているかどうか
-  /// [name], [comment], [isAdult] のいずれかはNullではない必要があります
+  /// [isPublished] は公開するかどうか
+  /// [name], [comment], [isAdult], [isPublished] のいずれかはNullではない必要があります
   /// Nullの場合は更新されません
   /// 明示的に空で更新したい場合は空文字を指定してください
   Future<Profile> updateProfile({
@@ -128,10 +129,11 @@ class ProfileRepository {
     String? name,
     String? comment,
     bool? isAdult,
+    bool? isPublished,
   }) async {
     assert(
-      name != null || comment != null || isAdult != null,
-      'name, comment, isAdult must not be null at the same time',
+      name != null || comment != null || isAdult != null || isPublished != null,
+      'name, comment, isAdult, isPublished must not be null at the same time',
     );
     final result = await _client
         .from('profiles')
@@ -139,6 +141,7 @@ class ProfileRepository {
           if (name != null) 'name': name,
           if (comment != null) 'comment': comment,
           if (isAdult != null) 'is_adult': isAdult,
+          if (isPublished != null) 'is_published': isPublished,
         })
         .eq('id', userId)
         .select()
@@ -257,6 +260,7 @@ class ProfileRepository {
             : null,
         isAdult: profileTable.isAdult,
         avatarName: profileTable.avatarName,
+        isPublished: profileTable.isPublished,
       );
 
   ProfileWithSns _toProfileWithSns(ProfileWithSnsView profileWithSnsView) =>
@@ -276,6 +280,7 @@ class ProfileRepository {
         isAdult: profileWithSnsView.isAdult,
         snsAccounts: profileWithSnsView.snsAccounts,
         avatarName: profileWithSnsView.avatarName,
+        isPublished: profileWithSnsView.isPublished,
       );
 }
 

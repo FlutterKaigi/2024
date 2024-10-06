@@ -29,6 +29,7 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
                       e as Map<String, dynamic>))
                   .toList()),
           isAdult: $checkedConvert('is_adult', (v) => v as bool?),
+          isPublished: $checkedConvert('is_published', (v) => v as bool?),
           avatarName: $checkedConvert('avatar_name', (v) => v as String?),
         );
         return val;
@@ -38,6 +39,7 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
         'googleAvatarUri': 'google_avatar_uri',
         'snsAccounts': 'sns_accounts',
         'isAdult': 'is_adult',
+        'isPublished': 'is_published',
         'avatarName': 'avatar_name'
       },
     );
@@ -53,6 +55,7 @@ Map<String, dynamic> _$$ProfileWithSnsImplToJson(
       'google_avatar_uri': instance.googleAvatarUri?.toString(),
       'sns_accounts': instance.snsAccounts,
       'is_adult': instance.isAdult,
+      'is_published': instance.isPublished,
       'avatar_name': instance.avatarName,
     };
 
@@ -80,6 +83,7 @@ _$ProfileWithSnsViewImpl _$$ProfileWithSnsViewImplFromJson(
           avatarUrl: $checkedConvert(
               'avatar_url', (v) => v == null ? null : Uri.parse(v as String)),
           isAdult: $checkedConvert('is_adult', (v) => v as bool?),
+          isPublished: $checkedConvert('is_published', (v) => v as bool?),
           snsAccounts: $checkedConvert(
               'sns_accounts',
               (v) => (v as List<dynamic>)
@@ -94,6 +98,7 @@ _$ProfileWithSnsViewImpl _$$ProfileWithSnsViewImplFromJson(
         'createdAt': 'created_at',
         'avatarUrl': 'avatar_url',
         'isAdult': 'is_adult',
+        'isPublished': 'is_published',
         'snsAccounts': 'sns_accounts'
       },
     );
@@ -109,5 +114,6 @@ Map<String, dynamic> _$$ProfileWithSnsViewImplToJson(
       'created_at': instance.createdAt.toIso8601String(),
       'avatar_url': instance.avatarUrl?.toString(),
       'is_adult': instance.isAdult,
+      'is_published': instance.isPublished,
       'sns_accounts': instance.snsAccounts,
     };

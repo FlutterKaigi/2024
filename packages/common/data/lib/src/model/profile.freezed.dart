@@ -26,6 +26,7 @@ mixin _$Profile {
   String get comment => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   bool? get isAdult => throw _privateConstructorUsedError;
+  bool? get isPublished => throw _privateConstructorUsedError;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
@@ -57,6 +58,7 @@ abstract class $ProfileCopyWith<$Res> {
       String comment,
       DateTime createdAt,
       bool? isAdult,
+      bool? isPublished,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
       Uri? googleAvatarUri,
@@ -84,6 +86,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? comment = null,
     Object? createdAt = null,
     Object? isAdult = freezed,
+    Object? isPublished = freezed,
     Object? userAvatarFetch = freezed,
     Object? googleAvatarUri = freezed,
     Object? avatarName = freezed,
@@ -112,6 +115,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
       isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isPublished: freezed == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
               as bool?,
       userAvatarFetch: freezed == userAvatarFetch
           ? _value.userAvatarFetch
@@ -143,6 +150,7 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       String comment,
       DateTime createdAt,
       bool? isAdult,
+      bool? isPublished,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
       Uri? googleAvatarUri,
@@ -168,6 +176,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? comment = null,
     Object? createdAt = null,
     Object? isAdult = freezed,
+    Object? isPublished = freezed,
     Object? userAvatarFetch = freezed,
     Object? googleAvatarUri = freezed,
     Object? avatarName = freezed,
@@ -197,6 +206,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isPublished: freezed == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool?,
       userAvatarFetch: freezed == userAvatarFetch
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
@@ -223,6 +236,7 @@ class _$ProfileImpl implements _Profile {
       required this.comment,
       required this.createdAt,
       required this.isAdult,
+      required this.isPublished,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       this.userAvatarFetch,
       this.googleAvatarUri,
@@ -243,6 +257,8 @@ class _$ProfileImpl implements _Profile {
   final DateTime createdAt;
   @override
   final bool? isAdult;
+  @override
+  final bool? isPublished;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @override
@@ -257,7 +273,7 @@ class _$ProfileImpl implements _Profile {
 
   @override
   String toString() {
-    return 'Profile(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, isAdult: $isAdult, userAvatarFetch: $userAvatarFetch, googleAvatarUri: $googleAvatarUri, avatarName: $avatarName)';
+    return 'Profile(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, isAdult: $isAdult, isPublished: $isPublished, userAvatarFetch: $userAvatarFetch, googleAvatarUri: $googleAvatarUri, avatarName: $avatarName)';
   }
 
   @override
@@ -272,6 +288,8 @@ class _$ProfileImpl implements _Profile {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
+            (identical(other.isPublished, isPublished) ||
+                other.isPublished == isPublished) &&
             (identical(other.userAvatarFetch, userAvatarFetch) ||
                 other.userAvatarFetch == userAvatarFetch) &&
             (identical(other.googleAvatarUri, googleAvatarUri) ||
@@ -282,8 +300,18 @@ class _$ProfileImpl implements _Profile {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, role, comment,
-      createdAt, isAdult, userAvatarFetch, googleAvatarUri, avatarName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      role,
+      comment,
+      createdAt,
+      isAdult,
+      isPublished,
+      userAvatarFetch,
+      googleAvatarUri,
+      avatarName);
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.
@@ -309,6 +337,7 @@ abstract class _Profile implements Profile {
       required final String comment,
       required final DateTime createdAt,
       required final bool? isAdult,
+      required final bool? isPublished,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       final Future<Uint8List?> Function()? userAvatarFetch,
       final Uri? googleAvatarUri,
@@ -328,6 +357,8 @@ abstract class _Profile implements Profile {
   DateTime get createdAt;
   @override
   bool? get isAdult;
+  @override
+  bool? get isPublished;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @override
@@ -362,6 +393,7 @@ mixin _$ProfileTable {
   DateTime get createdAt => throw _privateConstructorUsedError;
   Uri? get avatarUrl => throw _privateConstructorUsedError;
   bool? get isAdult => throw _privateConstructorUsedError;
+  bool? get isPublished => throw _privateConstructorUsedError;
 
   /// Serializes this ProfileTable to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -387,7 +419,8 @@ abstract class $ProfileTableCopyWith<$Res> {
       String? avatarName,
       DateTime createdAt,
       Uri? avatarUrl,
-      bool? isAdult});
+      bool? isAdult,
+      bool? isPublished});
 }
 
 /// @nodoc
@@ -413,6 +446,7 @@ class _$ProfileTableCopyWithImpl<$Res, $Val extends ProfileTable>
     Object? createdAt = null,
     Object? avatarUrl = freezed,
     Object? isAdult = freezed,
+    Object? isPublished = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -447,6 +481,10 @@ class _$ProfileTableCopyWithImpl<$Res, $Val extends ProfileTable>
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isPublished: freezed == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -467,7 +505,8 @@ abstract class _$$ProfileTableImplCopyWith<$Res>
       String? avatarName,
       DateTime createdAt,
       Uri? avatarUrl,
-      bool? isAdult});
+      bool? isAdult,
+      bool? isPublished});
 }
 
 /// @nodoc
@@ -491,6 +530,7 @@ class __$$ProfileTableImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? avatarUrl = freezed,
     Object? isAdult = freezed,
+    Object? isPublished = freezed,
   }) {
     return _then(_$ProfileTableImpl(
       id: null == id
@@ -525,6 +565,10 @@ class __$$ProfileTableImplCopyWithImpl<$Res>
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isPublished: freezed == isPublished
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -540,7 +584,8 @@ class _$ProfileTableImpl implements _ProfileTable {
       required this.avatarName,
       required this.createdAt,
       required this.avatarUrl,
-      required this.isAdult});
+      required this.isAdult,
+      required this.isPublished});
 
   factory _$ProfileTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileTableImplFromJson(json);
@@ -561,10 +606,12 @@ class _$ProfileTableImpl implements _ProfileTable {
   final Uri? avatarUrl;
   @override
   final bool? isAdult;
+  @override
+  final bool? isPublished;
 
   @override
   String toString() {
-    return 'ProfileTable(id: $id, name: $name, role: $role, comment: $comment, avatarName: $avatarName, createdAt: $createdAt, avatarUrl: $avatarUrl, isAdult: $isAdult)';
+    return 'ProfileTable(id: $id, name: $name, role: $role, comment: $comment, avatarName: $avatarName, createdAt: $createdAt, avatarUrl: $avatarUrl, isAdult: $isAdult, isPublished: $isPublished)';
   }
 
   @override
@@ -582,13 +629,15 @@ class _$ProfileTableImpl implements _ProfileTable {
                 other.createdAt == createdAt) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
-            (identical(other.isAdult, isAdult) || other.isAdult == isAdult));
+            (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
+            (identical(other.isPublished, isPublished) ||
+                other.isPublished == isPublished));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, role, comment,
-      avatarName, createdAt, avatarUrl, isAdult);
+      avatarName, createdAt, avatarUrl, isAdult, isPublished);
 
   /// Create a copy of ProfileTable
   /// with the given fields replaced by the non-null parameter values.
@@ -615,7 +664,8 @@ abstract class _ProfileTable implements ProfileTable {
       required final String? avatarName,
       required final DateTime createdAt,
       required final Uri? avatarUrl,
-      required final bool? isAdult}) = _$ProfileTableImpl;
+      required final bool? isAdult,
+      required final bool? isPublished}) = _$ProfileTableImpl;
 
   factory _ProfileTable.fromJson(Map<String, dynamic> json) =
       _$ProfileTableImpl.fromJson;
@@ -636,6 +686,8 @@ abstract class _ProfileTable implements ProfileTable {
   Uri? get avatarUrl;
   @override
   bool? get isAdult;
+  @override
+  bool? get isPublished;
 
   /// Create a copy of ProfileTable
   /// with the given fields replaced by the non-null parameter values.

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
+import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
-class WarningForPersonalSponsorCard extends StatelessWidget {
+class WarningForPersonalSponsorCard extends ConsumerWidget {
   const WarningForPersonalSponsorCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profile = ref.watch(profileNotifierProvider);
+    print(profile.valueOrNull?.isPublished);
+
     final i18n = Translations.of(context);
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
@@ -56,12 +61,18 @@ class WarningForPersonalSponsorCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              _ProfilePublishButtons(
-                isPublished: true,
-                onPressed: (isPublished) {
-                  // TODO(YumNumm): プロフィール公開ボタン
-                },
-              ),
+              switch (profile) {
+                AsyncData(:final value) when value != null =>
+                  _ProfilePublishButtons(
+                    isPublished: value.isPublished ?? false,
+                    onPressed: (isPublished) async {
+                      await ref
+                          .read(profileNotifierProvider.notifier)
+                          .updateProfileIsPublished(isPublished: isPublished);
+                    },
+                  ),
+                _ => const SizedBox.shrink(),
+              },
             ],
           ),
         ),

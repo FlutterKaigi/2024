@@ -14,6 +14,7 @@ class Profile with _$Profile {
     required String comment,
     required DateTime createdAt,
     required bool? isAdult,
+    required bool? isPublished,
 
     /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
     @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
@@ -39,6 +40,7 @@ class ProfileTable with _$ProfileTable {
     required DateTime createdAt,
     required Uri? avatarUrl,
     required bool? isAdult,
+    required bool? isPublished,
   }) = _ProfileTable;
 
   factory ProfileTable.fromJson(Map<String, dynamic> json) =>
