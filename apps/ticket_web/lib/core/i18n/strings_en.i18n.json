@@ -66,7 +66,7 @@
       },
       "student": {
         "name": "Student Discount",
-        "description": "If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible."
+        "description": "If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible."
       }
     }
   },
@@ -116,7 +116,7 @@
   "ticketPage": {
     "thankYouCard": {
       "title": "Thank you for purchasing a ticket!",
-      "description": "You have a $type ticket."
+      "description": "You have a $type."
     },
     "warning_for_speaker_profile": {
       "title": "Note on Speaker Profile",

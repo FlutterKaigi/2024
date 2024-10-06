@@ -401,7 +401,7 @@ class _StringsTicketPageThankYouCardJa {
 
   // Translations
   String get title => 'チケットを購入いただき、ありがとうございます!';
-  String description({required Object type}) => '${type} チケットをお持ちです';
+  String description({required Object type}) => '${type} をお持ちです';
 }
 
 // Path: ticketPage.warningForSpeakerProfile
@@ -555,7 +555,7 @@ class _StringsHomePageTicketsStudentJa {
   // Translations
   String get name => '学割について';
   String get description =>
-      'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+      'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -1139,7 +1139,7 @@ class _StringsTicketPageThankYouCardEn
   @override
   String get title => 'Thank you for purchasing a ticket!';
   @override
-  String description({required Object type}) => 'You have a ${type} ticket.';
+  String description({required Object type}) => 'You have a ${type}.';
 }
 
 // Path: ticketPage.warningForSpeakerProfile
@@ -1373,7 +1373,7 @@ class _StringsHomePageTicketsStudentEn
   String get name => 'Student Discount';
   @override
   String get description =>
-      'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
+      'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible.';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -1800,7 +1800,7 @@ extension on Translations {
       case 'homePage.tickets.student.name':
         return '学割について';
       case 'homePage.tickets.student.description':
-        return 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は　当日に学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
+        return 'FlutterKaigi 2024当日に、学生(高校・大学・大学院・高等専門学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。';
       case 'verifyPurchase.processing':
         return '購入処理中...';
       case 'verifyPurchase.processingDescription':
@@ -1863,7 +1863,7 @@ extension on Translations {
       case 'ticketPage.thankYouCard.title':
         return 'チケットを購入いただき、ありがとうございます!';
       case 'ticketPage.thankYouCard.description':
-        return ({required Object type}) => '${type} チケットをお持ちです';
+        return ({required Object type}) => '${type} をお持ちです';
       case 'ticketPage.warningForSpeakerProfile.title':
         return '登壇者のプロフィール情報についての注意';
       case 'ticketPage.warningForSpeakerProfile.description':
@@ -2056,7 +2056,7 @@ extension on _StringsEn {
       case 'homePage.tickets.student.name':
         return 'Student Discount';
       case 'homePage.tickets.student.description':
-        return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible.';
+        return 'If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible.';
       case 'verifyPurchase.processing':
         return 'Verifying purchase...';
       case 'verifyPurchase.processingDescription':
@@ -2120,7 +2120,7 @@ extension on _StringsEn {
       case 'ticketPage.thankYouCard.title':
         return 'Thank you for purchasing a ticket!';
       case 'ticketPage.thankYouCard.description':
-        return ({required Object type}) => 'You have a ${type} ticket.';
+        return ({required Object type}) => 'You have a ${type}.';
       case 'ticketPage.warningForSpeakerProfile.title':
         return 'Note on Speaker Profile';
       case 'ticketPage.warningForSpeakerProfile.description':
