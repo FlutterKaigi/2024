@@ -67,7 +67,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/workers/
     - assets/fonts/NotoSansJP/OFL.txt
     - assets/fonts/Poppins/OFL.txt
     - assets/images/sns/
