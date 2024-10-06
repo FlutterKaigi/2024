@@ -12,6 +12,19 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsDocsGen {
+  const $AssetsDocsGen();
+
+  /// File path: assets/docs/pre_purchase_warning.md
+  String get prePurchaseWarning => 'assets/docs/pre_purchase_warning.md';
+
+  /// Directory path: assets/docs
+  String get path => 'assets/docs';
+
+  /// List of all assets
+  List<String> get values => [prePurchaseWarning];
+}
+
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
@@ -112,6 +125,7 @@ class $AssetsImagesSvgGen {
 class Assets {
   Assets._();
 
+  static const $AssetsDocsGen docs = $AssetsDocsGen();
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }

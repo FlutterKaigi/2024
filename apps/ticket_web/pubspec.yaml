@@ -67,8 +67,9 @@ flutter:
     - assets/images/
     - assets/fonts/NotoSansJP/OFL.txt
     - assets/fonts/Poppins/OFL.txt
-    - path: assets/images/sns/
-    - path: assets/images/svg/
+    - assets/images/sns/
+    - assets/images/svg/
+    - assets/docs/
 
   fonts:
     - family: NotoSansJP
