@@ -19,6 +19,7 @@ import 'package:ticket_web/feature/promotion_code/ui/on_promotion_code_verified_
 import 'package:ticket_web/feature/session/data/session_provider.dart';
 import 'package:ticket_web/feature/sponsor/data/sponsor_provider.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:ticket_web/pages/home/components/pre_purchase_warning_dialog.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/general_ticket_card.dart';
 import 'package:ticket_web/pages/home/components/ticket_cards/personal_sponsor_ticket_card.dart';
 
@@ -35,11 +36,15 @@ class TicketCards extends ConsumerWidget {
     final children = [
       GeneralTicketCard(
         isLoggedIn: isLoggedIn,
-        onPurchasePressed: () async =>
-            ref.read(paymentServiceProvider).transitionToPayment(
+        onPurchasePressed: () async {
+          final isAccepted = await PrePurchaseWarningDialog.show(context);
+          if (isAccepted != null && isAccepted) {
+            await ref.read(paymentServiceProvider).transitionToPayment(
                   mailAddress: authState!.email!,
                   type: PaymentType.general,
-                ),
+                );
+          }
+        },
         onSignInPressed:
             ref.read(authNotifierProvider.notifier).signInWithGoogle,
         onApplyCodePressed: (code) async {
@@ -80,157 +85,169 @@ class TicketCards extends ConsumerWidget {
                   };
                 },
               ),
-            Success(:final value) => switch (value.type) {
-                // プロモーションコードが、一般チケットのプロモーションコードとして有効な場合
-                // 一般チケットの購入画面に遷移する
-                PromotionMetadataType.general =>
-                  OnPromotionCodeVerifiedDialog.show(
-                    context: context,
-                    promotionCode: code,
-                    metadata: value,
-                  ),
-                PromotionMetadataType.session => () async {
-                    final sessionsResult =
-                        await FullScreenCircularProgressIndicator.showUntil(
-                      context,
-                      () async => ref.read(sessionProvider.future),
-                    ).wrapped();
-                    return switch (sessionsResult) {
-                      Failure(:final exception) when context.mounted =>
-                        ErrorDialog.show(
-                          context: context,
-                          error: exception,
-                        ),
-                      Success(value: final sessions) => () async {
-                          final selectedSession =
-                              await OnInvitedPromotionCodeEnteredSessionDialog
-                                  .show(
+            Success(:final value) => () async {
+                final isAccepted = await PrePurchaseWarningDialog.show(context);
+                if (isAccepted == null || !isAccepted || !context.mounted) {
+                  return;
+                }
+
+                return switch (value.type) {
+                  // プロモーションコードが、一般チケットのプロモーションコードとして有効な場合
+                  // 一般チケットの購入画面に遷移する
+                  PromotionMetadataType.general =>
+                    OnPromotionCodeVerifiedDialog.show(
+                      context: context,
+                      promotionCode: code,
+                      metadata: value,
+                    ),
+                  PromotionMetadataType.session => () async {
+                      final sessionsResult =
+                          await FullScreenCircularProgressIndicator.showUntil(
+                        context,
+                        () async => ref.read(sessionProvider.future),
+                      ).wrapped();
+                      return switch (sessionsResult) {
+                        Failure(:final exception) when context.mounted =>
+                          ErrorDialog.show(
                             context: context,
-                            sessions: sessions,
-                            title: getAlertDialogTitle(value.type),
-                          );
-                          if (selectedSession == null) {
-                            return;
-                          }
-
-                          await ref
-                              .read(
-                                invitedPromotionSelectedSessionProvider
-                                    .notifier,
-                              )
-                              .save(selectedSession.id);
-
-                          if (context.mounted) {
-                            await OnPromotionCodeVerifiedDialog.show(
+                            error: exception,
+                          ),
+                        Success(value: final sessions) => () async {
+                            final selectedSession =
+                                await OnInvitedPromotionCodeEnteredSessionDialog
+                                    .show(
                               context: context,
-                              promotionCode: code,
-                              metadata: value,
+                              sessions: sessions,
+                              title: getAlertDialogTitle(value.type),
                             );
-                          }
-                        }(),
-                      _ => null,
-                    };
-                  }(),
-                PromotionMetadataType.sponsor => () async {
-                    final sponsorsResult =
-                        await FullScreenCircularProgressIndicator.showUntil(
-                      context,
-                      () async => ref.read(sponsorWithSessionsProvider.future),
-                    ).wrapped();
-                    return switch (sponsorsResult) {
-                      Failure(:final exception) when context.mounted =>
-                        ErrorDialog.show(
-                          context: context,
-                          error: exception,
-                        ),
-                      Success(value: final sponsors) => () async {
-                          final selectedSponsor =
-                              await OnInvitedPromotionCodeEnteredSponsorDialog
-                                  .show(
+                            if (selectedSession == null) {
+                              return;
+                            }
+
+                            await ref
+                                .read(
+                                  invitedPromotionSelectedSessionProvider
+                                      .notifier,
+                                )
+                                .save(selectedSession.id);
+
+                            if (context.mounted) {
+                              await OnPromotionCodeVerifiedDialog.show(
+                                context: context,
+                                promotionCode: code,
+                                metadata: value,
+                              );
+                            }
+                          }(),
+                        _ => null,
+                      };
+                    }(),
+                  PromotionMetadataType.sponsor => () async {
+                      final sponsorsResult =
+                          await FullScreenCircularProgressIndicator.showUntil(
+                        context,
+                        () async =>
+                            ref.read(sponsorWithSessionsProvider.future),
+                      ).wrapped();
+                      return switch (sponsorsResult) {
+                        Failure(:final exception) when context.mounted =>
+                          ErrorDialog.show(
                             context: context,
-                            sponsors: sponsors,
-                            title: getAlertDialogTitle(value.type),
-                          );
-                          if (selectedSponsor == null) {
-                            return;
-                          }
-
-                          await ref
-                              .read(
-                                invitedPromotionSelectedSponsorProvider
-                                    .notifier,
-                              )
-                              .save(selectedSponsor.id);
-
-                          if (context.mounted) {
-                            await OnPromotionCodeVerifiedDialog.show(
+                            error: exception,
+                          ),
+                        Success(value: final sponsors) => () async {
+                            final selectedSponsor =
+                                await OnInvitedPromotionCodeEnteredSponsorDialog
+                                    .show(
                               context: context,
-                              promotionCode: code,
-                              metadata: value,
+                              sponsors: sponsors,
+                              title: getAlertDialogTitle(value.type),
                             );
-                          }
-                        }(),
-                      _ => null,
-                    };
-                  }(),
-                PromotionMetadataType.sponsorSession => () async {
-                    final sponsorAndSessionsResult =
-                        await FullScreenCircularProgressIndicator.showUntil(
-                      context,
-                      () async =>
-                          ref.read(sponsorAndSessionListProvider.future),
-                    ).wrapped();
-                    return switch (sponsorAndSessionsResult) {
-                      Failure(:final exception) when context.mounted =>
-                        ErrorDialog.show(
-                          context: context,
-                          error: exception,
-                        ),
-                      Success(value: final sponsorAndSessions) => () async {
-                          final selectedSponsorAndSession =
-                              await OnInvitedPromotionCodeEnteredSponsorSessionDialog
-                                  .show(
+                            if (selectedSponsor == null) {
+                              return;
+                            }
+
+                            await ref
+                                .read(
+                                  invitedPromotionSelectedSponsorProvider
+                                      .notifier,
+                                )
+                                .save(selectedSponsor.id);
+
+                            if (context.mounted) {
+                              await OnPromotionCodeVerifiedDialog.show(
+                                context: context,
+                                promotionCode: code,
+                                metadata: value,
+                              );
+                            }
+                          }(),
+                        _ => null,
+                      };
+                    }(),
+                  PromotionMetadataType.sponsorSession => () async {
+                      final sponsorAndSessionsResult =
+                          await FullScreenCircularProgressIndicator.showUntil(
+                        context,
+                        () async =>
+                            ref.read(sponsorAndSessionListProvider.future),
+                      ).wrapped();
+                      return switch (sponsorAndSessionsResult) {
+                        Failure(:final exception) when context.mounted =>
+                          ErrorDialog.show(
                             context: context,
-                            sessionWithSponsors: sponsorAndSessions,
-                            title: getAlertDialogTitle(value.type),
-                          );
-                          if (selectedSponsorAndSession == null) {
-                            return;
-                          }
-                          await ref
-                              .read(
-                                invitedPromotionSelectedSponsorProvider
-                                    .notifier,
-                              )
-                              .save(selectedSponsorAndSession.sponsor.id);
-                          await ref
-                              .read(
-                                invitedPromotionSelectedSessionProvider
-                                    .notifier,
-                              )
-                              .save(selectedSponsorAndSession.session.id);
-                          if (context.mounted) {
-                            await OnPromotionCodeVerifiedDialog.show(
+                            error: exception,
+                          ),
+                        Success(value: final sponsorAndSessions) => () async {
+                            final selectedSponsorAndSession =
+                                await OnInvitedPromotionCodeEnteredSponsorSessionDialog
+                                    .show(
                               context: context,
-                              promotionCode: code,
-                              metadata: value,
+                              sessionWithSponsors: sponsorAndSessions,
+                              title: getAlertDialogTitle(value.type),
                             );
-                          }
-                        }(),
-                      _ => null,
-                    };
-                  }(),
-              },
+                            if (selectedSponsorAndSession == null) {
+                              return;
+                            }
+                            await ref
+                                .read(
+                                  invitedPromotionSelectedSponsorProvider
+                                      .notifier,
+                                )
+                                .save(selectedSponsorAndSession.sponsor.id);
+                            await ref
+                                .read(
+                                  invitedPromotionSelectedSessionProvider
+                                      .notifier,
+                                )
+                                .save(selectedSponsorAndSession.session.id);
+                            if (context.mounted) {
+                              await OnPromotionCodeVerifiedDialog.show(
+                                context: context,
+                                promotionCode: code,
+                                metadata: value,
+                              );
+                            }
+                          }(),
+                        _ => null,
+                      };
+                    }(),
+                };
+              }(),
           };
         },
       ),
       PersonalSponsorTicketCard(
         isLoggedIn: isLoggedIn,
-        onPurchasePressed: () async =>
-            ref.read(paymentServiceProvider).transitionToPayment(
+        onPurchasePressed: () async {
+          final isAccepted = await PrePurchaseWarningDialog.show(context);
+          if (isAccepted != null && isAccepted) {
+            await ref.read(paymentServiceProvider).transitionToPayment(
                   mailAddress: authState!.email!,
                   type: PaymentType.personalSponsor,
-                ),
+                );
+          }
+        },
       ),
     ];
     if (isMobile) {
