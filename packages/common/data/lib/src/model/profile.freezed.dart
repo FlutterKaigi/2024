@@ -25,7 +25,7 @@ mixin _$Profile {
   Role get role => throw _privateConstructorUsedError;
   String get comment => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
-  bool get isAdult => throw _privateConstructorUsedError;
+  bool? get isAdult => throw _privateConstructorUsedError;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
@@ -56,7 +56,7 @@ abstract class $ProfileCopyWith<$Res> {
       Role role,
       String comment,
       DateTime createdAt,
-      bool isAdult,
+      bool? isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
       Uri? googleAvatarUri,
@@ -83,7 +83,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? role = null,
     Object? comment = null,
     Object? createdAt = null,
-    Object? isAdult = null,
+    Object? isAdult = freezed,
     Object? userAvatarFetch = freezed,
     Object? googleAvatarUri = freezed,
     Object? avatarName = freezed,
@@ -109,10 +109,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isAdult: null == isAdult
+      isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       userAvatarFetch: freezed == userAvatarFetch
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
@@ -142,7 +142,7 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       Role role,
       String comment,
       DateTime createdAt,
-      bool isAdult,
+      bool? isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
       Uri? googleAvatarUri,
@@ -167,7 +167,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? role = null,
     Object? comment = null,
     Object? createdAt = null,
-    Object? isAdult = null,
+    Object? isAdult = freezed,
     Object? userAvatarFetch = freezed,
     Object? googleAvatarUri = freezed,
     Object? avatarName = freezed,
@@ -193,10 +193,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      isAdult: null == isAdult
+      isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       userAvatarFetch: freezed == userAvatarFetch
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
@@ -242,7 +242,7 @@ class _$ProfileImpl implements _Profile {
   @override
   final DateTime createdAt;
   @override
-  final bool isAdult;
+  final bool? isAdult;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @override
@@ -308,7 +308,7 @@ abstract class _Profile implements Profile {
       required final Role role,
       required final String comment,
       required final DateTime createdAt,
-      required final bool isAdult,
+      required final bool? isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       final Future<Uint8List?> Function()? userAvatarFetch,
       final Uri? googleAvatarUri,
@@ -327,7 +327,7 @@ abstract class _Profile implements Profile {
   @override
   DateTime get createdAt;
   @override
-  bool get isAdult;
+  bool? get isAdult;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @override
@@ -361,7 +361,7 @@ mixin _$ProfileTable {
   String? get avatarName => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   Uri? get avatarUrl => throw _privateConstructorUsedError;
-  bool get isAdult => throw _privateConstructorUsedError;
+  bool? get isAdult => throw _privateConstructorUsedError;
 
   /// Serializes this ProfileTable to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -387,7 +387,7 @@ abstract class $ProfileTableCopyWith<$Res> {
       String? avatarName,
       DateTime createdAt,
       Uri? avatarUrl,
-      bool isAdult});
+      bool? isAdult});
 }
 
 /// @nodoc
@@ -412,7 +412,7 @@ class _$ProfileTableCopyWithImpl<$Res, $Val extends ProfileTable>
     Object? avatarName = freezed,
     Object? createdAt = null,
     Object? avatarUrl = freezed,
-    Object? isAdult = null,
+    Object? isAdult = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -443,10 +443,10 @@ class _$ProfileTableCopyWithImpl<$Res, $Val extends ProfileTable>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      isAdult: null == isAdult
+      isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -467,7 +467,7 @@ abstract class _$$ProfileTableImplCopyWith<$Res>
       String? avatarName,
       DateTime createdAt,
       Uri? avatarUrl,
-      bool isAdult});
+      bool? isAdult});
 }
 
 /// @nodoc
@@ -490,7 +490,7 @@ class __$$ProfileTableImplCopyWithImpl<$Res>
     Object? avatarName = freezed,
     Object? createdAt = null,
     Object? avatarUrl = freezed,
-    Object? isAdult = null,
+    Object? isAdult = freezed,
   }) {
     return _then(_$ProfileTableImpl(
       id: null == id
@@ -521,10 +521,10 @@ class __$$ProfileTableImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      isAdult: null == isAdult
+      isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -560,7 +560,7 @@ class _$ProfileTableImpl implements _ProfileTable {
   @override
   final Uri? avatarUrl;
   @override
-  final bool isAdult;
+  final bool? isAdult;
 
   @override
   String toString() {
@@ -615,7 +615,7 @@ abstract class _ProfileTable implements ProfileTable {
       required final String? avatarName,
       required final DateTime createdAt,
       required final Uri? avatarUrl,
-      required final bool isAdult}) = _$ProfileTableImpl;
+      required final bool? isAdult}) = _$ProfileTableImpl;
 
   factory _ProfileTable.fromJson(Map<String, dynamic> json) =
       _$ProfileTableImpl.fromJson;
@@ -635,7 +635,7 @@ abstract class _ProfileTable implements ProfileTable {
   @override
   Uri? get avatarUrl;
   @override
-  bool get isAdult;
+  bool? get isAdult;
 
   /// Create a copy of ProfileTable
   /// with the given fields replaced by the non-null parameter values.

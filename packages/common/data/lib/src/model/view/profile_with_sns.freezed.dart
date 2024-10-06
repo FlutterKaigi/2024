@@ -28,9 +28,9 @@ mixin _$ProfileWithSns {
 
   /// Googleアカウントのアバター画像のURL
   Uri? get googleAvatarUri => throw _privateConstructorUsedError;
-  bool get isAdult => throw _privateConstructorUsedError;
   List<ProfileSocialNetworkingService> get snsAccounts =>
       throw _privateConstructorUsedError;
+  bool? get isAdult => throw _privateConstructorUsedError;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
@@ -61,8 +61,8 @@ abstract class $ProfileWithSnsCopyWith<$Res> {
       String comment,
       DateTime createdAt,
       Uri? googleAvatarUri,
-      bool isAdult,
       List<ProfileSocialNetworkingService> snsAccounts,
+      bool? isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
       String? avatarName});
@@ -89,8 +89,8 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
     Object? comment = null,
     Object? createdAt = null,
     Object? googleAvatarUri = freezed,
-    Object? isAdult = null,
     Object? snsAccounts = null,
+    Object? isAdult = freezed,
     Object? userAvatarFetch = freezed,
     Object? avatarName = freezed,
   }) {
@@ -119,14 +119,14 @@ class _$ProfileWithSnsCopyWithImpl<$Res, $Val extends ProfileWithSns>
           ? _value.googleAvatarUri
           : googleAvatarUri // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      isAdult: null == isAdult
-          ? _value.isAdult
-          : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
       snsAccounts: null == snsAccounts
           ? _value.snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
               as List<ProfileSocialNetworkingService>,
+      isAdult: freezed == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
       userAvatarFetch: freezed == userAvatarFetch
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
@@ -154,8 +154,8 @@ abstract class _$$ProfileWithSnsImplCopyWith<$Res>
       String comment,
       DateTime createdAt,
       Uri? googleAvatarUri,
-      bool isAdult,
       List<ProfileSocialNetworkingService> snsAccounts,
+      bool? isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       Future<Uint8List?> Function()? userAvatarFetch,
       String? avatarName});
@@ -180,8 +180,8 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
     Object? comment = null,
     Object? createdAt = null,
     Object? googleAvatarUri = freezed,
-    Object? isAdult = null,
     Object? snsAccounts = null,
+    Object? isAdult = freezed,
     Object? userAvatarFetch = freezed,
     Object? avatarName = freezed,
   }) {
@@ -210,14 +210,14 @@ class __$$ProfileWithSnsImplCopyWithImpl<$Res>
           ? _value.googleAvatarUri
           : googleAvatarUri // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      isAdult: null == isAdult
-          ? _value.isAdult
-          : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
       snsAccounts: null == snsAccounts
           ? _value._snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
               as List<ProfileSocialNetworkingService>,
+      isAdult: freezed == isAdult
+          ? _value.isAdult
+          : isAdult // ignore: cast_nullable_to_non_nullable
+              as bool?,
       userAvatarFetch: freezed == userAvatarFetch
           ? _value.userAvatarFetch
           : userAvatarFetch // ignore: cast_nullable_to_non_nullable
@@ -240,8 +240,8 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       required this.comment,
       required this.createdAt,
       required this.googleAvatarUri,
-      required this.isAdult,
       required final List<ProfileSocialNetworkingService> snsAccounts,
+      required this.isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       this.userAvatarFetch,
       this.avatarName})
@@ -264,8 +264,6 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
   /// Googleアカウントのアバター画像のURL
   @override
   final Uri? googleAvatarUri;
-  @override
-  final bool isAdult;
   final List<ProfileSocialNetworkingService> _snsAccounts;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts {
@@ -273,6 +271,9 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_snsAccounts);
   }
+
+  @override
+  final bool? isAdult;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @override
@@ -283,7 +284,7 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
 
   @override
   String toString() {
-    return 'ProfileWithSns(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, googleAvatarUri: $googleAvatarUri, isAdult: $isAdult, snsAccounts: $snsAccounts, userAvatarFetch: $userAvatarFetch, avatarName: $avatarName)';
+    return 'ProfileWithSns(id: $id, name: $name, role: $role, comment: $comment, createdAt: $createdAt, googleAvatarUri: $googleAvatarUri, snsAccounts: $snsAccounts, isAdult: $isAdult, userAvatarFetch: $userAvatarFetch, avatarName: $avatarName)';
   }
 
   @override
@@ -299,9 +300,9 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
                 other.createdAt == createdAt) &&
             (identical(other.googleAvatarUri, googleAvatarUri) ||
                 other.googleAvatarUri == googleAvatarUri) &&
-            (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
             const DeepCollectionEquality()
                 .equals(other._snsAccounts, _snsAccounts) &&
+            (identical(other.isAdult, isAdult) || other.isAdult == isAdult) &&
             (identical(other.userAvatarFetch, userAvatarFetch) ||
                 other.userAvatarFetch == userAvatarFetch) &&
             (identical(other.avatarName, avatarName) ||
@@ -318,8 +319,8 @@ class _$ProfileWithSnsImpl implements _ProfileWithSns {
       comment,
       createdAt,
       googleAvatarUri,
-      isAdult,
       const DeepCollectionEquality().hash(_snsAccounts),
+      isAdult,
       userAvatarFetch,
       avatarName);
 
@@ -348,8 +349,8 @@ abstract class _ProfileWithSns implements ProfileWithSns {
       required final String comment,
       required final DateTime createdAt,
       required final Uri? googleAvatarUri,
-      required final bool isAdult,
       required final List<ProfileSocialNetworkingService> snsAccounts,
+      required final bool? isAdult,
       @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
       final Future<Uint8List?> Function()? userAvatarFetch,
       final String? avatarName}) = _$ProfileWithSnsImpl;
@@ -372,9 +373,9 @@ abstract class _ProfileWithSns implements ProfileWithSns {
   @override
   Uri? get googleAvatarUri;
   @override
-  bool get isAdult;
-  @override
   List<ProfileSocialNetworkingService> get snsAccounts;
+  @override
+  bool? get isAdult;
 
   /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
   @override
@@ -404,7 +405,7 @@ mixin _$ProfileWithSnsView {
   String? get avatarName => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   Uri? get avatarUrl => throw _privateConstructorUsedError;
-  bool get isAdult => throw _privateConstructorUsedError;
+  bool? get isAdult => throw _privateConstructorUsedError;
   List<ProfileSocialNetworkingService> get snsAccounts =>
       throw _privateConstructorUsedError;
 
@@ -432,7 +433,7 @@ abstract class $ProfileWithSnsViewCopyWith<$Res> {
       String? avatarName,
       DateTime createdAt,
       Uri? avatarUrl,
-      bool isAdult,
+      bool? isAdult,
       List<ProfileSocialNetworkingService> snsAccounts});
 }
 
@@ -458,7 +459,7 @@ class _$ProfileWithSnsViewCopyWithImpl<$Res, $Val extends ProfileWithSnsView>
     Object? avatarName = freezed,
     Object? createdAt = null,
     Object? avatarUrl = freezed,
-    Object? isAdult = null,
+    Object? isAdult = freezed,
     Object? snsAccounts = null,
   }) {
     return _then(_value.copyWith(
@@ -490,10 +491,10 @@ class _$ProfileWithSnsViewCopyWithImpl<$Res, $Val extends ProfileWithSnsView>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      isAdult: null == isAdult
+      isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       snsAccounts: null == snsAccounts
           ? _value.snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
@@ -518,7 +519,7 @@ abstract class _$$ProfileWithSnsViewImplCopyWith<$Res>
       String? avatarName,
       DateTime createdAt,
       Uri? avatarUrl,
-      bool isAdult,
+      bool? isAdult,
       List<ProfileSocialNetworkingService> snsAccounts});
 }
 
@@ -542,7 +543,7 @@ class __$$ProfileWithSnsViewImplCopyWithImpl<$Res>
     Object? avatarName = freezed,
     Object? createdAt = null,
     Object? avatarUrl = freezed,
-    Object? isAdult = null,
+    Object? isAdult = freezed,
     Object? snsAccounts = null,
   }) {
     return _then(_$ProfileWithSnsViewImpl(
@@ -574,10 +575,10 @@ class __$$ProfileWithSnsViewImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as Uri?,
-      isAdult: null == isAdult
+      isAdult: freezed == isAdult
           ? _value.isAdult
           : isAdult // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       snsAccounts: null == snsAccounts
           ? _value._snsAccounts
           : snsAccounts // ignore: cast_nullable_to_non_nullable
@@ -619,7 +620,7 @@ class _$ProfileWithSnsViewImpl implements _ProfileWithSnsView {
   @override
   final Uri? avatarUrl;
   @override
-  final bool isAdult;
+  final bool? isAdult;
   final List<ProfileSocialNetworkingService> _snsAccounts;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts {
@@ -693,7 +694,7 @@ abstract class _ProfileWithSnsView implements ProfileWithSnsView {
           required final String? avatarName,
           required final DateTime createdAt,
           required final Uri? avatarUrl,
-          required final bool isAdult,
+          required final bool? isAdult,
           required final List<ProfileSocialNetworkingService> snsAccounts}) =
       _$ProfileWithSnsViewImpl;
 
@@ -715,7 +716,7 @@ abstract class _ProfileWithSnsView implements ProfileWithSnsView {
   @override
   Uri? get avatarUrl;
   @override
-  bool get isAdult;
+  bool? get isAdult;
   @override
   List<ProfileSocialNetworkingService> get snsAccounts;
 

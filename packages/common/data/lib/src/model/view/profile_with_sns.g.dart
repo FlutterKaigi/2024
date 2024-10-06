@@ -22,13 +22,13 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
           googleAvatarUri: $checkedConvert('google_avatar_uri',
               (v) => v == null ? null : Uri.parse(v as String)),
-          isAdult: $checkedConvert('is_adult', (v) => v as bool),
           snsAccounts: $checkedConvert(
               'sns_accounts',
               (v) => (v as List<dynamic>)
                   .map((e) => ProfileSocialNetworkingService.fromJson(
                       e as Map<String, dynamic>))
                   .toList()),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool?),
           avatarName: $checkedConvert('avatar_name', (v) => v as String?),
         );
         return val;
@@ -36,8 +36,8 @@ _$ProfileWithSnsImpl _$$ProfileWithSnsImplFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'createdAt': 'created_at',
         'googleAvatarUri': 'google_avatar_uri',
-        'isAdult': 'is_adult',
         'snsAccounts': 'sns_accounts',
+        'isAdult': 'is_adult',
         'avatarName': 'avatar_name'
       },
     );
@@ -51,8 +51,8 @@ Map<String, dynamic> _$$ProfileWithSnsImplToJson(
       'comment': instance.comment,
       'created_at': instance.createdAt.toIso8601String(),
       'google_avatar_uri': instance.googleAvatarUri?.toString(),
-      'is_adult': instance.isAdult,
       'sns_accounts': instance.snsAccounts,
+      'is_adult': instance.isAdult,
       'avatar_name': instance.avatarName,
     };
 
@@ -79,7 +79,7 @@ _$ProfileWithSnsViewImpl _$$ProfileWithSnsViewImplFromJson(
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
           avatarUrl: $checkedConvert(
               'avatar_url', (v) => v == null ? null : Uri.parse(v as String)),
-          isAdult: $checkedConvert('is_adult', (v) => v as bool),
+          isAdult: $checkedConvert('is_adult', (v) => v as bool?),
           snsAccounts: $checkedConvert(
               'sns_accounts',
               (v) => (v as List<dynamic>)
