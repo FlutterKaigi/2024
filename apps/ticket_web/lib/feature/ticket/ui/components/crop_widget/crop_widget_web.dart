@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:web/web.dart' as web;
 
-class BaseCropWidget extends HookWidget {
-  const BaseCropWidget({
+class CropWidget extends HookWidget {
+  const CropWidget({
     required this.imageBytes,
     required this.isCropping,
     required this.controller,
