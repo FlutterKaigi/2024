@@ -1,11 +1,9 @@
-import 'dart:js_interop';
-import 'dart:typed_data';
-
 import 'package:crop_your_image/crop_your_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ticket_web/feature/ticket/ui/components/crop_widget/crop_widget.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
-import 'package:web/web.dart' as web;
 
 class ImageCropperDialog extends HookWidget {
   const ImageCropperDialog({
@@ -30,28 +28,6 @@ class ImageCropperDialog extends HookWidget {
     final isCropping = useState(false);
 
     final i18n = Translations.of(context);
-
-    final worker = useMemoized(
-      () => web.Worker(
-        'assets/workers/resize_worker.js'.toJS,
-      ),
-      [],
-    );
-
-    useEffect(
-      () {
-        worker.onmessage = ((web.MessageEvent message) {
-          final resizedImageBytes =
-              (message.data as JSUint8Array?)?.toDart ?? Uint8List.fromList([]);
-          if (context.mounted) {
-            isCropping.value = false;
-            Navigator.of(context).pop(resizedImageBytes);
-          }
-        }).toJS;
-        return null;
-      },
-      [],
-    );
 
     return Dialog(
       shape: RoundedRectangleBorder(
@@ -80,18 +56,10 @@ class ImageCropperDialog extends HookWidget {
               )
             : Padding(
                 padding: const EdgeInsets.all(8),
-                child: Crop(
+                child: CropWidget(
+                  imageBytes: imageBytes,
+                  isCropping: isCropping,
                   controller: controller.value,
-                  image: imageBytes,
-                  onCropped: (croppedImage) async {
-                    // 画像をリサイズする
-                    worker.postMessage(croppedImage.toJS);
-                  },
-                  aspectRatio: 1,
-                  withCircleUi: true,
-                  progressIndicator: const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
                 ),
               ),
       ),
