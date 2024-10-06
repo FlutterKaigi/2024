@@ -194,6 +194,13 @@
           "crop_button": "切り取る"
         }
       },
+      "is_adult": {
+        "title": "FlutterKaigi 2024当日に成人していますか?",
+        "description": "懇親会におけるアルコールの提供は、成人の方に限ります。",
+        "yes": "はい",
+        "no": "いいえ",
+        "ok": "OK"
+      },
       "results": {
         "success": "プロフィール情報を更新しました",
         "error": "プロフィール情報の更新に失敗しました"

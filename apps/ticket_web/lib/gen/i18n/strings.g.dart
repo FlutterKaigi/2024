@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 239 (119 per locale)
+/// Strings: 249 (124 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -470,6 +470,8 @@ class _StringsTicketPageEditFieldsJa {
       _StringsTicketPageEditFieldsXAccountJa._(_root);
   late final _StringsTicketPageEditFieldsAvatarJa avatar =
       _StringsTicketPageEditFieldsAvatarJa._(_root);
+  late final _StringsTicketPageEditFieldsIsAdultJa isAdult =
+      _StringsTicketPageEditFieldsIsAdultJa._(_root);
   late final _StringsTicketPageEditFieldsResultsJa results =
       _StringsTicketPageEditFieldsResultsJa._(_root);
 }
@@ -639,6 +641,20 @@ class _StringsTicketPageEditFieldsAvatarJa {
   String get deleteError => 'プロフィール画像をデフォルトに戻す最中にエラーが発生しました';
   late final _StringsTicketPageEditFieldsAvatarCropJa crop =
       _StringsTicketPageEditFieldsAvatarCropJa._(_root);
+}
+
+// Path: ticketPage.editFields.isAdult
+class _StringsTicketPageEditFieldsIsAdultJa {
+  _StringsTicketPageEditFieldsIsAdultJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'FlutterKaigi 2024当日に成人していますか?';
+  String get description => '懇親会におけるアルコールの提供は、成人の方に限ります。';
+  String get yes => 'はい';
+  String get no => 'いいえ';
+  String get ok => 'OK';
 }
 
 // Path: ticketPage.editFields.results
@@ -1227,6 +1243,9 @@ class _StringsTicketPageEditFieldsEn extends _StringsTicketPageEditFieldsJa {
   late final _StringsTicketPageEditFieldsAvatarEn avatar =
       _StringsTicketPageEditFieldsAvatarEn._(_root);
   @override
+  late final _StringsTicketPageEditFieldsIsAdultEn isAdult =
+      _StringsTicketPageEditFieldsIsAdultEn._(_root);
+  @override
   late final _StringsTicketPageEditFieldsResultsEn results =
       _StringsTicketPageEditFieldsResultsEn._(_root);
 }
@@ -1491,6 +1510,30 @@ class _StringsTicketPageEditFieldsAvatarEn
   @override
   late final _StringsTicketPageEditFieldsAvatarCropEn crop =
       _StringsTicketPageEditFieldsAvatarCropEn._(_root);
+}
+
+// Path: ticketPage.editFields.isAdult
+class _StringsTicketPageEditFieldsIsAdultEn
+    extends _StringsTicketPageEditFieldsIsAdultJa {
+  _StringsTicketPageEditFieldsIsAdultEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Are you 20 or older on November 21, 2024?';
+  @override
+  String get description =>
+      'Alcohol will be served at the party for 20 or older attendees.';
+  @override
+  String get yes => 'Yes';
+  @override
+  String get no => 'No';
+  @override
+  String get ok => 'OK';
 }
 
 // Path: ticketPage.editFields.results
@@ -1901,6 +1944,16 @@ extension on Translations {
         return '画像を切り取ってください';
       case 'ticketPage.editFields.avatar.crop.cropButton':
         return '切り取る';
+      case 'ticketPage.editFields.isAdult.title':
+        return 'FlutterKaigi 2024当日に成人していますか?';
+      case 'ticketPage.editFields.isAdult.description':
+        return '懇親会におけるアルコールの提供は、成人の方に限ります。';
+      case 'ticketPage.editFields.isAdult.yes':
+        return 'はい';
+      case 'ticketPage.editFields.isAdult.no':
+        return 'いいえ';
+      case 'ticketPage.editFields.isAdult.ok':
+        return 'OK';
       case 'ticketPage.editFields.results.success':
         return 'プロフィール情報を更新しました';
       case 'ticketPage.editFields.results.error':
@@ -2144,6 +2197,16 @@ extension on _StringsEn {
         return 'Please crop the image';
       case 'ticketPage.editFields.avatar.crop.cropButton':
         return 'Crop';
+      case 'ticketPage.editFields.isAdult.title':
+        return 'Are you 20 or older on November 21, 2024?';
+      case 'ticketPage.editFields.isAdult.description':
+        return 'Alcohol will be served at the party for 20 or older attendees.';
+      case 'ticketPage.editFields.isAdult.yes':
+        return 'Yes';
+      case 'ticketPage.editFields.isAdult.no':
+        return 'No';
+      case 'ticketPage.editFields.isAdult.ok':
+        return 'OK';
       case 'ticketPage.editFields.results.success':
         return 'Profile information updated successfully';
       case 'ticketPage.editFields.results.error':
