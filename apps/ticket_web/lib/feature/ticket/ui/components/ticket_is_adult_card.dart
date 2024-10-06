@@ -76,13 +76,15 @@ class TicketIsAdultCard extends ConsumerWidget {
 
                     if (result != null) {
                       try {
-                        await FullScreenCircularProgressIndicator.showUntil(
-                          context,
-                          () async => ref
-                              .read(profileNotifierProvider.notifier)
-                              .updateProfileIsAdult(isAdult: result),
-                        );
-                        onUpdated();
+                        if (context.mounted) {
+                          await FullScreenCircularProgressIndicator.showUntil(
+                            context,
+                            () async => ref
+                                .read(profileNotifierProvider.notifier)
+                                .updateProfileIsAdult(isAdult: result),
+                          );
+                          onUpdated();
+                        }
                       } on Exception catch (e) {
                         onUpdateFailed(e.toString());
                       }
