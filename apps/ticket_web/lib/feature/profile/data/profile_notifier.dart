@@ -44,6 +44,7 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   Future<(Uint8List, String)> pickImage() async {
     final imagePicker = ref.read(imagePickerProvider);
+
     final image = await imagePicker.getImageFromSource(
       source: ImageSource.gallery,
     );
