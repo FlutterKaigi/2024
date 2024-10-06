@@ -13,6 +13,11 @@
       "description": "Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).",
       "button": "Go to the FlutterKaigi official X account"
     },
+    "pre_purchase_warning_dialog": {
+      "title": "Note on Pre-Purchase",
+      "accept": "Accept",
+      "unaccept": "Unaccept"
+    },
     "tickets": {
       "variant": {
         "general": "General Ticket",
