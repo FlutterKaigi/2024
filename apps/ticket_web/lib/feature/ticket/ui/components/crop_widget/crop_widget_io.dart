@@ -10,13 +10,14 @@ class CropWidget extends HookWidget {
     required this.imageBytes,
     required this.isCropping,
     required this.controller,
+    required this.onResized,
     super.key,
   });
 
   final Uint8List imageBytes;
   final ValueNotifier<bool> isCropping;
   final CropController controller;
-
+  final void Function(Uint8List resizedImageBytes) onResized;
   @override
   Widget build(BuildContext context) {
     return Crop(
@@ -24,10 +25,7 @@ class CropWidget extends HookWidget {
       image: imageBytes,
       onCropped: (croppedImage) async {
         final resizedImageBytes = await resize(croppedImage);
-        if (context.mounted) {
-          isCropping.value = false;
-          Navigator.of(context).pop(resizedImageBytes);
-        }
+        onResized(resizedImageBytes);
       },
       aspectRatio: 1,
       withCircleUi: true,
