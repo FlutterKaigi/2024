@@ -104,6 +104,15 @@ class ProfileNotifier extends _$ProfileNotifier {
     ref.invalidateSelf();
   }
 
+  Future<void> updateProfileIsPublished({required bool isPublished}) async {
+    final profileRepository = ref.read(profileRepositoryProvider);
+    await profileRepository.updateProfile(
+      userId: ref.read(authNotifierProvider)!.id,
+      isPublished: isPublished,
+    );
+    ref.invalidateSelf();
+  }
+
   Future<void> updateSnsAccounts({
     required List<(SnsType, String)> snsAccounts,
   }) async {
