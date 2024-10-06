@@ -21,6 +21,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
           createdAt:
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
           isAdult: $checkedConvert('is_adult', (v) => v as bool?),
+          isPublished: $checkedConvert('is_published', (v) => v as bool?),
           googleAvatarUri: $checkedConvert('google_avatar_uri',
               (v) => v == null ? null : Uri.parse(v as String)),
           avatarName: $checkedConvert('avatar_name', (v) => v as String?),
@@ -30,6 +31,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'createdAt': 'created_at',
         'isAdult': 'is_adult',
+        'isPublished': 'is_published',
         'googleAvatarUri': 'google_avatar_uri',
         'avatarName': 'avatar_name'
       },
@@ -43,6 +45,7 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
       'comment': instance.comment,
       'created_at': instance.createdAt.toIso8601String(),
       'is_adult': instance.isAdult,
+      'is_published': instance.isPublished,
       'google_avatar_uri': instance.googleAvatarUri?.toString(),
       'avatar_name': instance.avatarName,
     };
@@ -70,6 +73,7 @@ _$ProfileTableImpl _$$ProfileTableImplFromJson(Map<String, dynamic> json) =>
           avatarUrl: $checkedConvert(
               'avatar_url', (v) => v == null ? null : Uri.parse(v as String)),
           isAdult: $checkedConvert('is_adult', (v) => v as bool?),
+          isPublished: $checkedConvert('is_published', (v) => v as bool?),
         );
         return val;
       },
@@ -77,7 +81,8 @@ _$ProfileTableImpl _$$ProfileTableImplFromJson(Map<String, dynamic> json) =>
         'avatarName': 'avatar_name',
         'createdAt': 'created_at',
         'avatarUrl': 'avatar_url',
-        'isAdult': 'is_adult'
+        'isAdult': 'is_adult',
+        'isPublished': 'is_published'
       },
     );
 
@@ -91,4 +96,5 @@ Map<String, dynamic> _$$ProfileTableImplToJson(_$ProfileTableImpl instance) =>
       'created_at': instance.createdAt.toIso8601String(),
       'avatar_url': instance.avatarUrl?.toString(),
       'is_adult': instance.isAdult,
+      'is_published': instance.isPublished,
     };
