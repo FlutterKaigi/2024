@@ -6,6 +6,7 @@ import 'package:common_data/src/model/view/profile_with_sns.dart';
 import 'package:common_data/supabase_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uuid/uuid.dart';
 
 part 'profile_repository.g.dart';
 
@@ -168,28 +169,36 @@ class ProfileRepository {
 
   /// プロフィールのアバターを更新する
   /// [avatarData] はバイナリデータ(Uint8List)
-  /// [fileExtension] はファイルの拡張子
+  /// [mimeType] はファイルのMIMEタイプ
   /// [userId] はユーザーID
   /// アバターのファイル名は [userId]/avatar となる
   Future<Profile> updateProfileAvatar({
     required Uint8List avatarData,
-    required String fileExtension,
+    required String mimeType,
     required String userId,
     String? currentAvatarName,
   }) async {
     assert(
-      fileExtension == 'png' ||
-          fileExtension == 'jpg' ||
-          fileExtension == 'jpeg',
+      mimeType == 'image/png' ||
+          mimeType == 'image/jpg' ||
+          mimeType == 'image/jpeg',
       'fileExtension must be png, jpg, or jpeg',
     );
+
+    if (currentAvatarName != null) {
+      await _client.storage.from('profile_avatars').remove([
+        '$userId/$currentAvatarName',
+      ]);
+    }
+
     // バイナリのアップロード
-    final path = '$userId/avatar';
+    final suffix = const Uuid().v4();
+    final path = '$userId/$suffix';
     await _client.storage.from('profile_avatars').uploadBinary(
           path,
           avatarData,
           fileOptions: FileOptions(
-            contentType: 'image/$fileExtension',
+            contentType: mimeType,
             upsert: true,
             cacheControl: '0',
           ),
@@ -199,7 +208,7 @@ class ProfileRepository {
     final result = await _client
         .from('profiles')
         .update({
-          'avatar_name': path,
+          'avatar_name': suffix,
         })
         .eq('id', userId)
         .select()
@@ -208,9 +217,9 @@ class ProfileRepository {
     return _toProfile(result);
   }
 
-  Future<void> deleteProfileAvatar(String userId) async {
+  Future<void> deleteProfileAvatar(String userId, String avatarName) async {
     await _client.storage.from('profile_avatars').remove([
-      '$userId/avatar',
+      '$userId/$avatarName',
     ]);
 
     await _client
@@ -227,8 +236,11 @@ class ProfileRepository {
   /// プロフィールのアバターのバイナリデータを取得する関数を返す
   /// [userId] はユーザーID
   /// ファイルが存在しない場合は`null`を返す
-  Future<Uint8List?> _getProfileAvatarFetch(String userId) =>
-      _client.storage.from('profile_avatars').download('$userId/avatar');
+  Future<Uint8List?> _getProfileAvatarFetch(String userId, String avatarName) {
+    return _client.storage
+        .from('profile_avatars')
+        .download('$userId/$avatarName');
+  }
 
   Profile _toProfile(ProfileTable profileTable) => Profile(
         id: profileTable.id,
@@ -238,9 +250,13 @@ class ProfileRepository {
         createdAt: profileTable.createdAt,
         googleAvatarUri: profileTable.avatarUrl,
         userAvatarFetch: profileTable.avatarName != null
-            ? () async => _getProfileAvatarFetch(profileTable.id)
+            ? () async => _getProfileAvatarFetch(
+                  profileTable.id,
+                  profileTable.avatarName!,
+                )
             : null,
         isAdult: profileTable.isAdult,
+        avatarName: profileTable.avatarName,
       );
 
   ProfileWithSns _toProfileWithSns(ProfileWithSnsView profileWithSnsView) =>
@@ -252,10 +268,14 @@ class ProfileRepository {
         createdAt: profileWithSnsView.createdAt,
         googleAvatarUri: profileWithSnsView.avatarUrl,
         userAvatarFetch: profileWithSnsView.avatarName != null
-            ? () async => _getProfileAvatarFetch(profileWithSnsView.id)
+            ? () async => _getProfileAvatarFetch(
+                  profileWithSnsView.id,
+                  profileWithSnsView.avatarName!,
+                )
             : null,
         isAdult: profileWithSnsView.isAdult,
         snsAccounts: profileWithSnsView.snsAccounts,
+        avatarName: profileWithSnsView.avatarName,
       );
 }
 

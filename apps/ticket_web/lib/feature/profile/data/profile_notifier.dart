@@ -1,7 +1,8 @@
 import 'package:common_data/profile.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:ticket_web/core/provider/image_picker_provider.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 
 part 'profile_notifier.g.dart';
@@ -29,46 +30,48 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   Future<void> updateProfileAvatar({
     required Uint8List avatarData,
-    required String fileExtension,
+    required String mimeType,
   }) async {
     final profileRepository = ref.read(profileRepositoryProvider);
     await profileRepository.updateProfileAvatar(
       avatarData: avatarData,
-      fileExtension: fileExtension,
+      mimeType: mimeType,
       userId: ref.read(authNotifierProvider)!.id,
-    );
-  }
-
-  Future<void> uploadProfileAvatarWithFilePicker() async {
-    final pickedFile = await FilePicker.platform.pickFiles(
-      allowedExtensions: ['png', 'jpg', 'jpeg'],
-      type: FileType.custom,
-    );
-    if (pickedFile == null) {
-      throw ProfileAvatarException('Error: pickedFile is null');
-    }
-    final file = pickedFile.files.single;
-    final bytes = file.bytes;
-    if (bytes == null) {
-      throw ProfileAvatarException('Error: bytes is null');
-    }
-
-    final fileExtension = file.extension;
-    if (fileExtension == null) {
-      throw ProfileAvatarException('Error: file extension is null');
-    }
-
-    await updateProfileAvatar(
-      avatarData: bytes,
-      fileExtension: fileExtension,
+      currentAvatarName: state.value?.avatarName,
     );
     ref.invalidateSelf();
   }
 
+  Future<(Uint8List, String)> pickImage() async {
+    final imagePicker = ref.read(imagePickerProvider);
+    final image = await imagePicker.getImageFromSource(
+      source: ImageSource.gallery,
+    );
+    if (image == null) {
+      throw ProfileAvatarException(
+        message: 'Error: image is null',
+      );
+    }
+    final bytes = await image.readAsBytes();
+    final mimeType = image.mimeType ?? "image/${image.path.split('.').last}";
+    return switch (mimeType) {
+      'image/png' || 'image/jpg' || 'image/jpeg' => (bytes, mimeType),
+      _ => throw ProfileAvatarException(
+          message: 'Unsupported image type: $mimeType',
+          showMessage: true,
+        ),
+    };
+  }
+
   Future<void> deleteProfileAvatar() async {
     final profileRepository = ref.read(profileRepositoryProvider);
+    final avatarName = state.value?.avatarName;
+    if (avatarName == null) {
+      return;
+    }
     await profileRepository.deleteProfileAvatar(
       ref.read(authNotifierProvider)!.id,
+      avatarName,
     );
     ref.invalidateSelf();
   }
@@ -113,6 +116,11 @@ class ProfileNotifier extends _$ProfileNotifier {
 }
 
 class ProfileAvatarException implements Exception {
-  ProfileAvatarException(this.message);
+  ProfileAvatarException({
+    required this.message,
+    this.showMessage = false,
+  });
+
   final String message;
+  final bool showMessage;
 }
