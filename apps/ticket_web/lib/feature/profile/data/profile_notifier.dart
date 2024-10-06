@@ -1,7 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:common_data/profile.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 
@@ -44,7 +43,6 @@ class ProfileNotifier extends _$ProfileNotifier {
     final pickedFile = await FilePicker.platform.pickFiles(
       allowedExtensions: ['png', 'jpg', 'jpeg'],
       type: FileType.custom,
-      lockParentWindow: true,
     );
     if (pickedFile == null) {
       throw ProfileAvatarException('Error: pickedFile is null');
