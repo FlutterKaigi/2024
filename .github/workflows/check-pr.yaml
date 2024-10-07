@@ -39,6 +39,11 @@ jobs:
     if: ${{ needs.changes.outputs.markdownlint == 'true' }}
     uses: ./.github/workflows/wc-check-markdownlint.yaml
 
+  check-packages:
+    needs: changes
+    if: ${{ needs.changes.outputs.packages == 'true' }}
+    uses: ./.github/workflows/wc-check-packages.yaml
+
   check-prettier:
     needs: changes
     if: ${{ needs.changes.outputs.prettier == 'true' }}

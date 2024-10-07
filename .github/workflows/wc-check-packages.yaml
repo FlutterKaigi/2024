@@ -1,0 +1,45 @@
+name: Check Packages
+
+on:
+  workflow_call:
+
+# https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+permissions:
+  pull-requests: write
+  statuses: write
+
+jobs:
+  check-packages:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Format
+        run: melos format -c 5 --output none --set-exit-if-changed
+
+      # https://github.com/reviewdog/action-setup
+      - uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887 # v1.3.0
+
+      - name: Analyze
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          melos analyze -c 5 2>/dev/null | \
+            sed 's/^[[:space:]]*//' | \
+            grep -E '^(info|warning|error)' | \
+            reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -reporter=github-pr-review -fail-on-error
+
+      - name: Custom Lint
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          melos run custom_lint --no-select 2>/dev/null | \
+            grep -E '(INFO|WARN|ERROR)$' | \
+            sed -E 's/^\[[^]]+\]:[[:space:]]*//' | \
+            reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -reporter=github-pr-review -fail-on-error
