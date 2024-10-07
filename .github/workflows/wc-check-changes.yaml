@@ -53,6 +53,7 @@ jobs:
               - "**.dart"
               - "**.yaml"
               - "**.pubspec.lock"
+              - "assets/**"
             markdownlint:
               - "**.md"
             packages:
