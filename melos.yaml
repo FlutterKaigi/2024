@@ -44,7 +44,9 @@ packages:
 
 scripts:
   custom_lint:
-    exec: dart run custom_lint
+    run: dart run custom_lint
+    exec:
+      concurrency: 5
     packageFilters:
       dependsOn: custom_lint
 
