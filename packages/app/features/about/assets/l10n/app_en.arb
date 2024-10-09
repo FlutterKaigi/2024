@@ -17,5 +17,6 @@
   "contactUsUrl": "https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform",
   "ossLicenses": "OSS Licenses",
   "licensesAboutUs": "Flutter and the related logo are trademarks of Google LLC. FlutterKaigi is not affiliated with or otherwise sponsored by Google LLC.",
-  "applicationName": "FlutterKaigi 2024 Official App"
+  "applicationName": "FlutterKaigi 2024 Official App",
+  "conferenceRoomLocation": "Ariake Central Tower Hall & Conference"
 }

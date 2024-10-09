@@ -17,5 +17,6 @@
   "contactUsUrl": "https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform",
   "ossLicenses": "OSS Licenses",
   "licensesAboutUs": "Flutterおよび関連ロゴはGoogle LLCの商標です。FlutterKaigiはGoogle LLCとは提携しておらず、または他の形でスポンサーを受けていません。",
-  "applicationName": "FlutterKaigi 2024 Official App"
+  "applicationName": "FlutterKaigi 2024 Official App",
+  "conferenceRoomLocation": "有明セントラルタワーホール&カンファレンス"
 }

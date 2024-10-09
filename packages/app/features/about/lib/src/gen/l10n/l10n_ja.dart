@@ -67,4 +67,7 @@ class L10nAboutJa extends L10nAbout {
 
   @override
   String get applicationName => 'FlutterKaigi 2024 Official App';
+
+  @override
+  String get conferenceRoomLocation => '有明セントラルタワーホール&カンファレンス';
 }
