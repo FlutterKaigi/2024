@@ -9,6 +9,7 @@ import 'package:packages_app_features_about/l10n.dart';
 import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({
@@ -56,11 +57,12 @@ class AboutPage extends StatelessWidget {
                 ListTile(
                   title: Text(l.location, style: theme.textTheme.bodyLarge),
                   leading: const Icon(Icons.location_on_outlined),
-                  onTap: () async {
-                    final url =
-                        Uri.parse('https://maps.app.goo.gl/W5k8XU7Jd5GZdaww7');
-                    await launchInExternalApp(url);
-                  },
+                  onTap: () => unawaited(
+                    _openMap(
+                      context,
+                      l,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 ListTile(
@@ -200,6 +202,34 @@ class AboutPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> _openMap(
+    BuildContext context,
+    L10nAbout l,
+  ) async {
+    final googleMapsUrl =
+        Uri.parse('https://www.google.com/maps/?q=${l.conferenceRoomLocation}');
+    final appleMapsUrl =
+        Uri.parse('https://maps.apple.com/?q=${l.conferenceRoomLocation}');
+
+    // iOSの場合はApple Mapsを優先して開く
+    if (Theme.of(context).platform == TargetPlatform.iOS &&
+        await canLaunchUrl(appleMapsUrl)) {
+      await launchInExternalApp(appleMapsUrl);
+      return;
+    }
+
+    // それ以外の場合はGoogle Mapsを開く
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchInExternalApp(googleMapsUrl);
+      return;
+    }
+
+    // どちらも開けない場合は、URLを開く
+    await launchUrl(
+      googleMapsUrl,
     );
   }
 }

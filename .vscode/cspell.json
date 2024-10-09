@@ -1,5 +1,6 @@
 {
   "words": [
+    "Ariake",
     "designsystem",
     "dorny",
     "IntelliJ",
@@ -18,5 +19,7 @@
     "webp",
     "zenn"
   ],
-  "ignorePaths": ["**.sql"]
+  "ignorePaths": [
+    "**.sql"
+  ]
 }

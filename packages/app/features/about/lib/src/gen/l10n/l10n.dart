@@ -210,6 +210,12 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'FlutterKaigi 2024 Official App'**
   String get applicationName;
+
+  /// No description provided for @conferenceRoomLocation.
+  ///
+  /// In ja, this message translates to:
+  /// **'有明セントラルタワーホール&カンファレンス'**
+  String get conferenceRoomLocation;
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {
