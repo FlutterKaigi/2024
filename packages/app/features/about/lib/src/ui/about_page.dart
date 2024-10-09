@@ -215,15 +215,21 @@ class AboutPage extends StatelessWidget {
         Uri.parse('https://maps.apple.com/?q=${l.conferenceRoomLocation}');
 
     // iOSの場合はApple Mapsを優先して開く
-    if (Theme.of(context).platform == TargetPlatform.iOS) {
-      if (await canLaunchUrl(appleMapsUrl)) {
-        await launchInExternalApp(appleMapsUrl);
-      } else if (await canLaunchUrl(googleMapsUrl)) {
-        await launchInExternalApp(googleMapsUrl);
-      }
-      // Androidの場合はGoogle Mapsを優先して開く
-    } else if (await canLaunchUrl(googleMapsUrl)) {
-      await launchInExternalApp(googleMapsUrl);
+    if (Theme.of(context).platform == TargetPlatform.iOS &&
+        await canLaunchUrl(appleMapsUrl)) {
+      await launchInExternalApp(appleMapsUrl);
+      return;
     }
+
+    // それ以外の場合はGoogle Mapsを開く
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchInExternalApp(googleMapsUrl);
+      return;
+    }
+
+    // どちらも開けない場合は、URLを開く
+    await launchUrl(
+      googleMapsUrl,
+    );
   }
 }
