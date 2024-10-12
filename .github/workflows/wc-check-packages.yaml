@@ -33,7 +33,7 @@ jobs:
           dart analyze 2>/dev/null | \
             sed 's/^[[:space:]]*//' | \
             grep -E '^(info|warning|error)' | \
-            reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -name="dart analyze" -reporter=github-pr-review -level=info -fail-level=any
+            reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -name="dart analyze" -reporter=github-pr-review -level=info -fail-level=any -tee
 
       - name: Custom Lint
         env:
@@ -42,4 +42,4 @@ jobs:
           dart run custom_lint 2>/dev/null | \
             grep -E '(INFO|WARN|ERROR)$' | \
             sed 's/^[[:space:]]*//' | \
-            reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -name="dart run custom_lint" -reporter=github-pr-review -level=info -fail-level=any
+            reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -name="dart run custom_lint" -reporter=github-pr-review -level=info -fail-level=any -tee
