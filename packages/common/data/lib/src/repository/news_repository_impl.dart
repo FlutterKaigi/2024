@@ -41,8 +41,8 @@ class NewsTable with _$NewsTable {
     required int id,
     required String text,
     required String url,
-    @JsonKey(name: 'started_at') required DateTime startedAt,
-    @JsonKey(name: 'ended_at') required DateTime endedAt,
+    required DateTime startedAt,
+    required DateTime? endedAt,
   }) = _NewsTable;
 
   factory NewsTable.fromJson(Map<String, dynamic> json) =>
