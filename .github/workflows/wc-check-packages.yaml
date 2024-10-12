@@ -33,7 +33,7 @@ jobs:
           melos analyze -c 5 2>/dev/null | \
             sed 's/^[[:space:]]*//' | \
             grep -E '^(info|warning|error)' | \
-            reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -reporter=github-pr-review -fail-on-error
+            reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -reporter=github-pr-review -level=info -fail-level=any
 
       - name: Custom Lint
         env:
@@ -42,4 +42,4 @@ jobs:
           melos run custom_lint --no-select 2>/dev/null | \
             grep -E '(INFO|WARN|ERROR)$' | \
             sed -E 's/^\[[^]]+\]:[[:space:]]*//' | \
-            reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -reporter=github-pr-review -fail-on-error
+            reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -reporter=github-pr-review -level=info -fail-level=any
