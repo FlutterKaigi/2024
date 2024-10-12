@@ -12,7 +12,6 @@ enabled = true
 
 [env.production.triggers]
 # Everyday at 21:00 JST
-#crons = ["* * * * *"]
 crons = ["0 12 * * *"]
 
 [env.staging]
