@@ -13,7 +13,8 @@ class Profile with _$Profile {
     required Role role,
     required String comment,
     required DateTime createdAt,
-    required bool isAdult,
+    required bool? isAdult,
+    required bool? isPublished,
 
     /// ユーザがセットしたアバター画像のバイナリデータを取得する関数
     @JsonKey(includeFromJson: false, includeToJson: false, defaultValue: null)
@@ -21,6 +22,7 @@ class Profile with _$Profile {
 
     /// Googleアカウントのアバター画像のURL
     Uri? googleAvatarUri,
+    String? avatarName,
   }) = _Profile;
 
   factory Profile.fromJson(Map<String, dynamic> json) =>
@@ -37,7 +39,8 @@ class ProfileTable with _$ProfileTable {
     required String? avatarName,
     required DateTime createdAt,
     required Uri? avatarUrl,
-    required bool isAdult,
+    required bool? isAdult,
+    required bool? isPublished,
   }) = _ProfileTable;
 
   factory ProfileTable.fromJson(Map<String, dynamic> json) =>

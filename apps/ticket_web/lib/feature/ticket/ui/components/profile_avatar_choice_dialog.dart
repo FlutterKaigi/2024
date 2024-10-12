@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/util/full_screen_loading.dart';
 import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 import 'package:ticket_web/feature/profile/data/user_avatar_image_provider.dart';
+import 'package:ticket_web/feature/ticket/ui/components/image_cropper_dialog.dart';
 import 'package:ticket_web/feature/ticket/ui/components/profile_avatar.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
@@ -50,6 +51,7 @@ class ProfileAvatarChoiceDialog extends HookConsumerWidget {
           const SizedBox(height: 16),
           ProfileAvatar(
             profile: profile.valueOrNull!,
+            canEdit: false,
           ),
           const SizedBox(height: 8),
           if (userAvatarState.valueOrNull != null)
@@ -95,12 +97,30 @@ class ProfileAvatarChoiceDialog extends HookConsumerWidget {
             child: Text(t.ticketPage.editFields.avatar.uploadButton),
             onPressed: () async {
               try {
+                final pickedImage =
+                    await FullScreenCircularProgressIndicator.showUntil(
+                  context,
+                  ref.read(profileNotifierProvider.notifier).pickImage,
+                );
+                if (!context.mounted) {
+                  return;
+                }
+                final croppedImage =
+                    await ImageCropperDialog.show(context, pickedImage.$1);
+                if (croppedImage == null || !context.mounted) {
+                  return;
+                }
+
                 await FullScreenCircularProgressIndicator.showUntil(
                   context,
-                  ref
+                  () async => ref
                       .read(profileNotifierProvider.notifier)
-                      .uploadProfileAvatarWithFilePicker,
+                      .updateProfileAvatar(
+                        avatarData: croppedImage,
+                        mimeType: pickedImage.$2,
+                      ),
                 );
+
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -110,8 +130,17 @@ class ProfileAvatarChoiceDialog extends HookConsumerWidget {
                   );
                   Navigator.of(context).pop();
                 }
-              } on ProfileAvatarException {
-                return;
+              } on ProfileAvatarException catch (e) {
+                if (e.showMessage) {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(e.message),
+                      ),
+                    );
+                    Navigator.of(context).pop();
+                  }
+                }
               } on StorageException catch (e) {
                 log(e.toString());
                 if (context.mounted) {

@@ -24,7 +24,7 @@ class TicketDebugListTile extends ConsumerWidget {
               onPressed: () async => ref
                   .read(ticketNotifierProvider.notifier)
                   .deleteCurrentTicket(),
-              label: const Text('Delete'),
+              label: const Text('Delete Ticket(only for ADMIN user)'),
               icon: const Icon(Icons.delete),
             ),
           ],

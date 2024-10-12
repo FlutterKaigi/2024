@@ -1,16 +1,21 @@
+import 'dart:async';
+
 import 'package:collection/collection.dart';
 import 'package:common_data/profile.dart';
 import 'package:common_data/ticket.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
+import 'package:ticket_web/core/util/full_screen_loading.dart';
+import 'package:ticket_web/feature/profile/data/profile_notifier.dart';
 import 'package:ticket_web/feature/ticket/ui/ticket_card.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:ticket_web/pages/ticket/components/profile_edit_restriction.dart';
 import 'package:ticket_web/pages/ticket/components/warning_for_personal_sponsor_card.dart';
 import 'package:ticket_web/pages/ticket/components/warning_for_speaker_profile_card.dart';
 
-class AboutProfileInformation extends StatelessWidget {
+class AboutProfileInformation extends HookConsumerWidget {
   const AboutProfileInformation({
     required this.ticket,
     required this.profile,
@@ -21,7 +26,51 @@ class AboutProfileInformation extends StatelessWidget {
   final ProfileWithSns profile;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    useEffect(
+      () {
+        unawaited(
+          WidgetsBinding.instance.endOfFrame.then((_) async {
+            if (context.mounted && profile.isAdult == null) {
+              final i18n = Translations.of(context);
+
+              final result = await showDialog<bool>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(i18n.ticketPage.editFields.isAdult.title),
+                    content: Text(
+                      i18n.ticketPage.editFields.isAdult.description,
+                    ),
+                    actions: [
+                      TextButton(
+                        child: Text(i18n.ticketPage.editFields.isAdult.no),
+                        onPressed: () => Navigator.of(context).pop(false),
+                      ),
+                      TextButton(
+                        child: Text(i18n.ticketPage.editFields.isAdult.yes),
+                        onPressed: () => Navigator.of(context).pop(true),
+                      ),
+                    ],
+                  );
+                },
+              );
+              if (context.mounted && result != null) {
+                await FullScreenCircularProgressIndicator.showUntil(
+                  context,
+                  () async => ref
+                      .read(profileNotifierProvider.notifier)
+                      .updateProfileIsAdult(isAdult: result),
+                );
+              }
+            }
+          }),
+        );
+        return null;
+      },
+      [profile],
+    );
+
     final i18n = Translations.of(context);
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
@@ -88,12 +137,9 @@ class AboutProfileInformation extends StatelessWidget {
               if (isPersonalSponsor)
                 const Center(child: WarningForPersonalSponsorCard()),
               Center(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: _ProfileCard(
-                    profile: profile,
-                    ticket: ticket,
-                  ),
+                child: _ProfileCard(
+                  profile: profile,
+                  ticket: ticket,
                 ),
               ),
               const SizedBox(height: 8),
@@ -144,7 +190,7 @@ class _ProfileCard extends ConsumerWidget {
       sponsorImageUri: null, // TODO(YumNumm): スポンサー画像
       isSponsor: isSponsor,
       isSpeaker: isSpeaker,
-      isAdult: profile.isAdult,
+      isAdult: profile.isAdult ?? false,
     );
   }
 }

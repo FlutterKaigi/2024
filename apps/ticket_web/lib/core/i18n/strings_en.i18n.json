@@ -13,6 +13,11 @@
       "description": "Ticket sales will start on October 7 (Monday). Please wait a moment.\n\nLatest information will also be announced on the FlutterKaigi official X account (@FlutterKaigi).",
       "button": "Go to the FlutterKaigi official X account"
     },
+    "pre_purchase_warning_dialog": {
+      "title": "Note on Pre-Purchase",
+      "accept": "Accept",
+      "unaccept": "Unaccept"
+    },
     "tickets": {
       "variant": {
         "general": "General Ticket",
@@ -66,7 +71,7 @@
       },
       "student": {
         "name": "Student Discount",
-        "description": "If you are a student (High school, University, College of Technology(KOSEN), etc.) on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID on the day of this event.\n * Refunds are only valid on the day of the event. Only general tickets are eligible."
+        "description": "If you are a student (High school, University(Including Junior College, Graduate School), Technical College, College of Technology(KOSEN), Specialized School, Vocational School)on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible. If you are unsure whether your educational institution is eligible, please contact the organizers."
       }
     }
   },
@@ -116,7 +121,7 @@
   "ticketPage": {
     "thankYouCard": {
       "title": "Thank you for purchasing a ticket!",
-      "description": "You have a $type ticket."
+      "description": "You have a $type."
     },
     "warning_for_speaker_profile": {
       "title": "Note on Speaker Profile",
@@ -136,7 +141,7 @@
     },
     "profile_edit_restriction": {
       "title": "Note on Profile Editing",
-      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **21, November (Thu) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons."
+      "description": "- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **Nov 7 (Mon) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons."
     },
     "design_may_be_changed": "※The design of the name card may be changed on the day of FlutterKaigi 2024.",
     "edit_fields": {
@@ -173,13 +178,24 @@
       },
       "avatar": {
         "title": "Profile Image",
-        "description": "Please upload your profile image. (PNG, JPG format, up to 2MB)",
+        "description": "Please upload your profile image. (PNG, JPG format)",
         "upload_button": "Upload Image",
         "remove_button": "Reset to Default (Google Account Image)",
         "upload_success": "Profile image uploaded successfully",
         "delete_success": "Profile image reset to default successfully",
         "upload_error": "Profile image upload failed",
-        "delete_error": "Profile image reset to default failed"
+        "delete_error": "Profile image reset to default failed",
+        "crop": {
+          "title": "Please crop the image",
+          "crop_button": "Crop"
+        }
+      },
+      "is_adult": {
+        "title": "Are you 20 or older on November 21, 2024?",
+        "description": "Alcohol will be served at the party for 20 or older attendees.",
+        "yes": "Yes",
+        "no": "No",
+        "ok": "OK"
       },
       "results": {
         "success": "Profile information updated successfully",

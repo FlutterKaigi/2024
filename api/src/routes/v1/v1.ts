@@ -381,11 +381,11 @@ function getTicketType(
     | undefined,
   productType: v.InferOutput<typeof productTypeSchema>
 ): Database["public"]["Enums"]["ticket_type"] {
-  if (!promotionCodeMetadata) {
-    return "general";
-  }
   if (productType === "personal_sponsor") {
     return "individual_sponsor";
+  }
+  if (!promotionCodeMetadata) {
+    return "general";
   }
   switch (promotionCodeMetadata.type) {
     case "session": {

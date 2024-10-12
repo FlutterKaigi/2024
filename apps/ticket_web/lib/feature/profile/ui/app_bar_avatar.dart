@@ -60,7 +60,13 @@ class _Avatar extends HookWidget {
       ],
       builder: (context, controller, child) => IconButton(
         padding: EdgeInsets.zero,
-        onPressed: () => controller.open(),
+        onPressed: () {
+          if (controller.isOpen) {
+            controller.close();
+          } else {
+            controller.open();
+          }
+        },
         focusNode: focusNode,
         icon: ProfileAvatar(
           profile: profile,
@@ -117,6 +123,7 @@ class _MenuItem extends ConsumerWidget {
                 i18n.authorization.alreadyLoggedInWithMailAddress(
                   mailAddress: authState?.email ?? '',
                 ),
+                style: theme.textTheme.titleSmall,
               ),
               const Divider(),
               TextButton.icon(

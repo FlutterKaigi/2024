@@ -5,6 +5,7 @@ import 'package:ticket_web/feature/ticket/ui/components/profile_avatar.dart';
 import 'package:ticket_web/feature/ticket/ui/components/ticket_card_app_bar.dart';
 import 'package:ticket_web/feature/ticket/ui/components/ticket_card_x_account.dart';
 import 'package:ticket_web/feature/ticket/ui/components/ticket_comment_card.dart';
+import 'package:ticket_web/feature/ticket/ui/components/ticket_is_adult_card.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 
 class TicketCard extends ConsumerWidget {
@@ -110,7 +111,6 @@ class TicketCard extends ConsumerWidget {
     final theme = Theme.of(context);
 
     return SizedBox(
-      height: 400,
       width: 300,
       child: Material(
         shape: RoundedRectangleBorder(
@@ -122,6 +122,7 @@ class TicketCard extends ConsumerWidget {
         clipBehavior: Clip.antiAlias,
         type: MaterialType.card,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             // SafeArea
             ColoredBox(
@@ -155,6 +156,7 @@ class TicketCard extends ConsumerWidget {
               description: description,
               profile: profile,
               xAccount: xAccount,
+              isAdult: isAdult,
               isEditable: isEditable,
               onUpdated: onUpdated,
               onUpdateFailed: onUpdateFailed,
@@ -172,6 +174,7 @@ class _TicketCardBody extends ConsumerWidget {
     required this.description,
     required this.xAccount,
     required this.profile,
+    required this.isAdult,
     required this.isEditable,
     required this.onUpdated,
     required this.onUpdateFailed,
@@ -181,6 +184,7 @@ class _TicketCardBody extends ConsumerWidget {
   final String description;
   final String? xAccount;
   final ProfileWithSns profile;
+  final bool isAdult;
   final bool isEditable;
 
   final void Function() onUpdated;
@@ -188,30 +192,33 @@ class _TicketCardBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            ProfileAvatar(
-              profile: profile,
-            ),
-            const Spacer(),
-            TicketCardXAccount(
-              xAccount: xAccount,
-              isEditable: isEditable,
-              onUpdated: onUpdated,
-              onUpdateFailed: onUpdateFailed,
-            ),
-            // ひとことカード
-            TicketCommentCard(
-              comment: description,
-              isEditable: isEditable,
-              onUpdated: onUpdated,
-              onUpdateFailed: onUpdateFailed,
-            ),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        children: [
+          ProfileAvatar(
+            profile: profile,
+          ),
+          TicketCardXAccount(
+            xAccount: xAccount,
+            isEditable: isEditable,
+            onUpdated: onUpdated,
+            onUpdateFailed: onUpdateFailed,
+          ),
+          // ひとことカード
+          TicketCommentCard(
+            comment: description,
+            isEditable: isEditable,
+            onUpdated: onUpdated,
+            onUpdateFailed: onUpdateFailed,
+          ),
+          TicketIsAdultCard(
+            isAdult: isAdult,
+            isEditable: isEditable,
+            onUpdated: onUpdated,
+            onUpdateFailed: onUpdateFailed,
+          ),
+        ],
       ),
     );
   }

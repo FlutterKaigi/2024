@@ -15,6 +15,7 @@ runs:
       with:
         flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
         channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+        cache: true
 
     - name: Setup melos
       run: |
