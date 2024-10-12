@@ -30,7 +30,7 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          melos analyze -c 5 2>/dev/null | \
+          dart analyze 2>/dev/null | \
             sed 's/^[[:space:]]*//' | \
             grep -E '^(info|warning|error)' | \
             reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -reporter=github-pr-review -level=info -fail-level=any
@@ -39,7 +39,7 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          melos run custom_lint --no-select 2>/dev/null | \
+          dart run custom_lint 2>/dev/null | \
             grep -E '(INFO|WARN|ERROR)$' | \
-            sed -E 's/^\[[^]]+\]:[[:space:]]*//' | \
+            sed 's/^[[:space:]]*//' | \
             reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -reporter=github-pr-review -level=info -fail-level=any
