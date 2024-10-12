@@ -12,6 +12,7 @@ export 'src/repository/session_repository.dart'
         SessionRepository,
         SessionSpeakerRepository,
         SessionVenueRepository,
+        sessionRepository,
         sessionRepositoryProvider,
         sessionSpeakerRepositoryProvider,
         sessionVenueRepositoryProvider;

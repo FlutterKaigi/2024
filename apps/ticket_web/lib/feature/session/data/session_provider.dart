@@ -3,6 +3,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'session_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [sessionRepository])
 Future<List<Session>> session(SessionRef ref) async =>
     ref.watch(sessionRepositoryProvider).fetchSessions();

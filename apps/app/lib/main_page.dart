@@ -12,6 +12,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const a = 1;
     final l = L10n.of(context);
     return Scaffold(
       body: navigationShell,
