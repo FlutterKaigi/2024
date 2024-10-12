@@ -27,19 +27,39 @@ jobs:
       - uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887 # v1.3.0
 
       - name: Analyze
+        id: analyze
+        continue-on-error: true
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dart analyze 2>/dev/null | \
             sed 's/^[[:space:]]*//' | \
             grep -E '^(info|warning|error)' | \
-            reviewdog -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" -name="dart analyze" -reporter=github-pr-review -level=info -fail-level=any -tee
+            reviewdog \
+              -efm="%t%[a-z]%+ - %f:%l:%c - %m - %s" \
+              -name="dart analyze" \
+              -reporter=github-pr-review \
+              -level=info \
+              -fail-level=any \
+              -tee
 
       - name: Custom Lint
+        id: custom-lint
+        continue-on-error: true
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           dart run custom_lint 2>/dev/null | \
             grep -E '(INFO|WARN|ERROR)$' | \
             sed 's/^[[:space:]]*//' | \
-            reviewdog -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" -name="dart run custom_lint" -reporter=github-pr-review -level=info -fail-level=any -tee
+            reviewdog \
+              -efm="%f:%l:%c • %m • %s • %t%[A-Z]%+" \
+              -name="dart run custom_lint" \
+              -reporter=github-pr-review \
+              -level=info \
+              -fail-level=any \
+              -tee
+
+      - name: Status Check
+        if: steps.analyze.outcome == 'failure' || steps.custom-lint.outcome == 'failure'
+        run: exit 1
