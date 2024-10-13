@@ -30,20 +30,7 @@ final class SponsorRepository {
         await _supabaseClient.from('sponsors').select().withConverter(
               (json) => json.map(SponsorTable.fromJson).toList(),
             );
-    return result
-        .map(
-          (sponsor) => Sponsor(
-            id: sponsor.id,
-            name: sponsor.name,
-            logoUrl: Uri.parse(
-              _sponsorStorageFileApi.getPublicUrl(sponsor.logoName),
-            ),
-            description: sponsor.description,
-            url: sponsor.url != null ? Uri.tryParse(sponsor.url!) : null,
-            type: sponsor.type,
-          ),
-        )
-        .toList();
+    return result.map(toSponsor).toList();
   }
 
   Future<List<SponsorWithSession>> fetchSponsorWithSessions() async {
@@ -56,20 +43,36 @@ final class SponsorRepository {
 
     return result
         .map(
-          (sponsor) => SponsorWithSession(
-            id: sponsor.id,
-            name: sponsor.name,
-            logoUrl: Uri.parse(
-              _sponsorStorageFileApi.getPublicUrl(sponsor.logoName),
-            ),
-            description: sponsor.description,
-            url: sponsor.url,
-            type: sponsor.type,
-            sessions: sponsor.sessions,
-          ),
+          toSponsorWithSession,
         )
         .toList();
   }
+
+  Sponsor toSponsor(SponsorTable sponsorTable) => Sponsor(
+        id: sponsorTable.id,
+        name: sponsorTable.name,
+        logoUrl: Uri.parse(
+          _sponsorStorageFileApi.getPublicUrl(sponsorTable.logoName),
+        ),
+        description: sponsorTable.description,
+        url: sponsorTable.url != null ? Uri.tryParse(sponsorTable.url!) : null,
+        type: sponsorTable.type,
+      );
+
+  SponsorWithSession toSponsorWithSession(
+    SponsorWithSessionView sponsorWithSessionView,
+  ) =>
+      SponsorWithSession(
+        id: sponsorWithSessionView.id,
+        name: sponsorWithSessionView.name,
+        logoUrl: Uri.parse(
+          _sponsorStorageFileApi.getPublicUrl(sponsorWithSessionView.logoName),
+        ),
+        description: sponsorWithSessionView.description,
+        url: sponsorWithSessionView.url,
+        type: sponsorWithSessionView.type,
+        sessions: sponsorWithSessionView.sessions,
+      );
 }
 
 @freezed

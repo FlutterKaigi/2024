@@ -1,8 +1,9 @@
+import 'package:common_data/profile.dart';
 import 'package:common_data/src/model/session.dart';
 import 'package:common_data/src/model/session_speaker.dart';
 import 'package:common_data/src/model/session_venue.dart';
-import 'package:common_data/src/model/sponsor.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_view.dart';
+import 'package:common_data/src/repository/sponsor_repository.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
@@ -14,6 +15,7 @@ SessionRepository sessionRepository(SessionRepositoryRef ref) =>
     SessionRepository(
       client: ref.watch(supabaseClientProvider),
       sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
+      profileRepository: ref.watch(profileRepositoryProvider),
     );
 
 @Riverpod(keepAlive: true)
@@ -32,11 +34,17 @@ class SessionRepository {
   SessionRepository({
     required SupabaseClient client,
     required StorageFileApi sponsorStorageFileApi,
+    required ProfileRepository profileRepository,
+    required SponsorRepository sponsorRepository,
   })  : _client = client,
-        _sponsorStorageFileApi = sponsorStorageFileApi;
+        _sponsorStorageFileApi = sponsorStorageFileApi,
+        _profileRepository = profileRepository,
+        _sponsorRepository = sponsorRepository;
 
   final SupabaseClient _client;
   final StorageFileApi _sponsorStorageFileApi;
+  final ProfileRepository _profileRepository;
+  final SponsorRepository _sponsorRepository;
 
   Future<List<SessionVenuesWithSessions>>
       fetchSessionVenuesWithSessions() async {
@@ -63,23 +71,12 @@ class SessionRepository {
                     endsAt: sessionWithSpeakerAndSponsor.endsAt,
                     isLightningTalk:
                         sessionWithSpeakerAndSponsor.isLightningTalk,
-                    speakers: sessionWithSpeakerAndSponsor.speakers,
+                    speakers: sessionWithSpeakerAndSponsor.speakers
+                        .map(_profileRepository.toProfileWithSns)
+                        .toList(),
                     sponsors: sessionWithSpeakerAndSponsor.sponsors
                         .map(
-                          (sponsor) => Sponsor(
-                            id: sponsor.id,
-                            name: sponsor.name,
-                            logoUrl: Uri.parse(
-                              _sponsorStorageFileApi.getPublicUrl(
-                                sponsor.logoName,
-                              ),
-                            ),
-                            url: sponsor.url != null
-                                ? Uri.parse(sponsor.url!)
-                                : null,
-                            description: sponsor.description,
-                            type: sponsor.type,
-                          ),
+                          _sponsorRepository.toSponsor,
                         )
                         .toList(),
                   ),
