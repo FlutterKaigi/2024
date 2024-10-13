@@ -1,5 +1,5 @@
+import 'package:app_features_debug/src/ui/components/route_dropdown_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_debug/src/ui/components/route_dropdown_menu.dart';
 
 class DebugPage extends StatelessWidget {
   const DebugPage({
