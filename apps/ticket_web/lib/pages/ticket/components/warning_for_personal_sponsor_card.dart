@@ -10,7 +10,6 @@ class WarningForPersonalSponsorCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(profileNotifierProvider);
-    print(profile.valueOrNull?.isPublished);
 
     final i18n = Translations.of(context);
     final theme = Theme.of(context);
