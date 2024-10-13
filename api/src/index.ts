@@ -10,6 +10,7 @@ import * as v from "valibot";
 import v1 from "./routes/v1/v1";
 import Stripe from "stripe";
 import { HTTPResponseError } from "hono/types";
+import { scheduled } from "./features/cron/scheduled";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
@@ -52,4 +53,7 @@ app.onError(errorHandler);
 
 app.route("/v1", v1);
 
-export default app;
+export default {
+  fetch: app.fetch,
+  scheduled: scheduled
+};
