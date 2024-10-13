@@ -1,4 +1,4 @@
-name: packages_app_features_news
+name: app_features_news
 description: "This package provides news-related features for the application."
 publish_to: "none"
 version: 0.0.1

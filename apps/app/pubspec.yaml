@@ -19,6 +19,8 @@ dependencies:
     path: ../../packages/app/features/about
   app_features_debug:
     path: ../../packages/app/features/debug
+  app_features_news:
+    path: ../../packages/app/features/news
   common_data:
     path: ../../packages/common/data
   dynamic_color: ^1.7.0
@@ -29,8 +31,6 @@ dependencies:
   go_router: ^14.2.7
   hooks_riverpod: ^2.5.2
   intl: ^0.19.0
-  packages_app_features_news:
-    path: ../../packages/app/features/news
   packages_app_features_session:
     path: ../../packages/app/features/session
   packages_app_features_venue:

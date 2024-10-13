@@ -1,10 +1,10 @@
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
+import 'package:app_features_news/src/gen/l10n/l10n.dart';
+import 'package:app_features_news/src/ui/news_item_widget.dart';
+import 'package:app_features_news/src/ui/notifer/state/news_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:packages_app_features_news/src/gen/l10n/l10n.dart';
-import 'package:packages_app_features_news/src/ui/news_item_widget.dart';
-import 'package:packages_app_features_news/src/ui/notifer/state/news_notifier.dart';
 
 /// お知らせ一覧画面
 class NewsPage extends HookConsumerWidget {
