@@ -1,5 +1,5 @@
 import 'package:app_features_about/l10n.dart';
-import 'package:app_features_about/src/ui/staff/notifer/staff_notifer.dart';
+import 'package:app_features_about/src/ui/staff/notifier/staff_notifier.dart';
 import 'package:app_features_about/src/ui/staff/staff_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
