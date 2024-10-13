@@ -10,4 +10,8 @@ enabled = true
 
 [env.production]
 
+[env.production.triggers]
+# Everyday at 21:00 JST
+crons = ["0 12 * * *"]
+
 [env.staging]

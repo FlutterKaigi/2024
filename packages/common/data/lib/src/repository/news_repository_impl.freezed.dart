@@ -23,10 +23,8 @@ mixin _$NewsTable {
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
-  @JsonKey(name: 'started_at')
   DateTime get startedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ended_at')
-  DateTime get endedAt => throw _privateConstructorUsedError;
+  DateTime? get endedAt => throw _privateConstructorUsedError;
 
   /// Serializes this NewsTable to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,11 +42,7 @@ abstract class $NewsTableCopyWith<$Res> {
       _$NewsTableCopyWithImpl<$Res, NewsTable>;
   @useResult
   $Res call(
-      {int id,
-      String text,
-      String url,
-      @JsonKey(name: 'started_at') DateTime startedAt,
-      @JsonKey(name: 'ended_at') DateTime endedAt});
+      {int id, String text, String url, DateTime startedAt, DateTime? endedAt});
 }
 
 /// @nodoc
@@ -70,7 +64,7 @@ class _$NewsTableCopyWithImpl<$Res, $Val extends NewsTable>
     Object? text = null,
     Object? url = null,
     Object? startedAt = null,
-    Object? endedAt = null,
+    Object? endedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -89,10 +83,10 @@ class _$NewsTableCopyWithImpl<$Res, $Val extends NewsTable>
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      endedAt: null == endedAt
+      endedAt: freezed == endedAt
           ? _value.endedAt
           : endedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -106,11 +100,7 @@ abstract class _$$NewsTableImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
-      String text,
-      String url,
-      @JsonKey(name: 'started_at') DateTime startedAt,
-      @JsonKey(name: 'ended_at') DateTime endedAt});
+      {int id, String text, String url, DateTime startedAt, DateTime? endedAt});
 }
 
 /// @nodoc
@@ -130,7 +120,7 @@ class __$$NewsTableImplCopyWithImpl<$Res>
     Object? text = null,
     Object? url = null,
     Object? startedAt = null,
-    Object? endedAt = null,
+    Object? endedAt = freezed,
   }) {
     return _then(_$NewsTableImpl(
       id: null == id
@@ -149,10 +139,10 @@ class __$$NewsTableImplCopyWithImpl<$Res>
           ? _value.startedAt
           : startedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      endedAt: null == endedAt
+      endedAt: freezed == endedAt
           ? _value.endedAt
           : endedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -164,8 +154,8 @@ class _$NewsTableImpl implements _NewsTable {
       {required this.id,
       required this.text,
       required this.url,
-      @JsonKey(name: 'started_at') required this.startedAt,
-      @JsonKey(name: 'ended_at') required this.endedAt});
+      required this.startedAt,
+      required this.endedAt});
 
   factory _$NewsTableImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewsTableImplFromJson(json);
@@ -177,11 +167,9 @@ class _$NewsTableImpl implements _NewsTable {
   @override
   final String url;
   @override
-  @JsonKey(name: 'started_at')
   final DateTime startedAt;
   @override
-  @JsonKey(name: 'ended_at')
-  final DateTime endedAt;
+  final DateTime? endedAt;
 
   @override
   String toString() {
@@ -224,12 +212,11 @@ class _$NewsTableImpl implements _NewsTable {
 
 abstract class _NewsTable implements NewsTable {
   const factory _NewsTable(
-          {required final int id,
-          required final String text,
-          required final String url,
-          @JsonKey(name: 'started_at') required final DateTime startedAt,
-          @JsonKey(name: 'ended_at') required final DateTime endedAt}) =
-      _$NewsTableImpl;
+      {required final int id,
+      required final String text,
+      required final String url,
+      required final DateTime startedAt,
+      required final DateTime? endedAt}) = _$NewsTableImpl;
 
   factory _NewsTable.fromJson(Map<String, dynamic> json) =
       _$NewsTableImpl.fromJson;
@@ -241,11 +228,9 @@ abstract class _NewsTable implements NewsTable {
   @override
   String get url;
   @override
-  @JsonKey(name: 'started_at')
   DateTime get startedAt;
   @override
-  @JsonKey(name: 'ended_at')
-  DateTime get endedAt;
+  DateTime? get endedAt;
 
   /// Create a copy of NewsTable
   /// with the given fields replaced by the non-null parameter values.

@@ -11,6 +11,8 @@ on:
         value: ${{ jobs.changes.outputs.diff }}
       markdownlint:
         value: ${{ jobs.changes.outputs.markdownlint }}
+      packages:
+        value: ${{ jobs.changes.outputs.packages }}
       prettier:
         value: ${{ jobs.changes.outputs.prettier }}
       sql-format:
@@ -30,6 +32,7 @@ jobs:
       database: ${{ steps.filter.outputs.database }}
       diff: ${{ steps.filter.outputs.diff }}
       markdownlint: ${{ steps.filter.outputs.markdownlint }}
+      packages: ${{ steps.filter.outputs.packages }}
       prettier: ${{ steps.filter.outputs.prettier }}
       sql-format: ${{ steps.filter.outputs.sql-format }}
       textlint: ${{ steps.filter.outputs.textlint }}
@@ -50,8 +53,13 @@ jobs:
               - "**.dart"
               - "**.yaml"
               - "**.pubspec.lock"
+              - "assets/**"
             markdownlint:
               - "**.md"
+            packages:
+              - "**.dart"
+              - "**.yaml"
+              - "**.pubspec.lock"
             prettier:
               - "**.json"
               - "**.jsonc"

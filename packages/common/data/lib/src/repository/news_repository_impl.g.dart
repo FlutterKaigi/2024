@@ -19,8 +19,8 @@ _$NewsTableImpl _$$NewsTableImplFromJson(Map<String, dynamic> json) =>
           url: $checkedConvert('url', (v) => v as String),
           startedAt:
               $checkedConvert('started_at', (v) => DateTime.parse(v as String)),
-          endedAt:
-              $checkedConvert('ended_at', (v) => DateTime.parse(v as String)),
+          endedAt: $checkedConvert('ended_at',
+              (v) => v == null ? null : DateTime.parse(v as String)),
         );
         return val;
       },
@@ -33,5 +33,5 @@ Map<String, dynamic> _$$NewsTableImplToJson(_$NewsTableImpl instance) =>
       'text': instance.text,
       'url': instance.url,
       'started_at': instance.startedAt.toIso8601String(),
-      'ended_at': instance.endedAt.toIso8601String(),
+      'ended_at': instance.endedAt?.toIso8601String(),
     };

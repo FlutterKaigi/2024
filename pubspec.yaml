@@ -3,4 +3,5 @@ name: conference_2024_workspace
 environment:
   sdk: ^3.3.4
 dev_dependencies:
+  custom_lint: ^0.6.7
   melos: ^6.0.0

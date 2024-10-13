@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:app_cores_core/util.dart';
+import 'package:app_features_session/l10n.dart';
+import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
+import 'package:app_features_session/src/ui/bordered_icon_image.dart';
+import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:packages_app_features_session/l10n.dart';
-import 'package:packages_app_features_session/src/providers/bookmarked_sessions.dart';
-import 'package:packages_app_features_session/src/ui/bordered_icon_image.dart';
-import 'package:packages_app_features_session/src/ui/session_room_chip.dart';
 
 class SessionPage extends ConsumerWidget {
   const SessionPage({

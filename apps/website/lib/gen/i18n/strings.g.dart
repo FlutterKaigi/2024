@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 38
+/// Strings: 44
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -194,6 +194,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsHeaderJa header = _StringsHeaderJa._(_root);
   late final _StringsFooterJa footer = _StringsFooterJa._(_root);
   late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
+  late final _StringsTicketJa ticket = _StringsTicketJa._(_root);
   late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
   String get newsError => 'お知らせの取得に失敗しました';
   String get retry => '再試行';
@@ -279,6 +280,23 @@ class _StringsSponsorJa {
         'お申し込みは 6/17 10:00 より開始します',
       ];
   String get apply => '協賛資料はこちら';
+}
+
+// Path: ticket
+class _StringsTicketJa {
+  _StringsTicketJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Join FlutterKaigi 2024!';
+  List<String> get messages => [
+        'FlutterKaigi 2024のチケット販売が開始しました!',
+        '一般チケットは6,000円、個人スポンサー付きチケットは30,000円(一般チケット+スポンサー料)です。',
+        'また、一般チケットを対象に学割を実施致します。FlutterKaigi当日に学生の方は無料で参加いただけます。',
+        '詳細は、以下のリンクよりご確認ください。',
+      ];
+  String get link => 'チケット情報はこちら';
 }
 
 // Path: sponsors
@@ -393,6 +411,18 @@ extension on Translations {
         return 'お申し込みは 6/17 10:00 より開始します';
       case 'sponsor.apply':
         return '協賛資料はこちら';
+      case 'ticket.title':
+        return 'Join FlutterKaigi 2024!';
+      case 'ticket.messages.0':
+        return 'FlutterKaigi 2024のチケット販売が開始しました!';
+      case 'ticket.messages.1':
+        return '一般チケットは6,000円、個人スポンサー付きチケットは30,000円(一般チケット+スポンサー料)です。';
+      case 'ticket.messages.2':
+        return 'また、一般チケットを対象に学割を実施致します。FlutterKaigi当日に学生の方は無料で参加いただけます。';
+      case 'ticket.messages.3':
+        return '詳細は、以下のリンクよりご確認ください。';
+      case 'ticket.link':
+        return 'チケット情報はこちら';
       case 'sponsors.title':
         return 'Sponsors';
       case 'sponsors.levels.platinum':
