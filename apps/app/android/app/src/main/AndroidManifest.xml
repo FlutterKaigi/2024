@@ -9,7 +9,7 @@
         </intent>
     </queries>
     <application
-        android:label="conference_2024_app"
+        android:label="@string/appLabel"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
