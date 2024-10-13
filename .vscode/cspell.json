@@ -20,6 +20,8 @@
     "textlint",
     "unawaited",
     "webp",
+    "YumNumm",
     "zenn"
-  ]
+  ],
+  "ignorePaths": ["**.sql", "**.lock", "pubspec.yaml", "package.json"]
 }
