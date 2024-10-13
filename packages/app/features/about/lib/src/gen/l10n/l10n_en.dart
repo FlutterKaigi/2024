@@ -70,4 +70,19 @@ class L10nAboutEn extends L10nAbout {
 
   @override
   String get conferenceRoomLocation => 'Ariake Central Tower Hall & Conference';
+
+  @override
+  String get findDirections => 'find directions';
+
+  @override
+  String get openAppleMaps => 'open Apple Maps';
+
+  @override
+  String get openGoogleMaps => 'open Google Maps';
+
+  @override
+  String get copyTheAddress => 'copy the address';
+
+  @override
+  String get theAddressHasBeenCopied => 'the address has been copied';
 }

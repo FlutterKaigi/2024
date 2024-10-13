@@ -5,10 +5,13 @@ import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
 import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/ui/map/map_item_widget.dart';
 import 'package:app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:app_features_about/src/ui/staff/staff_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
@@ -57,11 +60,10 @@ class AboutPage extends StatelessWidget {
                 ListTile(
                   title: Text(l.location, style: theme.textTheme.bodyLarge),
                   leading: const Icon(Icons.location_on_outlined),
-                  onTap: () => unawaited(
-                    _openMap(
-                      context,
-                      l,
-                    ),
+                  onTap: () => _openMap(
+                    context,
+                    l,
+                    theme,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -205,31 +207,97 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  Future<void> _openMap(
+  void _openMap(
     BuildContext context,
     L10nAbout l,
-  ) async {
+    ThemeData theme,
+  ) {
     final googleMapsUrl =
         Uri.parse('https://www.google.com/maps/?q=${l.conferenceRoomLocation}');
     final appleMapsUrl =
         Uri.parse('https://maps.apple.com/?q=${l.conferenceRoomLocation}');
 
-    // iOSの場合はApple Mapsを優先して開く
-    if (Theme.of(context).platform == TargetPlatform.iOS &&
-        await canLaunchUrl(appleMapsUrl)) {
-      await launchInExternalApp(appleMapsUrl);
-      return;
-    }
+    unawaited(
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: true,
+        builder: (context) => SizedBox(
+          height: 300,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 18,
+            ),
+            child: Column(
+              children: [
+                const Gap(14),
+                Text(
+                  l.findDirections,
+                  style: theme.textTheme.labelLarge,
+                  textAlign: TextAlign.center,
+                ),
+                const Gap(24),
+                MapItemWidget(
+                  icon: Icons.call_made,
+                  itemTitle: l.openAppleMaps,
+                  onTap: () async {
+                    // iOSの場合はApple Mapsを優先して開く
+                    if (Theme.of(context).platform == TargetPlatform.iOS &&
+                        await canLaunchUrl(appleMapsUrl)) {
+                      await launchInExternalApp(appleMapsUrl);
+                      return;
+                    }
 
-    // それ以外の場合はGoogle Mapsを開く
-    if (await canLaunchUrl(googleMapsUrl)) {
-      await launchInExternalApp(googleMapsUrl);
-      return;
-    }
+                    // どちらも開けない場合は、URLを開く
+                    await launchUrl(
+                      googleMapsUrl,
+                    );
+                  },
+                ),
+                const Gap(40),
+                MapItemWidget(
+                  icon: Icons.call_made,
+                  itemTitle: l.openGoogleMaps,
+                  onTap: () async {
+                    // それ以外の場合はGoogle Mapsを開く
+                    if (await canLaunchUrl(googleMapsUrl)) {
+                      await launchInExternalApp(googleMapsUrl);
+                      return;
+                    }
 
-    // どちらも開けない場合は、URLを開く
-    await launchUrl(
-      googleMapsUrl,
+                    // どちらも開けない場合は、URLを開く
+                    await launchUrl(
+                      googleMapsUrl,
+                    );
+                  },
+                ),
+                const Gap(20),
+                const Divider(
+                  thickness: 0.5,
+                ),
+                const Gap(20),
+                MapItemWidget(
+                  icon: Icons.copy,
+                  itemTitle: l.copyTheAddress,
+                  onTap: () {
+                    final clipboardText =
+                        ClipboardData(text: l.conferenceRoomLocation);
+                    Clipboard.setData(clipboardText);
+
+                    final snackBar = SnackBar(
+                      content: Text(l.theAddressHasBeenCopied),
+                      behavior: SnackBarBehavior.floating,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

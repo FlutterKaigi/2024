@@ -70,4 +70,19 @@ class L10nAboutJa extends L10nAbout {
 
   @override
   String get conferenceRoomLocation => '有明セントラルタワーホール&カンファレンス';
+
+  @override
+  String get findDirections => '経路を調べる';
+
+  @override
+  String get openAppleMaps => 'Appleマップを開く';
+
+  @override
+  String get openGoogleMaps => 'Googleマップを開く';
+
+  @override
+  String get copyTheAddress => '住所をコピー';
+
+  @override
+  String get theAddressHasBeenCopied => '住所をコピーしました ';
 }

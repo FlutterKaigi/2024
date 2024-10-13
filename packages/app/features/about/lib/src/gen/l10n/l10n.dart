@@ -216,6 +216,36 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'有明セントラルタワーホール&カンファレンス'**
   String get conferenceRoomLocation;
+
+  /// No description provided for @findDirections.
+  ///
+  /// In ja, this message translates to:
+  /// **'経路を調べる'**
+  String get findDirections;
+
+  /// No description provided for @openAppleMaps.
+  ///
+  /// In ja, this message translates to:
+  /// **'Appleマップを開く'**
+  String get openAppleMaps;
+
+  /// No description provided for @openGoogleMaps.
+  ///
+  /// In ja, this message translates to:
+  /// **'Googleマップを開く'**
+  String get openGoogleMaps;
+
+  /// No description provided for @copyTheAddress.
+  ///
+  /// In ja, this message translates to:
+  /// **'住所をコピー'**
+  String get copyTheAddress;
+
+  /// No description provided for @theAddressHasBeenCopied.
+  ///
+  /// In ja, this message translates to:
+  /// **'住所をコピーしました '**
+  String get theAddressHasBeenCopied;
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {
