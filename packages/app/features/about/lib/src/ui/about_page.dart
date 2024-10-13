@@ -9,10 +9,6 @@ import 'package:app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:app_features_about/src/ui/staff/contributors_page.dart';
 import 'package:app_features_about/src/ui/staff/staff_page.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
-import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
-import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
