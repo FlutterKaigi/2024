@@ -1,6 +1,6 @@
+import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/ui/staff/staff_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/staff/staff_card_widget.dart';
 
 /// コントリビューター一覧ページ
 class ContributorsPage extends StatelessWidget {
