@@ -23,6 +23,8 @@ SessionVenuesWithSessions _$SessionVenuesWithSessionsFromJson(
 mixin _$SessionVenuesWithSessions {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  List<SessionWithSpeakerAndSponsor> get sessions =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this SessionVenuesWithSessions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +42,8 @@ abstract class $SessionVenuesWithSessionsCopyWith<$Res> {
           $Res Function(SessionVenuesWithSessions) then) =
       _$SessionVenuesWithSessionsCopyWithImpl<$Res, SessionVenuesWithSessions>;
   @useResult
-  $Res call({String id, String name});
+  $Res call(
+      {String id, String name, List<SessionWithSpeakerAndSponsor> sessions});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$SessionVenuesWithSessionsCopyWithImpl<$Res,
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? sessions = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -71,6 +75,10 @@ class _$SessionVenuesWithSessionsCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      sessions: null == sessions
+          ? _value.sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SessionWithSpeakerAndSponsor>,
     ) as $Val);
   }
 }
@@ -84,7 +92,8 @@ abstract class _$$SessionVenuesWithSessionsImplCopyWith<$Res>
       __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name});
+  $Res call(
+      {String id, String name, List<SessionWithSpeakerAndSponsor> sessions});
 }
 
 /// @nodoc
@@ -104,6 +113,7 @@ class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? sessions = null,
   }) {
     return _then(_$SessionVenuesWithSessionsImpl(
       id: null == id
@@ -114,6 +124,10 @@ class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      sessions: null == sessions
+          ? _value._sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SessionWithSpeakerAndSponsor>,
     ));
   }
 }
@@ -121,7 +135,11 @@ class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
-  const _$SessionVenuesWithSessionsImpl({required this.id, required this.name});
+  const _$SessionVenuesWithSessionsImpl(
+      {required this.id,
+      required this.name,
+      required final List<SessionWithSpeakerAndSponsor> sessions})
+      : _sessions = sessions;
 
   factory _$SessionVenuesWithSessionsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SessionVenuesWithSessionsImplFromJson(json);
@@ -130,10 +148,17 @@ class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
   final String id;
   @override
   final String name;
+  final List<SessionWithSpeakerAndSponsor> _sessions;
+  @override
+  List<SessionWithSpeakerAndSponsor> get sessions {
+    if (_sessions is EqualUnmodifiableListView) return _sessions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sessions);
+  }
 
   @override
   String toString() {
-    return 'SessionVenuesWithSessions(id: $id, name: $name)';
+    return 'SessionVenuesWithSessions(id: $id, name: $name, sessions: $sessions)';
   }
 
   @override
@@ -142,12 +167,14 @@ class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
         (other.runtimeType == runtimeType &&
             other is _$SessionVenuesWithSessionsImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality().equals(other._sessions, _sessions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, const DeepCollectionEquality().hash(_sessions));
 
   /// Create a copy of SessionVenuesWithSessions
   /// with the given fields replaced by the non-null parameter values.
@@ -168,8 +195,10 @@ class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
 
 abstract class _SessionVenuesWithSessions implements SessionVenuesWithSessions {
   const factory _SessionVenuesWithSessions(
-      {required final String id,
-      required final String name}) = _$SessionVenuesWithSessionsImpl;
+          {required final String id,
+          required final String name,
+          required final List<SessionWithSpeakerAndSponsor> sessions}) =
+      _$SessionVenuesWithSessionsImpl;
 
   factory _SessionVenuesWithSessions.fromJson(Map<String, dynamic> json) =
       _$SessionVenuesWithSessionsImpl.fromJson;
@@ -178,6 +207,8 @@ abstract class _SessionVenuesWithSessions implements SessionVenuesWithSessions {
   String get id;
   @override
   String get name;
+  @override
+  List<SessionWithSpeakerAndSponsor> get sessions;
 
   /// Create a copy of SessionVenuesWithSessions
   /// with the given fields replaced by the non-null parameter values.

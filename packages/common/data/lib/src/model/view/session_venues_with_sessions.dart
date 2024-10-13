@@ -10,6 +10,7 @@ class SessionVenuesWithSessions with _$SessionVenuesWithSessions {
   const factory SessionVenuesWithSessions({
     required String id,
     required String name,
+    required List<SessionWithSpeakerAndSponsor> sessions,
   }) = _SessionVenuesWithSessions;
 
   factory SessionVenuesWithSessions.fromJson(Map<String, dynamic> json) =>

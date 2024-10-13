@@ -17,6 +17,12 @@ _$SessionVenuesWithSessionsImpl _$$SessionVenuesWithSessionsImplFromJson(
         final val = _$SessionVenuesWithSessionsImpl(
           id: $checkedConvert('id', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
+          sessions: $checkedConvert(
+              'sessions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SessionWithSpeakerAndSponsor.fromJson(
+                      e as Map<String, dynamic>))
+                  .toList()),
         );
         return val;
       },
@@ -27,6 +33,7 @@ Map<String, dynamic> _$$SessionVenuesWithSessionsImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'sessions': instance.sessions,
     };
 
 _$SessionWithSpeakerAndSponsorImpl _$$SessionWithSpeakerAndSponsorImplFromJson(
