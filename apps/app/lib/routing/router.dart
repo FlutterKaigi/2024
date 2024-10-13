@@ -6,11 +6,11 @@ import 'package:app_features_debug/routing.dart';
 import 'package:app_features_news/ui.dart';
 import 'package:app_features_session/routing.dart';
 import 'package:app_features_session/ui.dart';
+import 'package:app_features_venue/ui.dart';
 import 'package:conference_2024_app/main_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:packages_app_features_venue/ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';

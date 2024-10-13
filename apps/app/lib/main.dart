@@ -12,6 +12,7 @@ import 'package:app_features_debug/l10n.dart';
 import 'package:app_features_debug/routing.dart';
 import 'package:app_features_news/l10n.dart';
 import 'package:app_features_session/l10n.dart';
+import 'package:app_features_venue/l10n.dart';
 import 'package:common_data/supabase_initializer.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:conference_2024_app/routing/router.dart';
@@ -20,7 +21,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:packages_app_features_venue/l10n.dart';
 
 void main() async {
   final supabaseInitializer = SupabaseInitializer(
