@@ -16,6 +16,7 @@ SessionRepository sessionRepository(SessionRepositoryRef ref) =>
       client: ref.watch(supabaseClientProvider),
       sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
       profileRepository: ref.watch(profileRepositoryProvider),
+      sponsorRepository: ref.watch(sponsorRepositoryProvider),
     );
 
 @Riverpod(keepAlive: true)
