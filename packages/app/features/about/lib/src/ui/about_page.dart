@@ -4,11 +4,11 @@ import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
+import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/ui/sponsors/sponsors_page.dart';
+import 'package:app_features_about/src/ui/staff/contributors_page.dart';
+import 'package:app_features_about/src/ui/staff/staff_page.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
-import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
-import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({

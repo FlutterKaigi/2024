@@ -1,9 +1,9 @@
+import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
+import 'package:app_features_session/src/ui/bordered_icon_image.dart';
+import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:packages_app_features_session/src/providers/bookmarked_sessions.dart';
-import 'package:packages_app_features_session/src/ui/bordered_icon_image.dart';
-import 'package:packages_app_features_session/src/ui/session_room_chip.dart';
 
 /// タイムラインのアイテム
 class SessionItem extends StatelessWidget {

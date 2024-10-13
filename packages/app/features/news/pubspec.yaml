@@ -1,4 +1,4 @@
-name: packages_app_features_news
+name: app_features_news
 description: "This package provides news-related features for the application."
 publish_to: "none"
 version: 0.0.1
@@ -10,10 +10,11 @@ environment:
 
 dependencies:
   app_cores_designsystem:
+    path: ../../cores/designsystem
   app_cores_settings:
     path: ../../cores/settings
   common_data:
-    path: ../../../../packages/common/data
+    path: ../../../common/data
   flutter:
     sdk: flutter
   flutter_localizations:

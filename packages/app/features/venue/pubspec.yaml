@@ -1,4 +1,4 @@
-name: packages_app_features_venue
+name: app_features_venue
 description: "This package provides venue-related features for the application."
 publish_to: "none"
 version: 0.0.1
