@@ -80,6 +80,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  app_features_session:
+    dependency: "direct main"
+    description:
+      path: "../../packages/app/features/session"
+      relative: true
+    source: path
+    version: "0.0.1"
   app_links:
     dependency: transitive
     description:
@@ -643,13 +650,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  packages_app_features_session:
-    dependency: "direct main"
-    description:
-      path: "../../packages/app/features/session"
-      relative: true
-    source: path
-    version: "0.0.1"
   packages_app_features_venue:
     dependency: "direct main"
     description:

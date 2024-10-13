@@ -1,9 +1,9 @@
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
+import 'package:app_features_session/l10n.dart';
+import 'package:app_features_session/src/routing/router.dart';
+import 'package:app_features_session/src/ui/session_item.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_session/l10n.dart';
-import 'package:packages_app_features_session/src/routing/router.dart';
-import 'package:packages_app_features_session/src/ui/session_item.dart';
 
 class SessionsPage extends StatelessWidget {
   const SessionsPage({
