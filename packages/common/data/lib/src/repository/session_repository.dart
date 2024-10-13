@@ -14,7 +14,6 @@ part 'session_repository.g.dart';
 SessionRepository sessionRepository(SessionRepositoryRef ref) =>
     SessionRepository(
       client: ref.watch(supabaseClientProvider),
-      sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
       profileRepository: ref.watch(profileRepositoryProvider),
       sponsorRepository: ref.watch(sponsorRepositoryProvider),
     );
@@ -34,16 +33,13 @@ SessionSpeakerRepository sessionSpeakerRepository(
 class SessionRepository {
   SessionRepository({
     required SupabaseClient client,
-    required StorageFileApi sponsorStorageFileApi,
     required ProfileRepository profileRepository,
     required SponsorRepository sponsorRepository,
   })  : _client = client,
-        _sponsorStorageFileApi = sponsorStorageFileApi,
         _profileRepository = profileRepository,
         _sponsorRepository = sponsorRepository;
 
   final SupabaseClient _client;
-  final StorageFileApi _sponsorStorageFileApi;
   final ProfileRepository _profileRepository;
   final SponsorRepository _sponsorRepository;
 
