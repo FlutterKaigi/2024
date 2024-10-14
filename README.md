@@ -6,6 +6,8 @@
 
 FlutterKaigi 2024 公式プロジェクトのリポジトリへようこそ！
 
+FlutterKaigi 2024 についての詳しい情報は [FlutterKaigi 2024 公式ウェブサイト] をご覧ください。
+
 ## プロジェクトへの貢献方法
 
 みなさんのご協力をお待ちしています！
@@ -19,6 +21,8 @@ FlutterKaigi 2024 公式プロジェクトのリポジトリへようこそ！
 詳しくは [ARCHITECTURE.md] をご覧ください。
 
 <!-- Links -->
+
+[FlutterKaigi 2024 公式ウェブサイト]: https://flutterkaigi.jp/2024
 
 [CONTRIBUTING.md]: docs/CONTRIBUTING.md
 
