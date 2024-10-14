@@ -5,3 +5,13 @@
 [![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
 
 FlutterKaigi 2024 公式プロジェクトのリポジトリへようこそ！
+
+## プロジェクトへの貢献方法
+
+みなさんのご協力をお待ちしています！
+
+詳しくは [CONTRIBUTING.md] をご覧ください。
+
+<!-- Links -->
+
+[CONTRIBUTING.md]: docs/CONTRIBUTING.md
