@@ -12,6 +12,16 @@ FlutterKaigi 2024 公式プロジェクトのリポジトリへようこそ！
 
 詳しくは [CONTRIBUTING.md] をご覧ください。
 
+## プロジェクト構成
+
+このプロジェクトでは、いくつかのアプリやパッケージを [Melos] で管理しています。
+
+詳しくは [ARCHITECTURE.md] をご覧ください。
+
 <!-- Links -->
 
 [CONTRIBUTING.md]: docs/CONTRIBUTING.md
+
+[Melos]: https://melos.invertase.dev/~melos-latest
+
+[ARCHITECTURE.md]: docs/ARCHITECTURE.md
