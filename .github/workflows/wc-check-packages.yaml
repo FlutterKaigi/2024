@@ -23,6 +23,9 @@ jobs:
       - name: Format
         run: melos format -c 5 --output none --set-exit-if-changed
 
+      - name: Circular Dependency
+        run: melos list --cycles
+
       # https://github.com/reviewdog/action-setup
       - uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887 # v1.3.0
 
