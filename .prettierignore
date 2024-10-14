@@ -3,3 +3,6 @@ build
 
 # Ignore PNPM Lock file
 pnpm-lock.yaml
+
+# Ignore iOS assets
+apps/app/ios/Runner/Assets.xcassets/**/*.json
