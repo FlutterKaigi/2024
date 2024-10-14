@@ -3,3 +3,5 @@
 # FlutterKaigi 2024 公式プロジェクト
 
 [![melos](https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square)](https://github.com/invertase/melos)
+
+FlutterKaigi 2024 公式プロジェクトのリポジトリへようこそ！
