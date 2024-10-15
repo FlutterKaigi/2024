@@ -1,7 +1,7 @@
+import 'package:app_features_debug/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:packages_app_features_debug/src/gen/l10n/l10n.dart';
 
 final class RouteDropdownMenu extends HookWidget {
   const RouteDropdownMenu({super.key});

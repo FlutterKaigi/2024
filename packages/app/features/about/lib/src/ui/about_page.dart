@@ -4,11 +4,14 @@ import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
+import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/ui/map/map_item_widget.dart';
+import 'package:app_features_about/src/ui/sponsors/sponsors_page.dart';
+import 'package:app_features_about/src/ui/staff/contributors_page.dart';
+import 'package:app_features_about/src/ui/staff/staff_page.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/sponsors_page.dart';
-import 'package:packages_app_features_about/src/ui/staff/contributors_page.dart';
-import 'package:packages_app_features_about/src/ui/staff/staff_page.dart';
+import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({
@@ -56,11 +59,11 @@ class AboutPage extends StatelessWidget {
                 ListTile(
                   title: Text(l.location, style: theme.textTheme.bodyLarge),
                   leading: const Icon(Icons.location_on_outlined),
-                  onTap: () async {
-                    final url =
-                        Uri.parse('https://maps.app.goo.gl/W5k8XU7Jd5GZdaww7');
-                    await launchInExternalApp(url);
-                  },
+                  onTap: () => _openMap(
+                    context,
+                    l,
+                    theme,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 ListTile(
@@ -199,6 +202,89 @@ class AboutPage extends StatelessWidget {
             ]),
           ),
         ],
+      ),
+    );
+  }
+
+  void _openMap(
+    BuildContext context,
+    L10nAbout l,
+    ThemeData theme,
+  ) {
+    final googleMapUrl = Uri.parse(
+      'https://www.google.com/maps/search/${l.conferenceRoomLocation}',
+    );
+    final appleMapUrl =
+        Uri.parse('https://maps.apple.com/?q=${l.conferenceRoomLocation}');
+
+    final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
+
+    unawaited(
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: true,
+        builder: (context) => SizedBox(
+          height: 300,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 18,
+            ),
+            child: Column(
+              children: [
+                const Gap(14),
+                Text(
+                  l.checkRoute,
+                  style: theme.textTheme.labelLarge,
+                  textAlign: TextAlign.center,
+                ),
+                const Gap(24),
+                if (isIOS)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 40,
+                    ),
+                    child: MapItemWidget(
+                      icon: Icons.call_made,
+                      itemTitle: l.openAppleMap,
+                      onTap: () {
+                        launchInExternalApp(appleMapUrl);
+                      },
+                    ),
+                  ),
+                MapItemWidget(
+                  icon: Icons.call_made,
+                  itemTitle: l.openGoogleMap,
+                  onTap: () {
+                    launchInExternalApp(googleMapUrl);
+                  },
+                ),
+                const Gap(20),
+                const Divider(
+                  thickness: 0.5,
+                ),
+                const Gap(20),
+                MapItemWidget(
+                  icon: Icons.copy,
+                  itemTitle: l.copyAddress,
+                  onTap: () {
+                    final clipboardText =
+                        ClipboardData(text: l.conferenceRoomLocation);
+                    Clipboard.setData(clipboardText);
+
+                    final snackBar = SnackBar(
+                      content: Text(l.theAddressHasBeenCopied),
+                      behavior: SnackBarBehavior.floating,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

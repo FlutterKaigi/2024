@@ -1,6 +1,6 @@
+import 'package:app_features_debug/src/ui/debug_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:packages_app_features_debug/src/ui/debug_page.dart';
 
 part 'router.g.dart';
 

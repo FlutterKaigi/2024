@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/ui/sponsors/extensions/sponsor_type_extension.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/extensions/sponser_type_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SponsorItem extends StatelessWidget {

@@ -1,5 +1,5 @@
+import 'package:app_features_venue/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:packages_app_features_venue/l10n.dart';
 
 class VenuePage extends StatelessWidget {
   const VenuePage({

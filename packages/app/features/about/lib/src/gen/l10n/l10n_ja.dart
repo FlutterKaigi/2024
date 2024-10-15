@@ -67,4 +67,23 @@ class L10nAboutJa extends L10nAbout {
 
   @override
   String get applicationName => 'FlutterKaigi 2024 Official App';
+
+  @override
+  String get conferenceRoomLocation =>
+      '〒135-0063 東京都江東区有明３丁目７−１８ 4F 有明セントラルタワー';
+
+  @override
+  String get checkRoute => '経路を確認する';
+
+  @override
+  String get openAppleMap => 'Appleマップを開く';
+
+  @override
+  String get openGoogleMap => 'Googleマップを開く';
+
+  @override
+  String get copyAddress => '住所をコピー';
+
+  @override
+  String get theAddressHasBeenCopied => '住所をコピーしました ';
 }
