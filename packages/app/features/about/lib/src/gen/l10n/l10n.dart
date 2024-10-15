@@ -214,7 +214,7 @@ abstract class L10nAbout {
   /// No description provided for @conferenceRoomLocation.
   ///
   /// In ja, this message translates to:
-  /// **'有明セントラルタワーホール&カンファレンス'**
+  /// **'〒135-0063 東京都江東区有明３丁目７−１８ 4F 有明セントラルタワー'**
   String get conferenceRoomLocation;
 
   /// No description provided for @findDirections.
