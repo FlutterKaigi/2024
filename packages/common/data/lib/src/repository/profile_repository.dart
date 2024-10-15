@@ -245,7 +245,7 @@ class ProfileRepository {
         .download('$userId/$avatarName');
   }
 
-    Profile toProfile(ProfileTable profileTable) => Profile(
+  Profile toProfile(ProfileTable profileTable) => Profile(
         id: profileTable.id,
         name: profileTable.name,
         role: profileTable.role,
