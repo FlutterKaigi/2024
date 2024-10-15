@@ -236,7 +236,7 @@ class AboutPage extends StatelessWidget {
               children: [
                 const Gap(14),
                 Text(
-                  l.checkTheRoute,
+                  l.checkRoute,
                   style: theme.textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -248,7 +248,7 @@ class AboutPage extends StatelessWidget {
                     ),
                     child: MapItemWidget(
                       icon: Icons.call_made,
-                      itemTitle: l.openAppleMaps,
+                      itemTitle: l.openAppleMap,
                       onTap: () async {
                         // iOSの場合はApple Mapsを優先して開く
                         if (Theme.of(context).platform == TargetPlatform.iOS &&
@@ -266,7 +266,7 @@ class AboutPage extends StatelessWidget {
                   ),
                 MapItemWidget(
                   icon: Icons.call_made,
-                  itemTitle: l.openGoogleMaps,
+                  itemTitle: l.openGoogleMap,
                   onTap: () async {
                     // それ以外の場合はGoogle Mapsを開く
                     if (await canLaunchUrl(googleMapsUrl)) {
@@ -287,7 +287,7 @@ class AboutPage extends StatelessWidget {
                 const Gap(20),
                 MapItemWidget(
                   icon: Icons.copy,
-                  itemTitle: l.copyTheAddress,
+                  itemTitle: l.copyAddress,
                   onTap: () {
                     final clipboardText =
                         ClipboardData(text: l.conferenceRoomLocation);

@@ -73,17 +73,17 @@ class L10nAboutEn extends L10nAbout {
       '4F, Ariake Central Tower, 3-7-18 Ariake, Koto-ku, Tokyo 135-0063, Japan';
 
   @override
-  String get checkTheRoute => 'Check the route';
+  String get checkRoute => 'Check the route';
 
   @override
-  String get openAppleMaps => 'open Apple Maps';
+  String get openAppleMap => 'Open the Apple Map';
 
   @override
-  String get openGoogleMaps => 'open Google Maps';
+  String get openGoogleMap => 'Open the Google Map';
 
   @override
-  String get copyTheAddress => 'copy the address';
+  String get copyAddress => 'Copy the address';
 
   @override
-  String get theAddressHasBeenCopied => 'the address has been copied';
+  String get theAddressHasBeenCopied => 'The address has been copied';
 }

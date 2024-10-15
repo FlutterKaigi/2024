@@ -217,29 +217,29 @@ abstract class L10nAbout {
   /// **'〒135-0063 東京都江東区有明３丁目７−１８ 4F 有明セントラルタワー'**
   String get conferenceRoomLocation;
 
-  /// No description provided for @checkTheRoute.
+  /// No description provided for @checkRoute.
   ///
   /// In ja, this message translates to:
   /// **'経路を確認する'**
-  String get checkTheRoute;
+  String get checkRoute;
 
-  /// No description provided for @openAppleMaps.
+  /// No description provided for @openAppleMap.
   ///
   /// In ja, this message translates to:
   /// **'Appleマップを開く'**
-  String get openAppleMaps;
+  String get openAppleMap;
 
-  /// No description provided for @openGoogleMaps.
+  /// No description provided for @openGoogleMap.
   ///
   /// In ja, this message translates to:
   /// **'Googleマップを開く'**
-  String get openGoogleMaps;
+  String get openGoogleMap;
 
-  /// No description provided for @copyTheAddress.
+  /// No description provided for @copyAddress.
   ///
   /// In ja, this message translates to:
   /// **'住所をコピー'**
-  String get copyTheAddress;
+  String get copyAddress;
 
   /// No description provided for @theAddressHasBeenCopied.
   ///

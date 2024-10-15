@@ -73,16 +73,16 @@ class L10nAboutJa extends L10nAbout {
       '〒135-0063 東京都江東区有明３丁目７−１８ 4F 有明セントラルタワー';
 
   @override
-  String get checkTheRoute => '経路を確認する';
+  String get checkRoute => '経路を確認する';
 
   @override
-  String get openAppleMaps => 'Appleマップを開く';
+  String get openAppleMap => 'Appleマップを開く';
 
   @override
-  String get openGoogleMaps => 'Googleマップを開く';
+  String get openGoogleMap => 'Googleマップを開く';
 
   @override
-  String get copyTheAddress => '住所をコピー';
+  String get copyAddress => '住所をコピー';
 
   @override
   String get theAddressHasBeenCopied => '住所をコピーしました ';
