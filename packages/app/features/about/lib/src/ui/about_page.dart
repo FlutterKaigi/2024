@@ -236,7 +236,7 @@ class AboutPage extends StatelessWidget {
               children: [
                 const Gap(14),
                 Text(
-                  l.findDirections,
+                  l.checkTheRoute,
                   style: theme.textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),

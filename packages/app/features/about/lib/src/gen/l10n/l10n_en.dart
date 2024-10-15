@@ -73,7 +73,7 @@ class L10nAboutEn extends L10nAbout {
       '4F, Ariake Central Tower, 3-7-18 Ariake, Koto-ku, Tokyo 135-0063, Japan';
 
   @override
-  String get findDirections => 'find directions';
+  String get checkTheRoute => 'Check the route';
 
   @override
   String get openAppleMaps => 'open Apple Maps';
