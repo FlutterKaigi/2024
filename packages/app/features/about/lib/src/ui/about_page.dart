@@ -212,10 +212,10 @@ class AboutPage extends StatelessWidget {
     L10nAbout l,
     ThemeData theme,
   ) {
-    final googleMapsUrl = Uri.parse(
+    final googleMapUrl = Uri.parse(
       'https://www.google.com/maps/search/${l.conferenceRoomLocation}',
     );
-    final appleMapsUrl =
+    final appleMapUrl =
         Uri.parse('https://maps.apple.com/?q=${l.conferenceRoomLocation}');
 
     final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
@@ -250,7 +250,7 @@ class AboutPage extends StatelessWidget {
                       icon: Icons.call_made,
                       itemTitle: l.openAppleMap,
                       onTap: () {
-                        launchInExternalApp(appleMapsUrl);
+                        launchInExternalApp(appleMapUrl);
                       },
                     ),
                   ),
@@ -258,7 +258,7 @@ class AboutPage extends StatelessWidget {
                   icon: Icons.call_made,
                   itemTitle: l.openGoogleMap,
                   onTap: () {
-                    launchInExternalApp(googleMapsUrl);
+                    launchInExternalApp(googleMapUrl);
                   },
                 ),
                 const Gap(20),
