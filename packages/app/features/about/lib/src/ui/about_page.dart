@@ -249,35 +249,16 @@ class AboutPage extends StatelessWidget {
                     child: MapItemWidget(
                       icon: Icons.call_made,
                       itemTitle: l.openAppleMap,
-                      onTap: () async {
-                        // iOSの場合はApple Mapsを優先して開く
-                        if (Theme.of(context).platform == TargetPlatform.iOS &&
-                            await canLaunchUrl(appleMapsUrl)) {
-                          await launchInExternalApp(appleMapsUrl);
-                          return;
-                        }
-
-                        // どちらも開けない場合は、URLを開く
-                        await launchUrl(
-                          googleMapsUrl,
-                        );
+                      onTap: () {
+                        launchInExternalApp(appleMapsUrl);
                       },
                     ),
                   ),
                 MapItemWidget(
                   icon: Icons.call_made,
                   itemTitle: l.openGoogleMap,
-                  onTap: () async {
-                    // それ以外の場合はGoogle Mapsを開く
-                    if (await canLaunchUrl(googleMapsUrl)) {
-                      await launchInExternalApp(googleMapsUrl);
-                      return;
-                    }
-
-                    // どちらも開けない場合は、URLを開く
-                    await launchUrl(
-                      googleMapsUrl,
-                    );
+                  onTap: () {
+                    launchInExternalApp(googleMapsUrl);
                   },
                 ),
                 const Gap(20),
