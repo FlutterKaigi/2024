@@ -37,7 +37,7 @@ class ProfileRepository {
     if (response == null) {
       return null;
     }
-    return _toProfile(response);
+    return toProfile(response);
   }
 
   /// プロフィールとそれに紐づくSNSアカウントを取得します
@@ -56,7 +56,7 @@ class ProfileRepository {
     if (response == null) {
       return null;
     }
-    return _toProfileWithSns(response);
+    return toProfileWithSns(response);
   }
 
   /// 自分のプロフィールとそれに紐づくSNSアカウントを取得する
@@ -88,7 +88,7 @@ class ProfileRepository {
         );
 
     return PagingResult(
-      data: result.data.map(_toProfile).toList(),
+      data: result.data.map(toProfile).toList(),
       totalCount: result.count,
     );
   }
@@ -110,7 +110,7 @@ class ProfileRepository {
         .withConverter((e) => e.map(ProfileWithSnsView.fromJson).toList());
 
     return PagingResult(
-      data: result.data.map(_toProfileWithSns).toList(),
+      data: result.data.map(toProfileWithSns).toList(),
       totalCount: result.count,
     );
   }
@@ -149,7 +149,7 @@ class ProfileRepository {
         .withConverter(
           ProfileTable.fromJson,
         );
-    return _toProfile(result);
+    return toProfile(result);
   }
 
   /// プロフィールのSNSアカウントを全て更新します
@@ -217,7 +217,7 @@ class ProfileRepository {
         .select()
         .single()
         .withConverter(ProfileTable.fromJson);
-    return _toProfile(result);
+    return toProfile(result);
   }
 
   Future<void> deleteProfileAvatar(String userId, String avatarName) async {
@@ -245,7 +245,7 @@ class ProfileRepository {
         .download('$userId/$avatarName');
   }
 
-  Profile _toProfile(ProfileTable profileTable) => Profile(
+  Profile toProfile(ProfileTable profileTable) => Profile(
         id: profileTable.id,
         name: profileTable.name,
         role: profileTable.role,
@@ -263,7 +263,7 @@ class ProfileRepository {
         isPublished: profileTable.isPublished,
       );
 
-  ProfileWithSns _toProfileWithSns(ProfileWithSnsView profileWithSnsView) =>
+  ProfileWithSns toProfileWithSns(ProfileWithSnsView profileWithSnsView) =>
       ProfileWithSns(
         id: profileWithSnsView.id,
         name: profileWithSnsView.name,

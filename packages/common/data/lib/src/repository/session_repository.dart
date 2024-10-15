@@ -1,7 +1,9 @@
+import 'package:common_data/profile.dart';
 import 'package:common_data/src/model/session.dart';
 import 'package:common_data/src/model/session_speaker.dart';
 import 'package:common_data/src/model/session_venue.dart';
-import 'package:common_data/src/model/view/session_venues_with_sessions.dart';
+import 'package:common_data/src/model/view/session_venues_with_sessions_view.dart';
+import 'package:common_data/src/repository/sponsor_repository.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
@@ -10,7 +12,11 @@ part 'session_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 SessionRepository sessionRepository(SessionRepositoryRef ref) =>
-    SessionRepository(client: ref.watch(supabaseClientProvider));
+    SessionRepository(
+      client: ref.watch(supabaseClientProvider),
+      profileRepository: ref.watch(profileRepositoryProvider),
+      sponsorRepository: ref.watch(sponsorRepositoryProvider),
+    );
 
 @Riverpod(keepAlive: true)
 SessionVenueRepository sessionVenueRepository(SessionVenueRepositoryRef ref) =>
@@ -20,20 +26,63 @@ SessionVenueRepository sessionVenueRepository(SessionVenueRepositoryRef ref) =>
 SessionSpeakerRepository sessionSpeakerRepository(
   SessionSpeakerRepositoryRef ref,
 ) =>
-    SessionSpeakerRepository(client: ref.watch(supabaseClientProvider));
+    SessionSpeakerRepository(
+      client: ref.watch(supabaseClientProvider),
+    );
 
 class SessionRepository {
   SessionRepository({
     required SupabaseClient client,
-  }) : _client = client;
+    required ProfileRepository profileRepository,
+    required SponsorRepository sponsorRepository,
+  })  : _client = client,
+        _profileRepository = profileRepository,
+        _sponsorRepository = sponsorRepository;
 
   final SupabaseClient _client;
+  final ProfileRepository _profileRepository;
+  final SponsorRepository _sponsorRepository;
 
   Future<List<SessionVenuesWithSessions>>
-      fetchSessionVenuesWithSessions() async =>
-          _client.from('session_venues_with_sessions').select().withConverter(
-                (list) => list.map(SessionVenuesWithSessions.fromJson).toList(),
-              );
+      fetchSessionVenuesWithSessions() async {
+    final result = await _client
+        .from('session_venues_with_sessions')
+        .select()
+        .withConverter(
+          (list) => list.map(SessionVenuesWithSessionsView.fromJson).toList(),
+        );
+
+    return result
+        .map(
+          (sessionVenuesWithSessions) => SessionVenuesWithSessions(
+            id: sessionVenuesWithSessions.id,
+            name: sessionVenuesWithSessions.name,
+            sessions: sessionVenuesWithSessions.sessions
+                .map(
+                  (sessionWithSpeakerAndSponsor) =>
+                      SessionWithSpeakerAndSponsor(
+                    id: sessionWithSpeakerAndSponsor.id,
+                    title: sessionWithSpeakerAndSponsor.title,
+                    description: sessionWithSpeakerAndSponsor.description,
+                    startsAt: sessionWithSpeakerAndSponsor.startsAt,
+                    endsAt: sessionWithSpeakerAndSponsor.endsAt,
+                    isLightningTalk:
+                        sessionWithSpeakerAndSponsor.isLightningTalk,
+                    speakers: sessionWithSpeakerAndSponsor.speakers
+                        .map(_profileRepository.toProfileWithSns)
+                        .toList(),
+                    sponsors: sessionWithSpeakerAndSponsor.sponsors
+                        .map(
+                          _sponsorRepository.toSponsor,
+                        )
+                        .toList(),
+                  ),
+                )
+                .toList(),
+          ),
+        )
+        .toList();
+  }
 
   Future<List<Session>> fetchSessions() async =>
       _client.from('sessions').select().withConverter(
