@@ -212,10 +212,13 @@ class AboutPage extends StatelessWidget {
     L10nAbout l,
     ThemeData theme,
   ) {
-    final googleMapsUrl =
-        Uri.parse('https://www.google.com/maps/?q=${l.conferenceRoomLocation}');
+    final googleMapsUrl = Uri.parse(
+      'https://www.google.com/maps/search/${l.conferenceRoomLocation}',
+    );
     final appleMapsUrl =
         Uri.parse('https://maps.apple.com/?q=${l.conferenceRoomLocation}');
+
+    final isIOS = Theme.of(context).platform == TargetPlatform.iOS;
 
     unawaited(
       showModalBottomSheet(
@@ -238,24 +241,29 @@ class AboutPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const Gap(24),
-                MapItemWidget(
-                  icon: Icons.call_made,
-                  itemTitle: l.openAppleMaps,
-                  onTap: () async {
-                    // iOSの場合はApple Mapsを優先して開く
-                    if (Theme.of(context).platform == TargetPlatform.iOS &&
-                        await canLaunchUrl(appleMapsUrl)) {
-                      await launchInExternalApp(appleMapsUrl);
-                      return;
-                    }
+                if (isIOS)
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 40,
+                    ),
+                    child: MapItemWidget(
+                      icon: Icons.call_made,
+                      itemTitle: l.openAppleMaps,
+                      onTap: () async {
+                        // iOSの場合はApple Mapsを優先して開く
+                        if (Theme.of(context).platform == TargetPlatform.iOS &&
+                            await canLaunchUrl(appleMapsUrl)) {
+                          await launchInExternalApp(appleMapsUrl);
+                          return;
+                        }
 
-                    // どちらも開けない場合は、URLを開く
-                    await launchUrl(
-                      googleMapsUrl,
-                    );
-                  },
-                ),
-                const Gap(40),
+                        // どちらも開けない場合は、URLを開く
+                        await launchUrl(
+                          googleMapsUrl,
+                        );
+                      },
+                    ),
+                  ),
                 MapItemWidget(
                   icon: Icons.call_made,
                   itemTitle: l.openGoogleMaps,
