@@ -67,6 +67,14 @@ enabled = true
 # The maximum file size allowed (e.g. "5MB", "500KB").
 file_size_limit = "50MiB"
 
+[storage.buckets.sponsors]
+public = true
+objects_path = "seed-storage/sponsors"
+
+[storage.buckets.staffs]
+public = true
+objects_path = "seed-storage/staffs"
+
 [storage.image_transformation]
 enabled = true
 
