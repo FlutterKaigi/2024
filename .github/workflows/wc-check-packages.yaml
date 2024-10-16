@@ -15,13 +15,16 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
 
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
       - name: Format
         run: melos format -c 5 --output none --set-exit-if-changed
+
+      - name: Circular Dependency
+        run: melos list --cycles
 
       # https://github.com/reviewdog/action-setup
       - uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887 # v1.3.0

@@ -1,10 +1,10 @@
+import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/ui/sponsors/notifier/sponsors_notifier.dart';
+import 'package:app_features_about/src/ui/sponsors/sponsors_item.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:packages_app_features_about/l10n.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/notifier/sponsors_notifier.dart';
-import 'package:packages_app_features_about/src/ui/sponsors/sponsors_item.dart';
 
 /// スポンサー一覧ページ
 class SponsorsPage extends HookConsumerWidget {

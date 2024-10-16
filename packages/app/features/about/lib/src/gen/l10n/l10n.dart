@@ -210,6 +210,42 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'FlutterKaigi 2024 Official App'**
   String get applicationName;
+
+  /// No description provided for @conferenceRoomLocation.
+  ///
+  /// In ja, this message translates to:
+  /// **'〒135-0063 東京都江東区有明３丁目７−１８ 4F 有明セントラルタワー'**
+  String get conferenceRoomLocation;
+
+  /// No description provided for @checkRoute.
+  ///
+  /// In ja, this message translates to:
+  /// **'経路を確認する'**
+  String get checkRoute;
+
+  /// No description provided for @openAppleMap.
+  ///
+  /// In ja, this message translates to:
+  /// **'Appleマップを開く'**
+  String get openAppleMap;
+
+  /// No description provided for @openGoogleMap.
+  ///
+  /// In ja, this message translates to:
+  /// **'Googleマップを開く'**
+  String get openGoogleMap;
+
+  /// No description provided for @copyAddress.
+  ///
+  /// In ja, this message translates to:
+  /// **'住所をコピー'**
+  String get copyAddress;
+
+  /// No description provided for @theAddressHasBeenCopied.
+  ///
+  /// In ja, this message translates to:
+  /// **'住所をコピーしました '**
+  String get theAddressHasBeenCopied;
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {
