@@ -13,19 +13,19 @@ importers:
     dependencies:
       '@hono-rate-limiter/cloudflare':
         specifier: ^0.2.1
-        version: 0.2.1(@cloudflare/workers-types@4.20241011.0)(hono@4.6.4)
+        version: 0.2.1(@cloudflare/workers-types@4.20241011.0)(hono@4.6.5)
       '@hono/valibot-validator':
         specifier: ^0.3.1
-        version: 0.3.1(hono@4.6.4)(valibot@0.41.0)
+        version: 0.3.1(hono@4.6.5)(valibot@0.41.0)
       '@supabase/supabase-js':
         specifier: ^2.45.4
         version: 2.45.4
       hono:
-        specifier: ^4.6.4
-        version: 4.6.4
+        specifier: ^4.6.5
+        version: 4.6.5
       hono-rate-limiter:
         specifier: ^0.4.0
-        version: 0.4.0(hono@4.6.4)
+        version: 0.4.0(hono@4.6.5)
       stripe:
         specifier: ^16.12.0
         version: 16.12.0
@@ -423,8 +423,8 @@ packages:
     peerDependencies:
       hono: ^4.1.1
 
-  hono@4.6.4:
-    resolution: {integrity: sha512-T5WqBkTOcIQblqBKB5mpzaH/A+dSpvVe938xZJCHOmOuYfF7DSwE/9/10+BMvwSPq9N/f6LiQ38HxrZSQOsXKw==}
+  hono@4.6.5:
+    resolution: {integrity: sha512-qsmN3V5fgtwdKARGLgwwHvcdLKursMd+YOt69eGpl1dUCJb8mCd7hZfyZnBYjxCegBG7qkJRQRUy2oO25yHcyQ==}
     engines: {node: '>=16.9.0'}
 
   is-binary-path@2.1.0:
@@ -747,14 +747,14 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@hono-rate-limiter/cloudflare@0.2.1(@cloudflare/workers-types@4.20241011.0)(hono@4.6.4)':
+  '@hono-rate-limiter/cloudflare@0.2.1(@cloudflare/workers-types@4.20241011.0)(hono@4.6.5)':
     dependencies:
       '@cloudflare/workers-types': 4.20241011.0
-      hono: 4.6.4
+      hono: 4.6.5
 
-  '@hono/valibot-validator@0.3.1(hono@4.6.4)(valibot@0.41.0)':
+  '@hono/valibot-validator@0.3.1(hono@4.6.5)(valibot@0.41.0)':
     dependencies:
-      hono: 4.6.4
+      hono: 4.6.5
       valibot: 0.41.0
 
   '@jridgewell/resolve-uri@3.1.2': {}
@@ -969,11 +969,11 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hono-rate-limiter@0.4.0(hono@4.6.4):
+  hono-rate-limiter@0.4.0(hono@4.6.5):
     dependencies:
-      hono: 4.6.4
+      hono: 4.6.5
 
-  hono@4.6.4: {}
+  hono@4.6.5: {}
 
   is-binary-path@2.1.0:
     dependencies:
