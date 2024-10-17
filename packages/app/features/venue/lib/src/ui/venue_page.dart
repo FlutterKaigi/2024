@@ -1,4 +1,4 @@
-import 'package:app_features_venue/l10n.dart';
+import 'package:app_cores_core/ui.dart';
 import 'package:flutter/material.dart';
 
 class VenuePage extends StatelessWidget {
@@ -8,9 +8,8 @@ class VenuePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l = L10nVenue.of(context);
-    return Center(
-      child: Text(l.venuePageTitle),
+    return const ComingSoonCover(
+      child: SizedBox.shrink(),
     );
   }
 }

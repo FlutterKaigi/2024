@@ -24,6 +24,7 @@ class SponsorItem extends StatelessWidget {
           context: context,
           isScrollControlled: true,
           useRootNavigator: true,
+          showDragHandle: true,
           constraints: const BoxConstraints(
             maxWidth: 310,
           ),
@@ -38,23 +39,12 @@ class SponsorItem extends StatelessWidget {
                 bottom: MediaQuery.paddingOf(context).bottom,
               ),
               children: [
-                const Gap(16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 139),
-                  child: Container(
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(2),
-                    ),
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: _SponsorImage(
+                    imageUrl: _sponsor.logoUrl.toString(),
+                    semanticLabel: _sponsor.name,
                   ),
-                ),
-                const Gap(16),
-                Image.network(
-                  _sponsor.logoUrl.toString(),
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.error_outline),
-                  fit: BoxFit.fitWidth,
                 ),
                 const Gap(8),
                 Padding(
@@ -190,13 +180,9 @@ class _WhiteBackgroundImage extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(4),
-        child: Image.network(
-          _imageUrl,
-          errorBuilder: (context, error, stackTrace) => const Center(
-            child: Icon(Icons.error_outline),
-          ),
+        child: _SponsorImage(
+          imageUrl: _imageUrl,
           semanticLabel: _semanticLabel,
-          fit: BoxFit.cover,
         ),
       ),
     );
@@ -225,5 +211,35 @@ List<Color> _getColors(SponsorType sponsorRank) {
         const Color(0xffB58A69),
         const Color(0xff936949),
       ];
+  }
+}
+
+class _SponsorImage extends StatelessWidget {
+  const _SponsorImage({
+    required String imageUrl,
+    required String semanticLabel,
+  })  : _imageUrl = imageUrl,
+        _semanticLabel = semanticLabel;
+
+  final String _imageUrl;
+  final String _semanticLabel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(
+      _imageUrl,
+      frameBuilder: (context, child, _, __) => ColoredBox(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: child,
+        ),
+      ),
+      errorBuilder: (context, error, stackTrace) => const Center(
+        child: Icon(Icons.error_outline),
+      ),
+      semanticLabel: _semanticLabel,
+      fit: BoxFit.contain,
+    );
   }
 }
