@@ -29,7 +29,6 @@ class ContributorsPage extends StatelessWidget {
             child: ComingSoonCover(
               child: ListView.builder(
                 itemBuilder: (context, index) => const StaffCardWidget(
-                  hasImageBorder: false,
                   name: 'Contributor',
                   imageUrl:
                       'https://pbs.twimg.com/profile_images/1797556194556710912/ZncGhPyV_400x400.png',
