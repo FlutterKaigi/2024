@@ -8,7 +8,7 @@ flutter_launcher_icons:
   adaptive_icon_foreground_inset: 24
 
   ios: true
-  image_path_ios: "assets/images/main_logo.png"
+  image_path_ios: "assets/images/main_logo_white.png"
   remove_alpha_channel_ios: true
 
   web:
