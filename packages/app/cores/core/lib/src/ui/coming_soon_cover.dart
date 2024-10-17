@@ -15,7 +15,11 @@ class ComingSoonCover extends StatelessWidget {
     return Stack(
       children: [
         ImageFiltered(
-          imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+          imageFilter: ImageFilter.blur(
+            sigmaX: 4,
+            sigmaY: 4,
+            tileMode: TileMode.decal,
+          ),
           child: child,
         ),
         Positioned.fill(

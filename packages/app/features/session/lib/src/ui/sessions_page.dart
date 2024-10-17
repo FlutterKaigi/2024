@@ -1,3 +1,4 @@
+import 'package:app_cores_core/ui.dart';
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
 import 'package:app_features_session/l10n.dart';
@@ -16,6 +17,7 @@ class SessionsPage extends StatelessWidget {
 
     return Scaffold(
       body: CustomScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         slivers: [
           SliverAppBar.large(
             leading: const Center(
@@ -32,17 +34,17 @@ class SessionsPage extends StatelessWidget {
               const SettingsButton(),
             ],
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return SessionItem(
+          SliverFillRemaining(
+            child: ComingSoonCover(
+              child: ListView.builder(
+                itemBuilder: (context, index) => SessionItem(
                   title: 'Example Super Session Title ~ Why we using Flutter?',
                   name: 'Name',
                   isDateVisible: true,
                   onTap: () async =>
                       const SessionPageRoute(sessionId: 'id').push(context),
-                );
-              },
+                ),
+              ),
             ),
           ),
         ],
