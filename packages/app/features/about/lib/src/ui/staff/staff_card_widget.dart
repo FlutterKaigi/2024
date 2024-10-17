@@ -9,11 +9,15 @@ class StaffCardWidget extends StatelessWidget {
   const StaffCardWidget({
     required String name,
     required String imageUrl,
+    bool hasImageBorder = true,
     super.key,
   })  : _name = name,
-        _imageUrl = imageUrl;
+        _imageUrl = imageUrl,
+        _hasImageBorder = hasImageBorder;
+
   final String _name;
   final String _imageUrl;
+  final bool _hasImageBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +31,11 @@ class StaffCardWidget extends StatelessWidget {
         cacheWidth: _imageSize.toInt(),
         cacheHeight: _imageSize.toInt(),
         frameBuilder: (context, child, _, __) => _BorderedImage(
+          hasBorder: _hasImageBorder,
           child: child,
         ),
         errorBuilder: (context, error, stackTrace) => _BorderedImage(
+          hasBorder: _hasImageBorder,
           child: CommonAssets.logo.mainLogo.svg(
             width: 32,
             height: 32,
@@ -49,19 +55,23 @@ class StaffCardWidget extends StatelessWidget {
 class _BorderedImage extends StatelessWidget {
   const _BorderedImage({
     required this.child,
+    this.hasBorder = true,
   });
 
+  final bool hasBorder;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 56,
-      height: 56,
+      width: _imageSize,
+      height: _imageSize,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Theme.of(context).colorScheme.secondary,
-        ),
+        border: hasBorder
+            ? Border.all(
+                color: Theme.of(context).colorScheme.secondary,
+              )
+            : null,
         borderRadius: BorderRadius.circular(12),
         color: Theme.of(context).colorScheme.surface,
       ),
@@ -77,5 +87,6 @@ class _BorderedImage extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<Widget>('child', child));
+    properties.add(DiagnosticsProperty<bool>('hasBorder', hasBorder));
   }
 }
