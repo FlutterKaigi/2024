@@ -44,9 +44,7 @@ class NewsPage extends HookConsumerWidget {
                           return NewsItemWidget(
                             name: news.text,
                             publishedAt: news.startedAt,
-                            uri: Uri.https(
-                              news.url.toString(),
-                            ),
+                            uri: news.url,
                           );
                         },
                       ),
