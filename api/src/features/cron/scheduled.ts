@@ -54,7 +54,7 @@ export async function scheduled(
             text:
               `*${getTicketType(
                 type as Database["public"]["Enums"]["ticket_type"]
-              )}*\n` + getProgressBarText(count, getMaxCount(ticketType) ?? 0)
+              )}*\n` + getProgressBarText(count, getMaxCount(ticketType))
           }
         };
       })
@@ -116,11 +116,15 @@ const getMaxCount = (type: Database["public"]["Enums"]["ticket_type"]) => {
   }
 };
 
-const getProgressBarText = (count: number, total: number) => {
-  const ratio = count / total;
-  const percentage = (ratio * 100).toFixed(2);
+const getProgressBarText = (count: number, total: number | undefined) => {
   const barLength = 30;
-  const bar = "▇".repeat(Math.floor(ratio * barLength));
-  const emptyBar = " ".repeat(barLength - bar.length);
-  return `\`[${bar}${emptyBar}] ${percentage}%\` : ${count}枚 / ${total}枚`;
+  if (total) {
+    const ratio = count / total;
+    const percentage = (ratio * 100).toFixed(2);
+    const bar = "▇".repeat(Math.floor(ratio * barLength));
+    const emptyBar = " ".repeat(barLength - bar.length);
+    return `\`[${bar}${emptyBar}] ${percentage}%\` : ${count}枚 / ${total}枚`;
+  }
+  const bar = "-".repeat(barLength);
+  return `\`[${bar}]\` : ${count}枚`;
 };
