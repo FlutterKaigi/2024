@@ -1,7 +1,7 @@
 name: FlutterKaigi ウェブサイトスタッフのタスク
 description: FlutterKaigi ウェブサイトスタッフのタスクを作成する
 title: "[Website-Staff]: "
-labels: ["website", "staff"]
+labels: ["related/website", "role/staff"]
 body:
   - type: textarea
     id: summary
