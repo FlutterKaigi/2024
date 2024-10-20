@@ -3,7 +3,7 @@ name: "Replace Contributors"
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # 毎日9:00(JST)に実行
+    - cron: "0 0 * * *" # 毎日9:00(JST)に実行
 
 jobs:
   replace-contributors:
