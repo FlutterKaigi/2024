@@ -1,33 +1,32 @@
-name: Deploy Web to Github pages
+name: Deploy Web
 
 on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths-ignore:
+      - "docs/**"
+      - "apps/app/**"
+      - "packages/app/**"
+      - "**/*.md"
   push:
     branches:
       - main
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  deployments: write
 
 jobs:
-  build:
+  deploy-website:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
-
-      # https://github.com/actions/configure-pages
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
 
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
@@ -38,23 +37,14 @@ jobs:
           flutter build web \
             --release \
             --wasm \
-            --base-href "/2024/" \
             --dart-define-from-file=defines/production.env
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+      # https://github.com/cloudflare/pages-action
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # v1.5.0
         with:
-          path: apps/website/build/web
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      # https://github.com/actions/deploy-pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: website-2024-preview
+          directory: apps/website/build/web
