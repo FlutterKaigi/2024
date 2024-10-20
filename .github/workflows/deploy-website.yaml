@@ -1,4 +1,4 @@
-name: Deploy Web
+name: Deploy Website
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   deploy-website:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
@@ -46,5 +46,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: website-2024
+          projectName: flutterkaigi-2024
           directory: apps/website/build/web
