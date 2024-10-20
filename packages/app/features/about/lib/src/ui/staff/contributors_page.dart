@@ -1,42 +1,63 @@
-import 'package:app_cores_core/ui.dart';
 import 'package:app_features_about/l10n.dart';
+import 'package:app_features_about/src/data/contributors_provider.dart';
 import 'package:app_features_about/src/ui/staff/staff_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// コントリビューター一覧ページ
-class ContributorsPage extends StatelessWidget {
+class ContributorsPage extends ConsumerWidget {
   const ContributorsPage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nAbout.of(context);
+    final contributors = ref.watch(contributorsProvider);
     return Scaffold(
-      body: CustomScrollView(
-        // TODO: データを繋ぎこんだらスクロールできるようにする
-        physics: const NeverScrollableScrollPhysics(),
-        slivers: [
-          SliverAppBar.large(
-            title: Text(
-              l.contributors,
-            ),
-          ),
-
-          // TODO:モックデータとしてWidgetを出してます。
-          // https://github.com/FlutterKaigi/2024/issues/122
-          SliverFillRemaining(
-            child: ComingSoonCover(
-              child: ListView.builder(
-                itemBuilder: (context, index) => const StaffCardWidget(
-                  name: 'Contributor',
-                  imageUrl:
-                      'https://pbs.twimg.com/profile_images/1797556194556710912/ZncGhPyV_400x400.png',
+      body: contributors.when(
+        data: (contributors) {
+          return CustomScrollView(
+            slivers: [
+              SliverAppBar.large(
+                title: Text(
+                  l.contributors,
                 ),
               ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: contributors.length,
+                  (context, index) {
+                    final contributor = contributors[index];
+                    return StaffCardWidget(
+                      name: contributor.name,
+                      imageUrl: contributor.avatarUrl.toString(),
+                    );
+                  },
+                ),
+              ),
+            ],
+          );
+        },
+        error: (error, stackTrace) {
+          return Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                color: Colors.red,
+                child: Text(stackTrace.toString()),
+              ),
             ),
-          ),
-        ],
+          );
+        },
+        loading: () {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
