@@ -15,26 +15,30 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const contributors = await github.rest.repos.listContributors({
+            const response = await github.rest.repos.listContributors({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
 
-            const formattedContributors = contributors.map(contributor => ({
-              name: contributor.login,
-              avatar_url: contributor.avatar_url,
-              contribution_count: contributor.contributions
-            }));
+            const contributors = response.data;
+
+            const formattedContributors = contributors
+              .filter(contributor => contributor.type === 'User')
+              .map(contributor => ({
+                name: contributor.login,
+                avatar_url: contributor.avatar_url,
+                contribution_count: contributor.contributions
+              }));
 
             console.log("Formatted contributors:", formattedContributors);
-            return formattedContributors;
+            return JSON.stringify(formattedContributors);
 
       - name: Replace contributors via Supabase Edge Function
         run: |
           curl -i --location --request POST 'https://xflwrlgfukzpgkudzrlu.supabase.co/functions/v1/replace-contributors' \
             --header 'Authorization: Bearer ${{ secrets.EDGE_FUNCTION_ACCESS_TOKEN_CONTRIBUTORS_REPLACEMENT }}' \
             --header 'Content-Type: application/json' \
-            --data "${{ steps.contributors.outputs.result }}"
+            --data '${{ steps.contributors.outputs.result }}'
 
   notify-failure:
     needs: replace-contributors
