@@ -48,4 +48,3 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: website-2024
           directory: apps/website/build/web
-          branch: main
