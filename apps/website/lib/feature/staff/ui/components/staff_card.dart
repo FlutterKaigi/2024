@@ -39,12 +39,21 @@ class StaffCard extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
-              CircleAvatar(
-                foregroundImage: NetworkImage(staff.iconUrl.toString()),
-                onForegroundImageError: (_, __) => const Center(
-                  child: Icon(Icons.error),
+              ClipOval(
+                child: Image.network(
+                  staff.iconUrl.toString(),
+                  fit: BoxFit.cover,
+                  height: 120,
+                  width: 120,
+                  errorBuilder: (_, __, ___) => Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Image.asset(
+                      'assets/images/icon.webp',
+                      height: 90,
+                      width: 90,
+                    ),
+                  ),
                 ),
-                radius: 120 / 2,
               ),
               const Gap(16),
               Text(
