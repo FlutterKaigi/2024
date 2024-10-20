@@ -11,9 +11,3 @@ ALTER TABLE contributors enable ROW level security;
 CREATE POLICY "Everyone can read contributors" ON contributors FOR
 SELECT
     USING (TRUE);
-
-CREATE POLICY "Admin can insert contributors" ON contributors FOR insert TO authenticated
-WITH
-    CHECK (role () = 'admin');
-
-CREATE POLICY "Admin can delete contributors" ON contributors FOR delete USING (role () = 'admin');
