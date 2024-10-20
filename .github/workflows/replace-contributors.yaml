@@ -36,7 +36,7 @@ jobs:
           curl -i --location --request POST 'https://xflwrlgfukzpgkudzrlu.supabase.co/functions/v1/replace-contributors' \
             --header 'Authorization: Bearer ${{ secrets.EDGE_FUNCTION_ACCESS_TOKEN_CONTRIBUTORS_REPLACEMENT }}' \
             --header 'Content-Type: application/json' \
-            --data "${{ steps.contributors.outputs.result }}"
+            --data '${{ steps.contributors.outputs.result }}'
 
   notify-failure:
     needs: replace-contributors
