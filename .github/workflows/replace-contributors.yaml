@@ -15,10 +15,12 @@ jobs:
         with:
           result-encoding: string
           script: |
-            const contributors = await github.rest.repos.listContributors({
+            const response = await github.rest.repos.listContributors({
               owner: context.repo.owner,
               repo: context.repo.repo
             });
+
+            const contributors = response.data;
 
             const formattedContributors = contributors.map(contributor => ({
               name: contributor.login,
@@ -27,7 +29,7 @@ jobs:
             }));
 
             console.log("Formatted contributors:", formattedContributors);
-            return formattedContributors;
+            return JSON.stringify(formattedContributors);
 
       - name: Replace contributors via Supabase Edge Function
         run: |
