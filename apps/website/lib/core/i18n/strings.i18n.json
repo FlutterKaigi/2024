@@ -67,6 +67,9 @@
     "sponsor_not_found": "スポンサーが見つかりませんでした",
     "back_to_top": "トップに戻る"
   },
+  "staff": {
+    "title": "Staff"
+  },
   "news_error": "お知らせの取得に失敗しました",
   "retry": "再試行"
 }
