@@ -22,11 +22,13 @@ jobs:
 
             const contributors = response.data;
 
-            const formattedContributors = contributors.map(contributor => ({
-              name: contributor.login,
-              avatar_url: contributor.avatar_url,
-              contribution_count: contributor.contributions
-            }));
+            const formattedContributors = contributors
+              .filter(contributor => contributor.type === 'User')
+              .map(contributor => ({
+                name: contributor.login,
+                avatar_url: contributor.avatar_url,
+                contribution_count: contributor.contributions
+              }));
 
             console.log("Formatted contributors:", formattedContributors);
             return JSON.stringify(formattedContributors);
