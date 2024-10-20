@@ -50,6 +50,9 @@ jobs:
       - run: supabase db push
         working-directory: packages/common/data
 
+      - run: supabase functions deploy --project-ref $PROJECT_ID
+        working-directory: packages/common/data
+
         # https://github.com/bobheadxi/deployments
       - name: Update deployment status
         uses: bobheadxi/deployments@648679e8e4915b27893bd7dbc35cb504dc915bc8 # v1.5.0
