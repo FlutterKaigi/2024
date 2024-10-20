@@ -37,5 +37,5 @@ jobs:
         with:
           issue-form: ${{ steps.issue-parser.outputs.jsonString }}
           template: ${{ matrix.template }}
-          config: .github/labeler-contributor-issue.yaml
+          config-path: .github/labeler-issue.yaml
           token: ${{ secrets.GITHUB_TOKEN }}
