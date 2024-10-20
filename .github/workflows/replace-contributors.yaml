@@ -1,0 +1,50 @@
+name: "Replace Contributors"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # 毎日9:00(JST)に実行
+
+jobs:
+  replace-contributors:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Fetch and format repository contributors
+        id: contributors
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          result-encoding: string
+          script: |
+            const contributors = await github.rest.repos.listContributors({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            const formattedContributors = contributors.map(contributor => ({
+              name: contributor.login,
+              avatar_url: contributor.avatar_url,
+              contribution_count: contributor.contributions
+            }));
+
+            console.log("Formatted contributors:", formattedContributors);
+            return formattedContributors;
+
+      - name: Replace contributors via Supabase Edge Function
+        run: |
+          curl -i --location --request POST 'https://xflwrlgfukzpgkudzrlu.functions.supabase.co/replace-contributors' \
+            --header 'Authorization: Bearer ${{ secrets.EDGE_FUNCTION_ACCESS_TOKEN_CONTRIBUTORS_REPLACEMENT }}' \
+            --header 'Content-Type: application/json' \
+            --data "${{ steps.contributors.outputs.result }}"
+
+  notify-failure:
+    needs: replace-contributors
+    if: failure()
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Notify Slack
+        uses: rtCamp/action-slack-notify@65e6fc1ce697e2df8149d9ae9909acc5ec5599ce # v2.3.1
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL_DATA_TEAM }}
+          SLACK_COLOR: failure
+          SLACK_TITLE: データ更新失敗
+          SLACK_MESSAGE: コントリビューター一覧のデータ更新に失敗しました😢
