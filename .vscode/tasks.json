@@ -57,6 +57,17 @@
       ]
     },
     {
+      "label": "supabase-db-test",
+      "type": "shell",
+      "command": "supabase",
+      "args": [
+        "db",
+        "test",
+        "--workdir",
+        "${workspaceFolder}/packages/common/data"
+      ]
+    },
+    {
       "label": "supabase-functions-serve",
       "type": "shell",
       "command": "supabase",
