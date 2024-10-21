@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 44
+/// Strings: 45
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -196,6 +196,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
   late final _StringsTicketJa ticket = _StringsTicketJa._(_root);
   late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
+  late final _StringsStaffJa staff = _StringsStaffJa._(_root);
   String get newsError => 'お知らせの取得に失敗しました';
   String get retry => '再試行';
 }
@@ -312,6 +313,16 @@ class _StringsSponsorsJa {
   String get sponsorsError => 'スポンサー一覧の取得に失敗しました';
   String get sponsorNotFound => 'スポンサーが見つかりませんでした';
   String get backToTop => 'トップに戻る';
+}
+
+// Path: staff
+class _StringsStaffJa {
+  _StringsStaffJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Staff';
 }
 
 // Path: lead.date
@@ -439,6 +450,8 @@ extension on Translations {
         return 'スポンサーが見つかりませんでした';
       case 'sponsors.backToTop':
         return 'トップに戻る';
+      case 'staff.title':
+        return 'Staff';
       case 'newsError':
         return 'お知らせの取得に失敗しました';
       case 'retry':
