@@ -34,7 +34,7 @@ FlutterKaigi プロジェクトへの貢献をお待ちしています！以下�
 
 4. プルリクエストを作成する
    - 作業が完了したら、フォークしたリポジトリから元のリポジトリに対してプルリクエストを作成してください。
-   - プルリクエストの説明には、変更内容と関連する Issue 番号を記載してください。
+   - プルリクエストの説明は [PULL_REQUEST_TEMPLATE.md] のテンプレートに従って記載してください。
 
 5. レビューを受ける
    - レビュアーからのフィードバックに基づいて、必要な修正を行ってください。
@@ -56,3 +56,5 @@ FlutterKaigi プロジェクトへの貢献をお待ちしています！以下�
 [GET_STARTED.md]: ./GET_STARTED.md
 
 [ARCHITECTURE.md]: ./ARCHITECTURE.md
+
+[PULL_REQUEST_TEMPLATE.md]: https://github.com/FlutterKaigi/2024/blob/main/.github/PULL_REQUEST_TEMPLATE.md?plain=1
