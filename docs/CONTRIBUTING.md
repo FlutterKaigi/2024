@@ -15,7 +15,7 @@ FlutterKaigi プロジェクトへの貢献をお待ちしています！以下�
 ## 貢献の流れ
 
 1. 取り組みたいタスクを見つける
-   - Issues を確認し、`contributions welcome` ラベルがついているものを探してください。
+   - [Welcome Contributions] という GitHub Project でステータスが Ready の Issue を探してください。[FlutterKaigi/2024 の Issues] には FlutterKaigi スタッフが対応する Issue が含まれているためご注意ください。
    - 難易度は `difficulty/easy`、`difficulty/medium`、`difficulty/hard` というラベルで表しています。
 
 2. 作業を始める
@@ -56,3 +56,7 @@ FlutterKaigi プロジェクトへの貢献をお待ちしています！以下�
 [ARCHITECTURE.md]: ./ARCHITECTURE.md
 
 [PULL_REQUEST_TEMPLATE.md]: https://github.com/FlutterKaigi/2024/blob/main/.github/PULL_REQUEST_TEMPLATE.md?plain=1
+
+[Welcome Contributions]: https://github.com/orgs/FlutterKaigi/projects/11/views/1
+
+[FlutterKaigi/2024 の Issues]: https://github.com/FlutterKaigi/2024/issues
