@@ -6,11 +6,11 @@ FlutterKaigi プロジェクトへの貢献をお待ちしています！以下�
 
 ### 開発環境のセットアップ
 
-[GET_STARTED.md](./GET_STARTED.md) を読んで、開発環境をセットアップしてください。
+[GET_STARTED.md] を読んで、開発環境をセットアップしてください。
 
 ### プロジェクト構造の理解
 
-[ARCHITECTURE.md](./ARCHITECTURE.md) を読んで、プロジェクトの構造について理解を深めてください。
+[ARCHITECTURE.md] を読んで、プロジェクトの構造について理解を深めてください。
 
 ## 貢献の流れ
 
@@ -50,3 +50,9 @@ FlutterKaigi プロジェクトへの貢献をお待ちしています！以下�
 - 大きな変更を行う場合は、事前に Issue で相談してください。
 
 みなさんの貢献を楽しみにしています！
+
+<!-- Links -->
+
+[GET_STARTED.md]: ./GET_STARTED.md
+
+[ARCHITECTURE.md]: ./ARCHITECTURE.md
