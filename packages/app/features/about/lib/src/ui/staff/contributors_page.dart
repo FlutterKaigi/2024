@@ -1,5 +1,5 @@
 import 'package:app_features_about/l10n.dart';
-import 'package:app_features_about/src/ui/staff/staff_card_widget.dart';
+import 'package:app_features_about/src/ui/contributors/contributors_list_item.dart';
 import 'package:common_data/contributor.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -29,9 +29,8 @@ class ContributorsPage extends ConsumerWidget {
                   childCount: contributors.length,
                   (context, index) {
                     final contributor = contributors[index];
-                    return StaffCardWidget(
-                      name: contributor.name,
-                      imageUrl: contributor.avatarUrl.toString(),
+                    return ContributorsListItem(
+                      contributor: contributor,
                     );
                   },
                 ),
