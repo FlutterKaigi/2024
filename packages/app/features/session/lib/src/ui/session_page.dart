@@ -7,7 +7,7 @@ import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:gap/gap.dart';
 
 class SessionPage extends ConsumerWidget {
