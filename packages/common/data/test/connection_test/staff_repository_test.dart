@@ -1,5 +1,6 @@
+import 'package:common_data/src/model/staff.dart';
+import 'package:common_data/src/repository/staff_repository.dart';
 import 'package:common_data/src/supabase_client.dart';
-import 'package:common_data/staff.dart';
 import 'package:common_data/supabase_initializer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,7 +30,7 @@ void main() async {
     () async {
       late final dynamic result;
       try {
-        result = await staffRepository.fetchStaffs();
+        result = await staffRepository.fetchStaffMembers();
       } on Exception catch (e) {
         result = e;
       }

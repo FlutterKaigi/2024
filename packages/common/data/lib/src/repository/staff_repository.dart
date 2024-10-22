@@ -28,7 +28,7 @@ final class StaffRepository {
   final SupabaseClient _supabaseClient;
   final StorageFileApi _staffsStorageFileApi;
 
-  Future<List<Staff>> fetchStaffs() async {
+  Future<List<Staff>> fetchStaffMembers() async {
     final staffsView = await _supabaseClient.from('staffs').select('''
           name, icon_name, greeting,
           sns_accounts:staff_social_networking_services!inner(type, value)

@@ -5,9 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 // DateFormatオブジェクトは作成コストが少し高いため、クラス変数として定義する
 final _dateFormatter = DateFormat.yMMMMd();
 
-/// お知らせ情報のアイテム
-class NewsItemWidget extends StatelessWidget {
-  const NewsItemWidget({
+/// お知らせ一覧のリストアイテム
+class NewsListItem extends StatelessWidget {
+  const NewsListItem({
     required String name,
     required DateTime publishedAt,
     required Uri uri,

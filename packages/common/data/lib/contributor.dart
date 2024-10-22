@@ -1,3 +1,2 @@
 export 'src/model/contributor.dart';
-export 'src/repository/contributor_repository.dart'
-    show ContributorRepository, contributorRepositoryProvider;
+export 'src/provider/contributors_provider.dart' show contributorsProvider;
