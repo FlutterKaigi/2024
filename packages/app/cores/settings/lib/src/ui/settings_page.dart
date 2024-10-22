@@ -21,8 +21,8 @@ class SettingsPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              const _FontFamilyTile(),
               const _ThemeModeTile(),
+              const _FontFamilyTile(),
             ]),
           ),
         ],
