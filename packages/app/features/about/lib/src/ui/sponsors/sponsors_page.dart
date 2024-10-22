@@ -1,5 +1,5 @@
 import 'package:app_features_about/l10n.dart';
-import 'package:app_features_about/src/ui/sponsors/sponsors_item.dart';
+import 'package:app_features_about/src/ui/sponsors/sponsors_list_item.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -108,7 +108,7 @@ class SponsorsPage extends HookConsumerWidget {
     return SliverPadding(
       padding: padding,
       sliver: SliverGrid.builder(
-        itemBuilder: (context, index) => SponsorItem(
+        itemBuilder: (context, index) => SponsorsListItem(
           sponsor: sponsors[index],
         ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
