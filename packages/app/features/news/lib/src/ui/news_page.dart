@@ -1,7 +1,7 @@
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
 import 'package:app_features_news/src/gen/l10n/l10n.dart';
-import 'package:app_features_news/src/ui/news_item_widget.dart';
+import 'package:app_features_news/src/ui/news_list_item.dart';
 import 'package:app_features_news/src/ui/notifier/state/news_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -41,7 +41,7 @@ class NewsPage extends HookConsumerWidget {
                         childCount: newsList.length,
                         (context, index) {
                           final news = newsList[index];
-                          return NewsItemWidget(
+                          return NewsListItem(
                             name: news.text,
                             publishedAt: news.startedAt,
                             uri: news.url,
