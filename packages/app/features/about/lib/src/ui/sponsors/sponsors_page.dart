@@ -1,5 +1,4 @@
 import 'package:app_features_about/l10n.dart';
-import 'package:app_features_about/src/ui/sponsors/notifier/sponsors_notifier.dart';
 import 'package:app_features_about/src/ui/sponsors/sponsors_item.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
@@ -19,26 +18,26 @@ class SponsorsPage extends HookConsumerWidget {
     const spacing = 8.0;
     const childAspectRatio = 16 / 9;
 
-    final sponsorsFuture = ref.watch(sponsorsFutureProvider);
+    final sponsorsAsyncValue = ref.watch(sponsorsProvider);
 
     return Scaffold(
-      body: sponsorsFuture.when(
-        data: (sponsorList) {
-          final platinumSponsor = sponsorList
+      body: sponsorsAsyncValue.when(
+        data: (sponsors) {
+          final platinumSponsors = sponsors
               .where((element) => element.type == SponsorType.platinum)
               .toList();
 
-          final goldSponsor = sponsorList
+          final goldSponsors = sponsors
               .where(
                 (element) => element.type == SponsorType.gold,
               )
               .toList();
 
-          final silverSponsor = sponsorList
+          final silverSponsors = sponsors
               .where((element) => element.type == SponsorType.silver)
               .toList();
 
-          final bronzeSponsor = sponsorList
+          final bronzeSponsors = sponsors
               .where((element) => element.type == SponsorType.bronze)
               .toList();
 
@@ -49,36 +48,36 @@ class SponsorsPage extends HookConsumerWidget {
                   l.sponsors,
                 ),
               ),
-              if (platinumSponsor.isNotEmpty)
-                _sponsorWidget(
+              if (platinumSponsors.isNotEmpty)
+                _sponsorsWidget(
                   padding: padding,
                   spacing: spacing,
                   childAspectRatio: childAspectRatio,
-                  sponsor: platinumSponsor,
+                  sponsors: platinumSponsors,
                   crossAxisCount: 1,
                 ),
-              if (goldSponsor.isNotEmpty)
-                _sponsorWidget(
+              if (goldSponsors.isNotEmpty)
+                _sponsorsWidget(
                   padding: padding,
                   spacing: spacing,
                   childAspectRatio: childAspectRatio,
-                  sponsor: goldSponsor,
+                  sponsors: goldSponsors,
                   crossAxisCount: 2,
                 ),
-              if (silverSponsor.isNotEmpty)
-                _sponsorWidget(
+              if (silverSponsors.isNotEmpty)
+                _sponsorsWidget(
                   padding: padding,
                   spacing: spacing,
                   childAspectRatio: childAspectRatio,
-                  sponsor: silverSponsor,
+                  sponsors: silverSponsors,
                   crossAxisCount: 3,
                 ),
-              if (bronzeSponsor.isNotEmpty)
-                _sponsorWidget(
+              if (bronzeSponsors.isNotEmpty)
+                _sponsorsWidget(
                   padding: padding,
                   spacing: spacing,
                   childAspectRatio: childAspectRatio,
-                  sponsor: bronzeSponsor,
+                  sponsors: bronzeSponsors,
                   crossAxisCount: 4,
                 ),
               const SliverGap(16),
@@ -99,18 +98,18 @@ class SponsorsPage extends HookConsumerWidget {
     );
   }
 
-  SliverPadding _sponsorWidget({
+  SliverPadding _sponsorsWidget({
     required EdgeInsetsGeometry padding,
     required double spacing,
     required double childAspectRatio,
-    required List<Sponsor> sponsor,
+    required List<Sponsor> sponsors,
     required int crossAxisCount,
   }) {
     return SliverPadding(
       padding: padding,
       sliver: SliverGrid.builder(
         itemBuilder: (context, index) => SponsorItem(
-          sponsor: sponsor[index],
+          sponsor: sponsors[index],
         ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing: spacing,
@@ -118,7 +117,7 @@ class SponsorsPage extends HookConsumerWidget {
           crossAxisCount: crossAxisCount,
           childAspectRatio: childAspectRatio,
         ),
-        itemCount: sponsor.length,
+        itemCount: sponsors.length,
       ),
     );
   }
