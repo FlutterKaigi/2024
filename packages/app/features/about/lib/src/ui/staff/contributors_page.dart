@@ -1,6 +1,6 @@
 import 'package:app_features_about/l10n.dart';
-import 'package:app_features_about/src/data/contributors_provider.dart';
 import 'package:app_features_about/src/ui/staff/staff_card_widget.dart';
+import 'package:common_data/contributor.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,9 +13,9 @@ class ContributorsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nAbout.of(context);
-    final contributors = ref.watch(contributorsProvider);
+    final contributorsAsyncValue = ref.watch(contributorsProvider);
     return Scaffold(
-      body: contributors.when(
+      body: contributorsAsyncValue.when(
         data: (contributors) {
           return CustomScrollView(
             slivers: [
