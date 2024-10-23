@@ -145,6 +145,30 @@ abstract class L10nSettings {
   /// In ja, this message translates to:
   /// **'外観'**
   String get theme;
+
+  /// No description provided for @resetPreferences.
+  ///
+  /// In ja, this message translates to:
+  /// **'設定のリセット'**
+  String get resetPreferences;
+
+  /// No description provided for @localizationMode.
+  ///
+  /// In ja, this message translates to:
+  /// **'言語設定'**
+  String get localizationMode;
+
+  /// No description provided for @localizationModeJa.
+  ///
+  /// In ja, this message translates to:
+  /// **'日本語'**
+  String get localizationModeJa;
+
+  /// No description provided for @localizationModeEn.
+  ///
+  /// In ja, this message translates to:
+  /// **'English'**
+  String get localizationModeEn;
 }
 
 class _L10nSettingsDelegate extends LocalizationsDelegate<L10nSettings> {

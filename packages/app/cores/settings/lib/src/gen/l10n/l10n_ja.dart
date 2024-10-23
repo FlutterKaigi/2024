@@ -29,4 +29,16 @@ class L10nSettingsJa extends L10nSettings {
 
   @override
   String get theme => '外観';
+
+  @override
+  String get resetPreferences => '設定のリセット';
+
+  @override
+  String get localizationMode => '言語設定';
+
+  @override
+  String get localizationModeJa => '日本語';
+
+  @override
+  String get localizationModeEn => 'English';
 }
