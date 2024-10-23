@@ -4,6 +4,7 @@ import 'package:common_data/session.dart';
 import 'package:common_data/src/model/profile.dart';
 import 'package:common_data/src/model/view/profile_with_sns.dart';
 import 'package:common_data/supabase_client.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
@@ -11,7 +12,7 @@ import 'package:uuid/uuid.dart';
 part 'profile_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-ProfileRepository profileRepository(ProfileRepositoryRef ref) =>
+ProfileRepository profileRepository(Ref ref) =>
     ProfileRepository(
       client: ref.watch(supabaseClientProvider),
     );

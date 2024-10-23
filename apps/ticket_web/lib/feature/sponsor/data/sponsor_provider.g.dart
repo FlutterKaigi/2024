@@ -22,6 +22,8 @@ final sponsorWithSessionsProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSession>>;
 String _$sponsorAndSessionListHash() =>
     r'f79e3020f7c6bd7b0348804707749cfcae9e27ec';
@@ -39,6 +41,8 @@ final sponsorAndSessionListProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SponsorAndSessionListRef = FutureProviderRef<List<SponsorAndSession>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

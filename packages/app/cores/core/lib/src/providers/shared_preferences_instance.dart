@@ -1,3 +1,4 @@
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +16,6 @@ Future<void> initSharedPreferencesInstance({
 /// This provider requires calling [initSharedPreferencesInstance] in advance.
 @riverpod
 SharedPreferences sharedPreferencesInstance(
-  SharedPreferencesInstanceRef ref,
+  Ref ref,
 ) =>
     _sharedPreferences;

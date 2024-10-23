@@ -185,6 +185,8 @@ final ticketApiDioProvider = Provider<Dio>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef TicketApiDioRef = ProviderRef<Dio>;
 String _$ticketApiClientHash() => r'e22908ec39abf4f88ace37068e33a680f632df15';
 
@@ -322,6 +324,8 @@ class TicketApiClientProvider extends Provider<TicketApiClient> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TicketApiClientRef on ProviderRef<TicketApiClient> {
   /// The parameter `baseUrl` of this provider.
   String get baseUrl;
@@ -335,4 +339,4 @@ class _TicketApiClientProviderElement extends ProviderElement<TicketApiClient>
   String get baseUrl => (origin as TicketApiClientProvider).baseUrl;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

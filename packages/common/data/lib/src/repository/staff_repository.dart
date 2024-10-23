@@ -2,6 +2,7 @@ import 'package:common_data/src/model/sns.dart';
 import 'package:common_data/src/model/staff.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,7 +10,7 @@ part 'staff_repository.freezed.dart';
 part 'staff_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-StaffRepository staffRepository(StaffRepositoryRef ref) {
+StaffRepository staffRepository(Ref ref) {
   final supabaseClient = ref.watch(supabaseClientProvider);
   final staffsStorageFileApi = ref.watch(staffsStorageFileApiProvider);
   return StaffRepository(
