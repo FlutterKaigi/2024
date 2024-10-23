@@ -1,3 +1,4 @@
+import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:flutter/foundation.dart';
@@ -21,8 +22,10 @@ class SettingsPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              const _FontFamilyTile(),
               const _ThemeModeTile(),
+              const _LocalizationModeTile(),
+              const _FontFamilyTile(),
+              const _ResetSettingsTile(),
             ]),
           ),
         ],
@@ -31,30 +34,29 @@ class SettingsPage extends StatelessWidget {
   }
 }
 
-class _FontFamilyTile extends ConsumerWidget {
-  const _FontFamilyTile();
+class _LocalizationModeTile extends ConsumerWidget {
+  const _LocalizationModeTile();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nSettings.of(context);
-    final fontFamily = ref.watch(fontFamilyStoreProvider);
+    final localizationMode = ref.watch(localizationModeStoreProvider);
     return ListTile(
       onTap: () async {
-        final result = await showDialog<FontFamily>(
+        final result = await showDialog<LocalizationMode>(
           context: context,
           builder: (context) => _ListSelectionDialog(
-            values: FontFamily.values,
-            title: l.fontFamily,
-            tileTitleBuilder: (fontFamily) => Text(fontFamily.label),
-            initialValue: fontFamily,
+            values: LocalizationMode.values,
+            title: l.localizationMode,
+            tileTitleBuilder: (mode) => Text(mode.label(l)),
+            initialValue: localizationMode,
           ),
         );
         if (result != null) {
-          ref.read(fontFamilyStoreProvider.notifier).update(result);
+          await ref.read(localizationModeStoreProvider.notifier).update(result);
         }
       },
-      title: Text(l.fontFamily),
-      subtitle: Text(fontFamily.label),
+      title: Text(l.localizationMode),
     );
   }
 }
@@ -83,6 +85,79 @@ class _ThemeModeTile extends ConsumerWidget {
       },
       title: Text(l.theme),
       subtitle: Text(themeMode.label(l)),
+    );
+  }
+}
+
+class _FontFamilyTile extends ConsumerWidget {
+  const _FontFamilyTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    final fontFamily = ref.watch(fontFamilyStoreProvider);
+    return ListTile(
+      onTap: () async {
+        final result = await showDialog<FontFamily>(
+          context: context,
+          builder: (context) => _ListSelectionDialog(
+            values: FontFamily.values,
+            title: l.fontFamily,
+            tileTitleBuilder: (fontFamily) => Text(fontFamily.label),
+            initialValue: fontFamily,
+          ),
+        );
+        if (result != null) {
+          ref.read(fontFamilyStoreProvider.notifier).update(result);
+        }
+      },
+      title: Text(l.fontFamily),
+    );
+  }
+}
+
+class _ResetSettingsTile extends ConsumerWidget {
+  const _ResetSettingsTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    return ListTile(
+      onTap: () async {
+        await showDialog<void>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(l.resetPreferences),
+            actions: <Widget>[
+              TextButton(
+                child: Text(l.cancel),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              TextButton(
+                child: Text(l.ok),
+                onPressed: () async {
+                  await ref.read(sharedPreferencesInstanceProvider).clear();
+
+                  /// invalidate SharedPreferencesProvider
+                  ref.invalidate(sharedPreferencesInstanceProvider);
+
+                  /// invalidate all providers
+                  /// which depend on [sharedPreferencesInstanceProvider]
+                  ref
+                    ..invalidate(themeModeStoreProvider)
+                    ..invalidate(localizationModeStoreProvider)
+                    ..invalidate(fontFamilyStoreProvider);
+
+                  if (context.mounted) {
+                    Navigator.of(context).pop();
+                  }
+                },
+              ),
+            ],
+          ),
+        );
+      },
+      title: Text(l.resetPreferences),
     );
   }
 }
@@ -154,5 +229,13 @@ extension on ThemeMode {
         ThemeMode.system => l.system,
         ThemeMode.light => l.light,
         ThemeMode.dark => l.dark,
+      };
+}
+
+extension on LocalizationMode {
+  String label(L10nSettings l) => switch (this) {
+        LocalizationMode.system => l.system,
+        LocalizationMode.japanese => l.localizationModeJa,
+        LocalizationMode.english => l.localizationModeEn,
       };
 }
