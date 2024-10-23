@@ -2,3 +2,6 @@
 
 /apps/app/ @FlutterKaigi/conference-app-2024
 /apps/website/ @FlutterKaigi/conference-website-2024
+
+/packages/app/ @FlutterKaigi/conference-app-2024
+/packages/common/ @FlutterKaigi/conference-app-2024 @FlutterKaigi/conference-website-2024
