@@ -50,7 +50,6 @@ class _StaffCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.sizeOf(context).isMobile;
-    print(isMobile);
     return LayoutBuilder(
       builder: (context, constrains) {
         final cardInRowCount = _calculateCardInRowCount(constrains, isMobile);
