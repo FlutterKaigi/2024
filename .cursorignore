@@ -1,0 +1,57 @@
+# このファイルは Cursor エディタが無視すべきファイルやディレクトリを指定します。
+# デフォルトで .gitignore の内容を無視します。
+#
+# このファイルで適切な設定を行うことで Cursor は不要なファイルの読み込みを避け
+# より正確で優れたコードベースの解析や提案を行うことができます。
+#
+# 詳細については Cursor の公式ドキュメントを参照してください：
+# https://docs.cursor.com/context/ignore-files
+
+# --------------------------------
+# 設定ファイル群
+# --------------------------------
+
+# IDE の設定ファイル
+.idea/
+
+# VS Code の設定ファイル
+.vscode/
+
+# fvm の設定ファイル
+.fvmrc
+
+# --------------------------------
+# Flutter プロジェクト以外のファイル群
+# --------------------------------
+
+# API 関連のファイル
+./api/
+
+# markdownlint, Prettier SQL Format 関連のファイル
+./markdownlint-cli2.jsonc
+./prettierrc.yaml
+./sqlformatrc.json
+
+# textlint 関連のファイル
+./textlintrc
+./package.json
+./bun.lockb
+./textlint.ts
+./tsconfig.json
+
+# --------------------------------
+# Flutter プロジェクトのファイル群
+# --------------------------------
+
+ios/
+android/
+macos/
+web/
+assets/
+defines/
+gen/
+.metadata
+pubspec.lock
+*.g.dart
+*.freezed.dart
+*.gen.dart

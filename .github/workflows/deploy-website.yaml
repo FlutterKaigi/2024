@@ -1,4 +1,4 @@
-name: Deploy Web on PR
+name: Deploy Website
 
 on:
   workflow_dispatch:
@@ -12,14 +12,17 @@ on:
       - "apps/app/**"
       - "packages/app/**"
       - "**/*.md"
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
   deployments: write
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  deploy-website:
+    runs-on: ubuntu-22.04
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
@@ -43,5 +46,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: website-2024-preview
+          projectName: flutterkaigi-2024
           directory: apps/website/build/web

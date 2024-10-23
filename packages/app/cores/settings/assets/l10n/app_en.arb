@@ -7,5 +7,9 @@
   "ok": "OK",
   "settingsPageTitle": "Settings",
   "system": "System",
-  "theme": "Theme"
+  "theme": "Theme",
+  "resetPreferences": "Reset settings",
+  "localizationMode": "Language",
+  "localizationModeJa": "日本語",
+  "localizationModeEn": "English"
 }

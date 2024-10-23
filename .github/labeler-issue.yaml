@@ -5,13 +5,13 @@ policy:
         block-list: []
         label:
           - name: "related/app"
-            keys: ["App"]
+            keys: ["App", "All"]
           - name: "related/data"
-            keys: ["Data"]
+            keys: ["Data", "All"]
           - name: "related/ticket"
-            keys: ["Ticket"]
+            keys: ["Ticket", "All"]
           - name: "related/website"
-            keys: ["Website"]
+            keys: ["Website", "All"]
       - id: [type]
         block-list: []
         label:
