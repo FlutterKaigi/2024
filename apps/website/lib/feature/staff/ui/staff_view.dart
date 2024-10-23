@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/staff.dart';
 import 'package:conference_2024_website/core/extension/iterable_ex.dart';
+import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/feature/staff/ui/components/staff_card.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -48,9 +49,11 @@ class _StaffCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
+    print(isMobile);
     return LayoutBuilder(
       builder: (context, constrains) {
-        final cardInRowCount = _calculateCardInRowCount(constrains);
+        final cardInRowCount = _calculateCardInRowCount(constrains, isMobile);
 
         return Column(
           children: <Widget>[
@@ -63,14 +66,14 @@ class _StaffCards extends StatelessWidget {
                         (staff) => StaffCard(staff: staff),
                       )
                       .intersperse(
-                        SizedBox(width: StaffCard.margin),
+                        SizedBox(width: StaffCard.margin(isMobile: isMobile)),
                       )
                       .toList(),
                 ),
               ),
           ]
               .intersperse(
-                Gap(StaffCard.margin),
+                Gap(StaffCard.margin(isMobile: isMobile)),
               )
               .toList(),
         );
@@ -79,7 +82,7 @@ class _StaffCards extends StatelessWidget {
   }
 
   /// スタッフカードが横に何枚入るかを計算する
-  int _calculateCardInRowCount(BoxConstraints constraints) {
+  int _calculateCardInRowCount(BoxConstraints constraints, bool isMobile) {
     final maxWidth = constraints.maxWidth;
     // yをスタッフカード群が占める横幅[px], xをスタッフカードの枚数とすると
     // y = StaffCard.width * x + StaffCard.margin * (x - 1)
@@ -87,8 +90,9 @@ class _StaffCards extends StatelessWidget {
     // <=> x = (y + StaffCard.margin) / (StaffCard.width + StaffCard.margin)
     // であるから
     // [constraints]のmaxWidthから 最大の[x](小数点以下切り捨て)を求める
-    final x =
-        (maxWidth - StaffCard.margin) / (StaffCard.width + StaffCard.margin);
+    final x = (maxWidth - StaffCard.margin(isMobile: isMobile)) /
+        (StaffCard.width(isMobile: isMobile) +
+            StaffCard.margin(isMobile: isMobile));
     return x.truncate();
   }
 
