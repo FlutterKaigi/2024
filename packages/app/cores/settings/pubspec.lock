@@ -23,7 +23,7 @@ packages:
     source: hosted
     version: "6.8.0"
   app_cores_core:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../core"
       relative: true
