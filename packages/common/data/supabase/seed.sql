@@ -768,6 +768,16 @@ VALUES
     'silver'
   );
 
+INSERT INTO
+  public.session_venues
+VALUES
+  ('d6432c3c-3ef9-44ef-aa69-78f5e4dd867d', 'A');
+
+INSERT INTO
+  public.session_venues
+VALUES
+  ('f6ee9501-0698-44ea-ad21-eb051ee94a8e', 'B');
+
 -- セッション
 INSERT INTO
   public.sessions
