@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SponsorItem extends StatelessWidget {
-  const SponsorItem({
+/// スポンサー一覧のリストアイテム
+class SponsorsListItem extends StatelessWidget {
+  const SponsorsListItem({
     required Sponsor sponsor,
     super.key,
   }) : _sponsor = sponsor;

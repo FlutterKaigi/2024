@@ -1,19 +1,18 @@
 import 'package:app_cores_designsystem/common_assets.dart';
+import 'package:common_data/staff.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 const _imageSize = 56.0;
 
-/// スタッフ情報のアイテム
-class StaffCardWidget extends StatelessWidget {
-  const StaffCardWidget({
-    required String name,
-    required String imageUrl,
+/// スタッフ情報のリストアイテム
+class StaffListItem extends StatelessWidget {
+  const StaffListItem({
+    required this.staff,
     super.key,
-  })  : _name = name,
-        _imageUrl = imageUrl;
-  final String _name;
-  final String _imageUrl;
+  });
+
+  final Staff staff;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class StaffCardWidget extends StatelessWidget {
 
     return ListTile(
       leading: Image.network(
-        _imageUrl,
+        staff.iconUrl.toString(),
         width: _imageSize,
         height: _imageSize,
         cacheWidth: _imageSize.toInt(),
@@ -38,11 +37,17 @@ class StaffCardWidget extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       title: Text(
-        _name,
+        staff.name,
         style: theme.textTheme.bodyMedium,
       ),
       contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<Staff>('staff', staff));
   }
 }
 
