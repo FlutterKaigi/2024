@@ -53,13 +53,10 @@ class _LocalizationModeTile extends ConsumerWidget {
           ),
         );
         if (result != null) {
-          await ref
-              .read(localizationModeStoreProvider.notifier)
-              .update(result);
+          await ref.read(localizationModeStoreProvider.notifier).update(result);
         }
       },
       title: Text(l.localizationMode),
-      subtitle: Text(localizationMode.label(l)),
     );
   }
 }
@@ -115,7 +112,6 @@ class _FontFamilyTile extends ConsumerWidget {
         }
       },
       title: Text(l.fontFamily),
-      subtitle: Text(fontFamily.label),
     );
   }
 }
