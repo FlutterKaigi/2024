@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/staff.dart';
 import 'package:conference_2024_website/core/extension/iterable_ex.dart';
-import 'package:conference_2024_website/feature/staff/data/staff_notifier.dart';
 import 'package:conference_2024_website/feature/staff/ui/components/staff_card.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -15,7 +14,7 @@ class StaffView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(staffProvider);
+    final state = ref.watch(staffMembersProvider);
 
     final i18n = Translations.of(context);
     final theme = Theme.of(context);
