@@ -12,6 +12,7 @@ dependencies:
   freezed_annotation: ^2.4.4
   hooks_riverpod: ^2.6.1
   json_annotation: ^4.9.0
+  riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5
   supabase_flutter: ^2.6.0
   uuid: ^4.5.1

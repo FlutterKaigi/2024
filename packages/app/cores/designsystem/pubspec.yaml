@@ -17,6 +17,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
   hooks_riverpod: ^2.6.1
+  riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5
   vector_graphics: ^1.1.11+1
 
