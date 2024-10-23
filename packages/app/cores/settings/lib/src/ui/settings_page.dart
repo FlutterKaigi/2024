@@ -22,11 +22,71 @@ class SettingsPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               const _ThemeModeTile(),
+              const _LocalizationModeTile(),
               const _FontFamilyTile(),
+              const _ResetSettingsTile(),
             ]),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _LocalizationModeTile extends ConsumerWidget {
+  const _LocalizationModeTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    final localizationMode = ref.watch(localizationModeStoreProvider);
+    return ListTile(
+      onTap: () async {
+        final result = await showDialog<LocalizationMode>(
+          context: context,
+          builder: (context) => _ListSelectionDialog(
+            values: LocalizationMode.values,
+            title: l.localizationMode,
+            tileTitleBuilder: (mode) => Text(mode.label(l)),
+            initialValue: localizationMode,
+          ),
+        );
+        if (result != null) {
+          await ref
+              .read(localizationModeStoreProvider.notifier)
+              .update(result);
+        }
+      },
+      title: Text(l.localizationMode),
+      subtitle: Text(localizationMode.label(l)),
+    );
+  }
+}
+
+class _ThemeModeTile extends ConsumerWidget {
+  const _ThemeModeTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    final themeMode = ref.watch(themeModeStoreProvider);
+    return ListTile(
+      onTap: () async {
+        final result = await showDialog<ThemeMode>(
+          context: context,
+          builder: (context) => _ListSelectionDialog(
+            values: ThemeMode.values,
+            title: l.theme,
+            tileTitleBuilder: (mode) => Text(mode.label(l)),
+            initialValue: themeMode,
+          ),
+        );
+        if (result != null) {
+          ref.read(themeModeStoreProvider.notifier).update(result);
+        }
+      },
+      title: Text(l.theme),
+      subtitle: Text(themeMode.label(l)),
     );
   }
 }
@@ -59,30 +119,34 @@ class _FontFamilyTile extends ConsumerWidget {
   }
 }
 
-class _ThemeModeTile extends ConsumerWidget {
-  const _ThemeModeTile();
+class _ResetSettingsTile extends ConsumerWidget {
+  const _ResetSettingsTile();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nSettings.of(context);
-    final themeMode = ref.watch(themeModeStoreProvider);
     return ListTile(
       onTap: () async {
-        final result = await showDialog<ThemeMode>(
+        await showDialog<void>(
           context: context,
-          builder: (context) => _ListSelectionDialog(
-            values: ThemeMode.values,
-            title: l.theme,
-            tileTitleBuilder: (mode) => Text(mode.label(l)),
-            initialValue: themeMode,
+          builder: (context) => AlertDialog(
+            title: Text(l.resetPreferences),
+            actions: <Widget>[
+              TextButton(
+                child: Text(l.cancel),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              TextButton(
+                child: Text(l.ok),
+                onPressed: () {
+                  // TODO: 値を更新
+                },
+              ),
+            ],
           ),
         );
-        if (result != null) {
-          ref.read(themeModeStoreProvider.notifier).update(result);
-        }
       },
-      title: Text(l.theme),
-      subtitle: Text(themeMode.label(l)),
+      title: Text(l.resetPreferences),
     );
   }
 }
@@ -154,5 +218,13 @@ extension on ThemeMode {
         ThemeMode.system => l.system,
         ThemeMode.light => l.light,
         ThemeMode.dark => l.dark,
+      };
+}
+
+extension on LocalizationMode {
+  String label(L10nSettings l) => switch (this) {
+        LocalizationMode.system => l.system,
+        LocalizationMode.japanese => l.localizationModeJa,
+        LocalizationMode.english => l.localizationModeEn,
       };
 }
