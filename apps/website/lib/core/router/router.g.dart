@@ -61,7 +61,7 @@ extension $SponsorRouteExtension on SponsorRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouteHash() => r'b0f7faeaa24a669fc3de8577fb741daa4aee3992';
+String _$goRouteHash() => r'fe6c3bec18db010f5b5abed35a23e49b3a33ec3f';
 
 /// See also [goRoute].
 @ProviderFor(goRoute)

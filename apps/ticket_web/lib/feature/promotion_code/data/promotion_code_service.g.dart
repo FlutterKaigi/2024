@@ -7,7 +7,7 @@ part of 'promotion_code_service.dart';
 // **************************************************************************
 
 String _$promotionCodeServiceHash() =>
-    r'63ffb049b571c2022c50976ebaac27cc61a9e68f';
+    r'd3ce1c5fd9b725f6a052bffdcfa1504ac92c230b';
 
 /// See also [promotionCodeService].
 @ProviderFor(promotionCodeService)

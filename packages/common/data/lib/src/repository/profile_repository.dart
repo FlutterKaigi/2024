@@ -12,8 +12,7 @@ import 'package:uuid/uuid.dart';
 part 'profile_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-ProfileRepository profileRepository(Ref ref) =>
-    ProfileRepository(
+ProfileRepository profileRepository(Ref ref) => ProfileRepository(
       client: ref.watch(supabaseClientProvider),
     );
 

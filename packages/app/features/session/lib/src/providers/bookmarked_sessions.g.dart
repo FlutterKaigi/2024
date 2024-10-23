@@ -25,7 +25,7 @@ Map<String, dynamic> _$$BookmarkedSessionListImplToJson(
 // RiverpodGenerator
 // **************************************************************************
 
-String _$isBookmarkedHash() => r'b0a1324f3cb0fb2de4166cf5c112e44adcbe98ae';
+String _$isBookmarkedHash() => r'faff67f95830a9c8db479c287649769a1a62c3a3';
 
 /// Copied from Dart SDK
 class _SystemHash {

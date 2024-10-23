@@ -8,7 +8,7 @@ part of 'staff_members_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staffMembersHash() => r'03ff60ef755b0f470546000a379a66d3127e46e0';
+String _$staffMembersHash() => r'4907af9a2cda882465f126ca8003ab7f4668602b';
 
 /// See also [staffMembers].
 @ProviderFor(staffMembers)

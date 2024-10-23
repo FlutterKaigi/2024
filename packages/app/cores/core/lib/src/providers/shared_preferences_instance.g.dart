@@ -7,7 +7,7 @@ part of 'shared_preferences_instance.dart';
 // **************************************************************************
 
 String _$sharedPreferencesInstanceHash() =>
-    r'94b3ee34ea4111b4be3fecda1c00fa24da731565';
+    r'17f44c7adcadda754d3a3e7b906f27964230cf5c';
 
 /// This provider requires calling [initSharedPreferencesInstance] in advance.
 ///

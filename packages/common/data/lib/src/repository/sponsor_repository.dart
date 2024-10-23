@@ -10,8 +10,7 @@ part 'sponsor_repository.freezed.dart';
 part 'sponsor_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-SponsorRepository sponsorRepository(Ref ref) =>
-    SponsorRepository(
+SponsorRepository sponsorRepository(Ref ref) => SponsorRepository(
       supabaseClient: ref.watch(supabaseClientProvider),
       sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
     );

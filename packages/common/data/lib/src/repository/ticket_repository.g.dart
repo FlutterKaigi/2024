@@ -8,7 +8,7 @@ part of 'ticket_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ticketRepositoryHash() => r'f5461c873ab0422c200798b87c0b17c36a804927';
+String _$ticketRepositoryHash() => r'303877d82179f19413407096903922770f6af3cd';
 
 /// See also [ticketRepository].
 @ProviderFor(ticketRepository)

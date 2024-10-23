@@ -7,7 +7,7 @@ part of 'sponsor_provider.dart';
 // **************************************************************************
 
 String _$sponsorWithSessionsHash() =>
-    r'1bdd8d4902d8aaee424724db8a50340b1f7833aa';
+    r'8ed8ab13f3983dffaf033debcf090ffbbda4e30c';
 
 /// See also [sponsorWithSessions].
 @ProviderFor(sponsorWithSessions)
@@ -26,7 +26,7 @@ final sponsorWithSessionsProvider =
 // ignore: unused_element
 typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSession>>;
 String _$sponsorAndSessionListHash() =>
-    r'f79e3020f7c6bd7b0348804707749cfcae9e27ec';
+    r'1882b31fde9588c494ab918e82cd84f232f09ba7';
 
 /// See also [sponsorAndSessionList].
 @ProviderFor(sponsorAndSessionList)

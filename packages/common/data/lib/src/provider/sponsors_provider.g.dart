@@ -8,7 +8,7 @@ part of 'sponsors_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sponsorsHash() => r'9b098337e507855354d400071bb762f9728131ad';
+String _$sponsorsHash() => r'3e45eb3991b8ec3ce2bc27dfb3dfe8d9ffe49fdc';
 
 /// See also [sponsors].
 @ProviderFor(sponsors)
