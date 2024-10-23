@@ -13,7 +13,7 @@ class L10nSettingsJa extends L10nSettings {
   String get dark => 'ダーク';
 
   @override
-  String get fontFamily => 'フォント';
+  String get fontFamily => 'フォント設定';
 
   @override
   String get light => 'ライト';
@@ -28,7 +28,7 @@ class L10nSettingsJa extends L10nSettings {
   String get system => 'システムに合わせる';
 
   @override
-  String get theme => '外観';
+  String get theme => '外観設定';
 
   @override
   String get resetPreferences => '設定のリセット';

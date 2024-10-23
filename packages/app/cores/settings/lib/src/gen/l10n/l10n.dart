@@ -113,7 +113,7 @@ abstract class L10nSettings {
   /// No description provided for @fontFamily.
   ///
   /// In ja, this message translates to:
-  /// **'フォント'**
+  /// **'フォント設定'**
   String get fontFamily;
 
   /// No description provided for @light.
@@ -143,7 +143,7 @@ abstract class L10nSettings {
   /// No description provided for @theme.
   ///
   /// In ja, this message translates to:
-  /// **'外観'**
+  /// **'外観設定'**
   String get theme;
 
   /// No description provided for @resetPreferences.
