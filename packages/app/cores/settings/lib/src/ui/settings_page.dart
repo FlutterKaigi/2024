@@ -1,3 +1,4 @@
+import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:flutter/foundation.dart';
@@ -138,8 +139,21 @@ class _ResetSettingsTile extends ConsumerWidget {
               ),
               TextButton(
                 child: Text(l.ok),
-                onPressed: () {
-                  // TODO: 値を更新
+                onPressed: () async {
+                  await ref.read(sharedPreferencesInstanceProvider).clear();
+
+                  /// invalidate SharedPreferencesProvider
+                  ref.invalidate(sharedPreferencesInstanceProvider);
+
+                  /// invalidate all providers which depend on [sharedPreferencesInstanceProvider]
+                  ref
+                    ..invalidate(themeModeStoreProvider)
+                    ..invalidate(localizationModeStoreProvider)
+                    ..invalidate(fontFamilyStoreProvider);
+
+                  if (context.mounted) {
+                    Navigator.of(context).pop();
+                  }
                 },
               ),
             ],
