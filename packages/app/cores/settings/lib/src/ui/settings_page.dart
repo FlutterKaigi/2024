@@ -141,7 +141,8 @@ class _ResetSettingsTile extends ConsumerWidget {
                   /// invalidate SharedPreferencesProvider
                   ref.invalidate(sharedPreferencesInstanceProvider);
 
-                  /// invalidate all providers which depend on [sharedPreferencesInstanceProvider]
+                  /// invalidate all providers 
+                  /// which depend on [sharedPreferencesInstanceProvider]
                   ref
                     ..invalidate(themeModeStoreProvider)
                     ..invalidate(localizationModeStoreProvider)
