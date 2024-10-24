@@ -5,26 +5,26 @@ import 'package:common_data/src/model/session_venue.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_view.dart';
 import 'package:common_data/src/repository/sponsor_repository.dart';
 import 'package:common_data/src/supabase_client.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 part 'session_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-SessionRepository sessionRepository(SessionRepositoryRef ref) =>
-    SessionRepository(
+SessionRepository sessionRepository(Ref ref) => SessionRepository(
       client: ref.watch(supabaseClientProvider),
       profileRepository: ref.watch(profileRepositoryProvider),
       sponsorRepository: ref.watch(sponsorRepositoryProvider),
     );
 
 @Riverpod(keepAlive: true)
-SessionVenueRepository sessionVenueRepository(SessionVenueRepositoryRef ref) =>
+SessionVenueRepository sessionVenueRepository(Ref ref) =>
     SessionVenueRepository(client: ref.watch(supabaseClientProvider));
 
 @Riverpod(keepAlive: true)
 SessionSpeakerRepository sessionSpeakerRepository(
-  SessionSpeakerRepositoryRef ref,
+  Ref ref,
 ) =>
     SessionSpeakerRepository(
       client: ref.watch(supabaseClientProvider),

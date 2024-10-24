@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/pages/debug/components/navigation_debug_page.dart';
@@ -12,7 +13,7 @@ import 'package:ticket_web/pages/verify_purchase/verify_purchase_page.dart';
 part 'router.g.dart';
 
 @Riverpod(keepAlive: true)
-GoRouter router(RouterRef ref) {
+GoRouter router(Ref ref) {
   return GoRouter(
     routes: $appRoutes,
     debugLogDiagnostics: kDebugMode,

@@ -1,12 +1,13 @@
 import 'package:app_cores_designsystem/src/providers/font_family.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme.g.dart';
 
 @riverpod
-ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
+ThemeData theme(Ref ref, ColorScheme? colorScheme) {
   final fontFamily = ref.watch(fontFamilyStoreProvider);
   final defaultLightScheme = ColorScheme.fromSeed(
     seedColor: _seedColor,
@@ -25,7 +26,7 @@ ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
 }
 
 @riverpod
-ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) {
+ThemeData darkTheme(Ref ref, ColorScheme? colorScheme) {
   final fontFamily = ref.watch(fontFamilyStoreProvider);
   final defaultDarkColorScheme = ColorScheme.fromSeed(
     seedColor: _seedColor,

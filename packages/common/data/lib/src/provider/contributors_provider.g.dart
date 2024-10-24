@@ -8,7 +8,7 @@ part of 'contributors_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$contributorsHash() => r'79835837a5ddebc36c6d8ba45deec55997797a9b';
+String _$contributorsHash() => r'31246bebd041d5f2b618311a0d4119af60cfad73';
 
 /// See also [contributors].
 @ProviderFor(contributors)
@@ -22,6 +22,8 @@ final contributorsProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ContributorsRef = AutoDisposeFutureProviderRef<List<Contributor>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

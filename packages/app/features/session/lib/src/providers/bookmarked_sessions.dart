@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app_cores_core/providers.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'bookmarked_sessions.freezed.dart';
@@ -59,7 +60,7 @@ class BookmarkedSessions extends _$BookmarkedSessions {
 
 @riverpod
 bool isBookmarked(
-  IsBookmarkedRef ref, {
+  Ref ref, {
   required String sessionId,
 }) {
   final bookmarkedSessions = ref.watch(bookmarkedSessionsProvider);

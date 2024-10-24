@@ -6,7 +6,7 @@ part of 'theme.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeHash() => r'e036dac6194da4a3d489c374d3fd87fc9058a628';
+String _$themeHash() => r'049fc197b96197f6b637bbb9fc278d21a43e5e61';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -141,6 +141,8 @@ class ThemeProvider extends AutoDisposeProvider<ThemeData> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ThemeRef on AutoDisposeProviderRef<ThemeData> {
   /// The parameter `colorScheme` of this provider.
   ColorScheme? get colorScheme;
@@ -154,7 +156,7 @@ class _ThemeProviderElement extends AutoDisposeProviderElement<ThemeData>
   ColorScheme? get colorScheme => (origin as ThemeProvider).colorScheme;
 }
 
-String _$darkThemeHash() => r'ad7ac5da0620d5f98165d441f1d116d654243099';
+String _$darkThemeHash() => r'd334a6262d98373a6f3abd7f5247a7f160edd371';
 
 /// See also [darkTheme].
 @ProviderFor(darkTheme)
@@ -268,6 +270,8 @@ class DarkThemeProvider extends AutoDisposeProvider<ThemeData> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin DarkThemeRef on AutoDisposeProviderRef<ThemeData> {
   /// The parameter `colorScheme` of this provider.
   ColorScheme? get colorScheme;
@@ -281,4 +285,4 @@ class _DarkThemeProviderElement extends AutoDisposeProviderElement<ThemeData>
   ColorScheme? get colorScheme => (origin as DarkThemeProvider).colorScheme;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

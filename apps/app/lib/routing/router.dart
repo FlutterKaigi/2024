@@ -11,6 +11,7 @@ import 'package:conference_2024_app/main_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
@@ -23,7 +24,7 @@ part 'routes/main/venue/venue_shell_branch.dart';
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 @Riverpod(keepAlive: true)
-GoRouter router(RouterRef ref) {
+GoRouter router(Ref ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     routes: [
