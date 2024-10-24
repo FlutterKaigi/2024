@@ -57,6 +57,7 @@ class _LocalizationModeTile extends ConsumerWidget {
         }
       },
       title: Text(l.localizationMode),
+      subtitle: Text(localizationMode.label(l)),
     );
   }
 }
@@ -112,6 +113,7 @@ class _FontFamilyTile extends ConsumerWidget {
         }
       },
       title: Text(l.fontFamily),
+      subtitle: Text(fontFamily.label),
     );
   }
 }
