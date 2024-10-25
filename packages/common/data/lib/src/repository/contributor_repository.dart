@@ -25,6 +25,7 @@ final class ContributorRepository {
     final contributors = await _supabaseClient
         .from('contributors')
         .select('name, avatar_url, contribution_count')
+        .order('contribution_count', ascending: false)
         .withConverter(
           (json) => json.map(Contributor.fromJson).toList(),
         );
