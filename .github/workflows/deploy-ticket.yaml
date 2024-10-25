@@ -20,17 +20,17 @@ on:
           - api
           - both
 
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-    paths-ignore:
-      - "docs/**"
-      - "apps/app/**"
-      - "apps/website/**"
-      - "packages/app/**"
-      - "**/*.md"
+  # pull_request:
+  #   types:
+  #     - opened
+  #     - synchronize
+  #     - reopened
+  #   paths-ignore:
+  #     - "docs/**"
+  #     - "apps/app/**"
+  #     - "apps/website/**"
+  #     - "packages/app/**"
+  #     - "**/*.md"
   push:
     branches:
       - main
