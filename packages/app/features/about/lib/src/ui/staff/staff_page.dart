@@ -18,7 +18,8 @@ class StaffPage extends HookConsumerWidget {
     final l = L10nAbout.of(context);
     final staffMembersAsyncValue = ref.watch(staffMembersProvider);
     return Scaffold(
-      body: staffMembersAsyncValue.when(
+      body: SafeArea(
+        child: staffMembersAsyncValue.when(
         data: (staffMembers) {
           return CustomScrollView(
             slivers: [
@@ -60,6 +61,7 @@ class StaffPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
+        ),
       ),
     );
   }
