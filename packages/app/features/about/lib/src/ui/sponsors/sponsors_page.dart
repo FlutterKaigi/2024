@@ -23,78 +23,78 @@ class SponsorsPage extends HookConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: sponsorsAsyncValue.when(
-        data: (sponsors) {
-          final platinumSponsors = sponsors
-              .where((element) => element.type == SponsorType.platinum)
-              .toList();
+          data: (sponsors) {
+            final platinumSponsors = sponsors
+                .where((element) => element.type == SponsorType.platinum)
+                .toList();
 
-          final goldSponsors = sponsors
-              .where(
-                (element) => element.type == SponsorType.gold,
-              )
-              .toList();
+            final goldSponsors = sponsors
+                .where(
+                  (element) => element.type == SponsorType.gold,
+                )
+                .toList();
 
-          final silverSponsors = sponsors
-              .where((element) => element.type == SponsorType.silver)
-              .toList();
+            final silverSponsors = sponsors
+                .where((element) => element.type == SponsorType.silver)
+                .toList();
 
-          final bronzeSponsors = sponsors
-              .where((element) => element.type == SponsorType.bronze)
-              .toList();
+            final bronzeSponsors = sponsors
+                .where((element) => element.type == SponsorType.bronze)
+                .toList();
 
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar.large(
-                title: Text(
-                  l.sponsors,
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar.large(
+                  title: Text(
+                    l.sponsors,
+                  ),
                 ),
-              ),
-              if (platinumSponsors.isNotEmpty)
-                _sponsorsWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsors: platinumSponsors,
-                  crossAxisCount: 1,
-                ),
-              if (goldSponsors.isNotEmpty)
-                _sponsorsWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsors: goldSponsors,
-                  crossAxisCount: 2,
-                ),
-              if (silverSponsors.isNotEmpty)
-                _sponsorsWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsors: silverSponsors,
-                  crossAxisCount: 3,
-                ),
-              if (bronzeSponsors.isNotEmpty)
-                _sponsorsWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsors: bronzeSponsors,
-                  crossAxisCount: 4,
-                ),
-              const SliverGap(16),
-            ],
-          );
-        },
-        error: (error, stackTrace) {
-          return Center(
-            child: Text(error.toString()),
-          );
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+                if (platinumSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: platinumSponsors,
+                    crossAxisCount: 1,
+                  ),
+                if (goldSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: goldSponsors,
+                    crossAxisCount: 2,
+                  ),
+                if (silverSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: silverSponsors,
+                    crossAxisCount: 3,
+                  ),
+                if (bronzeSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: bronzeSponsors,
+                    crossAxisCount: 4,
+                  ),
+                const SliverGap(16),
+              ],
+            );
+          },
+          error: (error, stackTrace) {
+            return Center(
+              child: Text(error.toString()),
+            );
+          },
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );

@@ -20,47 +20,47 @@ class StaffPage extends HookConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: staffMembersAsyncValue.when(
-        data: (staffMembers) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar.large(
-                title: Text(
-                  l.staffs,
+          data: (staffMembers) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar.large(
+                  title: Text(
+                    l.staffs,
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: staffMembers.length,
+                    (context, index) {
+                      final staff = staffMembers[index];
+                      return StaffListItem(
+                        staff: staff,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+          error: (error, stackTrace) {
+            return Center(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  color: Colors.red,
+                  child: Text(stackTrace.toString()),
                 ),
               ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: staffMembers.length,
-                  (context, index) {
-                    final staff = staffMembers[index];
-                    return StaffListItem(
-                      staff: staff,
-                    );
-                  },
-                ),
-              ),
-            ],
-          );
-        },
-        error: (error, stackTrace) {
-          return Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Colors.red,
-                child: Text(stackTrace.toString()),
-              ),
-            ),
-          );
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+            );
+          },
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );

@@ -17,47 +17,47 @@ class ContributorsPage extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: contributorsAsyncValue.when(
-        data: (contributors) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar.large(
-                title: Text(
-                  l.contributors,
+          data: (contributors) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar.large(
+                  title: Text(
+                    l.contributors,
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: contributors.length,
+                    (context, index) {
+                      final contributor = contributors[index];
+                      return ContributorsListItem(
+                        contributor: contributor,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+          },
+          error: (error, stackTrace) {
+            return Center(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  color: Colors.red,
+                  child: Text(stackTrace.toString()),
                 ),
               ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: contributors.length,
-                  (context, index) {
-                    final contributor = contributors[index];
-                    return ContributorsListItem(
-                      contributor: contributor,
-                    );
-                  },
-                ),
-              ),
-            ],
-          );
-        },
-        error: (error, stackTrace) {
-          return Center(
-            child: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Colors.red,
-                child: Text(stackTrace.toString()),
-              ),
-            ),
-          );
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+            );
+          },
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );
