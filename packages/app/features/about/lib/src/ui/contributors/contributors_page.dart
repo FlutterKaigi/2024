@@ -15,7 +15,8 @@ class ContributorsPage extends ConsumerWidget {
     final l = L10nAbout.of(context);
     final contributorsAsyncValue = ref.watch(contributorsProvider);
     return Scaffold(
-      body: contributorsAsyncValue.when(
+      body: SafeArea(
+        child: contributorsAsyncValue.when(
         data: (contributors) {
           return CustomScrollView(
             slivers: [
@@ -57,6 +58,7 @@ class ContributorsPage extends ConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
+        ),
       ),
     );
   }
