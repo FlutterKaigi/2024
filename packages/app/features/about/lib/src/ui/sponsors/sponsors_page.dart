@@ -21,7 +21,8 @@ class SponsorsPage extends HookConsumerWidget {
     final sponsorsAsyncValue = ref.watch(sponsorsProvider);
 
     return Scaffold(
-      body: sponsorsAsyncValue.when(
+      body: SafeArea(
+        child: sponsorsAsyncValue.when(
         data: (sponsors) {
           final platinumSponsors = sponsors
               .where((element) => element.type == SponsorType.platinum)
@@ -94,6 +95,7 @@ class SponsorsPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           );
         },
+        ),
       ),
     );
   }
