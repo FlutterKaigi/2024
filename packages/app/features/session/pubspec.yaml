@@ -15,6 +15,8 @@ dependencies:
     path: ../../cores/designsystem
   app_cores_settings:
     path: ../../cores/settings
+  common_data:
+    path: ../../../common/data
   flutter:
     sdk: flutter
   flutter_localizations:
