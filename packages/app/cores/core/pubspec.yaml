@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   hooks_riverpod: ^2.6.1
+  package_info_plus: ^8.0.0
   riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5
   shared_preferences: ^2.3.2
