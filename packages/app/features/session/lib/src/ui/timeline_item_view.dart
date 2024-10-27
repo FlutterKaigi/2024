@@ -2,6 +2,7 @@ import 'package:app_features_session/src/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/session_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 
 final _timeFormatter = DateFormat.Hm();
@@ -16,7 +17,7 @@ class TimelineItemView extends StatelessWidget {
 
   final TimelineItem item;
   final bool isDateVisible;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +25,17 @@ class TimelineItemView extends StatelessWidget {
       padding: const EdgeInsets.only(
         right: 16,
         left: 8,
-        top: 8,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (isDateVisible)
+          if (isDateVisible) ...[
+            const Gap(8),
             Text(
               _timeFormatter.format(item.startsAt),
               style: Theme.of(context).textTheme.labelLarge,
             ),
+          ],
           Container(
             margin: const EdgeInsets.only(
               left: 16,

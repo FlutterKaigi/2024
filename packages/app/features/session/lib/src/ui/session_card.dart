@@ -20,7 +20,7 @@ class SessionCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final isBookmarked = ref.watch(isBookmarkedProvider(sessionId: 'id'));
+    final isBookmarked = ref.watch(isBookmarkedProvider(sessionId: item.id));
 
     return Card(
       elevation: 0,
@@ -47,19 +47,17 @@ class SessionCard extends ConsumerWidget {
             subtitle: Column(
               children: [
                 const Gap(8),
-                for (final speaker in item.speakers) ...[
-                  Row(
-                    children: [
-                      const BorderedIconImage(size: 40),
-                      const Gap(8),
-                      Text(
-                        speaker.name,
-                        style: theme.textTheme.labelMedium,
-                      ),
-                    ],
-                  ),
-                  const Gap(8),
-                ],
+                Row(
+                  children: [
+                    const BorderedIconImage(size: 40),
+                    const Gap(8),
+                    Text(
+                      item.speakers.first.name,
+                      style: theme.textTheme.labelMedium,
+                    ),
+                  ],
+                ),
+                const Gap(8),
                 Row(
                   children: [
                     Container(
@@ -95,11 +93,11 @@ class SessionCard extends ConsumerWidget {
                 if (isBookmarked) {
                   ref
                       .read(bookmarkedSessionsProvider.notifier)
-                      .remove(sessionId: 'id');
+                      .remove(sessionId: item.id);
                 } else {
                   ref
                       .read(bookmarkedSessionsProvider.notifier)
-                      .save(sessionId: 'id');
+                      .save(sessionId: item.id);
                 }
               },
             ),

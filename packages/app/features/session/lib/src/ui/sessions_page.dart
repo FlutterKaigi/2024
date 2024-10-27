@@ -19,7 +19,6 @@ class SessionsPage extends ConsumerWidget {
 
     return Scaffold(
       body: CustomScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         slivers: [
           SliverAppBar.large(
             leading: const Center(
@@ -46,8 +45,11 @@ class SessionsPage extends ConsumerWidget {
                 return TimelineItemView(
                   item: item,
                   isDateVisible: isDateVisible,
-                  onTap: () async =>
-                      const SessionPageRoute(sessionId: 'id').push(context),
+                  onTap: item.map(
+                    event: (_) => null,
+                    session: (session) => () async =>
+                        SessionPageRoute(sessionId: session.id).push(context),
+                  ),
                 );
               },
             ),
