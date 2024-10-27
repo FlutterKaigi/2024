@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:app_cores_designsystem/ui.dart';
@@ -12,16 +13,24 @@ import 'package:app_features_about/src/ui/staff/staff_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends ConsumerWidget {
   const AboutPage({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nAbout.of(context);
     final theme = Theme.of(context);
+
+    final appVersion = ref.watch(
+      packageInfoInstanceProvider.select(
+        (p) => '${p.version}+${p.buildNumber} ( ${p.packageName} )',
+      ),
+    );
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -164,6 +173,8 @@ class AboutPage extends StatelessWidget {
                       MaterialPageRoute<void>(
                         builder: (context) => LicensePage(
                           applicationName: l.applicationName,
+                          applicationVersion: appVersion,
+                          applicationLegalese: '© 2024 FlutterKaigi',
                         ),
                       ),
                     ),
