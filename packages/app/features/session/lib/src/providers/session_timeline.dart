@@ -5,6 +5,7 @@ import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'session_timeline.freezed.dart';
+part 'session_timeline.g.dart';
 
 @riverpod
 Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
@@ -47,7 +48,7 @@ class TimelineItem with _$TimelineItem {
     required String title,
     required DateTime startsAt,
     required DateTime endsAt,
-  }) = _TimelineItemEvent;
+  }) = TimelineItemEvent;
 
   const factory TimelineItem.session({
     required String id,
@@ -59,5 +60,5 @@ class TimelineItem with _$TimelineItem {
     required SessionVenue venue,
     required List<ProfileWithSns> speakers,
     required List<Sponsor> sponsors,
-  }) = _TimelineItemSession;
+  }) = TimelineItemSession;
 }

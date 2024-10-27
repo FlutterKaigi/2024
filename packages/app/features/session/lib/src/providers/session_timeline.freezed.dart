@@ -71,20 +71,20 @@ mixin _$TimelineItem {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TimelineItemEvent value) event,
-    required TResult Function(_TimelineItemSession value) session,
+    required TResult Function(TimelineItemEvent value) event,
+    required TResult Function(TimelineItemSession value) session,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TimelineItemEvent value)? event,
-    TResult? Function(_TimelineItemSession value)? session,
+    TResult? Function(TimelineItemEvent value)? event,
+    TResult? Function(TimelineItemSession value)? session,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TimelineItemEvent value)? event,
-    TResult Function(_TimelineItemSession value)? session,
+    TResult Function(TimelineItemEvent value)? event,
+    TResult Function(TimelineItemSession value)? session,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,7 +188,7 @@ class __$$TimelineItemEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TimelineItemEventImpl implements _TimelineItemEvent {
+class _$TimelineItemEventImpl implements TimelineItemEvent {
   const _$TimelineItemEventImpl(
       {required this.title, required this.startsAt, required this.endsAt});
 
@@ -292,8 +292,8 @@ class _$TimelineItemEventImpl implements _TimelineItemEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TimelineItemEvent value) event,
-    required TResult Function(_TimelineItemSession value) session,
+    required TResult Function(TimelineItemEvent value) event,
+    required TResult Function(TimelineItemSession value) session,
   }) {
     return event(this);
   }
@@ -301,8 +301,8 @@ class _$TimelineItemEventImpl implements _TimelineItemEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TimelineItemEvent value)? event,
-    TResult? Function(_TimelineItemSession value)? session,
+    TResult? Function(TimelineItemEvent value)? event,
+    TResult? Function(TimelineItemSession value)? session,
   }) {
     return event?.call(this);
   }
@@ -310,8 +310,8 @@ class _$TimelineItemEventImpl implements _TimelineItemEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TimelineItemEvent value)? event,
-    TResult Function(_TimelineItemSession value)? session,
+    TResult Function(TimelineItemEvent value)? event,
+    TResult Function(TimelineItemSession value)? session,
     required TResult orElse(),
   }) {
     if (event != null) {
@@ -321,8 +321,8 @@ class _$TimelineItemEventImpl implements _TimelineItemEvent {
   }
 }
 
-abstract class _TimelineItemEvent implements TimelineItem {
-  const factory _TimelineItemEvent(
+abstract class TimelineItemEvent implements TimelineItem {
+  const factory TimelineItemEvent(
       {required final String title,
       required final DateTime startsAt,
       required final DateTime endsAt}) = _$TimelineItemEventImpl;
@@ -440,7 +440,7 @@ class __$$TimelineItemSessionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TimelineItemSessionImpl implements _TimelineItemSession {
+class _$TimelineItemSessionImpl implements TimelineItemSession {
   const _$TimelineItemSessionImpl(
       {required this.id,
       required this.title,
@@ -598,8 +598,8 @@ class _$TimelineItemSessionImpl implements _TimelineItemSession {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TimelineItemEvent value) event,
-    required TResult Function(_TimelineItemSession value) session,
+    required TResult Function(TimelineItemEvent value) event,
+    required TResult Function(TimelineItemSession value) session,
   }) {
     return session(this);
   }
@@ -607,8 +607,8 @@ class _$TimelineItemSessionImpl implements _TimelineItemSession {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TimelineItemEvent value)? event,
-    TResult? Function(_TimelineItemSession value)? session,
+    TResult? Function(TimelineItemEvent value)? event,
+    TResult? Function(TimelineItemSession value)? session,
   }) {
     return session?.call(this);
   }
@@ -616,8 +616,8 @@ class _$TimelineItemSessionImpl implements _TimelineItemSession {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TimelineItemEvent value)? event,
-    TResult Function(_TimelineItemSession value)? session,
+    TResult Function(TimelineItemEvent value)? event,
+    TResult Function(TimelineItemSession value)? session,
     required TResult orElse(),
   }) {
     if (session != null) {
@@ -627,8 +627,8 @@ class _$TimelineItemSessionImpl implements _TimelineItemSession {
   }
 }
 
-abstract class _TimelineItemSession implements TimelineItem {
-  const factory _TimelineItemSession(
+abstract class TimelineItemSession implements TimelineItem {
+  const factory TimelineItemSession(
       {required final String id,
       required final String title,
       required final String description,

@@ -1,82 +1,21 @@
 import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
+import 'package:app_features_session/src/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-/// タイムラインのアイテム
-class SessionItem extends StatelessWidget {
-  // FIXME: セッションデータの設計が終わったらデータモデルを引数にする
-  const SessionItem({
-    required String title,
-    required String name,
-    required bool isDateVisible,
-    required VoidCallback? onTap,
-    super.key,
-  })  : _title = title,
-        _name = name,
-        _isDateVisible = isDateVisible,
-        _onTap = onTap;
-
-  final String _title;
-  final String _name;
-  final bool _isDateVisible;
-  final VoidCallback? _onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        right: 16,
-        left: 8,
-        top: 8,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (_isDateVisible)
-            Text(
-              '11:00',
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-          Container(
-            margin: const EdgeInsets.only(
-              left: 16,
-            ),
-            padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
-            decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-              ),
-            ),
-            child: SessionCard(
-              title: _title,
-              name: _name,
-              onTap: _onTap,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class SessionCard extends ConsumerWidget {
   const SessionCard({
-    required String title,
-    required String name,
-    required VoidCallback? onTap,
+    required this.item,
+    required this.onTap,
     super.key,
-  })  : _title = title,
-        _name = name,
-        _onTap = onTap;
+  });
 
-  final String _title;
-  final String _name;
-  final VoidCallback? _onTap;
+  final TimelineItemSession item;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -96,29 +35,31 @@ class SessionCard extends ConsumerWidget {
       child: Stack(
         children: [
           ListTile(
-            onTap: _onTap,
+            onTap: onTap,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 16,
             ),
             title: Text(
-              _title,
+              item.title,
               style: theme.textTheme.titleMedium,
             ),
             subtitle: Column(
               children: [
                 const Gap(8),
-                Row(
-                  children: [
-                    const BorderedIconImage(size: 40),
-                    const Gap(8),
-                    Text(
-                      _name,
-                      style: theme.textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-                const Gap(8),
+                for (final speaker in item.speakers) ...[
+                  Row(
+                    children: [
+                      const BorderedIconImage(size: 40),
+                      const Gap(8),
+                      Text(
+                        speaker.name,
+                        style: theme.textTheme.labelMedium,
+                      ),
+                    ],
+                  ),
+                  const Gap(8),
+                ],
                 Row(
                   children: [
                     Container(
@@ -166,5 +107,12 @@ class SessionCard extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<TimelineItemSession>('item', item));
+    properties.add(ObjectFlagProperty<VoidCallback?>.has('onTap', onTap));
   }
 }
