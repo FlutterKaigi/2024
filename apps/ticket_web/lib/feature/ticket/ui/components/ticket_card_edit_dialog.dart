@@ -107,9 +107,12 @@ class TicketCardEditDialog extends HookWidget {
                     return invalidCharacters;
                   }
                 } else {
-                  // 半角/全角英数字, 全角ひらがな, 全角カタカナ, JIS 第2水準漢字, 半角/全角スペース, 半角記号
+                  // 半角/全角英数字, 全角ひらがな, 全角カタカナ, JIS 第2水準漢字,
+                  // 半角/全角スペース, 半角記号, 全角記号
                   final regex = RegExp(
-                    r'^[a-zA-Zａ-ｚＡ-Ｚ0-9０-９ぁ-んァ-ン\u4E00-\u9FFF -/:-@\[-~　]+$',
+                    r'^[a-zA-Zａ-ｚＡ-Ｚ0-9０-９ぁ-んァ-ン\u4E00-\u9FFF -/:-@\[-~　'
+                    '！-／：-＠［-｀｛-～、-〜”’・'
+                    r']+$',
                   );
                   if (!regex.hasMatch(value)) {
                     return invalidCharacters;
