@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:app_cores_core/util.dart';
 import 'package:app_features_session/l10n.dart';
 import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
+import 'package:app_features_session/src/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -22,14 +24,28 @@ class SessionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nSession.of(context);
     final isBookmarked = ref.watch(isBookmarkedProvider(sessionId: sessionId));
+    final item = ref.watch(
+      sessionTimelineProvider.select(
+        (value) => value.valueOrNull?.firstWhereOrNull(
+          (e) => e is TimelineItemSession && e.id == sessionId,
+        ),
+      ),
+    );
+    final session = item as TimelineItemSession?;
+
+    if (session == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar.large(
-            title: const Text(
-              'Example Super Session Title ~ Why we using Flutter?',
-            ),
+            title: Text(session.title),
             actions: [
               IconButton(
                 tooltip: l.shareOnX,
@@ -43,10 +59,12 @@ class SessionPage extends ConsumerWidget {
           ),
           SliverList.list(
             children: [
-              const Row(
+              Row(
                 children: [
-                  Gap(16),
-                  SessionRoomChip(),
+                  const Gap(16),
+                  SessionRoomChip(
+                    venue: session.venue,
+                  ),
                 ],
               ),
               const Gap(8),

@@ -60,22 +60,11 @@ class SessionCard extends ConsumerWidget {
                 const Gap(8),
                 Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      height: 28,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.primaryFixedDim,
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'DevOps',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                      ),
+                    SessionRoomChip(
+                      venue: item.venue,
                     ),
                     const Gap(8),
-                    const SessionRoomChip(),
+                    // TODO: トーク種類のタグ表示
                   ],
                 ),
               ],
