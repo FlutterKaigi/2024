@@ -226,7 +226,7 @@ JobBoardTable _$JobBoardTableFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$JobBoardTable {
   int get id => throw _privateConstructorUsedError;
-  String get uri => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
   String get altText => throw _privateConstructorUsedError;
   String get imageName => throw _privateConstructorUsedError;
 
@@ -246,7 +246,7 @@ abstract class $JobBoardTableCopyWith<$Res> {
           JobBoardTable value, $Res Function(JobBoardTable) then) =
       _$JobBoardTableCopyWithImpl<$Res, JobBoardTable>;
   @useResult
-  $Res call({int id, String uri, String altText, String imageName});
+  $Res call({int id, String url, String altText, String imageName});
 }
 
 /// @nodoc
@@ -265,7 +265,7 @@ class _$JobBoardTableCopyWithImpl<$Res, $Val extends JobBoardTable>
   @override
   $Res call({
     Object? id = null,
-    Object? uri = null,
+    Object? url = null,
     Object? altText = null,
     Object? imageName = null,
   }) {
@@ -274,9 +274,9 @@ class _$JobBoardTableCopyWithImpl<$Res, $Val extends JobBoardTable>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       altText: null == altText
           ? _value.altText
@@ -298,7 +298,7 @@ abstract class _$$JobBoardTableImplCopyWith<$Res>
       __$$JobBoardTableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String uri, String altText, String imageName});
+  $Res call({int id, String url, String altText, String imageName});
 }
 
 /// @nodoc
@@ -315,7 +315,7 @@ class __$$JobBoardTableImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? uri = null,
+    Object? url = null,
     Object? altText = null,
     Object? imageName = null,
   }) {
@@ -324,9 +324,9 @@ class __$$JobBoardTableImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      uri: null == uri
-          ? _value.uri
-          : uri // ignore: cast_nullable_to_non_nullable
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       altText: null == altText
           ? _value.altText
@@ -345,7 +345,7 @@ class __$$JobBoardTableImplCopyWithImpl<$Res>
 class _$JobBoardTableImpl implements _JobBoardTable {
   const _$JobBoardTableImpl(
       {required this.id,
-      required this.uri,
+      required this.url,
       required this.altText,
       required this.imageName});
 
@@ -355,7 +355,7 @@ class _$JobBoardTableImpl implements _JobBoardTable {
   @override
   final int id;
   @override
-  final String uri;
+  final String url;
   @override
   final String altText;
   @override
@@ -363,7 +363,7 @@ class _$JobBoardTableImpl implements _JobBoardTable {
 
   @override
   String toString() {
-    return 'JobBoardTable(id: $id, uri: $uri, altText: $altText, imageName: $imageName)';
+    return 'JobBoardTable(id: $id, url: $url, altText: $altText, imageName: $imageName)';
   }
 
   @override
@@ -372,7 +372,7 @@ class _$JobBoardTableImpl implements _JobBoardTable {
         (other.runtimeType == runtimeType &&
             other is _$JobBoardTableImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.uri, uri) || other.uri == uri) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.altText, altText) || other.altText == altText) &&
             (identical(other.imageName, imageName) ||
                 other.imageName == imageName));
@@ -380,7 +380,7 @@ class _$JobBoardTableImpl implements _JobBoardTable {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, uri, altText, imageName);
+  int get hashCode => Object.hash(runtimeType, id, url, altText, imageName);
 
   /// Create a copy of JobBoardTable
   /// with the given fields replaced by the non-null parameter values.
@@ -401,7 +401,7 @@ class _$JobBoardTableImpl implements _JobBoardTable {
 abstract class _JobBoardTable implements JobBoardTable {
   const factory _JobBoardTable(
       {required final int id,
-      required final String uri,
+      required final String url,
       required final String altText,
       required final String imageName}) = _$JobBoardTableImpl;
 
@@ -411,7 +411,7 @@ abstract class _JobBoardTable implements JobBoardTable {
   @override
   int get id;
   @override
-  String get uri;
+  String get url;
   @override
   String get altText;
   @override

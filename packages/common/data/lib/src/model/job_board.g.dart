@@ -39,7 +39,7 @@ _$JobBoardTableImpl _$$JobBoardTableImplFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$JobBoardTableImpl(
           id: $checkedConvert('id', (v) => (v as num).toInt()),
-          uri: $checkedConvert('uri', (v) => v as String),
+          url: $checkedConvert('url', (v) => v as String),
           altText: $checkedConvert('alt_text', (v) => v as String),
           imageName: $checkedConvert('image_name', (v) => v as String),
         );
@@ -51,7 +51,7 @@ _$JobBoardTableImpl _$$JobBoardTableImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$JobBoardTableImplToJson(_$JobBoardTableImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'uri': instance.uri,
+      'url': instance.url,
       'alt_text': instance.altText,
       'image_name': instance.imageName,
     };
