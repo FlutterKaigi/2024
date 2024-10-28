@@ -1,3 +1,4 @@
+import 'package:app_features_session/src/ui/base_chip.dart';
 import 'package:common_data/session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,29 +17,16 @@ class SessionRoomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     final fillColor = switch (venue.name) {
       'A Dash' => _roomAColor,
       'B Dash' => _roomBColor,
       _ => _roomAColor,
     };
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      height: 28,
-      decoration: BoxDecoration(
-        color: fillColor,
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Center(
-        child: Text(
-          venue.name,
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: _labelColor,
-          ),
-        ),
-      ),
+    return BaseChip(
+      label: venue.name,
+      labelColor: _labelColor,
+      fillColor: fillColor,
     );
   }
 

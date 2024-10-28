@@ -2,6 +2,7 @@ import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
 import 'package:app_features_session/src/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
+import 'package:app_features_session/src/ui/session_type_chip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -64,7 +65,9 @@ class SessionCard extends ConsumerWidget {
                       venue: item.venue,
                     ),
                     const Gap(8),
-                    // TODO: トーク種類のタグ表示
+                    SessionTypeChip(
+                      session: item,
+                    ),
                   ],
                 ),
               ],
