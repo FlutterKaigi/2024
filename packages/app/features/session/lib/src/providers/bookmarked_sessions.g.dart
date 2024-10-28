@@ -25,7 +25,7 @@ Map<String, dynamic> _$$BookmarkedSessionListImplToJson(
 // RiverpodGenerator
 // **************************************************************************
 
-String _$isBookmarkedHash() => r'b0a1324f3cb0fb2de4166cf5c112e44adcbe98ae';
+String _$isBookmarkedHash() => r'faff67f95830a9c8db479c287649769a1a62c3a3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -161,6 +161,8 @@ class IsBookmarkedProvider extends AutoDisposeProvider<bool> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin IsBookmarkedRef on AutoDisposeProviderRef<bool> {
   /// The parameter `sessionId` of this provider.
   String get sessionId;
@@ -192,4 +194,4 @@ final bookmarkedSessionsProvider = AutoDisposeNotifierProvider<
 
 typedef _$BookmarkedSessions = AutoDisposeNotifier<BookmarkedSessionList>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

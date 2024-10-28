@@ -9,7 +9,7 @@ part of 'contributor_repository.dart';
 // **************************************************************************
 
 String _$contributorRepositoryHash() =>
-    r'58cd5fd8f800f698bf05f4913971f05d696e9b41';
+    r'96f4318e0392d17bc0589263a6b6ac11beb1f600';
 
 /// See also [contributorRepository].
 @ProviderFor(contributorRepository)
@@ -23,6 +23,8 @@ final contributorRepositoryProvider = Provider<ContributorRepository>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ContributorRepositoryRef = ProviderRef<ContributorRepository>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -10,9 +10,10 @@ dependencies:
     path: ../data
   dio: ^5.7.0
   freezed_annotation: ^2.4.4
-  hooks_riverpod: ^2.5.2
+  hooks_riverpod: ^2.6.1
   json_annotation: ^4.9.0
   retrofit: ^4.4.1
+  riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5
 
 dev_dependencies:
@@ -21,5 +22,5 @@ dev_dependencies:
   freezed: ^2.5.7
   json_serializable: ^6.8.0
   retrofit_generator: ^9.1.2
-  riverpod_generator: ^2.4.3
-  riverpod_lint: ^2.3.13
+  riverpod_generator: ^2.6.1
+  riverpod_lint: ^2.6.1

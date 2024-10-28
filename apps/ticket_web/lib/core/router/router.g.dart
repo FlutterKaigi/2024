@@ -126,7 +126,7 @@ extension $TicketRouteExtension on TicketRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'59be84a020480836d1b1c1761779a43d88461f8e';
+String _$routerHash() => r'ccd61b567d665f7374540a481e645d285f3b0422';
 
 /// See also [router].
 @ProviderFor(router)
@@ -139,6 +139,8 @@ final routerProvider = Provider<GoRouter>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef RouterRef = ProviderRef<GoRouter>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

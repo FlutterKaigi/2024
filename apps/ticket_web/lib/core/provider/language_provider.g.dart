@@ -6,7 +6,7 @@ part of 'language_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$supportedLocalesHash() => r'03e46d29febb8c74adc3891d71b30026f9ce3012';
+String _$supportedLocalesHash() => r'ed35f6a935e0495fdd73561cf864710095bb3213';
 
 /// See also [supportedLocales].
 @ProviderFor(supportedLocales)
@@ -20,6 +20,8 @@ final supportedLocalesProvider = Provider<List<AppLocale>>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SupportedLocalesRef = ProviderRef<List<AppLocale>>;
 String _$languageProviderHash() => r'ebe179d4c7626fb14f8943c904f50f7ab63b5e8e';
 
@@ -38,4 +40,4 @@ final languageProviderProvider =
 
 typedef _$LanguageProvider = Notifier<AppLocale>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

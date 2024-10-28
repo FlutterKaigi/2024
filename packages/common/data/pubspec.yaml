@@ -10,8 +10,9 @@ environment:
 
 dependencies:
   freezed_annotation: ^2.4.4
-  hooks_riverpod: ^2.5.2
+  hooks_riverpod: ^2.6.1
   json_annotation: ^4.9.0
+  riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5
   supabase_flutter: ^2.6.0
   uuid: ^4.5.1
@@ -23,7 +24,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.5.7
   json_serializable: ^6.8.0
-  riverpod_generator: ^2.4.3
-  riverpod_lint: ^2.3.13
+  riverpod_generator: ^2.6.1
+  riverpod_lint: ^2.6.1
   shared_preferences: ^2.2.3
   test: ^1.24.0

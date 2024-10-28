@@ -30,6 +30,7 @@ void main() async {
   await supabaseInitializer.initialize();
 
   await initSharedPreferencesInstance();
+  await initPackageInfoInstance();
 
   runApp(
     const ProviderScope(
@@ -44,6 +45,13 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+    final localizationMode = ref.watch(localizationModeStoreProvider);
+    final appLocale = switch (localizationMode) {
+      LocalizationMode.system => null,
+      LocalizationMode.japanese => const Locale('ja'),
+      LocalizationMode.english => const Locale('en'),
+    };
+
     return DynamicColorBuilder(
       builder: (lightDynamic, darkDynamic) {
         final theme = ref.watch(themeProvider(lightDynamic));
@@ -92,9 +100,13 @@ class MainApp extends ConsumerWidget {
                   ),
                 }
               : null,
-          builder: (context, child) => AccessibilityTools(
-            enableButtonsDrag: true,
-            child: child,
+          builder: (context, child) => Localizations.override(
+            context: context,
+            locale: appLocale,
+            child: AccessibilityTools(
+              enableButtonsDrag: true,
+              child: child,
+            ),
           ),
         );
       },

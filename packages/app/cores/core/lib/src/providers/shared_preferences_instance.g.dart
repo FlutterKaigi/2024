@@ -7,7 +7,7 @@ part of 'shared_preferences_instance.dart';
 // **************************************************************************
 
 String _$sharedPreferencesInstanceHash() =>
-    r'94b3ee34ea4111b4be3fecda1c00fa24da731565';
+    r'17f44c7adcadda754d3a3e7b906f27964230cf5c';
 
 /// This provider requires calling [initSharedPreferencesInstance] in advance.
 ///
@@ -24,7 +24,9 @@ final sharedPreferencesInstanceProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SharedPreferencesInstanceRef
     = AutoDisposeProviderRef<SharedPreferences>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
