@@ -7,7 +7,7 @@ VALUES
 CREATE POLICY "Admin can CRUD job_boards bucket" ON storage.objects FOR ALL TO authenticated USING (role () = 'admin');
 
 CREATE TABLE job_boards (
-  id UUID PRIMARY KEY REFERENCES sponsors (id) ON DELETE cascade,
+  id smallint PRIMARY KEY REFERENCES sponsors (id) ON DELETE cascade,
   url text NOT NULL UNIQUE CHECK (url ~* '^https?://'),
   alt_text text NOT NULL,
   image_name text NOT NULL
