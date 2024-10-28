@@ -70,6 +70,15 @@
   "staff": {
     "title": "Staff"
   },
+  "job_board": {
+    "title": "Job Board",
+    "messages": [
+      "FlutterKaigi 2024では、初の試みとして",
+      "企業の募集要項を掲載しています。",
+      "ご興味のある方は、ぜひご確認ください。"
+    ],
+    "button": "ジョブボードを見る"
+  },
   "news_error": "お知らせの取得に失敗しました",
   "retry": "再試行"
 }

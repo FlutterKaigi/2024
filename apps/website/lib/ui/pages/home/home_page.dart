@@ -7,6 +7,7 @@ import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/pages/home/components/coming_soon.dart';
+import 'package:conference_2024_website/ui/pages/home/components/job_board.dart';
 import 'package:conference_2024_website/ui/pages/home/components/lead.dart';
 import 'package:conference_2024_website/ui/pages/home/components/sponsors.dart';
 import 'package:conference_2024_website/ui/pages/home/components/ticket.dart';
@@ -93,7 +94,11 @@ class _Body extends StatelessWidget {
             ContentsMargin.narrow(
               child: const Ticket(),
             ),
-            const Gap(80),
+            const Gap(40),
+            ContentsMargin.narrow(
+              child: const JobBoardSection(),
+            ),
+            const Gap(40),
             ContentsMargin.narrow(
               child: Sponsors(
                 key: NaviSectionKey.sponsors.key,
