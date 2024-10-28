@@ -30,7 +30,7 @@ class JobBoardRepository {
         .map(
           (jobBoard) => JobBoard(
             id: jobBoard.id,
-            uri: Uri.parse(jobBoard.uri),
+            uri: Uri.parse(jobBoard.url),
             altText: jobBoard.altText,
             imageUri:
                 Uri.parse(_storageFileApi.getPublicUrl(jobBoard.imageName)),

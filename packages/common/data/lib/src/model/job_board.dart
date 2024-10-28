@@ -20,7 +20,7 @@ class JobBoard with _$JobBoard {
 class JobBoardTable with _$JobBoardTable {
   const factory JobBoardTable({
     required int id,
-    required String uri,
+    required String url,
     required String altText,
     required String imageName,
   }) = _JobBoardTable;
