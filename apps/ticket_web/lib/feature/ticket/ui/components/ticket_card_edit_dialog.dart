@@ -129,7 +129,7 @@ class TicketCardEditDialog extends HookWidget {
                     ' -/:-@'
                     '[-~'
                     // 全角記号
-                    '　！”＃＄％＆’（）*+，−．／：；＜＝＞？＠［＼］＾＿｀｛｜｝〜、。￥・'
+                    '　！”＃＄％＆’（）*+，−．／：；＜＝＞？＠［＼］＾＿｀｛｜｝〜、。￥・ー'
                     r']+$',
                   );
                   if (!regex.hasMatch(value)) {
