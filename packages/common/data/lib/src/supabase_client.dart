@@ -28,3 +28,7 @@ StorageFileApi staffsStorageFileApi(Ref ref) {
 @Riverpod(keepAlive: true)
 StorageFileApi sponsorStorageFileApi(Ref ref) =>
     ref.watch(supabaseClientProvider).storage.from('sponsors');
+
+@Riverpod(keepAlive: true)
+StorageFileApi jobBoardStorageFileApi(Ref ref) =>
+    ref.watch(supabaseClientProvider).storage.from('job_boards');
