@@ -25,6 +25,13 @@ enum EventDate {
   final int year;
   final int month;
   final int day;
+
+  bool isSameDate(DateTime date) {
+    final localDate = date.toLocal();
+    return localDate.year == year &&
+        localDate.month == month &&
+        localDate.day == day;
+  }
 }
 
 @riverpod

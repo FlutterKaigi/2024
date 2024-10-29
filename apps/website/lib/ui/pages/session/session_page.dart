@@ -1,6 +1,5 @@
 import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/core/router/router.dart';
-import 'package:conference_2024_website/feature/session/data/sessions_notifier.dart';
 import 'package:conference_2024_website/feature/session/ui/session_table.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
@@ -80,9 +79,7 @@ class _Body extends StatelessWidget {
               style: textTheme.headline,
             ),
             const Gap(80),
-            const SessionTable(
-              date: EventDate.day1,
-            ),
+            const SessionTable(),
           ],
         ),
       ),

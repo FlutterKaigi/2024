@@ -1,29 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sessions_notifier.dart';
+part of 'special_sessions_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionsHash() => r'8396d41759b902ca6e0933bed04dbe6233d9c321';
+String _$specialSessionsHash() => r'8e96d1a20d0703aab26568413887d04da7cc29df';
 
-/// See also [sessions].
-@ProviderFor(sessions)
-final sessionsProvider =
-    FutureProvider<List<SessionVenuesWithSessions>>.internal(
-  sessions,
-  name: r'sessionsProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$sessionsHash,
+/// See also [specialSessions].
+@ProviderFor(specialSessions)
+final specialSessionsProvider = Provider<List<SpecialSession>>.internal(
+  specialSessions,
+  name: r'specialSessionsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$specialSessionsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef SessionsRef = FutureProviderRef<List<SessionVenuesWithSessions>>;
-String _$sessionsByDateHash() => r'd61608a2967eed81b63b16d69e63928cd3fd8de8';
+typedef SpecialSessionsRef = ProviderRef<List<SpecialSession>>;
+String _$specialSessionsByDateHash() =>
+    r'7267db82c79f52002a0d3019850f732b55b6ee39';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -46,28 +47,27 @@ class _SystemHash {
   }
 }
 
-/// See also [sessionsByDate].
-@ProviderFor(sessionsByDate)
-const sessionsByDateProvider = SessionsByDateFamily();
+/// See also [specialSessionsByDate].
+@ProviderFor(specialSessionsByDate)
+const specialSessionsByDateProvider = SpecialSessionsByDateFamily();
 
-/// See also [sessionsByDate].
-class SessionsByDateFamily
-    extends Family<AsyncValue<List<SessionVenuesWithSessions>>> {
-  /// See also [sessionsByDate].
-  const SessionsByDateFamily();
+/// See also [specialSessionsByDate].
+class SpecialSessionsByDateFamily extends Family<List<SpecialSession>> {
+  /// See also [specialSessionsByDate].
+  const SpecialSessionsByDateFamily();
 
-  /// See also [sessionsByDate].
-  SessionsByDateProvider call(
+  /// See also [specialSessionsByDate].
+  SpecialSessionsByDateProvider call(
     EventDate date,
   ) {
-    return SessionsByDateProvider(
+    return SpecialSessionsByDateProvider(
       date,
     );
   }
 
   @override
-  SessionsByDateProvider getProviderOverride(
-    covariant SessionsByDateProvider provider,
+  SpecialSessionsByDateProvider getProviderOverride(
+    covariant SpecialSessionsByDateProvider provider,
   ) {
     return call(
       provider.date,
@@ -86,33 +86,32 @@ class SessionsByDateFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'sessionsByDateProvider';
+  String? get name => r'specialSessionsByDateProvider';
 }
 
-/// See also [sessionsByDate].
-class SessionsByDateProvider
-    extends AutoDisposeFutureProvider<List<SessionVenuesWithSessions>> {
-  /// See also [sessionsByDate].
-  SessionsByDateProvider(
+/// See also [specialSessionsByDate].
+class SpecialSessionsByDateProvider extends Provider<List<SpecialSession>> {
+  /// See also [specialSessionsByDate].
+  SpecialSessionsByDateProvider(
     EventDate date,
   ) : this._internal(
-          (ref) => sessionsByDate(
-            ref as SessionsByDateRef,
+          (ref) => specialSessionsByDate(
+            ref as SpecialSessionsByDateRef,
             date,
           ),
-          from: sessionsByDateProvider,
-          name: r'sessionsByDateProvider',
+          from: specialSessionsByDateProvider,
+          name: r'specialSessionsByDateProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$sessionsByDateHash,
-          dependencies: SessionsByDateFamily._dependencies,
+                  : _$specialSessionsByDateHash,
+          dependencies: SpecialSessionsByDateFamily._dependencies,
           allTransitiveDependencies:
-              SessionsByDateFamily._allTransitiveDependencies,
+              SpecialSessionsByDateFamily._allTransitiveDependencies,
           date: date,
         );
 
-  SessionsByDateProvider._internal(
+  SpecialSessionsByDateProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -126,14 +125,12 @@ class SessionsByDateProvider
 
   @override
   Override overrideWith(
-    FutureOr<List<SessionVenuesWithSessions>> Function(
-            SessionsByDateRef provider)
-        create,
+    List<SpecialSession> Function(SpecialSessionsByDateRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: SessionsByDateProvider._internal(
-        (ref) => create(ref as SessionsByDateRef),
+      override: SpecialSessionsByDateProvider._internal(
+        (ref) => create(ref as SpecialSessionsByDateRef),
         from: from,
         name: null,
         dependencies: null,
@@ -145,14 +142,13 @@ class SessionsByDateProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<List<SessionVenuesWithSessions>>
-      createElement() {
-    return _SessionsByDateProviderElement(this);
+  ProviderElement<List<SpecialSession>> createElement() {
+    return _SpecialSessionsByDateProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is SessionsByDateProvider && other.date == date;
+    return other is SpecialSessionsByDateProvider && other.date == date;
   }
 
   @override
@@ -166,19 +162,18 @@ class SessionsByDateProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin SessionsByDateRef
-    on AutoDisposeFutureProviderRef<List<SessionVenuesWithSessions>> {
+mixin SpecialSessionsByDateRef on ProviderRef<List<SpecialSession>> {
   /// The parameter `date` of this provider.
   EventDate get date;
 }
 
-class _SessionsByDateProviderElement
-    extends AutoDisposeFutureProviderElement<List<SessionVenuesWithSessions>>
-    with SessionsByDateRef {
-  _SessionsByDateProviderElement(super.provider);
+class _SpecialSessionsByDateProviderElement
+    extends ProviderElement<List<SpecialSession>>
+    with SpecialSessionsByDateRef {
+  _SpecialSessionsByDateProviderElement(super.provider);
 
   @override
-  EventDate get date => (origin as SessionsByDateProvider).date;
+  EventDate get date => (origin as SpecialSessionsByDateProvider).date;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

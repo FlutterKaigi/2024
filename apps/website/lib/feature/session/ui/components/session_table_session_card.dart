@@ -1,5 +1,5 @@
-import 'package:conference_2024_website/feature/session/ui/session_table.dart';
 import 'package:flutter/material.dart';
+import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
 
 class SessionTableSessionCard extends StatelessWidget {
   const SessionTableSessionCard({

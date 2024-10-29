@@ -1,157 +1,121 @@
-import 'package:collection/collection.dart';
 import 'package:common_data/session.dart';
 import 'package:conference_2024_website/feature/session/data/sessions_notifier.dart';
+import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_header.dart';
-import 'package:conference_2024_website/feature/session/ui/components/session_table_session_card.dart';
 import 'package:conference_2024_website/ui/components/error_card.dart';
-import 'package:flutter/foundation.dart';
+import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SessionTable extends ConsumerWidget {
-  const SessionTable({
-    required this.date,
-    super.key,
-  });
-
-  final EventDate date;
+class SessionTable extends HookConsumerWidget {
+  const SessionTable({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final isMobile = MediaQuery.sizeOf(context).isMobile;
+    final selectedDate = useState(EventDate.day1);
+    final state = ref.watch(sessionsByDateProvider(selectedDate.value));
 
-    final state = ref.watch(sessionsByDateProvider(date));
-
-    return switch (state) {
-      AsyncData(:final value) => _Body(sessionVenues: value),
-      AsyncError(:final error) => Center(
-          child: ErrorCard(
-            error: error,
-            onRetry: () => ref.invalidate(sessionsByDateProvider(date)),
-          ),
+    return Column(
+      children: [
+        _DateSelector(
+          selectedDate: selectedDate.value,
+          onDateSelected: (date) {
+            selectedDate.value = date;
+          },
         ),
-      _ => const Center(
-          child: CircularProgressIndicator.adaptive(),
-        ),
-    };
+        const Gap(16),
+        switch (state) {
+          AsyncData(:final value) => _Body(
+              sessionVenues: value,
+              selectedDate: selectedDate.value,
+            ),
+          AsyncError(:final error) => Center(
+              child: ErrorCard(
+                error: error,
+                onRetry: () =>
+                    ref.invalidate(sessionsByDateProvider(selectedDate.value)),
+              ),
+            ),
+          _ => const Center(
+              child: CircularProgressIndicator.adaptive(),
+            ),
+        },
+      ],
+    );
   }
+}
+
+class _DateSelector extends StatelessWidget {
+  const _DateSelector({
+    required this.selectedDate,
+    required this.onDateSelected,
+  });
+
+  final EventDate selectedDate;
+  final void Function(EventDate) onDateSelected;
 
   @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<EventDate>('date', date));
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+
+    return SegmentedButton<EventDate>(
+      style: SegmentedButton.styleFrom(
+        padding: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        textStyle: textTheme.availableFonts.notoSansJp.medium.copyWith(
+          color: theme.colorScheme.onSurface,
+          fontSize: 18,
+        ),
+        backgroundColor: theme.colorScheme.surface,
+      ),
+      selectedIcon: const Icon(Icons.check),
+      segments: const [
+        ButtonSegment(
+          value: EventDate.day1,
+          label: Text('Day 1 (11/21)'),
+        ),
+        ButtonSegment(
+          value: EventDate.day2,
+          label: Text('Day 2 (11/22)'),
+        ),
+      ],
+      selected: {selectedDate},
+      onSelectionChanged: (dates) {
+        if (dates.isEmpty) {
+          return;
+        }
+        onDateSelected(dates.first);
+      },
+    );
   }
 }
 
 class _Body extends StatelessWidget {
   const _Body({
     required this.sessionVenues,
+    required this.selectedDate,
   });
 
   final List<SessionVenuesWithSessions> sessionVenues;
-
+  final EventDate selectedDate;
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ヘッダー部分（会場名を横並びで表示）
         SessionTableHeader(sessionVenues: sessionVenues),
         const Gap(16),
-        // セッション一覧
-        _SessionGrid(
+        SessionGrid(
           sessionVenues: sessionVenues,
+          selectedDate: selectedDate,
         ),
       ],
     );
   }
 }
-
-class _SessionGrid extends StatelessWidget {
-  const _SessionGrid({
-    required this.sessionVenues,
-  });
-
-  final List<SessionVenuesWithSessions> sessionVenues;
-
-  @override
-  Widget build(BuildContext context) {
-    // セッションを時間でグループ化
-    final sessionsByStartTime = _groupSessionsByStartTime();
-
-    return Column(
-      children: sessionsByStartTime.entries.map((entry) {
-        final startTime = entry.key;
-        final sessions = entry.value;
-
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 16),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // 時間表示
-              SizedBox(
-                width: 80,
-                child: Text(
-                  _formatTime(startTime),
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              ),
-              // セッションカード
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: sessionVenues.map((venue) {
-                    final session = sessions.firstWhereOrNull(
-                      (s) => s.sessionVenue.id == venue.id,
-                    );
-
-                    return Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: session != null
-                            ? SessionTableSessionCard(
-                                sessionAndSessionVenue: session,
-                              )
-                            : const SizedBox(), // 空のスペース
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
-            ],
-          ),
-        );
-      }).toList(),
-    );
-  }
-
-  Map<DateTime, List<SessionAndSessionVenue>> _groupSessionsByStartTime() {
-    final allSessions = sessionVenues
-        .map(
-          (e) => e.sessions.map(
-            (session) => (
-              session: session,
-              sessionVenue: e,
-            ),
-          ),
-        )
-        .flattened
-        .sorted((a, b) => a.session.startsAt.compareTo(b.session.startsAt))
-        .groupListsBy((e) => e.session.startsAt);
-    return allSessions;
-  }
-
-  String _formatTime(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.hour.toString().padLeft(2, '0')}'
-        ':'
-        '${localTime.minute.toString().padLeft(2, '0')}';
-  }
-}
-
-typedef SessionAndSessionVenue = ({
-  SessionWithSpeakerAndSponsor session,
-  SessionVenuesWithSessions sessionVenue
-});
