@@ -93,8 +93,7 @@ BEGIN
     SELECT id INTO temp_id FROM staffs WHERE name = 'minn';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
         (temp_id, 'github', 'kitashio'),
-        (temp_id, 'x', 'minn_flutter'),
-        (temp_id, 'medium', 'minn');
+        (temp_id, 'x', 'minn_flutter');
 END $$;
 
 DO $$
