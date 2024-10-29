@@ -16,6 +16,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
+  flutter_markdown: ^0.7.4+1
   flutter_svg: ^2.0.10+1
   flutter_web_plugins:
     sdk: flutter
