@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
+import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
@@ -63,7 +64,7 @@ class SponsorPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.sizeOf(context).width < 960;
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
     final scrollController = useScrollController();
 
     return SelectionArea(
@@ -124,7 +125,6 @@ class _Body extends StatelessWidget {
     final child = Column(
       children: [
         const Row(),
-        const Gap(120),
         Text(
           i18n.sponsors.title,
           style: textTheme.availableFonts.poppins.regular.copyWith(
@@ -137,8 +137,10 @@ class _Body extends StatelessWidget {
       ],
     );
 
-    return ContentsMargin.narrow(
-      child: child,
+    return SafeArea(
+      child: ContentsMargin.narrow(
+        child: child,
+      ),
     );
   }
 
