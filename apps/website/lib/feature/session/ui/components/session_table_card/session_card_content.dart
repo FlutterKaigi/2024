@@ -1,4 +1,7 @@
+import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
+import 'package:conference_2024_website/ui/components/profile_avatar.dart';
+import 'package:conference_2024_website/ui/components/sponsor_logo.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +28,19 @@ class SessionCardContent extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        for (final speaker in session.speakers) Text(speaker.name),
+        const SizedBox(height: 4),
+        Wrap(
+          children: [
+            for (final speaker in session.speakers) _Speaker(profile: speaker),
+          ],
+        ),
+        if (session.sponsors.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          for (final sponsor in session.sponsors)
+            SponsorLogo(
+              sponsor: sponsor,
+            ),
+        ],
         const SizedBox(height: 8),
         const Spacer(),
         Text(
@@ -41,5 +56,30 @@ class SessionCardContent extends StatelessWidget {
     return '${localTime.hour.toString().padLeft(2, '0')}'
         ':'
         '${localTime.minute.toString().padLeft(2, '0')}';
+  }
+}
+
+class _Speaker extends StatelessWidget {
+  const _Speaker({
+    required this.profile,
+  });
+
+  final ProfileWithSns profile;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+
+    return Row(
+      children: [
+        ProfileAvatar(profile: profile),
+        const SizedBox(width: 4),
+        Text(
+          profile.name,
+          style: textTheme.availableFonts.notoSansJp.regular,
+        ),
+      ],
+    );
   }
 }

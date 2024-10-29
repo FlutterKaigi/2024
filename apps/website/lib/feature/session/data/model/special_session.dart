@@ -22,5 +22,6 @@ enum SpecialSessionType {
   keynote,
   lunch,
   preparation,
+  closing,
   ;
 }

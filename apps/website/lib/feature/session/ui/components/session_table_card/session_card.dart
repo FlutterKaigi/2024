@@ -13,15 +13,32 @@ class SessionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final isMobile = MediaQuery.sizeOf(context).isMobile;
 
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(isMobile ? 8 : 16),
-        child: SessionCardContent(
-          sessionAndSessionVenue: sessionAndSessionVenue,
-        ),
+    final child = Padding(
+      padding: EdgeInsets.all(isMobile ? 8 : 16),
+      child: SessionCardContent(
+        sessionAndSessionVenue: sessionAndSessionVenue,
       ),
+    );
+
+    if (sessionAndSessionVenue.session.isLightningTalk) {
+      return Card.outlined(
+        clipBehavior: Clip.antiAlias,
+        color: theme.colorScheme.surfaceContainerLow,
+        child: Banner(
+          message: 'LT',
+          location: BannerLocation.bottomEnd,
+          color: theme.colorScheme.primary,
+          child: child,
+        ),
+      );
+    }
+
+    return Card.outlined(
+      color: theme.colorScheme.surfaceBright,
+      child: child,
     );
   }
 }
