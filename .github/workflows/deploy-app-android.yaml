@@ -15,7 +15,21 @@ permissions:
   contents: read
 
 jobs:
+  check-environment:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+
+    steps:
+      - name: Check Environment
+        run: |
+          # flutterkaigi-app-2024-development はまだ未対応
+          if [ "${{ github.event.inputs.environment }}" = "flutterkaigi-app-2024-development" ]; then
+            echo "flutterkaigi-app-2024-development is not supported yet"
+            exit 1
+          fi
+
   deploy-app-android:
+    needs: check-environment
     runs-on: ubuntu-22.04
     environment: ${{ github.event.inputs.environment }}
     timeout-minutes: 20
