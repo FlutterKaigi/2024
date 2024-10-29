@@ -1,7 +1,7 @@
 import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
 import 'package:app_features_session/src/providers/session_timeline.dart';
-import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
+import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +50,10 @@ class SessionCard extends ConsumerWidget {
                 const Gap(8),
                 Row(
                   children: [
-                    const BorderedIconImage(size: 40),
+                    SessionSpeakerIcon(
+                      profile: item.speakers.first,
+                      size: 40,
+                    ),
                     const Gap(8),
                     Text(
                       item.speakers.first.name,

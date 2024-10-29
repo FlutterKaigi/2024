@@ -4,8 +4,8 @@ import 'package:app_cores_core/util.dart';
 import 'package:app_features_session/l10n.dart';
 import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
 import 'package:app_features_session/src/providers/session_timeline.dart';
-import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
+import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';
 import 'package:collection/collection.dart';
 import 'package:common_data/profile.dart';
@@ -14,6 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+
+final _dateFormatter = DateFormat.Md();
+final _timeFormatter = DateFormat.Hm();
 
 class SessionPage extends ConsumerWidget {
   const SessionPage({
@@ -90,7 +94,8 @@ class SessionPage extends ConsumerWidget {
                       vertical: 8,
                       horizontal: 16,
                     ),
-                    leading: const BorderedIconImage(
+                    leading: SessionSpeakerIcon(
+                      profile: speaker,
                       size: 56,
                     ),
                     title: Text(speaker.name),
@@ -110,12 +115,11 @@ class SessionPage extends ConsumerWidget {
                 ),
               ),
               const Gap(8),
-              // TODO: データをつなぎこんだら日時を下記の形式にフォーマットする (#231)
               Tooltip(
                 message: l.registerToCalendar,
                 child: ListTile(
                   title: Text(
-                    'Day1 14:00~15:00',
+                    _buildSchedule(session.startsAt, session.endsAt),
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   leading: const Icon(Icons.event_outlined),
@@ -151,5 +155,12 @@ class SessionPage extends ConsumerWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('sessionId', sessionId));
+  }
+
+  String _buildSchedule(DateTime startsAt, DateTime endsAt) {
+    final startDate = _dateFormatter.format(startsAt);
+    final startTime = _timeFormatter.format(startsAt);
+    final endTime = _timeFormatter.format(endsAt);
+    return '$startDate $startTime~$endTime';
   }
 }
