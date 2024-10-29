@@ -182,5 +182,135 @@ class _SessionsByDateProviderElement
   @override
   EventDate get date => (origin as SessionsByDateProvider).date;
 }
+
+String _$sessionDetailsHash() => r'ac5c74b76ed174d1e073f776eedd279546cfefcf';
+
+/// See also [sessionDetails].
+@ProviderFor(sessionDetails)
+const sessionDetailsProvider = SessionDetailsFamily();
+
+/// See also [sessionDetails].
+class SessionDetailsFamily extends Family<AsyncValue<SessionDetails>> {
+  /// See also [sessionDetails].
+  const SessionDetailsFamily();
+
+  /// See also [sessionDetails].
+  SessionDetailsProvider call(
+    String sessionId,
+  ) {
+    return SessionDetailsProvider(
+      sessionId,
+    );
+  }
+
+  @override
+  SessionDetailsProvider getProviderOverride(
+    covariant SessionDetailsProvider provider,
+  ) {
+    return call(
+      provider.sessionId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'sessionDetailsProvider';
+}
+
+/// See also [sessionDetails].
+class SessionDetailsProvider extends FutureProvider<SessionDetails> {
+  /// See also [sessionDetails].
+  SessionDetailsProvider(
+    String sessionId,
+  ) : this._internal(
+          (ref) => sessionDetails(
+            ref as SessionDetailsRef,
+            sessionId,
+          ),
+          from: sessionDetailsProvider,
+          name: r'sessionDetailsProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$sessionDetailsHash,
+          dependencies: SessionDetailsFamily._dependencies,
+          allTransitiveDependencies:
+              SessionDetailsFamily._allTransitiveDependencies,
+          sessionId: sessionId,
+        );
+
+  SessionDetailsProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.sessionId,
+  }) : super.internal();
+
+  final String sessionId;
+
+  @override
+  Override overrideWith(
+    FutureOr<SessionDetails> Function(SessionDetailsRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: SessionDetailsProvider._internal(
+        (ref) => create(ref as SessionDetailsRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        sessionId: sessionId,
+      ),
+    );
+  }
+
+  @override
+  FutureProviderElement<SessionDetails> createElement() {
+    return _SessionDetailsProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SessionDetailsProvider && other.sessionId == sessionId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, sessionId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin SessionDetailsRef on FutureProviderRef<SessionDetails> {
+  /// The parameter `sessionId` of this provider.
+  String get sessionId;
+}
+
+class _SessionDetailsProviderElement
+    extends FutureProviderElement<SessionDetails> with SessionDetailsRef {
+  _SessionDetailsProviderElement(super.provider);
+
+  @override
+  String get sessionId => (origin as SessionDetailsProvider).sessionId;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
