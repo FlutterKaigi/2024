@@ -1,14 +1,16 @@
 import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/core/router/router.dart';
-import 'package:conference_2024_website/feature/job_board/data/job_board_notifier.dart';
+import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
+import 'package:conference_2024_website/ui/pages/job_board/components/job_board_view.dart';
+import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class JobBoardRoute extends GoRouteData {
   const JobBoardRoute();
@@ -57,20 +59,30 @@ class JobBoardPage extends StatelessWidget {
   }
 }
 
-class _Body extends ConsumerWidget {
+class _Body extends StatelessWidget {
   const _Body();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(jobBoardProvider);
+  Widget build(BuildContext context) {
+    final i18n = Translations.of(context);
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
 
-    final child = switch (state) {
-      AsyncData(:final value) => const Text('OK'),
-      AsyncError(:final error) => Text(error.toString()),
-      _ => const Center(
-          child: CircularProgressIndicator.adaptive(),
+    final child = Column(
+      children: [
+        const Row(),
+        const Gap(120),
+        Text(
+          i18n.sponsors.title,
+          style: textTheme.availableFonts.poppins.regular.copyWith(
+            fontSize: 48,
+          ),
         ),
-    };
+        const Gap(80),
+        const JobBoardView(),
+        const Gap(80),
+      ],
+    );
 
     return ContentsMargin.narrow(
       child: child,
