@@ -1617,3 +1617,165 @@ Swift Concurrency や Kotlin Coroutine のキャンセルを、 Method Channel �
     FALSE,
     '2024-10-24 00:35:46.876345+09'
   );
+
+-- ジョブボード
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    8,
+    'https://hrmos.co/pages/yumemi/jobs/201050300000',
+    '株式会社ゆめみのFlutter採用情報',
+    '920d5844-4a38-4603-8a48-c9cac0b3a276.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    18,
+    'https://hrmos.co/pages/demaecan/jobs?category=1610901862163755008',
+    '出前館ではエンジニアポジションを多数募集中です！ご興味いただける方のご応募お待ちしております！',
+    '085b198f-3e76-4969-9985-dc9c3881d369.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    20,
+    'https://www.team-lab.com/recruit/career/flutter/?utm_source=banner&utm_medium=web&utm_campaign=FlutterKaigi2024',
+    'チームラボ Flutterエンジニア 積極採用中！',
+    '17b1802e-cde1-40c2-8bcd-9ad096d997a5.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    4,
+    'https://www.recruit.co.jp/employment/mid-career/?utm_source=conference&utm_medium=referral&utm_campaign=202411flutter',
+    '株式会社リクルート',
+    '3393faac-27df-441f-8471-b7ba55f55ab4.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    6,
+    'https://www.cyberagent.co.jp/careers/professional/',
+    'メディア事業、広告事業、ゲーム事業と多様な事業を展開するサイバーエージェントでは、新たな縦読みマンガアプリ「ジャンプTOON」や競輪・オートレースの投票サービス「WINTICKET」、恋活・婚活マッチングアプリ「タップル」、AI事業本部アプリ運用カンパニーなど様々なプロダクトをFlutterで開発しています。当社に興味を持ってくださった方は、
+ぜひ各募集要項をご確認ください。',
+    '421389ec-a9e0-4b7c-9d44-eb41fbf6ef94.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    17,
+    'https://herp.careers/v1/bitkeyinc/sypAepKT0ANl',
+    '株式会社ビットキー　Flutterエンジニア募集中',
+    'd64e27af-a422-427d-862a-3f536a512dc5.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (9, 'https://youtrust.jp/companies/youtrust', '株式会社YOUTRUST - 採用情報', '6b499f14-ee11-4fb2-b3c3-599fcde24d38.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    21,
+    'https://hrmos.co/pages/enito/jobs?category=1824376236688437250',
+    '累計1000万人超ユーザー、社会課題解決サービスがFlutter全面リプレイス。開発者体験を作り上げていくフェーズでエンジニアを募集！',
+    '0698a998-3c0a-43ac-bbfe-abfbe2310e68.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (22, 'https://layerx.co.jp/jobs', '株式会社LayerXは、エンジニアを採用中です！', 'c2acc453-9fe9-47cf-b8a9-98f87a02494c.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    25,
+    'https://engineer-recruit.enechange.co.jp/',
+    'Flutterエンジニア積極採用中です（https://engineer-recruit.enechange.co.jp/）',
+    '9b0b0760-24c5-489c-9ed1-66594b3e3d7e.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (26, 'https://jpn.pioneer/ja/corp/recruit/career/', 'Pioneer Corporation', 'd8511aad-221d-4954-8014-9f15582497bf.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (3, 'https://tech.studyplus.co.jp/recruit', 'スタディプラス株式会社はカジュアル面談を受付中です', '1edb6f3c-db3f-4e47-9e55-013c18da146a.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (1, 'https://herp.careers/v1/diverse/CoUDpvRq6blb', 'diverse-recruit', '40eac7d4-70a8-4315-b481-a4374e05e478.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (13, 'https://www.wantedly.com/projects/1287104', '人・空間・社会をつなぐEV充電サービス', 'fd4aedc5-8cc6-45f1-9260-0523d8a1fc01.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    14,
+    'https://recruit.linc-well.com/engineer',
+    '株式会社Linc''well: 最高の医療体験を作りたいFlutterエンジニア募集',
+    '2d67bee5-f0a0-4acb-9311-d37cc56792c5.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (12, 'https://genda.jp/careers/', '株式会社GENDAの採用情報', 'ccc7765b-b4bd-42aa-ac95-482ca7302fcb.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (24, 'https://10q89s.jp/', '東急(株) URBAN HACKS', 'fb3f471f-9ba2-4d50-a3ef-5a544fc9e195.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (15, 'https://infcurion.com/careers/', '株式会社インフキュリオン 採用情報', '609e3530-355e-4c0e-bf96-e468e946434b.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (5, 'https://hamee.co.jp/recruit/mid-career', 'クリエイティブ魂に火をつける', '29cf52c9-c300-4e48-a2ff-030c5b345406.webp');
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    11,
+    'https://note.com/medley/n/n32cbd564af5f',
+    '「医療ヘルスケアの未来をつくる」日本最大級のサービスを持つメドレーが、Web/アプリエンジニア募集中！',
+    '75684811-4a97-4f98-8915-ce1336c89993.webp'
+  );
+
+INSERT INTO
+  public.job_boards
+VALUES
+  (
+    10,
+    'https://mixigroup-recruit.mixi.co.jp/jobs/?cats=engineer',
+    'MIXIではコミュニケーションを一緒につくる仲間を募集しています！',
+    '14f88bf5-0e66-483f-81f9-36055c8f4549.webp'
+  );
