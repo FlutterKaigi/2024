@@ -1,0 +1,24 @@
+name: Deploy App Android
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: environment
+        required: true
+        type: choice
+        options:
+          - "flutterkaigi-app-2024-development"
+          - "flutterkaigi-app-2024-production"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-app-android:
+    runs-on: ubuntu-22.04
+    environment: ${{ github.event.inputs.environment }}
+    timeout-minutes: 20
+
+    steps:
+      - run: echo "Test"
