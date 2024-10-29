@@ -1,4 +1,4 @@
-import 'package:conference_2024_website/feature/session/data/special_sessions_notifier.dart';
+import 'package:conference_2024_website/feature/session/data/model/special_session.dart';
 import 'package:flutter/material.dart';
 
 class SpecialSessionCard extends StatelessWidget {

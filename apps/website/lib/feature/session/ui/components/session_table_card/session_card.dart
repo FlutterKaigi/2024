@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
+import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_card/session_card_content.dart';
+import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
+import 'package:flutter/material.dart';
 
 class SessionCard extends StatelessWidget {
   const SessionCard({
@@ -12,9 +13,11 @@ class SessionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
+
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(isMobile ? 8 : 16),
         child: SessionCardContent(
           sessionAndSessionVenue: sessionAndSessionVenue,
         ),

@@ -1,12 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, duplicate_ignore
+
 part of 'special_sessions_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$specialSessionsHash() => r'8e96d1a20d0703aab26568413887d04da7cc29df';
+String _$specialSessionsHash() => r'88781d0d44715882a6c204bb25bd76ac592720ff';
 
 /// See also [specialSessions].
 @ProviderFor(specialSessions)
