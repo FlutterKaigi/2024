@@ -1,8 +1,9 @@
 import 'package:conference_2024_website/core/extension/size_ex.dart';
+import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_card/session_card_content.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
+import 'package:conference_2024_website/ui/pages/session/session_details_page.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SessionCard extends StatelessWidget {
   const SessionCard({
@@ -18,7 +19,9 @@ class SessionCard extends StatelessWidget {
     final isMobile = MediaQuery.sizeOf(context).isMobile;
 
     final child = InkWell(
-      onTap: () => context.push('/session/${sessionAndSessionVenue.session.id}'),
+      onTap: () async =>
+          SessionDetailsRoute(sessionId: sessionAndSessionVenue.session.id)
+              .push<void>(context),
       child: Padding(
         padding: EdgeInsets.all(isMobile ? 8 : 16),
         child: SessionCardContent(
