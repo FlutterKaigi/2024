@@ -1,6 +1,8 @@
 import 'package:common_data/session.dart';
+import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/ui/components/profile_avatar.dart';
 import 'package:conference_2024_website/ui/components/sponsor_logo.dart';
+import 'package:conference_2024_website/ui/pages/sponsor/sponsor_page.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -72,6 +74,8 @@ class SessionDetailsCard extends StatelessWidget {
                     SponsorLogo(
                       sponsor: sponsor,
                       height: 64,
+                      onTap: () async =>
+                          SponsorRoute(id: sponsor.id).push<void>(context),
                     ),
                 ],
               ),
