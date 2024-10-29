@@ -2,6 +2,7 @@ import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_card/session_card_content.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SessionCard extends StatelessWidget {
   const SessionCard({
@@ -16,10 +17,13 @@ class SessionCard extends StatelessWidget {
     final theme = Theme.of(context);
     final isMobile = MediaQuery.sizeOf(context).isMobile;
 
-    final child = Padding(
-      padding: EdgeInsets.all(isMobile ? 8 : 16),
-      child: SessionCardContent(
-        sessionAndSessionVenue: sessionAndSessionVenue,
+    final child = InkWell(
+      onTap: () => context.push('/session/${sessionAndSessionVenue.session.id}'),
+      child: Padding(
+        padding: EdgeInsets.all(isMobile ? 8 : 16),
+        child: SessionCardContent(
+          sessionAndSessionVenue: sessionAndSessionVenue,
+        ),
       ),
     );
 
@@ -37,6 +41,7 @@ class SessionCard extends StatelessWidget {
     }
 
     return Card.outlined(
+      clipBehavior: Clip.antiAlias,
       color: theme.colorScheme.surfaceBright,
       child: child,
     );

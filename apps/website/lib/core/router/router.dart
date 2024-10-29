@@ -1,4 +1,5 @@
 import 'package:conference_2024_website/ui/pages/home/home_page.dart';
+import 'package:conference_2024_website/ui/pages/session/session_details_page.dart';
 import 'package:conference_2024_website/ui/pages/session/session_page.dart';
 import 'package:conference_2024_website/ui/pages/sponsor/sponsor_page.dart';
 import 'package:flutter/foundation.dart';
@@ -23,6 +24,9 @@ GoRouter goRoute(Ref ref) => GoRouter(
     ),
     TypedGoRoute<SessionRoute>(
       path: 'session',
+    ),
+    TypedGoRoute<SessionDetailsRoute>(
+      path: 'session/:sessionId',
     ),
   ],
 )
