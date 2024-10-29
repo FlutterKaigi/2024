@@ -18,6 +18,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           path: 'sponsor/:id',
           factory: $SponsorRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'session',
+          factory: $SessionRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -45,6 +49,23 @@ extension $SponsorRouteExtension on SponsorRoute {
 
   String get location => GoRouteData.$location(
         '/sponsor/${Uri.encodeComponent(id.toString())}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SessionRouteExtension on SessionRoute {
+  static SessionRoute _fromState(GoRouterState state) => const SessionRoute();
+
+  String get location => GoRouteData.$location(
+        '/session',
       );
 
   void go(BuildContext context) => context.go(location);
