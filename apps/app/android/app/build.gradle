@@ -33,6 +33,14 @@ if (project.hasProperty('dart-defines')) {
             }
 }
 
+def keyProperties = new Properties()
+def keyPropertiesFile = rootProject.file("key.properties")
+if (keyPropertiesFile.exists()) {
+    keyPropertiesFile.withReader('UTF-8') { reader ->
+        keyProperties.load(reader)
+    }
+}
+
 android {
     namespace = "jp.flutterkaigi.conf2024"
     compileSdk = flutter.compileSdkVersion
@@ -61,11 +69,21 @@ android {
         resValue "string", "appLabel", "${dartDefines.APP_NAME}"
     }
 
+    signingConfigs {
+        release {
+            keyAlias keyProperties.getProperty('keyAlias')
+            keyPassword keyProperties.getProperty('keyPassword')
+            storeFile rootProject.file(keyProperties.getProperty('keyStoreFilePath'))
+            storePassword keyProperties.getProperty('keyStorePassword')
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.debug
+            signingConfig = signingConfigs.release
+            ndk {
+                debugSymbolLevel = 'SYMBOL_TABLE'
+            }
         }
     }
 }
