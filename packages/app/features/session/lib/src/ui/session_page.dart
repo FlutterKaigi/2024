@@ -6,9 +6,12 @@ import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
 import 'package:app_features_session/src/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/bordered_icon_image.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
+import 'package:app_features_session/src/ui/session_type_chip.dart';
 import 'package:collection/collection.dart';
+import 'package:common_data/profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -59,38 +62,51 @@ class SessionPage extends ConsumerWidget {
           ),
           SliverList.list(
             children: [
-              Row(
-                children: [
-                  const Gap(16),
-                  SessionRoomChip(
-                    venue: session.venue,
-                  ),
-                ],
-              ),
-              const Gap(8),
-              Tooltip(
-                message: l.openSpeakersLink,
-                child: ListTile(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 16,
-                  ),
-                  leading: const BorderedIconImage(size: 56),
-                  title: const Text('John Doe'),
-                  onTap: () {
-                    final url = Uri.parse('https://twitter.com/FlutterKaigi');
-                    unawaited(launchInExternalApp(url));
-                  },
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Wrap(
+                  runSpacing: 8,
+                  spacing: 8,
+                  children: [
+                    IntrinsicWidth(
+                      child: SessionRoomChip(
+                        venue: session.venue,
+                      ),
+                    ),
+                    IntrinsicWidth(
+                      child: SessionTypeChip(
+                        session: session,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const Gap(8),
+              for (final speaker in session.speakers) ...[
+                Tooltip(
+                  message: l.openSpeakersLink,
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 16,
+                    ),
+                    leading: const BorderedIconImage(
+                      size: 56,
+                    ),
+                    title: Text(speaker.name),
+                    onTap: () {
+                      unawaited(
+                        launchInExternalApp(speaker.snsAccounts.first.uri),
+                      );
+                    },
+                  ),
+                ),
+              ],
+              const Gap(16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(
-                  'FlutterKaigi is Lorem Ipsum is simply dummy text of the '
-                  'printing and typesetting industry. '
-                  'Lorem Ipsum has been the industry',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                child: MarkdownBody(
+                  data: session.description,
                 ),
               ),
               const Gap(8),
