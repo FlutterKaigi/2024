@@ -30,6 +30,7 @@ void main() async {
   await supabaseInitializer.initialize();
 
   await initSharedPreferencesInstance();
+  await initPackageInfoInstance();
 
   runApp(
     const ProviderScope(

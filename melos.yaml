@@ -22,6 +22,7 @@ command:
       riverpod: ^2.6.1
       hooks_riverpod: ^2.6.1
       json_annotation: ^4.9.0
+      package_info_plus: ^8.0.0
       riverpod_annotation: ^2.3.5
       supabase_flutter: ^2.6.0
       intl: ^0.19.0
@@ -72,6 +73,10 @@ scripts:
     exec: flutter test
     packageFilters:
       dependsOn: flutter_test
+  app:build:appbundle:production:
+    exec: flutter build appbundle --dart-define-from-file=defines/production.env
+    packageFilters:
+      scope: conference_2024_app
 
 ide:
   intellij:
