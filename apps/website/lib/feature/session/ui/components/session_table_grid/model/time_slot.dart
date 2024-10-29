@@ -10,7 +10,6 @@ part 'time_slot.g.dart';
 class TimeSlot with _$TimeSlot {
   @JsonSerializable(explicitToJson: true)
   const factory TimeSlot({
-    @JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
     required DateTime time,
     required List<SessionAndSessionVenue> sessions,
     SpecialSession? specialSession,
@@ -19,5 +18,3 @@ class TimeSlot with _$TimeSlot {
   factory TimeSlot.fromJson(Map<String, dynamic> json) =>
       _$TimeSlotFromJson(json);
 }
-
-String _dateTimeToString(DateTime date) => date.toIso8601String();

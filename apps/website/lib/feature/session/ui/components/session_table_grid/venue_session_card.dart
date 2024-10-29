@@ -33,7 +33,7 @@ class VenueSessionCard extends StatelessWidget {
                 ? SessionCard(
                     sessionAndSessionVenue: session,
                   )
-                : const SizedBox(),
+                : const SizedBox.shrink(),
       ),
     );
   }

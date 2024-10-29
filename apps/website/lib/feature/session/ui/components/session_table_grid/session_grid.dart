@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:collection/collection.dart';
 import 'package:common_data/session.dart';
 import 'package:conference_2024_website/feature/session/data/sessions_notifier.dart';
@@ -7,9 +5,10 @@ import 'package:conference_2024_website/feature/session/data/special_sessions_no
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/model/time_slot.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/time_slot_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SessionGrid extends ConsumerWidget {
+class SessionGrid extends HookConsumerWidget {
   const SessionGrid({
     required this.sessionVenues,
     required this.selectedDate,
@@ -23,38 +22,45 @@ class SessionGrid extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final specialSessions =
         ref.watch(specialSessionsByDateProvider(selectedDate));
-    final sessionsByStartTime = _groupSessionsByStartTime();
-    final selectedSessions = sessionsByStartTime.entries
-        .where((entry) => selectedDate.isSameDate(entry.key))
-        .toList();
 
-    // すべての開始時刻を取得（通常セッションと特別セッション）
-    final allStartTimes = {
-      ...selectedSessions.map((e) => e.key),
-      ...specialSessions.map((s) => s.startsAt),
-    }.toList()
-      ..sort();
+    final sessionsByStartTime = useMemoized(
+      _groupSessionsByStartTime,
+      [sessionVenues],
+    );
 
-    // 各開始時刻に対応するTimeSlotを作成
-    final allTimeSlots = allStartTimes.map((time) {
-      final normalSessions =
-          selectedSessions.firstWhereOrNull((e) => e.key == time)?.value ??
-              const [];
+    final selectedSessions = useMemoized(
+      () => sessionsByStartTime.entries
+          .where((entry) => selectedDate.isSameDate(entry.key))
+          .toList(),
+      [sessionsByStartTime, selectedDate],
+    );
 
-      // LTセッションをグループ化
-      final groupedSessions = _groupLightningTalks(normalSessions);
+    final allStartTimes = useMemoized(
+      () => {
+        ...selectedSessions.map((e) => e.key),
+        ...specialSessions.map((s) => s.startsAt),
+      }.toList()
+        ..sort(),
+      [selectedSessions, specialSessions],
+    );
 
-      final specialSession =
-          specialSessions.firstWhereOrNull((s) => s.startsAt == time);
+    final allTimeSlots = useMemoized(
+      () => allStartTimes.map((time) {
+        final normalSessions =
+            selectedSessions.firstWhereOrNull((e) => e.key == time)?.value ??
+                const [];
 
-      return TimeSlot(
-        time: time,
-        sessions: groupedSessions,
-        specialSession: specialSession,
-      );
-    }).toList();
+        final specialSession =
+            specialSessions.firstWhereOrNull((s) => s.startsAt == time);
 
-    print(const JsonEncoder.withIndent('  ').convert(allTimeSlots));
+        return TimeSlot(
+          time: time,
+          sessions: normalSessions,
+          specialSession: specialSession,
+        );
+      }).toList(),
+      [allStartTimes, selectedSessions, specialSessions],
+    );
 
     return Column(
       children: [
@@ -83,45 +89,6 @@ class SessionGrid extends ConsumerWidget {
         .sorted((a, b) => a.session.startsAt.compareTo(b.session.startsAt))
         .groupListsBy((e) => e.session.startsAt);
     return allSessions;
-  }
-
-  List<SessionAndSessionVenue> _groupLightningTalks(
-    List<SessionAndSessionVenue> sessions,
-  ) {
-    final result = <SessionAndSessionVenue>[];
-    final groupedByVenue = sessions.groupListsBy((s) => s.sessionVenue.id);
-
-    for (final venueGroup in groupedByVenue.values) {
-      if (venueGroup.every((s) => s.session.isLightningTalk)) {
-        // すべてがLTの場合はグループ化
-        final firstSession = venueGroup.first;
-        final lastSession = venueGroup.last;
-
-        // LTセッションをまとめた新しいセッションを作成
-        final groupedSession = SessionWithSpeakerAndSponsor(
-          id: 'lt_group_${firstSession.session.id}',
-          title: 'Lightning Talks',
-          description: venueGroup.map((s) => s.session.description).join('\n'),
-          startsAt: firstSession.session.startsAt,
-          endsAt: lastSession.session.endsAt,
-          isLightningTalk: true,
-          speakers: venueGroup.expand((s) => s.session.speakers).toList(),
-          sponsors: venueGroup.expand((s) => s.session.sponsors).toList(),
-        );
-
-        result.add(
-          (
-            session: groupedSession,
-            sessionVenue: firstSession.sessionVenue,
-          ),
-        );
-      } else {
-        // LT以外のセッションは個別に追加
-        result.addAll(venueGroup);
-      }
-    }
-
-    return result;
   }
 }
 

@@ -11,38 +11,37 @@ List<SpecialSession> specialSessions(Ref ref) {
     // 1日目
     SpecialSession(
       title: '開場',
-      startsAt: DateTime(2024, 11, 21, 9, 30),
+      startsAt: DateTime(2024, 11, 21, 9, 30).toUtc(),
       type: SpecialSessionType.opening,
     ),
-     SpecialSession(
+    SpecialSession(
       title: '基調講演',
-      startsAt: DateTime(2024, 11, 21, 10, 10),
-      endsAt: DateTime(2024, 11, 21, 10, 50),
+      startsAt: DateTime(2024, 11, 21, 10, 10).toUtc(),
+      endsAt: DateTime(2024, 11, 21, 10, 50).toUtc(),
       type: SpecialSessionType.keynote,
     ),
-     SpecialSession(
+    SpecialSession(
       title: 'ランチ',
-      startsAt: DateTime(2024, 11, 21, 11, 40),
-      endsAt: DateTime(2024, 11, 21, 13),
+      startsAt: DateTime(2024, 11, 21, 11, 40).toUtc(),
+      endsAt: DateTime(2024, 11, 21, 13).toUtc(),
       type: SpecialSessionType.lunch,
     ),
-     SpecialSession(
+    SpecialSession(
       title: '懇親会準備',
-      startsAt: DateTime(2024, 11, 21, 16, 40),
-      endsAt: DateTime(2024, 11, 21, 18, 10),
+      startsAt: DateTime(2024, 11, 21, 16, 40).toUtc(),
       type: SpecialSessionType.preparation,
       venueId: 'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d', // Room Aのみ
     ),
     // 2日目
-     SpecialSession(
+    SpecialSession(
       title: '開場',
-      startsAt: DateTime(2024, 11, 22, 9, 30),
+      startsAt: DateTime(2024, 11, 22, 9, 30).toUtc(),
       type: SpecialSessionType.opening,
     ),
-     SpecialSession(
+    SpecialSession(
       title: 'ランチ',
-      startsAt: DateTime(2024, 11, 22, 11, 40),
-      endsAt: DateTime(2024, 11, 22, 13, 30),
+      startsAt: DateTime(2024, 11, 22, 11, 40).toUtc(),
+      endsAt: DateTime(2024, 11, 22, 13, 30).toUtc(),
       type: SpecialSessionType.lunch,
     ),
   ];

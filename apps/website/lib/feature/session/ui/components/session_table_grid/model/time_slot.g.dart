@@ -42,7 +42,7 @@ _$TimeSlotImpl _$$TimeSlotImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$TimeSlotImplToJson(_$TimeSlotImpl instance) =>
     <String, dynamic>{
-      'time': _dateTimeToString(instance.time),
+      'time': instance.time.toIso8601String(),
       'sessions': instance.sessions
           .map((e) => <String, dynamic>{
                 'session': e.session.toJson(),

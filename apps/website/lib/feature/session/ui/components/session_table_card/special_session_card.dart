@@ -1,4 +1,5 @@
 import 'package:conference_2024_website/feature/session/data/model/special_session.dart';
+import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 
 class SpecialSessionCard extends StatelessWidget {
@@ -12,6 +13,7 @@ class SpecialSessionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
     final duration = session.endsAt != null
         ? session.endsAt!.difference(session.startsAt)
         : const Duration(minutes: 30); // 終了時間が指定されていない場合は30分とする
@@ -33,8 +35,8 @@ class SpecialSessionCard extends StatelessWidget {
           children: [
             Text(
               session.title,
-              style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+              style: textTheme.availableFonts.notoSansJp.bold.copyWith(
+                fontSize: 16,
               ),
               textAlign: TextAlign.center,
             ),
@@ -43,9 +45,7 @@ class SpecialSessionCard extends StatelessWidget {
               Text(
                 '${_formatTime(session.startsAt)} - '
                 '${_formatTime(session.endsAt!)}',
-                style: theme.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: textTheme.caution,
                 textAlign: TextAlign.center,
               ),
             ] else

@@ -20,7 +20,6 @@ TimeSlot _$TimeSlotFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TimeSlot {
-  @JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
   DateTime get time => throw _privateConstructorUsedError;
   List<
       ({
@@ -45,8 +44,7 @@ abstract class $TimeSlotCopyWith<$Res> {
       _$TimeSlotCopyWithImpl<$Res, TimeSlot>;
   @useResult
   $Res call(
-      {@JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
-      DateTime time,
+      {DateTime time,
       List<
               ({
                 SessionWithSpeakerAndSponsor session,
@@ -121,8 +119,7 @@ abstract class _$$TimeSlotImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
-      DateTime time,
+      {DateTime time,
       List<
               ({
                 SessionWithSpeakerAndSponsor session,
@@ -178,8 +175,7 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$TimeSlotImpl implements _TimeSlot {
   const _$TimeSlotImpl(
-      {@JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
-      required this.time,
+      {required this.time,
       required final List<
               ({
                 SessionWithSpeakerAndSponsor session,
@@ -193,7 +189,6 @@ class _$TimeSlotImpl implements _TimeSlot {
       _$$TimeSlotImplFromJson(json);
 
   @override
-  @JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
   final DateTime time;
   final List<
       ({
@@ -253,8 +248,7 @@ class _$TimeSlotImpl implements _TimeSlot {
 
 abstract class _TimeSlot implements TimeSlot {
   const factory _TimeSlot(
-      {@JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
-      required final DateTime time,
+      {required final DateTime time,
       required final List<
               ({
                 SessionWithSpeakerAndSponsor session,
@@ -267,7 +261,6 @@ abstract class _TimeSlot implements TimeSlot {
       _$TimeSlotImpl.fromJson;
 
   @override
-  @JsonKey(fromJson: DateTime.parse, toJson: _dateTimeToString)
   DateTime get time;
   @override
   List<
