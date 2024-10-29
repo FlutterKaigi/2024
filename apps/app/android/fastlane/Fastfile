@@ -1,0 +1,17 @@
+default_platform(:android)
+
+platform :android do
+  lane :deploy_internal do
+    json_key_data = Base64.strict_decode64(ENV['SERVICE_ACCOUNT_KEY_BASE64'])
+
+    package_name = ENV['PACKAGE_NAME']
+
+    upload_to_play_store(
+      package_name: package_name,
+      track: 'internal',
+      release_status: 'draft',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      json_key_data: json_key_data,
+    )
+  end
+end

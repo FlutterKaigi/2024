@@ -72,6 +72,10 @@ scripts:
     exec: flutter test
     packageFilters:
       dependsOn: flutter_test
+  app:build:appbundle:production:
+    exec: flutter build appbundle --dart-define-from-file=defines/production.env
+    packageFilters:
+      scope: conference_2024_app
 
 ide:
   intellij:
