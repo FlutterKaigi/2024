@@ -174,7 +174,8 @@ class _FloatingSwitcher extends HookWidget {
       ),
     );
     properties.add(
-        DiagnosticsProperty<ValueNotifier<SessionDate>>('current', current));
+      DiagnosticsProperty<ValueNotifier<SessionDate>>('current', current),
+    );
   }
 }
 
