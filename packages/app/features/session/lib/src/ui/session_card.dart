@@ -48,19 +48,20 @@ class SessionCard extends ConsumerWidget {
             subtitle: Column(
               children: [
                 const Gap(8),
-                Row(
-                  children: [
-                    SessionSpeakerIcon(
-                      profile: item.speakers.first,
-                      size: 40,
-                    ),
-                    const Gap(8),
-                    Text(
-                      item.speakers.first.name,
-                      style: theme.textTheme.labelMedium,
-                    ),
-                  ],
-                ),
+                if (item.speakers.isNotEmpty)
+                  Row(
+                    children: [
+                      SessionSpeakerIcon(
+                        profile: item.speakers.first,
+                        size: 40,
+                      ),
+                      const Gap(8),
+                      Text(
+                        item.speakers.first.name,
+                        style: theme.textTheme.labelMedium,
+                      ),
+                    ],
+                  ),
                 const Gap(8),
                 Row(
                   children: [
