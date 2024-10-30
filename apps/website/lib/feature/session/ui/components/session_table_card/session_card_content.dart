@@ -4,6 +4,7 @@ import 'package:conference_2024_website/ui/components/profile_avatar.dart';
 import 'package:conference_2024_website/ui/components/sponsor_logo.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SessionCardContent extends StatelessWidget {
   const SessionCardContent({
@@ -19,6 +20,7 @@ class SessionCardContent extends StatelessWidget {
     final textTheme = theme.customThemeExtension.textTheme;
 
     final session = sessionAndSessionVenue.session;
+    final timeFormatter = DateFormat('HH:mm');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -44,18 +46,12 @@ class SessionCardContent extends StatelessWidget {
         const SizedBox(height: 8),
         const Spacer(),
         Text(
-          '${_formatTime(session.startsAt)} - ${_formatTime(session.endsAt)}',
+          '${timeFormatter.format(session.startsAt.toLocal())} - '
+          '${timeFormatter.format(session.endsAt.toLocal())}',
           style: textTheme.caution,
         ),
       ],
     );
-  }
-
-  String _formatTime(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.hour.toString().padLeft(2, '0')}'
-        ':'
-        '${localTime.minute.toString().padLeft(2, '0')}';
   }
 }
 

@@ -22,6 +22,8 @@ class SessionDetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
+    final dateTimeFormatter = DateFormat('yyyy/MM/dd HH:mm');
+    final timeFormatter = DateFormat('HH:mm');
 
     return Card(
       child: Padding(
@@ -37,8 +39,8 @@ class SessionDetailsCard extends StatelessWidget {
             ),
             const Gap(16),
             Text(
-              '${DateFormat('yyyy/MM/dd HH:mm').format(session.startsAt.toLocal())} - '
-              '${_formatTime(session.endsAt)}',
+              '${dateTimeFormatter.format(session.startsAt.toLocal())} - '
+              '${timeFormatter.format(session.endsAt.toLocal())}',
               style: textTheme.caution.copyWith(
                 fontSize: 16,
               ),
@@ -102,13 +104,6 @@ class SessionDetailsCard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String _formatTime(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.hour.toString().padLeft(2, '0')}'
-        ':'
-        '${localTime.minute.toString().padLeft(2, '0')}';
   }
 }
 

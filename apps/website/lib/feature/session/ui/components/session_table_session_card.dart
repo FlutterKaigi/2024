@@ -1,5 +1,6 @@
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SessionTableSessionCard extends StatelessWidget {
   const SessionTableSessionCard({
@@ -12,6 +13,8 @@ class SessionTableSessionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final session = sessionAndSessionVenue.session;
+    final timeFormatter = DateFormat('HH:mm');
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -25,21 +28,14 @@ class SessionTableSessionCard extends StatelessWidget {
             for (final speaker in session.speakers) Text(speaker.name),
             const SizedBox(height: 8),
             Text(
-              '${_formatTime(session.startsAt)} '
+              '${timeFormatter.format(session.startsAt.toLocal())} '
               '-'
-              ' ${_formatTime(session.endsAt)}',
+              ' ${timeFormatter.format(session.endsAt.toLocal())}',
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],
         ),
       ),
     );
-  }
-
-  String _formatTime(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.hour.toString().padLeft(2, '0')}'
-        ':'
-        '${localTime.minute.toString().padLeft(2, '0')}';
   }
 }

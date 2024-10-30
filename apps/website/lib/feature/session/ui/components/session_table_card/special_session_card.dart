@@ -1,6 +1,7 @@
 import 'package:conference_2024_website/feature/session/data/model/special_session.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class SpecialSessionCard extends StatelessWidget {
   const SpecialSessionCard({
@@ -23,6 +24,8 @@ class SpecialSessionCard extends StatelessWidget {
     final paddingMultiplier = duration.inMinutes / 30;
     final verticalPadding = paddingUnit * paddingMultiplier;
 
+    final timeFormatter = DateFormat('HH:mm');
+
     return Card(
       color: _getBackgroundColor(theme),
       child: Padding(
@@ -40,17 +43,17 @@ class SpecialSessionCard extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            if (session.endsAt != null) ...[
-              const SizedBox(height: 8),
+            const SizedBox(height: 8),
+            if (session.endsAt != null)
               Text(
-                '${_formatTime(session.startsAt)} - '
-                '${_formatTime(session.endsAt!)}',
+                '${timeFormatter.format(session.startsAt.toLocal())} - '
+                '${timeFormatter.format(session.endsAt!.toLocal())}',
                 style: textTheme.caution,
                 textAlign: TextAlign.center,
-              ),
-            ] else
+              )
+            else
               Text(
-                _formatTime(session.startsAt),
+                timeFormatter.format(session.startsAt.toLocal()),
                 style: theme.textTheme.bodySmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -70,12 +73,5 @@ class SpecialSessionCard extends StatelessWidget {
       SpecialSessionType.preparation => theme.colorScheme.tertiaryContainer,
       SpecialSessionType.closing => theme.colorScheme.surfaceContainerHighest,
     };
-  }
-
-  String _formatTime(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.hour.toString().padLeft(2, '0')}'
-        ':'
-        '${localTime.minute.toString().padLeft(2, '0')}';
   }
 }

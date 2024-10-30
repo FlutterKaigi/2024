@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TimeDisplay extends StatelessWidget {
   const TimeDisplay({
@@ -10,19 +11,13 @@ class TimeDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final timeFormatter = DateFormat('HH:mm');
     return SizedBox(
       width: 80,
       child: Text(
-        _formatTime(startTime),
+        timeFormatter.format(startTime.toLocal()),
         style: Theme.of(context).textTheme.titleMedium,
       ),
     );
-  }
-
-  String _formatTime(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.hour.toString().padLeft(2, '0')}'
-        ':'
-        '${localTime.minute.toString().padLeft(2, '0')}';
   }
 }
