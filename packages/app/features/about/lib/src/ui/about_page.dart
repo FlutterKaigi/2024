@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:app_cores_core/constants.dart';
 import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_core/util.dart';
-import 'package:app_cores_core/constants.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
