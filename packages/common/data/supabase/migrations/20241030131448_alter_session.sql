@@ -18,7 +18,7 @@ SELECT
   USING (TRUE);
 
 --------------------------------
-CREATE TABLE speakers (id UUID PRIMARY KEY DEFAULT gen_random_uuid (), name text NOT NULL, avatar_name text, description text, x_id text);
+CREATE TABLE speakers (id UUID PRIMARY KEY DEFAULT gen_random_uuid (), name text NOT NULL, avatar_name text, x_id text);
 
 ALTER TABLE speakers enable ROW level security;
 
