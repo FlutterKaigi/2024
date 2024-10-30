@@ -19,8 +19,7 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
       name: venueWithSessions.name,
     );
 
-    final sessions = venueWithSessions.sessions
-        .sorted((a, b) => a.startsAt.compareTo(b.startsAt));
+    final sessions = venueWithSessions.sessions;
     for (final session in sessions) {
       timelineItems.add(
         TimelineItem.session(
@@ -38,5 +37,5 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
     }
   }
 
-  return timelineItems;
+  return timelineItems.sorted((a, b) => a.startsAt.compareTo(b.startsAt));
 }
