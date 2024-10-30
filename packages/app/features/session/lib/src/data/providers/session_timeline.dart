@@ -1,3 +1,4 @@
+import 'package:app_features_session/src/data/model/session_date.dart';
 import 'package:app_features_session/src/data/model/timeline_item.dart';
 import 'package:collection/collection.dart';
 import 'package:common_data/session.dart';
@@ -38,4 +39,19 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
   }
 
   return timelineItems.sorted((a, b) => a.startsAt.compareTo(b.startsAt));
+}
+
+@riverpod
+Future<List<TimelineItem>> sessionTimelineFromDate(
+  Ref ref,
+  SessionDate date,
+) async {
+  final timeline = ref.watch(
+    sessionTimelineProvider.selectAsync(
+      (value) =>
+          value.where((e) => SessionDate.fromDateTime(e.startsAt) == date),
+    ),
+  );
+
+  return (await timeline).toList();
 }
