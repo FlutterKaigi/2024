@@ -8,4 +8,7 @@ class L10nVenueEn extends L10nVenue {
 
   @override
   String get venuePageTitle => 'Venue';
+
+  @override
+  String get venueFloorMap => 'Floor Map';
 }
