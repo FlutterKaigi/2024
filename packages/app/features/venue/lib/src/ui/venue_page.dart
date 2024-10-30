@@ -38,8 +38,8 @@ class VenuePage extends StatelessWidget {
             child: InteractiveViewer(
               minScale: 1,
               maxScale: 3,
-              child: Assets.images.floorMap.image(
-                  width: 48, height: 48, semanticLabel: l.venueFloorMap),
+              child: Assets.images.floorMap
+                  .image(width: 48, height: 48, semanticLabel: l.venueFloorMap),
             ),
           ),
         ),
