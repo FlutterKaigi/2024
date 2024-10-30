@@ -23,9 +23,7 @@ class SessionsPage extends HookConsumerWidget {
     final showingDate = useState(SessionDate.day1);
     final scrollController = useScrollController();
 
-    final sessions = ref.watch(
-      sessionTimelineFromDateProvider(showingDate.value),
-    );
+    final sessions = ref.watch(sessionTimelineProvider);
 
     return Scaffold(
       body: Stack(
@@ -49,24 +47,32 @@ class SessionsPage extends HookConsumerWidget {
                 ],
               ),
               sessions.when(
-                data: (data) => SliverList.builder(
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    final item = data[index];
-                    final isDateVisible =
-                        index == 0 || item.startsAt != data[index - 1].startsAt;
-                    return TimelineItemView(
-                      item: item,
-                      isDateVisible: isDateVisible,
-                      onTap: item.map(
-                        event: (_) => null,
-                        session: (session) => () async =>
-                            SessionPageRoute(sessionId: session.id)
-                                .push(context),
-                      ),
-                    );
-                  },
-                ),
+                data: (data) {
+                  final sessions = data.where(
+                    (e) =>
+                        SessionDate.fromDateTime(e.startsAt) ==
+                        showingDate.value,
+                  );
+                  return SliverList.builder(
+                    itemCount: sessions.length,
+                    itemBuilder: (context, index) {
+                      final item = sessions.elementAt(index);
+                      final isDateVisible = index == 0 ||
+                          item.startsAt !=
+                              sessions.elementAt(index - 1).startsAt;
+                      return TimelineItemView(
+                        item: item,
+                        isDateVisible: isDateVisible,
+                        onTap: item.map(
+                          event: (_) => null,
+                          session: (session) => () async =>
+                              SessionPageRoute(sessionId: session.id)
+                                  .push(context),
+                        ),
+                      );
+                    },
+                  );
+                },
                 loading: () => const SliverFillRemaining(
                   child: Center(
                     child: CircularProgressIndicator(),
