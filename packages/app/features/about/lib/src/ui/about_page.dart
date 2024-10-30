@@ -194,7 +194,9 @@ class AboutPage extends ConsumerWidget {
                     const SizedBox(width: 16),
                     GestureDetector(
                       onTap: () async {
-                        await launchInExternalApp(ExternalPages.medium.uri);
+                        await launchInExternalApp(
+                          Uri.parse(Constants.mediumUrl),
+                        );
                       },
                       child: CommonAssets.logo.mediumLogo.svg(
                         width: 48,
