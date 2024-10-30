@@ -1,4 +1,4 @@
-import 'package:app_features_session/src/providers/session_timeline.dart';
+import 'package:app_features_session/src/data/model/timeline_item.dart';
 import 'package:app_features_session/src/ui/base_chip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

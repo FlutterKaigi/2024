@@ -1,7 +1,7 @@
 import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/ui.dart';
 import 'package:app_features_session/l10n.dart';
-import 'package:app_features_session/src/providers/session_timeline.dart';
+import 'package:app_features_session/src/data/providers/session_timeline.dart';
 import 'package:app_features_session/src/routing/router.dart';
 import 'package:app_features_session/src/ui/timeline_item_view.dart';
 import 'package:flutter/material.dart';

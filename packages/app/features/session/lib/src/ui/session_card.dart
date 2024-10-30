@@ -1,5 +1,5 @@
-import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
-import 'package:app_features_session/src/providers/session_timeline.dart';
+import 'package:app_features_session/src/data/model/timeline_item.dart';
+import 'package:app_features_session/src/data/providers/bookmarked_sessions.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';

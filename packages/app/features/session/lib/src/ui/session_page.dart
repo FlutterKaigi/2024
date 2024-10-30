@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:app_cores_core/util.dart';
 import 'package:app_features_session/l10n.dart';
-import 'package:app_features_session/src/providers/bookmarked_sessions.dart';
-import 'package:app_features_session/src/providers/session_timeline.dart';
+import 'package:app_features_session/src/data/model/timeline_item.dart';
+import 'package:app_features_session/src/data/providers/bookmarked_sessions.dart';
+import 'package:app_features_session/src/data/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';
