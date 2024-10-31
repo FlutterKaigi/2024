@@ -1,4 +1,5 @@
 import 'package:common_data/session.dart';
+import 'package:common_data/speaker.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/ui/components/profile_avatar.dart';
 import 'package:conference_2024_website/ui/components/sponsor_logo.dart';
@@ -16,7 +17,7 @@ class SessionDetailsCard extends StatelessWidget {
     super.key,
   });
 
-  final SessionWithSpeakerAndSponsor session;
+  final SessionsWithSpeakerSponsorV2 session;
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +113,7 @@ class _SpeakerCard extends StatelessWidget {
     required this.profile,
   });
 
-  final ProfileWithSns profile;
+  final Speaker profile;
 
   @override
   Widget build(BuildContext context) {
@@ -137,11 +138,6 @@ class _SpeakerCard extends StatelessWidget {
                   style: textTheme.availableFonts.notoSansJp.bold.copyWith(
                     fontSize: 16,
                   ),
-                ),
-                const Gap(4),
-                Text(
-                  profile.comment,
-                  style: textTheme.availableFonts.notoSansJp.regular,
                 ),
               ],
             ),

@@ -52,8 +52,8 @@ Future<List<SessionVenuesWithSessionsV2>> sessionsByDate(
 }
 
 typedef SessionDetails = ({
-  SessionVenuesWithSessions sessionVenue,
-  SessionWithSpeakerAndSponsor session,
+  SessionsWithSpeakerSponsorV2 session,
+  SessionVenuesWithSessionsV2 sessionVenue,
 });
 
 @Riverpod(keepAlive: true)
