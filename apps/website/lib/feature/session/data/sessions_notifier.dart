@@ -5,14 +5,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'sessions_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
-Future<List<SessionVenuesWithSessions>> sessions(Ref ref) async {
+Future<List<SessionVenuesWithSessionsV2>> sessions(Ref ref) async {
   final repository = ref.watch(sessionRepositoryProvider);
-  return repository.fetchSessionVenuesWithSessions();
+  return repository.fetchSessionVenuesWithSessionsV2();
 }
 
 typedef SessionsWithSessionVenue = ({
-  SessionVenuesWithSessions sessionVenue,
-  SessionWithSpeakerAndSponsor session,
+  SessionVenuesWithSessionsV2 sessionVenue,
+  SessionsWithSpeakerSponsorV2 session,
 });
 
 enum EventDate {
@@ -35,7 +35,7 @@ enum EventDate {
 }
 
 @riverpod
-Future<List<SessionVenuesWithSessions>> sessionsByDate(
+Future<List<SessionVenuesWithSessionsV2>> sessionsByDate(
   Ref ref,
   EventDate date,
 ) async {

@@ -1,6 +1,6 @@
 import 'package:common_data/session.dart';
 import 'package:conference_2024_website/feature/session/data/model/special_session.dart';
-import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
+import 'package:conference_2024_website/feature/session/data/sessions_notifier.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/venue_session_card.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +12,8 @@ class SessionsRow extends StatelessWidget {
     super.key,
   });
 
-  final List<SessionAndSessionVenue> sessions;
-  final List<SessionVenuesWithSessions> sessionVenues;
+  final List<SessionsWithSessionVenue> sessions;
+  final List<SessionVenuesWithSessionsV2> sessionVenues;
   final SpecialSession? specialSession;
 
   @override

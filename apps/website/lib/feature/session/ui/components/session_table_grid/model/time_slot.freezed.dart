@@ -14,22 +14,15 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-TimeSlot _$TimeSlotFromJson(Map<String, dynamic> json) {
-  return _TimeSlot.fromJson(json);
-}
-
 /// @nodoc
 mixin _$TimeSlot {
   DateTime get time => throw _privateConstructorUsedError;
   List<
       ({
-        SessionWithSpeakerAndSponsor session,
-        SessionVenuesWithSessions sessionVenue
+        SessionsWithSpeakerSponsorV2 session,
+        SessionVenuesWithSessionsV2 sessionVenue
       })> get sessions => throw _privateConstructorUsedError;
   SpecialSession? get specialSession => throw _privateConstructorUsedError;
-
-  /// Serializes this TimeSlot to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of TimeSlot
   /// with the given fields replaced by the non-null parameter values.
@@ -47,8 +40,8 @@ abstract class $TimeSlotCopyWith<$Res> {
       {DateTime time,
       List<
               ({
-                SessionWithSpeakerAndSponsor session,
-                SessionVenuesWithSessions sessionVenue
+                SessionsWithSpeakerSponsorV2 session,
+                SessionVenuesWithSessionsV2 sessionVenue
               })>
           sessions,
       SpecialSession? specialSession});
@@ -85,8 +78,8 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<
                   ({
-                    SessionWithSpeakerAndSponsor session,
-                    SessionVenuesWithSessions sessionVenue
+                    SessionsWithSpeakerSponsorV2 session,
+                    SessionVenuesWithSessionsV2 sessionVenue
                   })>,
       specialSession: freezed == specialSession
           ? _value.specialSession
@@ -122,8 +115,8 @@ abstract class _$$TimeSlotImplCopyWith<$Res>
       {DateTime time,
       List<
               ({
-                SessionWithSpeakerAndSponsor session,
-                SessionVenuesWithSessions sessionVenue
+                SessionsWithSpeakerSponsorV2 session,
+                SessionVenuesWithSessionsV2 sessionVenue
               })>
           sessions,
       SpecialSession? specialSession});
@@ -159,8 +152,8 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<
                   ({
-                    SessionWithSpeakerAndSponsor session,
-                    SessionVenuesWithSessions sessionVenue
+                    SessionsWithSpeakerSponsorV2 session,
+                    SessionVenuesWithSessionsV2 sessionVenue
                   })>,
       specialSession: freezed == specialSession
           ? _value.specialSession
@@ -172,34 +165,30 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
 class _$TimeSlotImpl implements _TimeSlot {
   const _$TimeSlotImpl(
       {required this.time,
       required final List<
               ({
-                SessionWithSpeakerAndSponsor session,
-                SessionVenuesWithSessions sessionVenue
+                SessionsWithSpeakerSponsorV2 session,
+                SessionVenuesWithSessionsV2 sessionVenue
               })>
           sessions,
       this.specialSession})
       : _sessions = sessions;
 
-  factory _$TimeSlotImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimeSlotImplFromJson(json);
-
   @override
   final DateTime time;
   final List<
       ({
-        SessionWithSpeakerAndSponsor session,
-        SessionVenuesWithSessions sessionVenue
+        SessionsWithSpeakerSponsorV2 session,
+        SessionVenuesWithSessionsV2 sessionVenue
       })> _sessions;
   @override
   List<
       ({
-        SessionWithSpeakerAndSponsor session,
-        SessionVenuesWithSessions sessionVenue
+        SessionsWithSpeakerSponsorV2 session,
+        SessionVenuesWithSessionsV2 sessionVenue
       })> get sessions {
     if (_sessions is EqualUnmodifiableListView) return _sessions;
     // ignore: implicit_dynamic_type
@@ -225,7 +214,6 @@ class _$TimeSlotImpl implements _TimeSlot {
                 other.specialSession == specialSession));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, time,
       const DeepCollectionEquality().hash(_sessions), specialSession);
@@ -237,13 +225,6 @@ class _$TimeSlotImpl implements _TimeSlot {
   @pragma('vm:prefer-inline')
   _$$TimeSlotImplCopyWith<_$TimeSlotImpl> get copyWith =>
       __$$TimeSlotImplCopyWithImpl<_$TimeSlotImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TimeSlotImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _TimeSlot implements TimeSlot {
@@ -251,22 +232,19 @@ abstract class _TimeSlot implements TimeSlot {
       {required final DateTime time,
       required final List<
               ({
-                SessionWithSpeakerAndSponsor session,
-                SessionVenuesWithSessions sessionVenue
+                SessionsWithSpeakerSponsorV2 session,
+                SessionVenuesWithSessionsV2 sessionVenue
               })>
           sessions,
       final SpecialSession? specialSession}) = _$TimeSlotImpl;
-
-  factory _TimeSlot.fromJson(Map<String, dynamic> json) =
-      _$TimeSlotImpl.fromJson;
 
   @override
   DateTime get time;
   @override
   List<
       ({
-        SessionWithSpeakerAndSponsor session,
-        SessionVenuesWithSessions sessionVenue
+        SessionsWithSpeakerSponsorV2 session,
+        SessionVenuesWithSessionsV2 sessionVenue
       })> get sessions;
   @override
   SpecialSession? get specialSession;

@@ -1,5 +1,5 @@
-import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
+import 'package:common_data/speaker.dart';
+import 'package:conference_2024_website/feature/session/data/sessions_notifier.dart';
 import 'package:conference_2024_website/ui/components/profile_avatar.dart';
 import 'package:conference_2024_website/ui/components/sponsor_logo.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -11,7 +11,7 @@ class SessionCardContent extends StatelessWidget {
     super.key,
   });
 
-  final SessionAndSessionVenue sessionAndSessionVenue;
+  final SessionsWithSessionVenue sessionAndSessionVenue;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class _Speaker extends StatelessWidget {
     required this.profile,
   });
 
-  final ProfileWithSns profile;
+  final Speaker profile;
 
   @override
   Widget build(BuildContext context) {

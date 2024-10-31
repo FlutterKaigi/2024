@@ -1,4 +1,4 @@
-import 'package:common_data/profile.dart';
+import 'package:common_data/speaker.dart';
 import 'package:flutter/material.dart';
 
 class ProfileAvatar extends StatelessWidget {
@@ -8,7 +8,7 @@ class ProfileAvatar extends StatelessWidget {
     this.size = 24,
   });
 
-  final ProfileWithSns profile;
+  final Speaker profile;
   final double size;
 
   @override
@@ -29,7 +29,7 @@ class ProfileAvatar extends StatelessWidget {
 
     return ClipOval(
       child: Image.network(
-        profile.googleAvatarUri.toString(),
+        profile.avatarUri.toString(),
         fit: BoxFit.cover,
         width: size,
         height: size,

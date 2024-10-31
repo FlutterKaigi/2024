@@ -1,7 +1,7 @@
 import 'package:common_data/session.dart';
 import 'package:conference_2024_website/feature/session/data/model/special_session.dart';
+import 'package:conference_2024_website/feature/session/data/sessions_notifier.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_card/special_session_card.dart';
-import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/session_grid.dart';
 import 'package:conference_2024_website/feature/session/ui/components/session_table_grid/sessions_row.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +15,8 @@ class TimeSlotRow extends StatelessWidget {
   });
 
   final DateTime startTime;
-  final List<SessionAndSessionVenue> sessions;
-  final List<SessionVenuesWithSessions> sessionVenues;
+  final List<SessionsWithSessionVenue> sessions;
+  final List<SessionVenuesWithSessionsV2> sessionVenues;
   final SpecialSession? specialSession;
 
   @override

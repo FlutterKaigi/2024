@@ -15,7 +15,7 @@ class SessionGrid extends HookConsumerWidget {
     super.key,
   });
 
-  final List<SessionVenuesWithSessions> sessionVenues;
+  final List<SessionVenuesWithSessionsV2> sessionVenues;
   final EventDate selectedDate;
 
   @override
@@ -75,7 +75,7 @@ class SessionGrid extends HookConsumerWidget {
     );
   }
 
-  Map<DateTime, List<SessionAndSessionVenue>> _groupSessionsByStartTime() {
+  Map<DateTime, List<SessionsWithSessionVenue>> _groupSessionsByStartTime() {
     final allSessions = sessionVenues
         .map(
           (e) => e.sessions.map(
@@ -91,8 +91,3 @@ class SessionGrid extends HookConsumerWidget {
     return allSessions;
   }
 }
-
-typedef SessionAndSessionVenue = ({
-  SessionWithSpeakerAndSponsor session,
-  SessionVenuesWithSessions sessionVenue
-});
