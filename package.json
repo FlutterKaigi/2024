@@ -19,6 +19,9 @@
     "pnpm": "9.12.3",
     "npm": "please_use_pnpm_instead"
   },
+  "scripts": {
+    "textlint-ci": "danger ci -d textlint.ts"
+  },
   "pnpm": {
     "overrides": {
       "cookie": "^0.7.1"
