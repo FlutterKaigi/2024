@@ -15,10 +15,64 @@ permissions:
   contents: read
 
 jobs:
+  check-environment:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+
+    steps:
+      - name: Check Environment
+        run: |
+          # flutterkaigi-app-2024-development はまだ未対応
+          if [ "${{ github.event.inputs.environment }}" = "flutterkaigi-app-2024-development" ]; then
+            echo "flutterkaigi-app-2024-development is not supported yet"
+            exit 1
+          fi
+
   deploy-app-android:
+    needs: check-environment
     runs-on: ubuntu-22.04
     environment: ${{ github.event.inputs.environment }}
     timeout-minutes: 20
 
     steps:
-      - run: echo "Test"
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      # https://github.com/actions/setup-java
+      - name: Setup Android
+        uses: actions/setup-java@8df1039502a15bceb9433410b1a100fbe190c53b # v4.5.0
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Decode Key Store
+        working-directory: apps/app/android
+        run: |
+          echo ${{ secrets.UPLOAD_KEY_STORE_BASE64 }} | base64 -d >upload.jks
+
+      - name: Generate build.properties
+        working-directory: apps/app/android
+        run: |
+          cat <<EOL >key.properties
+          keyAlias=${{ secrets.UPLOAD_KEY_ALIAS }}
+          keyPassword=${{ secrets.UPLOAD_KEY_PASSWORD }}
+          keyStoreFilePath=upload.jks
+          keyStorePassword=${{ secrets.UPLOAD_KEY_STORE_PASSWORD }}
+          EOL
+
+      - name: Build AppBundle
+        working-directory: apps/app
+        run: |
+          flutter build appbundle \
+            --dart-define-from-file=${{ vars.DEFINES_FILE_NAME }}
+
+      - name: Deploy to internal test
+        run: fastlane android deploy_internal
+        working-directory: apps/app/android
+        env:
+          PACKAGE_NAME: ${{ vars.PACKAGE_NAME }}
+          SERVICE_ACCOUNT_KEY_BASE64: ${{ secrets.SERVICE_ACCOUNT_KEY_BASE64 }}
