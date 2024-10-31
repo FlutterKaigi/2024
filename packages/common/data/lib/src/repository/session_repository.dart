@@ -47,6 +47,7 @@ class SessionRepository {
   final SponsorRepository _sponsorRepository;
   final SpeakerRepository _speakerRepository;
 
+  @Deprecated('Use fetchSessionVenuesWithSessionsV2 instead')
   Future<List<SessionVenuesWithSessions>>
       fetchSessionVenuesWithSessions() async {
     final result = await _client
