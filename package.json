@@ -14,5 +14,15 @@
   },
   "peerDependencies": {
     "typescript": "^5.4.5"
-  }
+  },
+  "engines": {
+    "pnpm": "9.12.3",
+    "npm": "please_use_pnpm_instead"
+  },
+  "pnpm": {
+    "overrides": {
+      "cookie": "^0.7.1"
+    }
+  },
+  "packageManager": "pnpm@9.12.3"
 }
