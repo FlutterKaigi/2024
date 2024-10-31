@@ -1,7 +1,4 @@
-DROP POLICY "Everyone can read profiles in session_speakers" ON public.profiles;
-
-DROP POLICY "Everyone can read profile_social_networking_services in session" ON public.profile_social_networking_services;
-
+-- 登壇者のアバターを格納するバケット
 INSERT INTO
   storage.buckets (id, name, public)
 VALUES
@@ -11,7 +8,7 @@ CREATE POLICY "Everyone can read sponsors bucket" ON storage.buckets FOR
 SELECT
   USING (TRUE);
 
---------------------------------
+-- 登壇者の情報を格納するテーブル
 CREATE TABLE speakers (id UUID PRIMARY KEY DEFAULT gen_random_uuid (), name text NOT NULL, avatar_name text, x_id text);
 
 ALTER TABLE speakers enable ROW level security;
@@ -22,7 +19,7 @@ SELECT
 
 CREATE POLICY "Admin can CRUD speakers" ON speakers FOR ALL TO authenticated USING (role () = 'admin');
 
---------------------------------
+-- セッションと登壇者の関係を格納する中間テーブル
 CREATE TABLE session_speakers_v2 (
   session_id UUID NOT NULL REFERENCES sessions (id) ON DELETE cascade,
   speaker_id UUID NOT NULL REFERENCES speakers (id) ON DELETE cascade,
@@ -37,6 +34,7 @@ SELECT
 
 CREATE POLICY "Admin can CRUD session_speakers_v2" ON session_speakers_v2 FOR ALL TO authenticated USING (role () = 'admin');
 
+-- セッション会場・セッション・登壇者・スポンサーの情報を取得するビューを作成する
 CREATE VIEW public.session_venues_with_sessions_v2
 WITH
   (security_invoker = TRUE) AS
@@ -102,6 +100,7 @@ FROM
   session_venues v
   LEFT JOIN session_details sd ON sd.venue_id = v.id;
 
+-- スポンサーとセッションの関係を取得するビューを作成する
 CREATE OR REPLACE VIEW public.sponsor_with_sessions_v2
 WITH
   (security_invoker = TRUE) AS
