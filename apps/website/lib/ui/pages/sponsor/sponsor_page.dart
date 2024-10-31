@@ -126,6 +126,7 @@ class _Body extends StatelessWidget {
     final child = Column(
       children: [
         const Row(),
+        const Gap(80),
         Text(
           i18n.sponsors.title,
           style: textTheme.availableFonts.poppins.regular.copyWith(
