@@ -4,7 +4,6 @@ import 'package:conference_2024_website/feature/session/data/sessions_notifier.d
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'time_slot.freezed.dart';
-part 'time_slot.g.dart';
 
 @freezed
 class TimeSlot with _$TimeSlot {

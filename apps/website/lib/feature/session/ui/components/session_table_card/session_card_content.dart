@@ -30,6 +30,8 @@ class SessionCardContent extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Wrap(
+          spacing: 4,
+          runSpacing: 4,
           children: [
             for (final speaker in session.speakers) _Speaker(profile: speaker),
           ],
