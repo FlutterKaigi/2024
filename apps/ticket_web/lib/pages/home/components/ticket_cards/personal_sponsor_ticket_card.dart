@@ -48,7 +48,7 @@ class PersonalSponsorTicketCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             MarkdownBody(
-              data: i18n.homePage.tickets.personalSponsor.description,
+              data: i18n.homePage.tickets.personalSponsor.description.join('\n'),
               styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
                 p: textTheme.bodyLarge?.copyWith(
                   color: theme.colorScheme.onSurface.withValues(alpha: 0.7),

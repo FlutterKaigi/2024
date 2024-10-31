@@ -60,7 +60,7 @@ class GeneralTicketCard extends HookWidget {
             ),
             const SizedBox(height: 4),
             MarkdownBody(
-              data: i18n.homePage.tickets.normal.description,
+              data: i18n.homePage.tickets.normal.description.join('\n'),
               styleSheet: MarkdownStyleSheet.fromTheme(theme).copyWith(
                 p: (isMobile ? textTheme.bodyMedium : textTheme.bodyLarge)
                     ?.copyWith(
