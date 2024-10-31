@@ -1944,7 +1944,7 @@ VALUES
 INSERT INTO
   public.speakers
 VALUES
-  ('a5efe6e5-0e8d-4720-aceb-27c105115772', 'ゆめみ', 'a5efe6e5-0e8d-4720-aceb-27c105115772', NULL);
+  ('a5efe6e5-0e8d-4720-aceb-27c105115772', 'ゆめみ', 'a5efe6e5-0e8d-4720-aceb-27c105115772.webp', NULL);
 
 -- session_speakers
 INSERT INTO
