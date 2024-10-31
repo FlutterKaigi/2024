@@ -34,6 +34,70 @@ export type Database = {
   }
   public: {
     Tables: {
+      contributors: {
+        Row: {
+          avatar_url: string
+          contribution_count: number
+          id: string
+          name: string
+        }
+        Insert: {
+          avatar_url: string
+          contribution_count?: number
+          id?: string
+          name: string
+        }
+        Update: {
+          avatar_url?: string
+          contribution_count?: number
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      job_boards: {
+        Row: {
+          alt_text: string
+          id: number
+          image_name: string
+          url: string
+        }
+        Insert: {
+          alt_text: string
+          id: number
+          image_name: string
+          url: string
+        }
+        Update: {
+          alt_text?: string
+          id?: number
+          image_name?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_boards_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "sponsor_with_sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "job_boards_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "sponsor_with_sessions_v2"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "job_boards_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "sponsors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       news: {
         Row: {
           ended_at: string | null
@@ -99,6 +163,7 @@ export type Database = {
           created_at: string
           id: string
           is_adult: boolean | null
+          is_published: boolean | null
           name: string
           role: Database["public"]["Enums"]["role"]
         }
@@ -109,6 +174,7 @@ export type Database = {
           created_at?: string
           id: string
           is_adult?: boolean | null
+          is_published?: boolean | null
           name?: string
           role?: Database["public"]["Enums"]["role"]
         }
@@ -119,18 +185,11 @@ export type Database = {
           created_at?: string
           id?: string
           is_adult?: boolean | null
+          is_published?: boolean | null
           name?: string
           role?: Database["public"]["Enums"]["role"]
         }
-        Relationships: [
-          {
-            foreignKeyName: "profiles_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       session_speakers: {
         Row: {
@@ -165,6 +224,36 @@ export type Database = {
             columns: ["speaker_id"]
             isOneToOne: false
             referencedRelation: "profiles_with_sns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      session_speakers_v2: {
+        Row: {
+          session_id: string
+          speaker_id: string
+        }
+        Insert: {
+          session_id: string
+          speaker_id: string
+        }
+        Update: {
+          session_id?: string
+          speaker_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "session_speakers_v2_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_speakers_v2_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "speakers"
             referencedColumns: ["id"]
           },
         ]
@@ -230,6 +319,13 @@ export type Database = {
             foreignKeyName: "sessions_sponsor_id_fkey"
             columns: ["sponsor_id"]
             isOneToOne: false
+            referencedRelation: "sponsor_with_sessions_v2"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sessions_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
             referencedRelation: "sponsors"
             referencedColumns: ["id"]
           },
@@ -247,7 +343,35 @@ export type Database = {
             referencedRelation: "session_venues_with_sessions"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "sessions_venue_id_fkey"
+            columns: ["venue_id"]
+            isOneToOne: false
+            referencedRelation: "session_venues_with_sessions_v2"
+            referencedColumns: ["id"]
+          },
         ]
+      }
+      speakers: {
+        Row: {
+          avatar_name: string | null
+          id: string
+          name: string
+          x_id: string | null
+        }
+        Insert: {
+          avatar_name?: string | null
+          id?: string
+          name: string
+          x_id?: string | null
+        }
+        Update: {
+          avatar_name?: string | null
+          id?: string
+          name?: string
+          x_id?: string | null
+        }
+        Relationships: []
       }
       sponsors: {
         Row: {
@@ -373,14 +497,14 @@ export type Database = {
             foreignKeyName: "tickets_sponsor_id_fkey"
             columns: ["sponsor_id"]
             isOneToOne: false
-            referencedRelation: "sponsors"
+            referencedRelation: "sponsor_with_sessions_v2"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "tickets_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: "tickets_sponsor_id_fkey"
+            columns: ["sponsor_id"]
             isOneToOne: false
-            referencedRelation: "users"
+            referencedRelation: "sponsors"
             referencedColumns: ["id"]
           },
         ]
@@ -395,21 +519,22 @@ export type Database = {
           created_at: string | null
           id: string | null
           is_adult: boolean | null
+          is_published: boolean | null
           name: string | null
           role: Database["public"]["Enums"]["role"] | null
           sns_accounts: Json | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "profiles_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       session_venues_with_sessions: {
+        Row: {
+          id: string | null
+          name: string | null
+          sessions: Json | null
+        }
+        Relationships: []
+      }
+      session_venues_with_sessions_v2: {
         Row: {
           id: string | null
           name: string | null
@@ -429,8 +554,26 @@ export type Database = {
         }
         Relationships: []
       }
+      sponsor_with_sessions_v2: {
+        Row: {
+          description: string | null
+          id: number | null
+          logo_name: string | null
+          name: string | null
+          sessions: Json | null
+          type: Database["public"]["Enums"]["sponsor_type"] | null
+          url: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      replace_contributors: {
+        Args: {
+          contributors: Json
+        }
+        Returns: undefined
+      }
       replace_sns_accounts: {
         Args: {
           user_id: string
@@ -904,5 +1047,20 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof PublicSchema["CompositeTypes"]
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
+    ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
 
