@@ -59,7 +59,7 @@ class SponsorPage extends HookWidget {
     super.key,
   });
 
-  final SponsorWithSession sponsor;
+  final SponsorWithSessionV2 sponsor;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +103,8 @@ class SponsorPage extends HookWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
+    properties
+        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
   }
 }
 
@@ -112,7 +113,7 @@ class _Body extends StatelessWidget {
     required this.sponsor,
   });
 
-  final SponsorWithSession sponsor;
+  final SponsorWithSessionV2 sponsor;
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +146,8 @@ class _Body extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
+    properties
+        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
   }
 }
 
