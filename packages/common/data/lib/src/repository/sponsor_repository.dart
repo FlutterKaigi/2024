@@ -75,6 +75,7 @@ final class SponsorRepository {
       );
 }
 
+/// `public.sponsors`テーブルの要素を表すモデル
 @freezed
 class SponsorTable with _$SponsorTable {
   const factory SponsorTable({
