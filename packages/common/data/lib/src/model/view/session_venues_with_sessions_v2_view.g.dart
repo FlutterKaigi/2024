@@ -88,28 +88,28 @@ Map<String, dynamic> _$$SessionsWithSpeakerSponsorV2ViewImplToJson(
       'sponsors': instance.sponsors,
     };
 
-_$SessionVenuesWithSessionsViewV2Impl
-    _$$SessionVenuesWithSessionsViewV2ImplFromJson(Map<String, dynamic> json) =>
-        $checkedCreate(
-          r'_$SessionVenuesWithSessionsViewV2Impl',
-          json,
-          ($checkedConvert) {
-            final val = _$SessionVenuesWithSessionsViewV2Impl(
-              id: $checkedConvert('id', (v) => v as String),
-              name: $checkedConvert('name', (v) => v as String),
-              sessions: $checkedConvert(
-                  'sessions',
-                  (v) => (v as List<dynamic>)
-                      .map((e) => SessionsWithSpeakerSponsorV2.fromJson(
-                          e as Map<String, dynamic>))
-                      .toList()),
-            );
-            return val;
-          },
+_$SessionVenuesWithSessionsV2Impl _$$SessionVenuesWithSessionsV2ImplFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SessionVenuesWithSessionsV2Impl',
+      json,
+      ($checkedConvert) {
+        final val = _$SessionVenuesWithSessionsV2Impl(
+          id: $checkedConvert('id', (v) => v as String),
+          name: $checkedConvert('name', (v) => v as String),
+          sessions: $checkedConvert(
+              'sessions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SessionsWithSpeakerSponsorV2.fromJson(
+                      e as Map<String, dynamic>))
+                  .toList()),
         );
+        return val;
+      },
+    );
 
-Map<String, dynamic> _$$SessionVenuesWithSessionsViewV2ImplToJson(
-        _$SessionVenuesWithSessionsViewV2Impl instance) =>
+Map<String, dynamic> _$$SessionVenuesWithSessionsV2ImplToJson(
+        _$SessionVenuesWithSessionsV2Impl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

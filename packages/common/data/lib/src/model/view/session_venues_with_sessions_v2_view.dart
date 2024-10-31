@@ -42,15 +42,15 @@ class SessionsWithSpeakerSponsorV2View with _$SessionsWithSpeakerSponsorV2View {
 }
 
 @freezed
-class SessionVenuesWithSessionsViewV2 with _$SessionVenuesWithSessionsViewV2 {
-  const factory SessionVenuesWithSessionsViewV2({
+class SessionVenuesWithSessionsV2 with _$SessionVenuesWithSessionsV2 {
+  const factory SessionVenuesWithSessionsV2({
     required String id,
     required String name,
     required List<SessionsWithSpeakerSponsorV2> sessions,
-  }) = _SessionVenuesWithSessionsViewV2;
+  }) = _SessionVenuesWithSessionsV2;
 
-  factory SessionVenuesWithSessionsViewV2.fromJson(Map<String, dynamic> json) =>
-      _$SessionVenuesWithSessionsViewV2FromJson(json);
+  factory SessionVenuesWithSessionsV2.fromJson(Map<String, dynamic> json) =>
+      _$SessionVenuesWithSessionsV2FromJson(json);
 }
 
 @freezed
