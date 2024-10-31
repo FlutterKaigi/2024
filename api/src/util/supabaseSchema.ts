@@ -86,6 +86,13 @@ export type Database = {
             foreignKeyName: "job_boards_id_fkey"
             columns: ["id"]
             isOneToOne: true
+            referencedRelation: "sponsor_with_sessions_v2"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "job_boards_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
             referencedRelation: "sponsors"
             referencedColumns: ["id"]
           },
@@ -209,6 +216,43 @@ export type Database = {
             foreignKeyName: "session_speakers_speaker_id_fkey"
             columns: ["speaker_id"]
             isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_speakers_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "profiles_with_sns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      session_speakers_v2: {
+        Row: {
+          session_id: string
+          speaker_id: string
+        }
+        Insert: {
+          session_id: string
+          speaker_id: string
+        }
+        Update: {
+          session_id?: string
+          speaker_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "session_speakers_v2_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_speakers_v2_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
             referencedRelation: "speakers"
             referencedColumns: ["id"]
           },
@@ -275,6 +319,13 @@ export type Database = {
             foreignKeyName: "sessions_sponsor_id_fkey"
             columns: ["sponsor_id"]
             isOneToOne: false
+            referencedRelation: "sponsor_with_sessions_v2"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sessions_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
             referencedRelation: "sponsors"
             referencedColumns: ["id"]
           },
@@ -290,6 +341,13 @@ export type Database = {
             columns: ["venue_id"]
             isOneToOne: false
             referencedRelation: "session_venues_with_sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sessions_venue_id_fkey"
+            columns: ["venue_id"]
+            isOneToOne: false
+            referencedRelation: "session_venues_with_sessions_v2"
             referencedColumns: ["id"]
           },
         ]
@@ -439,6 +497,13 @@ export type Database = {
             foreignKeyName: "tickets_sponsor_id_fkey"
             columns: ["sponsor_id"]
             isOneToOne: false
+            referencedRelation: "sponsor_with_sessions_v2"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tickets_sponsor_id_fkey"
+            columns: ["sponsor_id"]
+            isOneToOne: false
             referencedRelation: "sponsors"
             referencedColumns: ["id"]
           },
@@ -469,7 +534,27 @@ export type Database = {
         }
         Relationships: []
       }
+      session_venues_with_sessions_v2: {
+        Row: {
+          id: string | null
+          name: string | null
+          sessions: Json | null
+        }
+        Relationships: []
+      }
       sponsor_with_sessions: {
+        Row: {
+          description: string | null
+          id: number | null
+          logo_name: string | null
+          name: string | null
+          sessions: Json | null
+          type: Database["public"]["Enums"]["sponsor_type"] | null
+          url: string | null
+        }
+        Relationships: []
+      }
+      sponsor_with_sessions_v2: {
         Row: {
           description: string | null
           id: number | null
