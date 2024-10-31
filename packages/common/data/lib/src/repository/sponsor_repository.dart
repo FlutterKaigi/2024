@@ -1,5 +1,6 @@
 import 'package:common_data/src/model/sponsor.dart';
 import 'package:common_data/src/model/view/sponsor_with_session.dart';
+import 'package:common_data/src/repository/speaker_repository.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
@@ -13,17 +14,21 @@ part 'sponsor_repository.g.dart';
 SponsorRepository sponsorRepository(Ref ref) => SponsorRepository(
       supabaseClient: ref.watch(supabaseClientProvider),
       sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
+      speakerRepository: ref.watch(speakerRepositoryProvider),
     );
 
 final class SponsorRepository {
   SponsorRepository({
     required SupabaseClient supabaseClient,
     required StorageFileApi sponsorStorageFileApi,
+    required SpeakerRepository speakerRepository,
   })  : _supabaseClient = supabaseClient,
-        _sponsorStorageFileApi = sponsorStorageFileApi;
+        _sponsorStorageFileApi = sponsorStorageFileApi,
+        _speakerRepository = speakerRepository;
 
   final SupabaseClient _supabaseClient;
   final StorageFileApi _sponsorStorageFileApi;
+  final SpeakerRepository _speakerRepository;
 
   Future<List<Sponsor>> fetchSponsors() async {
     final result =
@@ -33,6 +38,7 @@ final class SponsorRepository {
     return result.map(toSponsor).toList();
   }
 
+  @Deprecated('Use fetchSponsorWithSessionsV2 instead')
   Future<List<SponsorWithSession>> fetchSponsorWithSessions() async {
     final result = await _supabaseClient
         .from('sponsor_with_sessions')
@@ -48,6 +54,16 @@ final class SponsorRepository {
         .toList();
   }
 
+  Future<List<SponsorWithSessionV2>> fetchSponsorWithSessionsV2() async {
+    final result = await _supabaseClient
+        .from('sponsor_with_sessions_v2')
+        .select()
+        .withConverter(
+          (json) => json.map(SponsorWithSessionV2View.fromJson).toList(),
+        );
+    return result.map(toSponsorWithSessionV2).toList();
+  }
+
   Sponsor toSponsor(SponsorTable sponsorTable) => Sponsor(
         id: sponsorTable.id,
         name: sponsorTable.name,
@@ -59,6 +75,7 @@ final class SponsorRepository {
         type: sponsorTable.type,
       );
 
+  @Deprecated('Use toSponsorV2 instead')
   SponsorWithSession toSponsorWithSession(
     SponsorWithSessionView sponsorWithSessionView,
   ) =>
@@ -72,6 +89,40 @@ final class SponsorRepository {
         url: sponsorWithSessionView.url,
         type: sponsorWithSessionView.type,
         sessions: sponsorWithSessionView.sessions,
+      );
+
+  SponsorWithSessionV2 toSponsorWithSessionV2(
+    SponsorWithSessionV2View sponsorWithSessionV2View,
+  ) =>
+      SponsorWithSessionV2(
+        id: sponsorWithSessionV2View.id,
+        name: sponsorWithSessionV2View.name,
+        logoUrl: Uri.parse(
+          _sponsorStorageFileApi
+              .getPublicUrl(sponsorWithSessionV2View.logoName),
+        ),
+        description: sponsorWithSessionV2View.description,
+        url: sponsorWithSessionV2View.url,
+        type: sponsorWithSessionV2View.type,
+        sessions: sponsorWithSessionV2View.sessions
+            .map(_toSponsorWithSessionV2Session)
+            .toList(),
+      );
+
+  SponsorWithSessionV2Session _toSponsorWithSessionV2Session(
+    SponsorWithSessionV2ViewSession sponsorWithSessionV2ViewSession,
+  ) =>
+      SponsorWithSessionV2Session(
+        id: sponsorWithSessionV2ViewSession.id,
+        title: sponsorWithSessionV2ViewSession.title,
+        description: sponsorWithSessionV2ViewSession.description,
+        startsAt: sponsorWithSessionV2ViewSession.startsAt,
+        endsAt: sponsorWithSessionV2ViewSession.endsAt,
+        isLightningTalk: sponsorWithSessionV2ViewSession.isLightningTalk,
+        speakers: sponsorWithSessionV2ViewSession.speakers
+            .map(_speakerRepository.toSpeaker)
+            .toList(),
+        venue: sponsorWithSessionV2ViewSession.venue,
       );
 }
 

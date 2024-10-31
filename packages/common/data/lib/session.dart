@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use_from_same_package
+
 export 'src/model/profile_social_networking_service.dart'
     show ProfileSocialNetworkingService;
 export 'src/model/session.dart' show Session;
@@ -13,6 +15,16 @@ export 'src/model/view/session_venues_with_sessions_v2_view.dart'
         SessionsWithSpeakerSponsorV2;
 export 'src/model/view/session_venues_with_sessions_view.dart'
     show SessionVenuesWithSessionsView;
+export 'src/model/view/sponsor_with_session.dart'
+    show
+        $SessionWithSpeakerAndVenueCopyWith,
+        $SponsorWithSessionCopyWith,
+        $SponsorWithSessionV2CopyWith,
+        $SponsorWithSessionV2SessionCopyWith,
+        SessionWithSpeakerAndVenue,
+        SponsorWithSession,
+        SponsorWithSessionV2,
+        SponsorWithSessionV2Session;
 export 'src/repository/session_repository.dart'
     show
         SessionRepository,
