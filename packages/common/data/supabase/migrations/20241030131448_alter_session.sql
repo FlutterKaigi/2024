@@ -2,12 +2,6 @@ DROP POLICY "Everyone can read profiles in session_speakers" ON public.profiles;
 
 DROP POLICY "Everyone can read profile_social_networking_services in session" ON public.profile_social_networking_services;
 
-DROP VIEW "session_venues_with_sessions";
-
-DROP VIEW "sponsor_with_sessions";
-
-DROP TABLE session_speakers;
-
 INSERT INTO
   storage.buckets (id, name, public)
 VALUES
@@ -29,21 +23,21 @@ SELECT
 CREATE POLICY "Admin can CRUD speakers" ON speakers FOR ALL TO authenticated USING (role () = 'admin');
 
 --------------------------------
-CREATE TABLE session_speakers (
+CREATE TABLE session_speakers_v2 (
   session_id UUID NOT NULL REFERENCES sessions (id) ON DELETE cascade,
   speaker_id UUID NOT NULL REFERENCES speakers (id) ON DELETE cascade,
   PRIMARY KEY (session_id, speaker_id)
 );
 
-ALTER TABLE session_speakers enable ROW level security;
+ALTER TABLE session_speakers_v2 enable ROW level security;
 
-CREATE POLICY "Everyone can read session_speakers" ON session_speakers FOR
+CREATE POLICY "Everyone can read session_speakers_v2" ON session_speakers_v2 FOR
 SELECT
   USING (TRUE);
 
-CREATE POLICY "Admin can CRUD session_speakers" ON session_speakers FOR ALL TO authenticated USING (role () = 'admin');
+CREATE POLICY "Admin can CRUD session_speakers_v2" ON session_speakers_v2 FOR ALL TO authenticated USING (role () = 'admin');
 
-CREATE VIEW public.session_venues_with_sessions
+CREATE VIEW public.session_venues_with_sessions_v2
 WITH
   (security_invoker = TRUE) AS
 WITH
@@ -52,7 +46,7 @@ WITH
       ss.session_id,
       json_agg(sp.*) AS speakers
     FROM
-      session_speakers ss
+      session_speakers_v2 ss
       JOIN speakers sp ON ss.speaker_id = sp.id
     GROUP BY
       ss.session_id
@@ -108,10 +102,27 @@ FROM
   session_venues v
   LEFT JOIN session_details sd ON sd.venue_id = v.id;
 
-CREATE OR REPLACE VIEW public.sponsor_with_sessions
+CREATE OR REPLACE VIEW public.sponsor_with_sessions_v2
 WITH
   (security_invoker = TRUE) AS
 WITH
+  speaker_details AS (
+    SELECT
+      ss.session_id,
+      json_agg(sp.*) AS speakers
+    FROM
+      session_speakers_v2 ss
+      JOIN speakers sp ON ss.speaker_id = sp.id
+    GROUP BY
+      ss.session_id
+  ),
+  venue_details AS (
+    SELECT
+      v.id,
+      json_build_object('id', v.id, 'name', v.name) AS venue_info
+    FROM
+      session_venues v
+  ),
   session_details AS (
     SELECT
       s.sponsor_id,
@@ -130,29 +141,9 @@ WITH
           'is_lightning_talk',
           s.is_lightning_talk,
           'speakers',
-          coalesce(
-            (
-              SELECT
-                json_agg(sp.*)
-              FROM
-                session_speakers ss
-                JOIN speakers sp ON ss.speaker_id = sp.id
-              WHERE
-                ss.session_id = s.id
-            ),
-            '[]'::json
-          ),
+          coalesce(sd.speakers, '[]'::json),
           'venue',
-          (
-            SELECT
-              json_build_object('id', ve.id, 'name', ve.name)
-            FROM
-              session_venues ve
-            WHERE
-              ve.id = s.venue_id
-            LIMIT
-              1
-          )
+          vd.venue_info
         )
       ) FILTER (
         WHERE
@@ -160,6 +151,8 @@ WITH
       ) AS sessions
     FROM
       sessions s
+      LEFT JOIN speaker_details sd ON sd.session_id = s.id
+      LEFT JOIN venue_details vd ON vd.id = s.venue_id
     GROUP BY
       s.sponsor_id
   )
