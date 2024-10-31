@@ -69,6 +69,7 @@ class _Body extends StatelessWidget {
         child: Column(
           children: [
             const Row(),
+            const Gap(80),
             Text(
               i18n.session.title,
               style: textTheme.headline,

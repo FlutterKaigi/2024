@@ -31,7 +31,7 @@ mixin _$TimelineItem {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)
         session,
   }) =>
@@ -47,7 +47,7 @@ mixin _$TimelineItem {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)?
         session,
   }) =>
@@ -63,7 +63,7 @@ mixin _$TimelineItem {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)?
         session,
     required TResult orElse(),
@@ -240,7 +240,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)
         session,
   }) {
@@ -259,7 +259,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)?
         session,
   }) {
@@ -278,7 +278,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)?
         session,
     required TResult orElse(),
@@ -358,7 +358,7 @@ abstract class _$$TimelineItemSessionImplCopyWith<$Res>
       DateTime endsAt,
       bool isLightningTalk,
       SessionVenue venue,
-      List<ProfileWithSns> speakers,
+      List<Speaker> speakers,
       List<Sponsor> sponsors});
 
   $SessionVenueCopyWith<$Res> get venue;
@@ -419,7 +419,7 @@ class __$$TimelineItemSessionImplCopyWithImpl<$Res>
       speakers: null == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<Speaker>,
       sponsors: null == sponsors
           ? _value._sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -449,7 +449,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
       required this.endsAt,
       required this.isLightningTalk,
       required this.venue,
-      required final List<ProfileWithSns> speakers,
+      required final List<Speaker> speakers,
       required final List<Sponsor> sponsors})
       : _speakers = speakers,
         _sponsors = sponsors;
@@ -468,9 +468,9 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
   final bool isLightningTalk;
   @override
   final SessionVenue venue;
-  final List<ProfileWithSns> _speakers;
+  final List<Speaker> _speakers;
   @override
-  List<ProfileWithSns> get speakers {
+  List<Speaker> get speakers {
     if (_speakers is EqualUnmodifiableListView) return _speakers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_speakers);
@@ -543,7 +543,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)
         session,
   }) {
@@ -563,7 +563,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)?
         session,
   }) {
@@ -583,7 +583,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
             DateTime endsAt,
             bool isLightningTalk,
             SessionVenue venue,
-            List<ProfileWithSns> speakers,
+            List<Speaker> speakers,
             List<Sponsor> sponsors)?
         session,
     required TResult orElse(),
@@ -636,7 +636,7 @@ abstract class TimelineItemSession implements TimelineItem {
       required final DateTime endsAt,
       required final bool isLightningTalk,
       required final SessionVenue venue,
-      required final List<ProfileWithSns> speakers,
+      required final List<Speaker> speakers,
       required final List<Sponsor> sponsors}) = _$TimelineItemSessionImpl;
 
   String get id;
@@ -649,7 +649,7 @@ abstract class TimelineItemSession implements TimelineItem {
   DateTime get endsAt;
   bool get isLightningTalk;
   SessionVenue get venue;
-  List<ProfileWithSns> get speakers;
+  List<Speaker> get speakers;
   List<Sponsor> get sponsors;
 
   /// Create a copy of TimelineItem
