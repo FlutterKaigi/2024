@@ -100,8 +100,14 @@ abstract class L10nVenue {
   /// No description provided for @venuePageTitle.
   ///
   /// In ja, this message translates to:
-  /// **'Venue'**
+  /// **'会場'**
   String get venuePageTitle;
+
+  /// No description provided for @venueFloorMap.
+  ///
+  /// In ja, this message translates to:
+  /// **'フロアマップ'**
+  String get venueFloorMap;
 }
 
 class _L10nVenueDelegate extends LocalizationsDelegate<L10nVenue> {
