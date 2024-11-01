@@ -192,12 +192,13 @@ class AboutPage extends ConsumerWidget {
                       height: 48,
                     ),
                     const SizedBox(width: 16),
-                    GestureDetector(
+                    InkWell(
                       onTap: () async {
                         await launchInExternalApp(
                           Uri.parse(Constants.mediumUrl),
                         );
                       },
+                      customBorder: const CircleBorder(),
                       child: CommonAssets.logo.mediumLogo.svg(
                         width: 48,
                         height: 48,
