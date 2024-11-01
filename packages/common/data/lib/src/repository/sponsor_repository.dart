@@ -104,6 +104,7 @@ final class SponsorRepository {
           _sponsorStorageFileApi
               .getPublicUrl(sponsorWithSessionV2View.logoName),
         ),
+        sortId: sponsorWithSessionV2View.sortId,
         description: sponsorWithSessionV2View.description,
         url: sponsorWithSessionV2View.url,
         type: sponsorWithSessionV2View.type,
