@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// 個人チケットのカード
 class PersonalSponsorTicketCard extends StatelessWidget {
@@ -56,6 +59,16 @@ class PersonalSponsorTicketCard extends StatelessWidget {
                 ),
               ),
               softLineBreak: true,
+              onTapLink: (text, href, title) {
+                if (href != null) {
+                  final uri = Uri.tryParse(href);
+                  if (uri != null) {
+                    unawaited(
+                      launchUrl(uri),
+                    );
+                  }
+                }
+              },
             ),
             const SizedBox(height: 16),
             FilledButton.icon(
