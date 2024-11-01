@@ -1839,7 +1839,7 @@ VALUES
 INSERT INTO
   public.speakers
 VALUES
-  ('e086a7c1-4cc8-4c48-a58c-391ebe97e385', 'よーたん@ゆめみCTO', 'e086a7c1-4cc8-4c48-a58c-391ebe97e385.webp', 'yohta_watanave');
+  ('e086a7c1-4cc8-4c48-a58c-391ebe97e385', 'よーたん', 'e086a7c1-4cc8-4c48-a58c-391ebe97e385.webp', 'yohta_watanave');
 
 INSERT INTO
   public.speakers
