@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use_from_same_package
-
 export 'src/model/profile_social_networking_service.dart'
     show ProfileSocialNetworkingService;
 export 'src/model/session.dart' show Session;
