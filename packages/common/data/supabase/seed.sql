@@ -2061,3 +2061,8 @@ INSERT INTO
   public.session_speakers_v2
 VALUES
   ('72c94df3-82ee-41ce-8b7f-d575eef2e9d9', '4ede673b-d9bb-4d1d-bb1f-cebc6e23b998');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('61d31fb9-fbc5-4d01-aad5-139e6568db15', 'a7dc0952-73c1-4e4a-a50a-aa6d553369ae');
