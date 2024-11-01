@@ -1,0 +1,1 @@
+ALTER TABLE sponsors ADD COLUMN sort_id SMALLINT UNIQUE;
