@@ -54,10 +54,13 @@ final class SponsorRepository {
         .toList();
   }
 
+  /// スポンサーとそれに紐づくセッションを取得する
+  /// スポンサーはsort_idの昇順に並び替えられています
   Future<List<SponsorWithSessionV2>> fetchSponsorWithSessionsV2() async {
     final result = await _supabaseClient
         .from('sponsor_with_sessions_v2')
         .select()
+        .order('sort_id', ascending: true)
         .withConverter(
           (json) => json.map(SponsorWithSessionV2View.fromJson).toList(),
         );
