@@ -1,4 +1,5 @@
 import 'package:common_data/job_board.dart';
+import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/feature/job_board/data/job_board_notifier.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +12,16 @@ class JobBoardView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(jobBoardProvider);
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
 
     return switch (state) {
       AsyncData(:final value) => DecoratedBox(
           decoration: const BoxDecoration(
             color: Colors.white,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
+          child: AnimatedPadding(
+            duration: const Duration(milliseconds: 300),
+            padding: EdgeInsets.all(isMobile ? 16 : 40),
             child: Wrap(
               spacing: 20,
               runSpacing: 20,
