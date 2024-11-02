@@ -103,6 +103,12 @@ abstract class L10nAbout {
   /// **'About us'**
   String get aboutPageTitle;
 
+  /// No description provided for @flutterKaigiTitle.
+  ///
+  /// In ja, this message translates to:
+  /// **'FlutterKaigi 2024'**
+  String get flutterKaigiTitle;
+
   /// No description provided for @flutterKaigiDescription.
   ///
   /// In ja, this message translates to:
