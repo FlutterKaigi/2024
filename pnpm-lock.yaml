@@ -46,8 +46,13 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
 
+  apis/configs: {}
+
   apis/supabase-types:
     devDependencies:
+      configs:
+        specifier: workspace:*
+        version: link:../configs
       typescript:
         specifier: ^5.3.3
         version: 5.6.3
@@ -85,6 +90,9 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^4.20241011.0
         version: 4.20241022.0
+      configs:
+        specifier: workspace:*
+        version: link:../configs
       wrangler:
         specifier: ^3.80.4
         version: 3.84.1(@cloudflare/workers-types@4.20241022.0)
