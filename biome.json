@@ -26,5 +26,10 @@
     "formatter": {
       "quoteStyle": "double"
     }
+  },
+  "json": {
+    "formatter": {
+      "enabled": false
+    }
   }
 }
