@@ -156,6 +156,7 @@ _$SponsorWithSessionV2ViewImpl _$$SponsorWithSessionV2ViewImplFromJson(
               'url', (v) => v == null ? null : Uri.parse(v as String)),
           type: $checkedConvert(
               'type', (v) => $enumDecode(_$SponsorTypeEnumMap, v)),
+          sortId: $checkedConvert('sort_id', (v) => (v as num).toInt()),
           sessions: $checkedConvert(
               'sessions',
               (v) => (v as List<dynamic>)
@@ -165,7 +166,7 @@ _$SponsorWithSessionV2ViewImpl _$$SponsorWithSessionV2ViewImplFromJson(
         );
         return val;
       },
-      fieldKeyMap: const {'logoName': 'logo_name'},
+      fieldKeyMap: const {'logoName': 'logo_name', 'sortId': 'sort_id'},
     );
 
 Map<String, dynamic> _$$SponsorWithSessionV2ViewImplToJson(
@@ -177,6 +178,7 @@ Map<String, dynamic> _$$SponsorWithSessionV2ViewImplToJson(
       'description': instance.description,
       'url': instance.url?.toString(),
       'type': _$SponsorTypeEnumMap[instance.type]!,
+      'sort_id': instance.sortId,
       'sessions': instance.sessions,
     };
 
@@ -243,6 +245,7 @@ _$SponsorWithSessionV2Impl _$$SponsorWithSessionV2ImplFromJson(
               'url', (v) => v == null ? null : Uri.parse(v as String)),
           type: $checkedConvert(
               'type', (v) => $enumDecode(_$SponsorTypeEnumMap, v)),
+          sortId: $checkedConvert('sort_id', (v) => (v as num).toInt()),
           sessions: $checkedConvert(
               'sessions',
               (v) => (v as List<dynamic>)
@@ -252,7 +255,7 @@ _$SponsorWithSessionV2Impl _$$SponsorWithSessionV2ImplFromJson(
         );
         return val;
       },
-      fieldKeyMap: const {'logoUrl': 'logo_url'},
+      fieldKeyMap: const {'logoUrl': 'logo_url', 'sortId': 'sort_id'},
     );
 
 Map<String, dynamic> _$$SponsorWithSessionV2ImplToJson(
@@ -264,6 +267,7 @@ Map<String, dynamic> _$$SponsorWithSessionV2ImplToJson(
       'description': instance.description,
       'url': instance.url?.toString(),
       'type': _$SponsorTypeEnumMap[instance.type]!,
+      'sort_id': instance.sortId,
       'sessions': instance.sessions,
     };
 

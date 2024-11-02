@@ -1,5 +1,5 @@
 import 'package:app_cores_designsystem/ui.dart';
-import 'package:common_data/profile.dart';
+import 'package:common_data/speaker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -14,38 +14,23 @@ class SessionSpeakerIcon extends StatelessWidget {
     super.key,
   });
 
-  final ProfileWithSns profile;
+  final Speaker profile;
   final double size;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return FutureBuilder<Uint8List?>(
-      // ignore: discarded_futures
-      future: profile.userAvatarFetch?.call(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done &&
-            snapshot.hasData) {
-          return _buildContents(
-            MemoryImage(snapshot.data!),
-            theme,
-          );
-        }
+    final avatarUri = profile.avatarUri;
 
-        return _buildContents(
-          NetworkImage(profile.googleAvatarUri?.toString() ?? ''),
-          theme,
-        );
-      },
+    if (avatarUri == null) {
+      return MainLogo(size: size);
+    }
+
+    return _buildContents(
+      NetworkImage(avatarUri.toString()),
+      theme,
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DoubleProperty('size', size));
-    properties.add(DiagnosticsProperty<ProfileWithSns>('profile', profile));
   }
 
   Widget _buildContents(
@@ -68,5 +53,12 @@ class SessionSpeakerIcon extends StatelessWidget {
         width: size,
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<Speaker>('profile', profile));
+    properties.add(DoubleProperty('size', size));
   }
 }

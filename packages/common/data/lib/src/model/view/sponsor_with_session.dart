@@ -74,6 +74,7 @@ class SponsorWithSessionV2View with _$SponsorWithSessionV2View {
     required String description,
     required Uri? url,
     required SponsorType type,
+    required int sortId,
     required List<SponsorWithSessionV2ViewSession> sessions,
   }) = _SponsorWithSessionV2View;
 
@@ -108,6 +109,7 @@ class SponsorWithSessionV2 with _$SponsorWithSessionV2 {
     required String description,
     required Uri? url,
     required SponsorType type,
+    required int sortId,
     required List<SponsorWithSessionV2Session> sessions,
   }) = _SponsorWithSessionV2;
 
