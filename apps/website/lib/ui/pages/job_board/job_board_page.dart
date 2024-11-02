@@ -73,7 +73,7 @@ class _Body extends StatelessWidget {
         const Row(),
         const Gap(120),
         Text(
-          i18n.sponsors.title,
+          i18n.jobBoard.title,
           style: textTheme.availableFonts.poppins.regular.copyWith(
             fontSize: 48,
           ),
