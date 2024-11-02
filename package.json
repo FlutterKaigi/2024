@@ -14,5 +14,14 @@
   },
   "peerDependencies": {
     "typescript": "^5.4.5"
-  }
+  },
+  "pnpm": {
+    "overrides": {
+      "cookie": "^0.7.1"
+    }
+  },
+  "private": true,
+  "workspaces": [
+    "apis/*"
+  ]
 }
