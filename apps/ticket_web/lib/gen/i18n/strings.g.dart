@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 255 (127 per locale)
+/// Strings: 275 (137 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -528,8 +528,12 @@ class _StringsHomePageTicketsNormalJa {
 
   // Translations
   String get name => '一般チケット';
-  String get description =>
-      '**[一般チケットの特典]**\n- **本編への参加**\n- **懇親会への参加**\n- **各種ノベルティ**';
+  List<String> get description => [
+        '**[一般チケットの特典]**',
+        '- **本編への参加**',
+        '- **懇親会への参加**',
+        '- **各種ノベルティ**',
+      ];
 }
 
 // Path: homePage.tickets.invitation
@@ -557,8 +561,16 @@ class _StringsHomePageTicketsPersonalSponsorJa {
 
   // Translations
   String get name => '個人スポンサー付き参加チケット';
-  String get description =>
-      '- 個人スポンサー付き参加チケットは、一般チケットを内包します\n\n**[個人スポンサーの特典]**\n- **優先Viewing Area**: セッションルーム前方に優先エリアを設置\n- **専用FlutterKaigiグッズ**\n- **開会式でのメッセージ紹介**\n- **Webサイトへのアイコン掲載**';
+  List<String> get description => [
+        '- 個人スポンサー付き参加チケットは、一般チケットを内包します',
+        '',
+        '**[個人スポンサーの特典]**',
+        '- **前夜祭への参加**: 2024/11/20(水)に開催する前夜祭へ参加頂けます([詳細はこちら](https://medium.com/flutterkaigi/flutterkaigi-2024%E5%89%8D%E5%A4%9C%E7%A5%AD%E3%82%92%E9%96%8B%E5%82%AC%E3%81%97%E3%81%BE%E3%81%99-5e7ff7ba3947))',
+        '- **優先Viewing Area**: セッションルーム前方に優先エリアを設置',
+        '- **専用FlutterKaigiグッズ**',
+        '- **開会式でのメッセージ紹介**',
+        '- **Webサイトへのアイコン掲載**',
+      ];
 }
 
 // Path: homePage.tickets.student
@@ -1349,8 +1361,12 @@ class _StringsHomePageTicketsNormalEn extends _StringsHomePageTicketsNormalJa {
   @override
   String get name => 'Normal Ticket';
   @override
-  String get description =>
-      '**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**';
+  List<String> get description => [
+        '**[Normal Ticket Benefits]**',
+        '- **Access to the main event**',
+        '- **Access to the party**',
+        '- **Various Merchandise**',
+      ];
 }
 
 // Path: homePage.tickets.invitation
@@ -1392,8 +1408,16 @@ class _StringsHomePageTicketsPersonalSponsorEn
   @override
   String get name => 'Personal Sponsor Ticket';
   @override
-  String get description =>
-      '- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**';
+  List<String> get description => [
+        '- Personal Sponsor Ticket includes a general ticket',
+        '',
+        '**[Personal Sponsor Benefits]**',
+        '- **Pre-Party Access**: Access to the pre-party on November 20 (Wednesday) ([details here](https://medium.com/flutterkaigi/flutterkaigi-2024%E5%89%8D%E5%A4%9C%E7%A5%AD%E3%82%92%E9%96%8B%E5%82%AC%E3%81%97%E3%81%BE%E3%81%99-5e7ff7ba3947))',
+        '- **Exclusive Viewing Area**: Dedicated area in front of the session room',
+        '- **Exclusive FlutterKaigi Merchandise**',
+        '- **Introduction at the Opening Ceremony**',
+        '- **Icon on the Website**',
+      ];
 }
 
 // Path: homePage.tickets.student
@@ -1793,8 +1817,14 @@ extension on Translations {
         return 'チケットをお持ちかどうかの確認中にエラーが発生しました。';
       case 'homePage.tickets.normal.name':
         return '一般チケット';
-      case 'homePage.tickets.normal.description':
-        return '**[一般チケットの特典]**\n- **本編への参加**\n- **懇親会への参加**\n- **各種ノベルティ**';
+      case 'homePage.tickets.normal.description.0':
+        return '**[一般チケットの特典]**';
+      case 'homePage.tickets.normal.description.1':
+        return '- **本編への参加**';
+      case 'homePage.tickets.normal.description.2':
+        return '- **懇親会への参加**';
+      case 'homePage.tickets.normal.description.3':
+        return '- **各種ノベルティ**';
       case 'homePage.tickets.invitation.description':
         return '招待コードまたはクーポンコードをお持ちの方はこちらに入力してください';
       case 'homePage.tickets.invitation.textBoxTitle':
@@ -1839,8 +1869,22 @@ extension on Translations {
         return '少々お待ちください...';
       case 'homePage.tickets.personalSponsor.name':
         return '個人スポンサー付き参加チケット';
-      case 'homePage.tickets.personalSponsor.description':
-        return '- 個人スポンサー付き参加チケットは、一般チケットを内包します\n\n**[個人スポンサーの特典]**\n- **優先Viewing Area**: セッションルーム前方に優先エリアを設置\n- **専用FlutterKaigiグッズ**\n- **開会式でのメッセージ紹介**\n- **Webサイトへのアイコン掲載**';
+      case 'homePage.tickets.personalSponsor.description.0':
+        return '- 個人スポンサー付き参加チケットは、一般チケットを内包します';
+      case 'homePage.tickets.personalSponsor.description.1':
+        return '';
+      case 'homePage.tickets.personalSponsor.description.2':
+        return '**[個人スポンサーの特典]**';
+      case 'homePage.tickets.personalSponsor.description.3':
+        return '- **前夜祭への参加**: 2024/11/20(水)に開催する前夜祭へ参加頂けます([詳細はこちら](https://medium.com/flutterkaigi/flutterkaigi-2024%E5%89%8D%E5%A4%9C%E7%A5%AD%E3%82%92%E9%96%8B%E5%82%AC%E3%81%97%E3%81%BE%E3%81%99-5e7ff7ba3947))';
+      case 'homePage.tickets.personalSponsor.description.4':
+        return '- **優先Viewing Area**: セッションルーム前方に優先エリアを設置';
+      case 'homePage.tickets.personalSponsor.description.5':
+        return '- **専用FlutterKaigiグッズ**';
+      case 'homePage.tickets.personalSponsor.description.6':
+        return '- **開会式でのメッセージ紹介**';
+      case 'homePage.tickets.personalSponsor.description.7':
+        return '- **Webサイトへのアイコン掲載**';
       case 'homePage.tickets.student.name':
         return '学割について';
       case 'homePage.tickets.student.description':
@@ -2063,8 +2107,14 @@ extension on _StringsEn {
         return 'An error occurred while verifying whether you have a ticket.';
       case 'homePage.tickets.normal.name':
         return 'Normal Ticket';
-      case 'homePage.tickets.normal.description':
-        return '**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**';
+      case 'homePage.tickets.normal.description.0':
+        return '**[Normal Ticket Benefits]**';
+      case 'homePage.tickets.normal.description.1':
+        return '- **Access to the main event**';
+      case 'homePage.tickets.normal.description.2':
+        return '- **Access to the party**';
+      case 'homePage.tickets.normal.description.3':
+        return '- **Various Merchandise**';
       case 'homePage.tickets.invitation.description':
         return 'If you have an invitation code or coupon code, please enter it here.';
       case 'homePage.tickets.invitation.textBoxTitle':
@@ -2101,8 +2151,22 @@ extension on _StringsEn {
         return 'Please wait a moment...';
       case 'homePage.tickets.personalSponsor.name':
         return 'Personal Sponsor Ticket';
-      case 'homePage.tickets.personalSponsor.description':
-        return '- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**';
+      case 'homePage.tickets.personalSponsor.description.0':
+        return '- Personal Sponsor Ticket includes a general ticket';
+      case 'homePage.tickets.personalSponsor.description.1':
+        return '';
+      case 'homePage.tickets.personalSponsor.description.2':
+        return '**[Personal Sponsor Benefits]**';
+      case 'homePage.tickets.personalSponsor.description.3':
+        return '- **Pre-Party Access**: Access to the pre-party on November 20 (Wednesday) ([details here](https://medium.com/flutterkaigi/flutterkaigi-2024%E5%89%8D%E5%A4%9C%E7%A5%AD%E3%82%92%E9%96%8B%E5%82%AC%E3%81%97%E3%81%BE%E3%81%99-5e7ff7ba3947))';
+      case 'homePage.tickets.personalSponsor.description.4':
+        return '- **Exclusive Viewing Area**: Dedicated area in front of the session room';
+      case 'homePage.tickets.personalSponsor.description.5':
+        return '- **Exclusive FlutterKaigi Merchandise**';
+      case 'homePage.tickets.personalSponsor.description.6':
+        return '- **Introduction at the Opening Ceremony**';
+      case 'homePage.tickets.personalSponsor.description.7':
+        return '- **Icon on the Website**';
       case 'homePage.tickets.student.name':
         return 'Student Discount';
       case 'homePage.tickets.student.description':

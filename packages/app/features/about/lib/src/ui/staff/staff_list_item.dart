@@ -1,3 +1,4 @@
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:common_data/staff.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +20,12 @@ class StaffListItem extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
+      onTap: () async {
+        final githubAccount = staff.snsAccounts.firstWhere(
+          (account) => account.type == SnsType.github,
+        );
+        await launchInExternalApp(githubAccount.link);
+      },
       leading: Image.network(
         staff.iconUrl.toString(),
         width: _imageSize,

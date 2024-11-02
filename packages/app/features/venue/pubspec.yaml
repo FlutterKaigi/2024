@@ -11,6 +11,10 @@ environment:
 dependencies:
   app_cores_core:
     path: ../../cores/core
+  app_cores_designsystem:
+    path: ../../cores/designsystem
+  app_cores_settings:
+    path: ../../cores/settings
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -18,5 +22,17 @@ dependencies:
   intl: ^0.19.0
 
 dev_dependencies:
+  build_runner: ^2.4.12
+  flutter_gen_runner: ^5.6.0
   flutter_test:
     sdk: flutter
+
+flutter:
+  assets:
+    - assets/images/
+
+flutter_gen:
+  output: lib/src/gen/assets
+  assets:
+    outputs:
+      package_parameter_enabled: true

@@ -51,6 +51,38 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  app_links:
+    dependency: transitive
+    description:
+      name: app_links
+      sha256: ad1a6d598e7e39b46a34f746f9a8b011ee147e4c275d407fa457e7a62f84dd99
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.2"
+  app_links_linux:
+    dependency: transitive
+    description:
+      name: app_links_linux
+      sha256: f5f7173a78609f3dfd4c2ff2c95bd559ab43c80a87dc6a095921d96c05688c81
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
+  app_links_platform_interface:
+    dependency: transitive
+    description:
+      name: app_links_platform_interface
+      sha256: "05f5379577c513b534a29ddea68176a4d4802c46180ee8e2e966257158772a3f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+  app_links_web:
+    dependency: transitive
+    description:
+      name: app_links_web
+      sha256: af060ed76183f9e2b87510a9480e56a5352b6c249778d07bd2c95fc35632a555
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   args:
     dependency: transitive
     description:
@@ -188,13 +220,20 @@ packages:
     source: hosted
     version: "4.10.0"
   collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: collection
       sha256: a1ace0a119f20aabc852d165077c036cd864315bd99b7eaa10a60100341941bf
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
+  common_data:
+    dependency: "direct main"
+    description:
+      path: "../../../common/data"
+      relative: true
+    source: path
+    version: "1.0.0"
   convert:
     dependency: transitive
     description:
@@ -281,7 +320,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_hooks:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_hooks
       sha256: cde36b12f7188c85286fba9b38cc5a902e7279f36dd676967106c041dc9dde70
@@ -293,6 +332,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_markdown:
+    dependency: "direct main"
+    description:
+      name: flutter_markdown
+      sha256: f0e599ba89c9946c8e051780f0ec99aba4ba15895e0380a7ab68f420046fc44e
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.4+1"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -343,6 +390,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  functions_client:
+    dependency: transitive
+    description:
+      name: functions_client
+      sha256: "61597ed93be197b1be6387855e4b760e6aac2355fcfc4df6d20d2b4579982158"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   gap:
     dependency: "direct main"
     description:
@@ -383,6 +438,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.1"
+  gotrue:
+    dependency: transitive
+    description:
+      name: gotrue
+      sha256: "74b29f10ef7239e254847d52ecce1eac2a08c2cfced6a78280859391f5157e8b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.10.0"
   graphs:
     dependency: transitive
     description:
@@ -391,6 +454,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  gtk:
+    dependency: transitive
+    description:
+      name: gtk
+      sha256: e8ce9ca4b1df106e4d72dad201d345ea1a036cc12c360f1a7d5a758f78ffa42c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   hooks_riverpod:
     dependency: "direct main"
     description:
@@ -471,6 +542,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.8.0"
+  jwt_decode:
+    dependency: transitive
+    description:
+      name: jwt_decode
+      sha256: d2e9f68c052b2225130977429d30f187aa1981d789c76ad104a32243cfdebfbb
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -511,6 +590,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.2-main.4"
+  markdown:
+    dependency: transitive
+    description:
+      name: markdown
+      sha256: ef2a1298144e3f985cc736b22e0ccdaf188b5b3970648f2d9dc13efd1d9df051
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.2"
   matcher:
     dependency: transitive
     description:
@@ -539,10 +626,10 @@ packages:
     dependency: transitive
     description:
       name: mime
-      sha256: "41a20518f0cb1256669420fdba0cd90d21561e560ac240f26ef8322e45bb7ed6"
+      sha256: "801fd0b26f14a4a58ccb09d5892c3fbdeff209594300a542492cf13fba9d247a"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "1.0.6"
   package_config:
     dependency: transitive
     description:
@@ -663,6 +750,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
+  postgrest:
+    dependency: transitive
+    description:
+      name: postgrest
+      sha256: c6ddc0a2c238c5a686b00094edad728a49645579bf5868a06e1ad95c4918fe2c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   pub_semver:
     dependency: transitive
     description:
@@ -679,6 +774,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
+  realtime_client:
+    dependency: transitive
+    description:
+      name: realtime_client
+      sha256: "173c3dc40922bb0ae19a558ae1a0acf7b28ec8a458b54390c499bbe5ff15f049"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
+  retry:
+    dependency: transitive
+    description:
+      name: retry
+      sha256: "822e118d5b3aafed083109c72d5f484c6dc66707885e07c0fbcb8b986bba7efc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   riverpod:
     dependency: "direct main"
     description:
@@ -852,6 +963,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  storage_client:
+    dependency: transitive
+    description:
+      name: storage_client
+      sha256: "833666edcd804aaf434f3b13165fd553a8c6371a488618a58be8914856795c04"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   stream_channel:
     dependency: transitive
     description:
@@ -876,6 +995,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
+  supabase:
+    dependency: transitive
+    description:
+      name: supabase
+      sha256: dccda29b5bda0a04f6725480e180353486dfd5d9dd2b8b17a30a7a7d094f7042
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.0"
+  supabase_flutter:
+    dependency: transitive
+    description:
+      name: supabase_flutter
+      sha256: "8c056c83e9163c287e031cdd6fa34a452bad4ec7342a27b12190613f77c358e9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.8.0"
   term_glyph:
     dependency: transitive
     description:
@@ -1084,6 +1219,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
+  yet_another_json_isolate:
+    dependency: transitive
+    description:
+      name: yet_another_json_isolate
+      sha256: "56155e9e0002cc51ea7112857bbcdc714d4c35e176d43e4d3ee233009ff410c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
 sdks:
   dart: ">=3.6.0-216.1.beta <4.0.0"
   flutter: ">=3.26.0-0.1.pre"
