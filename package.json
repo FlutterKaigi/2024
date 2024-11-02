@@ -10,7 +10,8 @@
     "textlint-rule-ja-no-orthographic-variants": "^2.0.0",
     "textlint-rule-ja-no-successive-word": "^2.0.1",
     "textlint-rule-ja-unnatural-alphabet": "^2.0.1",
-    "textlint-rule-preset-jtf-style": "^2.3.14"
+    "textlint-rule-preset-jtf-style": "^2.3.14",
+    "turbo": "^2.2.3"
   },
   "peerDependencies": {
     "typescript": "^5.4.5"
@@ -20,8 +21,12 @@
       "cookie": "^0.7.1"
     }
   },
+  "scripts": {
+    "build": "turbo build"
+  },
   "private": true,
   "workspaces": [
     "apis/*"
-  ]
+  ],
+  "packageManager": "pnpm@9.12.3"
 }
