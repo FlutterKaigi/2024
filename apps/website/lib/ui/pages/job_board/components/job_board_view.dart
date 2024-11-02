@@ -3,6 +3,7 @@ import 'package:conference_2024_website/feature/job_board/data/job_board_notifie
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_launcher/link.dart';
 
 class JobBoardView extends ConsumerWidget {
   const JobBoardView({super.key});
@@ -16,13 +17,18 @@ class JobBoardView extends ConsumerWidget {
           decoration: const BoxDecoration(
             color: Colors.white,
           ),
-          child: Wrap(
-            children: [
-              for (final jobBoard in value)
-                JobBoardCard(
-                  jobBoard: jobBoard,
-                ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Wrap(
+              spacing: 20,
+              runSpacing: 20,
+              children: [
+                for (final jobBoard in value)
+                  JobBoardCard(
+                    jobBoard: jobBoard,
+                  ),
+              ],
+            ),
           ),
         ),
       AsyncError(:final error) => Text(error.toString()),
@@ -43,12 +49,25 @@ class JobBoardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
-      child: Ink.image(
-        image: NetworkImage(jobBoard.imageUri.toString()),
+    return Link(
+      uri: jobBoard.uri,
+      builder: (context, followLink) => DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: Colors.grey,
+            strokeAlign: BorderSide.strokeAlignOutside,
+          ),
+        ),
+        child: InkWell(
+          onTap: followLink,
+          child: Image.network(
+            jobBoard.imageUri.toString(),
+            fit: BoxFit.contain,
+            width: 340,
+            height: 191,
+          ),
+        ),
       ),
     );
   }
