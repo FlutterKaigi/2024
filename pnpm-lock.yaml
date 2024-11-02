@@ -97,6 +97,25 @@ importers:
         specifier: ^3.80.4
         version: 3.84.1(@cloudflare/workers-types@4.20241022.0)
 
+  apis/website-html-rewriter:
+    dependencies:
+      hono:
+        specifier: ^4.6.8
+        version: 4.6.8
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20241022.0
+        version: 4.20241022.0
+      configs:
+        specifier: workspace:*
+        version: link:../configs
+      supabase-types:
+        specifier: workspace:*
+        version: link:../supabase-types
+      wrangler:
+        specifier: ^3.83.0
+        version: 3.84.1(@cloudflare/workers-types@4.20241022.0)
+
 packages:
 
   '@azu/format-text@1.0.2':
