@@ -198,11 +198,8 @@ jobs:
         name: Install pnpm
         with:
           version: 9
-          run_install: |
-            - cwd: api
 
       - name: Deploy to Cloudflare Workers
-        run: pnpm run deploy --minify -e ${{ matrix.environment }}
-        working-directory: api
+        run: pnpm turbo deploy-${{ matrix.environment }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

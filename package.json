@@ -21,7 +21,13 @@
     }
   },
   "scripts": {
-    "build": "turbo build"
+    "build": "turbo build",
+    "deploy-production": "turbo deploy-production",
+    "deploy-staging": "turbo deploy-staging",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "typecheck": "turbo typecheck",
+    "textlint-ci": "danger ci -d textlint.ts"
   },
   "private": true,
   "workspaces": [

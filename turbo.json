@@ -17,8 +17,11 @@
     "typecheck": {
       "outputs": ["tsconfig.tsbuildinfo"]
     },
-    "all": {
-      "dependsOn": ["build", "lint", "typecheck"]
+    "deploy-production": {
+      "cache": false
+    },
+    "deploy-staging": {
+      "cache": false
     }
   }
 }
