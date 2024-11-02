@@ -2,7 +2,8 @@
   "name": "website-html-rewriter",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify"
+    "deploy-production": "wrangler deploy --minify --env production",
+    "deploy-staging": "wrangler deploy --minify --env staging"
   },
   "dependencies": {
     "hono": "^4.6.8"
