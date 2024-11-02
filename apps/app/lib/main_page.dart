@@ -13,35 +13,70 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10n.of(context);
+    final isMobile = MediaQuery.of(context).size.width < 960;
+
+    final destinations = [
+      NavigationDestination(
+        label: l.mainPageNavigationBarLabelSessions,
+        icon: const Icon(Icons.calendar_month_outlined),
+        selectedIcon: const Icon(Icons.calendar_month),
+      ),
+      NavigationDestination(
+        label: l.mainPageNavigationBarLabelVenue,
+        icon: const Icon(Icons.meeting_room_outlined),
+        selectedIcon: const Icon(Icons.meeting_room),
+      ),
+      NavigationDestination(
+        label: l.mainPageNavigationBarLabelNews,
+        icon: const Icon(Icons.notifications_outlined),
+        selectedIcon: const Icon(Icons.notifications),
+      ),
+      NavigationDestination(
+        label: l.mainPageNavigationBarLabelAbout,
+        icon: const Icon(Icons.info_outlined),
+        selectedIcon: const Icon(Icons.info),
+      ),
+    ];
+
     return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        destinations: [
-          NavigationDestination(
-            label: l.mainPageNavigationBarLabelSessions,
-            icon: const Icon(Icons.calendar_month),
-          ),
-          NavigationDestination(
-            label: l.mainPageNavigationBarLabelVenue,
-            icon: const Icon(Icons.meeting_room),
-          ),
-          NavigationDestination(
-            label: l.mainPageNavigationBarLabelNews,
-            icon: const Icon(Icons.notifications),
-          ),
-          NavigationDestination(
-            label: l.mainPageNavigationBarLabelAbout,
-            icon: const Icon(Icons.info),
+      body: Row(
+        children: [
+          if (!isMobile) ...[
+            NavigationRail(
+              destinations: destinations
+                  .map(
+                    (e) => NavigationRailDestination(
+                      label: Text(e.label),
+                      icon: e.icon,
+                      selectedIcon: e.selectedIcon,
+                    ),
+                  )
+                  .toList(),
+              selectedIndex: navigationShell.currentIndex,
+              onDestinationSelected: _onDestinationSelected,
+              labelType: NavigationRailLabelType.all,
+            ),
+            const VerticalDivider(thickness: 1, width: 1),
+          ],
+          Expanded(
+            child: navigationShell,
           ),
         ],
-        onDestinationSelected: (index) {
-          navigationShell.goBranch(
-            index,
-            initialLocation: index == navigationShell.currentIndex,
-          );
-        },
       ),
+      bottomNavigationBar: isMobile
+          ? NavigationBar(
+              destinations: destinations,
+              selectedIndex: navigationShell.currentIndex,
+              onDestinationSelected: _onDestinationSelected,
+            )
+          : null,
+    );
+  }
+
+  void _onDestinationSelected(int index) {
+    navigationShell.goBranch(
+      index,
+      initialLocation: index == navigationShell.currentIndex,
     );
   }
 }
