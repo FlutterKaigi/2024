@@ -1,3 +1,4 @@
+import 'package:app_cores_designsystem/ui.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +14,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = L10n.of(context);
-    final isMobile = MediaQuery.of(context).size.width < 960;
+    final isMobile = ScreenSizeProvider.of(context).isMobile;
 
     final destinations = [
       NavigationDestination(
