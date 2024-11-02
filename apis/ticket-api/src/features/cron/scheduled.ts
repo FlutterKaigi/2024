@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { Bindings } from "../../bindings";
-import { Database } from "../../util/supabaseSchema";
+import type { Database } from "supabase-types";
 
 export async function scheduled(
   _: ScheduledEvent,

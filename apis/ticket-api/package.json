@@ -12,15 +12,12 @@
     "hono": "^4.6.5",
     "hono-rate-limiter": "^0.4.0",
     "stripe": "^16.12.0",
-    "valibot": "^0.41.0"
+    "valibot": "^0.41.0",
+    "supabase-types": "workspace:*"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@cloudflare/workers-types": "^4.20241011.0",
     "wrangler": "^3.80.4"
-  },
-  "pnpm": {
-    "overrides": {
-      "cookie": "^0.7.1"
-    }
   }
 }
