@@ -14,5 +14,13 @@
   },
   "peerDependencies": {
     "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "preinstall": "npx -y only-allow pnpm"
+  },
+  "pnpm": {
+    "overrides": {
+      "cookie": "^0.7.1"
+    }
   }
 }
