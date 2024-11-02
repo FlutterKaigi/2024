@@ -38,7 +38,12 @@
       },
       "normal": {
         "name": "Normal Ticket",
-        "description": "**[Normal Ticket Benefits]**\n- **Access to the main event**\n- **Access to the party**\n- **Various Merchandise**"
+        "description": [
+          "**[Normal Ticket Benefits]**",
+          "- **Access to the main event**",
+          "- **Access to the party**",
+          "- **Various Merchandise**"
+        ]
       },
       "invitation": {
         "description": "If you have an invitation code or coupon code, please enter it here.",
@@ -67,7 +72,16 @@
       },
       "personal_sponsor": {
         "name": "Personal Sponsor Ticket",
-        "description": "- Personal Sponsor Ticket includes a general ticket\n\n**[Personal Sponsor Benefits]**\n- **Exclusive Viewing Area**: Dedicated area in front of the session room\n- **Exclusive FlutterKaigi Merchandise**\n- **Introduction at the Opening Ceremony**\n- **Icon on the Website**"
+        "description": [
+          "- Personal Sponsor Ticket includes a general ticket",
+          "",
+          "**[Personal Sponsor Benefits]**",
+          "- **Pre-Party Access**: Access to the pre-party on November 20 (Wednesday) ([details here](https://medium.com/flutterkaigi/flutterkaigi-2024%E5%89%8D%E5%A4%9C%E7%A5%AD%E3%82%92%E9%96%8B%E5%82%AC%E3%81%97%E3%81%BE%E3%81%99-5e7ff7ba3947))",
+          "- **Exclusive Viewing Area**: Dedicated area in front of the session room",
+          "- **Exclusive FlutterKaigi Merchandise**",
+          "- **Introduction at the Opening Ceremony**",
+          "- **Icon on the Website**"
+        ]
       },
       "student": {
         "name": "Student Discount",
