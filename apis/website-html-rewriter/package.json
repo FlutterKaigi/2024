@@ -2,16 +2,22 @@
   "name": "website-html-rewriter",
   "scripts": {
     "dev": "wrangler dev",
-    "deploy-production": "wrangler deploy --minify --env production",
-    "deploy-staging": "wrangler deploy --minify --env staging"
+    "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --minify --bundle",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "deploy": "npm run clean && npm run build && cp -r public/* dist && wrangler pages deploy dist"
   },
   "dependencies": {
-    "hono": "^4.6.8"
+    "@hono/valibot-validator": "^0.3.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "hono": "^4.6.8",
+    "valibot": "^0.41.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241022.0",
-    "wrangler": "^3.83.0",
     "configs": "workspace:*",
-    "supabase-types": "workspace:*"
+    "esbuild": "0.24.0",
+    "supabase-types": "workspace:*",
+    "wrangler": "^3.83.0"
   }
 }

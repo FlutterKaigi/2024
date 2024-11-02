@@ -4,7 +4,17 @@
     "types": [
       "@cloudflare/workers-types/2023-07-01"
     ],
+    "outDir": "./dist"
   },
   "outDir": "./dist",
-  "rootDir": "./src"
+  "rootDir": "./src",
+  "include": [
+    "src/**/*",
+    "src/util",
+    "src/bindings.d.ts",
+    "public"
+  ],
+  "exclude": [
+    "functions/*/*"
+  ]
 }

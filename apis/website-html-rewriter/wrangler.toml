@@ -1,15 +1,8 @@
-name = "website-html-rewriter"
-account_id = "cdd8f59359fe226645e7b541cdc53b57"
-main = "src/index.ts"
+name = "flutterkaigi-2024"
 compatibility_date = "2024-11-02"
+pages_build_output_dir = "./dist"
 
 placement = { mode = "smart" }
 
 [observability]
 enabled = true
-
-[env.production]
-name = "website-html-rewriter-production"
-
-[env.staging]
-name = "website-html-rewriter-staging"
