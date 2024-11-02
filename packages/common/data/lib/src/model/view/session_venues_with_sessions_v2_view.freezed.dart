@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'session_venues_with_sessions_view.dart';
+part of 'session_venues_with_sessions_v2_view.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,54 +14,54 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-SessionVenuesWithSessionsView _$SessionVenuesWithSessionsViewFromJson(
+SessionVenuesWithSessionsV2View _$SessionVenuesWithSessionsV2ViewFromJson(
     Map<String, dynamic> json) {
-  return _SessionVenuesWithSessionsView.fromJson(json);
+  return _SessionVenuesWithSessionsV2View.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SessionVenuesWithSessionsView {
+mixin _$SessionVenuesWithSessionsV2View {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  List<SessionWithSpeakerAndSponsorView> get sessions =>
+  List<SessionsWithSpeakerSponsorV2View> get sessions =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this SessionVenuesWithSessionsView to a JSON map.
+  /// Serializes this SessionVenuesWithSessionsV2View to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SessionVenuesWithSessionsView
+  /// Create a copy of SessionVenuesWithSessionsV2View
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SessionVenuesWithSessionsViewCopyWith<SessionVenuesWithSessionsView>
+  $SessionVenuesWithSessionsV2ViewCopyWith<SessionVenuesWithSessionsV2View>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SessionVenuesWithSessionsViewCopyWith<$Res> {
-  factory $SessionVenuesWithSessionsViewCopyWith(
-          SessionVenuesWithSessionsView value,
-          $Res Function(SessionVenuesWithSessionsView) then) =
-      _$SessionVenuesWithSessionsViewCopyWithImpl<$Res,
-          SessionVenuesWithSessionsView>;
+abstract class $SessionVenuesWithSessionsV2ViewCopyWith<$Res> {
+  factory $SessionVenuesWithSessionsV2ViewCopyWith(
+          SessionVenuesWithSessionsV2View value,
+          $Res Function(SessionVenuesWithSessionsV2View) then) =
+      _$SessionVenuesWithSessionsV2ViewCopyWithImpl<$Res,
+          SessionVenuesWithSessionsV2View>;
   @useResult
   $Res call(
       {String id,
       String name,
-      List<SessionWithSpeakerAndSponsorView> sessions});
+      List<SessionsWithSpeakerSponsorV2View> sessions});
 }
 
 /// @nodoc
-class _$SessionVenuesWithSessionsViewCopyWithImpl<$Res,
-        $Val extends SessionVenuesWithSessionsView>
-    implements $SessionVenuesWithSessionsViewCopyWith<$Res> {
-  _$SessionVenuesWithSessionsViewCopyWithImpl(this._value, this._then);
+class _$SessionVenuesWithSessionsV2ViewCopyWithImpl<$Res,
+        $Val extends SessionVenuesWithSessionsV2View>
+    implements $SessionVenuesWithSessionsV2ViewCopyWith<$Res> {
+  _$SessionVenuesWithSessionsV2ViewCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SessionVenuesWithSessionsView
+  /// Create a copy of SessionVenuesWithSessionsV2View
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -82,37 +82,37 @@ class _$SessionVenuesWithSessionsViewCopyWithImpl<$Res,
       sessions: null == sessions
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<SessionWithSpeakerAndSponsorView>,
+              as List<SessionsWithSpeakerSponsorV2View>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$SessionVenuesWithSessionsViewImplCopyWith<$Res>
-    implements $SessionVenuesWithSessionsViewCopyWith<$Res> {
-  factory _$$SessionVenuesWithSessionsViewImplCopyWith(
-          _$SessionVenuesWithSessionsViewImpl value,
-          $Res Function(_$SessionVenuesWithSessionsViewImpl) then) =
-      __$$SessionVenuesWithSessionsViewImplCopyWithImpl<$Res>;
+abstract class _$$SessionVenuesWithSessionsV2ViewImplCopyWith<$Res>
+    implements $SessionVenuesWithSessionsV2ViewCopyWith<$Res> {
+  factory _$$SessionVenuesWithSessionsV2ViewImplCopyWith(
+          _$SessionVenuesWithSessionsV2ViewImpl value,
+          $Res Function(_$SessionVenuesWithSessionsV2ViewImpl) then) =
+      __$$SessionVenuesWithSessionsV2ViewImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
       String name,
-      List<SessionWithSpeakerAndSponsorView> sessions});
+      List<SessionsWithSpeakerSponsorV2View> sessions});
 }
 
 /// @nodoc
-class __$$SessionVenuesWithSessionsViewImplCopyWithImpl<$Res>
-    extends _$SessionVenuesWithSessionsViewCopyWithImpl<$Res,
-        _$SessionVenuesWithSessionsViewImpl>
-    implements _$$SessionVenuesWithSessionsViewImplCopyWith<$Res> {
-  __$$SessionVenuesWithSessionsViewImplCopyWithImpl(
-      _$SessionVenuesWithSessionsViewImpl _value,
-      $Res Function(_$SessionVenuesWithSessionsViewImpl) _then)
+class __$$SessionVenuesWithSessionsV2ViewImplCopyWithImpl<$Res>
+    extends _$SessionVenuesWithSessionsV2ViewCopyWithImpl<$Res,
+        _$SessionVenuesWithSessionsV2ViewImpl>
+    implements _$$SessionVenuesWithSessionsV2ViewImplCopyWith<$Res> {
+  __$$SessionVenuesWithSessionsV2ViewImplCopyWithImpl(
+      _$SessionVenuesWithSessionsV2ViewImpl _value,
+      $Res Function(_$SessionVenuesWithSessionsV2ViewImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SessionVenuesWithSessionsView
+  /// Create a copy of SessionVenuesWithSessionsV2View
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -121,7 +121,7 @@ class __$$SessionVenuesWithSessionsViewImplCopyWithImpl<$Res>
     Object? name = null,
     Object? sessions = null,
   }) {
-    return _then(_$SessionVenuesWithSessionsViewImpl(
+    return _then(_$SessionVenuesWithSessionsV2ViewImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -133,33 +133,32 @@ class __$$SessionVenuesWithSessionsViewImplCopyWithImpl<$Res>
       sessions: null == sessions
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<SessionWithSpeakerAndSponsorView>,
+              as List<SessionsWithSpeakerSponsorV2View>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SessionVenuesWithSessionsV2View instead')
-class _$SessionVenuesWithSessionsViewImpl
-    implements _SessionVenuesWithSessionsView {
-  const _$SessionVenuesWithSessionsViewImpl(
+class _$SessionVenuesWithSessionsV2ViewImpl
+    implements _SessionVenuesWithSessionsV2View {
+  const _$SessionVenuesWithSessionsV2ViewImpl(
       {required this.id,
       required this.name,
-      required final List<SessionWithSpeakerAndSponsorView> sessions})
+      required final List<SessionsWithSpeakerSponsorV2View> sessions})
       : _sessions = sessions;
 
-  factory _$SessionVenuesWithSessionsViewImpl.fromJson(
+  factory _$SessionVenuesWithSessionsV2ViewImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$SessionVenuesWithSessionsViewImplFromJson(json);
+      _$$SessionVenuesWithSessionsV2ViewImplFromJson(json);
 
   @override
   final String id;
   @override
   final String name;
-  final List<SessionWithSpeakerAndSponsorView> _sessions;
+  final List<SessionsWithSpeakerSponsorV2View> _sessions;
   @override
-  List<SessionWithSpeakerAndSponsorView> get sessions {
+  List<SessionsWithSpeakerSponsorV2View> get sessions {
     if (_sessions is EqualUnmodifiableListView) return _sessions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_sessions);
@@ -167,14 +166,14 @@ class _$SessionVenuesWithSessionsViewImpl
 
   @override
   String toString() {
-    return 'SessionVenuesWithSessionsView(id: $id, name: $name, sessions: $sessions)';
+    return 'SessionVenuesWithSessionsV2View(id: $id, name: $name, sessions: $sessions)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionVenuesWithSessionsViewImpl &&
+            other is _$SessionVenuesWithSessionsV2ViewImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._sessions, _sessions));
@@ -185,84 +184,84 @@ class _$SessionVenuesWithSessionsViewImpl
   int get hashCode => Object.hash(
       runtimeType, id, name, const DeepCollectionEquality().hash(_sessions));
 
-  /// Create a copy of SessionVenuesWithSessionsView
+  /// Create a copy of SessionVenuesWithSessionsV2View
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionVenuesWithSessionsViewImplCopyWith<
-          _$SessionVenuesWithSessionsViewImpl>
-      get copyWith => __$$SessionVenuesWithSessionsViewImplCopyWithImpl<
-          _$SessionVenuesWithSessionsViewImpl>(this, _$identity);
+  _$$SessionVenuesWithSessionsV2ViewImplCopyWith<
+          _$SessionVenuesWithSessionsV2ViewImpl>
+      get copyWith => __$$SessionVenuesWithSessionsV2ViewImplCopyWithImpl<
+          _$SessionVenuesWithSessionsV2ViewImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SessionVenuesWithSessionsViewImplToJson(
+    return _$$SessionVenuesWithSessionsV2ViewImplToJson(
       this,
     );
   }
 }
 
-abstract class _SessionVenuesWithSessionsView
-    implements SessionVenuesWithSessionsView {
-  const factory _SessionVenuesWithSessionsView(
+abstract class _SessionVenuesWithSessionsV2View
+    implements SessionVenuesWithSessionsV2View {
+  const factory _SessionVenuesWithSessionsV2View(
           {required final String id,
           required final String name,
-          required final List<SessionWithSpeakerAndSponsorView> sessions}) =
-      _$SessionVenuesWithSessionsViewImpl;
+          required final List<SessionsWithSpeakerSponsorV2View> sessions}) =
+      _$SessionVenuesWithSessionsV2ViewImpl;
 
-  factory _SessionVenuesWithSessionsView.fromJson(Map<String, dynamic> json) =
-      _$SessionVenuesWithSessionsViewImpl.fromJson;
+  factory _SessionVenuesWithSessionsV2View.fromJson(Map<String, dynamic> json) =
+      _$SessionVenuesWithSessionsV2ViewImpl.fromJson;
 
   @override
   String get id;
   @override
   String get name;
   @override
-  List<SessionWithSpeakerAndSponsorView> get sessions;
+  List<SessionsWithSpeakerSponsorV2View> get sessions;
 
-  /// Create a copy of SessionVenuesWithSessionsView
+  /// Create a copy of SessionVenuesWithSessionsV2View
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SessionVenuesWithSessionsViewImplCopyWith<
-          _$SessionVenuesWithSessionsViewImpl>
+  _$$SessionVenuesWithSessionsV2ViewImplCopyWith<
+          _$SessionVenuesWithSessionsV2ViewImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-SessionWithSpeakerAndSponsorView _$SessionWithSpeakerAndSponsorViewFromJson(
+SessionsWithSpeakerSponsorV2View _$SessionsWithSpeakerSponsorV2ViewFromJson(
     Map<String, dynamic> json) {
-  return _SessionWithSpeakerAndSponsorView.fromJson(json);
+  return _SessionsWithSpeakerSponsorV2View.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SessionWithSpeakerAndSponsorView {
+mixin _$SessionsWithSpeakerSponsorV2View {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get startsAt => throw _privateConstructorUsedError;
   DateTime get endsAt => throw _privateConstructorUsedError;
   bool get isLightningTalk => throw _privateConstructorUsedError;
-  List<ProfileWithSnsView> get speakers => throw _privateConstructorUsedError;
+  List<SpeakerTable> get speakers => throw _privateConstructorUsedError;
   List<SponsorTable> get sponsors => throw _privateConstructorUsedError;
 
-  /// Serializes this SessionWithSpeakerAndSponsorView to a JSON map.
+  /// Serializes this SessionsWithSpeakerSponsorV2View to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SessionWithSpeakerAndSponsorView
+  /// Create a copy of SessionsWithSpeakerSponsorV2View
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SessionWithSpeakerAndSponsorViewCopyWith<SessionWithSpeakerAndSponsorView>
+  $SessionsWithSpeakerSponsorV2ViewCopyWith<SessionsWithSpeakerSponsorV2View>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SessionWithSpeakerAndSponsorViewCopyWith<$Res> {
-  factory $SessionWithSpeakerAndSponsorViewCopyWith(
-          SessionWithSpeakerAndSponsorView value,
-          $Res Function(SessionWithSpeakerAndSponsorView) then) =
-      _$SessionWithSpeakerAndSponsorViewCopyWithImpl<$Res,
-          SessionWithSpeakerAndSponsorView>;
+abstract class $SessionsWithSpeakerSponsorV2ViewCopyWith<$Res> {
+  factory $SessionsWithSpeakerSponsorV2ViewCopyWith(
+          SessionsWithSpeakerSponsorV2View value,
+          $Res Function(SessionsWithSpeakerSponsorV2View) then) =
+      _$SessionsWithSpeakerSponsorV2ViewCopyWithImpl<$Res,
+          SessionsWithSpeakerSponsorV2View>;
   @useResult
   $Res call(
       {String id,
@@ -271,22 +270,22 @@ abstract class $SessionWithSpeakerAndSponsorViewCopyWith<$Res> {
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSnsView> speakers,
+      List<SpeakerTable> speakers,
       List<SponsorTable> sponsors});
 }
 
 /// @nodoc
-class _$SessionWithSpeakerAndSponsorViewCopyWithImpl<$Res,
-        $Val extends SessionWithSpeakerAndSponsorView>
-    implements $SessionWithSpeakerAndSponsorViewCopyWith<$Res> {
-  _$SessionWithSpeakerAndSponsorViewCopyWithImpl(this._value, this._then);
+class _$SessionsWithSpeakerSponsorV2ViewCopyWithImpl<$Res,
+        $Val extends SessionsWithSpeakerSponsorV2View>
+    implements $SessionsWithSpeakerSponsorV2ViewCopyWith<$Res> {
+  _$SessionsWithSpeakerSponsorV2ViewCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SessionWithSpeakerAndSponsorView
+  /// Create a copy of SessionsWithSpeakerSponsorV2View
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -328,7 +327,7 @@ class _$SessionWithSpeakerAndSponsorViewCopyWithImpl<$Res,
       speakers: null == speakers
           ? _value.speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSnsView>,
+              as List<SpeakerTable>,
       sponsors: null == sponsors
           ? _value.sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -338,12 +337,12 @@ class _$SessionWithSpeakerAndSponsorViewCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$SessionWithSpeakerAndSponsorViewImplCopyWith<$Res>
-    implements $SessionWithSpeakerAndSponsorViewCopyWith<$Res> {
-  factory _$$SessionWithSpeakerAndSponsorViewImplCopyWith(
-          _$SessionWithSpeakerAndSponsorViewImpl value,
-          $Res Function(_$SessionWithSpeakerAndSponsorViewImpl) then) =
-      __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<$Res>;
+abstract class _$$SessionsWithSpeakerSponsorV2ViewImplCopyWith<$Res>
+    implements $SessionsWithSpeakerSponsorV2ViewCopyWith<$Res> {
+  factory _$$SessionsWithSpeakerSponsorV2ViewImplCopyWith(
+          _$SessionsWithSpeakerSponsorV2ViewImpl value,
+          $Res Function(_$SessionsWithSpeakerSponsorV2ViewImpl) then) =
+      __$$SessionsWithSpeakerSponsorV2ViewImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -353,21 +352,21 @@ abstract class _$$SessionWithSpeakerAndSponsorViewImplCopyWith<$Res>
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSnsView> speakers,
+      List<SpeakerTable> speakers,
       List<SponsorTable> sponsors});
 }
 
 /// @nodoc
-class __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<$Res>
-    extends _$SessionWithSpeakerAndSponsorViewCopyWithImpl<$Res,
-        _$SessionWithSpeakerAndSponsorViewImpl>
-    implements _$$SessionWithSpeakerAndSponsorViewImplCopyWith<$Res> {
-  __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl(
-      _$SessionWithSpeakerAndSponsorViewImpl _value,
-      $Res Function(_$SessionWithSpeakerAndSponsorViewImpl) _then)
+class __$$SessionsWithSpeakerSponsorV2ViewImplCopyWithImpl<$Res>
+    extends _$SessionsWithSpeakerSponsorV2ViewCopyWithImpl<$Res,
+        _$SessionsWithSpeakerSponsorV2ViewImpl>
+    implements _$$SessionsWithSpeakerSponsorV2ViewImplCopyWith<$Res> {
+  __$$SessionsWithSpeakerSponsorV2ViewImplCopyWithImpl(
+      _$SessionsWithSpeakerSponsorV2ViewImpl _value,
+      $Res Function(_$SessionsWithSpeakerSponsorV2ViewImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SessionWithSpeakerAndSponsorView
+  /// Create a copy of SessionsWithSpeakerSponsorV2View
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -381,7 +380,7 @@ class __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<$Res>
     Object? speakers = null,
     Object? sponsors = null,
   }) {
-    return _then(_$SessionWithSpeakerAndSponsorViewImpl(
+    return _then(_$SessionsWithSpeakerSponsorV2ViewImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -409,7 +408,7 @@ class __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<$Res>
       speakers: null == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSnsView>,
+              as List<SpeakerTable>,
       sponsors: null == sponsors
           ? _value._sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -420,24 +419,23 @@ class __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SessionWithSpeakerAndSponsorV2View instead')
-class _$SessionWithSpeakerAndSponsorViewImpl
-    implements _SessionWithSpeakerAndSponsorView {
-  const _$SessionWithSpeakerAndSponsorViewImpl(
+class _$SessionsWithSpeakerSponsorV2ViewImpl
+    implements _SessionsWithSpeakerSponsorV2View {
+  const _$SessionsWithSpeakerSponsorV2ViewImpl(
       {required this.id,
       required this.title,
       required this.description,
       required this.startsAt,
       required this.endsAt,
       required this.isLightningTalk,
-      required final List<ProfileWithSnsView> speakers,
+      required final List<SpeakerTable> speakers,
       required final List<SponsorTable> sponsors})
       : _speakers = speakers,
         _sponsors = sponsors;
 
-  factory _$SessionWithSpeakerAndSponsorViewImpl.fromJson(
+  factory _$SessionsWithSpeakerSponsorV2ViewImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$SessionWithSpeakerAndSponsorViewImplFromJson(json);
+      _$$SessionsWithSpeakerSponsorV2ViewImplFromJson(json);
 
   @override
   final String id;
@@ -451,9 +449,9 @@ class _$SessionWithSpeakerAndSponsorViewImpl
   final DateTime endsAt;
   @override
   final bool isLightningTalk;
-  final List<ProfileWithSnsView> _speakers;
+  final List<SpeakerTable> _speakers;
   @override
-  List<ProfileWithSnsView> get speakers {
+  List<SpeakerTable> get speakers {
     if (_speakers is EqualUnmodifiableListView) return _speakers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_speakers);
@@ -469,14 +467,14 @@ class _$SessionWithSpeakerAndSponsorViewImpl
 
   @override
   String toString() {
-    return 'SessionWithSpeakerAndSponsorView(id: $id, title: $title, description: $description, startsAt: $startsAt, endsAt: $endsAt, isLightningTalk: $isLightningTalk, speakers: $speakers, sponsors: $sponsors)';
+    return 'SessionsWithSpeakerSponsorV2View(id: $id, title: $title, description: $description, startsAt: $startsAt, endsAt: $endsAt, isLightningTalk: $isLightningTalk, speakers: $speakers, sponsors: $sponsors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionWithSpeakerAndSponsorViewImpl &&
+            other is _$SessionsWithSpeakerSponsorV2ViewImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -503,40 +501,40 @@ class _$SessionWithSpeakerAndSponsorViewImpl
       const DeepCollectionEquality().hash(_speakers),
       const DeepCollectionEquality().hash(_sponsors));
 
-  /// Create a copy of SessionWithSpeakerAndSponsorView
+  /// Create a copy of SessionsWithSpeakerSponsorV2View
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionWithSpeakerAndSponsorViewImplCopyWith<
-          _$SessionWithSpeakerAndSponsorViewImpl>
-      get copyWith => __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<
-          _$SessionWithSpeakerAndSponsorViewImpl>(this, _$identity);
+  _$$SessionsWithSpeakerSponsorV2ViewImplCopyWith<
+          _$SessionsWithSpeakerSponsorV2ViewImpl>
+      get copyWith => __$$SessionsWithSpeakerSponsorV2ViewImplCopyWithImpl<
+          _$SessionsWithSpeakerSponsorV2ViewImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SessionWithSpeakerAndSponsorViewImplToJson(
+    return _$$SessionsWithSpeakerSponsorV2ViewImplToJson(
       this,
     );
   }
 }
 
-abstract class _SessionWithSpeakerAndSponsorView
-    implements SessionWithSpeakerAndSponsorView {
-  const factory _SessionWithSpeakerAndSponsorView(
+abstract class _SessionsWithSpeakerSponsorV2View
+    implements SessionsWithSpeakerSponsorV2View {
+  const factory _SessionsWithSpeakerSponsorV2View(
           {required final String id,
           required final String title,
           required final String description,
           required final DateTime startsAt,
           required final DateTime endsAt,
           required final bool isLightningTalk,
-          required final List<ProfileWithSnsView> speakers,
+          required final List<SpeakerTable> speakers,
           required final List<SponsorTable> sponsors}) =
-      _$SessionWithSpeakerAndSponsorViewImpl;
+      _$SessionsWithSpeakerSponsorV2ViewImpl;
 
-  factory _SessionWithSpeakerAndSponsorView.fromJson(
+  factory _SessionsWithSpeakerSponsorV2View.fromJson(
           Map<String, dynamic> json) =
-      _$SessionWithSpeakerAndSponsorViewImpl.fromJson;
+      _$SessionsWithSpeakerSponsorV2ViewImpl.fromJson;
 
   @override
   String get id;
@@ -551,63 +549,65 @@ abstract class _SessionWithSpeakerAndSponsorView
   @override
   bool get isLightningTalk;
   @override
-  List<ProfileWithSnsView> get speakers;
+  List<SpeakerTable> get speakers;
   @override
   List<SponsorTable> get sponsors;
 
-  /// Create a copy of SessionWithSpeakerAndSponsorView
+  /// Create a copy of SessionsWithSpeakerSponsorV2View
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SessionWithSpeakerAndSponsorViewImplCopyWith<
-          _$SessionWithSpeakerAndSponsorViewImpl>
+  _$$SessionsWithSpeakerSponsorV2ViewImplCopyWith<
+          _$SessionsWithSpeakerSponsorV2ViewImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-SessionVenuesWithSessions _$SessionVenuesWithSessionsFromJson(
+SessionVenuesWithSessionsV2 _$SessionVenuesWithSessionsV2FromJson(
     Map<String, dynamic> json) {
-  return _SessionVenuesWithSessions.fromJson(json);
+  return _SessionVenuesWithSessionsV2.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SessionVenuesWithSessions {
+mixin _$SessionVenuesWithSessionsV2 {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  List<SessionWithSpeakerAndSponsor> get sessions =>
+  List<SessionsWithSpeakerSponsorV2> get sessions =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this SessionVenuesWithSessions to a JSON map.
+  /// Serializes this SessionVenuesWithSessionsV2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SessionVenuesWithSessions
+  /// Create a copy of SessionVenuesWithSessionsV2
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SessionVenuesWithSessionsCopyWith<SessionVenuesWithSessions> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SessionVenuesWithSessionsV2CopyWith<SessionVenuesWithSessionsV2>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SessionVenuesWithSessionsCopyWith<$Res> {
-  factory $SessionVenuesWithSessionsCopyWith(SessionVenuesWithSessions value,
-          $Res Function(SessionVenuesWithSessions) then) =
-      _$SessionVenuesWithSessionsCopyWithImpl<$Res, SessionVenuesWithSessions>;
+abstract class $SessionVenuesWithSessionsV2CopyWith<$Res> {
+  factory $SessionVenuesWithSessionsV2CopyWith(
+          SessionVenuesWithSessionsV2 value,
+          $Res Function(SessionVenuesWithSessionsV2) then) =
+      _$SessionVenuesWithSessionsV2CopyWithImpl<$Res,
+          SessionVenuesWithSessionsV2>;
   @useResult
   $Res call(
-      {String id, String name, List<SessionWithSpeakerAndSponsor> sessions});
+      {String id, String name, List<SessionsWithSpeakerSponsorV2> sessions});
 }
 
 /// @nodoc
-class _$SessionVenuesWithSessionsCopyWithImpl<$Res,
-        $Val extends SessionVenuesWithSessions>
-    implements $SessionVenuesWithSessionsCopyWith<$Res> {
-  _$SessionVenuesWithSessionsCopyWithImpl(this._value, this._then);
+class _$SessionVenuesWithSessionsV2CopyWithImpl<$Res,
+        $Val extends SessionVenuesWithSessionsV2>
+    implements $SessionVenuesWithSessionsV2CopyWith<$Res> {
+  _$SessionVenuesWithSessionsV2CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SessionVenuesWithSessions
+  /// Create a copy of SessionVenuesWithSessionsV2
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -628,35 +628,35 @@ class _$SessionVenuesWithSessionsCopyWithImpl<$Res,
       sessions: null == sessions
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<SessionWithSpeakerAndSponsor>,
+              as List<SessionsWithSpeakerSponsorV2>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$SessionVenuesWithSessionsImplCopyWith<$Res>
-    implements $SessionVenuesWithSessionsCopyWith<$Res> {
-  factory _$$SessionVenuesWithSessionsImplCopyWith(
-          _$SessionVenuesWithSessionsImpl value,
-          $Res Function(_$SessionVenuesWithSessionsImpl) then) =
-      __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>;
+abstract class _$$SessionVenuesWithSessionsV2ImplCopyWith<$Res>
+    implements $SessionVenuesWithSessionsV2CopyWith<$Res> {
+  factory _$$SessionVenuesWithSessionsV2ImplCopyWith(
+          _$SessionVenuesWithSessionsV2Impl value,
+          $Res Function(_$SessionVenuesWithSessionsV2Impl) then) =
+      __$$SessionVenuesWithSessionsV2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String id, String name, List<SessionWithSpeakerAndSponsor> sessions});
+      {String id, String name, List<SessionsWithSpeakerSponsorV2> sessions});
 }
 
 /// @nodoc
-class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
-    extends _$SessionVenuesWithSessionsCopyWithImpl<$Res,
-        _$SessionVenuesWithSessionsImpl>
-    implements _$$SessionVenuesWithSessionsImplCopyWith<$Res> {
-  __$$SessionVenuesWithSessionsImplCopyWithImpl(
-      _$SessionVenuesWithSessionsImpl _value,
-      $Res Function(_$SessionVenuesWithSessionsImpl) _then)
+class __$$SessionVenuesWithSessionsV2ImplCopyWithImpl<$Res>
+    extends _$SessionVenuesWithSessionsV2CopyWithImpl<$Res,
+        _$SessionVenuesWithSessionsV2Impl>
+    implements _$$SessionVenuesWithSessionsV2ImplCopyWith<$Res> {
+  __$$SessionVenuesWithSessionsV2ImplCopyWithImpl(
+      _$SessionVenuesWithSessionsV2Impl _value,
+      $Res Function(_$SessionVenuesWithSessionsV2Impl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SessionVenuesWithSessions
+  /// Create a copy of SessionVenuesWithSessionsV2
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -665,7 +665,7 @@ class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
     Object? name = null,
     Object? sessions = null,
   }) {
-    return _then(_$SessionVenuesWithSessionsImpl(
+    return _then(_$SessionVenuesWithSessionsV2Impl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -677,31 +677,32 @@ class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
       sessions: null == sessions
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
-              as List<SessionWithSpeakerAndSponsor>,
+              as List<SessionsWithSpeakerSponsorV2>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SessionVenuesWithSessionsV2 instead')
-class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
-  const _$SessionVenuesWithSessionsImpl(
+class _$SessionVenuesWithSessionsV2Impl
+    implements _SessionVenuesWithSessionsV2 {
+  const _$SessionVenuesWithSessionsV2Impl(
       {required this.id,
       required this.name,
-      required final List<SessionWithSpeakerAndSponsor> sessions})
+      required final List<SessionsWithSpeakerSponsorV2> sessions})
       : _sessions = sessions;
 
-  factory _$SessionVenuesWithSessionsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SessionVenuesWithSessionsImplFromJson(json);
+  factory _$SessionVenuesWithSessionsV2Impl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SessionVenuesWithSessionsV2ImplFromJson(json);
 
   @override
   final String id;
   @override
   final String name;
-  final List<SessionWithSpeakerAndSponsor> _sessions;
+  final List<SessionsWithSpeakerSponsorV2> _sessions;
   @override
-  List<SessionWithSpeakerAndSponsor> get sessions {
+  List<SessionsWithSpeakerSponsorV2> get sessions {
     if (_sessions is EqualUnmodifiableListView) return _sessions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_sessions);
@@ -709,14 +710,14 @@ class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
 
   @override
   String toString() {
-    return 'SessionVenuesWithSessions(id: $id, name: $name, sessions: $sessions)';
+    return 'SessionVenuesWithSessionsV2(id: $id, name: $name, sessions: $sessions)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionVenuesWithSessionsImpl &&
+            other is _$SessionVenuesWithSessionsV2Impl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._sessions, _sessions));
@@ -727,81 +728,82 @@ class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
   int get hashCode => Object.hash(
       runtimeType, id, name, const DeepCollectionEquality().hash(_sessions));
 
-  /// Create a copy of SessionVenuesWithSessions
+  /// Create a copy of SessionVenuesWithSessionsV2
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionVenuesWithSessionsImplCopyWith<_$SessionVenuesWithSessionsImpl>
-      get copyWith => __$$SessionVenuesWithSessionsImplCopyWithImpl<
-          _$SessionVenuesWithSessionsImpl>(this, _$identity);
+  _$$SessionVenuesWithSessionsV2ImplCopyWith<_$SessionVenuesWithSessionsV2Impl>
+      get copyWith => __$$SessionVenuesWithSessionsV2ImplCopyWithImpl<
+          _$SessionVenuesWithSessionsV2Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SessionVenuesWithSessionsImplToJson(
+    return _$$SessionVenuesWithSessionsV2ImplToJson(
       this,
     );
   }
 }
 
-abstract class _SessionVenuesWithSessions implements SessionVenuesWithSessions {
-  const factory _SessionVenuesWithSessions(
+abstract class _SessionVenuesWithSessionsV2
+    implements SessionVenuesWithSessionsV2 {
+  const factory _SessionVenuesWithSessionsV2(
           {required final String id,
           required final String name,
-          required final List<SessionWithSpeakerAndSponsor> sessions}) =
-      _$SessionVenuesWithSessionsImpl;
+          required final List<SessionsWithSpeakerSponsorV2> sessions}) =
+      _$SessionVenuesWithSessionsV2Impl;
 
-  factory _SessionVenuesWithSessions.fromJson(Map<String, dynamic> json) =
-      _$SessionVenuesWithSessionsImpl.fromJson;
+  factory _SessionVenuesWithSessionsV2.fromJson(Map<String, dynamic> json) =
+      _$SessionVenuesWithSessionsV2Impl.fromJson;
 
   @override
   String get id;
   @override
   String get name;
   @override
-  List<SessionWithSpeakerAndSponsor> get sessions;
+  List<SessionsWithSpeakerSponsorV2> get sessions;
 
-  /// Create a copy of SessionVenuesWithSessions
+  /// Create a copy of SessionVenuesWithSessionsV2
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SessionVenuesWithSessionsImplCopyWith<_$SessionVenuesWithSessionsImpl>
+  _$$SessionVenuesWithSessionsV2ImplCopyWith<_$SessionVenuesWithSessionsV2Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
-SessionWithSpeakerAndSponsor _$SessionWithSpeakerAndSponsorFromJson(
+SessionsWithSpeakerSponsorV2 _$SessionsWithSpeakerSponsorV2FromJson(
     Map<String, dynamic> json) {
-  return _SessionWithSpeakerAndSponsor.fromJson(json);
+  return _SessionsWithSpeakerSponsorV2.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SessionWithSpeakerAndSponsor {
+mixin _$SessionsWithSpeakerSponsorV2 {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get startsAt => throw _privateConstructorUsedError;
   DateTime get endsAt => throw _privateConstructorUsedError;
   bool get isLightningTalk => throw _privateConstructorUsedError;
-  List<ProfileWithSns> get speakers => throw _privateConstructorUsedError;
+  List<Speaker> get speakers => throw _privateConstructorUsedError;
   List<Sponsor> get sponsors => throw _privateConstructorUsedError;
 
-  /// Serializes this SessionWithSpeakerAndSponsor to a JSON map.
+  /// Serializes this SessionsWithSpeakerSponsorV2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of SessionWithSpeakerAndSponsor
+  /// Create a copy of SessionsWithSpeakerSponsorV2
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SessionWithSpeakerAndSponsorCopyWith<SessionWithSpeakerAndSponsor>
+  $SessionsWithSpeakerSponsorV2CopyWith<SessionsWithSpeakerSponsorV2>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SessionWithSpeakerAndSponsorCopyWith<$Res> {
-  factory $SessionWithSpeakerAndSponsorCopyWith(
-          SessionWithSpeakerAndSponsor value,
-          $Res Function(SessionWithSpeakerAndSponsor) then) =
-      _$SessionWithSpeakerAndSponsorCopyWithImpl<$Res,
-          SessionWithSpeakerAndSponsor>;
+abstract class $SessionsWithSpeakerSponsorV2CopyWith<$Res> {
+  factory $SessionsWithSpeakerSponsorV2CopyWith(
+          SessionsWithSpeakerSponsorV2 value,
+          $Res Function(SessionsWithSpeakerSponsorV2) then) =
+      _$SessionsWithSpeakerSponsorV2CopyWithImpl<$Res,
+          SessionsWithSpeakerSponsorV2>;
   @useResult
   $Res call(
       {String id,
@@ -810,22 +812,22 @@ abstract class $SessionWithSpeakerAndSponsorCopyWith<$Res> {
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSns> speakers,
+      List<Speaker> speakers,
       List<Sponsor> sponsors});
 }
 
 /// @nodoc
-class _$SessionWithSpeakerAndSponsorCopyWithImpl<$Res,
-        $Val extends SessionWithSpeakerAndSponsor>
-    implements $SessionWithSpeakerAndSponsorCopyWith<$Res> {
-  _$SessionWithSpeakerAndSponsorCopyWithImpl(this._value, this._then);
+class _$SessionsWithSpeakerSponsorV2CopyWithImpl<$Res,
+        $Val extends SessionsWithSpeakerSponsorV2>
+    implements $SessionsWithSpeakerSponsorV2CopyWith<$Res> {
+  _$SessionsWithSpeakerSponsorV2CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SessionWithSpeakerAndSponsor
+  /// Create a copy of SessionsWithSpeakerSponsorV2
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -867,7 +869,7 @@ class _$SessionWithSpeakerAndSponsorCopyWithImpl<$Res,
       speakers: null == speakers
           ? _value.speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<Speaker>,
       sponsors: null == sponsors
           ? _value.sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -877,12 +879,12 @@ class _$SessionWithSpeakerAndSponsorCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$SessionWithSpeakerAndSponsorImplCopyWith<$Res>
-    implements $SessionWithSpeakerAndSponsorCopyWith<$Res> {
-  factory _$$SessionWithSpeakerAndSponsorImplCopyWith(
-          _$SessionWithSpeakerAndSponsorImpl value,
-          $Res Function(_$SessionWithSpeakerAndSponsorImpl) then) =
-      __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>;
+abstract class _$$SessionsWithSpeakerSponsorV2ImplCopyWith<$Res>
+    implements $SessionsWithSpeakerSponsorV2CopyWith<$Res> {
+  factory _$$SessionsWithSpeakerSponsorV2ImplCopyWith(
+          _$SessionsWithSpeakerSponsorV2Impl value,
+          $Res Function(_$SessionsWithSpeakerSponsorV2Impl) then) =
+      __$$SessionsWithSpeakerSponsorV2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -892,21 +894,21 @@ abstract class _$$SessionWithSpeakerAndSponsorImplCopyWith<$Res>
       DateTime startsAt,
       DateTime endsAt,
       bool isLightningTalk,
-      List<ProfileWithSns> speakers,
+      List<Speaker> speakers,
       List<Sponsor> sponsors});
 }
 
 /// @nodoc
-class __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>
-    extends _$SessionWithSpeakerAndSponsorCopyWithImpl<$Res,
-        _$SessionWithSpeakerAndSponsorImpl>
-    implements _$$SessionWithSpeakerAndSponsorImplCopyWith<$Res> {
-  __$$SessionWithSpeakerAndSponsorImplCopyWithImpl(
-      _$SessionWithSpeakerAndSponsorImpl _value,
-      $Res Function(_$SessionWithSpeakerAndSponsorImpl) _then)
+class __$$SessionsWithSpeakerSponsorV2ImplCopyWithImpl<$Res>
+    extends _$SessionsWithSpeakerSponsorV2CopyWithImpl<$Res,
+        _$SessionsWithSpeakerSponsorV2Impl>
+    implements _$$SessionsWithSpeakerSponsorV2ImplCopyWith<$Res> {
+  __$$SessionsWithSpeakerSponsorV2ImplCopyWithImpl(
+      _$SessionsWithSpeakerSponsorV2Impl _value,
+      $Res Function(_$SessionsWithSpeakerSponsorV2Impl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SessionWithSpeakerAndSponsor
+  /// Create a copy of SessionsWithSpeakerSponsorV2
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -920,7 +922,7 @@ class __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>
     Object? speakers = null,
     Object? sponsors = null,
   }) {
-    return _then(_$SessionWithSpeakerAndSponsorImpl(
+    return _then(_$SessionsWithSpeakerSponsorV2Impl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -948,7 +950,7 @@ class __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>
       speakers: null == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
-              as List<ProfileWithSns>,
+              as List<Speaker>,
       sponsors: null == sponsors
           ? _value._sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
@@ -959,24 +961,23 @@ class __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SessionWithSpeakerAndSponsorV2View instead')
-class _$SessionWithSpeakerAndSponsorImpl
-    implements _SessionWithSpeakerAndSponsor {
-  const _$SessionWithSpeakerAndSponsorImpl(
+class _$SessionsWithSpeakerSponsorV2Impl
+    implements _SessionsWithSpeakerSponsorV2 {
+  const _$SessionsWithSpeakerSponsorV2Impl(
       {required this.id,
       required this.title,
       required this.description,
       required this.startsAt,
       required this.endsAt,
       required this.isLightningTalk,
-      required final List<ProfileWithSns> speakers,
+      required final List<Speaker> speakers,
       required final List<Sponsor> sponsors})
       : _speakers = speakers,
         _sponsors = sponsors;
 
-  factory _$SessionWithSpeakerAndSponsorImpl.fromJson(
+  factory _$SessionsWithSpeakerSponsorV2Impl.fromJson(
           Map<String, dynamic> json) =>
-      _$$SessionWithSpeakerAndSponsorImplFromJson(json);
+      _$$SessionsWithSpeakerSponsorV2ImplFromJson(json);
 
   @override
   final String id;
@@ -990,9 +991,9 @@ class _$SessionWithSpeakerAndSponsorImpl
   final DateTime endsAt;
   @override
   final bool isLightningTalk;
-  final List<ProfileWithSns> _speakers;
+  final List<Speaker> _speakers;
   @override
-  List<ProfileWithSns> get speakers {
+  List<Speaker> get speakers {
     if (_speakers is EqualUnmodifiableListView) return _speakers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_speakers);
@@ -1008,14 +1009,14 @@ class _$SessionWithSpeakerAndSponsorImpl
 
   @override
   String toString() {
-    return 'SessionWithSpeakerAndSponsor(id: $id, title: $title, description: $description, startsAt: $startsAt, endsAt: $endsAt, isLightningTalk: $isLightningTalk, speakers: $speakers, sponsors: $sponsors)';
+    return 'SessionsWithSpeakerSponsorV2(id: $id, title: $title, description: $description, startsAt: $startsAt, endsAt: $endsAt, isLightningTalk: $isLightningTalk, speakers: $speakers, sponsors: $sponsors)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionWithSpeakerAndSponsorImpl &&
+            other is _$SessionsWithSpeakerSponsorV2Impl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -1042,39 +1043,39 @@ class _$SessionWithSpeakerAndSponsorImpl
       const DeepCollectionEquality().hash(_speakers),
       const DeepCollectionEquality().hash(_sponsors));
 
-  /// Create a copy of SessionWithSpeakerAndSponsor
+  /// Create a copy of SessionsWithSpeakerSponsorV2
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionWithSpeakerAndSponsorImplCopyWith<
-          _$SessionWithSpeakerAndSponsorImpl>
-      get copyWith => __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<
-          _$SessionWithSpeakerAndSponsorImpl>(this, _$identity);
+  _$$SessionsWithSpeakerSponsorV2ImplCopyWith<
+          _$SessionsWithSpeakerSponsorV2Impl>
+      get copyWith => __$$SessionsWithSpeakerSponsorV2ImplCopyWithImpl<
+          _$SessionsWithSpeakerSponsorV2Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SessionWithSpeakerAndSponsorImplToJson(
+    return _$$SessionsWithSpeakerSponsorV2ImplToJson(
       this,
     );
   }
 }
 
-abstract class _SessionWithSpeakerAndSponsor
-    implements SessionWithSpeakerAndSponsor {
-  const factory _SessionWithSpeakerAndSponsor(
+abstract class _SessionsWithSpeakerSponsorV2
+    implements SessionsWithSpeakerSponsorV2 {
+  const factory _SessionsWithSpeakerSponsorV2(
           {required final String id,
           required final String title,
           required final String description,
           required final DateTime startsAt,
           required final DateTime endsAt,
           required final bool isLightningTalk,
-          required final List<ProfileWithSns> speakers,
+          required final List<Speaker> speakers,
           required final List<Sponsor> sponsors}) =
-      _$SessionWithSpeakerAndSponsorImpl;
+      _$SessionsWithSpeakerSponsorV2Impl;
 
-  factory _SessionWithSpeakerAndSponsor.fromJson(Map<String, dynamic> json) =
-      _$SessionWithSpeakerAndSponsorImpl.fromJson;
+  factory _SessionsWithSpeakerSponsorV2.fromJson(Map<String, dynamic> json) =
+      _$SessionsWithSpeakerSponsorV2Impl.fromJson;
 
   @override
   String get id;
@@ -1089,15 +1090,15 @@ abstract class _SessionWithSpeakerAndSponsor
   @override
   bool get isLightningTalk;
   @override
-  List<ProfileWithSns> get speakers;
+  List<Speaker> get speakers;
   @override
   List<Sponsor> get sponsors;
 
-  /// Create a copy of SessionWithSpeakerAndSponsor
+  /// Create a copy of SessionsWithSpeakerSponsorV2
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SessionWithSpeakerAndSponsorImplCopyWith<
-          _$SessionWithSpeakerAndSponsorImpl>
+  _$$SessionsWithSpeakerSponsorV2ImplCopyWith<
+          _$SessionsWithSpeakerSponsorV2Impl>
       get copyWith => throw _privateConstructorUsedError;
 }
