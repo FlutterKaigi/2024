@@ -1,3 +1,4 @@
+import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_features_about/l10n.dart';
 import 'package:app_features_about/src/ui/sponsors/sponsors_list_item.dart';
 import 'package:common_data/sponsor.dart';
@@ -13,6 +14,7 @@ class SponsorsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isMobile = ScreenSizeProvider.of(context).isMobile;
     final l = L10nAbout.of(context);
     const padding = EdgeInsets.only(top: 16, left: 16, right: 16);
     const spacing = 8.0;
@@ -22,6 +24,8 @@ class SponsorsPage extends HookConsumerWidget {
 
     return Scaffold(
       body: SafeArea(
+        top: false,
+        bottom: false,
         child: sponsorsAsyncValue.when(
           data: (sponsors) {
             final platinumSponsors = sponsors
@@ -55,7 +59,7 @@ class SponsorsPage extends HookConsumerWidget {
                     spacing: spacing,
                     childAspectRatio: childAspectRatio,
                     sponsors: platinumSponsors,
-                    crossAxisCount: 1,
+                    crossAxisCount: isMobile ? 1 : 2,
                   ),
                 if (goldSponsors.isNotEmpty)
                   _sponsorsWidget(
@@ -63,7 +67,7 @@ class SponsorsPage extends HookConsumerWidget {
                     spacing: spacing,
                     childAspectRatio: childAspectRatio,
                     sponsors: goldSponsors,
-                    crossAxisCount: 2,
+                    crossAxisCount: isMobile ? 2 : 3,
                   ),
                 if (silverSponsors.isNotEmpty)
                   _sponsorsWidget(
@@ -71,7 +75,7 @@ class SponsorsPage extends HookConsumerWidget {
                     spacing: spacing,
                     childAspectRatio: childAspectRatio,
                     sponsors: silverSponsors,
-                    crossAxisCount: 3,
+                    crossAxisCount: isMobile ? 3 : 4,
                   ),
                 if (bronzeSponsors.isNotEmpty)
                   _sponsorsWidget(
@@ -79,9 +83,9 @@ class SponsorsPage extends HookConsumerWidget {
                     spacing: spacing,
                     childAspectRatio: childAspectRatio,
                     sponsors: bronzeSponsors,
-                    crossAxisCount: 4,
+                    crossAxisCount: isMobile ? 3 : 4,
                   ),
-                const SliverGap(16),
+                SliverGap(16 + MediaQuery.paddingOf(context).bottom),
               ],
             );
           },
