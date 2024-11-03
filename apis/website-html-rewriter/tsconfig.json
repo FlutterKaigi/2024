@@ -4,7 +4,9 @@
     "types": [
       "@cloudflare/workers-types/2023-07-01"
     ],
-    "outDir": "./dist"
+    "moduleResolution": "Bundler",
+    "outDir": "./dist",
+    "jsx": "react-jsx"
   },
   "outDir": "./dist",
   "rootDir": "./src",

@@ -2,10 +2,10 @@
   "name": "website-html-rewriter",
   "scripts": {
     "dev": "wrangler pages dev",
-    "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --minify --bundle --loader:.wasm=copy --loader:.bin=copy",
+    "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "deploy": "npm run clean && npm run build && cp -r public/* dist && wrangler pages deploy dist"
+    "deploy": "npm run clean && npm run build && cp -r public/* dist && cp -r assets dist/worker-assets && wrangler pages deploy dist"
   },
   "dependencies": {
     "@cloudflare/pages-plugin-vercel-og": "^0.1.2",
