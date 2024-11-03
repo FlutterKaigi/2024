@@ -5,7 +5,7 @@
     "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy && ./scripts/setup-dist-directory.sh",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "deploy": "pnpm clean && pnpm build && pnpm postbuild && wrangler pages deploy dist"
+    "deploy": "pnpm clean && pnpm build && wrangler pages deploy dist"
   },
   "dependencies": {
     "@cloudflare/pages-plugin-vercel-og": "^0.1.2",

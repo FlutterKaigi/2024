@@ -59,7 +59,7 @@ jobs:
           run_install: true
 
       - name: Build Function
-        run: pnpm run build && pnpm run postbuild
+        run: pnpm run build
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
@@ -104,4 +104,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory:  ./artifacts
-          command: pages deploy . 
+          command: pages deploy .
