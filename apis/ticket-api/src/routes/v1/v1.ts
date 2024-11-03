@@ -66,8 +66,7 @@ v1.post(
 				// 同じStripeセッションで購入しているので、200 OK
 				return c.json({
 					ticket: data,
-					message:
-						"You are already purchased ticket by the same Stripe Session.",
+					message: "You are already purchased ticket by the same Stripe Session.",
 				});
 			}
 			return c.json(

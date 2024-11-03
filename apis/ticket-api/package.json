@@ -6,6 +6,7 @@
     "deploy-production": "wrangler deploy --minify src/index.ts --env production",
     "lint": "biome check --write",
     "format": "biome format --write",
+    "check": "biome check --write",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
