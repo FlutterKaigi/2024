@@ -4,7 +4,7 @@
     "dev": "wrangler pages dev",
     "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy && ./scripts/setup-dist-directory.sh",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "deploy": "pnpm clean && pnpm build && wrangler pages deploy dist --project-name flutterkaigi-2024"
   },
   "dependencies": {

@@ -50,11 +50,10 @@ app.get(
       description: data.name + "のスポンサーです",
       url: url.toString()
     });
-    const baseHtmlUrl = new URL("/", url);
-    const baseHtml = await fetch(baseHtmlUrl);
+    const baseResponse = await fetchBaseResponse(url);
     const rewrittenResponse = await new HTMLRewriter()
       .on("head", rewriter)
-      .transform(baseHtml);
+      .transform(baseResponse);
     return rewrittenResponse;
   }
 );
@@ -74,14 +73,19 @@ app.notFound(async (c) => {
     const rewriter = new OgpRewriter({
       url: url.toString()
     });
-    const baseHtmlUrl = new URL("/", url);
-    const baseHtml = await fetch(baseHtmlUrl);
+    const baseResponse = await fetchBaseResponse(url);
     const rewrittenResponse = await new HTMLRewriter()
       .on("head", rewriter)
-      .transform(baseHtml);
+      .transform(baseResponse);
     return rewrittenResponse;
   }
   return response;
 });
+
+async function fetchBaseResponse(url: URL) {
+  const baseHtmlUrl = new URL("/", url);
+  const baseHtml = await fetch(baseHtmlUrl);
+  return baseHtml;
+}
 
 export default app;
