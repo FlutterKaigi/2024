@@ -940,6 +940,7 @@ mixin _$SponsorWithSessionV2View {
   String get description => throw _privateConstructorUsedError;
   Uri? get url => throw _privateConstructorUsedError;
   SponsorType get type => throw _privateConstructorUsedError;
+  int get sortId => throw _privateConstructorUsedError;
   List<SponsorWithSessionV2ViewSession> get sessions =>
       throw _privateConstructorUsedError;
 
@@ -966,6 +967,7 @@ abstract class $SponsorWithSessionV2ViewCopyWith<$Res> {
       String description,
       Uri? url,
       SponsorType type,
+      int sortId,
       List<SponsorWithSessionV2ViewSession> sessions});
 }
 
@@ -991,6 +993,7 @@ class _$SponsorWithSessionV2ViewCopyWithImpl<$Res,
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sortId = null,
     Object? sessions = null,
   }) {
     return _then(_value.copyWith(
@@ -1018,6 +1021,10 @@ class _$SponsorWithSessionV2ViewCopyWithImpl<$Res,
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
       sessions: null == sessions
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
@@ -1042,6 +1049,7 @@ abstract class _$$SponsorWithSessionV2ViewImplCopyWith<$Res>
       String description,
       Uri? url,
       SponsorType type,
+      int sortId,
       List<SponsorWithSessionV2ViewSession> sessions});
 }
 
@@ -1066,6 +1074,7 @@ class __$$SponsorWithSessionV2ViewImplCopyWithImpl<$Res>
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sortId = null,
     Object? sessions = null,
   }) {
     return _then(_$SponsorWithSessionV2ViewImpl(
@@ -1093,6 +1102,10 @@ class __$$SponsorWithSessionV2ViewImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
       sessions: null == sessions
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
@@ -1111,6 +1124,7 @@ class _$SponsorWithSessionV2ViewImpl implements _SponsorWithSessionV2View {
       required this.description,
       required this.url,
       required this.type,
+      required this.sortId,
       required final List<SponsorWithSessionV2ViewSession> sessions})
       : _sessions = sessions;
 
@@ -1129,6 +1143,8 @@ class _$SponsorWithSessionV2ViewImpl implements _SponsorWithSessionV2View {
   final Uri? url;
   @override
   final SponsorType type;
+  @override
+  final int sortId;
   final List<SponsorWithSessionV2ViewSession> _sessions;
   @override
   List<SponsorWithSessionV2ViewSession> get sessions {
@@ -1139,7 +1155,7 @@ class _$SponsorWithSessionV2ViewImpl implements _SponsorWithSessionV2View {
 
   @override
   String toString() {
-    return 'SponsorWithSessionV2View(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type, sessions: $sessions)';
+    return 'SponsorWithSessionV2View(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type, sortId: $sortId, sessions: $sessions)';
   }
 
   @override
@@ -1155,13 +1171,14 @@ class _$SponsorWithSessionV2ViewImpl implements _SponsorWithSessionV2View {
                 other.description == description) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.sortId, sortId) || other.sortId == sortId) &&
             const DeepCollectionEquality().equals(other._sessions, _sessions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, logoName, description,
-      url, type, const DeepCollectionEquality().hash(_sessions));
+      url, type, sortId, const DeepCollectionEquality().hash(_sessions));
 
   /// Create a copy of SponsorWithSessionV2View
   /// with the given fields replaced by the non-null parameter values.
@@ -1188,6 +1205,7 @@ abstract class _SponsorWithSessionV2View implements SponsorWithSessionV2View {
           required final String description,
           required final Uri? url,
           required final SponsorType type,
+          required final int sortId,
           required final List<SponsorWithSessionV2ViewSession> sessions}) =
       _$SponsorWithSessionV2ViewImpl;
 
@@ -1206,6 +1224,8 @@ abstract class _SponsorWithSessionV2View implements SponsorWithSessionV2View {
   Uri? get url;
   @override
   SponsorType get type;
+  @override
+  int get sortId;
   @override
   List<SponsorWithSessionV2ViewSession> get sessions;
 
@@ -1570,6 +1590,7 @@ mixin _$SponsorWithSessionV2 {
   String get description => throw _privateConstructorUsedError;
   Uri? get url => throw _privateConstructorUsedError;
   SponsorType get type => throw _privateConstructorUsedError;
+  int get sortId => throw _privateConstructorUsedError;
   List<SponsorWithSessionV2Session> get sessions =>
       throw _privateConstructorUsedError;
 
@@ -1596,6 +1617,7 @@ abstract class $SponsorWithSessionV2CopyWith<$Res> {
       String description,
       Uri? url,
       SponsorType type,
+      int sortId,
       List<SponsorWithSessionV2Session> sessions});
 }
 
@@ -1621,6 +1643,7 @@ class _$SponsorWithSessionV2CopyWithImpl<$Res,
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sortId = null,
     Object? sessions = null,
   }) {
     return _then(_value.copyWith(
@@ -1648,6 +1671,10 @@ class _$SponsorWithSessionV2CopyWithImpl<$Res,
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
       sessions: null == sessions
           ? _value.sessions
           : sessions // ignore: cast_nullable_to_non_nullable
@@ -1671,6 +1698,7 @@ abstract class _$$SponsorWithSessionV2ImplCopyWith<$Res>
       String description,
       Uri? url,
       SponsorType type,
+      int sortId,
       List<SponsorWithSessionV2Session> sessions});
 }
 
@@ -1693,6 +1721,7 @@ class __$$SponsorWithSessionV2ImplCopyWithImpl<$Res>
     Object? description = null,
     Object? url = freezed,
     Object? type = null,
+    Object? sortId = null,
     Object? sessions = null,
   }) {
     return _then(_$SponsorWithSessionV2Impl(
@@ -1720,6 +1749,10 @@ class __$$SponsorWithSessionV2ImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as SponsorType,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
       sessions: null == sessions
           ? _value._sessions
           : sessions // ignore: cast_nullable_to_non_nullable
@@ -1738,6 +1771,7 @@ class _$SponsorWithSessionV2Impl implements _SponsorWithSessionV2 {
       required this.description,
       required this.url,
       required this.type,
+      required this.sortId,
       required final List<SponsorWithSessionV2Session> sessions})
       : _sessions = sessions;
 
@@ -1756,6 +1790,8 @@ class _$SponsorWithSessionV2Impl implements _SponsorWithSessionV2 {
   final Uri? url;
   @override
   final SponsorType type;
+  @override
+  final int sortId;
   final List<SponsorWithSessionV2Session> _sessions;
   @override
   List<SponsorWithSessionV2Session> get sessions {
@@ -1766,7 +1802,7 @@ class _$SponsorWithSessionV2Impl implements _SponsorWithSessionV2 {
 
   @override
   String toString() {
-    return 'SponsorWithSessionV2(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type, sessions: $sessions)';
+    return 'SponsorWithSessionV2(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type, sortId: $sortId, sessions: $sessions)';
   }
 
   @override
@@ -1781,13 +1817,14 @@ class _$SponsorWithSessionV2Impl implements _SponsorWithSessionV2 {
                 other.description == description) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.sortId, sortId) || other.sortId == sortId) &&
             const DeepCollectionEquality().equals(other._sessions, _sessions));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, logoUrl, description,
-      url, type, const DeepCollectionEquality().hash(_sessions));
+      url, type, sortId, const DeepCollectionEquality().hash(_sessions));
 
   /// Create a copy of SponsorWithSessionV2
   /// with the given fields replaced by the non-null parameter values.
@@ -1815,6 +1852,7 @@ abstract class _SponsorWithSessionV2 implements SponsorWithSessionV2 {
           required final String description,
           required final Uri? url,
           required final SponsorType type,
+          required final int sortId,
           required final List<SponsorWithSessionV2Session> sessions}) =
       _$SponsorWithSessionV2Impl;
 
@@ -1833,6 +1871,8 @@ abstract class _SponsorWithSessionV2 implements SponsorWithSessionV2 {
   Uri? get url;
   @override
   SponsorType get type;
+  @override
+  int get sortId;
   @override
   List<SponsorWithSessionV2Session> get sessions;
 

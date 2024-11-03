@@ -6,6 +6,7 @@ import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_designsystem/theme.dart';
+import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:app_features_about/l10n.dart';
 import 'package:app_features_debug/l10n.dart';
@@ -103,9 +104,12 @@ class MainApp extends ConsumerWidget {
           builder: (context, child) => Localizations.override(
             context: context,
             locale: appLocale,
-            child: AccessibilityTools(
-              enableButtonsDrag: true,
-              child: child,
+            child: ScreenSizeProvider(
+              screenSize: MediaQuery.sizeOf(context),
+              child: AccessibilityTools(
+                enableButtonsDrag: true,
+                child: child,
+              ),
             ),
           ),
         );
