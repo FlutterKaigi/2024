@@ -58,7 +58,7 @@ android {
     defaultConfig {
         applicationId = "jp.flutterkaigi.conf2024"
         if (dartDefines.APP_ID_SUFFIX != null) {
-            applicationIdSuffix = ".${dartDefines.APP_ID_SUFFIX}"
+            applicationIdSuffix = "${dartDefines.APP_ID_SUFFIX}"
         }
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
