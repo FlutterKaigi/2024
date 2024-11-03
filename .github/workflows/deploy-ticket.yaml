@@ -196,6 +196,8 @@ jobs:
       # https://github.com/pnpm/action-setup
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
         name: Install pnpm
+        with:
+          run_install: true
 
       - name: Deploy to Cloudflare Workers
         run: pnpm run deploy-${{ matrix.environment }}

@@ -27,6 +27,8 @@ jobs:
       # https://github.com/pnpm/action-setup
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
         name: Install pnpm
+        with:
+          run_install: true
 
       # https://github.com/danger/danger-js/blob/main/source/ci_source/providers/GitHubActions.ts
       - run: pnpm textlint-ci
