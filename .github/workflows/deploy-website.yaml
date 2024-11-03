@@ -80,6 +80,12 @@ jobs:
         with:
           fetch-depth: 1
 
+      # https://github.com/pnpm/action-setup
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+        name: Install pnpm
+        with:
+          run_install: true
+
       - name: Download Artifacts (Website)
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
@@ -99,9 +105,7 @@ jobs:
           cp -r ./artifacts-website-html-rewriter/* ./artifacts
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@b2a0191ce60d21388e1a8dcc968b4e9966f938e1 # v3.11.0
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          workingDirectory:  ./artifacts
-          command: pages deploy .
+        run: pnpm wrangler pages deploy ./artifacts --project-name flutterkaigi-2024
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
