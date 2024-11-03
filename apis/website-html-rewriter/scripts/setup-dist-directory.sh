@@ -10,3 +10,5 @@ fi
 
 # assetsディレクトリをdist/worker-assetsにコピー
 cp -r assets dist/worker-assets
+
+echo "[INFO] dist directory setup completed"

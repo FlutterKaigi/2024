@@ -2,10 +2,9 @@
   "name": "website-html-rewriter",
   "scripts": {
     "dev": "wrangler pages dev",
-    "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy",
+    "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy && ./scripts/setup-dist-directory.sh",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "postbuild": "./scripts/setup-dist-directory.sh",
     "deploy": "pnpm clean && pnpm build && pnpm postbuild && wrangler pages deploy dist"
   },
   "dependencies": {
