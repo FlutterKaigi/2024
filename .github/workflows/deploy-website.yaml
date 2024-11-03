@@ -55,9 +55,11 @@ jobs:
       # https://github.com/pnpm/action-setup
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
         name: Install pnpm
+        with:
+          run_install: true
 
       - name: Build Function
-        run: pnpm run build
+        run: pnpm run build && pnpm run postbuild
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
@@ -97,10 +99,9 @@ jobs:
           cp -r ./artifacts-website-html-rewriter/* ./artifacts
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # v1.5.0
+        uses: cloudflare/wrangler-action@b2a0191ce60d21388e1a8dcc968b4e9966f938e1 # v3.11.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: flutterkaigi-2024
-          directory: ./artifacts
+          workingDirectory:  ./artifacts
+          command: pages deploy . 
