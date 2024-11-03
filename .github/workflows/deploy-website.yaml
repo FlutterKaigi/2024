@@ -21,7 +21,7 @@ permissions:
   deployments: write
 
 jobs:
-  build-website:
+  build-website-flutter-web:
     runs-on: ubuntu-22.04
     steps:
       # https://github.com/actions/checkout
@@ -42,10 +42,10 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
-          name: website-flutter
+          name: website-flutter-web
           path: apps/website/build/web
 
-  build-website-html-rewriter:
+  build-website-html-rewriter-api:
     runs-on: ubuntu-22.04
     steps:
       # https://github.com/actions/checkout
@@ -64,14 +64,14 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
         with:
-          name: website-html-rewriter
+          name: website-html-rewriter-api
           path: apis/website-html-rewriter/dist
 
   deploy-website:
     runs-on: ubuntu-22.04
     needs:
-      - build-website
-      - build-website-html-rewriter
+      - build-website-flutter-web
+      - build-website-html-rewriter-api
     steps:
 
       # https://github.com/actions/checkout
@@ -83,13 +83,13 @@ jobs:
       - name: Download Artifacts (Website)
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
-          name: website-flutter
+          name: website-flutter-web
           path: ./artifacts-website
 
       - name: Download Artifacts (Website HTML Rewriter API)
         uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
-          name: website-html-rewriter
+          name: website-html-rewriter-api
           path: ./artifacts-website-html-rewriter
 
       - name: Merge Artifacts
