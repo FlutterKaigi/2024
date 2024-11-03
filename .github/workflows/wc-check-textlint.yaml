@@ -24,13 +24,13 @@ jobs:
           # This is important to fetch the changes to the previous commit
           fetch-depth: 0
 
-      # https://github.com/oven-sh/setup-bun
-      - uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+      # https://github.com/pnpm/action-setup
+      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
+        name: Install pnpm
         with:
-          bun-version: latest
-      - run: bun install
+          run_install: true
 
       # https://github.com/danger/danger-js/blob/main/source/ci_source/providers/GitHubActions.ts
-      - run: bun danger ci -d textlint.ts
+      - run: pnpm textlint-ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

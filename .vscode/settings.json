@@ -25,6 +25,9 @@
   "[json][jsonc][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescript][javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
