@@ -56,7 +56,12 @@ app.get(
 );
 
 app.notFound(async (c) => {
-  return c.env.ASSETS.fetch(c.req.raw);
+  const response = await c.env.ASSETS.fetch(c.req.raw);
+  // ファイルが存在しなかった場合、ホームページへリダイレクト
+  if (response.status === 404) {
+    return c.redirect("/", 302);
+  }
+  return response;
 });
 
 export default app;
