@@ -8,6 +8,7 @@
     "deploy": "npm run clean && npm run build && cp -r public/* dist && wrangler pages deploy dist"
   },
   "dependencies": {
+    "@cloudflare/pages-plugin-vercel-og": "^0.1.2",
     "@hono/valibot-validator": "^0.3.1",
     "@supabase/supabase-js": "^2.45.4",
     "hono": "^4.6.8",

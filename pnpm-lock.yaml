@@ -99,6 +99,9 @@ importers:
 
   apis/website-html-rewriter:
     dependencies:
+      '@cloudflare/pages-plugin-vercel-og':
+        specifier: ^0.1.2
+        version: 0.1.2
       '@hono/valibot-validator':
         specifier: ^0.3.1
         version: 0.3.1(hono@4.6.8)(valibot@0.41.0(typescript@5.6.3))
@@ -209,6 +212,9 @@ packages:
   '@cloudflare/kv-asset-handler@0.3.4':
     resolution: {integrity: sha512-YLPHc8yASwjNkmcDMQMY35yiWjoKAKnhUbPRszBRS0YgH+IXtsMp61j+yTcnCE3oO2DgP0U3iejLC8FTtKDC8Q==}
     engines: {node: '>=16.13'}
+
+  '@cloudflare/pages-plugin-vercel-og@0.1.2':
+    resolution: {integrity: sha512-aWA2pHu1R2UbOJIcSASCuViyYVEhYkZ3tWTrTnr+yLosBfksOzjecHQkCkPv/jy75hGPrn1BbtsQR+oWVFkp1g==}
 
   '@cloudflare/workerd-darwin-64@1.20241022.0':
     resolution: {integrity: sha512-1NNYun37myMTgCUiPQEJ0cMal4mKZVTpkD0b2tx9hV70xji+frVJcSK8YVLeUm1P+Rw1d/ct8DMgQuCpsz3Fsw==}
@@ -2233,6 +2239,8 @@ snapshots:
   '@cloudflare/kv-asset-handler@0.3.4':
     dependencies:
       mime: 3.0.0
+
+  '@cloudflare/pages-plugin-vercel-og@0.1.2': {}
 
   '@cloudflare/workerd-darwin-64@1.20241022.0':
     optional: true
