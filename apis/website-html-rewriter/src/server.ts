@@ -1,13 +1,16 @@
 import { Hono } from "hono";
-import { generateHtml } from "./util/htmlGenerator";
 import { vValidator } from "@hono/valibot-validator";
 import * as v from "valibot";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "supabase-types";
 import { Bindings } from "./bindings";
 import { logger } from "hono/logger";
+import ogImage from "./ogImage";
+import { OgpRewriter } from "./util/ogpRewriter";
 
 const app = new Hono<{ Bindings: Bindings }>();
+
+app.route("/og-image.png", ogImage);
 
 app.use("*", logger());
 
@@ -41,27 +44,29 @@ app.get(
       return c.json({ error: "Sponsor not found" }, 404);
     }
 
-    const url = c.req.url;
-    const host = new URL(url).host;
-    const html = await generateHtml({
-      host,
-      url,
+    const url = new URL(c.req.url);
+    const rewriter = new OgpRewriter({
       title: data.name,
-      description: `${data.name}のスポンサー情報です。`
+      description: data.name + "のスポンサーです",
+      url: url.toString()
     });
-    c.res.headers.set("Cache-Control", "public, max-age=3600"); // 1時間
-
-    return c.html(html);
+    const baseHtmlUrl = new URL("/", url);
+    const baseHtml = await fetch(baseHtmlUrl);
+    const rewrittenResponse = await new HTMLRewriter()
+      .on("head", rewriter)
+      .transform(baseHtml);
+    rewrittenResponse.headers.set("Cache-Control", "public, max-age=3600");
+    return rewrittenResponse;
   }
 );
 
-app.notFound(async (c) => {
-  const response = await c.env.ASSETS.fetch(c.req.raw);
-  // ファイルが存在しなかった場合、ホームページへリダイレクト
-  if (response.status === 404) {
-    return c.redirect("/", 302);
-  }
-  return response;
+app.use("*", (c, next) => {
+  c.header("Cache-Control", "public, max-age=3600");
+  return next();
+});
+
+app.notFound((c) => {
+  return c.env.ASSETS.fetch(c.req.raw);
 });
 
 export default app;
