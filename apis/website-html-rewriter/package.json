@@ -21,6 +21,6 @@
     "configs": "workspace:*",
     "esbuild": "0.24.0",
     "supabase-types": "workspace:*",
-    "wrangler": "^3.83.0"
+    "wrangler": "^3.84.1"
   }
 }
