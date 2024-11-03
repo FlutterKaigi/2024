@@ -58,6 +58,72 @@ app.get(
   }
 );
 
+app.get("/job-board", async (c) => {
+  const url = new URL(c.req.url);
+  const rewriter = new OgpRewriter({
+    title: "ジョブボード",
+    description: "FlutterKaigi 2024のジョブボードです",
+    url: url.toString()
+  });
+  const baseResponse = await fetchBaseResponse(url);
+  const rewrittenResponse = await new HTMLRewriter()
+    .on("head", rewriter)
+    .transform(baseResponse);
+  return rewrittenResponse;
+});
+
+app.get("/sessions", async (c) => {
+  const url = new URL(c.req.url);
+  const rewriter = new OgpRewriter({
+    title: "セッション一覧",
+    description: "FlutterKaigi 2024のセッション一覧です",
+    url: url.toString()
+  });
+});
+
+app.get(
+  "/session/:id",
+  vValidator(
+    "param",
+    v.object({
+      id: v.string()
+    })
+  ),
+  async (c) => {
+    const params = c.req.valid("param");
+    const id = params.id;
+    const supabase = createClient<Database>(
+      c.env.SUPABASE_URL,
+      c.env.SUPABASE_KEY
+    );
+    const { data, error } = await supabase
+      .from("sessions")
+      .select(
+      )
+      .eq("id", id)
+      .maybeSingle();
+    if (error) {
+      return c.json({ error: error.message }, 500);
+    }
+    if (!data) {
+      return c.json({ error: "Sponsor not found" }, 404);
+    }
+
+    const url = new URL(c.req.url);
+    const description = data.description.length > 100 ? data.description.slice(0, 100) + "..." : data.description;
+    const rewriter = new OgpRewriter({
+      title: data.title,
+      description: description,
+      url: url.toString()
+    });
+    const baseResponse = await fetchBaseResponse(url);
+    const rewrittenResponse = await new HTMLRewriter()
+      .on("head", rewriter)
+      .transform(baseResponse);
+    return rewrittenResponse;
+  }
+);
+
 app.use("*", (c, next) => {
   c.header("Cache-Control", "public, max-age=3600");
   return next();
@@ -65,7 +131,6 @@ app.use("*", (c, next) => {
 
 app.notFound(async (c) => {
   const response = await c.env.ASSETS.fetch(c.req.raw);
-
   // HTMLの場合
   if (response.headers.get("Content-Type") === "text/html") {
 
@@ -79,6 +144,13 @@ app.notFound(async (c) => {
       .transform(baseResponse);
     return rewrittenResponse;
   }
+  const url = new URL(c.req.url);
+  if (response.status === 404) {
+    if (url.pathname !== "/" && url.pathname !== "/index.html") {
+      return c.redirect("/");
+    }
+  }
+
   return response;
 });
 
