@@ -9,6 +9,7 @@ command:
       flutter: ^3.26.0-0.1.pre
     dependencies:
       accessibility_tools: ^2.2.2
+      add_2_calendar: ^3.0.1
       collection: ^1.19.0
       dynamic_color: ^1.7.0
       flutter:
