@@ -21,13 +21,13 @@
     }
   },
   "scripts": {
-    "build": "turbo build",
-    "deploy-production": "turbo deploy-production",
-    "deploy-staging": "turbo deploy-staging",
-    "lint": "turbo lint",
-    "format": "turbo format",
-    "check": "turbo check",
-    "typecheck": "turbo typecheck",
+    "build": "pnpm turbo build",
+    "deploy-production": "pnpm turbo deploy-production",
+    "deploy-staging": "pnpm turbo deploy-staging",
+    "lint": "pnpm turbo lint",
+    "format": "pnpm turbo format",
+    "check": "pnpm turbo check",
+    "typecheck": "pnpm turbo typecheck",
     "textlint-ci": "danger ci -d textlint.ts"
   },
   "private": true,
