@@ -5,7 +5,7 @@
     "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "postbuild": "cp -r public/* dist && cp -r assets dist/worker-assets",
+    "postbuild": "sh scripts/setup-dist-directory.sh",
     "deploy": "pnpm clean && pnpm build && pnpm postbuild && wrangler pages deploy dist"
   },
   "dependencies": {
