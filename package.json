@@ -26,7 +26,7 @@
     "deploy-staging": "turbo deploy-staging",
     "lint": "turbo lint",
     "format": "turbo format",
-    "check": "turbo check", 
+    "check": "turbo check",
     "typecheck": "turbo typecheck",
     "textlint-ci": "danger ci -d textlint.ts"
   },

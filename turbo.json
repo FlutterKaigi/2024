@@ -2,12 +2,8 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "dev": {
       "cache": false
@@ -25,9 +21,7 @@
       "cache": false
     },
     "typecheck": {
-      "outputs": [
-        "tsconfig.tsbuildinfo"
-      ],
+      "outputs": ["tsconfig.tsbuildinfo"],
       "cache": false
     },
     "deploy-production": {
