@@ -101,9 +101,9 @@ jobs:
       - name: Merge Artifacts
         run: |
           mkdir -p ./artifacts
-          cp -r ./artifacts-website/* ./artifacts
-          cp -r ./artifacts-website-html-rewriter/* ./artifacts
-          cp ./artifacts apis/website-html-rewriter/dist
+          mv ./artifacts-website/* ./artifacts
+          mv ./artifacts-website-html-rewriter/* ./artifacts
+          mv ./artifacts apis/website-html-rewriter/dist
 
       - name: Deploy to Cloudflare Pages
         run: pnpm run wrangler pages deploy ./artifacts --project-name flutterkaigi-2024
