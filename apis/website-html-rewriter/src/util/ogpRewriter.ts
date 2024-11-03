@@ -6,7 +6,7 @@ export class OgpRewriter {
     url
   }: {
     title?: string | undefined;
-    description: string;
+    description?: string | undefined;
     url: string;
     imageOverride?: string | undefined;
   }) {
@@ -15,7 +15,7 @@ export class OgpRewriter {
     } else {
       this.title = `${title} | ${OgpRewriter.defaultTitle}`;
     }
-    this.description = description;
+    this.description = description ?? OgpRewriter.defaultDescription;
     if (imageOverride) {
       this.image = imageOverride;
     } else {
@@ -34,6 +34,8 @@ export class OgpRewriter {
   url: string;
 
   static defaultTitle = "FlutterKaigi 2024";
+  static defaultDescription =
+    "2024年、日本国内でFlutterをメインに扱う技術カンファレンス。FlutterやDartの深い知見を持つ開発者によるセッションを多数企画します。";
 
   element(e: Element) {
     // Append Title

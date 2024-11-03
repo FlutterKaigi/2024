@@ -55,7 +55,6 @@ app.get(
     const rewrittenResponse = await new HTMLRewriter()
       .on("head", rewriter)
       .transform(baseHtml);
-    rewrittenResponse.headers.set("Cache-Control", "public, max-age=3600");
     return rewrittenResponse;
   }
 );
@@ -65,8 +64,24 @@ app.use("*", (c, next) => {
   return next();
 });
 
-app.notFound((c) => {
-  return c.env.ASSETS.fetch(c.req.raw);
+app.notFound(async (c) => {
+  const response = await c.env.ASSETS.fetch(c.req.raw);
+
+  // HTMLの場合
+  if (response.headers.get("Content-Type") === "text/html") {
+
+    const url = new URL(c.req.url);
+    const rewriter = new OgpRewriter({
+      url: url.toString()
+    });
+    const baseHtmlUrl = new URL("/", url);
+    const baseHtml = await fetch(baseHtmlUrl);
+    const rewrittenResponse = await new HTMLRewriter()
+      .on("head", rewriter)
+      .transform(baseHtml);
+    return rewrittenResponse;
+  }
+  return response;
 });
 
 export default app;
