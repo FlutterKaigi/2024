@@ -106,8 +106,8 @@ jobs:
           mv ./artifacts apis/website-html-rewriter/dist
 
       - name: Deploy to Cloudflare Pages
-        run: pnpm run wrangler pages deploy ./artifacts --project-name flutterkaigi-2024
         working-directory: apis/website-html-rewriter
+        run: pnpm install && pnpm run upload
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

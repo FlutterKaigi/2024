@@ -5,7 +5,8 @@
     "build": "esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy && ./scripts/setup-dist-directory.sh",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
-    "deploy": "pnpm clean && pnpm build && wrangler pages deploy dist --project-name flutterkaigi-2024"
+    "upload": "wrangler pages deploy dist --project-name flutterkaigi-2024",
+    "deploy": "pnpm clean && pnpm build && pnpm upload"
   },
   "dependencies": {
     "@cloudflare/pages-plugin-vercel-og": "^0.1.2",
