@@ -71,10 +71,12 @@ android {
 
     signingConfigs {
         release {
-            keyAlias keyProperties.getProperty('keyAlias')
-            keyPassword keyProperties.getProperty('keyPassword')
-            storeFile rootProject.file(keyProperties.getProperty('keyStoreFilePath'))
-            storePassword keyProperties.getProperty('keyStorePassword')
+            if (keyPropertiesFile.exists()) {
+                keyAlias keyProperties.getProperty('keyAlias')
+                keyPassword keyProperties.getProperty('keyPassword')
+                storeFile rootProject.file(keyProperties.getProperty('keyStoreFilePath'))
+                storePassword keyProperties.getProperty('keyStorePassword')
+            }
         }
     }
 

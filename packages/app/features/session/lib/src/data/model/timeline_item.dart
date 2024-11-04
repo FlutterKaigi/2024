@@ -1,4 +1,5 @@
 import 'package:common_data/session.dart';
+import 'package:common_data/speaker.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -20,7 +21,7 @@ class TimelineItem with _$TimelineItem {
     required DateTime endsAt,
     required bool isLightningTalk,
     required SessionVenue venue,
-    required List<ProfileWithSns> speakers,
+    required List<Speaker> speakers,
     required List<Sponsor> sponsors,
   }) = TimelineItemSession;
 }

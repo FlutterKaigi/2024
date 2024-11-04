@@ -9,7 +9,6 @@ import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';
 import 'package:collection/collection.dart';
-import 'package:common_data/profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -103,9 +102,10 @@ class SessionPage extends ConsumerWidget {
                       ),
                       title: Text(speaker.name),
                       onTap: () {
-                        unawaited(
-                          launchInExternalApp(speaker.snsAccounts.first.uri),
-                        );
+                        final xUri = speaker.xUri;
+                        if (xUri != null) {
+                          unawaited(launchInExternalApp(xUri));
+                        }
                       },
                     ),
                   ),

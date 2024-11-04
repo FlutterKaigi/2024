@@ -6,7 +6,7 @@ part of 'session_timeline.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionTimelineHash() => r'ed5a8a237968e98aa3281b0927ace61c24dfe6ae';
+String _$sessionTimelineHash() => r'be68ec451cd83b39d0ef066d6e887bfd87d2732c';
 
 /// See also [sessionTimeline].
 @ProviderFor(sessionTimeline)
