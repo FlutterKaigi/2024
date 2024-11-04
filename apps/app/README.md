@@ -40,6 +40,100 @@
 
 本番の Web API を使用するため、過度に API のリクエストを行わないように注意してください。
 
+## パッケージごとの役割
+
+アプリで使用しているパッケージとその役割は以下の通りです。
+
+| パッケージ名 | 役割 |
+| - | - |
+| `app_cores_core` | アプリのパッケージ間で共通して使用する機能を提供 |
+| `app_cores_designsystem` | アプリのデザインシステムを提供 |
+| `app_cores_settings` | アプリの設定関連機能を提供 |
+| `app_features_about` | アプリについての説明関連機能を提供 |
+| `app_features_debug` | アプリのデバッグ機能を提供 |
+| `app_features_news` | アプリのニュース関連機能を提供 |
+| `app_features_session` | アプリのセッション関連機能を提供 |
+| `app_features_venue` | アプリの会場関連機能を提供 |
+| `common_data` | プロジェクト全体で共通して使用するデータ関連機能を提供 |
+| `conference_2024_app` | アプリのエントリーポイントを提供 |
+
+## パッケージの依存関係
+
+このプロジェクトでは、各機能やをパッケージ単位で分割し、それぞれが特定のレイヤーに属しています。レイヤー構造は以下の通りです。
+
+1. **App Layer** - アプリ全体を管理し、`Core`・`Feature`・`Common` レイヤーのパッケージに依存することで全体の機能を統合しています。アプリケーションを構築する際、最上位のレイヤーとして、全機能を束ねる役割を担います。
+1. **Feature Layer** - ある程度まとまった単位での機能を提供します。`Core`・`Common` レイヤーのパッケージに依存しています。
+1. **Core Layer** - アプリ全体で共通して利用するコア機能やデザインシステムを提供します。`App`・`Feature` レイヤーのパッケージが依存する基本的な機能を提供し、アプリの土台を支える役割を果たします。
+1. **Common Layer** - 共通データや外部データアクセスを担当するパッケージで、複数のパッケージで利用されるデータソースを管理します。
+
+### 注意事項
+
+- **依存関係の一貫性**: 依存関係は基本的に上位レイヤーが下位レイヤーに依存する形で構成されています。これにより、上位レイヤーの変更が下位レイヤーに影響しないように設計されています。
+- **パッケージの分離**: 新しい機能を追加する場合は、可能な限り既存のパッケージに実装することを検討してください。新たにパッケージを作成して分離する場合は、同じレイヤー内での依存をしたり循環依存したりしないように注意してください。
+- **共通データの管理**: `Common Layer` に含まれる共通データは、プロジェクト全体で共通して使用されているため、変更する際は影響範囲を慎重に検討してください。アプリのみで共通して使用されるデータは `Core Layer` のパッケージで管理して、各機能で共通して使用されるデータは `Feature Layer` のパッケージで管理するようにしてください。
+
+### 依存関係図
+
+以下は、アプリで使用している各パッケージの依存関係を示す図です。
+
+```mermaid
+graph TD
+  %% レイヤー分け
+  subgraph Core Layer
+    app_cores_core["app_cores_core"]
+    app_cores_designsystem["app_cores_designsystem"]
+    app_cores_settings["app_cores_settings"]
+  end
+
+  subgraph Feature Layer
+    app_features_about["app_features_about"]
+    app_features_debug["app_features_debug"]
+    app_features_news["app_features_news"]
+    app_features_session["app_features_session"]
+    app_features_venue["app_features_venue"]
+  end
+
+  subgraph Common Layer
+    common_data["common_data"]
+  end
+
+  subgraph App Layer
+    conference_2024_app["conference_2024_app"]
+  end
+
+  %% Core Layerの依存関係
+  app_cores_designsystem --> app_cores_core
+  app_cores_settings --> app_cores_core
+  app_cores_settings --> app_cores_designsystem
+
+  %% Feature Layerの依存関係
+  app_features_about --> app_cores_core
+  app_features_about --> app_cores_designsystem
+  app_features_about --> app_cores_settings
+  app_features_about --> common_data
+  app_features_news --> app_cores_designsystem
+  app_features_news --> app_cores_settings
+  app_features_news --> common_data
+  app_features_session --> app_cores_core
+  app_features_session --> app_cores_designsystem
+  app_features_session --> app_cores_settings
+  app_features_session --> common_data
+  app_features_venue --> app_cores_core
+  app_features_venue --> app_cores_designsystem
+  app_features_venue --> app_cores_settings
+
+  %% App Layerの依存関係
+  conference_2024_app --> app_cores_core
+  conference_2024_app --> app_cores_designsystem
+  conference_2024_app --> app_cores_settings
+  conference_2024_app --> app_features_about
+  conference_2024_app --> app_features_debug
+  conference_2024_app --> app_features_news
+  conference_2024_app --> app_features_session
+  conference_2024_app --> app_features_venue
+  conference_2024_app --> common_data
+```
+
 <!-- Links -->
 
 [プロジェクトの README]: ../../README.md
