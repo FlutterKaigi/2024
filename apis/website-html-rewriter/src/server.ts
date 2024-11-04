@@ -72,13 +72,18 @@ app.get("/job-board", async (c) => {
   return rewrittenResponse;
 });
 
-app.get("/sessions", async (c) => {
+app.get("/session", async (c) => {
   const url = new URL(c.req.url);
   const rewriter = new OgpRewriter({
     title: "セッション一覧",
     description: "FlutterKaigi 2024のセッション一覧です",
     url: url.toString()
   });
+  const baseResponse = await fetchBaseResponse(url);
+  const rewrittenResponse = await new HTMLRewriter()
+    .on("head", rewriter)
+    .transform(baseResponse);
+  return rewrittenResponse;
 });
 
 app.get(
@@ -133,7 +138,6 @@ app.notFound(async (c) => {
   const response = await c.env.ASSETS.fetch(c.req.raw);
   // HTMLの場合
   if (response.headers.get("Content-Type") === "text/html") {
-
     const url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       url: url.toString()
