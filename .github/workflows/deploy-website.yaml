@@ -73,7 +73,6 @@ jobs:
       - build-website-flutter-web
       - build-website-html-rewriter-api
     steps:
-
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -105,7 +104,7 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         working-directory: apis/website-html-rewriter
-        run: pnpm install && pnpm run upload --branch=${{ github.ref_name }} --commit-hash=${{ github.sha }} --commit-message=${{ github.event.pull_request.title }}
+        run: pnpm install && pnpm run upload
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
