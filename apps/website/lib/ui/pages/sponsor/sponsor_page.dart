@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
+import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
@@ -63,7 +64,7 @@ class SponsorPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.sizeOf(context).width < 960;
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
     final scrollController = useScrollController();
 
     return SelectionArea(
