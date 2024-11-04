@@ -139,23 +139,16 @@ app.notFound(async (c) => {
   console.log(response.headers.get("Content-Type"));
   // HTMLの場合
   if (response.headers.get("Content-Type")?.includes("text/html")) {
-    const url = new URL(c.req.url);
+    let url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       url: url.toString()
     });
-    const baseResponse = await fetchBaseResponse(url);
     const rewrittenResponse = await new HTMLRewriter()
       .on("head", rewriter)
-      .transform(baseResponse);
+      .transform(response);
     return rewrittenResponse;
   }
   const url = new URL(c.req.url);
-  if (response.status === 404) {
-    if (url.pathname !== "/" && url.pathname !== "/index.html") {
-      return c.redirect("/");
-    }
-  }
-
   return response;
 });
 

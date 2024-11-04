@@ -12,6 +12,15 @@ export function isOgpImageGeneratorSupported(path: string) {
   if (path.startsWith("/sponsor/")) {
     return true;
   }
+  if (path === "/job-board") {
+    return true;
+  }
+  if (path === "/session") {
+    return true;
+  }
+  if (path.startsWith("/session/")) {
+    return true;
+  }
   return false;
 }
 
@@ -78,7 +87,7 @@ app.get(
           alignItems: "center",
           justifyContent: "center",
           color: "white",
-          fontSize: "5em",
+          fontSize: "15em",
           textAlign: "center"
         }}
       >
