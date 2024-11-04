@@ -247,18 +247,20 @@ async function getSessionDetailOgImageHtml({
             alignItems: "center"
           }}
         >
-          {new Date(data.starts_at).toLocaleString("ja-JP", {
+          {new Intl.DateTimeFormat("ja-JP", {
+            timeZone: "Asia/Tokyo",
             month: "long",
             day: "numeric",
             weekday: "short",
             hour: "2-digit",
             minute: "2-digit"
-          })}
+          }).format(new Date(data.starts_at))}
           <span style={{ color: "#888888" }}>-</span>
-          {new Date(data.ends_at).toLocaleString("ja-JP", {
+          {new Intl.DateTimeFormat("ja-JP", {
+            timeZone: "Asia/Tokyo",
             hour: "2-digit",
             minute: "2-digit"
-          })}
+          }).format(new Date(data.ends_at))}
           {data.is_lightning_talk && (
             <div
               style={{

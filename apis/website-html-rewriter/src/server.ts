@@ -132,16 +132,24 @@ app.get(
     if (data.sponsor_id) sessionType.push("スポンサーセッション");
     const sessionTypeText = sessionType.length > 0 ? ` | ${sessionType.join(", ")}` : "";
 
-    const description = `${new Date(data.starts_at).toLocaleString("ja-JP", {
+    const jstFormatter = new Intl.DateTimeFormat("ja-JP", {
+      timeZone: "Asia/Tokyo",
       month: "long",
       day: "numeric",
       weekday: "short",
       hour: "2-digit",
-      minute: "2-digit"
-    })} ~ ${new Date(data.ends_at).toLocaleString("ja-JP", {
+      minute: "2-digit",
+    });
+
+    const jstTimeFormatter = new Intl.DateTimeFormat("ja-JP", {
+      timeZone: "Asia/Tokyo",
       hour: "2-digit",
-      minute: "2-digit"
-    })} | 会場: ${data.session_venues?.name}${
+      minute: "2-digit",
+    });
+
+    const description = `${jstFormatter.format(new Date(data.starts_at))} ~ ${
+      jstTimeFormatter.format(new Date(data.ends_at))
+    } | 会場: ${data.session_venues?.name}${
       speakers ? ` | 登壇者: ${speakers}` : ""
     }${sessionTypeText}`;
 
