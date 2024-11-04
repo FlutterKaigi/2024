@@ -77,8 +77,6 @@ jobs:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 1
 
       # https://github.com/pnpm/action-setup
       - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4.0.0
@@ -107,7 +105,7 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         working-directory: apis/website-html-rewriter
-        run: pnpm install && pnpm run upload
+        run: pnpm install && pnpm run upload --branch=${{ github.ref_name }} --commit-hash=${{ github.sha }} --commit-message=${{ github.event.pull_request.title }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
