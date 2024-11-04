@@ -10,6 +10,9 @@ class L10nAboutEn extends L10nAbout {
   String get aboutPageTitle => 'About us';
 
   @override
+  String get flutterKaigiTitle => 'FlutterKaigi 2024';
+
+  @override
   String get flutterKaigiDescription =>
       'FlutterKaigi is a conference for Flutter/Dart lovers from around the world. Our objective is to provide a space for sharing your knowledge and passion for Flutter/Dart. And we are running the committee as volunteers. Beginners and advanced users alike gather to learn, discuss, and enjoy Flutter/Dart. Although the event will be held in Japan, we are using Internet distribution to transmit the information to the entire world.';
 
