@@ -136,8 +136,9 @@ app.use("*", (c, next) => {
 
 app.notFound(async (c) => {
   const response = await c.env.ASSETS.fetch(c.req.raw);
+  console.log(response.headers.get("Content-Type"));
   // HTMLの場合
-  if (response.headers.get("Content-Type") === "text/html") {
+  if (response.headers.get("Content-Type")?.includes("text/html")) {
     const url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       url: url.toString()
