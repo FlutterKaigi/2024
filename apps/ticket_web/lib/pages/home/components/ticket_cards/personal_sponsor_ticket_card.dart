@@ -78,7 +78,9 @@ class PersonalSponsorTicketCard extends StatelessWidget {
               ),
               onPressed: isLoggedIn ? onPurchasePressed : null,
               icon: const Icon(Icons.shopping_cart),
-              label: Text(i18n.homePage.tickets.buyTicket),
+              label: Text(isLoggedIn
+                  ? i18n.homePage.tickets.buyTicket
+                  : i18n.homePage.tickets.loginWithGoogleToPurchase),
             ),
           ],
         ),
