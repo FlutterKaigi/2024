@@ -47,7 +47,7 @@ app.get(
     const url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       title: data.name,
-      description: data.name + "のスポンサーです",
+      description: data.name + "はFlutterKaigi 2024のスポンサーです",
       url: url.toString()
     });
     const baseResponse = await fetchBaseResponse(url);
