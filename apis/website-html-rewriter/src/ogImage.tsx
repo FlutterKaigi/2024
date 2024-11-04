@@ -74,6 +74,15 @@ app.get(
         debug
       });
     }
+    if (path.startsWith("/session/")) {
+      const id = path.split("/")[2];
+      const html = await getSessionDetailOgImageHtml({
+        id,
+        supabase,
+        url: new URL(c.req.url),
+      });
+      return generateOgImage({ html, fetcher: c.env.ASSETS, url: new URL(c.req.url), debug });
+    }
     if (path === "/job-board") {
       const html = await getBaseOgImageHtml({
         url: new URL(c.req.url),
@@ -107,6 +116,194 @@ async function generateOgImage({ html, fetcher, url, debug }: { html: JSX.Elemen
       });
   return image;
 }
+
+async function getSessionDetailOgImageHtml({
+  id,
+  supabase,
+  url
+ }: {
+  id: string;
+  supabase: SupabaseClient<Database>;
+  url: URL;
+  }) {
+  const { data, error } = await supabase
+    .from("sessions")
+    .select(`
+      *,
+      session_speakers_v2 (
+        speaker_id,
+        speakers (*)
+      )
+    `)
+    .eq("id", id)
+    .maybeSingle();
+  if (error) {
+    throw new Error(error.message);
+  }
+  if (!data) {
+    return <div>Session not found</div>;
+  }
+  console.log(data);
+  data.session_speakers_v2.forEach((sessionSpeaker) => {
+    console.log(sessionSpeaker.speakers);
+  });
+  const speakers = data.session_speakers_v2.map((sessionSpeaker) => {
+    return {
+      ...sessionSpeaker,
+      speakerLogoUrl: supabase.storage.from("speakers").getPublicUrl(sessionSpeaker.speakers!.avatar_name!.replaceAll(".webp", ".png"))
+    };
+  });
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        position: "relative"
+      }}
+    >
+      <img
+        src={new URL("worker-assets/background-card-large.svg", url).toString()}
+        width={1200}
+        height={630}
+        style={{
+          width: "100%",
+          height: "100%"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: "135px",
+          top: "210px",
+          width: "930px",
+          height: "368px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "24px",
+          padding: "32px"
+        }}
+      >
+        <div
+          style={{
+            fontSize: data.title.length > 30
+              ? "32px"
+              : "40px",
+            fontWeight: "bold",
+            color: "#333333",
+            maxHeight: "134px",
+            display: "flex",
+            flexDirection: "column"
+          }}
+        >
+          {data.title}
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "24px",
+            alignItems: "center"
+          }}
+        >
+          {speakers.map((speaker, index) => (
+            <div
+              key={speaker.speaker_id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px"
+              }}
+            >
+              <img
+                src={speaker.speakerLogoUrl.data.publicUrl}
+                width={80}
+                height={80}
+                style={{
+                  borderRadius: "50%",
+                  objectFit: "cover"
+                }}
+              />
+              <div
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  color: "#333333"
+                }}
+              >
+                {speaker.speakers!.name}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            fontSize: "32px",
+            color: "#666666",
+            display: "flex",
+            gap: "16px",
+            alignItems: "center"
+          }}
+        >
+          {new Date(data.starts_at).toLocaleString("ja-JP", {
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+          })}
+          <span style={{ color: "#888888" }}>-</span>
+          {new Date(data.ends_at).toLocaleString("ja-JP", {
+            hour: "2-digit",
+            minute: "2-digit"
+          })}
+          {data.is_lightning_talk && (
+            <div
+              style={{
+                backgroundColor: "#FF3355",
+                color: "white",
+                fontSize: "24px",
+                padding: "4px 12px",
+                borderRadius: "8px",
+                fontWeight: "bold",
+                textAlign: "center"
+              }}
+            >
+              LT
+            </div>
+          )}
+          {data.sponsor_id && (
+            <div
+              style={{
+                backgroundColor: "#4A90E2",
+                color: "white",
+                fontSize: "24px",
+                padding: "4px 12px",
+                borderRadius: "8px",
+                fontWeight: "bold",
+                textAlign: "center"
+              }}
+            >
+              SPONSOR SESSION
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          right: "212px",
+          top: "533px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      />
+    </div>
+  );
+ }
 
 async function getSponsorHtml({
   id,
