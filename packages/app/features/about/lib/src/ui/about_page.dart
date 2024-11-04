@@ -205,19 +205,19 @@ class AboutPage extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CommonAssets.logo.xLogo.svg(
-                      width: 48,
-                      height: 48,
+                    IconButton(
+                      icon: const XLogo(),
+                      onPressed: () async {},
                     ),
-                    const SizedBox(width: 16),
-                    CommonAssets.logo.mediumLogo.svg(
-                      width: 48,
-                      height: 48,
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: const MediumLogo(),
+                      onPressed: () async {},
                     ),
-                    const SizedBox(width: 16),
-                    CommonAssets.logo.githubLogo.svg(
-                      width: 48,
-                      height: 48,
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: const GithubLogo(),
+                      onPressed: () async {},
                     ),
                   ],
                 ),
