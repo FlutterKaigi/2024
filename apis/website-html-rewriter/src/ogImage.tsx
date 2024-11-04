@@ -54,11 +54,42 @@ app.get(
         id,
         supabase,
         url: new URL(c.req.url),
-        fetcher: c.env.ASSETS
       });
-      // ImageResponseは https://vercel.com/docs/functions/og-image-generation/og-image-api#@vercel/og-reference を参照
-      const notoSansJPBoldResponse = await c.env.ASSETS.fetch(
-        new URL("worker-assets/fonts/NotoSansJP-Bold.otf", c.req.url).toString()
+      return generateOgImage({
+        html,
+        fetcher: c.env.ASSETS,
+        url: new URL(c.req.url),
+        debug
+      });
+    }
+    if (path === "/session") {
+      const html = await getBaseOgImageHtml({
+        url: new URL(c.req.url),
+        name: "Sessions"
+      });
+      return generateOgImage({
+        html,
+        fetcher: c.env.ASSETS,
+        url: new URL(c.req.url),
+        debug
+      });
+    }
+    if (path === "/job-board") {
+      const html = await getBaseOgImageHtml({
+        url: new URL(c.req.url),
+        name: "Job Board"
+      });
+      return generateOgImage({ html, fetcher: c.env.ASSETS, url: new URL(c.req.url), debug });
+    }
+    return c.json({
+      message: "This path is not supported for OGP image generation...!"
+    }, 404);
+  }
+);
+
+async function generateOgImage({ html, fetcher, url, debug }: { html: JSX.Element, fetcher: Fetcher, url: URL, debug?: boolean }) {
+      const notoSansJPBoldResponse = await fetcher.fetch(
+        new URL("worker-assets/fonts/NotoSansJP-Bold.otf", url).toString()
       );
       const notoSansJPBold = await notoSansJPBoldResponse.arrayBuffer();
 
@@ -74,50 +105,17 @@ app.get(
           }
         ]
       });
-      return image;
-    }
-
-    const html = (
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#0010A1FF",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          fontSize: "15em",
-          textAlign: "center"
-        }}
-      >
-        This image was generated at {new Date().toLocaleString()}
-        <br />
-        <br />
-        {path}
-      </div>
-    );
-
-    const image = new ImageResponse(html, {
-      width: 1200,
-      height: 630,
-      debug: debug
-    });
-
-    return image;
-  }
-);
+  return image;
+}
 
 async function getSponsorHtml({
   id,
   supabase,
   url,
-  fetcher
 }: {
   id: number;
   supabase: SupabaseClient<Database>;
   url: URL;
-  fetcher: Fetcher;
 }): Promise<JSX.Element> {
   const { data, error } = await supabase
     .from("sponsors")
@@ -194,6 +192,75 @@ async function getSponsorHtml({
             objectFit: "contain"
           }}
         />
+      </div>
+    </div>
+  );
+}
+
+
+async function getBaseOgImageHtml({
+  url,
+  name
+}: {
+  url: URL;
+  name: string;
+}): Promise<JSX.Element> {
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        position: "relative"
+      }}
+    >
+      <img
+        src={new URL("worker-assets/background.svg", url).toString()}
+        width={1200}
+        height={630}
+        style={{
+          width: "100%",
+          height: "100%"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: "212px",
+          top: "276px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          right: "212px",
+          top: "533px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          right: "50%",
+          top: "50%",
+          transform: "translate(50%)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "128px",
+          fontWeight: "bold"
+        }}
+      >
+        {name}
       </div>
     </div>
   );
