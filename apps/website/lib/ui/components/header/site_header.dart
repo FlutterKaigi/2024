@@ -237,7 +237,6 @@ enum NaviSectionKey {
   speakerWanted(GlobalObjectKey('speakerWantedSectionKey')),
   sponsors(GlobalObjectKey('sponsorsSectionKey')),
   staff(GlobalObjectKey('staffSectionKey')),
-  jobBoard(GlobalObjectKey('jobBoardSectionKey')),
   ;
 
   const NaviSectionKey(this.key);
