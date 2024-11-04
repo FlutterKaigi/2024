@@ -250,6 +250,7 @@ async function getSessionDetailOgImageHtml({
           {new Date(data.starts_at).toLocaleString("ja-JP", {
             month: "long",
             day: "numeric",
+            weekday: "short",
             hour: "2-digit",
             minute: "2-digit"
           })}

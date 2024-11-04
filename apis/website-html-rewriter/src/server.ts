@@ -103,19 +103,48 @@ app.get(
     );
     const { data, error } = await supabase
       .from("sessions")
-      .select(
-      )
+      .select(`
+        *,
+        session_venues(name),
+        session_speakers_v2 (
+          speakers (
+            name
+          )
+        )
+      `)
       .eq("id", id)
       .maybeSingle();
     if (error) {
       return c.json({ error: error.message }, 500);
     }
     if (!data) {
-      return c.json({ error: "Sponsor not found" }, 404);
+      return c.json({ error: "Session not found" }, 404);
     }
 
     const url = new URL(c.req.url);
-    const description = data.description.length > 100 ? data.description.slice(0, 100) + "..." : data.description;
+    const speakers = data.session_speakers_v2
+      .map(s => s.speakers?.name)
+      .filter(Boolean)
+      .join(", ");
+
+    const sessionType = [];
+    if (data.is_lightning_talk) sessionType.push("LT");
+    if (data.sponsor_id) sessionType.push("スポンサーセッション");
+    const sessionTypeText = sessionType.length > 0 ? ` | ${sessionType.join(", ")}` : "";
+
+    const description = `${new Date(data.starts_at).toLocaleString("ja-JP", {
+      month: "long",
+      day: "numeric",
+      weekday: "short",
+      hour: "2-digit",
+      minute: "2-digit"
+    })} ~ ${new Date(data.ends_at).toLocaleString("ja-JP", {
+      hour: "2-digit",
+      minute: "2-digit"
+    })} | 会場: ${data.session_venues?.name}${
+      speakers ? ` | 登壇者: ${speakers}` : ""
+    }${sessionTypeText}`;
+
     const rewriter = new OgpRewriter({
       title: data.title,
       description: description,
@@ -138,7 +167,7 @@ app.notFound(async (c) => {
   const response = await c.env.ASSETS.fetch(c.req.raw);
   console.log(response.headers.get("Content-Type"));
   // HTMLの場合
-  if (response.headers.get("Content-Type")?.includes("text/html")) {
+  if (response.headers.get("Content-Type")?.includes("text/html") && !c.req.url.includes("ogp=false")) {
     let url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       url: url.toString()
@@ -148,12 +177,11 @@ app.notFound(async (c) => {
       .transform(response);
     return rewrittenResponse;
   }
-  const url = new URL(c.req.url);
   return response;
 });
 
 async function fetchBaseResponse(url: URL) {
-  const baseHtmlUrl = new URL("/", url);
+  const baseHtmlUrl = new URL("/index.html?ogp=false", url);
   const baseHtml = await fetch(baseHtmlUrl);
   return baseHtml;
 }
