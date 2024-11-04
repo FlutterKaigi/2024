@@ -8,6 +8,13 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
+export function isOgpImageGeneratorSupported(path: string) {
+  if (path.startsWith("/sponsor/")) {
+    return true;
+  }
+  return false;
+}
+
 app.get(
   "/",
   vValidator(

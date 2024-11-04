@@ -1,3 +1,5 @@
+import { isOgpImageGeneratorSupported } from "../ogImage";
+
 export class OgpRewriter {
   constructor({
     title,
@@ -20,10 +22,15 @@ export class OgpRewriter {
       this.image = imageOverride;
     } else {
       const urlObj = new URL(url);
-      this.image = new URL(
-        "/og-image.png?path=" + urlObj.pathname,
-        urlObj
-      ).toString();
+      if (isOgpImageGeneratorSupported(urlObj.pathname)) {
+        this.image = new URL(
+          "/og-image.png?path=" + urlObj.pathname,
+          urlObj
+        ).toString();
+      } else {
+        this.image = new URL("/ogp.png", urlObj).toString();
+      }
+
     }
     this.url = url;
   }
