@@ -10,7 +10,22 @@ Android アプリ開発をする場合は [Android Studio]、iOS アプリ開発
 
 <https://docs.flutter.dev/get-started/install>
 
+※ 厳密には Android Studio は必須ではありません。しかし、Android アプリのビルドする際の Flutter のデフォルトの挙動がインストールされている最新の Android Studio に内包されている JDK を優先して使うようになっていたり、Android Emulator などの設定を GUI 上で操作しやすかったりして、開発がしやすくなるためおすすめします。
+
 また、このプロジェクトでは [Visual Studio Code] の設定を共有していることでより開発しやすくなっています。そのため Visual Studio Code を使って開発することをおすすめします。
+
+なお、基本的には最新の安定バージョンを使うことをおすすめしますが、現在（2024年11月6日）、FlutterKaigi スタッフメンバーで動作確認できているバージョンは次の通りです。
+
+| IDEA | 動作保証バージョン |
+| - | - |
+| Android Studio | Ladybug 2024.2.1 Patch 2 |
+| Xcode | 15.4.0 |
+
+### CocoaPods の準備
+
+iOS アプリ開発をする場合は [CocoaPods] をインストールして `pod` コマンドを使用できるようにする必要があります。
+
+使用している CocoaPods のバージョンは [Podfile.lock] ファイルに記載されていますのでご確認ください。
 
 ### Flutter SDK の準備
 
@@ -75,6 +90,10 @@ IntelliJ IDEA や Android Studio を使う場合はまだ起動設定を共有�
 [Visual Studio Code]: https://code.visualstudio.com/
 
 [Xcode]: https://developer.apple.com/xcode/
+
+[CocoaPods]: https://cocoapods.org/
+
+[Podfile.lock]: ../apps/app/ios/Podfile.lock
 
 [fvm]: https://fvm.app/
 
