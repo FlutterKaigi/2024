@@ -129,7 +129,7 @@ class _SpeakerCard extends StatelessWidget {
       uri: profile.xUri,
       builder: (context, followUri) => InkWell(
         onTap: followUri,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(8),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(
