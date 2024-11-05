@@ -126,7 +126,7 @@ class _Body extends StatelessWidget {
     final child = Column(
       children: [
         const Row(),
-        const Gap(120),
+        const Gap(80),
         Text(
           i18n.sponsors.title,
           style: textTheme.availableFonts.poppins.regular.copyWith(
@@ -139,8 +139,10 @@ class _Body extends StatelessWidget {
       ],
     );
 
-    return ContentsMargin.narrow(
-      child: child,
+    return SafeArea(
+      child: ContentsMargin.narrow(
+        child: child,
+      ),
     );
   }
 
