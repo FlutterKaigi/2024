@@ -8,7 +8,7 @@ part of 'special_sessions_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$specialSessionsHash() => r'56acc03836c27211209a30bea5737be321d23273';
+String _$specialSessionsHash() => r'0d5c98d953d8f9597b761433d768361753600980';
 
 /// See also [specialSessions].
 @ProviderFor(specialSessions)

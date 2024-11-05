@@ -103,7 +103,7 @@ class _Body extends StatelessWidget {
             ContentsMargin.narrow(
               child: const JobBoardSection(),
             ),
-            const Gap(80),
+            const Gap(40),
             ContentsMargin.narrow(
               child: Sponsors(
                 key: NaviSectionKey.sponsors.key,
