@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:common_data/session.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -48,4 +49,27 @@ Future<List<SessionVenuesWithSessionsV2>> sessionsByDate(
           sessionDate.day == date.day;
     });
   }).toList();
+}
+
+typedef SessionDetails = ({
+  SessionsWithSpeakerSponsorV2 session,
+  SessionVenuesWithSessionsV2 sessionVenue,
+});
+
+@Riverpod(keepAlive: true)
+Future<SessionDetails> sessionDetails(
+  Ref ref,
+  String sessionId,
+) async {
+  final sessions = await ref.watch(sessionsProvider.future);
+  final result = sessions.firstWhereOrNull(
+    (venue) => venue.sessions.any((session) => session.id == sessionId),
+  );
+  if (result == null) {
+    throw Exception('Session not found: $sessionId');
+  }
+  return (
+    sessionVenue: result,
+    session: result.sessions.firstWhere((session) => session.id == sessionId),
+  );
 }

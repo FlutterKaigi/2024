@@ -6,10 +6,12 @@ class SponsorLogo extends StatelessWidget {
     required this.sponsor,
     super.key,
     this.height = 36,
+    this.onTap,
   });
 
   final Sponsor sponsor;
   final double height;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +32,14 @@ class SponsorLogo extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(4),
-      child: Image.network(
-        sponsor.logoUrl.toString(),
-        height: height,
-        fit: BoxFit.contain,
-        errorBuilder: (context, error, stackTrace) => errorLogo,
+      child: InkWell(
+        onTap: onTap,
+        child: Image.network(
+          sponsor.logoUrl.toString(),
+          height: height,
+          fit: BoxFit.contain,
+          errorBuilder: (context, error, stackTrace) => errorLogo,
+        ),
       ),
     );
   }
