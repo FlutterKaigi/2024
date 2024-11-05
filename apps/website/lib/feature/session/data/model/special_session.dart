@@ -23,5 +23,6 @@ enum SpecialSessionType {
   lunch,
   preparation,
   closing,
+  party,
   ;
 }
