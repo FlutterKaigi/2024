@@ -93,17 +93,17 @@ class _Body extends StatelessWidget {
             ),
             const Gap(80),
             ContentsMargin.narrow(
-              child: const Ticket(),
-            ),
-            const Gap(40),
-            ContentsMargin.narrow(
               child: const SessionSection(),
+            ),
+            const Gap(80),
+            ContentsMargin.narrow(
+              child: const Ticket(),
             ),
             const Gap(40),
             ContentsMargin.narrow(
               child: const JobBoardSection(),
             ),
-            const Gap(80),
+            const Gap(40),
             ContentsMargin.narrow(
               child: Sponsors(
                 key: NaviSectionKey.sponsors.key,
