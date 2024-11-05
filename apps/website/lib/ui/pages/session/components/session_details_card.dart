@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class SessionDetailsCard extends StatelessWidget {
@@ -55,10 +56,14 @@ class SessionDetailsCard extends StatelessWidget {
                 ),
               ),
               const Gap(8),
-              for (final speaker in session.speakers) ...[
-                _SpeakerCard(profile: speaker),
-                const Gap(8),
-              ],
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  for (final speaker in session.speakers)
+                    _SpeakerCard(profile: speaker),
+                ],
+              ),
               const Gap(24),
             ],
             if (session.sponsors.isNotEmpty) ...[
@@ -120,29 +125,32 @@ class _SpeakerCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.customThemeExtension.textTheme;
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          ProfileAvatar(
-            profile: profile,
-            size: 48,
-          ),
-          const Gap(16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
+    return Link(
+      uri: profile.xUri,
+      builder: (context, followUri) => InkWell(
+        onTap: followUri,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ProfileAvatar(
+                profile: profile,
+                size: 48,
+              ),
+              const Gap(16),
+              Flexible(
+                child: Text(
                   profile.name,
                   style: textTheme.availableFonts.notoSansJp.bold.copyWith(
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
