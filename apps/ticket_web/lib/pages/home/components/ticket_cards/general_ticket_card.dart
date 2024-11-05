@@ -75,9 +75,11 @@ class GeneralTicketCard extends HookWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               ),
-              onPressed: isLoggedIn ? onPurchasePressed : null,
+              onPressed: isLoggedIn ? onPurchasePressed : onSignInPressed,
               icon: const Icon(Icons.shopping_cart),
-              label: Text(i18n.homePage.tickets.buyTicket),
+              label: Text(isLoggedIn
+                  ? i18n.homePage.tickets.buyTicket
+                  : i18n.homePage.tickets.loginWithGoogleToPurchase),
             ),
             const SizedBox(height: 8),
             const Divider(),
