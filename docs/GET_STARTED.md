@@ -12,6 +12,12 @@ Android アプリ開発をする場合は [Android Studio]、iOS アプリ開発
 
 また、このプロジェクトでは [Visual Studio Code] の設定を共有していることでより開発しやすくなっています。そのため Visual Studio Code を使って開発することをおすすめします。
 
+### CocoaPods の準備
+
+iOS アプリ開発をする場合は [CocoaPods] をインストールして `pod` コマンドを使用できるようにする必要があります。
+
+使用している CocoaPods のバージョンは [Podfile.lock] ファイルに記載されていますのでご確認ください。
+
 ### Flutter SDK の準備
 
 このプロジェクトでは [fvm] を使って Flutter SDK を管理しています。
@@ -75,6 +81,10 @@ IntelliJ IDEA や Android Studio を使う場合はまだ起動設定を共有�
 [Visual Studio Code]: https://code.visualstudio.com/
 
 [Xcode]: https://developer.apple.com/xcode/
+
+[CocoaPods]: https://cocoapods.org/
+
+[Podfile.lock]: ../apps/app/ios/Podfile.lock
 
 [fvm]: https://fvm.app/
 
