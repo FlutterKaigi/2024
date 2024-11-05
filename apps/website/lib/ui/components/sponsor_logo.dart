@@ -30,16 +30,14 @@ class SponsorLogo extends StatelessWidget {
       ),
     );
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(4),
-      child: InkWell(
-        onTap: onTap,
-        child: Image.network(
-          sponsor.logoUrl.toString(),
-          height: height,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => errorLogo,
-        ),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Image.network(
+        sponsor.logoUrl.toString(),
+        height: height,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) => errorLogo,
       ),
     );
   }

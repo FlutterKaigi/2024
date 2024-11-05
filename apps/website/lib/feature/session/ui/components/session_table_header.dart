@@ -13,7 +13,6 @@ class SessionTableHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(width: 80), // 時間表示部分のスペース
         Expanded(
           child: Row(
             children: sessionVenues.map((venue) {

@@ -48,4 +48,5 @@ const _$SpecialSessionTypeEnumMap = {
   SpecialSessionType.lunch: 'lunch',
   SpecialSessionType.preparation: 'preparation',
   SpecialSessionType.closing: 'closing',
+  SpecialSessionType.party: 'party',
 };

@@ -21,16 +21,16 @@ RouteBase get $homeRoute => GoRouteData.$route(
           factory: $SponsorRouteExtension._fromState,
         ),
         GoRouteData.$route(
+          path: 'job-board',
+          factory: $JobBoardRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: 'session',
           factory: $SessionRouteExtension._fromState,
         ),
         GoRouteData.$route(
           path: 'session/:sessionId',
           factory: $SessionDetailsRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: 'job-board',
-          factory: $JobBoardRouteExtension._fromState,
         ),
       ],
     );
@@ -71,6 +71,23 @@ extension $SponsorRouteExtension on SponsorRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $JobBoardRouteExtension on JobBoardRoute {
+  static JobBoardRoute _fromState(GoRouterState state) => const JobBoardRoute();
+
+  String get location => GoRouteData.$location(
+        '/job-board',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 extension $SessionRouteExtension on SessionRoute {
   static SessionRoute _fromState(GoRouterState state) => const SessionRoute();
 
@@ -96,23 +113,6 @@ extension $SessionDetailsRouteExtension on SessionDetailsRoute {
 
   String get location => GoRouteData.$location(
         '/session/${Uri.encodeComponent(sessionId)}',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $JobBoardRouteExtension on JobBoardRoute {
-  static JobBoardRoute _fromState(GoRouterState state) => const JobBoardRoute();
-
-  String get location => GoRouteData.$location(
-        '/job-board',
       );
 
   void go(BuildContext context) => context.go(location);

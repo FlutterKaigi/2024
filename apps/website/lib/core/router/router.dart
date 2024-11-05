@@ -1,4 +1,7 @@
 import 'package:conference_2024_website/ui/pages/home/home_page.dart';
+import 'package:conference_2024_website/ui/pages/job_board/job_board_page.dart';
+import 'package:conference_2024_website/ui/pages/session/session_details_page.dart';
+import 'package:conference_2024_website/ui/pages/session/session_page.dart';
 import 'package:conference_2024_website/ui/pages/session/session_details_page.dart';
 import 'package:conference_2024_website/ui/pages/session/session_page.dart';
 import 'package:conference_2024_website/ui/pages/job_board/job_board_page.dart';
@@ -23,14 +26,14 @@ GoRouter goRoute(Ref ref) => GoRouter(
     TypedGoRoute<SponsorRoute>(
       path: 'sponsor/:id',
     ),
+    TypedGoRoute<JobBoardRoute>(
+      path: 'job-board',
+    ),
     TypedGoRoute<SessionRoute>(
       path: 'session',
     ),
     TypedGoRoute<SessionDetailsRoute>(
       path: 'session/:sessionId',
-    ),
-    TypedGoRoute<JobBoardRoute>(
-      path: 'job-board',
     ),
   ],
 )
