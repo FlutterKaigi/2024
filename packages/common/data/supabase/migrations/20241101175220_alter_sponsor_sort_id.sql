@@ -1,8 +1,10 @@
-ALTER TABLE sponsors ADD COLUMN sort_id SMALLINT UNIQUE;
-
+ALTER TABLE sponsors
+ADD COLUMN sort_id smallint UNIQUE;
 
 -- スポンサーとセッションの関係を取得するビューを作成する
-CREATE OR REPLACE VIEW public.sponsor_with_sessions_v2
+DROP VIEW public.sponsor_with_sessions_v2;
+
+CREATE VIEW public.sponsor_with_sessions_v2
 WITH
   (security_invoker = TRUE) AS
 WITH
@@ -40,8 +42,6 @@ WITH
           s.ends_at,
           'is_lightning_talk',
           s.is_lightning_talk,
-          'sort_id',
-          s.sort_id,
           'speakers',
           coalesce(sd.speakers, '[]'::json),
           'venue',
