@@ -95,7 +95,7 @@ class _Body extends StatelessWidget {
             ContentsMargin.narrow(
               child: const SessionSection(),
             ),
-            const Gap(80),
+            const Gap(40),
             ContentsMargin.narrow(
               child: const Ticket(),
             ),
