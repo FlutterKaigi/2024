@@ -7,12 +7,24 @@ import { Bindings } from "./bindings";
 import { logger } from "hono/logger";
 import ogImage from "./ogImage";
 import { OgpRewriter } from "./util/ogpRewriter";
+import { cache } from "hono/cache";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.route("/og-image.png", ogImage);
 
 app.use("*", logger());
+app.use("*",
+  cache(
+    {
+      cacheName: async (c) => {
+        const url = new URL(c.req.url);
+        const params = url.searchParams.toString();
+        return `${c.req.method} ${url.pathname}${params}`;
+      },
+      cacheControl: "max-age=86400", // 24 hour
+    }
+  ),);
 
 app.get(
   "/sponsor/:id",

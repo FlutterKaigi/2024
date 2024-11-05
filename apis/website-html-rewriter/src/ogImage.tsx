@@ -6,6 +6,8 @@ import * as v from "valibot";
 import { Database } from "supabase-types";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
+import { cache } from 'hono/cache'
+
 const app = new Hono<{ Bindings: Bindings }>();
 
 export function isOgpImageGeneratorSupported(path: string) {
@@ -40,6 +42,7 @@ app.get(
   ),
   async (c) => {
     const { path, debug } = c.req.valid("query");
+
     console.error(path);
     const supabase = createClient<Database>(
       c.env.SUPABASE_URL,
