@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 44
+/// Strings: 50
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -196,6 +196,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsSponsorJa sponsor = _StringsSponsorJa._(_root);
   late final _StringsTicketJa ticket = _StringsTicketJa._(_root);
   late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
+  late final _StringsStaffJa staff = _StringsStaffJa._(_root);
+  late final _StringsJobBoardJa jobBoard = _StringsJobBoardJa._(_root);
   String get newsError => 'お知らせの取得に失敗しました';
   String get retry => '再試行';
 }
@@ -312,6 +314,32 @@ class _StringsSponsorsJa {
   String get sponsorsError => 'スポンサー一覧の取得に失敗しました';
   String get sponsorNotFound => 'スポンサーが見つかりませんでした';
   String get backToTop => 'トップに戻る';
+}
+
+// Path: staff
+class _StringsStaffJa {
+  _StringsStaffJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Staff';
+}
+
+// Path: jobBoard
+class _StringsJobBoardJa {
+  _StringsJobBoardJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Job Board';
+  List<String> get messages => [
+        'FlutterKaigi 2024では、初の試みとして',
+        '企業の募集要項を掲載しています。',
+        'ご興味のある方は、ぜひご確認ください。',
+      ];
+  String get button => 'ジョブボードを見る';
 }
 
 // Path: lead.date
@@ -439,6 +467,18 @@ extension on Translations {
         return 'スポンサーが見つかりませんでした';
       case 'sponsors.backToTop':
         return 'トップに戻る';
+      case 'staff.title':
+        return 'Staff';
+      case 'jobBoard.title':
+        return 'Job Board';
+      case 'jobBoard.messages.0':
+        return 'FlutterKaigi 2024では、初の試みとして';
+      case 'jobBoard.messages.1':
+        return '企業の募集要項を掲載しています。';
+      case 'jobBoard.messages.2':
+        return 'ご興味のある方は、ぜひご確認ください。';
+      case 'jobBoard.button':
+        return 'ジョブボードを見る';
       case 'newsError':
         return 'お知らせの取得に失敗しました';
       case 'retry':

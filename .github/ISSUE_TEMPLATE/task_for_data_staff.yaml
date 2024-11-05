@@ -1,7 +1,7 @@
 name: FlutterKaigi データスタッフのタスク
 description: FlutterKaigi データスタッフのタスクを作成する
 title: "[Data-Staff]: "
-labels: ["data", "staff"]
+labels: ["related/data", "role/staff"]
 body:
   - type: textarea
     id: summary

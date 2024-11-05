@@ -12,6 +12,8 @@ env:
   SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
   SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
   PROJECT_ID: xflwrlgfukzpgkudzrlu
+  SUPABASE_AUTH_GOOGLE_CLIENT_ID: ${{ secrets.SUPABASE_AUTH_GOOGLE_CLIENT_ID }}
+  SUPABASE_AUTH_GOOGLE_CLIENT_SECRET: ${{ secrets.SUPABASE_AUTH_GOOGLE_CLIENT_SECRET }}
 
 permissions:
   deployments: write
@@ -35,7 +37,7 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 1
 
@@ -48,6 +50,12 @@ jobs:
         run: supabase link --project-ref $PROJECT_ID
 
       - run: supabase db push
+        working-directory: packages/common/data
+
+      - run: |
+          supabase functions deploy --project-ref $PROJECT_ID
+          # replace_contributors のみ JWT での認証チェックをしない
+          supabase functions deploy replace_contributors --project-ref $PROJECT_ID --no-verify-jwt
         working-directory: packages/common/data
 
         # https://github.com/bobheadxi/deployments

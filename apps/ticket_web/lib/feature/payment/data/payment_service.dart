@@ -1,3 +1,4 @@
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_web/core/provider/environment.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -5,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 part 'payment_service.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [environment])
-PaymentService paymentService(PaymentServiceRef ref) {
+PaymentService paymentService(Ref ref) {
   return PaymentService(
     environment: ref.watch(environmentProvider),
   );

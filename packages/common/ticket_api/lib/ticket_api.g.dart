@@ -172,7 +172,7 @@ class _TicketApiClient implements TicketApiClient {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ticketApiDioHash() => r'2da3dc1eb351262b1ae8d3fe9020754bd8ce8ae4';
+String _$ticketApiDioHash() => r'51cac9080616f970197a7ad53468d3f8980ab2b7';
 
 /// See also [ticketApiDio].
 @ProviderFor(ticketApiDio)
@@ -185,8 +185,10 @@ final ticketApiDioProvider = Provider<Dio>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef TicketApiDioRef = ProviderRef<Dio>;
-String _$ticketApiClientHash() => r'e22908ec39abf4f88ace37068e33a680f632df15';
+String _$ticketApiClientHash() => r'ca5cf25c857a4906252d9a3546ce21e3806da341';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -322,6 +324,8 @@ class TicketApiClientProvider extends Provider<TicketApiClient> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TicketApiClientRef on ProviderRef<TicketApiClient> {
   /// The parameter `baseUrl` of this provider.
   String get baseUrl;
@@ -335,4 +339,4 @@ class _TicketApiClientProviderElement extends ProviderElement<TicketApiClient>
   String get baseUrl => (origin as TicketApiClientProvider).baseUrl;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

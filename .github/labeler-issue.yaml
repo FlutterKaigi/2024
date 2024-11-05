@@ -1,0 +1,23 @@
+policy:
+  - template: ["task_for_contributor.yaml", "task_for_staff.yaml"]
+    section:
+      - id: ["related"]
+        block-list: []
+        label:
+          - name: "related/app"
+            keys: ["App", "All"]
+          - name: "related/data"
+            keys: ["Data", "All"]
+          - name: "related/ticket"
+            keys: ["Ticket", "All"]
+          - name: "related/website"
+            keys: ["Website", "All"]
+      - id: [type]
+        block-list: []
+        label:
+          - name: "type/bug"
+            keys: ["Bug"]
+          - name: "type/feature"
+            keys: ["Feature"]
+          - name: "related/improvement"
+            keys: ["Improvement"]

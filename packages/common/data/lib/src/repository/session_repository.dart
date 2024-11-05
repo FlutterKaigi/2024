@@ -1,30 +1,31 @@
 import 'package:common_data/profile.dart';
-import 'package:common_data/src/model/session.dart';
-import 'package:common_data/src/model/session_speaker.dart';
-import 'package:common_data/src/model/session_venue.dart';
+import 'package:common_data/session.dart';
+import 'package:common_data/src/model/view/session_venues_with_sessions_v2_view.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_view.dart';
+import 'package:common_data/src/repository/speaker_repository.dart';
 import 'package:common_data/src/repository/sponsor_repository.dart';
 import 'package:common_data/src/supabase_client.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 part 'session_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-SessionRepository sessionRepository(SessionRepositoryRef ref) =>
-    SessionRepository(
+SessionRepository sessionRepository(Ref ref) => SessionRepository(
       client: ref.watch(supabaseClientProvider),
       profileRepository: ref.watch(profileRepositoryProvider),
       sponsorRepository: ref.watch(sponsorRepositoryProvider),
+      speakerRepository: ref.watch(speakerRepositoryProvider),
     );
 
 @Riverpod(keepAlive: true)
-SessionVenueRepository sessionVenueRepository(SessionVenueRepositoryRef ref) =>
+SessionVenueRepository sessionVenueRepository(Ref ref) =>
     SessionVenueRepository(client: ref.watch(supabaseClientProvider));
 
 @Riverpod(keepAlive: true)
 SessionSpeakerRepository sessionSpeakerRepository(
-  SessionSpeakerRepositoryRef ref,
+  Ref ref,
 ) =>
     SessionSpeakerRepository(
       client: ref.watch(supabaseClientProvider),
@@ -35,14 +36,18 @@ class SessionRepository {
     required SupabaseClient client,
     required ProfileRepository profileRepository,
     required SponsorRepository sponsorRepository,
+    required SpeakerRepository speakerRepository,
   })  : _client = client,
         _profileRepository = profileRepository,
-        _sponsorRepository = sponsorRepository;
+        _sponsorRepository = sponsorRepository,
+        _speakerRepository = speakerRepository;
 
   final SupabaseClient _client;
   final ProfileRepository _profileRepository;
   final SponsorRepository _sponsorRepository;
+  final SpeakerRepository _speakerRepository;
 
+  @Deprecated('Use fetchSessionVenuesWithSessionsV2 instead')
   Future<List<SessionVenuesWithSessions>>
       fetchSessionVenuesWithSessions() async {
     final result = await _client
@@ -84,6 +89,17 @@ class SessionRepository {
         .toList();
   }
 
+  Future<List<SessionVenuesWithSessionsV2>>
+      fetchSessionVenuesWithSessionsV2() async {
+    final result = await _client
+        .from('session_venues_with_sessions_v2')
+        .select()
+        .withConverter(
+          (list) => list.map(SessionVenuesWithSessionsV2View.fromJson).toList(),
+        );
+    return result.map(toSessionVenuesWithSessionsV2).toList();
+  }
+
   Future<List<Session>> fetchSessions() async =>
       _client.from('sessions').select().withConverter(
             (data) => data.map(Session.fromJson).toList(),
@@ -115,6 +131,35 @@ class SessionRepository {
 
   Future<void> deleteSession(String id) async =>
       _client.from('sessions').delete().eq('id', id);
+
+  SessionVenuesWithSessionsV2 toSessionVenuesWithSessionsV2(
+    SessionVenuesWithSessionsV2View sessionVenuesWithSessionsV2View,
+  ) =>
+      SessionVenuesWithSessionsV2(
+        id: sessionVenuesWithSessionsV2View.id,
+        name: sessionVenuesWithSessionsV2View.name,
+        sessions: sessionVenuesWithSessionsV2View.sessions
+            .map(_toSessionsWithSpeakerSponsorV2View)
+            .toList(),
+      );
+
+  SessionsWithSpeakerSponsorV2 _toSessionsWithSpeakerSponsorV2View(
+    SessionsWithSpeakerSponsorV2View sessionsWithSpeakerSponsorV2View,
+  ) =>
+      SessionsWithSpeakerSponsorV2(
+        id: sessionsWithSpeakerSponsorV2View.id,
+        title: sessionsWithSpeakerSponsorV2View.title,
+        description: sessionsWithSpeakerSponsorV2View.description,
+        startsAt: sessionsWithSpeakerSponsorV2View.startsAt,
+        endsAt: sessionsWithSpeakerSponsorV2View.endsAt,
+        isLightningTalk: sessionsWithSpeakerSponsorV2View.isLightningTalk,
+        speakers: sessionsWithSpeakerSponsorV2View.speakers
+            .map(_speakerRepository.toSpeaker)
+            .toList(),
+        sponsors: sessionsWithSpeakerSponsorV2View.sponsors
+            .map(_sponsorRepository.toSponsor)
+            .toList(),
+      );
 }
 
 class SessionVenueRepository {

@@ -1,12 +1,12 @@
 // ignore_for_file: do_not_use_environment
 
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'environment.g.dart';
 
 @Riverpod(keepAlive: true, dependencies: [])
-Environment environment(EnvironmentRef ref) =>
-    Environment.fromEnvironmentValues();
+Environment environment(Ref ref) => Environment.fromEnvironmentValues();
 
 class Environment {
   const Environment._({

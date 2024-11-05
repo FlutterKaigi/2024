@@ -48,7 +48,7 @@ const _$SponsorTypeEnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sponsorRepositoryHash() => r'a3efbebed142bbeb2c8437105f1c47a66b2994e7';
+String _$sponsorRepositoryHash() => r'd9e545c6cdab07fc0a1c006a7c73aabde469935f';
 
 /// See also [sponsorRepository].
 @ProviderFor(sponsorRepository)
@@ -62,6 +62,8 @@ final sponsorRepositoryProvider = Provider<SponsorRepository>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SponsorRepositoryRef = ProviderRef<SponsorRepository>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

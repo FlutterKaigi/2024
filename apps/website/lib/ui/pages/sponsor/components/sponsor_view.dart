@@ -14,7 +14,7 @@ class SponsorView extends StatelessWidget {
     super.key,
   });
 
-  final SponsorWithSession sponsor;
+  final SponsorWithSessionV2 sponsor;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class SponsorView extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(
-      DiagnosticsProperty<SponsorWithSession>(
+      DiagnosticsProperty<SponsorWithSessionV2>(
         'sponsor',
         sponsor,
       ),

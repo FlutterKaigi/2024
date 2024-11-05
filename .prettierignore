@@ -6,3 +6,15 @@ pnpm-lock.yaml
 
 # Ignore iOS assets
 apps/app/ios/Runner/Assets.xcassets/**/*.json
+
+# Ignore iOS Pods
+apps/app/ios/Pods/**
+
+# Ignore .dart_tool
+**/.dart_tool/**
+
+# Ignore fvm
+.fvm/**
+
+# Ignore APIS
+apis/**

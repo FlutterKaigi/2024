@@ -1,7 +1,7 @@
 name: FlutterKaigi アプリスタッフのタスク
 description: FlutterKaigi アプリスタッフのタスクを作成する
 title: "[App-Staff]: "
-labels: ["app", "staff"]
+labels: ["related/app", "role/staff"]
 body:
   - type: textarea
     id: summary

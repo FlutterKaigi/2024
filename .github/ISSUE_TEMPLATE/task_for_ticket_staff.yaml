@@ -1,7 +1,7 @@
 name: FlutterKaigi チケットスタッフのタスク
 description: FlutterKaigi チケットスタッフのタスクを作成する
 title: "[Ticket-Staff]: "
-labels: ["ticket", "staff"]
+labels: ["related/ticket", "role/staff"]
 body:
   - type: textarea
     id: summary

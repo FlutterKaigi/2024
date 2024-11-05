@@ -1,48 +1,45 @@
-app:
+related/app:
   - changed-files:
       - any-glob-to-any-file:
           - "apps/app/**"
           - "packages/app/**"
-website:
+related/website:
   - changed-files:
       - any-glob-to-any-file:
           - "apps/website/**"
           - "packages/website/**"
-
-ticket:
+related/ticket:
   - changed-files:
       - any-glob-to-any-file:
           - "apps/ticket_web/**"
-          - "packages/ticket/**"
-
-data:
+          - "packages/common/ticket_api/**"
+related/data:
   - changed-files:
       - any-glob-to-any-file:
           - "packages/common/data/**"
-
-test:
+related/test:
   - changed-files:
       - any-glob-to-any-file:
           - "apps/**/test/**"
           - "packages/**/test/**"
-github:
+related/github:
   - changed-files:
       - any-glob-to-any-file:
           - ".github/**"
-documentation:
+related/documentation:
   - changed-files:
       - any-glob-to-any-file:
           - "docs/**"
           - "**/*.md"
-feature:
+type/feature:
   - head-branch:
       - "feature/*"
-bug:
+type/bug:
   - head-branch:
       - "fix/*"
-improvement:
+type/improvement:
   - head-branch:
       - "improvement/*"
-release:
+type/release:
   - head-branch:
       - "release/*"

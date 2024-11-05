@@ -140,6 +140,7 @@ class __$$SessionVenuesWithSessionsViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SessionVenuesWithSessionsV2View instead')
 class _$SessionVenuesWithSessionsViewImpl
     implements _SessionVenuesWithSessionsView {
   const _$SessionVenuesWithSessionsViewImpl(
@@ -419,6 +420,7 @@ class __$$SessionWithSpeakerAndSponsorViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SessionWithSpeakerAndSponsorV2View instead')
 class _$SessionWithSpeakerAndSponsorViewImpl
     implements _SessionWithSpeakerAndSponsorView {
   const _$SessionWithSpeakerAndSponsorViewImpl(
@@ -682,6 +684,7 @@ class __$$SessionVenuesWithSessionsImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SessionVenuesWithSessionsV2 instead')
 class _$SessionVenuesWithSessionsImpl implements _SessionVenuesWithSessions {
   const _$SessionVenuesWithSessionsImpl(
       {required this.id,
@@ -956,6 +959,7 @@ class __$$SessionWithSpeakerAndSponsorImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SessionWithSpeakerAndSponsorV2View instead')
 class _$SessionWithSpeakerAndSponsorImpl
     implements _SessionWithSpeakerAndSponsor {
   const _$SessionWithSpeakerAndSponsorImpl(

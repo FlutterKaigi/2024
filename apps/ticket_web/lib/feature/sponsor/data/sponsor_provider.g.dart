@@ -7,12 +7,12 @@ part of 'sponsor_provider.dart';
 // **************************************************************************
 
 String _$sponsorWithSessionsHash() =>
-    r'1bdd8d4902d8aaee424724db8a50340b1f7833aa';
+    r'bfa54f086a1ef5288664cce7aac9e3ad284539ec';
 
 /// See also [sponsorWithSessions].
 @ProviderFor(sponsorWithSessions)
 final sponsorWithSessionsProvider =
-    FutureProvider<List<SponsorWithSession>>.internal(
+    FutureProvider<List<SponsorWithSessionV2>>.internal(
   sponsorWithSessions,
   name: r'sponsorWithSessionsProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,9 +22,11 @@ final sponsorWithSessionsProvider =
   allTransitiveDependencies: null,
 );
 
-typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSession>>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSessionV2>>;
 String _$sponsorAndSessionListHash() =>
-    r'f79e3020f7c6bd7b0348804707749cfcae9e27ec';
+    r'1882b31fde9588c494ab918e82cd84f232f09ba7';
 
 /// See also [sponsorAndSessionList].
 @ProviderFor(sponsorAndSessionList)
@@ -39,6 +41,8 @@ final sponsorAndSessionListProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SponsorAndSessionListRef = FutureProviderRef<List<SponsorAndSession>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

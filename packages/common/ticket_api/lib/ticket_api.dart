@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_api/model/ticket/get_promotion_response.dart';
 import 'package:ticket_api/model/ticket/post_promotion_request.dart';
@@ -11,7 +12,7 @@ export 'package:dio/dio.dart' show DioException, DioExceptionType;
 part 'ticket_api.g.dart';
 
 @Riverpod(keepAlive: true)
-Dio ticketApiDio(TicketApiDioRef ref) => Dio(
+Dio ticketApiDio(Ref ref) => Dio(
       BaseOptions(
         headers: {
           'Content-Type': 'application/json',
@@ -20,8 +21,7 @@ Dio ticketApiDio(TicketApiDioRef ref) => Dio(
     );
 
 @Riverpod(keepAlive: true)
-TicketApiClient ticketApiClient(TicketApiClientRef ref, String baseUrl) =>
-    TicketApiClient(
+TicketApiClient ticketApiClient(Ref ref, String baseUrl) => TicketApiClient(
       ref.watch(ticketApiDioProvider),
       baseUrl: baseUrl,
     );

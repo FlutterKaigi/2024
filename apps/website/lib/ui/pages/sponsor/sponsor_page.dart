@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
+import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
@@ -59,11 +60,11 @@ class SponsorPage extends HookWidget {
     super.key,
   });
 
-  final SponsorWithSession sponsor;
+  final SponsorWithSessionV2 sponsor;
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.sizeOf(context).width < 960;
+    final isMobile = MediaQuery.sizeOf(context).isMobile;
     final scrollController = useScrollController();
 
     return SelectionArea(
@@ -103,7 +104,8 @@ class SponsorPage extends HookWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
+    properties
+        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
   }
 }
 
@@ -112,7 +114,7 @@ class _Body extends StatelessWidget {
     required this.sponsor,
   });
 
-  final SponsorWithSession sponsor;
+  final SponsorWithSessionV2 sponsor;
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +147,8 @@ class _Body extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
+    properties
+        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
   }
 }
 

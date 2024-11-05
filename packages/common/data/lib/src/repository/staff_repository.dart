@@ -2,6 +2,7 @@ import 'package:common_data/src/model/sns.dart';
 import 'package:common_data/src/model/staff.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,7 +10,7 @@ part 'staff_repository.freezed.dart';
 part 'staff_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-StaffRepository staffRepository(StaffRepositoryRef ref) {
+StaffRepository staffRepository(Ref ref) {
   final supabaseClient = ref.watch(supabaseClientProvider);
   final staffsStorageFileApi = ref.watch(staffsStorageFileApiProvider);
   return StaffRepository(
@@ -28,7 +29,7 @@ final class StaffRepository {
   final SupabaseClient _supabaseClient;
   final StorageFileApi _staffsStorageFileApi;
 
-  Future<List<Staff>> fetchStaffs() async {
+  Future<List<Staff>> fetchStaffMembers() async {
     final staffsView = await _supabaseClient.from('staffs').select('''
           name, icon_name, greeting,
           sns_accounts:staff_social_networking_services!inner(type, value)

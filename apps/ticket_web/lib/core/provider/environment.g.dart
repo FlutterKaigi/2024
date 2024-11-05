@@ -6,7 +6,7 @@ part of 'environment.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$environmentHash() => r'53829726800f62f2bcdf5c9ca8fda5db372876b1';
+String _$environmentHash() => r'dcf416341d5f83863ba57eb5c1e2a0ccfd7ba339';
 
 /// See also [environment].
 @ProviderFor(environment)
@@ -19,6 +19,8 @@ final environmentProvider = Provider<Environment>.internal(
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef EnvironmentRef = ProviderRef<Environment>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

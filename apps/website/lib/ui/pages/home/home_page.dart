@@ -1,4 +1,5 @@
 import 'package:conference_2024_website/feature/news/ui/news_component.dart';
+import 'package:conference_2024_website/feature/staff/ui/staff_view.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
 import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
@@ -6,6 +7,7 @@ import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/pages/home/components/coming_soon.dart';
+import 'package:conference_2024_website/ui/pages/home/components/job_board.dart';
 import 'package:conference_2024_website/ui/pages/home/components/lead.dart';
 import 'package:conference_2024_website/ui/pages/home/components/sponsors.dart';
 import 'package:conference_2024_website/ui/pages/home/components/ticket.dart';
@@ -92,11 +94,19 @@ class _Body extends StatelessWidget {
             ContentsMargin.narrow(
               child: const Ticket(),
             ),
-            const Gap(80),
+            const Gap(40),
+            ContentsMargin.narrow(
+              child: const JobBoardSection(),
+            ),
+            const Gap(40),
             ContentsMargin.narrow(
               child: Sponsors(
                 key: NaviSectionKey.sponsors.key,
               ),
+            ),
+            const Gap(80),
+            ContentsMargin.narrow(
+              child: const StaffView(),
             ),
             const Gap(128),
             ContentsMargin.narrow(

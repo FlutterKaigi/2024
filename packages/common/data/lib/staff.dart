@@ -1,4 +1,3 @@
 export 'src/model/sns.dart';
 export 'src/model/staff.dart';
-export 'src/repository/staff_repository.dart'
-    show StaffRepository, staffRepositoryProvider;
+export 'src/provider/staff_members_provider.dart' show staffMembersProvider;

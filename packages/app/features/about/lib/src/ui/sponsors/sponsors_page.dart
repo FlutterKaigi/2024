@@ -1,6 +1,6 @@
+import 'package:app_cores_designsystem/ui.dart';
 import 'package:app_features_about/l10n.dart';
-import 'package:app_features_about/src/ui/sponsors/notifier/sponsors_notifier.dart';
-import 'package:app_features_about/src/ui/sponsors/sponsors_item.dart';
+import 'package:app_features_about/src/ui/sponsors/sponsors_list_item.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -14,103 +14,108 @@ class SponsorsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isMobile = ScreenSizeProvider.of(context).isMobile;
     final l = L10nAbout.of(context);
     const padding = EdgeInsets.only(top: 16, left: 16, right: 16);
     const spacing = 8.0;
     const childAspectRatio = 16 / 9;
 
-    final sponsorsFuture = ref.watch(sponsorsFutureProvider);
+    final sponsorsAsyncValue = ref.watch(sponsorsProvider);
 
     return Scaffold(
-      body: sponsorsFuture.when(
-        data: (sponsorList) {
-          final platinumSponsor = sponsorList
-              .where((element) => element.type == SponsorType.platinum)
-              .toList();
+      body: SafeArea(
+        top: false,
+        bottom: false,
+        child: sponsorsAsyncValue.when(
+          data: (sponsors) {
+            final platinumSponsors = sponsors
+                .where((element) => element.type == SponsorType.platinum)
+                .toList();
 
-          final goldSponsor = sponsorList
-              .where(
-                (element) => element.type == SponsorType.gold,
-              )
-              .toList();
+            final goldSponsors = sponsors
+                .where(
+                  (element) => element.type == SponsorType.gold,
+                )
+                .toList();
 
-          final silverSponsor = sponsorList
-              .where((element) => element.type == SponsorType.silver)
-              .toList();
+            final silverSponsors = sponsors
+                .where((element) => element.type == SponsorType.silver)
+                .toList();
 
-          final bronzeSponsor = sponsorList
-              .where((element) => element.type == SponsorType.bronze)
-              .toList();
+            final bronzeSponsors = sponsors
+                .where((element) => element.type == SponsorType.bronze)
+                .toList();
 
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar.large(
-                title: Text(
-                  l.sponsors,
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar.large(
+                  title: Text(
+                    l.sponsors,
+                  ),
                 ),
-              ),
-              if (platinumSponsor.isNotEmpty)
-                _sponsorWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsor: platinumSponsor,
-                  crossAxisCount: 1,
-                ),
-              if (goldSponsor.isNotEmpty)
-                _sponsorWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsor: goldSponsor,
-                  crossAxisCount: 2,
-                ),
-              if (silverSponsor.isNotEmpty)
-                _sponsorWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsor: silverSponsor,
-                  crossAxisCount: 3,
-                ),
-              if (bronzeSponsor.isNotEmpty)
-                _sponsorWidget(
-                  padding: padding,
-                  spacing: spacing,
-                  childAspectRatio: childAspectRatio,
-                  sponsor: bronzeSponsor,
-                  crossAxisCount: 4,
-                ),
-              const SliverGap(16),
-            ],
-          );
-        },
-        error: (error, stackTrace) {
-          return Center(
-            child: Text(error.toString()),
-          );
-        },
-        loading: () {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+                if (platinumSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: platinumSponsors,
+                    crossAxisCount: isMobile ? 1 : 2,
+                  ),
+                if (goldSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: goldSponsors,
+                    crossAxisCount: isMobile ? 2 : 3,
+                  ),
+                if (silverSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: silverSponsors,
+                    crossAxisCount: isMobile ? 3 : 4,
+                  ),
+                if (bronzeSponsors.isNotEmpty)
+                  _sponsorsWidget(
+                    padding: padding,
+                    spacing: spacing,
+                    childAspectRatio: childAspectRatio,
+                    sponsors: bronzeSponsors,
+                    crossAxisCount: isMobile ? 3 : 4,
+                  ),
+                SliverGap(16 + MediaQuery.paddingOf(context).bottom),
+              ],
+            );
+          },
+          error: (error, stackTrace) {
+            return Center(
+              child: Text(error.toString()),
+            );
+          },
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ),
       ),
     );
   }
 
-  SliverPadding _sponsorWidget({
+  SliverPadding _sponsorsWidget({
     required EdgeInsetsGeometry padding,
     required double spacing,
     required double childAspectRatio,
-    required List<Sponsor> sponsor,
+    required List<Sponsor> sponsors,
     required int crossAxisCount,
   }) {
     return SliverPadding(
       padding: padding,
       sliver: SliverGrid.builder(
-        itemBuilder: (context, index) => SponsorItem(
-          sponsor: sponsor[index],
+        itemBuilder: (context, index) => SponsorsListItem(
+          sponsor: sponsors[index],
         ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing: spacing,
@@ -118,7 +123,7 @@ class SponsorsPage extends HookConsumerWidget {
           crossAxisCount: crossAxisCount,
           childAspectRatio: childAspectRatio,
         ),
-        itemCount: sponsor.length,
+        itemCount: sponsors.length,
       ),
     );
   }

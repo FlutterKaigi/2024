@@ -1,13 +1,14 @@
 import 'package:common_data/src/model/auth/auth_change_event.dart';
 import 'package:common_data/src/model/auth/user.dart';
 import 'package:common_data/supabase_client.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 part 'auth_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-AuthRepository authRepository(AuthRepositoryRef ref) {
+AuthRepository authRepository(Ref ref) {
   return AuthRepository(
     client: ref.watch(supabaseClientProvider),
   );

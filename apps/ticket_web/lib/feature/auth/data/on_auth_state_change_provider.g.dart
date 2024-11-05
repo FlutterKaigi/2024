@@ -6,7 +6,7 @@ part of 'on_auth_state_change_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$onAuthStateChangeHash() => r'dc6736f1d26d1e27a1dcf27b782246e6a153753e';
+String _$onAuthStateChangeHash() => r'da522e64b700691dad367ba0cca312fdb074089a';
 
 /// See also [onAuthStateChange].
 @ProviderFor(onAuthStateChange)
@@ -20,6 +20,8 @@ final onAuthStateChangeProvider = StreamProvider<AuthChangeEvent>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef OnAuthStateChangeRef = StreamProviderRef<AuthChangeEvent>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

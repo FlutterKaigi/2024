@@ -2,10 +2,14 @@
   "@@locale": "ja",
   "cancel": "キャンセル",
   "dark": "ダーク",
-  "fontFamily": "フォント",
+  "fontFamily": "フォント設定",
   "light": "ライト",
   "ok": "OK",
   "settingsPageTitle": "設定",
   "system": "システムに合わせる",
-  "theme": "外観"
+  "theme": "外観設定",
+  "resetPreferences": "設定のリセット",
+  "localizationMode": "言語設定",
+  "localizationModeJa": "日本語",
+  "localizationModeEn": "English"
 }

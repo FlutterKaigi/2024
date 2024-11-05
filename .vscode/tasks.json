@@ -16,6 +16,12 @@
       "args": ["stop", "--workdir", "${workspaceFolder}/packages/common/data"]
     },
     {
+      "label": "supabase-status",
+      "type": "shell",
+      "command": "supabase",
+      "args": ["status", "--workdir", "${workspaceFolder}/packages/common/data"]
+    },
+    {
       "label": "supabase-migration-new",
       "type": "shell",
       "command": "supabase",
@@ -46,6 +52,28 @@
       "args": [
         "db",
         "reset",
+        "--workdir",
+        "${workspaceFolder}/packages/common/data"
+      ]
+    },
+    {
+      "label": "supabase-db-test",
+      "type": "shell",
+      "command": "supabase",
+      "args": [
+        "db",
+        "test",
+        "--workdir",
+        "${workspaceFolder}/packages/common/data"
+      ]
+    },
+    {
+      "label": "supabase-functions-serve",
+      "type": "shell",
+      "command": "supabase",
+      "args": [
+        "functions",
+        "serve",
         "--workdir",
         "${workspaceFolder}/packages/common/data"
       ]
