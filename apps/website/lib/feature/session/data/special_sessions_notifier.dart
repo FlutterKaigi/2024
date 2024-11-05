@@ -37,6 +37,13 @@ List<SpecialSession> specialSessions(Ref ref) {
       startsAt: DateTime(2024, 11, 21, 18, 10).toUtc(),
       type: SpecialSessionType.closing,
     ),
+    SpecialSession(
+      title: '懇親会',
+      startsAt: DateTime(2024, 11, 21, 18, 30).toUtc(),
+      endsAt: DateTime(2024, 11, 21, 20, 30).toUtc(),
+      type: SpecialSessionType.party,
+      venueId: 'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d', // Room Aのみ
+    ),
     // 2日目
     SpecialSession(
       title: '開場',
