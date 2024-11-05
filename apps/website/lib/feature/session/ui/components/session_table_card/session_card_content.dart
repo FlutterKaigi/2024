@@ -73,9 +73,11 @@ class _Speaker extends StatelessWidget {
       children: [
         ProfileAvatar(profile: profile),
         const SizedBox(width: 4),
-        Text(
-          profile.name,
-          style: textTheme.availableFonts.notoSansJp.regular,
+        Flexible(
+          child: Text(
+            profile.name,
+            style: textTheme.availableFonts.notoSansJp.regular,
+          ),
         ),
       ],
     );
