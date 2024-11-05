@@ -70,6 +70,14 @@
   "staff": {
     "title": "Staff"
   },
+  "session": {
+    "title": "Session",
+    "messages": [
+      "FlutterKaigi 2024のセッション一覧です。",
+      "セッションの詳細は、以下のリンクよりご確認ください。"
+    ],
+    "link": "セッション一覧はこちら"
+  },
   "news_error": "お知らせの取得に失敗しました",
   "retry": "再試行"
 }
