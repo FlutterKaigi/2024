@@ -14,6 +14,13 @@ Android アプリ開発をする場合は [Android Studio]、iOS アプリ開発
 
 また、このプロジェクトでは [Visual Studio Code] の設定を共有していることでより開発しやすくなっています。そのため Visual Studio Code を使って開発することをおすすめします。
 
+なお、基本的には最新の安定バージョンを使うことをおすすめしますが、現在（2024年11月6日）、FlutterKaigi スタッフメンバーで動作確認できているバージョンは次の通りです。
+
+| IDEA | 動作保証バージョン |
+| - | - |
+| Android Studio | Ladybug 2024.2.1 Patch 2 |
+| Xcode | 15.4.0 |
+
 ### CocoaPods の準備
 
 iOS アプリ開発をする場合は [CocoaPods] をインストールして `pod` コマンドを使用できるようにする必要があります。
