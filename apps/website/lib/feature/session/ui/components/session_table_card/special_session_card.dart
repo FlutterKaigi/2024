@@ -72,6 +72,7 @@ class SpecialSessionCard extends StatelessWidget {
       SpecialSessionType.lunch => theme.colorScheme.secondaryContainer,
       SpecialSessionType.preparation => theme.colorScheme.tertiaryContainer,
       SpecialSessionType.closing => theme.colorScheme.surfaceContainerHighest,
+      SpecialSessionType.party => theme.colorScheme.tertiaryContainer,
     };
   }
 }
