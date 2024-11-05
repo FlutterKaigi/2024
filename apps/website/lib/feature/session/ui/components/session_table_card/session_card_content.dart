@@ -43,6 +43,7 @@ class SessionCardContent extends StatelessWidget {
           for (final sponsor in session.sponsors)
             SponsorLogo(
               sponsor: sponsor,
+              height: 64,
             ),
         ],
         const SizedBox(height: 8),
@@ -71,11 +72,15 @@ class _Speaker extends StatelessWidget {
 
     return Row(
       children: [
-        ProfileAvatar(profile: profile),
+        ProfileAvatar(profile: profile, size: 32),
         const SizedBox(width: 4),
-        Text(
-          profile.name,
-          style: textTheme.availableFonts.notoSansJp.regular,
+        Flexible(
+          child: Text(
+            profile.name,
+            style: textTheme.availableFonts.notoSansJp.regular.copyWith(
+              fontSize: 16,
+            ),
+          ),
         ),
       ],
     );
