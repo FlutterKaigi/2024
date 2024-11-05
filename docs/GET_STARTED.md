@@ -10,6 +10,8 @@ Android アプリ開発をする場合は [Android Studio]、iOS アプリ開発
 
 <https://docs.flutter.dev/get-started/install>
 
+※ 厳密には Android Studio は必須ではありません。しかし、Android アプリのビルドする際の Flutter のデフォルトの挙動がインストールされている最新の Android Studio に内包されている JDK を優先して使うようになっていたり、Android Emulator などの設定を GUI 上で操作しやすかったりして、開発がしやすくなるためおすすめします。
+
 また、このプロジェクトでは [Visual Studio Code] の設定を共有していることでより開発しやすくなっています。そのため Visual Studio Code を使って開発することをおすすめします。
 
 ### CocoaPods の準備
