@@ -3,7 +3,6 @@
   "devDependencies": {
     "@textlint-ja/textlint-rule-no-synonyms": "^1.3.0",
     "danger": "^12.3.1",
-    "rimraf": "^6.0.1",
     "sudachi-synonyms-dictionary": "^14.0.0",
     "textlint": "^14.0.4",
     "textlint-rule-ja-no-inappropriate-words": "^2.0.0",
@@ -22,13 +21,13 @@
     }
   },
   "scripts": {
-    "build": "pnpm turbo build",
-    "deploy-production": "pnpm turbo deploy-production",
-    "deploy-staging": "pnpm turbo deploy-staging",
-    "lint": "pnpm turbo lint",
-    "format": "pnpm turbo format",
-    "check": "pnpm turbo check",
-    "typecheck": "pnpm turbo typecheck",
+    "build": "turbo build",
+    "deploy-production": "turbo deploy-production",
+    "deploy-staging": "turbo deploy-staging",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "check": "turbo check",
+    "typecheck": "turbo typecheck",
     "textlint-ci": "danger ci -d textlint.ts"
   },
   "private": true,
