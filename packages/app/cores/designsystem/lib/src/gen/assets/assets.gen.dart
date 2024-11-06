@@ -15,9 +15,13 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsLogoGen {
   const $AssetsLogoGen();
 
-  /// File path: assets/logo/github_logo.svg
-  SvgGenImage get githubLogo =>
-      const SvgGenImage('assets/logo/github_logo.svg');
+  /// File path: assets/logo/github_logo_dark.svg
+  SvgGenImage get githubLogoDark =>
+      const SvgGenImage('assets/logo/github_logo_dark.svg');
+
+  /// File path: assets/logo/github_logo_light.svg
+  SvgGenImage get githubLogoLight =>
+      const SvgGenImage('assets/logo/github_logo_light.svg');
 
   /// File path: assets/logo/main_logo.svg
   SvgGenImage get mainLogo => const SvgGenImage('assets/logo/main_logo.svg');
@@ -30,16 +34,33 @@ class $AssetsLogoGen {
   SvgGenImage get mainLogoLight =>
       const SvgGenImage('assets/logo/main_logo_light.svg');
 
-  /// File path: assets/logo/medium_logo.svg
-  SvgGenImage get mediumLogo =>
-      const SvgGenImage('assets/logo/medium_logo.svg');
+  /// File path: assets/logo/medium_logo_dark.svg
+  SvgGenImage get mediumLogoDark =>
+      const SvgGenImage('assets/logo/medium_logo_dark.svg');
 
-  /// File path: assets/logo/x_logo.svg
-  SvgGenImage get xLogo => const SvgGenImage('assets/logo/x_logo.svg');
+  /// File path: assets/logo/medium_logo_light.svg
+  SvgGenImage get mediumLogoLight =>
+      const SvgGenImage('assets/logo/medium_logo_light.svg');
+
+  /// File path: assets/logo/x_logo_dark.svg
+  SvgGenImage get xLogoDark => const SvgGenImage('assets/logo/x_logo_dark.svg');
+
+  /// File path: assets/logo/x_logo_light.svg
+  SvgGenImage get xLogoLight =>
+      const SvgGenImage('assets/logo/x_logo_light.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [githubLogo, mainLogo, mainLogoDark, mainLogoLight, mediumLogo, xLogo];
+  List<SvgGenImage> get values => [
+        githubLogoDark,
+        githubLogoLight,
+        mainLogo,
+        mainLogoDark,
+        mainLogoLight,
+        mediumLogoDark,
+        mediumLogoLight,
+        xLogoDark,
+        xLogoLight
+      ];
 }
 
 class Assets {
