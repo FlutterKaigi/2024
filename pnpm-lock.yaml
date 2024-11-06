@@ -1360,7 +1360,7 @@ packages:
 
   joi@17.4.2:
     resolution: {integrity: sha512-Lm56PP+n0+Z2A2rfRvsfWVDXGEWjXxatPopkQ8qQ5mxCEhwHG+Ettgg5o98FFaxilOxozoa14cFhrE/hOzh/Nw==}
-    
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -3461,7 +3461,6 @@ snapshots:
 
   japanese-numerals-to-number@1.0.2: {}
 
-<<<<<<< HEAD
   joi@17.4.2:
     dependencies:
       '@hapi/hoek': 9.3.0
@@ -3469,9 +3468,8 @@ snapshots:
       '@sideway/address': 4.1.5
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
-=======
+
   js-tokens@4.0.0: {}
->>>>>>> df8590a9223e657cfcaa0a6fe0d573de038eba50
 
   js-yaml@3.14.1:
     dependencies:
