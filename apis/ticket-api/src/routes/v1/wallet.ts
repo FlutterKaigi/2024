@@ -1,14 +1,13 @@
 import { Hono } from "hono";
-import { Bindings } from "../../bindings";
+import type { Bindings } from "../../bindings";
 import { vValidator } from "@hono/valibot-validator";
 import { authorizationSchema } from "../../util/authorizationSchema";
 import { createClient } from "@supabase/supabase-js";
-import { Database } from "supabase-types";
+import type { Database } from "supabase-types";
 import { getUser } from "../../util/user";
 import { HTTPException } from "hono/http-exception";
-import { PKPass, Barcode, Field } from "passkit-generator";
+import { PKPass, type Barcode } from "passkit-generator";
 import background from "../../../assets/background.png";
-import logo from "../../../assets/logo.png";
 import icon from "../../../assets/icon.png";
 
 const app = new Hono<{ Bindings: Bindings }>();
@@ -48,7 +47,7 @@ app.get(
 app.get("/example.pkpass", async (c) => {
 	const pass = new PKPass(
 		{
-			"strip@3x.png": Buffer.from(background ),
+			"strip@3x.png": Buffer.from(background),
 			"logo@3x.png": Buffer.from(icon),
 			"icon@3x.png": Buffer.from(icon),
 		},
@@ -62,14 +61,13 @@ app.get("/example.pkpass", async (c) => {
 			organizationName: "FlutterKaigi 2024",
 			passTypeIdentifier: "pass.jp.co.flutterkaigi.2024.ticket",
 			teamIdentifier: "6JT949BA2M",
-      serialNumber: "1234567890",
-      contactVenueWebsite: "https://flutterkaigi.jp",
+			serialNumber: "1234567890",
+			contactVenueWebsite: "https://flutterkaigi.jp",
 			backgroundColor: "rgb(255,255,255)",
 			foregroundColor: "rgb(0,0,0)",
-      labelColor: "rgb(0,0,0)",
+			labelColor: "rgb(0,0,0)",
 		},
 	);
-
 
 	pass.type = "eventTicket";
 	pass.headerFields.push({
@@ -81,14 +79,14 @@ app.get("/example.pkpass", async (c) => {
 		key: "name",
 		value: "YOUR NAME HERE",
 		label: "NAME",
-  });
-  pass.auxiliaryFields.push({
-    key: "starts-at",
-    value: "2024-11-21T10:00+09:00",
-    label: "STARTS-AT",
-    timeStyle: "PKDateStyleShort",
-    dateStyle: "PKDateStyleMedium"
-  });
+	});
+	pass.auxiliaryFields.push({
+		key: "starts-at",
+		value: "2024-11-21T10:00+09:00",
+		label: "STARTS-AT",
+		timeStyle: "PKDateStyleShort",
+		dateStyle: "PKDateStyleMedium",
+	});
 	pass.backFields.push(
 		...[
 			{
@@ -109,16 +107,15 @@ app.get("/example.pkpass", async (c) => {
 			{
 				format: "PKBarcodeFormatQR",
 				message: "a08f5f0c-ad42-458e-a3a9-ad95b44374e1",
-        altText: "入場用QRコード",
+				altText: "入場用QRコード",
 			} satisfies Barcode,
 		],
-  );
-
+	);
 
 	return new Response(pass.getAsBuffer(), {
 		headers: {
 			"Content-type": pass.mimeType,
-			"Content-disposition": `attachment; filename=example.pkpass`,
+			"Content-disposition": "attachment; filename=example.pkpass",
 		},
 	});
 });
