@@ -1,14 +1,14 @@
-import { Hono } from "hono";
-import type { Bindings } from "../../bindings";
 import { vValidator } from "@hono/valibot-validator";
-import { authorizationSchema } from "../../util/authorizationSchema";
 import { createClient } from "@supabase/supabase-js";
-import type { Database } from "supabase-types";
-import { getUser } from "../../util/user";
+import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { PKPass, type Barcode } from "passkit-generator";
+import { type Barcode, PKPass } from "passkit-generator";
+import type { Database } from "supabase-types";
 import background from "../../../assets/background.png";
 import icon from "../../../assets/icon.png";
+import type { Bindings } from "../../bindings";
+import { authorizationSchema } from "../../util/authorizationSchema";
+import { getUser } from "../../util/user";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
