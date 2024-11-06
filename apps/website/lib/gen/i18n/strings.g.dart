@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 50
+/// Strings: 54
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -198,6 +198,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
   late final _StringsStaffJa staff = _StringsStaffJa._(_root);
   late final _StringsJobBoardJa jobBoard = _StringsJobBoardJa._(_root);
+  late final _StringsSessionJa session = _StringsSessionJa._(_root);
   String get newsError => 'お知らせの取得に失敗しました';
   String get retry => '再試行';
 }
@@ -342,6 +343,21 @@ class _StringsJobBoardJa {
   String get button => 'ジョブボードを見る';
 }
 
+// Path: session
+class _StringsSessionJa {
+  _StringsSessionJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Session';
+  List<String> get messages => [
+        'FlutterKaigi 2024のセッション一覧です。',
+        'セッションの詳細は、以下のリンクよりご確認ください。',
+      ];
+  String get link => 'セッション一覧はこちら';
+}
+
 // Path: lead.date
 class _StringsLeadDateJa {
   _StringsLeadDateJa._(this._root);
@@ -479,6 +495,14 @@ extension on Translations {
         return 'ご興味のある方は、ぜひご確認ください。';
       case 'jobBoard.button':
         return 'ジョブボードを見る';
+      case 'session.title':
+        return 'Session';
+      case 'session.messages.0':
+        return 'FlutterKaigi 2024のセッション一覧です。';
+      case 'session.messages.1':
+        return 'セッションの詳細は、以下のリンクよりご確認ください。';
+      case 'session.link':
+        return 'セッション一覧はこちら';
       case 'newsError':
         return 'お知らせの取得に失敗しました';
       case 'retry':

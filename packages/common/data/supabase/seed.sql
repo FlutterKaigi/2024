@@ -2114,3 +2114,33 @@ INSERT INTO
   public.session_speakers_v2
 VALUES
   ('61d31fb9-fbc5-4d01-aad5-139e6568db15', 'a7dc0952-73c1-4e4a-a50a-aa6d553369ae');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('71216c8c-fbb0-45e1-a72d-e544b6b712bd', 'a87ad2ac-dc69-44fb-861d-ef57f3a3f41b');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('f6931b4e-30db-4a4e-9582-7a54c135b740', '0116ff6a-5171-44d3-9733-f047f2f17930');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('b57f3efd-b31d-4d57-aaa3-f45f1b17f727', 'cefa50ab-4d04-4cf1-a3f9-9ee50e2b630b');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('3bbe9e9a-d41f-4c4d-994c-0064cd30fd94', 'e34f0e48-bc98-4621-9fd8-97fab8e4f112');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('369e19d9-1f27-40e6-b294-64c6ca9bfcae', 'e63e4871-1e52-41f5-845c-335a0ec77e66');
+
+INSERT INTO
+  public.session_speakers_v2
+VALUES
+  ('a1ba9bfd-87c8-47b2-b5af-a50e0c64c300', '5d252897-2c14-4232-b51d-8f9bfa47fae3');

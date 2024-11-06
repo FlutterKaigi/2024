@@ -465,7 +465,7 @@ class _StringsTicketPageProfileEditRestrictionJa {
   // Translations
   String get title => 'プロフィール編集の注意';
   String get description =>
-      '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**2024年11月7日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
+      '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**2024年11月12日(火) 22:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
 }
 
 // Path: ticketPage.editFields
@@ -582,7 +582,7 @@ class _StringsHomePageTicketsStudentJa {
   // Translations
   String get name => '学割について';
   String get description =>
-      'FlutterKaigi 2024当日に、学生(高校・大学(短期大学,大学院を含む)・高等専門学校・専修学校・専門学校・職業訓練学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。所属している教育機関が対象かどうか不明な場合は、運営にお問い合わせください。';
+      'FlutterKaigi 2024当日に、学生(中学・高校・大学(短期大学,大学院を含む)・高等専門学校・専修学校・専門学校・職業訓練学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。所属している教育機関が対象かどうか不明な場合は、運営にお問い合わせください。';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -1264,7 +1264,7 @@ class _StringsTicketPageProfileEditRestrictionEn
   String get title => 'Note on Profile Editing';
   @override
   String get description =>
-      '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **Nov 7 (Mon) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
+      '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **Nov 12 (Tue) 22:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
 }
 
 // Path: ticketPage.editFields
@@ -1435,7 +1435,7 @@ class _StringsHomePageTicketsStudentEn
   String get name => 'Student Discount';
   @override
   String get description =>
-      'If you are a student (High school, University(Including Junior College, Graduate School), Technical College, College of Technology(KOSEN), Specialized School, Vocational School)on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible. If you are unsure whether your educational institution is eligible, please contact the organizers.';
+      'If you are a student (Junior High School, High School, University(Including Junior College, Graduate School), Technical College, College of Technology(KOSEN), Specialized School, Vocational School)on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible. If you are unsure whether your educational institution is eligible, please contact the organizers.';
 }
 
 // Path: ticketPage.warningForPersonalSponsor.buttons
@@ -1888,7 +1888,7 @@ extension on Translations {
       case 'homePage.tickets.student.name':
         return '学割について';
       case 'homePage.tickets.student.description':
-        return 'FlutterKaigi 2024当日に、学生(高校・大学(短期大学,大学院を含む)・高等専門学校・専修学校・専門学校・職業訓練学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。所属している教育機関が対象かどうか不明な場合は、運営にお問い合わせください。';
+        return 'FlutterKaigi 2024当日に、学生(中学・高校・大学(短期大学,大学院を含む)・高等専門学校・専修学校・専門学校・職業訓練学校)の方は受付にて学生証を提示することによりチケット代金全額を返金致します。\n※返金は当日のみ有効です。また、一般チケットのみ対象となります。所属している教育機関が対象かどうか不明な場合は、運営にお問い合わせください。';
       case 'verifyPurchase.processing':
         return '購入処理中...';
       case 'verifyPurchase.processingDescription':
@@ -1971,7 +1971,7 @@ extension on Translations {
       case 'ticketPage.profileEditRestriction.title':
         return 'プロフィール編集の注意';
       case 'ticketPage.profileEditRestriction.description':
-        return '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**2024年11月7日(月) 10:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
+        return '- プロフィール画像は、Googleアカウントの画像もしくはアップロードした画像のみ使用できます。\n- プロフィールは、**2024年11月12日(火) 22:00** まで編集可能です。印刷の関係により、**それ以降の編集はできません。**';
       case 'ticketPage.designMayBeChanged':
         return '※FlutterKaigi 2024当日に配布するネームプレートのデザインは、変更される可能性があります。';
       case 'ticketPage.editFields.dialog.ok':
@@ -2170,7 +2170,7 @@ extension on _StringsEn {
       case 'homePage.tickets.student.name':
         return 'Student Discount';
       case 'homePage.tickets.student.description':
-        return 'If you are a student (High school, University(Including Junior College, Graduate School), Technical College, College of Technology(KOSEN), Specialized School, Vocational School)on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible. If you are unsure whether your educational institution is eligible, please contact the organizers.';
+        return 'If you are a student (Junior High School, High School, University(Including Junior College, Graduate School), Technical College, College of Technology(KOSEN), Specialized School, Vocational School)on the day of FlutterKaigi 2024, we will refund the full ticket price by showing your student ID at time of reception.\n※ Refunds are only valid on the day of the event. Only general tickets are eligible. If you are unsure whether your educational institution is eligible, please contact the organizers.';
       case 'verifyPurchase.processing':
         return 'Verifying purchase...';
       case 'verifyPurchase.processingDescription':
@@ -2254,7 +2254,7 @@ extension on _StringsEn {
       case 'ticketPage.profileEditRestriction.title':
         return 'Note on Profile Editing';
       case 'ticketPage.profileEditRestriction.description':
-        return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **Nov 7 (Mon) 10:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
+        return '- Profile images can only be used with your Google account image or uploaded image.\n- You can edit your profile until **Nov 12 (Tue) 22:00 JST**. After that, you will **not be able to edit your profile** due to printing reasons.';
       case 'ticketPage.designMayBeChanged':
         return '※The design of the name card may be changed on the day of FlutterKaigi 2024.';
       case 'ticketPage.editFields.dialog.ok':
