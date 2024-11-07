@@ -13,6 +13,7 @@ import 'package:ticket_web/feature/profile/ui/app_bar_avatar.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
 import 'package:ticket_web/pages/ticket/components/about_profile_information_card.dart';
 import 'package:ticket_web/pages/ticket/components/thank_you_for_purchase_ticket.dart';
+import 'package:ticket_web/pages/ticket/components/ticket_qr_code_card.dart';
 
 class TicketRoute extends GoRouteData {
   const TicketRoute();
@@ -87,6 +88,11 @@ class _BodyWithTicket extends ConsumerWidget {
         ThankYouForPurchaseTicketCard(
           ticketType: ticket.type,
         ),
+        const SizedBox(height: 16),
+        TicketQrCodeCard(
+          ticket: ticket,
+        ),
+        const SizedBox(height: 16),
         AboutProfileInformation(
           ticket: ticket,
           profile: profile,
