@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:app_cores_core/constants.dart';
 import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_core/util.dart';
@@ -210,9 +211,14 @@ class AboutPage extends ConsumerWidget {
                       onPressed: () async {},
                     ),
                     const SizedBox(width: 8),
-                    IconButton(
-                      icon: const MediumLogo(),
-                      onPressed: () async {},
+                    InkWell(
+                      onTap: () async {
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.medium),
+                        );
+                      },
+                      customBorder: const CircleBorder(),
+                      child: const MediumLogo(),
                     ),
                     const SizedBox(width: 8),
                     IconButton(
