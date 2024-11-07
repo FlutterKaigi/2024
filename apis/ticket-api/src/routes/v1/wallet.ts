@@ -15,13 +15,13 @@ const app = new Hono<{ Bindings: Bindings }>();
 
 app.get(
 	"/pass.pkpass",
-	vValidator("header", authorizationSchema),
+	vValidator("query", authorizationSchema),
 	async (c) => {
 		const supabase = createClient<Database>(
 			c.env.SUPABASE_URL,
 			c.env.SUPABASE_KEY,
 		);
-		const { authorization } = c.req.valid("header");
+		const { authorization } = c.req.valid("query");
 		const user = await getUserWithProfile(authorization, supabase);
 		if (!user || !user.success) {
 			return c.json({ error: "Unauthorized" }, 401);
@@ -169,8 +169,8 @@ app.get(
 				{
 					format: "PKBarcodeFormatQR",
 					// Ticket ID
-					message: "a08f5f0c-ad42-458e-a3a9-ad95b44374e1",
-					altText: "U-a08f5f0c",
+					message: ticket.id,
+					altText: `U-${ticket.id.slice(0, 8)}`,
 				} satisfies Barcode,
 			],
 		);
@@ -179,7 +179,7 @@ app.get(
 		return new Response(pass.getAsBuffer(), {
 			headers: {
 				"Content-type": pass.mimeType,
-				"Content-disposition": "attachment; filename=example.pkpass",
+				"Content-disposition": "attachment; filename=pass.pkpass",
 			},
 		});
 	},
