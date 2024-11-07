@@ -15,3 +15,6 @@ apps/app/ios/Pods/**
 
 # Ignore fvm
 .fvm/**
+
+# Ignore APIS
+apis/**

@@ -1,0 +1,8 @@
+name = "flutterkaigi-2024"
+compatibility_date = "2024-11-02"
+pages_build_output_dir = "./dist"
+
+placement = { mode = "smart" }
+
+[observability]
+enabled = true

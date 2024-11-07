@@ -29,6 +29,7 @@ class Profile with _$Profile {
       _$ProfileFromJson(json);
 }
 
+/// `public.profiles`テーブルの要素を表すモデル
 @freezed
 class ProfileTable with _$ProfileTable {
   const factory ProfileTable({

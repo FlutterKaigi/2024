@@ -7,5 +7,8 @@ class L10nVenueJa extends L10nVenue {
   L10nVenueJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get venuePageTitle => 'Venue';
+  String get venuePageTitle => '会場';
+
+  @override
+  String get venueFloorMap => 'フロアマップ';
 }

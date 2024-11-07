@@ -27,7 +27,7 @@ class SponsorsListItem extends StatelessWidget {
           useRootNavigator: true,
           showDragHandle: true,
           constraints: const BoxConstraints(
-            maxWidth: 310,
+            maxWidth: 720,
           ),
           builder: (context) => DraggableScrollableSheet(
             initialChildSize: 0.75,

@@ -1,0 +1,23 @@
+{
+  "extends": "configs",
+  "compilerOptions": {
+    "types": [
+      "@cloudflare/workers-types/2023-07-01"
+    ],
+    "moduleResolution": "Bundler",
+    "outDir": "./dist",
+    "jsx": "react-jsx",
+    "module": "ES2022"
+  },
+  "outDir": "./dist",
+  "rootDir": "./src",
+  "include": [
+    "src/**/*",
+    "src/util",
+    "src/bindings.d.ts",
+    "public"
+  ],
+  "exclude": [
+    "functions/*/*"
+  ]
+}

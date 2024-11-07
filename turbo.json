@@ -1,0 +1,34 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "dev": {
+      "cache": false
+    },
+    "lint": {
+      "outputs": [],
+      "cache": false
+    },
+    "format": {
+      "outputs": [],
+      "cache": false
+    },
+    "check": {
+      "outputs": [],
+      "cache": false
+    },
+    "typecheck": {
+      "outputs": ["tsconfig.tsbuildinfo"],
+      "cache": false
+    },
+    "deploy-production": {
+      "cache": false
+    },
+    "deploy-staging": {
+      "cache": false
+    }
+  }
+}

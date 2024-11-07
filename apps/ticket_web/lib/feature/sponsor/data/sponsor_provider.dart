@@ -6,10 +6,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'sponsor_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-Future<List<SponsorWithSession>> sponsorWithSessions(
+Future<List<SponsorWithSessionV2>> sponsorWithSessions(
   Ref ref,
 ) async =>
-    ref.watch(sponsorRepositoryProvider).fetchSponsorWithSessions();
+    ref.watch(sponsorRepositoryProvider).fetchSponsorWithSessionsV2();
 
 @Riverpod(keepAlive: true)
 Future<List<SponsorAndSession>> sponsorAndSessionList(
@@ -31,6 +31,6 @@ Future<List<SponsorAndSession>> sponsorAndSessionList(
 }
 
 typedef SponsorAndSession = ({
-  SessionWithSpeakerAndVenue session,
-  SponsorWithSession sponsor
+  SponsorWithSessionV2Session session,
+  SponsorWithSessionV2 sponsor
 });
