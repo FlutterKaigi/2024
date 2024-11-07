@@ -37,7 +37,11 @@ VALUES
   ('kuno', 'kno3a87.webp', 'わいわい'),
   ('mafreud', 'mafreud.webp', 'Flutter盛り上げていきましょう！'),
   ('草野 慶人', 'keitokusano.webp', 'FlutterKaigi楽しみっ！'),
-  ('そた', 'SoutaTanaka.webp', 'Webサイト頑張りました！');
+  ('そた', 'SoutaTanaka.webp', 'Webサイト頑張りました！'),
+  ('asmz', 'starmAIne777.webp', 'Xの中の人として盛り上げたいです！'),
+  ('katsummy', 'granoeste.webp', ''),
+  ('jiyuujin', 'jiyuujin.webp', 'Flutterでワイワイしよう！'),
+  ('ssoejima', 'mightyfrog.webp', '');
 
 -- staff_social_networking_services
 DO $$
