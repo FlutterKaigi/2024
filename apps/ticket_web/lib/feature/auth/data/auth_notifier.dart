@@ -1,5 +1,6 @@
 import 'package:common_data/auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_web/feature/auth/data/on_auth_state_change_provider.dart';
 
@@ -27,4 +28,10 @@ class AuthNotifier extends _$AuthNotifier {
   Future<void> signOut() async => ref.read(authRepositoryProvider).signOut();
 
   String? accessToken() => ref.read(authRepositoryProvider).accessToken;
+}
+
+@Riverpod(keepAlive: true)
+String? supabaseAccessToken(Ref ref) {
+  final authNotifier = ref.watch(authNotifierProvider.notifier);
+  return authNotifier.accessToken();
 }
