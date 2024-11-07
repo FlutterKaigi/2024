@@ -195,7 +195,7 @@ class AboutPage extends ConsumerWidget {
                     InkWell(
                       onTap: () async {
                         await launchInExternalApp(
-                          Uri.parse(Constants.mediumUrl),
+                          Uri.parse(OfficialSocialUrls.medium),
                         );
                       },
                       customBorder: const CircleBorder(),
