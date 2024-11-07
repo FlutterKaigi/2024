@@ -75,6 +75,15 @@ objects_path = "seed-storage/sponsors"
 public = true
 objects_path = "seed-storage/staffs"
 
+[storage.buckets.job_boards]
+public = true
+objects_path = "seed-storage/job_boards"
+
+[storage.buckets.speakers]
+public = true
+objects_path = "seed-storage/speakers"
+
+
 [storage.image_transformation]
 enabled = true
 

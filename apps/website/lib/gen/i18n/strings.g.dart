@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 45
+/// Strings: 54
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -197,6 +197,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsTicketJa ticket = _StringsTicketJa._(_root);
   late final _StringsSponsorsJa sponsors = _StringsSponsorsJa._(_root);
   late final _StringsStaffJa staff = _StringsStaffJa._(_root);
+  late final _StringsJobBoardJa jobBoard = _StringsJobBoardJa._(_root);
+  late final _StringsSessionJa session = _StringsSessionJa._(_root);
   String get newsError => 'お知らせの取得に失敗しました';
   String get retry => '再試行';
 }
@@ -323,6 +325,37 @@ class _StringsStaffJa {
 
   // Translations
   String get title => 'Staff';
+}
+
+// Path: jobBoard
+class _StringsJobBoardJa {
+  _StringsJobBoardJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Job Board';
+  List<String> get messages => [
+        'FlutterKaigi 2024では、初の試みとして',
+        '企業の募集要項を掲載しています。',
+        'ご興味のある方は、ぜひご確認ください。',
+      ];
+  String get button => 'ジョブボードを見る';
+}
+
+// Path: session
+class _StringsSessionJa {
+  _StringsSessionJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Session';
+  List<String> get messages => [
+        'FlutterKaigi 2024のセッション一覧です。',
+        'セッションの詳細は、以下のリンクよりご確認ください。',
+      ];
+  String get link => 'セッション一覧はこちら';
 }
 
 // Path: lead.date
@@ -452,6 +485,24 @@ extension on Translations {
         return 'トップに戻る';
       case 'staff.title':
         return 'Staff';
+      case 'jobBoard.title':
+        return 'Job Board';
+      case 'jobBoard.messages.0':
+        return 'FlutterKaigi 2024では、初の試みとして';
+      case 'jobBoard.messages.1':
+        return '企業の募集要項を掲載しています。';
+      case 'jobBoard.messages.2':
+        return 'ご興味のある方は、ぜひご確認ください。';
+      case 'jobBoard.button':
+        return 'ジョブボードを見る';
+      case 'session.title':
+        return 'Session';
+      case 'session.messages.0':
+        return 'FlutterKaigi 2024のセッション一覧です。';
+      case 'session.messages.1':
+        return 'セッションの詳細は、以下のリンクよりご確認ください。';
+      case 'session.link':
+        return 'セッション一覧はこちら';
       case 'newsError':
         return 'お知らせの取得に失敗しました';
       case 'retry':

@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:app_cores_core/constants.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
@@ -14,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class AboutPage extends ConsumerWidget {
   const AboutPage({
@@ -24,6 +28,8 @@ class AboutPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10nAbout.of(context);
     final theme = Theme.of(context);
+    final startDate = DateTime(2024, 11, 21, 10);
+    final endDate = DateTime(2024, 11, 22, 18);
 
     final appVersion = ref.watch(
       packageInfoInstanceProvider.select(
@@ -81,7 +87,21 @@ class AboutPage extends ConsumerWidget {
                 ListTile(
                   title: Text(l.date, style: theme.textTheme.bodyLarge),
                   leading: const Icon(Icons.event_outlined),
-                  onTap: () {},
+                  onTap: () async => Platform.isIOS
+                      ? Add2Calendar.addEvent2Cal(
+                          _createIosEvent(
+                            l,
+                            startDate: startDate,
+                            endDate: endDate,
+                          ),
+                        )
+                      : launchInExternalApp(
+                          _createGoogleCalendarUrl(
+                            l,
+                            startDate: startDate,
+                            endDate: endDate,
+                          ),
+                        ),
                 ),
                 const SizedBox(height: 32),
                 Padding(
@@ -186,19 +206,24 @@ class AboutPage extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CommonAssets.logo.xLogo.svg(
-                      width: 48,
-                      height: 48,
+                    IconButton(
+                      icon: const XLogo(),
+                      onPressed: () async {},
                     ),
-                    const SizedBox(width: 16),
-                    CommonAssets.logo.mediumLogo.svg(
-                      width: 48,
-                      height: 48,
+                    const SizedBox(width: 8),
+                    InkWell(
+                      onTap: () async {
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.medium),
+                        );
+                      },
+                      customBorder: const CircleBorder(),
+                      child: const MediumLogo(),
                     ),
-                    const SizedBox(width: 16),
-                    CommonAssets.logo.githubLogo.svg(
-                      width: 48,
-                      height: 48,
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: const GithubLogo(),
+                      onPressed: () async {},
                     ),
                   ],
                 ),
@@ -217,6 +242,42 @@ class AboutPage extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Event _createIosEvent(
+    L10nAbout l, {
+    required DateTime startDate,
+    required DateTime endDate,
+  }) =>
+      Event(
+        title: l.flutterKaigiTitle,
+        description: l.flutterKaigiDescription,
+        location: l.location,
+        startDate: startDate,
+        endDate: endDate,
+        iosParams: const IOSParams(
+          reminder: Duration(minutes: 10),
+        ),
+      );
+
+  Uri _createGoogleCalendarUrl(
+    L10nAbout l, {
+    required DateTime startDate,
+    required DateTime endDate,
+  }) {
+    final dateFormatter = DateFormat("yyyyMMdd'T'HHmmss'Z'");
+    return Uri.https(
+      'www.google.com',
+      'calendar/render',
+      {
+        'action': 'TEMPLATE',
+        'text': l.flutterKaigiTitle,
+        'details': l.flutterKaigiDescription,
+        'location': l.date,
+        'dates':
+            '${dateFormatter.format(startDate.toUtc())}/${dateFormatter.format(endDate.toUtc())}',
+      },
     );
   }
 

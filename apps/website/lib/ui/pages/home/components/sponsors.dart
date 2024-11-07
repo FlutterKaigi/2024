@@ -27,7 +27,7 @@ final class Sponsors extends HookConsumerWidget {
           i18n,
           textTheme,
         ),
-      AsyncData<List<SponsorWithSession>>(:final value) => sponsorsSection(
+      AsyncData<List<SponsorWithSessionV2>>(:final value) => sponsorsSection(
           value,
           theme,
           context,
@@ -38,7 +38,7 @@ final class Sponsors extends HookConsumerWidget {
 }
 
 Widget sponsorsSection(
-  List<SponsorWithSession> sponsors,
+  List<SponsorWithSessionV2> sponsors,
   ThemeData theme,
   BuildContext context,
 ) {
@@ -71,7 +71,7 @@ Widget sponsorsSection(
 
 Widget _sponsorListByLevel(
   ThemeData theme,
-  List<SponsorWithSession> sponsors,
+  List<SponsorWithSessionV2> sponsors,
   BuildContext context,
 ) {
   assert(
@@ -171,7 +171,7 @@ class _SponsorCard extends ConsumerWidget {
     required this.size,
   });
 
-  final SponsorWithSession sponsor;
+  final SponsorWithSessionV2 sponsor;
   final double size;
 
   @override
@@ -211,7 +211,8 @@ class _SponsorCard extends ConsumerWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<SponsorWithSession>('sponsor', sponsor));
+    properties
+        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
     properties.add(DoubleProperty('size', size));
   }
 }

@@ -1,0 +1,28 @@
+{
+  "name": "ticket-api",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy-staging": "wrangler deploy --minify src/index.ts --env staging",
+    "deploy-production": "wrangler deploy --minify src/index.ts --env production",
+    "lint": "biome check --write",
+    "format": "biome format --write",
+    "check": "biome check --write",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono-rate-limiter/cloudflare": "^0.2.1",
+    "@hono/valibot-validator": "^0.3.1",
+    "@supabase/supabase-js": "^2.45.4",
+    "hono": "^4.6.5",
+    "hono-rate-limiter": "^0.4.0",
+    "stripe": "^16.12.0",
+    "valibot": "^0.41.0",
+    "supabase-types": "workspace:*"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@cloudflare/workers-types": "^4.20241011.0",
+    "wrangler": "^3.80.4",
+    "configs": "workspace:*"
+  }
+}
