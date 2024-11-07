@@ -18,6 +18,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends ConsumerWidget {
   const AboutPage({
@@ -208,7 +209,20 @@ class AboutPage extends ConsumerWidget {
                   children: [
                     IconButton(
                       icon: const XLogo(),
-                      onPressed: () async {},
+                      onPressed: () async {
+                        final nativeX = Uri.parse(OfficialSocialUrls.nativeX);
+                        final webX = Uri.parse(OfficialSocialUrls.webX);
+                        if (await canLaunchUrl(nativeX)) {
+                          await launchUrl(
+                            nativeX,
+                            mode: LaunchMode.externalApplication,
+                          );
+                        } else if (await canLaunchUrl(webX)) {
+                          await launchUrl(
+                            webX,
+                          );
+                        }
+                      },
                     ),
                     const SizedBox(width: 8),
                     InkWell(
