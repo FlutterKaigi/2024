@@ -1,3 +1,4 @@
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
 import 'package:common_data/contributor.dart';
 import 'package:flutter/foundation.dart';
@@ -41,6 +42,12 @@ class ContributorsListItem extends StatelessWidget {
         style: theme.textTheme.bodyMedium,
       ),
       contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      onTap: () async {
+        final url = Uri.parse(
+          'https://github.com/${contributor.name}',
+        );
+        await launchInExternalApp(url);
+      },
     );
   }
 
