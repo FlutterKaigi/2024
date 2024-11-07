@@ -458,6 +458,53 @@ BEGIN
         (temp_id, 'qiita', 'SotaAtos');
 END $$;
 
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'asmz';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'starmAIne777'),
+        (temp_id, 'x', 'starmAIne777'),
+        (temp_id, 'medium', 'ch4ndelier.w4lt2');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'katsummy';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'granoeste'),
+        (temp_id, 'x', 'katsummy');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'jiyuujin';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'jiyuujin'),
+        (temp_id, 'medium', 'jiyuujin'),
+        (temp_id, 'qiita', 'jiyuujin'),
+        (temp_id, 'zenn', 'jiyuujin'),
+        (temp_id, 'note', 'uraneko'),
+        (temp_id, 'zenn', 'jiyuujin'),
+        (temp_id, 'other', 'https://yuma-kitamura.nekohack.me/');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'ssoejima';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'mightyfrog'),
+        (temp_id, 'x', 'highballegg'),
+        (temp_id, 'qiita', 'ssoejima');
+END $$;
+
 -- sponsors
 INSERT INTO
   public.sponsors
