@@ -31,6 +31,8 @@
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <!-- Description for transition to X app. -->
+                <data android:scheme="twitter" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
