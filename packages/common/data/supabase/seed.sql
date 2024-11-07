@@ -490,7 +490,6 @@ BEGIN
         (temp_id, 'qiita', 'jiyuujin'),
         (temp_id, 'zenn', 'jiyuujin'),
         (temp_id, 'note', 'uraneko'),
-        (temp_id, 'zenn', 'jiyuujin'),
         (temp_id, 'other', 'https://yuma-kitamura.nekohack.me/');
 END $$;
 
