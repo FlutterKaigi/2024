@@ -175,7 +175,7 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
 
 // MEMO(@chippy-ao): Widget に書くと邪魔なので、mixin に出しました
 mixin SessionPageMixin {
-  final appBarSize = AppBar().preferredSize.height;
+  final appBarSize = kToolbarHeight;
   final padding = 16;
 
   /// title の長さに応じて、SliverAppBar の expandedHeight を計算します
