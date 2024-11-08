@@ -1,7 +1,7 @@
 {
   "name": "website-html-rewriter",
   "scripts": {
-    "dev": "wrangler pages dev",
+    "dev": "pnpm build --watch=forever & wrangler pages dev",
     "build": "./scripts/setup-dist-directory.sh && esbuild src/server.ts --format=esm --outfile=dist/_worker.js --bundle --loader:.wasm=copy --loader:.bin=copy --loader:.svg=copy",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
