@@ -207,9 +207,8 @@ class AboutPage extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const XLogo(),
-                      onPressed: () async {
+                    InkWell(
+                      onTap: () async {
                         final nativeX = Uri.parse(OfficialSocialUrls.nativeX);
                         final webX = Uri.parse(OfficialSocialUrls.webX);
                         if (await canLaunchUrl(nativeX)) {
@@ -223,6 +222,8 @@ class AboutPage extends ConsumerWidget {
                           );
                         }
                       },
+                      customBorder: const CircleBorder(),
+                      child: const XLogo(),
                     ),
                     const SizedBox(width: 8),
                     InkWell(
