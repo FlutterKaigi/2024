@@ -2,8 +2,8 @@ import { Hono } from "hono";
 import { vValidator } from "@hono/valibot-validator";
 import * as v from "valibot";
 import { createClient } from "@supabase/supabase-js";
-import { Database } from "supabase-types";
-import { Bindings } from "./bindings";
+import type { Database } from "supabase-types";
+import type { Bindings } from "./bindings";
 import { logger } from "hono/logger";
 import ogImage from "./ogImage";
 import { OgpRewriter } from "./util/ogpRewriter";
@@ -33,7 +33,7 @@ app.get(
     v.object({
       id: v.pipe(
         v.string(),
-        v.transform((input) => parseInt(input))
+        v.transform((input) => Number.parseInt(input))
       )
     })
   ),
@@ -59,7 +59,7 @@ app.get(
     const url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       title: data.name,
-      description: data.name + "はFlutterKaigi 2024のスポンサーです",
+      description: `${data.name}はFlutterKaigi 2024のスポンサーです`,
       url: url.toString()
     });
     const baseResponse = await fetchBaseResponse(url);
@@ -188,7 +188,7 @@ app.notFound(async (c) => {
   console.log(response.headers.get("Content-Type"));
   // HTMLの場合
   if (response.headers.get("Content-Type")?.includes("text/html") && !c.req.url.includes("ogp=false")) {
-    let url = new URL(c.req.url);
+    const url = new URL(c.req.url);
     const rewriter = new OgpRewriter({
       url: url.toString()
     });

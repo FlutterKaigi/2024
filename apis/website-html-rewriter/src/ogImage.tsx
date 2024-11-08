@@ -1,10 +1,10 @@
 import { Hono } from "hono";
-import { Bindings } from "./bindings";
+import type { Bindings } from "./bindings";
 import { ImageResponse } from "@cloudflare/pages-plugin-vercel-og/api";
 import { vValidator } from "@hono/valibot-validator";
 import * as v from "valibot";
-import { Database } from "supabase-types";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "supabase-types";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 import { cache } from 'hono/cache'
 
@@ -51,7 +51,7 @@ app.get(
 
     // sponsor/${id}の場合
     if (path.startsWith("/sponsor/")) {
-      const id = parseInt(path.split("/")[2]);
+      const id = Number.parseInt(path.split("/")[2]);
 
       const html = await getSponsorHtml({
         id,
@@ -147,15 +147,21 @@ async function getSessionDetailOgImageHtml({
     return <div>Session not found</div>;
   }
   console.log(data);
-  data.session_speakers_v2.forEach((sessionSpeaker) => {
-    console.log(sessionSpeaker.speakers);
-  });
+
   const speakers = data.session_speakers_v2.map((sessionSpeaker) => {
+    if (!sessionSpeaker.speakers) {
+      return null;
+    }
+    const avatarName = sessionSpeaker.speakers?.avatar_name;
+    if (!avatarName) {
+      return null;
+    }
+
     return {
       ...sessionSpeaker,
-      speakerLogoUrl: supabase.storage.from("speakers").getPublicUrl(sessionSpeaker.speakers!.avatar_name!.replaceAll(".webp", ".png"))
+      speakerLogoUrl: supabase.storage.from("speakers").getPublicUrl(avatarName.replaceAll(".webp", ".png"))
     };
-  });
+  }).filter((speaker) => speaker !== null);
 
   return (
     <div
@@ -167,6 +173,7 @@ async function getSessionDetailOgImageHtml({
       }}
     >
       <img
+        alt=""
         src={new URL("worker-assets/background-card-large.svg", url).toString()}
         width={1200}
         height={630}
@@ -220,6 +227,7 @@ async function getSessionDetailOgImageHtml({
               }}
             >
               <img
+                alt=""
                 src={speaker.speakerLogoUrl.data.publicUrl}
                 width={80}
                 height={80}
@@ -235,7 +243,7 @@ async function getSessionDetailOgImageHtml({
                   color: "#333333"
                 }}
               >
-                {speaker.speakers!.name}
+                {speaker.speakers?.name ?? "Unknown"}
               </div>
             </div>
           ))}
@@ -351,6 +359,7 @@ async function getSponsorHtml({
       }}
     >
       <img
+        alt=""
         src={new URL("worker-assets/background-card.svg", url).toString()}
         width={1200}
         height={630}
@@ -370,6 +379,7 @@ async function getSponsorHtml({
         }}
       >
         <img
+          alt=""
           src={sponsorImageUrl.data.publicUrl}
           width={777}
           height={257}
@@ -390,6 +400,7 @@ async function getSponsorHtml({
         }}
       >
         <img
+          alt=""
           src={sponsorTypeLogoUrl}
           style={{
             objectFit: "contain"
@@ -419,6 +430,7 @@ async function getBaseOgImageHtml({
       }}
     >
       <img
+        alt=""
         src={new URL("worker-assets/background.svg", url).toString()}
         width={1200}
         height={630}
