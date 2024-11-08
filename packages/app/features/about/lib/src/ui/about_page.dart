@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:app_cores_core/constants.dart';
 import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
@@ -205,14 +206,24 @@ class AboutPage extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const XLogo(),
-                      onPressed: () async {},
+                    InkWell(
+                      onTap: () async {
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.x),
+                        );
+                      },
+                      customBorder: const CircleBorder(),
+                      child: const XLogo(),
                     ),
                     const SizedBox(width: 8),
-                    IconButton(
-                      icon: const MediumLogo(),
-                      onPressed: () async {},
+                    InkWell(
+                      onTap: () async {
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.medium),
+                        );
+                      },
+                      customBorder: const CircleBorder(),
+                      child: const MediumLogo(),
                     ),
                     const SizedBox(width: 8),
                     IconButton(

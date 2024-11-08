@@ -24,5 +24,6 @@
   "openAppleMap": "Open the Apple Map",
   "openGoogleMap": "Open the Google Map",
   "copyAddress": "Copy the address",
-  "theAddressHasBeenCopied": "The address has been copied"
+  "theAddressHasBeenCopied": "The address has been copied",
+  "contributionsCount": "{count} contributions"
 }
