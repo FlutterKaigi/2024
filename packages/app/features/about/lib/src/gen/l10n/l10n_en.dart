@@ -89,4 +89,9 @@ class L10nAboutEn extends L10nAbout {
 
   @override
   String get theAddressHasBeenCopied => 'The address has been copied';
+
+  @override
+  String contributionsCount(Object count) {
+    return '$count contributions';
+  }
 }
