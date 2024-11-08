@@ -209,18 +209,9 @@ class AboutPage extends ConsumerWidget {
                   children: [
                     InkWell(
                       onTap: () async {
-                        final nativeX = Uri.parse(OfficialSocialUrls.nativeX);
-                        final webX = Uri.parse(OfficialSocialUrls.webX);
-                        if (await canLaunchUrl(nativeX)) {
-                          await launchUrl(
-                            nativeX,
-                            mode: LaunchMode.externalApplication,
-                          );
-                        } else if (await canLaunchUrl(webX)) {
-                          await launchUrl(
-                            webX,
-                          );
-                        }
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.webX),
+                        );
                       },
                       customBorder: const CircleBorder(),
                       child: const XLogo(),
