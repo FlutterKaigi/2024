@@ -206,9 +206,14 @@ class AboutPage extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const XLogo(),
-                      onPressed: () async {},
+                    InkWell(
+                      onTap: () async {
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.x),
+                        );
+                      },
+                      customBorder: const CircleBorder(),
+                      child: const XLogo(),
                     ),
                     const SizedBox(width: 8),
                     InkWell(
