@@ -24,7 +24,7 @@ export class OgpRewriter {
 			const urlObj = new URL(url);
 			if (isOgpImageGeneratorSupported(urlObj.pathname)) {
 				this.image = new URL(
-					`/og-image.png?path=${urlObj.pathname}`,
+					`/og/${urlObj.pathname}.png`,
 					urlObj,
 				).toString();
 			} else {

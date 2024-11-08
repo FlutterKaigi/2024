@@ -11,7 +11,7 @@ import { cache } from "hono/cache";
 
 const app = new Hono<{ Bindings: Bindings }>();
 
-app.route("/og-image.png", ogImage);
+app.route("/og", ogImage);
 
 app.use("*", logger());
 app.use(

@@ -9,27 +9,51 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 const app = new Hono<{ Bindings: Bindings }>();
 
 export function isOgpImageGeneratorSupported(path: string) {
-	if (path.startsWith("/sponsor/")) {
+  if (!path.endsWith(".png")) {
+    return false;
+  }
+	// `sponsor/{number}.png`
+	if (path.startsWith("sponsor/") && path.split("/")[1].match(/^\d+$/)) {
 		return true;
 	}
-	if (path === "/job-board") {
+	if (path === "job-board.png") {
 		return true;
 	}
-	if (path === "/session") {
+	if (path === "session.png") {
 		return true;
 	}
-	if (path.startsWith("/session/")) {
+	// `session/{id: string}.png`
+	if (path.startsWith("session/") && path.split("/")[1].match(/^\d+$/)) {
 		return true;
 	}
 	return false;
+
 }
 
+
 app.get(
-	"/",
+	"/:path{.+}",
+	vValidator(
+		"param",
+		v.object({
+			path: v.pipe(
+				v.string(),
+			// .png で終わることをチェック
+				v.check(
+					(path) => path.endsWith(".png"),
+					"URL must end with .png in OG image path",
+				),
+				// OG画像生成に対応しているパスかどうかをチェック
+				v.check(
+					(path) => isOgpImageGeneratorSupported(path),
+					"This path is not supported in OG image generation",
+				),
+			),
+		}),
+	),
 	vValidator(
 		"query",
 		v.object({
-			path: v.string(),
 			debug: v.optional(
 				v.pipe(
 					v.string(),
@@ -39,7 +63,8 @@ app.get(
 		}),
 	),
 	async (c) => {
-		const { path, debug } = c.req.valid("query");
+		const { path } = c.req.valid("param");
+		const { debug } = c.req.valid("query");
 
 		console.error(path);
 		const supabase = createClient<Database>(
@@ -48,8 +73,8 @@ app.get(
 		);
 
 		// sponsor/${id}の場合
-		if (path.startsWith("/sponsor/")) {
-			const id = Number.parseInt(path.split("/")[2]);
+		if (path.startsWith("sponsor/")) {
+			const id = Number.parseInt(path.split("/")[1].replaceAll(".png", ""));
 
 			const html = await getSponsorHtml({
 				id,
@@ -63,7 +88,7 @@ app.get(
 				debug,
 			});
 		}
-		if (path === "/session") {
+		if (path === "session.png") {
 			const html = await getBaseOgImageHtml({
 				url: new URL(c.req.url),
 				name: "Sessions",
@@ -75,8 +100,8 @@ app.get(
 				debug,
 			});
 		}
-		if (path.startsWith("/session/")) {
-			const id = path.split("/")[2];
+		if (path.startsWith("session/")) {
+			const id = path.split("/")[1].replaceAll(".png", "");
 			const html = await getSessionDetailOgImageHtml({
 				id,
 				supabase,
@@ -89,7 +114,7 @@ app.get(
 				debug,
 			});
 		}
-		if (path === "/job-board") {
+		if (path === "job-board.png") {
 			const html = await getBaseOgImageHtml({
 				url: new URL(c.req.url),
 				name: "Job Board",
