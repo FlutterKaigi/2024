@@ -19,8 +19,8 @@ import 'package:intl/intl.dart' as intl;
 final _dateFormatter = intl.DateFormat.Md();
 final _timeFormatter = intl.DateFormat.Hm();
 
-class SessionPage extends ConsumerWidget {
-  const SessionPage({
+class SessionPage extends ConsumerWidget with SessionPageMixin {
+  SessionPage({
     required this.sessionId,
     super.key,
   });
@@ -55,6 +55,10 @@ class SessionPage extends ConsumerWidget {
           slivers: [
             SliverAppBar.large(
               title: Text(session.title),
+              expandedHeight: getExpandedHeight(
+                title: session.title,
+                context: context,
+              ),
               actions: [
                 IconButton(
                   tooltip: l.shareOnX,
@@ -166,5 +170,31 @@ class SessionPage extends ConsumerWidget {
     final startTime = _timeFormatter.format(startsAt);
     final endTime = _timeFormatter.format(endsAt);
     return '$startDate $startTime~$endTime';
+  }
+}
+
+// MEMO(@chippy-ao): Widget に書くと邪魔なので、mixin に出しました
+mixin SessionPageMixin {
+  final appBarSize = AppBar().preferredSize.height;
+  final padding = 16;
+
+  /// title の長さに応じて、SliverAppBar の expandedHeight を計算します
+  double getExpandedHeight({
+    required String title,
+    required BuildContext context,
+    bool forLarge = true,
+  }) {
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: title,
+        style: forLarge
+            ? Theme.of(context).textTheme.headlineMedium
+            : Theme.of(context).textTheme.headlineSmall,
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout(
+        maxWidth: MediaQuery.sizeOf(context).width - padding,
+      );
+    return appBarSize + padding + textPainter.height;
   }
 }
