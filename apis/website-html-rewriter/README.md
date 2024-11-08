@@ -13,5 +13,16 @@ Cloudflare Pages Functionsを用いて、URL Pathに応じたHTMLを返すAPIを
 - デプロイコマンド
 
   ```bash
-  pnpm run deploy
+  pnpm run deploy-staging
+
+  pnpm run deploy-production
   ```
+
+## デバッグ
+
+- ローカルでデバッグする場合は、`pnpm build`でビルドしてから`pnpm dev`でデバッグします
+  - 事前に`public`ディレクトリに`FlutterKaigi/2024`の`apps/website`をビルドしたものを配置する必要があります
+    - 配置しない場合、APIは正常に動作しない可能性があります
+- ファイルの変更を監視して自動でビルドする場合は以下のコマンドを実行します
+  - `pnpm build --watch` でビルドを監視
+  - 別のターミナルで `pnpm dev` を実行
