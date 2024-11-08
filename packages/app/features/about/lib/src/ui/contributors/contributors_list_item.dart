@@ -162,7 +162,7 @@ class ContributionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 画面幅
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.sizeOf(context).width;
 
     // 画面に収まる数を計算
     final itemsInRow = (screenWidth / _containerWidth).floor();
