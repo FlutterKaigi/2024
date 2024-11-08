@@ -14,10 +14,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 
-final _dateFormatter = DateFormat.Md();
-final _timeFormatter = DateFormat.Hm();
+final _dateFormatter = intl.DateFormat.Md();
+final _timeFormatter = intl.DateFormat.Hm();
 
 class SessionPage extends ConsumerWidget {
   const SessionPage({
