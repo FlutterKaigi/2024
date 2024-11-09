@@ -64,7 +64,18 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                   tooltip: l.shareOnX,
                   padding: const EdgeInsets.all(12),
                   onPressed: () {
-                    // TODO: データをつなぎこんだら共有機能を実装する
+                    final uri = Uri.https(
+                      'twitter.com',
+                      'intent/tweet',
+                      {
+                        'text': session.title,
+                        'url':
+                            'https://2024.flutterkaigi.jp/session/$sessionId',
+                        'hashtags': 'FlutterKaigi2024',
+                        'via': 'FlutterKaigi',
+                      },
+                    );
+                    unawaited(launchInExternalApp(uri));
                   },
                   icon: const Icon(Icons.share),
                 ),
