@@ -11,12 +11,17 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
   final repository = ref.watch(sessionRepositoryProvider);
   final sessionVenuesWithSessions =
       await repository.fetchSessionVenuesWithSessionsV2();
+  final events = ref.watch(timelineEventsProvider);
 
   final timelineItems = <TimelineItem>[];
+  final eventsWithoutVenue = events.where((e) => e.venueId == null);
   for (final venueWithSessions in sessionVenuesWithSessions) {
     final venue = SessionVenue(
       id: venueWithSessions.id,
       name: venueWithSessions.name,
+    );
+    final eventsAtVenue = events.where(
+      (e) => e.venueId == venue.id,
     );
 
     final sessions = venueWithSessions.sessions;
@@ -35,7 +40,95 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
         ),
       );
     }
+    for (final event in eventsAtVenue) {
+      timelineItems.add(
+        TimelineItem.event(
+          title: event.title,
+          startsAt: event.startsAt.toLocal(),
+          endsAt: event.endsAt.toLocal(),
+          venue: venue,
+        ),
+      );
+    }
+  }
+  for (final event in eventsWithoutVenue) {
+    timelineItems.add(
+      TimelineItem.event(
+        title: event.title,
+        startsAt: event.startsAt.toLocal(),
+        endsAt: event.endsAt.toLocal(),
+      ),
+    );
   }
 
   return timelineItems.sorted((a, b) => a.startsAt.compareTo(b.startsAt));
+}
+
+typedef TimelineEvent = ({
+  String title,
+  DateTime startsAt,
+  DateTime endsAt,
+  String? venueId,
+});
+
+@riverpod
+List<TimelineEvent> timelineEvents(Ref ref) {
+  return [
+    // 1日目
+    (
+      title: '開場',
+      startsAt: DateTime(2024, 11, 21, 9, 30),
+      endsAt: DateTime(2024, 11, 21, 9, 30),
+      venueId: null,
+    ),
+    (
+      title: '基調講演',
+      startsAt: DateTime(2024, 11, 21, 10, 10),
+      endsAt: DateTime(2024, 11, 21, 10, 50),
+      venueId: null,
+    ),
+    (
+      title: 'ランチ',
+      startsAt: DateTime(2024, 11, 21, 11, 40),
+      endsAt: DateTime(2024, 11, 21, 13),
+      venueId: null,
+    ),
+    (
+      title: '懇親会準備',
+      startsAt: DateTime(2024, 11, 21, 16, 40),
+      endsAt: DateTime(2024, 11, 21, 16, 40),
+      venueId: 'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d', // Room Aのみ
+    ),
+    (
+      title: '閉会',
+      startsAt: DateTime(2024, 11, 21, 18, 10),
+      endsAt: DateTime(2024, 11, 21, 18, 10),
+      venueId: null,
+    ),
+    (
+      title: '懇親会',
+      startsAt: DateTime(2024, 11, 21, 18, 30),
+      endsAt: DateTime(2024, 11, 21, 20),
+      venueId: 'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d', // Room Aのみ
+    ),
+    // 2日目
+    (
+      title: '開場',
+      startsAt: DateTime(2024, 11, 22, 9, 30),
+      endsAt: DateTime(2024, 11, 22, 9, 30),
+      venueId: null,
+    ),
+    (
+      title: 'ランチ',
+      startsAt: DateTime(2024, 11, 22, 11, 40),
+      endsAt: DateTime(2024, 11, 22, 13, 30),
+      venueId: null,
+    ),
+    (
+      title: '閉会',
+      startsAt: DateTime(2024, 11, 22, 18, 10),
+      endsAt: DateTime(2024, 11, 22, 18, 10),
+      venueId: null,
+    ),
+  ];
 }
