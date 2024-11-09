@@ -65,7 +65,7 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                   padding: const EdgeInsets.all(12),
                   onPressed: () {
                     final uri = Uri.https(
-                      'twitter.com',
+                      'x.com',
                       'intent/tweet',
                       {
                         'text': session.title,
