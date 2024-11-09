@@ -228,7 +228,11 @@ class AboutPage extends ConsumerWidget {
                     const SizedBox(width: 8),
                     IconButton(
                       icon: const GithubLogo(),
-                      onPressed: () async {},
+                      onPressed: () async {
+                        await launchInExternalApp(
+                          Uri.parse(OfficialSocialUrls.github),
+                        );
+                      },
                     ),
                   ],
                 ),
