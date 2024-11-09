@@ -1,5 +1,6 @@
 import 'package:app_features_session/src/data/model/timeline_item.dart';
 import 'package:app_features_session/src/ui/session_card.dart';
+import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -49,7 +50,7 @@ class TimelineItemView extends StatelessWidget {
               ),
             ),
             child: item.map(
-              event: (event) => const SizedBox.shrink(),
+              event: (event) => _EventCard(item: event),
               session: (session) => SessionCard(item: session, onTap: onTap),
             ),
           ),
@@ -64,5 +65,55 @@ class TimelineItemView extends StatelessWidget {
     properties.add(DiagnosticsProperty<TimelineItem>('item', item));
     properties.add(DiagnosticsProperty<bool>('isDateVisible', isDateVisible));
     properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
+  }
+}
+
+class _EventCard extends StatelessWidget {
+  const _EventCard({
+    required this.item,
+  });
+
+  final TimelineItemEvent item;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Card(
+      elevation: 0,
+      color: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: theme.colorScheme.outline,
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(
+                item.title,
+                style: theme.textTheme.titleMedium,
+              ),
+            ),
+            if (item.venue != null) ...[
+              const Gap(8),
+              IntrinsicWidth(
+                child: SessionRoomChip(venue: item.venue!),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<TimelineItemEvent>('item', item));
   }
 }
