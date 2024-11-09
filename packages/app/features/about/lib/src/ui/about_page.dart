@@ -226,13 +226,14 @@ class AboutPage extends ConsumerWidget {
                       child: const MediumLogo(),
                     ),
                     const SizedBox(width: 8),
-                    IconButton(
-                      icon: const GithubLogo(),
-                      onPressed: () async {
+                    InkWell(
+                      onTap: () async {
                         await launchInExternalApp(
                           Uri.parse(OfficialSocialUrls.github),
                         );
                       },
+                      customBorder: const CircleBorder(),
+                      child: const GithubLogo(),
                     ),
                   ],
                 ),
