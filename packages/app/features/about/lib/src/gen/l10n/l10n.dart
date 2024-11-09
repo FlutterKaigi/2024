@@ -252,6 +252,12 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'住所をコピーしました '**
   String get theAddressHasBeenCopied;
+
+  /// No description provided for @contributionsCount.
+  ///
+  /// In ja, this message translates to:
+  /// **'{count} contributions'**
+  String contributionsCount(Object count);
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {

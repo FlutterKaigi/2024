@@ -89,4 +89,9 @@ class L10nAboutJa extends L10nAbout {
 
   @override
   String get theAddressHasBeenCopied => '住所をコピーしました ';
+
+  @override
+  String contributionsCount(Object count) {
+    return '$count contributions';
+  }
 }

@@ -24,5 +24,6 @@
   "openAppleMap": "Appleマップを開く",
   "openGoogleMap": "Googleマップを開く",
   "copyAddress": "住所をコピー",
-  "theAddressHasBeenCopied": "住所をコピーしました "
+  "theAddressHasBeenCopied": "住所をコピーしました ",
+  "contributionsCount": "{count} contributions"
 }
