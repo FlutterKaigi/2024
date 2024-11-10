@@ -40,7 +40,7 @@ class NewsComponent extends HookConsumerWidget {
       NewsDataInitial() ||
       NewsDataLoading() =>
         const Center(child: CircularProgressIndicator()),
-      NewsDataLoaded(availableNews: final news) =>
+      NewsDataLoaded(news: final news) =>
         _newsList(news, textTheme, colorTheme),
       NewsDataError() => _errorRetryButton(newsDataNotifier, i18n, textTheme),
     };
