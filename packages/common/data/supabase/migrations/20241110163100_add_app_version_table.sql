@@ -6,6 +6,7 @@ CREATE TABLE public.app_minimum_versions (
     platform platform_type NOT NULL,
     app_version semver NOT NULL,
     app_version_text text generated always AS (semver_to_text (app_version)) stored,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     UNIQUE (platform, app_version_text)
 );
 
