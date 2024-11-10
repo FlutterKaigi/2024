@@ -77,57 +77,57 @@ List<TimelineEvent> timelineEvents(Ref ref) {
     // 1日目
     (
       title: '開場',
-      startsAt: DateTime(2024, 11, 21, 9, 30),
-      endsAt: DateTime(2024, 11, 21, 9, 30),
+      startsAt: DateTime.utc(2024, 11, 21, 0, 30),
+      endsAt: DateTime.utc(2024, 11, 21, 0, 30),
       venueId: null,
     ),
     (
       title: '基調講演',
-      startsAt: DateTime(2024, 11, 21, 10, 10),
-      endsAt: DateTime(2024, 11, 21, 10, 50),
+      startsAt: DateTime.utc(2024, 11, 21, 1, 10),
+      endsAt: DateTime.utc(2024, 11, 21, 1, 50),
       venueId: null,
     ),
     (
       title: 'ランチ',
-      startsAt: DateTime(2024, 11, 21, 11, 40),
-      endsAt: DateTime(2024, 11, 21, 13),
+      startsAt: DateTime.utc(2024, 11, 21, 2, 40),
+      endsAt: DateTime.utc(2024, 11, 21, 4),
       venueId: null,
     ),
     (
       title: '懇親会準備',
-      startsAt: DateTime(2024, 11, 21, 16, 40),
-      endsAt: DateTime(2024, 11, 21, 16, 40),
+      startsAt: DateTime.utc(2024, 11, 21, 7, 40),
+      endsAt: DateTime.utc(2024, 11, 21, 7, 40),
       venueId: 'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d', // Room Aのみ
     ),
     (
       title: '閉会',
-      startsAt: DateTime(2024, 11, 21, 18, 10),
-      endsAt: DateTime(2024, 11, 21, 18, 10),
+      startsAt: DateTime.utc(2024, 11, 21, 9, 10),
+      endsAt: DateTime.utc(2024, 11, 21, 9, 10),
       venueId: null,
     ),
     (
       title: '懇親会',
-      startsAt: DateTime(2024, 11, 21, 18, 30),
-      endsAt: DateTime(2024, 11, 21, 20),
+      startsAt: DateTime.utc(2024, 11, 21, 9, 30),
+      endsAt: DateTime.utc(2024, 11, 21, 11),
       venueId: 'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d', // Room Aのみ
     ),
     // 2日目
     (
       title: '開場',
-      startsAt: DateTime(2024, 11, 22, 9, 30),
-      endsAt: DateTime(2024, 11, 22, 9, 30),
+      startsAt: DateTime.utc(2024, 11, 22, 0, 30),
+      endsAt: DateTime.utc(2024, 11, 22, 0, 30),
       venueId: null,
     ),
     (
       title: 'ランチ',
-      startsAt: DateTime(2024, 11, 22, 11, 40),
-      endsAt: DateTime(2024, 11, 22, 13, 30),
+      startsAt: DateTime.utc(2024, 11, 22, 2, 40),
+      endsAt: DateTime.utc(2024, 11, 22, 4, 30),
       venueId: null,
     ),
     (
       title: '閉会',
-      startsAt: DateTime(2024, 11, 22, 18, 10),
-      endsAt: DateTime(2024, 11, 22, 18, 10),
+      startsAt: DateTime.utc(2024, 11, 22, 9, 10),
+      endsAt: DateTime.utc(2024, 11, 22, 9, 10),
       venueId: null,
     ),
   ];
