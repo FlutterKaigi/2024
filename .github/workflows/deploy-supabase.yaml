@@ -49,10 +49,12 @@ jobs:
         working-directory: packages/common/data
         run: supabase link --project-ref $PROJECT_ID
 
-      - run: supabase db push
+      - name: Deploy database
+        run: supabase db push
         working-directory: packages/common/data
 
-      - run: |
+      - name: Deploy functions
+        run: |
           supabase functions deploy --project-ref $PROJECT_ID
           # replace-contributors のみ JWT での認証チェックをしない
           supabase functions deploy replace-contributors --project-ref $PROJECT_ID --no-verify-jwt
