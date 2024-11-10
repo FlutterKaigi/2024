@@ -24,7 +24,7 @@ final sessionTimelineProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SessionTimelineRef = AutoDisposeFutureProviderRef<List<TimelineItem>>;
-String _$timelineEventsHash() => r'aa3ed12f84fcbc9bb44c94091f955e56a538d056';
+String _$timelineEventsHash() => r'e84a3ee74114d94d37580720adf4d6dba0bf4229';
 
 /// See also [timelineEvents].
 @ProviderFor(timelineEvents)
