@@ -54,8 +54,8 @@ jobs:
 
       - run: |
           supabase functions deploy --project-ref $PROJECT_ID
-          # replace_contributors のみ JWT での認証チェックをしない
-          supabase functions deploy replace_contributors --project-ref $PROJECT_ID --no-verify-jwt
+          # replace-contributors のみ JWT での認証チェックをしない
+          supabase functions deploy replace-contributors --project-ref $PROJECT_ID --no-verify-jwt
         working-directory: packages/common/data
 
         # https://github.com/bobheadxi/deployments
