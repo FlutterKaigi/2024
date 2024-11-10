@@ -19,9 +19,11 @@ mixin _$TimelineItem {
   String get title => throw _privateConstructorUsedError;
   DateTime get startsAt => throw _privateConstructorUsedError;
   DateTime get endsAt => throw _privateConstructorUsedError;
+  SessionVenue? get venue => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String title, DateTime startsAt, DateTime endsAt)
+    required TResult Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)
         event,
     required TResult Function(
             String id,
@@ -38,7 +40,9 @@ mixin _$TimelineItem {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String title, DateTime startsAt, DateTime endsAt)? event,
+    TResult? Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)?
+        event,
     TResult? Function(
             String id,
             String title,
@@ -54,7 +58,9 @@ mixin _$TimelineItem {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String title, DateTime startsAt, DateTime endsAt)? event,
+    TResult Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)?
+        event,
     TResult Function(
             String id,
             String title,
@@ -102,7 +108,10 @@ abstract class $TimelineItemCopyWith<$Res> {
           TimelineItem value, $Res Function(TimelineItem) then) =
       _$TimelineItemCopyWithImpl<$Res, TimelineItem>;
   @useResult
-  $Res call({String title, DateTime startsAt, DateTime endsAt});
+  $Res call(
+      {String title, DateTime startsAt, DateTime endsAt, SessionVenue venue});
+
+  $SessionVenueCopyWith<$Res>? get venue;
 }
 
 /// @nodoc
@@ -123,6 +132,7 @@ class _$TimelineItemCopyWithImpl<$Res, $Val extends TimelineItem>
     Object? title = null,
     Object? startsAt = null,
     Object? endsAt = null,
+    Object? venue = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -137,7 +147,25 @@ class _$TimelineItemCopyWithImpl<$Res, $Val extends TimelineItem>
           ? _value.endsAt
           : endsAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      venue: null == venue
+          ? _value.venue!
+          : venue // ignore: cast_nullable_to_non_nullable
+              as SessionVenue,
     ) as $Val);
+  }
+
+  /// Create a copy of TimelineItem
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SessionVenueCopyWith<$Res>? get venue {
+    if (_value.venue == null) {
+      return null;
+    }
+
+    return $SessionVenueCopyWith<$Res>(_value.venue!, (value) {
+      return _then(_value.copyWith(venue: value) as $Val);
+    });
   }
 }
 
@@ -149,7 +177,11 @@ abstract class _$$TimelineItemEventImplCopyWith<$Res>
       __$$TimelineItemEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, DateTime startsAt, DateTime endsAt});
+  $Res call(
+      {String title, DateTime startsAt, DateTime endsAt, SessionVenue? venue});
+
+  @override
+  $SessionVenueCopyWith<$Res>? get venue;
 }
 
 /// @nodoc
@@ -168,6 +200,7 @@ class __$$TimelineItemEventImplCopyWithImpl<$Res>
     Object? title = null,
     Object? startsAt = null,
     Object? endsAt = null,
+    Object? venue = freezed,
   }) {
     return _then(_$TimelineItemEventImpl(
       title: null == title
@@ -182,6 +215,10 @@ class __$$TimelineItemEventImplCopyWithImpl<$Res>
           ? _value.endsAt
           : endsAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      venue: freezed == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as SessionVenue?,
     ));
   }
 }
@@ -190,7 +227,10 @@ class __$$TimelineItemEventImplCopyWithImpl<$Res>
 
 class _$TimelineItemEventImpl implements TimelineItemEvent {
   const _$TimelineItemEventImpl(
-      {required this.title, required this.startsAt, required this.endsAt});
+      {required this.title,
+      required this.startsAt,
+      required this.endsAt,
+      this.venue});
 
   @override
   final String title;
@@ -198,10 +238,12 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
   final DateTime startsAt;
   @override
   final DateTime endsAt;
+  @override
+  final SessionVenue? venue;
 
   @override
   String toString() {
-    return 'TimelineItem.event(title: $title, startsAt: $startsAt, endsAt: $endsAt)';
+    return 'TimelineItem.event(title: $title, startsAt: $startsAt, endsAt: $endsAt, venue: $venue)';
   }
 
   @override
@@ -212,11 +254,12 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.startsAt, startsAt) ||
                 other.startsAt == startsAt) &&
-            (identical(other.endsAt, endsAt) || other.endsAt == endsAt));
+            (identical(other.endsAt, endsAt) || other.endsAt == endsAt) &&
+            (identical(other.venue, venue) || other.venue == venue));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, startsAt, endsAt);
+  int get hashCode => Object.hash(runtimeType, title, startsAt, endsAt, venue);
 
   /// Create a copy of TimelineItem
   /// with the given fields replaced by the non-null parameter values.
@@ -230,7 +273,8 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String title, DateTime startsAt, DateTime endsAt)
+    required TResult Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)
         event,
     required TResult Function(
             String id,
@@ -244,13 +288,15 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             List<Sponsor> sponsors)
         session,
   }) {
-    return event(title, startsAt, endsAt);
+    return event(title, startsAt, endsAt, venue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String title, DateTime startsAt, DateTime endsAt)? event,
+    TResult? Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)?
+        event,
     TResult? Function(
             String id,
             String title,
@@ -263,13 +309,15 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             List<Sponsor> sponsors)?
         session,
   }) {
-    return event?.call(title, startsAt, endsAt);
+    return event?.call(title, startsAt, endsAt, venue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String title, DateTime startsAt, DateTime endsAt)? event,
+    TResult Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)?
+        event,
     TResult Function(
             String id,
             String title,
@@ -284,7 +332,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
     required TResult orElse(),
   }) {
     if (event != null) {
-      return event(title, startsAt, endsAt);
+      return event(title, startsAt, endsAt, venue);
     }
     return orElse();
   }
@@ -325,7 +373,8 @@ abstract class TimelineItemEvent implements TimelineItem {
   const factory TimelineItemEvent(
       {required final String title,
       required final DateTime startsAt,
-      required final DateTime endsAt}) = _$TimelineItemEventImpl;
+      required final DateTime endsAt,
+      final SessionVenue? venue}) = _$TimelineItemEventImpl;
 
   @override
   String get title;
@@ -333,6 +382,8 @@ abstract class TimelineItemEvent implements TimelineItem {
   DateTime get startsAt;
   @override
   DateTime get endsAt;
+  @override
+  SessionVenue? get venue;
 
   /// Create a copy of TimelineItem
   /// with the given fields replaced by the non-null parameter values.
@@ -361,6 +412,7 @@ abstract class _$$TimelineItemSessionImplCopyWith<$Res>
       List<Speaker> speakers,
       List<Sponsor> sponsors});
 
+  @override
   $SessionVenueCopyWith<$Res> get venue;
 }
 
@@ -533,7 +585,8 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String title, DateTime startsAt, DateTime endsAt)
+    required TResult Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)
         event,
     required TResult Function(
             String id,
@@ -554,7 +607,9 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String title, DateTime startsAt, DateTime endsAt)? event,
+    TResult? Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)?
+        event,
     TResult? Function(
             String id,
             String title,
@@ -574,7 +629,9 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String title, DateTime startsAt, DateTime endsAt)? event,
+    TResult Function(String title, DateTime startsAt, DateTime endsAt,
+            SessionVenue? venue)?
+        event,
     TResult Function(
             String id,
             String title,
@@ -648,6 +705,7 @@ abstract class TimelineItemSession implements TimelineItem {
   @override
   DateTime get endsAt;
   bool get isLightningTalk;
+  @override
   SessionVenue get venue;
   List<Speaker> get speakers;
   List<Sponsor> get sponsors;

@@ -11,6 +11,7 @@ class TimelineItem with _$TimelineItem {
     required String title,
     required DateTime startsAt,
     required DateTime endsAt,
+    SessionVenue? venue,
   }) = TimelineItemEvent;
 
   const factory TimelineItem.session({
