@@ -23,6 +23,7 @@ command:
       riverpod: ^2.6.1
       hooks_riverpod: ^2.6.1
       json_annotation: ^4.9.0
+      pub_semver: ^2.1.4
       package_info_plus: ^8.0.0
       riverpod_annotation: ^2.3.5
       supabase_flutter: ^2.6.0
