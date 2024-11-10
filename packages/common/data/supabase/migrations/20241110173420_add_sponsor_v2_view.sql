@@ -1,5 +1,5 @@
 -- sponsorとspecial_sponsorを結合したビュー
-CREATE VIEW public.sponsor_v2
+CREATE VIEW public.sponsors_v2
 WITH
   (security_invoker = TRUE) AS
 SELECT
@@ -83,5 +83,5 @@ SELECT
   sp.*,
   coalesce(sd.sessions, '[]'::json) AS sessions
 FROM
-  sponsor_v2 sp
+  sponsors_v2 sp
   LEFT JOIN session_details sd ON sd.sponsor_id = sp.id;
