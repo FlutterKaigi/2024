@@ -111,7 +111,19 @@ Widget _sponsorListByLevel(
       type: SponsorTypeV2.bronze,
       isLeftAlign: false,
     ),
-    // TODO(YumNumm): 他のSponsorTypeV2を追加する
+    SponsorLevelData(
+      title: i18n.sponsors.levels.community,
+      cardSize: (maxSize: 100, minSize: 96),
+      wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
+      type: SponsorTypeV2.community,
+    ),
+    SponsorLevelData(
+      title: i18n.sponsors.levels.translation,
+      cardSize: (maxSize: 100, minSize: 96),
+      wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
+      type: SponsorTypeV2.translation,
+      isLeftAlign: false,
+    ),
   ];
   final levelData = sponsorLevelData.firstWhere(
     (e) => e.type == sponsors.first.type,
