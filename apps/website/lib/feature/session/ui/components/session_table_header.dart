@@ -7,7 +7,7 @@ class SessionTableHeader extends StatelessWidget {
     super.key,
   });
 
-  final List<SessionVenuesWithSessionsV2> sessionVenues;
+  final List<SessionVenuesWithSessionsV3> sessionVenues;
 
   @override
   Widget build(BuildContext context) {

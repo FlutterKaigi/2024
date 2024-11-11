@@ -8,12 +8,12 @@ part of 'sessions_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sessionsHash() => r'a778d1c8351f7d439c2ea7273e1e97d1a627f6ee';
+String _$sessionsHash() => r'56327c6ef99d7a7df811721f644c6a68ef5eaeb2';
 
 /// See also [sessions].
 @ProviderFor(sessions)
 final sessionsProvider =
-    FutureProvider<List<SessionVenuesWithSessionsV2>>.internal(
+    FutureProvider<List<SessionVenuesWithSessionsV3>>.internal(
   sessions,
   name: r'sessionsProvider',
   debugGetCreateSourceHash:
@@ -24,8 +24,8 @@ final sessionsProvider =
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef SessionsRef = FutureProviderRef<List<SessionVenuesWithSessionsV2>>;
-String _$sessionsByDateHash() => r'160f42e00b7beace96f3afe47ea1d67036a03c1d';
+typedef SessionsRef = FutureProviderRef<List<SessionVenuesWithSessionsV3>>;
+String _$sessionsByDateHash() => r'7cb7f4e38c7eabe7426f68d98837f1e6ce114e54';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -54,7 +54,7 @@ const sessionsByDateProvider = SessionsByDateFamily();
 
 /// See also [sessionsByDate].
 class SessionsByDateFamily
-    extends Family<AsyncValue<List<SessionVenuesWithSessionsV2>>> {
+    extends Family<AsyncValue<List<SessionVenuesWithSessionsV3>>> {
   /// See also [sessionsByDate].
   const SessionsByDateFamily();
 
@@ -93,7 +93,7 @@ class SessionsByDateFamily
 
 /// See also [sessionsByDate].
 class SessionsByDateProvider
-    extends AutoDisposeFutureProvider<List<SessionVenuesWithSessionsV2>> {
+    extends AutoDisposeFutureProvider<List<SessionVenuesWithSessionsV3>> {
   /// See also [sessionsByDate].
   SessionsByDateProvider(
     EventDate date,
@@ -128,7 +128,7 @@ class SessionsByDateProvider
 
   @override
   Override overrideWith(
-    FutureOr<List<SessionVenuesWithSessionsV2>> Function(
+    FutureOr<List<SessionVenuesWithSessionsV3>> Function(
             SessionsByDateRef provider)
         create,
   ) {
@@ -147,7 +147,7 @@ class SessionsByDateProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<List<SessionVenuesWithSessionsV2>>
+  AutoDisposeFutureProviderElement<List<SessionVenuesWithSessionsV3>>
       createElement() {
     return _SessionsByDateProviderElement(this);
   }
@@ -169,13 +169,13 @@ class SessionsByDateProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin SessionsByDateRef
-    on AutoDisposeFutureProviderRef<List<SessionVenuesWithSessionsV2>> {
+    on AutoDisposeFutureProviderRef<List<SessionVenuesWithSessionsV3>> {
   /// The parameter `date` of this provider.
   EventDate get date;
 }
 
 class _SessionsByDateProviderElement
-    extends AutoDisposeFutureProviderElement<List<SessionVenuesWithSessionsV2>>
+    extends AutoDisposeFutureProviderElement<List<SessionVenuesWithSessionsV3>>
     with SessionsByDateRef {
   _SessionsByDateProviderElement(super.provider);
 

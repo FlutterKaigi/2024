@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 54
+/// Strings: 56
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -391,6 +391,8 @@ class _StringsSponsorsLevelsJa {
   String get gold => 'Gold';
   String get silver => 'Silver';
   String get bronze => 'Bronze';
+  String get community => 'Community';
+  String get translation => 'Translation';
 }
 
 /// Flat map(s) containing all translations.
@@ -477,6 +479,10 @@ extension on Translations {
         return 'Silver';
       case 'sponsors.levels.bronze':
         return 'Bronze';
+      case 'sponsors.levels.community':
+        return 'Community';
+      case 'sponsors.levels.translation':
+        return 'Translation';
       case 'sponsors.sponsorsError':
         return 'スポンサー一覧の取得に失敗しました';
       case 'sponsors.sponsorNotFound':
