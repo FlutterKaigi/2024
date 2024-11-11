@@ -30,12 +30,22 @@ final class SponsorRepository {
   final StorageFileApi _sponsorStorageFileApi;
   final SpeakerRepository _speakerRepository;
 
+  @Deprecated('Use fetchSponsorsV2 instead')
   Future<List<Sponsor>> fetchSponsors() async {
     final result =
         await _supabaseClient.from('sponsors').select().withConverter(
               (json) => json.map(SponsorTable.fromJson).toList(),
             );
     return result.map(toSponsor).toList();
+  }
+
+  @Deprecated('Use fetchSponsorsV2 instead')
+  Future<List<SponsorV2>> fetchSponsorsV2() async {
+    final result =
+        await _supabaseClient.from('sponsors_v2').select().withConverter(
+              (json) => json.map(SponsorV2Table.fromJson).toList(),
+            );
+    return result.map(toSponsorV2).toList();
   }
 
   @Deprecated('Use fetchSponsorWithSessionsV2 instead')
@@ -78,7 +88,20 @@ final class SponsorRepository {
         type: sponsorTable.type,
       );
 
-  @Deprecated('Use toSponsorV2 instead')
+  SponsorV2 toSponsorV2(SponsorV2Table sponsorV2Table) => SponsorV2(
+        id: sponsorV2Table.id,
+        name: sponsorV2Table.name,
+        logoUrl: Uri.parse(
+          _sponsorStorageFileApi.getPublicUrl(sponsorV2Table.logoName),
+        ),
+        description: sponsorV2Table.description,
+        url: sponsorV2Table.url != null
+            ? Uri.tryParse(sponsorV2Table.url!)
+            : null,
+        type: sponsorV2Table.type,
+      );
+
+  @Deprecated('Use toSponsorWithSessionV2 instead')
   SponsorWithSession toSponsorWithSession(
     SponsorWithSessionView sponsorWithSessionView,
   ) =>
@@ -144,4 +167,20 @@ class SponsorTable with _$SponsorTable {
 
   factory SponsorTable.fromJson(Map<String, dynamic> json) =>
       _$SponsorTableFromJson(json);
+}
+
+/// `public.sponsors_v2`ビューの要素を表すモデル
+@freezed
+class SponsorV2Table with _$SponsorV2Table {
+  const factory SponsorV2Table({
+    required int id,
+    required String name,
+    required String logoName,
+    required String description,
+    required String? url,
+    required SponsorTypeV2 type,
+  }) = _SponsorV2Table;
+
+  factory SponsorV2Table.fromJson(Map<String, dynamic> json) =>
+      _$SponsorV2TableFromJson(json);
 }
