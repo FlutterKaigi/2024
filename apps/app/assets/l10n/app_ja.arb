@@ -2,5 +2,19 @@
   "mainPageNavigationBarLabelSessions": "Sessions",
   "mainPageNavigationBarLabelVenue": "Venue",
   "mainPageNavigationBarLabelNews": "News",
-  "mainPageNavigationBarLabelAbout": "About"
+  "mainPageNavigationBarLabelAbout": "About",
+  "forceUpdateDialogTitle": "アプリのアップデートが必要です",
+  "forceUpdateDialogContent": "新しいバージョン（{version}）が利用可能です。\nストアからアプリをアップデートしてください。",
+  "@forceUpdateDialogContent": {
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "description": "新しいアプリのバージョン",
+        "example": "1.0.0"
+      }
+    }
+  },
+  "forceUpdateDialogNavigateToStore": "ストアに移動する",
+  "appStoreUrl": "https://apps.apple.com/jp/app/flutterkaigi-2024/id6737717479",
+  "playStoreUrl": "https://play.google.com/store/apps/details?id=jp.flutterkaigi.conf2024"
 }

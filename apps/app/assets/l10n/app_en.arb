@@ -2,5 +2,10 @@
   "mainPageNavigationBarLabelSessions": "Sessions",
   "mainPageNavigationBarLabelVenue": "Venue",
   "mainPageNavigationBarLabelNews": "News",
-  "mainPageNavigationBarLabelAbout": "About"
+  "mainPageNavigationBarLabelAbout": "About",
+  "forceUpdateDialogTitle": "App update required",
+  "forceUpdateDialogContent": "A new version ({version}) is available.\nPlease update the app from the store.",
+  "forceUpdateDialogNavigateToStore": "Go to store",
+  "appStoreUrl": "https://apps.apple.com/us/app/flutterkaigi-2024/id6737717479",
+  "playStoreUrl": "https://play.google.com/store/apps/details?id=jp.flutterkaigi.conf2024"
 }
