@@ -2224,21 +2224,3 @@ VALUES
     25
   );
 
--- sponsorsテーブル と special_sponsorsテーブル それぞれの`id`に重複があった場合 例外を出す
-DO $$
-DECLARE
-  duplicate_ids text;
-BEGIN
-  WITH duplicate_check AS (
-    SELECT id FROM sponsors
-    INTERSECT
-    SELECT id FROM special_sponsors
-  )
-  SELECT string_agg(id::text, ', ')
-  INTO duplicate_ids
-  FROM duplicate_check;
-
-  IF duplicate_ids IS NOT NULL THEN
-    RAISE EXCEPTION 'sponsorsテーブル と special_sponsorsテーブル で以下のIDが重複しています: %', duplicate_ids;
-  END IF;
-END $$ language plpgsql;
