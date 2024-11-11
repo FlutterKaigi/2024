@@ -9,7 +9,7 @@ part of 'app_minimum_version_provider.dart';
 // **************************************************************************
 
 String _$getAppMinimumVersionHash() =>
-    r'23533cfa7dfcc06d3ab564310967c079ce54f436';
+    r'6caf761fe2034f535dc509ffccc29280e2d8aeba';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,7 +37,8 @@ class _SystemHash {
 const getAppMinimumVersionProvider = GetAppMinimumVersionFamily();
 
 /// See also [getAppMinimumVersion].
-class GetAppMinimumVersionFamily extends Family<AsyncValue<AppMinimumVersion>> {
+class GetAppMinimumVersionFamily
+    extends Family<AsyncValue<AppMinimumVersion?>> {
   /// See also [getAppMinimumVersion].
   const GetAppMinimumVersionFamily();
 
@@ -76,7 +77,7 @@ class GetAppMinimumVersionFamily extends Family<AsyncValue<AppMinimumVersion>> {
 
 /// See also [getAppMinimumVersion].
 class GetAppMinimumVersionProvider
-    extends AutoDisposeFutureProvider<AppMinimumVersion> {
+    extends AutoDisposeFutureProvider<AppMinimumVersion?> {
   /// See also [getAppMinimumVersion].
   GetAppMinimumVersionProvider({
     required AppPlatform platform,
@@ -111,7 +112,7 @@ class GetAppMinimumVersionProvider
 
   @override
   Override overrideWith(
-    FutureOr<AppMinimumVersion> Function(GetAppMinimumVersionRef provider)
+    FutureOr<AppMinimumVersion?> Function(GetAppMinimumVersionRef provider)
         create,
   ) {
     return ProviderOverride(
@@ -129,7 +130,7 @@ class GetAppMinimumVersionProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<AppMinimumVersion> createElement() {
+  AutoDisposeFutureProviderElement<AppMinimumVersion?> createElement() {
     return _GetAppMinimumVersionProviderElement(this);
   }
 
@@ -150,13 +151,13 @@ class GetAppMinimumVersionProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin GetAppMinimumVersionRef
-    on AutoDisposeFutureProviderRef<AppMinimumVersion> {
+    on AutoDisposeFutureProviderRef<AppMinimumVersion?> {
   /// The parameter `platform` of this provider.
   AppPlatform get platform;
 }
 
 class _GetAppMinimumVersionProviderElement
-    extends AutoDisposeFutureProviderElement<AppMinimumVersion>
+    extends AutoDisposeFutureProviderElement<AppMinimumVersion?>
     with GetAppMinimumVersionRef {
   _GetAppMinimumVersionProviderElement(super.provider);
 

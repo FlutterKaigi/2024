@@ -21,7 +21,7 @@ final class AppMinimumVersionRepository {
 
   final SupabaseClient _supabaseClient;
 
-  Future<AppMinimumVersion> getAppMinimumVersion({
+  Future<AppMinimumVersion?> getAppMinimumVersion({
     required AppPlatform platform,
   }) async {
     final result = await _supabaseClient
@@ -29,7 +29,11 @@ final class AppMinimumVersionRepository {
         .select()
         .eq('platform', platform.name)
         .order('app_version_text', ascending: false)
-        .single();
+        .limit(1)
+        .maybeSingle();
+    if (result == null) {
+      return null;
+    }
     return AppMinimumVersion.fromJson(result);
   }
 

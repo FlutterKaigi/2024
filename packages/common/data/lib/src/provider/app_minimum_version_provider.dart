@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'app_minimum_version_provider.g.dart';
 
 @riverpod
-Future<AppMinimumVersion> getAppMinimumVersion(
+Future<AppMinimumVersion?> getAppMinimumVersion(
   Ref ref, {
   required AppPlatform platform,
 }) async {
