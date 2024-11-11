@@ -53,14 +53,26 @@ class SponsorTypeLogo extends StatelessWidget {
             Color(0xFF8D5A26),
           ],
         ),
-      _ => throw UnimplementedError('Unknown sponsor type: $type'),
+      SponsorTypeV2.community => const LinearGradient(
+          colors: [
+            Color(0xFF7AEFB0),
+            Color(0xFF40C9AD),
+          ],
+        ),
+      SponsorTypeV2.translation => const LinearGradient(
+          colors: [
+            Color(0xFFEF7AD8),
+            Color(0xFFC94053),
+          ],
+        ),
     };
     final textColor = switch (type) {
       SponsorTypeV2.platinum => const Color(0xFF1E3C6E),
       SponsorTypeV2.gold => const Color(0xFF6E1E1E),
       SponsorTypeV2.silver => const Color(0xFF6D6D6D),
       SponsorTypeV2.bronze => const Color(0xFF4E3115),
-      _ => throw UnimplementedError('Unknown sponsor type: $type'),
+      SponsorTypeV2.community => const Color(0xFF066442),
+      SponsorTypeV2.translation => const Color(0xFF6A0758),
     };
 
     final prefix = switch (type) {
@@ -68,7 +80,8 @@ class SponsorTypeLogo extends StatelessWidget {
       SponsorTypeV2.gold => 'G',
       SponsorTypeV2.silver => 'S',
       SponsorTypeV2.bronze => 'B',
-      _ => throw UnimplementedError('Unknown sponsor type: $type'),
+      SponsorTypeV2.community => 'C',
+      SponsorTypeV2.translation => 'T',
     };
 
     return Row(
@@ -101,7 +114,8 @@ class SponsorTypeLogo extends StatelessWidget {
               SponsorTypeV2.gold => 'Gold',
               SponsorTypeV2.silver => 'Silver',
               SponsorTypeV2.bronze => 'Bronze',
-              _ => throw UnimplementedError('Unknown sponsor type: $type'),
+              SponsorTypeV2.community => 'Community',
+              SponsorTypeV2.translation => 'Translation',
             },
             style: textTheme.availableFonts.poppins.regular.copyWith(
               color: textColor,
