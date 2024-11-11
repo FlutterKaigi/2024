@@ -5,6 +5,8 @@ platform :android do
     json_key_data = Base64.strict_decode64(ENV['SERVICE_ACCOUNT_KEY_BASE64'])
 
     package_name = ENV['PACKAGE_NAME']
+    symbol_file_path = ENV['SYMBOL_FILE_PATH']
+    mapping_file_path = ENV['MAPPING_FILE_PATH']
 
     upload_to_play_store(
       package_name: package_name,
@@ -12,7 +14,7 @@ platform :android do
       release_status: 'draft',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       json_key_data: json_key_data,
-      mapping_paths: [SYMBOL_FILE_PATH, MAPPING_FILE_PATH],
+      mapping_paths: [symbol_file_path, mapping_file_path],
     )
   end
 end
