@@ -120,6 +120,36 @@ abstract class L10n {
   /// In ja, this message translates to:
   /// **'About'**
   String get mainPageNavigationBarLabelAbout;
+
+  /// No description provided for @forceUpdateDialogTitle.
+  ///
+  /// In ja, this message translates to:
+  /// **'アプリのアップデートが必要です'**
+  String get forceUpdateDialogTitle;
+
+  /// No description provided for @forceUpdateDialogContent.
+  ///
+  /// In ja, this message translates to:
+  /// **'新しいバージョン（{version}）が利用可能です。\nストアからアプリをアップデートしてください。'**
+  String forceUpdateDialogContent(String version);
+
+  /// No description provided for @forceUpdateDialogNavigateToStore.
+  ///
+  /// In ja, this message translates to:
+  /// **'ストアに移動する'**
+  String get forceUpdateDialogNavigateToStore;
+
+  /// No description provided for @appStoreUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://apps.apple.com/jp/app/flutterkaigi-2024/id6737717479'**
+  String get appStoreUrl;
+
+  /// No description provided for @playStoreUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://play.google.com/store/apps/details?id=jp.flutterkaigi.conf2024'**
+  String get playStoreUrl;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
