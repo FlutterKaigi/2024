@@ -27,7 +27,7 @@ final class Sponsors extends HookConsumerWidget {
           i18n,
           textTheme,
         ),
-      AsyncData<List<SponsorWithSessionV2>>(:final value) => sponsorsSection(
+      AsyncData<List<SponsorWithSessionV3>>(:final value) => sponsorsSection(
           value,
           theme,
           context,
@@ -38,7 +38,7 @@ final class Sponsors extends HookConsumerWidget {
 }
 
 Widget sponsorsSection(
-  List<SponsorWithSessionV2> sponsors,
+  List<SponsorWithSessionV3> sponsors,
   ThemeData theme,
   BuildContext context,
 ) {
@@ -71,7 +71,7 @@ Widget sponsorsSection(
 
 Widget _sponsorListByLevel(
   ThemeData theme,
-  List<SponsorWithSessionV2> sponsors,
+  List<SponsorWithSessionV3> sponsors,
   BuildContext context,
 ) {
   assert(
@@ -89,28 +89,29 @@ Widget _sponsorListByLevel(
       title: i18n.sponsors.levels.platinum,
       cardSize: (maxSize: 250, minSize: 250),
       wrapSpacing: (maxWrapSpacing: 48, minWrapSpacing: 48),
-      type: SponsorType.platinum,
+      type: SponsorTypeV2.platinum,
     ),
     SponsorLevelData(
       title: i18n.sponsors.levels.gold,
       cardSize: (maxSize: 180, minSize: 144),
       wrapSpacing: (maxWrapSpacing: 40, minWrapSpacing: 20),
-      type: SponsorType.gold,
+      type: SponsorTypeV2.gold,
       isLeftAlign: false,
     ),
     SponsorLevelData(
       title: i18n.sponsors.levels.silver,
       cardSize: (maxSize: 148, minSize: 96),
       wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
-      type: SponsorType.silver,
+      type: SponsorTypeV2.silver,
     ),
     SponsorLevelData(
       title: i18n.sponsors.levels.bronze,
       cardSize: (maxSize: 120, minSize: 96),
       wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
-      type: SponsorType.bronze,
+      type: SponsorTypeV2.bronze,
       isLeftAlign: false,
     ),
+    // TODO(YumNumm): 他のSponsorTypeV2を追加する
   ];
   final levelData = sponsorLevelData.firstWhere(
     (e) => e.type == sponsors.first.type,
@@ -171,7 +172,7 @@ class _SponsorCard extends ConsumerWidget {
     required this.size,
   });
 
-  final SponsorWithSessionV2 sponsor;
+  final SponsorWithSessionV3 sponsor;
   final double size;
 
   @override
@@ -212,7 +213,7 @@ class _SponsorCard extends ConsumerWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
+        .add(DiagnosticsProperty<SponsorWithSessionV3>('sponsor', sponsor));
     properties.add(DoubleProperty('size', size));
   }
 }
@@ -256,7 +257,7 @@ final class SponsorLevelData {
   final CardSize cardSize;
   final WrapSpacing wrapSpacing;
   final bool isLeftAlign;
-  final SponsorType type;
+  final SponsorTypeV2 type;
 }
 
 typedef CardSize = ({double maxSize, double minSize});

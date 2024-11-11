@@ -15,7 +15,7 @@ class SessionGrid extends HookConsumerWidget {
     super.key,
   });
 
-  final List<SessionVenuesWithSessionsV2> sessionVenues;
+  final List<SessionVenuesWithSessionsV3> sessionVenues;
   final EventDate selectedDate;
 
   @override

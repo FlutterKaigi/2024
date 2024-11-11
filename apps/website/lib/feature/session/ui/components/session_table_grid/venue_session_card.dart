@@ -14,7 +14,7 @@ class VenueSessionCard extends StatelessWidget {
     super.key,
   });
 
-  final SessionVenuesWithSessionsV2 venue;
+  final SessionVenuesWithSessionsV3 venue;
   final List<SessionsWithSessionVenue> sessions;
   final SpecialSession? specialSession;
 

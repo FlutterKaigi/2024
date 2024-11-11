@@ -9,7 +9,7 @@ class SponsorLogo extends StatelessWidget {
     this.onTap,
   });
 
-  final Sponsor sponsor;
+  final SponsorV2 sponsor;
   final double height;
   final VoidCallback? onTap;
 
