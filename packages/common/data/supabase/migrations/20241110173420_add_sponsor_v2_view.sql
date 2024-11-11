@@ -4,6 +4,7 @@ WITH
   (security_invoker = TRUE) AS
 SELECT
   id,
+  name,
   logo_name,
   description,
   url,
@@ -14,6 +15,7 @@ FROM
 UNION ALL
 SELECT
   id,
+  name,
   logo_name,
   description,
   url,
