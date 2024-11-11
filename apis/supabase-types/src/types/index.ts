@@ -34,6 +34,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      app_minimum_versions: {
+        Row: {
+          app_version: Database["public"]["CompositeTypes"]["semver_components"]
+          app_version_text: string | null
+          created_at: string
+          id: number
+          platform: Database["public"]["Enums"]["platform_type"]
+        }
+        Insert: {
+          app_version: Database["public"]["CompositeTypes"]["semver_components"]
+          app_version_text?: string | null
+          created_at?: string
+          id?: number
+          platform: Database["public"]["Enums"]["platform_type"]
+        }
+        Update: {
+          app_version?: Database["public"]["CompositeTypes"]["semver_components"]
+          app_version_text?: string | null
+          created_at?: string
+          id?: number
+          platform?: Database["public"]["Enums"]["platform_type"]
+        }
+        Relationships: []
+      }
       contributors: {
         Row: {
           avatar_url: string
@@ -350,6 +374,13 @@ export type Database = {
             referencedRelation: "session_venues_with_sessions_v2"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "sessions_venue_id_fkey"
+            columns: ["venue_id"]
+            isOneToOne: false
+            referencedRelation: "session_venues_with_sessions_v3"
+            referencedColumns: ["id"]
+          },
         ]
       }
       speakers: {
@@ -575,14 +606,11 @@ export type Database = {
         }
         Relationships: []
       }
-      sponsor_v2: {
+      session_venues_with_sessions_v3: {
         Row: {
-          description: string | null
-          id: number | null
-          logo_name: string | null
-          sort_id: number | null
-          type: string | null
-          url: string | null
+          id: string | null
+          name: string | null
+          sessions: Json | null
         }
         Relationships: []
       }
@@ -623,14 +651,19 @@ export type Database = {
         }
         Relationships: []
       }
+      sponsors_v2: {
+        Row: {
+          description: string | null
+          id: number | null
+          logo_name: string | null
+          sort_id: number | null
+          type: string | null
+          url: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
-      is_profile_published_as_individual_sponsor: {
-        Args: {
-          search_user_id: string
-        }
-        Returns: boolean
-      }
       replace_contributors: {
         Args: {
           contributors: Json
@@ -648,8 +681,22 @@ export type Database = {
         Args: Record<PropertyKey, never>
         Returns: Database["public"]["Enums"]["role"]
       }
+      semver_elements_match_regex: {
+        Args: {
+          parts: string[]
+          regex: string
+        }
+        Returns: boolean
+      }
+      semver_to_text: {
+        Args: {
+          "": unknown
+        }
+        Returns: string
+      }
     }
     Enums: {
+      platform_type: "android" | "ios"
       role: "admin" | "user" | "sponsor" | "speaker"
       social_networking_service_type:
         | "github"
@@ -671,7 +718,13 @@ export type Database = {
         | "sponsor_speaker"
     }
     CompositeTypes: {
-      [_ in never]: never
+      semver_components: {
+        major: number | null
+        minor: number | null
+        patch: number | null
+        pre_release: string[] | null
+        build_metadata: string[] | null
+      }
     }
   }
   storage: {
@@ -1127,3 +1180,4 @@ export type CompositeTypes<
   : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
     ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
+
