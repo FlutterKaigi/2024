@@ -35,24 +35,6 @@ WHERE
             email = 'admin@example.com'
     );
 
--- 一般ユーザを作成
-SELECT
-    tests.create_supabase_user ('normal_user', 'user@example.com', '555-555-5556');
-
-UPDATE profiles
-SET
-    name = 'normal_user',
-    role = 'user'
-WHERE
-    id = (
-        SELECT
-            id
-        FROM
-            auth.users
-        WHERE
-            email = 'user@example.com'
-    );
-
 SELECT
     plan (9);
 
@@ -64,15 +46,15 @@ SELECT
 SELECT
     tests.rls_enabled ('public', 'app_minimum_versions');
 
--- 一般ユーザーとして認証
+-- 認証情報をクリアして匿名ユーザーとして設定
 SELECT
-    tests.authenticate_as ('normal_user');
+    tests.clear_authentication ();
 
--- 一般ユーザーは読み取りのみ可能
+-- 匿名ユーザーは読み取りのみ可能
 SELECT
-    results_eq ('SELECT COUNT(*) FROM app_minimum_versions', ARRAY[2::bigint], '一般ユーザーはapp_minimum_versionsを読み取れること');
+    results_eq ('SELECT COUNT(*) FROM app_minimum_versions', ARRAY[2::bigint], '匿名ユーザーはapp_minimum_versionsを読み取れること');
 
--- 一般ユーザーは追加不可
+-- 匿名ユーザーは追加不可
 PREPARE insert_throw AS
 INSERT INTO
     app_minimum_versions (platform, app_version)
@@ -84,10 +66,10 @@ SELECT
         'insert_throw',
         '42501',
         'new row violates row-level security policy for table "app_minimum_versions"',
-        '一般ユーザーはapp_minimum_versionsを追加できないこと'
+        '匿名ユーザーはapp_minimum_versionsを追加できないこと'
     );
 
--- 一般ユーザーは更新不可
+-- 匿名ユーザーは更新不可
 PREPARE update_throw AS
 UPDATE app_minimum_versions
 SET
@@ -100,17 +82,17 @@ SELECT
     results_eq (
         'SELECT app_version_text FROM app_minimum_versions WHERE platform = ''android'' ORDER BY app_version_text DESC LIMIT 1',
         ARRAY['1.0.0'],
-        '一般ユーザーはapp_minimum_versionsを更新できないこと'
+        '匿名ユーザーはapp_minimum_versionsを更新できないこと'
     );
 
--- 一般ユーザーは削除不可
+-- 匿名ユーザーは削除不可
 PREPARE delete_throw AS
 DELETE FROM app_minimum_versions
 WHERE
     platform = 'android';
 
 SELECT
-    results_eq ('SELECT COUNT(*) FROM app_minimum_versions', ARRAY[2::bigint], '一般ユーザーはapp_minimum_versionsを削除できないこと');
+    results_eq ('SELECT COUNT(*) FROM app_minimum_versions', ARRAY[2::bigint], '匿名ユーザーはapp_minimum_versionsを削除できないこと');
 
 -- 管理者として認証
 SELECT
