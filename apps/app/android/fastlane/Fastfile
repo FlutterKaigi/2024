@@ -12,6 +12,7 @@ platform :android do
       release_status: 'draft',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       json_key_data: json_key_data,
+      mapping_paths: [SYMBOL_FILE_PATH, MAPPING_FILE_PATH],
     )
   end
 end
