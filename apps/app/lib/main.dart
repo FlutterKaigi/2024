@@ -1,6 +1,7 @@
 // ignore_for_file: do_not_use_environment
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:app_cores_core/providers.dart';
@@ -24,8 +25,15 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() async {
+  final supabaseUrl = switch (Platform.isAndroid) {
+    // Androidの場合、エミュレーターでは localhost ではなく 10.0.2.2 を使用しなければならない
+    // したがって、SUPABASE_URL に localhost の文字があれば 10.0.2.2 に変換する
+    true => const String.fromEnvironment('SUPABASE_URL')
+        .replaceFirst('localhost', '10.0.2.2'),
+    false => const String.fromEnvironment('SUPABASE_URL'),
+  };
   final supabaseInitializer = SupabaseInitializer(
-    url: const String.fromEnvironment('SUPABASE_URL'),
+    url: supabaseUrl,
     anonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
   );
   await supabaseInitializer.initialize();
