@@ -2200,27 +2200,26 @@ INSERT INTO
   public.special_sponsors
 VALUES
   (
-    24,
+    27,
     'DroidKaigi Association',
     '1cbc8ff6-882d-4df5-8fab-e3f2ff294149.webp',
     'DroidKaigiは主にAndroidを対象にしたカンファレンスです。Flutterのターゲットプラットフォームのひとつでもあり、非常に親しく感じています。
 ITコミュニティとして一緒にモバイル業界を盛り上げていきましょう！',
     'https://droidkaigi.jp',
     'community',
-    24
+    27
   );
 
 INSERT INTO
   public.special_sponsors
 VALUES
   (
-    25,
+    28,
     'ポケトーク株式会社',
     'dd6f30c4-fc43-4ccc-b48d-04991a3482a3.webp',
     'AI翻訳技術の革新で「言葉の壁をなくす」ことをスローガンに掲げているスタートアップ企業です。
 本イベントでは登壇者の公演をAI同時通訳するポケトークカンファレンスというサービスにて、イベント運営をサポートいたします。',
     'https://pocketalk.jp/?utm_source=google&utm_medium=cpc&utm_campaign=lsj_search&gad_source=1&gclid=Cj0KCQjwyL24BhCtARIsALo0fSAzUcKusFvIvUi-tlFGqp1BT4JveSlZHzce5-bVmNH--d33Rvy1WvcaAk-NEALw_wcB',
     'translation',
-    25
+    28
   );
-
