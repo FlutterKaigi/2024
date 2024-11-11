@@ -9,6 +9,7 @@ environment:
   flutter: ^3.26.0-0.1.pre
 
 dependencies:
+  add_2_calendar: ^3.0.1
   app_cores_core:
     path: ../../cores/core
   app_cores_designsystem:
