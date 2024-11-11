@@ -43,27 +43,22 @@ final class AppMinimumVersionRepository {
   }) {
     _channel()
         .onPostgresChanges(
-      event: PostgresChangeEvent.insert,
-      schema: 'public',
-      table: 'app_minimum_versions',
-      filter: PostgresChangeFilter(
-        type: PostgresChangeFilterType.eq,
-        column: 'platform',
-        value: platform.name,
-      ),
-      callback: (payload) {
-        final appMinimumVersion = AppMinimumVersion.fromJson(
-          payload.newRecord,
-        );
-        callback(appMinimumVersion);
-      },
-    )
-        .subscribe(
-      (status, error) {
-        print(status);
-        print(error);
-      },
-    );
+          event: PostgresChangeEvent.insert,
+          schema: 'public',
+          table: 'app_minimum_versions',
+          filter: PostgresChangeFilter(
+            type: PostgresChangeFilterType.eq,
+            column: 'platform',
+            value: platform.name,
+          ),
+          callback: (payload) {
+            final appMinimumVersion = AppMinimumVersion.fromJson(
+              payload.newRecord,
+            );
+            callback(appMinimumVersion);
+          },
+        )
+        .subscribe();
   }
 
   Future<void> unsubscribeAppMinimumVersion() =>
