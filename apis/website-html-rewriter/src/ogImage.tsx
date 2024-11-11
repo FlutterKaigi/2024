@@ -362,7 +362,7 @@ async function getSponsorHtml({
 	}
 
 	const sponsorImageUrl = await supabase.storage
-		.from("sponsors")
+		.from("sponsor")
 		.getPublicUrl(data.logo_name.replaceAll(".webp", ".png"));
 
 	const sponsorTypeLogoUrl = new URL(
