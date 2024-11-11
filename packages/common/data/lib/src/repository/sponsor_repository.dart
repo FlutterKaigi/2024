@@ -47,7 +47,7 @@ final class SponsorRepository {
     return result.map(toSponsorV2).toList();
   }
 
-  @Deprecated('Use fetchSponsorWithSessionsV2 instead')
+  @Deprecated('Use fetchSponsorWithSessionsV3 instead')
   Future<List<SponsorWithSession>> fetchSponsorWithSessions() async {
     final result = await _supabaseClient
         .from('sponsor_with_sessions')
@@ -65,6 +65,7 @@ final class SponsorRepository {
 
   /// スポンサーとそれに紐づくセッションを取得する
   /// スポンサーはsort_idの昇順に並び替えられています
+  @Deprecated('Use fetchSponsorWithSessionsV3 instead')
   Future<List<SponsorWithSessionV2>> fetchSponsorWithSessionsV2() async {
     final result = await _supabaseClient
         .from('sponsor_with_sessions_v2')
@@ -74,6 +75,19 @@ final class SponsorRepository {
           (json) => json.map(SponsorWithSessionV2View.fromJson).toList(),
         );
     return result.map(toSponsorWithSessionV2).toList();
+  }
+
+  /// スポンサーとそれに紐づくセッションを取得する
+  /// スポンサーはsort_idの昇順に並び替えられています
+  Future<List<SponsorWithSessionV3>> fetchSponsorWithSessionsV3() async {
+    final result = await _supabaseClient
+        .from('sponsor_with_sessions_v3')
+        .select()
+        .order('sort_id', ascending: true)
+        .withConverter(
+          (json) => json.map(SponsorWithSessionV3View.fromJson).toList(),
+        );
+    return result.map(toSponsorWithSessionV3).toList();
   }
 
   Sponsor toSponsor(SponsorTable sponsorTable) => Sponsor(
@@ -149,6 +163,41 @@ final class SponsorRepository {
             .map(_speakerRepository.toSpeaker)
             .toList(),
         venue: sponsorWithSessionV2ViewSession.venue,
+      );
+
+  SponsorWithSessionV3 toSponsorWithSessionV3(
+    SponsorWithSessionV3View sponsorWithSessionV3View,
+  ) =>
+      SponsorWithSessionV3(
+        id: sponsorWithSessionV3View.id,
+        name: sponsorWithSessionV3View.name,
+        logoUrl: Uri.parse(
+          _sponsorStorageFileApi
+              .getPublicUrl(sponsorWithSessionV3View.logoName),
+        ),
+        sortId: sponsorWithSessionV3View.sortId,
+        description: sponsorWithSessionV3View.description,
+        url: sponsorWithSessionV3View.url,
+        type: sponsorWithSessionV3View.type,
+        sessions: sponsorWithSessionV3View.sessions
+            .map(_toSponsorWithSessionV3Session)
+            .toList(),
+      );
+
+  SponsorWithSessionV3Session _toSponsorWithSessionV3Session(
+    SponsorWithSessionV3ViewSession sponsorWithSessionV3ViewSession,
+  ) =>
+      SponsorWithSessionV3Session(
+        id: sponsorWithSessionV3ViewSession.id,
+        title: sponsorWithSessionV3ViewSession.title,
+        description: sponsorWithSessionV3ViewSession.description,
+        startsAt: sponsorWithSessionV3ViewSession.startsAt,
+        endsAt: sponsorWithSessionV3ViewSession.endsAt,
+        isLightningTalk: sponsorWithSessionV3ViewSession.isLightningTalk,
+        speakers: sponsorWithSessionV3ViewSession.speakers
+            .map(_speakerRepository.toSpeaker)
+            .toList(),
+        venue: sponsorWithSessionV3ViewSession.venue,
       );
 }
 
