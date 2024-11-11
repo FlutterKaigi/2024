@@ -25,3 +25,17 @@ SELECT
 CREATE POLICY "Everyone can read individual_sponsor in profile_social_networking_services" ON public.profile_social_networking_services FOR
 SELECT
   USING (public.is_profile_published_as_individual_sponsor (id));
+
+CREATE VIEW public.profiles_with_sns_for_individual_sponsor AS
+SELECT
+  p.*,
+  json_agg(psns.*) AS social_networking_services
+FROM
+  public.profiles AS p
+  JOIN public.tickets AS t ON t.user_id = p.id
+  JOIN public.profile_social_networking_services AS psns ON psns.id = p.id
+WHERE
+  t.type = 'individual_sponsor'::ticket_type
+  AND p.is_published = TRUE
+GROUP BY
+  p.id;
