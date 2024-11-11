@@ -644,6 +644,7 @@ export type Database = {
           description: string | null
           id: number | null
           logo_name: string | null
+          name: string | null
           sessions: Json | null
           sort_id: number | null
           type: string | null
@@ -656,6 +657,7 @@ export type Database = {
           description: string | null
           id: number | null
           logo_name: string | null
+          name: string | null
           sort_id: number | null
           type: string | null
           url: string | null
