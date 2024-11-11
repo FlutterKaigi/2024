@@ -39,7 +39,6 @@ final class SponsorRepository {
     return result.map(toSponsor).toList();
   }
 
-  @Deprecated('Use fetchSponsorsV2 instead')
   Future<List<SponsorV2>> fetchSponsorsV2() async {
     final result =
         await _supabaseClient.from('sponsors_v2').select().withConverter(
