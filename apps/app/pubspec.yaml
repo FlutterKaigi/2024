@@ -30,6 +30,7 @@ dependencies:
   dynamic_color: ^1.7.0
   flutter:
     sdk: flutter
+  flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
   go_router: ^14.2.7
