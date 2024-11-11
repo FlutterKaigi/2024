@@ -1,9 +1,17 @@
+import 'dart:async';
+
+import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_designsystem/ui.dart';
+import 'package:common_data/app_minimum_version.dart';
+import 'package:conference_2024_app/force_update_dialog.dart';
 import 'package:conference_2024_app/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:pub_semver/pub_semver.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends HookConsumerWidget {
   const MainPage({
     required this.navigationShell,
     super.key,
@@ -12,9 +20,15 @@ class MainPage extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l = L10n.of(context);
     final isMobile = ScreenSizeProvider.of(context).isMobile;
+
+    final targetPlatform = Theme.of(context).platform;
+    final platform = switch (targetPlatform) {
+      TargetPlatform.iOS || TargetPlatform.macOS => AppPlatform.ios,
+      _ => AppPlatform.android,
+    };
 
     final destinations = [
       NavigationDestination(
@@ -38,6 +52,80 @@ class MainPage extends StatelessWidget {
         selectedIcon: const Icon(Icons.info),
       ),
     ];
+
+    useEffect(
+      () {
+        bool shouldShowForceUpdateDialog(AppMinimumVersion? appMinimumVersion) {
+          if (appMinimumVersion == null) {
+            return false;
+          }
+          final versionText = ref.read(
+            packageInfoInstanceProvider.select(
+              (v) => '${v.version}+${v.buildNumber}',
+            ),
+          );
+          final version = Version.parse(versionText);
+          return version < appMinimumVersion.version;
+        }
+
+        // 必要あれば強制バージョンアップダイアログを表示する
+        void needShowForceUpdateDialog(AppMinimumVersion? appMinimumVersion) {
+          if (!shouldShowForceUpdateDialog(appMinimumVersion)) {
+            return;
+          }
+          unawaited(
+            ForceUpdateDialog.show(
+              context: context,
+              requiredVersion: appMinimumVersion!,
+            ),
+          );
+        }
+
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          final appMinimumVersion = await ref.read(
+            getAppMinimumVersionProvider(
+              platform: platform,
+            ).future,
+          );
+
+          final shouldShow = shouldShowForceUpdateDialog(appMinimumVersion);
+          if (shouldShow && context.mounted) {
+            unawaited(
+              ForceUpdateDialog.show(
+                context: context,
+                requiredVersion: appMinimumVersion!,
+              ),
+            );
+          } else {
+            // 強制バージョンアップの必要がなければ、アプリの最小バージョンの購読を開始する
+            ref.read(
+              subscribeAppMinimumVersionProvider(
+                platform: platform,
+                callback: needShowForceUpdateDialog,
+              ),
+            );
+          }
+        });
+
+        final appLifecycleListener = AppLifecycleListener(
+          onShow: () {
+            // バックグラウンドから復帰した時に購読を再開する
+            ref.read(
+              subscribeAppMinimumVersionProvider(
+                platform: platform,
+                callback: needShowForceUpdateDialog,
+              ),
+            );
+          },
+          onHide: () {
+            // バックグラウンドに移行した時に購読を停止する
+            ref.read(unsubscribeAppMinimumVersionProvider);
+          },
+        );
+        return appLifecycleListener.dispose;
+      },
+      const [],
+    );
 
     return Scaffold(
       body: Row(
