@@ -1,4 +1,0 @@
-"NSCalendarsUsageDescription" = "イベントを予定として登録するためカレンダーを使用します。";
-"NSContactsUsageDescription" = "予定の場所を編集する際の入力の候補として使用します。";
-// iOS17以降は[NSCalendarsUsageDescription]が非推奨となっているため以下を追加
-"NSCalendarsWriteOnlyAccessUsageDescription" = "イベントを予定として登録するためカレンダーを使用します。";
