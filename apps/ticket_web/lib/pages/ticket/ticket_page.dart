@@ -83,8 +83,6 @@ class _BodyWithTicket extends ConsumerWidget {
           ticket: ticket,
         ),
         const SizedBox(height: 48),
-        const EntranceInformationCard(),
-        const SizedBox(height: 48),
       ],
     );
   }
