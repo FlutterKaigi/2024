@@ -220,8 +220,11 @@
       "title": "Ticket QR Code",
       "description": "This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.",
       "showWalletQr": "Add with QR Code",
-      "walletQrTitle": "Add to Apple Wallet",
-      "walletQrDescription": "Scan this QR code with your iPhone to add the ticket to Apple Wallet"
+      "walletQrTitle": "Add to Wallet",
+      "walletQrDescription": "Scan this QR code with your iPhone/Android to add the ticket to your wallet app",
+      "close": "Close",
+      "ticketId": "Ticket ID",
+      "sectionId": "Name Plate Section ID"
     },
     "entrance_information": {
       "title": "Entrance Information",

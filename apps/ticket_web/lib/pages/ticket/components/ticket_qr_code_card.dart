@@ -9,6 +9,7 @@ import 'package:ticket_web/core/gen/fonts.gen.dart';
 import 'package:ticket_web/core/provider/environment.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:ticket_web/pages/ticket/components/ticket_section_card.dart';
 import 'package:ticket_web/pages/ticket/components/wallet_qr_dialog.dart';
 import 'package:url_launcher/link.dart';
 
@@ -72,6 +73,7 @@ class TicketQrCodeCard extends HookConsumerWidget {
                 fontFamily: FontFamily.poppins,
               ),
             ),
+            TicketSectionCard(sectionId: ticket.sectionId),
             const SizedBox(height: 8),
             Text(
               i18n.ticketPage.qrCode.description,

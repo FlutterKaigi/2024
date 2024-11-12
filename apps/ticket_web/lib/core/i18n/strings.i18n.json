@@ -134,7 +134,7 @@
       "status429": "リクエストが多すぎます",
       "status500": "サーバーでエラーが発生しました",
       "status503": "サーバーが過負荷状態です",
-      "status_other": "ネットワークエラーが発生しました (ステータスコード: $statusCode)",
+      "status_other": "ネットワークエラーが発生しまし��� (ステータスコード: $statusCode)",
       "try_again": "時間をおいて再度お試しください",
       "unknown": "不明なエラーが発生しました"
     }
@@ -230,7 +230,10 @@
       "description": "このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。",
       "showWalletQr": "QRコードで別の端末に追加",
       "walletQrTitle": "Walletに追加",
-      "walletQrDescription": "iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます"
+      "walletQrDescription": "iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます",
+      "close": "閉じる",
+      "ticketId": "チケットID",
+      "sectionId": "ネームプレート 区画ID"
     },
     "entrance_information": {
       "title": "入場時の情報",
