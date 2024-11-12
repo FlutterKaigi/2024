@@ -228,6 +228,13 @@
     "qrCode": {
       "title": "チケットQRコード",
       "description": "このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。"
+    },
+    "entrance_information": {
+      "title": "入場時の情報",
+      "description": [
+        "FlutterKaigi 2024開催までの間に、このページに入場用QRコードが表示されます。",
+        "入場時は、そのQRコードをスタッフに見せてください。"
+      ]
     }
   }
 }

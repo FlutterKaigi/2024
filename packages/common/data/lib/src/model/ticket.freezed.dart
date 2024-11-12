@@ -27,6 +27,7 @@ mixin _$Ticket {
   String? get sessionId => throw _privateConstructorUsedError;
   int? get sponsorId => throw _privateConstructorUsedError;
   String? get stripeCheckoutSessionId => throw _privateConstructorUsedError;
+  String get sectionId => throw _privateConstructorUsedError;
 
   /// Serializes this Ticket to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,8 @@ abstract class $TicketCopyWith<$Res> {
       DateTime createdAt,
       String? sessionId,
       int? sponsorId,
-      String? stripeCheckoutSessionId});
+      String? stripeCheckoutSessionId,
+      String sectionId});
 }
 
 /// @nodoc
@@ -74,6 +76,7 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
     Object? sessionId = freezed,
     Object? sponsorId = freezed,
     Object? stripeCheckoutSessionId = freezed,
+    Object? sectionId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -104,6 +107,10 @@ class _$TicketCopyWithImpl<$Res, $Val extends Ticket>
           ? _value.stripeCheckoutSessionId
           : stripeCheckoutSessionId // ignore: cast_nullable_to_non_nullable
               as String?,
+      sectionId: null == sectionId
+          ? _value.sectionId
+          : sectionId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -122,7 +129,8 @@ abstract class _$$TicketImplCopyWith<$Res> implements $TicketCopyWith<$Res> {
       DateTime createdAt,
       String? sessionId,
       int? sponsorId,
-      String? stripeCheckoutSessionId});
+      String? stripeCheckoutSessionId,
+      String sectionId});
 }
 
 /// @nodoc
@@ -145,6 +153,7 @@ class __$$TicketImplCopyWithImpl<$Res>
     Object? sessionId = freezed,
     Object? sponsorId = freezed,
     Object? stripeCheckoutSessionId = freezed,
+    Object? sectionId = null,
   }) {
     return _then(_$TicketImpl(
       id: null == id
@@ -175,6 +184,10 @@ class __$$TicketImplCopyWithImpl<$Res>
           ? _value.stripeCheckoutSessionId
           : stripeCheckoutSessionId // ignore: cast_nullable_to_non_nullable
               as String?,
+      sectionId: null == sectionId
+          ? _value.sectionId
+          : sectionId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -189,7 +202,8 @@ class _$TicketImpl implements _Ticket {
       required this.createdAt,
       required this.sessionId,
       required this.sponsorId,
-      required this.stripeCheckoutSessionId});
+      required this.stripeCheckoutSessionId,
+      required this.sectionId});
 
   factory _$TicketImpl.fromJson(Map<String, dynamic> json) =>
       _$$TicketImplFromJson(json);
@@ -208,10 +222,12 @@ class _$TicketImpl implements _Ticket {
   final int? sponsorId;
   @override
   final String? stripeCheckoutSessionId;
+  @override
+  final String sectionId;
 
   @override
   String toString() {
-    return 'Ticket(id: $id, userId: $userId, type: $type, createdAt: $createdAt, sessionId: $sessionId, sponsorId: $sponsorId, stripeCheckoutSessionId: $stripeCheckoutSessionId)';
+    return 'Ticket(id: $id, userId: $userId, type: $type, createdAt: $createdAt, sessionId: $sessionId, sponsorId: $sponsorId, stripeCheckoutSessionId: $stripeCheckoutSessionId, sectionId: $sectionId)';
   }
 
   @override
@@ -230,13 +246,15 @@ class _$TicketImpl implements _Ticket {
                 other.sponsorId == sponsorId) &&
             (identical(
                     other.stripeCheckoutSessionId, stripeCheckoutSessionId) ||
-                other.stripeCheckoutSessionId == stripeCheckoutSessionId));
+                other.stripeCheckoutSessionId == stripeCheckoutSessionId) &&
+            (identical(other.sectionId, sectionId) ||
+                other.sectionId == sectionId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, type, createdAt,
-      sessionId, sponsorId, stripeCheckoutSessionId);
+      sessionId, sponsorId, stripeCheckoutSessionId, sectionId);
 
   /// Create a copy of Ticket
   /// with the given fields replaced by the non-null parameter values.
@@ -262,7 +280,8 @@ abstract class _Ticket implements Ticket {
       required final DateTime createdAt,
       required final String? sessionId,
       required final int? sponsorId,
-      required final String? stripeCheckoutSessionId}) = _$TicketImpl;
+      required final String? stripeCheckoutSessionId,
+      required final String sectionId}) = _$TicketImpl;
 
   factory _Ticket.fromJson(Map<String, dynamic> json) = _$TicketImpl.fromJson;
 
@@ -280,6 +299,8 @@ abstract class _Ticket implements Ticket {
   int? get sponsorId;
   @override
   String? get stripeCheckoutSessionId;
+  @override
+  String get sectionId;
 
   /// Create a copy of Ticket
   /// with the given fields replaced by the non-null parameter values.

@@ -13,6 +13,7 @@ class Ticket with _$Ticket {
     required String? sessionId,
     required int? sponsorId,
     required String? stripeCheckoutSessionId,
+    required String sectionId,
   }) = _Ticket;
 
   factory Ticket.fromJson(Map<String, dynamic> json) => _$TicketFromJson(json);

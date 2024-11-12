@@ -420,6 +420,20 @@ class _StringsTicketPageQrCodeJa {
 	String get description => 'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
 }
 
+// Path: ticketPage.entranceInformation
+class _StringsTicketPageEntranceInformationJa {
+  _StringsTicketPageEntranceInformationJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => '入場時の情報';
+  List<String> get description => [
+        'FlutterKaigi 2024開催までの間に、このページに入場用QRコードが表示されます。',
+        '入場時は、そのQRコードをスタッフに見せてください。',
+      ];
+}
+
 // Path: homePage.tickets.variant
 class _StringsHomePageTicketsVariantJa {
 	_StringsHomePageTicketsVariantJa._(this._root);
@@ -1012,6 +1026,26 @@ class _StringsTicketPageQrCodeEn extends _StringsTicketPageQrCodeJa {
 	// Translations
 	@override String get title => 'Ticket QR Code';
 	@override String get description => 'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
+}
+
+// Path: ticketPage.entranceInformation
+class _StringsTicketPageEntranceInformationEn
+    extends _StringsTicketPageEntranceInformationJa {
+  _StringsTicketPageEntranceInformationEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Entrance Information';
+  @override
+  List<String> get description => [
+        'A QR code for entry will be displayed on this page before FlutterKaigi 2024.',
+        'Please show the QR code to staff at the entrance.',
+      ];
 }
 
 // Path: homePage.tickets.variant

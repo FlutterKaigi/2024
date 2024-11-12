@@ -23,6 +23,7 @@ _$TicketImpl _$$TicketImplFromJson(Map<String, dynamic> json) => $checkedCreate(
           sponsorId: $checkedConvert('sponsor_id', (v) => (v as num?)?.toInt()),
           stripeCheckoutSessionId: $checkedConvert(
               'stripe_checkout_session_id', (v) => v as String?),
+          sectionId: $checkedConvert('section_id', (v) => v as String),
         );
         return val;
       },
@@ -31,7 +32,8 @@ _$TicketImpl _$$TicketImplFromJson(Map<String, dynamic> json) => $checkedCreate(
         'createdAt': 'created_at',
         'sessionId': 'session_id',
         'sponsorId': 'sponsor_id',
-        'stripeCheckoutSessionId': 'stripe_checkout_session_id'
+        'stripeCheckoutSessionId': 'stripe_checkout_session_id',
+        'sectionId': 'section_id'
       },
     );
 
@@ -44,6 +46,7 @@ Map<String, dynamic> _$$TicketImplToJson(_$TicketImpl instance) =>
       'session_id': instance.sessionId,
       'sponsor_id': instance.sponsorId,
       'stripe_checkout_session_id': instance.stripeCheckoutSessionId,
+      'section_id': instance.sectionId,
     };
 
 const _$TicketTypeEnumMap = {
