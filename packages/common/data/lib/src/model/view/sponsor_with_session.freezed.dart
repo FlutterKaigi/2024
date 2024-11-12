@@ -190,7 +190,7 @@ class __$$SponsorWithSessionViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SponsorWithSessionV2View instead')
+@Deprecated('Use SponsorWithSessionV3View instead')
 class _$SponsorWithSessionViewImpl implements _SponsorWithSessionView {
   const _$SponsorWithSessionViewImpl(
       {required this.id,
@@ -476,7 +476,7 @@ class __$$SponsorWithSessionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SponsorWithSessionV2 instead')
+@Deprecated('Use SponsorWithSessionV3 instead')
 class _$SponsorWithSessionImpl implements _SponsorWithSession {
   const _$SponsorWithSessionImpl(
       {required this.id,
@@ -794,7 +794,7 @@ class __$$SessionWithSpeakerAndVenueImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@Deprecated('Use SessionWithSpeakerAndVenueV2 instead')
+@Deprecated('Use SessionWithSpeakerAndVenueV3 instead')
 class _$SessionWithSpeakerAndVenueImpl implements _SessionWithSpeakerAndVenue {
   const _$SessionWithSpeakerAndVenueImpl(
       {required this.id,
@@ -1116,6 +1116,7 @@ class __$$SponsorWithSessionV2ViewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SponsorWithSessionV3View instead')
 class _$SponsorWithSessionV2ViewImpl implements _SponsorWithSessionV2View {
   const _$SponsorWithSessionV2ViewImpl(
       {required this.id,
@@ -1442,6 +1443,7 @@ class __$$SponsorWithSessionV2ViewSessionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SponsorWithSessionV3ViewSession instead')
 class _$SponsorWithSessionV2ViewSessionImpl
     implements _SponsorWithSessionV2ViewSession {
   const _$SponsorWithSessionV2ViewSessionImpl(
@@ -1763,6 +1765,7 @@ class __$$SponsorWithSessionV2ImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SponsorWithSessionV3 instead')
 class _$SponsorWithSessionV2Impl implements _SponsorWithSessionV2 {
   const _$SponsorWithSessionV2Impl(
       {required this.id,
@@ -2089,6 +2092,7 @@ class __$$SponsorWithSessionV2SessionImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@Deprecated('Use SponsorWithSessionV3Session instead')
 class _$SponsorWithSessionV2SessionImpl
     implements _SponsorWithSessionV2Session {
   const _$SponsorWithSessionV2SessionImpl(
@@ -2219,5 +2223,1300 @@ abstract class _SponsorWithSessionV2Session
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SponsorWithSessionV2SessionImplCopyWith<_$SponsorWithSessionV2SessionImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SponsorWithSessionV3View _$SponsorWithSessionV3ViewFromJson(
+    Map<String, dynamic> json) {
+  return _SponsorWithSessionV3View.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SponsorWithSessionV3View {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get logoName => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  Uri? get url => throw _privateConstructorUsedError;
+  SponsorTypeV2 get type => throw _privateConstructorUsedError;
+  int get sortId => throw _privateConstructorUsedError;
+  List<SponsorWithSessionV3ViewSession> get sessions =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this SponsorWithSessionV3View to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SponsorWithSessionV3View
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SponsorWithSessionV3ViewCopyWith<SponsorWithSessionV3View> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SponsorWithSessionV3ViewCopyWith<$Res> {
+  factory $SponsorWithSessionV3ViewCopyWith(SponsorWithSessionV3View value,
+          $Res Function(SponsorWithSessionV3View) then) =
+      _$SponsorWithSessionV3ViewCopyWithImpl<$Res, SponsorWithSessionV3View>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String logoName,
+      String description,
+      Uri? url,
+      SponsorTypeV2 type,
+      int sortId,
+      List<SponsorWithSessionV3ViewSession> sessions});
+}
+
+/// @nodoc
+class _$SponsorWithSessionV3ViewCopyWithImpl<$Res,
+        $Val extends SponsorWithSessionV3View>
+    implements $SponsorWithSessionV3ViewCopyWith<$Res> {
+  _$SponsorWithSessionV3ViewCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SponsorWithSessionV3View
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? logoName = null,
+    Object? description = null,
+    Object? url = freezed,
+    Object? type = null,
+    Object? sortId = null,
+    Object? sessions = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logoName: null == logoName
+          ? _value.logoName
+          : logoName // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SponsorTypeV2,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sessions: null == sessions
+          ? _value.sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SponsorWithSessionV3ViewSession>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SponsorWithSessionV3ViewImplCopyWith<$Res>
+    implements $SponsorWithSessionV3ViewCopyWith<$Res> {
+  factory _$$SponsorWithSessionV3ViewImplCopyWith(
+          _$SponsorWithSessionV3ViewImpl value,
+          $Res Function(_$SponsorWithSessionV3ViewImpl) then) =
+      __$$SponsorWithSessionV3ViewImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String logoName,
+      String description,
+      Uri? url,
+      SponsorTypeV2 type,
+      int sortId,
+      List<SponsorWithSessionV3ViewSession> sessions});
+}
+
+/// @nodoc
+class __$$SponsorWithSessionV3ViewImplCopyWithImpl<$Res>
+    extends _$SponsorWithSessionV3ViewCopyWithImpl<$Res,
+        _$SponsorWithSessionV3ViewImpl>
+    implements _$$SponsorWithSessionV3ViewImplCopyWith<$Res> {
+  __$$SponsorWithSessionV3ViewImplCopyWithImpl(
+      _$SponsorWithSessionV3ViewImpl _value,
+      $Res Function(_$SponsorWithSessionV3ViewImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SponsorWithSessionV3View
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? logoName = null,
+    Object? description = null,
+    Object? url = freezed,
+    Object? type = null,
+    Object? sortId = null,
+    Object? sessions = null,
+  }) {
+    return _then(_$SponsorWithSessionV3ViewImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logoName: null == logoName
+          ? _value.logoName
+          : logoName // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SponsorTypeV2,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sessions: null == sessions
+          ? _value._sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SponsorWithSessionV3ViewSession>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SponsorWithSessionV3ViewImpl implements _SponsorWithSessionV3View {
+  const _$SponsorWithSessionV3ViewImpl(
+      {required this.id,
+      required this.name,
+      required this.logoName,
+      required this.description,
+      required this.url,
+      required this.type,
+      required this.sortId,
+      required final List<SponsorWithSessionV3ViewSession> sessions})
+      : _sessions = sessions;
+
+  factory _$SponsorWithSessionV3ViewImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorWithSessionV3ViewImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final String logoName;
+  @override
+  final String description;
+  @override
+  final Uri? url;
+  @override
+  final SponsorTypeV2 type;
+  @override
+  final int sortId;
+  final List<SponsorWithSessionV3ViewSession> _sessions;
+  @override
+  List<SponsorWithSessionV3ViewSession> get sessions {
+    if (_sessions is EqualUnmodifiableListView) return _sessions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sessions);
+  }
+
+  @override
+  String toString() {
+    return 'SponsorWithSessionV3View(id: $id, name: $name, logoName: $logoName, description: $description, url: $url, type: $type, sortId: $sortId, sessions: $sessions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SponsorWithSessionV3ViewImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.logoName, logoName) ||
+                other.logoName == logoName) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.sortId, sortId) || other.sortId == sortId) &&
+            const DeepCollectionEquality().equals(other._sessions, _sessions));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, logoName, description,
+      url, type, sortId, const DeepCollectionEquality().hash(_sessions));
+
+  /// Create a copy of SponsorWithSessionV3View
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SponsorWithSessionV3ViewImplCopyWith<_$SponsorWithSessionV3ViewImpl>
+      get copyWith => __$$SponsorWithSessionV3ViewImplCopyWithImpl<
+          _$SponsorWithSessionV3ViewImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SponsorWithSessionV3ViewImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SponsorWithSessionV3View implements SponsorWithSessionV3View {
+  const factory _SponsorWithSessionV3View(
+          {required final int id,
+          required final String name,
+          required final String logoName,
+          required final String description,
+          required final Uri? url,
+          required final SponsorTypeV2 type,
+          required final int sortId,
+          required final List<SponsorWithSessionV3ViewSession> sessions}) =
+      _$SponsorWithSessionV3ViewImpl;
+
+  factory _SponsorWithSessionV3View.fromJson(Map<String, dynamic> json) =
+      _$SponsorWithSessionV3ViewImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  String get logoName;
+  @override
+  String get description;
+  @override
+  Uri? get url;
+  @override
+  SponsorTypeV2 get type;
+  @override
+  int get sortId;
+  @override
+  List<SponsorWithSessionV3ViewSession> get sessions;
+
+  /// Create a copy of SponsorWithSessionV3View
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SponsorWithSessionV3ViewImplCopyWith<_$SponsorWithSessionV3ViewImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SponsorWithSessionV3ViewSession _$SponsorWithSessionV3ViewSessionFromJson(
+    Map<String, dynamic> json) {
+  return _SponsorWithSessionV3ViewSession.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SponsorWithSessionV3ViewSession {
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  DateTime get startsAt => throw _privateConstructorUsedError;
+  DateTime get endsAt => throw _privateConstructorUsedError;
+  bool get isLightningTalk => throw _privateConstructorUsedError;
+  List<SpeakerTable> get speakers => throw _privateConstructorUsedError;
+  SessionVenue get venue => throw _privateConstructorUsedError;
+
+  /// Serializes this SponsorWithSessionV3ViewSession to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SponsorWithSessionV3ViewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SponsorWithSessionV3ViewSessionCopyWith<SponsorWithSessionV3ViewSession>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SponsorWithSessionV3ViewSessionCopyWith<$Res> {
+  factory $SponsorWithSessionV3ViewSessionCopyWith(
+          SponsorWithSessionV3ViewSession value,
+          $Res Function(SponsorWithSessionV3ViewSession) then) =
+      _$SponsorWithSessionV3ViewSessionCopyWithImpl<$Res,
+          SponsorWithSessionV3ViewSession>;
+  @useResult
+  $Res call(
+      {String id,
+      String title,
+      String description,
+      DateTime startsAt,
+      DateTime endsAt,
+      bool isLightningTalk,
+      List<SpeakerTable> speakers,
+      SessionVenue venue});
+
+  $SessionVenueCopyWith<$Res> get venue;
+}
+
+/// @nodoc
+class _$SponsorWithSessionV3ViewSessionCopyWithImpl<$Res,
+        $Val extends SponsorWithSessionV3ViewSession>
+    implements $SponsorWithSessionV3ViewSessionCopyWith<$Res> {
+  _$SponsorWithSessionV3ViewSessionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SponsorWithSessionV3ViewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? startsAt = null,
+    Object? endsAt = null,
+    Object? isLightningTalk = null,
+    Object? speakers = null,
+    Object? venue = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      startsAt: null == startsAt
+          ? _value.startsAt
+          : startsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endsAt: null == endsAt
+          ? _value.endsAt
+          : endsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isLightningTalk: null == isLightningTalk
+          ? _value.isLightningTalk
+          : isLightningTalk // ignore: cast_nullable_to_non_nullable
+              as bool,
+      speakers: null == speakers
+          ? _value.speakers
+          : speakers // ignore: cast_nullable_to_non_nullable
+              as List<SpeakerTable>,
+      venue: null == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as SessionVenue,
+    ) as $Val);
+  }
+
+  /// Create a copy of SponsorWithSessionV3ViewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SessionVenueCopyWith<$Res> get venue {
+    return $SessionVenueCopyWith<$Res>(_value.venue, (value) {
+      return _then(_value.copyWith(venue: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SponsorWithSessionV3ViewSessionImplCopyWith<$Res>
+    implements $SponsorWithSessionV3ViewSessionCopyWith<$Res> {
+  factory _$$SponsorWithSessionV3ViewSessionImplCopyWith(
+          _$SponsorWithSessionV3ViewSessionImpl value,
+          $Res Function(_$SponsorWithSessionV3ViewSessionImpl) then) =
+      __$$SponsorWithSessionV3ViewSessionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String title,
+      String description,
+      DateTime startsAt,
+      DateTime endsAt,
+      bool isLightningTalk,
+      List<SpeakerTable> speakers,
+      SessionVenue venue});
+
+  @override
+  $SessionVenueCopyWith<$Res> get venue;
+}
+
+/// @nodoc
+class __$$SponsorWithSessionV3ViewSessionImplCopyWithImpl<$Res>
+    extends _$SponsorWithSessionV3ViewSessionCopyWithImpl<$Res,
+        _$SponsorWithSessionV3ViewSessionImpl>
+    implements _$$SponsorWithSessionV3ViewSessionImplCopyWith<$Res> {
+  __$$SponsorWithSessionV3ViewSessionImplCopyWithImpl(
+      _$SponsorWithSessionV3ViewSessionImpl _value,
+      $Res Function(_$SponsorWithSessionV3ViewSessionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SponsorWithSessionV3ViewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? startsAt = null,
+    Object? endsAt = null,
+    Object? isLightningTalk = null,
+    Object? speakers = null,
+    Object? venue = null,
+  }) {
+    return _then(_$SponsorWithSessionV3ViewSessionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      startsAt: null == startsAt
+          ? _value.startsAt
+          : startsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endsAt: null == endsAt
+          ? _value.endsAt
+          : endsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isLightningTalk: null == isLightningTalk
+          ? _value.isLightningTalk
+          : isLightningTalk // ignore: cast_nullable_to_non_nullable
+              as bool,
+      speakers: null == speakers
+          ? _value._speakers
+          : speakers // ignore: cast_nullable_to_non_nullable
+              as List<SpeakerTable>,
+      venue: null == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as SessionVenue,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SponsorWithSessionV3ViewSessionImpl
+    implements _SponsorWithSessionV3ViewSession {
+  const _$SponsorWithSessionV3ViewSessionImpl(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.startsAt,
+      required this.endsAt,
+      required this.isLightningTalk,
+      required final List<SpeakerTable> speakers,
+      required this.venue})
+      : _speakers = speakers;
+
+  factory _$SponsorWithSessionV3ViewSessionImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SponsorWithSessionV3ViewSessionImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String title;
+  @override
+  final String description;
+  @override
+  final DateTime startsAt;
+  @override
+  final DateTime endsAt;
+  @override
+  final bool isLightningTalk;
+  final List<SpeakerTable> _speakers;
+  @override
+  List<SpeakerTable> get speakers {
+    if (_speakers is EqualUnmodifiableListView) return _speakers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_speakers);
+  }
+
+  @override
+  final SessionVenue venue;
+
+  @override
+  String toString() {
+    return 'SponsorWithSessionV3ViewSession(id: $id, title: $title, description: $description, startsAt: $startsAt, endsAt: $endsAt, isLightningTalk: $isLightningTalk, speakers: $speakers, venue: $venue)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SponsorWithSessionV3ViewSessionImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.startsAt, startsAt) ||
+                other.startsAt == startsAt) &&
+            (identical(other.endsAt, endsAt) || other.endsAt == endsAt) &&
+            (identical(other.isLightningTalk, isLightningTalk) ||
+                other.isLightningTalk == isLightningTalk) &&
+            const DeepCollectionEquality().equals(other._speakers, _speakers) &&
+            (identical(other.venue, venue) || other.venue == venue));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      startsAt,
+      endsAt,
+      isLightningTalk,
+      const DeepCollectionEquality().hash(_speakers),
+      venue);
+
+  /// Create a copy of SponsorWithSessionV3ViewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SponsorWithSessionV3ViewSessionImplCopyWith<
+          _$SponsorWithSessionV3ViewSessionImpl>
+      get copyWith => __$$SponsorWithSessionV3ViewSessionImplCopyWithImpl<
+          _$SponsorWithSessionV3ViewSessionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SponsorWithSessionV3ViewSessionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SponsorWithSessionV3ViewSession
+    implements SponsorWithSessionV3ViewSession {
+  const factory _SponsorWithSessionV3ViewSession(
+          {required final String id,
+          required final String title,
+          required final String description,
+          required final DateTime startsAt,
+          required final DateTime endsAt,
+          required final bool isLightningTalk,
+          required final List<SpeakerTable> speakers,
+          required final SessionVenue venue}) =
+      _$SponsorWithSessionV3ViewSessionImpl;
+
+  factory _SponsorWithSessionV3ViewSession.fromJson(Map<String, dynamic> json) =
+      _$SponsorWithSessionV3ViewSessionImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get title;
+  @override
+  String get description;
+  @override
+  DateTime get startsAt;
+  @override
+  DateTime get endsAt;
+  @override
+  bool get isLightningTalk;
+  @override
+  List<SpeakerTable> get speakers;
+  @override
+  SessionVenue get venue;
+
+  /// Create a copy of SponsorWithSessionV3ViewSession
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SponsorWithSessionV3ViewSessionImplCopyWith<
+          _$SponsorWithSessionV3ViewSessionImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SponsorWithSessionV3 _$SponsorWithSessionV3FromJson(Map<String, dynamic> json) {
+  return _SponsorWithSessionV3.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SponsorWithSessionV3 {
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  Uri? get logoUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  Uri? get url => throw _privateConstructorUsedError;
+  SponsorTypeV2 get type => throw _privateConstructorUsedError;
+  int get sortId => throw _privateConstructorUsedError;
+  List<SponsorWithSessionV3Session> get sessions =>
+      throw _privateConstructorUsedError;
+
+  /// Serializes this SponsorWithSessionV3 to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SponsorWithSessionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SponsorWithSessionV3CopyWith<SponsorWithSessionV3> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SponsorWithSessionV3CopyWith<$Res> {
+  factory $SponsorWithSessionV3CopyWith(SponsorWithSessionV3 value,
+          $Res Function(SponsorWithSessionV3) then) =
+      _$SponsorWithSessionV3CopyWithImpl<$Res, SponsorWithSessionV3>;
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      Uri? logoUrl,
+      String description,
+      Uri? url,
+      SponsorTypeV2 type,
+      int sortId,
+      List<SponsorWithSessionV3Session> sessions});
+}
+
+/// @nodoc
+class _$SponsorWithSessionV3CopyWithImpl<$Res,
+        $Val extends SponsorWithSessionV3>
+    implements $SponsorWithSessionV3CopyWith<$Res> {
+  _$SponsorWithSessionV3CopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SponsorWithSessionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? logoUrl = freezed,
+    Object? description = null,
+    Object? url = freezed,
+    Object? type = null,
+    Object? sortId = null,
+    Object? sessions = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logoUrl: freezed == logoUrl
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SponsorTypeV2,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sessions: null == sessions
+          ? _value.sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SponsorWithSessionV3Session>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SponsorWithSessionV3ImplCopyWith<$Res>
+    implements $SponsorWithSessionV3CopyWith<$Res> {
+  factory _$$SponsorWithSessionV3ImplCopyWith(_$SponsorWithSessionV3Impl value,
+          $Res Function(_$SponsorWithSessionV3Impl) then) =
+      __$$SponsorWithSessionV3ImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      Uri? logoUrl,
+      String description,
+      Uri? url,
+      SponsorTypeV2 type,
+      int sortId,
+      List<SponsorWithSessionV3Session> sessions});
+}
+
+/// @nodoc
+class __$$SponsorWithSessionV3ImplCopyWithImpl<$Res>
+    extends _$SponsorWithSessionV3CopyWithImpl<$Res, _$SponsorWithSessionV3Impl>
+    implements _$$SponsorWithSessionV3ImplCopyWith<$Res> {
+  __$$SponsorWithSessionV3ImplCopyWithImpl(_$SponsorWithSessionV3Impl _value,
+      $Res Function(_$SponsorWithSessionV3Impl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SponsorWithSessionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? logoUrl = freezed,
+    Object? description = null,
+    Object? url = freezed,
+    Object? type = null,
+    Object? sortId = null,
+    Object? sessions = null,
+  }) {
+    return _then(_$SponsorWithSessionV3Impl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      logoUrl: freezed == logoUrl
+          ? _value.logoUrl
+          : logoUrl // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as Uri?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SponsorTypeV2,
+      sortId: null == sortId
+          ? _value.sortId
+          : sortId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sessions: null == sessions
+          ? _value._sessions
+          : sessions // ignore: cast_nullable_to_non_nullable
+              as List<SponsorWithSessionV3Session>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SponsorWithSessionV3Impl implements _SponsorWithSessionV3 {
+  const _$SponsorWithSessionV3Impl(
+      {required this.id,
+      required this.name,
+      required this.logoUrl,
+      required this.description,
+      required this.url,
+      required this.type,
+      required this.sortId,
+      required final List<SponsorWithSessionV3Session> sessions})
+      : _sessions = sessions;
+
+  factory _$SponsorWithSessionV3Impl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorWithSessionV3ImplFromJson(json);
+
+  @override
+  final int id;
+  @override
+  final String name;
+  @override
+  final Uri? logoUrl;
+  @override
+  final String description;
+  @override
+  final Uri? url;
+  @override
+  final SponsorTypeV2 type;
+  @override
+  final int sortId;
+  final List<SponsorWithSessionV3Session> _sessions;
+  @override
+  List<SponsorWithSessionV3Session> get sessions {
+    if (_sessions is EqualUnmodifiableListView) return _sessions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sessions);
+  }
+
+  @override
+  String toString() {
+    return 'SponsorWithSessionV3(id: $id, name: $name, logoUrl: $logoUrl, description: $description, url: $url, type: $type, sortId: $sortId, sessions: $sessions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SponsorWithSessionV3Impl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.sortId, sortId) || other.sortId == sortId) &&
+            const DeepCollectionEquality().equals(other._sessions, _sessions));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, logoUrl, description,
+      url, type, sortId, const DeepCollectionEquality().hash(_sessions));
+
+  /// Create a copy of SponsorWithSessionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SponsorWithSessionV3ImplCopyWith<_$SponsorWithSessionV3Impl>
+      get copyWith =>
+          __$$SponsorWithSessionV3ImplCopyWithImpl<_$SponsorWithSessionV3Impl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SponsorWithSessionV3ImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SponsorWithSessionV3 implements SponsorWithSessionV3 {
+  const factory _SponsorWithSessionV3(
+          {required final int id,
+          required final String name,
+          required final Uri? logoUrl,
+          required final String description,
+          required final Uri? url,
+          required final SponsorTypeV2 type,
+          required final int sortId,
+          required final List<SponsorWithSessionV3Session> sessions}) =
+      _$SponsorWithSessionV3Impl;
+
+  factory _SponsorWithSessionV3.fromJson(Map<String, dynamic> json) =
+      _$SponsorWithSessionV3Impl.fromJson;
+
+  @override
+  int get id;
+  @override
+  String get name;
+  @override
+  Uri? get logoUrl;
+  @override
+  String get description;
+  @override
+  Uri? get url;
+  @override
+  SponsorTypeV2 get type;
+  @override
+  int get sortId;
+  @override
+  List<SponsorWithSessionV3Session> get sessions;
+
+  /// Create a copy of SponsorWithSessionV3
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SponsorWithSessionV3ImplCopyWith<_$SponsorWithSessionV3Impl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SponsorWithSessionV3Session _$SponsorWithSessionV3SessionFromJson(
+    Map<String, dynamic> json) {
+  return _SponsorWithSessionV3Session.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SponsorWithSessionV3Session {
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  DateTime get startsAt => throw _privateConstructorUsedError;
+  DateTime get endsAt => throw _privateConstructorUsedError;
+  bool get isLightningTalk => throw _privateConstructorUsedError;
+  List<Speaker> get speakers => throw _privateConstructorUsedError;
+  SessionVenue get venue => throw _privateConstructorUsedError;
+
+  /// Serializes this SponsorWithSessionV3Session to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of SponsorWithSessionV3Session
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SponsorWithSessionV3SessionCopyWith<SponsorWithSessionV3Session>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SponsorWithSessionV3SessionCopyWith<$Res> {
+  factory $SponsorWithSessionV3SessionCopyWith(
+          SponsorWithSessionV3Session value,
+          $Res Function(SponsorWithSessionV3Session) then) =
+      _$SponsorWithSessionV3SessionCopyWithImpl<$Res,
+          SponsorWithSessionV3Session>;
+  @useResult
+  $Res call(
+      {String id,
+      String title,
+      String description,
+      DateTime startsAt,
+      DateTime endsAt,
+      bool isLightningTalk,
+      List<Speaker> speakers,
+      SessionVenue venue});
+
+  $SessionVenueCopyWith<$Res> get venue;
+}
+
+/// @nodoc
+class _$SponsorWithSessionV3SessionCopyWithImpl<$Res,
+        $Val extends SponsorWithSessionV3Session>
+    implements $SponsorWithSessionV3SessionCopyWith<$Res> {
+  _$SponsorWithSessionV3SessionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SponsorWithSessionV3Session
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? startsAt = null,
+    Object? endsAt = null,
+    Object? isLightningTalk = null,
+    Object? speakers = null,
+    Object? venue = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      startsAt: null == startsAt
+          ? _value.startsAt
+          : startsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endsAt: null == endsAt
+          ? _value.endsAt
+          : endsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isLightningTalk: null == isLightningTalk
+          ? _value.isLightningTalk
+          : isLightningTalk // ignore: cast_nullable_to_non_nullable
+              as bool,
+      speakers: null == speakers
+          ? _value.speakers
+          : speakers // ignore: cast_nullable_to_non_nullable
+              as List<Speaker>,
+      venue: null == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as SessionVenue,
+    ) as $Val);
+  }
+
+  /// Create a copy of SponsorWithSessionV3Session
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SessionVenueCopyWith<$Res> get venue {
+    return $SessionVenueCopyWith<$Res>(_value.venue, (value) {
+      return _then(_value.copyWith(venue: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SponsorWithSessionV3SessionImplCopyWith<$Res>
+    implements $SponsorWithSessionV3SessionCopyWith<$Res> {
+  factory _$$SponsorWithSessionV3SessionImplCopyWith(
+          _$SponsorWithSessionV3SessionImpl value,
+          $Res Function(_$SponsorWithSessionV3SessionImpl) then) =
+      __$$SponsorWithSessionV3SessionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String id,
+      String title,
+      String description,
+      DateTime startsAt,
+      DateTime endsAt,
+      bool isLightningTalk,
+      List<Speaker> speakers,
+      SessionVenue venue});
+
+  @override
+  $SessionVenueCopyWith<$Res> get venue;
+}
+
+/// @nodoc
+class __$$SponsorWithSessionV3SessionImplCopyWithImpl<$Res>
+    extends _$SponsorWithSessionV3SessionCopyWithImpl<$Res,
+        _$SponsorWithSessionV3SessionImpl>
+    implements _$$SponsorWithSessionV3SessionImplCopyWith<$Res> {
+  __$$SponsorWithSessionV3SessionImplCopyWithImpl(
+      _$SponsorWithSessionV3SessionImpl _value,
+      $Res Function(_$SponsorWithSessionV3SessionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SponsorWithSessionV3Session
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? startsAt = null,
+    Object? endsAt = null,
+    Object? isLightningTalk = null,
+    Object? speakers = null,
+    Object? venue = null,
+  }) {
+    return _then(_$SponsorWithSessionV3SessionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      startsAt: null == startsAt
+          ? _value.startsAt
+          : startsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endsAt: null == endsAt
+          ? _value.endsAt
+          : endsAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      isLightningTalk: null == isLightningTalk
+          ? _value.isLightningTalk
+          : isLightningTalk // ignore: cast_nullable_to_non_nullable
+              as bool,
+      speakers: null == speakers
+          ? _value._speakers
+          : speakers // ignore: cast_nullable_to_non_nullable
+              as List<Speaker>,
+      venue: null == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as SessionVenue,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SponsorWithSessionV3SessionImpl
+    implements _SponsorWithSessionV3Session {
+  const _$SponsorWithSessionV3SessionImpl(
+      {required this.id,
+      required this.title,
+      required this.description,
+      required this.startsAt,
+      required this.endsAt,
+      required this.isLightningTalk,
+      required final List<Speaker> speakers,
+      required this.venue})
+      : _speakers = speakers;
+
+  factory _$SponsorWithSessionV3SessionImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SponsorWithSessionV3SessionImplFromJson(json);
+
+  @override
+  final String id;
+  @override
+  final String title;
+  @override
+  final String description;
+  @override
+  final DateTime startsAt;
+  @override
+  final DateTime endsAt;
+  @override
+  final bool isLightningTalk;
+  final List<Speaker> _speakers;
+  @override
+  List<Speaker> get speakers {
+    if (_speakers is EqualUnmodifiableListView) return _speakers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_speakers);
+  }
+
+  @override
+  final SessionVenue venue;
+
+  @override
+  String toString() {
+    return 'SponsorWithSessionV3Session(id: $id, title: $title, description: $description, startsAt: $startsAt, endsAt: $endsAt, isLightningTalk: $isLightningTalk, speakers: $speakers, venue: $venue)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SponsorWithSessionV3SessionImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.startsAt, startsAt) ||
+                other.startsAt == startsAt) &&
+            (identical(other.endsAt, endsAt) || other.endsAt == endsAt) &&
+            (identical(other.isLightningTalk, isLightningTalk) ||
+                other.isLightningTalk == isLightningTalk) &&
+            const DeepCollectionEquality().equals(other._speakers, _speakers) &&
+            (identical(other.venue, venue) || other.venue == venue));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      startsAt,
+      endsAt,
+      isLightningTalk,
+      const DeepCollectionEquality().hash(_speakers),
+      venue);
+
+  /// Create a copy of SponsorWithSessionV3Session
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SponsorWithSessionV3SessionImplCopyWith<_$SponsorWithSessionV3SessionImpl>
+      get copyWith => __$$SponsorWithSessionV3SessionImplCopyWithImpl<
+          _$SponsorWithSessionV3SessionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SponsorWithSessionV3SessionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SponsorWithSessionV3Session
+    implements SponsorWithSessionV3Session {
+  const factory _SponsorWithSessionV3Session(
+      {required final String id,
+      required final String title,
+      required final String description,
+      required final DateTime startsAt,
+      required final DateTime endsAt,
+      required final bool isLightningTalk,
+      required final List<Speaker> speakers,
+      required final SessionVenue venue}) = _$SponsorWithSessionV3SessionImpl;
+
+  factory _SponsorWithSessionV3Session.fromJson(Map<String, dynamic> json) =
+      _$SponsorWithSessionV3SessionImpl.fromJson;
+
+  @override
+  String get id;
+  @override
+  String get title;
+  @override
+  String get description;
+  @override
+  DateTime get startsAt;
+  @override
+  DateTime get endsAt;
+  @override
+  bool get isLightningTalk;
+  @override
+  List<Speaker> get speakers;
+  @override
+  SessionVenue get venue;
+
+  /// Create a copy of SponsorWithSessionV3Session
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SponsorWithSessionV3SessionImplCopyWith<_$SponsorWithSessionV3SessionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
