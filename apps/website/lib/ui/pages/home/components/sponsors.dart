@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
+import 'package:conference_2024_website/feature/sponsor/ui/individual_sponsor_view.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/pages/sponsor/sponsor_page.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -65,6 +66,7 @@ Widget sponsorsSection(
           return _sponsorListByLevel(theme, listByLevel.value, context);
         }).toList(),
       ),
+      const IndividualSponsorView(),
     ],
   );
 }
