@@ -227,7 +227,10 @@
     },
     "qrCode": {
       "title": "チケットQRコード",
-      "description": "このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。"
+      "description": "このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。",
+      "showWalletQr": "QRコードで別の端末に追加",
+      "walletQrTitle": "Walletに追加",
+      "walletQrDescription": "iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます"
     },
     "entrance_information": {
       "title": "入場時の情報",

@@ -9,6 +9,7 @@ import 'package:ticket_web/core/gen/fonts.gen.dart';
 import 'package:ticket_web/core/provider/environment.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
+import 'package:ticket_web/pages/ticket/components/wallet_qr_dialog.dart';
 import 'package:url_launcher/link.dart';
 
 class TicketQrCodeCard extends HookConsumerWidget {
@@ -82,17 +83,33 @@ class TicketQrCodeCard extends HookConsumerWidget {
             ),
             const SizedBox(height: 8),
             Center(
-              child: Link(
-                target: LinkTarget.blank,
-                uri: walletUri,
-                builder: (context, followLink) => InkWell(
-                  onTap: followLink,
-                  child: Image(
-                    fit: BoxFit.contain,
-                    image: Assets.images.addToAppleWallet.provider(),
-                    height: 48,
+              child: Column(
+                children: [
+                  Link(
+                    target: LinkTarget.blank,
+                    uri: walletUri,
+                    builder: (context, followLink) => InkWell(
+                      onTap: followLink,
+                      child: Image(
+                        fit: BoxFit.contain,
+                        image: Assets.images.addToAppleWallet.provider(),
+                        height: 48,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(height: 8),
+                  TextButton(
+                    onPressed: () async {
+                      await showDialog<void>(
+                        context: context,
+                        builder: (context) => WalletQrDialog(
+                          walletUri: walletUri,
+                        ),
+                      );
+                    },
+                    child: Text(i18n.ticketPage.qrCode.showWalletQr),
+                  ),
+                ],
               ),
             ),
           ],

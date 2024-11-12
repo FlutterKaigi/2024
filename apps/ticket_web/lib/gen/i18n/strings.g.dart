@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 285 (142 per locale)
+/// Strings: 291 (145 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -419,6 +419,9 @@ class _StringsTicketPageQrCodeJa {
 	// Translations
 	String get title => 'チケットQRコード';
 	String get description => 'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
+	String get showWalletQr => 'QRコードで別の端末に追加';
+	String get walletQrTitle => 'Walletに追加';
+	String get walletQrDescription => 'iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます';
 }
 
 // Path: ticketPage.entranceInformation
@@ -1028,6 +1031,9 @@ class _StringsTicketPageQrCodeEn extends _StringsTicketPageQrCodeJa {
 	// Translations
 	@override String get title => 'Ticket QR Code';
 	@override String get description => 'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
+	@override String get showWalletQr => 'Add with QR Code';
+	@override String get walletQrTitle => 'Add to Apple Wallet';
+	@override String get walletQrDescription => 'Scan this QR code with your iPhone to add the ticket to Apple Wallet';
 }
 
 // Path: ticketPage.entranceInformation
@@ -1472,6 +1478,9 @@ extension on Translations {
 			case 'ticketPage.editFields.results.error': return 'プロフィール情報の更新に失敗しました';
 			case 'ticketPage.qrCode.title': return 'チケットQRコード';
 			case 'ticketPage.qrCode.description': return 'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
+			case 'ticketPage.qrCode.showWalletQr': return 'QRコードで別の端末に追加';
+			case 'ticketPage.qrCode.walletQrTitle': return 'Walletに追加';
+			case 'ticketPage.qrCode.walletQrDescription': return 'iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます';
 			case 'ticketPage.entranceInformation.title': return '入場時の情報';
 			case 'ticketPage.entranceInformation.description.0': return 'FlutterKaigi 2024開催までの間に、このページに入場用QRコードが表示されます。';
 			case 'ticketPage.entranceInformation.description.1': return '入場時は、そのQRコードをスタッフに見せてください。';
@@ -1619,6 +1628,9 @@ extension on _StringsEn {
 			case 'ticketPage.editFields.results.error': return 'Profile information update failed';
 			case 'ticketPage.qrCode.title': return 'Ticket QR Code';
 			case 'ticketPage.qrCode.description': return 'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
+			case 'ticketPage.qrCode.showWalletQr': return 'Add with QR Code';
+			case 'ticketPage.qrCode.walletQrTitle': return 'Add to Apple Wallet';
+			case 'ticketPage.qrCode.walletQrDescription': return 'Scan this QR code with your iPhone to add the ticket to Apple Wallet';
 			case 'ticketPage.entranceInformation.title': return 'Entrance Information';
 			case 'ticketPage.entranceInformation.description.0': return 'A QR code for entry will be displayed on this page before FlutterKaigi 2024.';
 			case 'ticketPage.entranceInformation.description.1': return 'Please show the QR code to staff at the entrance.';
