@@ -31,14 +31,15 @@ class NewsPage extends HookConsumerWidget {
       ),
       body: newsAsyncValue.when(
         data: (newsList) {
-          return newsList.isNotEmpty
+          final availableNewsList = newsList.onlyAvailables();
+          return availableNewsList.isNotEmpty
               ? CustomScrollView(
                   slivers: [
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
-                        childCount: newsList.length,
+                        childCount: availableNewsList.length,
                         (context, index) {
-                          final news = newsList[index];
+                          final news = availableNewsList[index];
                           return NewsListItem(
                             name: news.text,
                             publishedAt: news.startedAt,
@@ -65,5 +66,25 @@ class NewsPage extends HookConsumerWidget {
         },
       ),
     );
+  }
+}
+
+extension on List<News> {
+  /// 有効なお知らせのみに絞り込む
+  List<News> onlyAvailables() => where(
+        (news) => news.isAvailable,
+      ).toList();
+}
+
+extension on News {
+  /// 有効なお知らせかどうか
+  ///
+  /// 以下の２つの条件を満たす場合に有効と判断する。
+  /// ・お知らせがすでに始まっている（開始時刻が現在より前）。
+  /// ・お知らせがまだ終了していない（終了時刻が現在より後、もしくは終了時刻が指定されていない）。
+  bool get isAvailable {
+    final now = DateTime.now();
+    return startedAt.isBefore(now) &&
+        (endedAt == null || endedAt!.isAfter(now));
   }
 }

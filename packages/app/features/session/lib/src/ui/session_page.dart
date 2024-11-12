@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:app_cores_core/util.dart';
 import 'package:app_features_session/l10n.dart';
 import 'package:app_features_session/src/data/model/timeline_item.dart';
@@ -18,6 +19,7 @@ import 'package:intl/intl.dart' as intl;
 
 final _dateFormatter = intl.DateFormat.Md();
 final _timeFormatter = intl.DateFormat.Hm();
+final _googleCalendarDateFormatter = intl.DateFormat("yyyyMMdd'T'HHmmss'Z'");
 
 class SessionPage extends ConsumerWidget with SessionPageMixin {
   SessionPage({
@@ -64,7 +66,18 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                   tooltip: l.shareOnX,
                   padding: const EdgeInsets.all(12),
                   onPressed: () {
-                    // TODO: データをつなぎこんだら共有機能を実装する
+                    final uri = Uri.https(
+                      'x.com',
+                      'intent/tweet',
+                      {
+                        'text': session.title,
+                        'url':
+                            'https://2024.flutterkaigi.jp/session/$sessionId',
+                        'hashtags': 'FlutterKaigi2024',
+                        'via': 'FlutterKaigi',
+                      },
+                    );
+                    unawaited(launchInExternalApp(uri));
                   },
                   icon: const Icon(Icons.share),
                 ),
@@ -130,8 +143,20 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     leading: const Icon(Icons.event_outlined),
-                    onTap: () {
-                      // TODO: 該当の日時でカレンダーを開く (#24)
+                    onTap: () async {
+                      switch (defaultTargetPlatform) {
+                        case TargetPlatform.iOS:
+                          final event = _createIosEvent(session);
+                          await Add2Calendar.addEvent2Cal(event);
+                        case TargetPlatform.macOS:
+                        case TargetPlatform.android:
+                        case TargetPlatform.fuchsia:
+                        case TargetPlatform.linux:
+                        case TargetPlatform.windows:
+                          await launchInExternalApp(
+                            _createGoogleCalendarUrl(session),
+                          );
+                      }
                     },
                   ),
                 ),
@@ -197,4 +222,35 @@ mixin SessionPageMixin {
       );
     return appBarSize + padding + textPainter.height;
   }
+}
+
+Event _createIosEvent(
+  TimelineItemSession session,
+) =>
+    Event(
+      title: 'FlutterKaigi 2024: ${session.title}',
+      description: session.description,
+      location: session.venue.name,
+      startDate: session.startsAt,
+      endDate: session.endsAt,
+      iosParams: const IOSParams(
+        reminder: Duration(minutes: 10),
+      ),
+    );
+
+Uri _createGoogleCalendarUrl(
+  TimelineItemSession session,
+) {
+  return Uri.https(
+    'www.google.com',
+    'calendar/render',
+    {
+      'action': 'TEMPLATE',
+      'text': 'FlutterKaigi 2024: ${session.title}',
+      'details': session.description,
+      'location': session.venue.name,
+      'dates':
+          '${_googleCalendarDateFormatter.format(session.startsAt.toUtc())}/${_googleCalendarDateFormatter.format(session.endsAt.toUtc())}',
+    },
+  );
 }

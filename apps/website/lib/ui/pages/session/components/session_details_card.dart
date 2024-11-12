@@ -18,7 +18,7 @@ class SessionDetailsCard extends StatelessWidget {
     super.key,
   });
 
-  final SessionsWithSpeakerSponsorV2 session;
+  final SessionsWithSpeakerSponsorV3 session;
 
   @override
   Widget build(BuildContext context) {

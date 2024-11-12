@@ -316,3 +316,188 @@ Map<String, dynamic> _$$SponsorWithSessionV2SessionImplToJson(
       'speakers': instance.speakers,
       'venue': instance.venue,
     };
+
+_$SponsorWithSessionV3ViewImpl _$$SponsorWithSessionV3ViewImplFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SponsorWithSessionV3ViewImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$SponsorWithSessionV3ViewImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          logoName: $checkedConvert('logo_name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          url: $checkedConvert(
+              'url', (v) => v == null ? null : Uri.parse(v as String)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SponsorTypeV2EnumMap, v)),
+          sortId: $checkedConvert('sort_id', (v) => (v as num).toInt()),
+          sessions: $checkedConvert(
+              'sessions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SponsorWithSessionV3ViewSession.fromJson(
+                      e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'logoName': 'logo_name', 'sortId': 'sort_id'},
+    );
+
+Map<String, dynamic> _$$SponsorWithSessionV3ViewImplToJson(
+        _$SponsorWithSessionV3ViewImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'logo_name': instance.logoName,
+      'description': instance.description,
+      'url': instance.url?.toString(),
+      'type': _$SponsorTypeV2EnumMap[instance.type]!,
+      'sort_id': instance.sortId,
+      'sessions': instance.sessions,
+    };
+
+const _$SponsorTypeV2EnumMap = {
+  SponsorTypeV2.platinum: 'platinum',
+  SponsorTypeV2.gold: 'gold',
+  SponsorTypeV2.silver: 'silver',
+  SponsorTypeV2.bronze: 'bronze',
+  SponsorTypeV2.community: 'community',
+  SponsorTypeV2.translation: 'translation',
+};
+
+_$SponsorWithSessionV3ViewSessionImpl
+    _$$SponsorWithSessionV3ViewSessionImplFromJson(Map<String, dynamic> json) =>
+        $checkedCreate(
+          r'_$SponsorWithSessionV3ViewSessionImpl',
+          json,
+          ($checkedConvert) {
+            final val = _$SponsorWithSessionV3ViewSessionImpl(
+              id: $checkedConvert('id', (v) => v as String),
+              title: $checkedConvert('title', (v) => v as String),
+              description: $checkedConvert('description', (v) => v as String),
+              startsAt: $checkedConvert(
+                  'starts_at', (v) => DateTime.parse(v as String)),
+              endsAt: $checkedConvert(
+                  'ends_at', (v) => DateTime.parse(v as String)),
+              isLightningTalk:
+                  $checkedConvert('is_lightning_talk', (v) => v as bool),
+              speakers: $checkedConvert(
+                  'speakers',
+                  (v) => (v as List<dynamic>)
+                      .map((e) =>
+                          SpeakerTable.fromJson(e as Map<String, dynamic>))
+                      .toList()),
+              venue: $checkedConvert('venue',
+                  (v) => SessionVenue.fromJson(v as Map<String, dynamic>)),
+            );
+            return val;
+          },
+          fieldKeyMap: const {
+            'startsAt': 'starts_at',
+            'endsAt': 'ends_at',
+            'isLightningTalk': 'is_lightning_talk'
+          },
+        );
+
+Map<String, dynamic> _$$SponsorWithSessionV3ViewSessionImplToJson(
+        _$SponsorWithSessionV3ViewSessionImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'starts_at': instance.startsAt.toIso8601String(),
+      'ends_at': instance.endsAt.toIso8601String(),
+      'is_lightning_talk': instance.isLightningTalk,
+      'speakers': instance.speakers,
+      'venue': instance.venue,
+    };
+
+_$SponsorWithSessionV3Impl _$$SponsorWithSessionV3ImplFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SponsorWithSessionV3Impl',
+      json,
+      ($checkedConvert) {
+        final val = _$SponsorWithSessionV3Impl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          logoUrl: $checkedConvert(
+              'logo_url', (v) => v == null ? null : Uri.parse(v as String)),
+          description: $checkedConvert('description', (v) => v as String),
+          url: $checkedConvert(
+              'url', (v) => v == null ? null : Uri.parse(v as String)),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SponsorTypeV2EnumMap, v)),
+          sortId: $checkedConvert('sort_id', (v) => (v as num).toInt()),
+          sessions: $checkedConvert(
+              'sessions',
+              (v) => (v as List<dynamic>)
+                  .map((e) => SponsorWithSessionV3Session.fromJson(
+                      e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'logoUrl': 'logo_url', 'sortId': 'sort_id'},
+    );
+
+Map<String, dynamic> _$$SponsorWithSessionV3ImplToJson(
+        _$SponsorWithSessionV3Impl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'logo_url': instance.logoUrl?.toString(),
+      'description': instance.description,
+      'url': instance.url?.toString(),
+      'type': _$SponsorTypeV2EnumMap[instance.type]!,
+      'sort_id': instance.sortId,
+      'sessions': instance.sessions,
+    };
+
+_$SponsorWithSessionV3SessionImpl _$$SponsorWithSessionV3SessionImplFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SponsorWithSessionV3SessionImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$SponsorWithSessionV3SessionImpl(
+          id: $checkedConvert('id', (v) => v as String),
+          title: $checkedConvert('title', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          startsAt:
+              $checkedConvert('starts_at', (v) => DateTime.parse(v as String)),
+          endsAt:
+              $checkedConvert('ends_at', (v) => DateTime.parse(v as String)),
+          isLightningTalk:
+              $checkedConvert('is_lightning_talk', (v) => v as bool),
+          speakers: $checkedConvert(
+              'speakers',
+              (v) => (v as List<dynamic>)
+                  .map((e) => Speaker.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+          venue: $checkedConvert(
+              'venue', (v) => SessionVenue.fromJson(v as Map<String, dynamic>)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'startsAt': 'starts_at',
+        'endsAt': 'ends_at',
+        'isLightningTalk': 'is_lightning_talk'
+      },
+    );
+
+Map<String, dynamic> _$$SponsorWithSessionV3SessionImplToJson(
+        _$SponsorWithSessionV3SessionImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'starts_at': instance.startsAt.toIso8601String(),
+      'ends_at': instance.endsAt.toIso8601String(),
+      'is_lightning_talk': instance.isLightningTalk,
+      'speakers': instance.speakers,
+      'venue': instance.venue,
+    };

@@ -6,7 +6,10 @@
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist",
     "upload": "wrangler pages deploy dist --project-name flutterkaigi-2024",
-    "deploy": "pnpm clean && pnpm build && pnpm upload"
+    "deploy": "pnpm clean && pnpm build && pnpm upload",
+    "check": "pnpm typecheck && pnpm lint && pnpm format",
+    "format": "biome format --write",
+    "lint": "biome lint --write"
   },
   "dependencies": {
     "@cloudflare/pages-plugin-vercel-og": "^0.1.2",

@@ -1,6 +1,7 @@
 import 'package:common_data/profile.dart';
 import 'package:common_data/session.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_v2_view.dart';
+import 'package:common_data/src/model/view/session_venues_with_sessions_v3_view.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_view.dart';
 import 'package:common_data/src/repository/speaker_repository.dart';
 import 'package:common_data/src/repository/sponsor_repository.dart';
@@ -89,6 +90,7 @@ class SessionRepository {
         .toList();
   }
 
+  @Deprecated('Use fetchSessionVenuesWithSessionsV3 instead')
   Future<List<SessionVenuesWithSessionsV2>>
       fetchSessionVenuesWithSessionsV2() async {
     final result = await _client
@@ -98,6 +100,17 @@ class SessionRepository {
           (list) => list.map(SessionVenuesWithSessionsV2View.fromJson).toList(),
         );
     return result.map(toSessionVenuesWithSessionsV2).toList();
+  }
+
+  Future<List<SessionVenuesWithSessionsV3>>
+      fetchSessionVenuesWithSessionsV3() async {
+    final result = await _client
+        .from('session_venues_with_sessions_v3')
+        .select()
+        .withConverter(
+          (list) => list.map(SessionVenuesWithSessionsV3View.fromJson).toList(),
+        );
+    return result.map(toSessionVenuesWithSessionsV3).toList();
   }
 
   Future<List<Session>> fetchSessions() async =>
@@ -158,6 +171,35 @@ class SessionRepository {
             .toList(),
         sponsors: sessionsWithSpeakerSponsorV2View.sponsors
             .map(_sponsorRepository.toSponsor)
+            .toList(),
+      );
+
+  SessionVenuesWithSessionsV3 toSessionVenuesWithSessionsV3(
+    SessionVenuesWithSessionsV3View sessionVenuesWithSessionsV3View,
+  ) =>
+      SessionVenuesWithSessionsV3(
+        id: sessionVenuesWithSessionsV3View.id,
+        name: sessionVenuesWithSessionsV3View.name,
+        sessions: sessionVenuesWithSessionsV3View.sessions
+            .map(_toSessionsWithSpeakerSponsorV3View)
+            .toList(),
+      );
+
+  SessionsWithSpeakerSponsorV3 _toSessionsWithSpeakerSponsorV3View(
+    SessionsWithSpeakerSponsorV3View sessionsWithSpeakerSponsorV3View,
+  ) =>
+      SessionsWithSpeakerSponsorV3(
+        id: sessionsWithSpeakerSponsorV3View.id,
+        title: sessionsWithSpeakerSponsorV3View.title,
+        description: sessionsWithSpeakerSponsorV3View.description,
+        startsAt: sessionsWithSpeakerSponsorV3View.startsAt,
+        endsAt: sessionsWithSpeakerSponsorV3View.endsAt,
+        isLightningTalk: sessionsWithSpeakerSponsorV3View.isLightningTalk,
+        speakers: sessionsWithSpeakerSponsorV3View.speakers
+            .map(_speakerRepository.toSpeaker)
+            .toList(),
+        sponsors: sessionsWithSpeakerSponsorV3View.sponsors
+            .map(_sponsorRepository.toSponsorV2)
             .toList(),
       );
 }

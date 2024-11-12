@@ -7,12 +7,12 @@ part of 'sponsor_provider.dart';
 // **************************************************************************
 
 String _$sponsorWithSessionsHash() =>
-    r'bfa54f086a1ef5288664cce7aac9e3ad284539ec';
+    r'bfe85ddbd786bc2ae92987d248111bc6ba55f59b';
 
 /// See also [sponsorWithSessions].
 @ProviderFor(sponsorWithSessions)
 final sponsorWithSessionsProvider =
-    FutureProvider<List<SponsorWithSessionV2>>.internal(
+    FutureProvider<List<SponsorWithSessionV3>>.internal(
   sponsorWithSessions,
   name: r'sponsorWithSessionsProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -24,7 +24,7 @@ final sponsorWithSessionsProvider =
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSessionV2>>;
+typedef SponsorWithSessionsRef = FutureProviderRef<List<SponsorWithSessionV3>>;
 String _$sponsorAndSessionListHash() =>
     r'1882b31fde9588c494ab918e82cd84f232f09ba7';
 
