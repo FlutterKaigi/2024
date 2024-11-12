@@ -505,7 +505,7 @@ class _StringsTicketPageQrCodeJa {
   String get title => 'チケットQRコード';
   String get description =>
       'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
-  String get showWalletQr => 'QRコードで別の端末に追加';
+  String get showWalletQr => 'QRコードで別の端末にチケットを追加';
   String get walletQrTitle => 'Walletに追加';
   String get walletQrDescription =>
       'iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます';
@@ -1359,7 +1359,7 @@ class _StringsTicketPageQrCodeEn extends _StringsTicketPageQrCodeJa {
   String get description =>
       'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
   @override
-  String get showWalletQr => 'Add with QR Code';
+  String get showWalletQr => 'Add ticket to another mobile device with QR Code';
   @override
   String get walletQrTitle => 'Add to Wallet';
   @override
@@ -2144,7 +2144,7 @@ extension on Translations {
       case 'ticketPage.qrCode.description':
         return 'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
       case 'ticketPage.qrCode.showWalletQr':
-        return 'QRコードで別の端末に追加';
+        return 'QRコードで別の端末にチケットを追加';
       case 'ticketPage.qrCode.walletQrTitle':
         return 'Walletに追加';
       case 'ticketPage.qrCode.walletQrDescription':
@@ -2445,7 +2445,7 @@ extension on _StringsEn {
       case 'ticketPage.qrCode.description':
         return 'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
       case 'ticketPage.qrCode.showWalletQr':
-        return 'Add with QR Code';
+        return 'Add ticket to another mobile device with QR Code';
       case 'ticketPage.qrCode.walletQrTitle':
         return 'Add to Wallet';
       case 'ticketPage.qrCode.walletQrDescription':
