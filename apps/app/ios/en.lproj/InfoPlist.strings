@@ -1,4 +1,0 @@
-"NSCalendarsUsageDescription" = "Use the calendar to register session details as an appointment.";
-"NSContactsUsageDescription" = "Used as a candidate for input when editing the location of an appointment.";
-// iOS17以降は[NSCalendarsUsageDescription]が非推奨となっているため以下を追加
-"NSCalendarsWriteOnlyAccessUsageDescription" = "Use the calendar to register session details as an appointment.";
