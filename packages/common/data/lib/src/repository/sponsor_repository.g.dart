@@ -44,6 +44,45 @@ const _$SponsorTypeEnumMap = {
   SponsorType.bronze: 'bronze',
 };
 
+_$SponsorV2TableImpl _$$SponsorV2TableImplFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SponsorV2TableImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$SponsorV2TableImpl(
+          id: $checkedConvert('id', (v) => (v as num).toInt()),
+          name: $checkedConvert('name', (v) => v as String),
+          logoName: $checkedConvert('logo_name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          url: $checkedConvert('url', (v) => v as String?),
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SponsorTypeV2EnumMap, v)),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'logoName': 'logo_name'},
+    );
+
+Map<String, dynamic> _$$SponsorV2TableImplToJson(
+        _$SponsorV2TableImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'logo_name': instance.logoName,
+      'description': instance.description,
+      'url': instance.url,
+      'type': _$SponsorTypeV2EnumMap[instance.type]!,
+    };
+
+const _$SponsorTypeV2EnumMap = {
+  SponsorTypeV2.platinum: 'platinum',
+  SponsorTypeV2.gold: 'gold',
+  SponsorTypeV2.silver: 'silver',
+  SponsorTypeV2.bronze: 'bronze',
+  SponsorTypeV2.community: 'community',
+  SponsorTypeV2.translation: 'translation',
+};
+
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************

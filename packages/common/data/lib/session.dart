@@ -11,6 +11,12 @@ export 'src/model/view/session_venues_with_sessions_v2_view.dart'
         $SessionsWithSpeakerSponsorV2CopyWith,
         SessionVenuesWithSessionsV2,
         SessionsWithSpeakerSponsorV2;
+export 'src/model/view/session_venues_with_sessions_v3_view.dart'
+    show
+        $SessionVenuesWithSessionsV3CopyWith,
+        $SessionsWithSpeakerSponsorV3CopyWith,
+        SessionVenuesWithSessionsV3,
+        SessionsWithSpeakerSponsorV3;
 export 'src/model/view/session_venues_with_sessions_view.dart'
     show SessionVenuesWithSessionsView;
 export 'src/model/view/sponsor_with_session.dart'
@@ -19,10 +25,14 @@ export 'src/model/view/sponsor_with_session.dart'
         $SponsorWithSessionCopyWith,
         $SponsorWithSessionV2CopyWith,
         $SponsorWithSessionV2SessionCopyWith,
+        $SponsorWithSessionV3CopyWith,
+        $SponsorWithSessionV3SessionCopyWith,
         SessionWithSpeakerAndVenue,
         SponsorWithSession,
         SponsorWithSessionV2,
-        SponsorWithSessionV2Session;
+        SponsorWithSessionV2Session,
+        SponsorWithSessionV3,
+        SponsorWithSessionV3Session;
 export 'src/repository/session_repository.dart'
     show
         SessionRepository,
