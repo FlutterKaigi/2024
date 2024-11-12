@@ -1,3 +1,4 @@
+import 'package:common_data/constant.dart';
 import 'package:conference_2024_website/core/util/scroll_to_section.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
@@ -195,28 +196,28 @@ final class _SocialIcons extends StatelessWidget {
             width: 30,
           ),
         ),
-        url: 'https://x.com/FlutterKaigi',
+        url: OfficialSocialUrls.x,
       ),
       const _SocialIconData(
         icon: VectorGraphic(
           loader: AssetBytesLoader('assets/svg/products/github.svg'),
           colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
         ),
-        url: 'https://github.com/FlutterKaigi/2024',
+        url: '${OfficialSocialUrls.github}/2024',
       ),
       const _SocialIconData(
         icon: VectorGraphic(
           loader: AssetBytesLoader('assets/svg/products/discord.svg'),
           colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
         ),
-        url: 'https://discord.com/invite/Nr7H8JTJSF',
+        url: OfficialSocialUrls.discord,
       ),
       const _SocialIconData(
         icon: VectorGraphic(
           loader: AssetBytesLoader('assets/svg/products/medium.svg'),
           colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
         ),
-        url: 'https://medium.com/flutterkaigi',
+        url: OfficialSocialUrls.medium,
       ),
     ];
 
