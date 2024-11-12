@@ -182,7 +182,7 @@ app.get(
 					format: "PKBarcodeFormatQR",
 					// Ticket ID
 					message: ticket.id,
-					altText: `U-${ticket.id.slice(0, 8)}`,
+					altText: `T-${ticket.id.slice(0, 8)}`,
 				} satisfies Barcode,
 			],
 		);
