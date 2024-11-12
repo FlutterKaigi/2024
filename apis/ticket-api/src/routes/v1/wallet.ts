@@ -138,7 +138,7 @@ app.get(
 			value: "2024-11-21T10:00+09:00",
 			label: "STARTS-AT",
 			timeStyle: "PKDateStyleShort",
-			dateStyle: "PKDateStyleFull",
+			dateStyle: "PKDateStyleShort",
 		});
 		pass.auxiliaryFields.push(
 			...[{
@@ -147,7 +147,7 @@ app.get(
 			label: "NAME",
 		},{
 			key: "section",
-			value: ticket.section_id,
+			value: ticket.section_id ?? "Unknown",
 			label: "ネームプレート 区画ID",
 		}]
 		);
@@ -156,7 +156,7 @@ app.get(
 				{
 					"key": "section-id",
 					label: "ネームプレート 区画ID",
-					value: ticket.section_id,
+					value: ticket.section_id ?? "不明",
 				},
 				{
 					key: "user-id",
