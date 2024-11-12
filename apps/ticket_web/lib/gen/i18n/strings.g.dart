@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 275 (137 per locale)
+/// Strings: 281 (140 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -298,6 +298,8 @@ class _StringsTicketPageJa {
       '※FlutterKaigi 2024当日に配布するネームプレートのデザインは、変更される可能性があります。';
   late final _StringsTicketPageEditFieldsJa editFields =
       _StringsTicketPageEditFieldsJa._(_root);
+  late final _StringsTicketPageEntranceInformationJa entranceInformation =
+      _StringsTicketPageEntranceInformationJa._(_root);
 }
 
 // Path: homePage.titleAndLogo
@@ -489,6 +491,20 @@ class _StringsTicketPageEditFieldsJa {
       _StringsTicketPageEditFieldsIsAdultJa._(_root);
   late final _StringsTicketPageEditFieldsResultsJa results =
       _StringsTicketPageEditFieldsResultsJa._(_root);
+}
+
+// Path: ticketPage.entranceInformation
+class _StringsTicketPageEntranceInformationJa {
+  _StringsTicketPageEntranceInformationJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => '入場時の情報';
+  List<String> get description => [
+        'FlutterKaigi 2024開催までの間に、このページに入場用QRコードが表示されます。',
+        '入場時は、そのQRコードをスタッフに見せてください。',
+      ];
 }
 
 // Path: homePage.tickets.variant
@@ -1007,6 +1023,9 @@ class _StringsTicketPageEn extends _StringsTicketPageJa {
   @override
   late final _StringsTicketPageEditFieldsEn editFields =
       _StringsTicketPageEditFieldsEn._(_root);
+  @override
+  late final _StringsTicketPageEntranceInformationEn entranceInformation =
+      _StringsTicketPageEntranceInformationEn._(_root);
 }
 
 // Path: homePage.titleAndLogo
@@ -1298,6 +1317,26 @@ class _StringsTicketPageEditFieldsEn extends _StringsTicketPageEditFieldsJa {
   @override
   late final _StringsTicketPageEditFieldsResultsEn results =
       _StringsTicketPageEditFieldsResultsEn._(_root);
+}
+
+// Path: ticketPage.entranceInformation
+class _StringsTicketPageEntranceInformationEn
+    extends _StringsTicketPageEntranceInformationJa {
+  _StringsTicketPageEntranceInformationEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Entrance Information';
+  @override
+  List<String> get description => [
+        'A QR code for entry will be displayed on this page before FlutterKaigi 2024.',
+        'Please show the QR code to staff at the entrance.',
+      ];
 }
 
 // Path: homePage.tickets.variant
@@ -2046,6 +2085,12 @@ extension on Translations {
         return 'プロフィール情報を更新しました';
       case 'ticketPage.editFields.results.error':
         return 'プロフィール情報の更新に失敗しました';
+      case 'ticketPage.entranceInformation.title':
+        return '入場時の情報';
+      case 'ticketPage.entranceInformation.description.0':
+        return 'FlutterKaigi 2024開催までの間に、このページに入場用QRコードが表示されます。';
+      case 'ticketPage.entranceInformation.description.1':
+        return '入場時は、そのQRコードをスタッフに見せてください。';
       default:
         return null;
     }
@@ -2325,6 +2370,12 @@ extension on _StringsEn {
         return 'Profile information updated successfully';
       case 'ticketPage.editFields.results.error':
         return 'Profile information update failed';
+      case 'ticketPage.entranceInformation.title':
+        return 'Entrance Information';
+      case 'ticketPage.entranceInformation.description.0':
+        return 'A QR code for entry will be displayed on this page before FlutterKaigi 2024.';
+      case 'ticketPage.entranceInformation.description.1':
+        return 'Please show the QR code to staff at the entrance.';
       default:
         return null;
     }
