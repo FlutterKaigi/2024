@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
 import 'package:ticket_web/core/gen/assets.gen.dart';
+import 'package:ticket_web/core/gen/fonts.gen.dart';
 import 'package:ticket_web/core/provider/environment.dart';
 import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
@@ -60,6 +61,15 @@ class TicketQrCodeCard extends HookConsumerWidget {
               data: ticket.id,
               size: isMobile ? 200 : 250,
               backgroundColor: Colors.white,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'U-${ticket.id.split('-')[0]}',
+              style: (isMobile ? textTheme.bodyMedium : textTheme.bodyLarge)
+                  ?.copyWith(
+                color: theme.colorScheme.onSurface,
+                fontFamily: FontFamily.poppins,
+              ),
             ),
             const SizedBox(height: 8),
             Text(
