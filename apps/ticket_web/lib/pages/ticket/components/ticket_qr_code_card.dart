@@ -1,5 +1,6 @@
 import 'package:common_data/ticket.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:ticket_web/core/extension/is_mobile.dart';
@@ -9,7 +10,7 @@ import 'package:ticket_web/feature/auth/data/auth_notifier.dart';
 import 'package:ticket_web/gen/i18n/strings.g.dart';
 import 'package:url_launcher/link.dart';
 
-class TicketQrCodeCard extends ConsumerWidget {
+class TicketQrCodeCard extends HookConsumerWidget {
   const TicketQrCodeCard({
     required this.ticket,
     super.key,
@@ -23,6 +24,16 @@ class TicketQrCodeCard extends ConsumerWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final isMobile = MediaQuery.sizeOf(context).isMobile;
+
+    final environment = ref.watch(environmentProvider);
+    final supabaseAccessToken = ref.watch(supabaseAccessTokenProvider);
+    final walletUri = useMemoized(
+      () => Uri.parse(
+        '${environment.ticketApiBaseUrl}/v1/wallet/pass.pkpass'
+        '?authorization=$supabaseAccessToken',
+      ),
+      [environment, supabaseAccessToken],
+    );
 
     return Card.outlined(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -63,13 +74,10 @@ class TicketQrCodeCard extends ConsumerWidget {
             Center(
               child: Link(
                 target: LinkTarget.blank,
-                uri: Uri.parse(
-                  '${ref.watch(environmentProvider).ticketApiBaseUrl}v1/wallet/pass.pkpass'
-                  '?authorization=${ref.watch(supabaseAccessTokenProvider)}',
-                ),
+                uri: walletUri,
                 builder: (context, followLink) => InkWell(
                   onTap: followLink,
-                  child: Ink.image(
+                  child: Image(
                     fit: BoxFit.contain,
                     image: Assets.images.addToAppleWallet.provider(),
                     height: 48,
