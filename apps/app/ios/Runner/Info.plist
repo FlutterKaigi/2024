@@ -5,11 +5,11 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSCalendarsWriteOnlyAccessUsageDescription</key>
-	<string>$(NSCalendarsWriteOnlyAccessUsageDescription)</string>
+	<string>Use the calendar to register session details as an appointment.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>$(NSContactsUsageDescription)</string>
+	<string>Used as a candidate for input when editing the location of an appointment.</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>$(NSCalendarsUsageDescription)</string>
+	<string>Use the calendar to register session details as an appointment.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
