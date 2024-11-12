@@ -9,6 +9,7 @@ import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart'
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final class Sponsors extends HookConsumerWidget {
@@ -66,6 +67,7 @@ Widget sponsorsSection(
           return _sponsorListByLevel(theme, listByLevel.value, context);
         }).toList(),
       ),
+      const Gap(80),
       const IndividualSponsorView(),
     ],
   );
