@@ -407,7 +407,7 @@ class _StringsErrorNetworkJa {
   String get status500 => 'サーバーでエラーが発生しました';
   String get status503 => 'サーバーが過負荷状態です';
   String statusOther({required Object statusCode}) =>
-      'ネットワークエラーが発生しまし��� (ステータスコード: ${statusCode})';
+      'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
   String get tryAgain => '時間をおいて再度お試しください';
   String get unknown => '不明なエラーが発生しました';
 }
@@ -2036,7 +2036,7 @@ extension on Translations {
         return 'サーバーが過負荷状態です';
       case 'error.network.statusOther':
         return ({required Object statusCode}) =>
-            'ネットワークエラーが発生しまし��� (ステータスコード: ${statusCode})';
+            'ネットワークエラーが発生しました (ステータスコード: ${statusCode})';
       case 'error.network.tryAgain':
         return '時間をおいて再度お試しください';
       case 'error.network.unknown':
