@@ -215,6 +215,13 @@
         "success": "Profile information updated successfully",
         "error": "Profile information update failed"
       }
+    },
+    "entrance_information": {
+      "title": "Entrance Information",
+      "description": [
+        "A QR code for entry will be displayed on this page before FlutterKaigi 2024.",
+        "Please show the QR code to staff at the entrance."
+      ]
     }
   }
 }
