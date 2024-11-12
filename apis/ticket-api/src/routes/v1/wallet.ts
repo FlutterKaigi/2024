@@ -54,12 +54,13 @@ app.get(
 				organizationName: "FlutterKaigi 2024",
 				passTypeIdentifier: "pass.jp.co.flutterkaigi.2024.ticket",
 				teamIdentifier: "6JT949BA2M",
-				serialNumber: "1234567890",
+				serialNumber: ticket.id,
 				contactVenueWebsite: "https://flutterkaigi.jp",
 				backgroundColor: "rgb(255,255,255)",
 				foregroundColor: "rgb(0,0,0)",
 				labelColor: "rgb(0,0,0)",
 				associatedStoreIdentifiers: [6737717479],
+				// チケットの共有は禁止
 				sharingProhibited: true,
 				semantics: {
 					eventName: "FlutterKaigi 2024",
@@ -139,27 +140,38 @@ app.get(
 			timeStyle: "PKDateStyleShort",
 			dateStyle: "PKDateStyleFull",
 		});
-		pass.auxiliaryFields.push({
+		pass.auxiliaryFields.push(
+			...[{
 			key: "name",
 			value: user.profile.name,
 			label: "NAME",
-		});
+		},{
+			key: "section",
+			value: ticket.section_id,
+			label: "ネームプレート 区画ID",
+		}]
+		);
 		pass.backFields.push(
 			...[
 				{
+					"key": "section-id",
+					label: "ネームプレート 区画ID",
+					value: ticket.section_id,
+				},
+				{
 					key: "user-id",
+					label: "ユーザID",
 					value: user.profile.id,
-					label: "USER-ID",
 				},
 				{
 					key: "ticket-id",
+					label: "チケットID",
 					value: ticket.id,
-					label: "TICKET-ID",
 				},
 				{
 					key: "payment-id",
-					value: ticket.stripe_checkout_session_id ?? "Unknown",
-					label: "PAYMENT-ID",
+					label: "決済ID",
+					value: ticket.stripe_checkout_session_id ?? "不明",
 				},
 			],
 		);
