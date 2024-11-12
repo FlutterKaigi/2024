@@ -45,7 +45,7 @@ app.get(
 			c.env.SUPABASE_KEY,
 		);
 		const { data, error } = await supabase
-			.from("sponsors")
+			.from("sponsors_v2")
 			.select()
 			.eq("id", id)
 			.maybeSingle();
@@ -54,6 +54,12 @@ app.get(
 		}
 		if (!data) {
 			return c.json({ error: "Sponsor not found" }, 404);
+		}
+		if (!data.name) {
+			return c.json({ error: "Name is not found" }, 404);
+		}
+		if (!data.logo_name) {
+			return c.json({ error: "Logo name is not found" }, 404);
 		}
 
 		const url = new URL(c.req.url);
