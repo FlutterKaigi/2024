@@ -1,1 +1,1 @@
-export 'constant/official_social_urls.dart';
+export 'src/constant/official_social_urls.dart';
