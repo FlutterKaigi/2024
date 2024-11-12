@@ -61,7 +61,9 @@
       "platinum": "Platinum",
       "gold": "Gold",
       "silver": "Silver",
-      "bronze": "Bronze"
+      "bronze": "Bronze",
+      "community": "Community",
+      "translation": "Translation"
     },
     "sponsors_error": "スポンサー一覧の取得に失敗しました",
     "sponsor_not_found": "スポンサーが見つかりませんでした",

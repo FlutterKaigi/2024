@@ -5,5 +5,5 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'sponsor_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
-Future<List<SponsorWithSessionV2>> sponsor(Ref ref) async =>
-    ref.watch(sponsorRepositoryProvider).fetchSponsorWithSessionsV2();
+Future<List<SponsorWithSessionV3>> sponsor(Ref ref) async =>
+    ref.watch(sponsorRepositoryProvider).fetchSponsorWithSessionsV3();
