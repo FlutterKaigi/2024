@@ -1,8 +1,26 @@
+import 'dart:typed_data';
+
+import 'package:collection/collection.dart';
 import 'package:common_data/profile.dart';
 import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:url_launcher/link.dart';
 
-class IndividualSponsorCard extends StatelessWidget {
+part 'individual_sponsor_card.g.dart';
+
+@Riverpod(keepAlive: true)
+Future<Uint8List?> userAvatarImage(Ref ref, ProfileWithSns sponsor) async {
+  final fetch = sponsor.userAvatarFetch;
+  if (fetch == null) {
+    return null;
+  }
+  final result = await fetch.call();
+  return result;
+}
+
+class IndividualSponsorCard extends ConsumerWidget {
   const IndividualSponsorCard({
     required this.sponsor,
     super.key,
@@ -14,26 +32,25 @@ class IndividualSponsorCard extends StatelessWidget {
   static double margin({required bool isMobile}) => isMobile ? 16 : 24;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isMobile = MediaQuery.sizeOf(context).isMobile;
 
-    return SizedBox(
+    final userAvatarImage = ref.watch(userAvatarImageProvider(sponsor));
+    final imageData = userAvatarImage.valueOrNull;
+
+    final image = SizedBox(
       width: width(isMobile: isMobile),
       child: Column(
         children: [
           CircleAvatar(
             radius: isMobile ? 50 : 75,
-            backgroundImage: sponsor.googleAvatarUri != null
-                ? NetworkImage(sponsor.googleAvatarUri!.toString())
-                : null,
-            child: sponsor.googleAvatarUri == null
-                ? Text(
-                    sponsor.name.characters.first,
-                    style: TextStyle(
-                      fontSize: isMobile ? 24 : 32,
-                    ),
-                  )
-                : null,
+            backgroundImage: sponsor.userAvatarFetch != null
+                ? imageData != null
+                    ? Image.memory(imageData).image
+                    : null
+                : sponsor.googleAvatarUri != null
+                    ? NetworkImage(sponsor.googleAvatarUri!.toString())
+                    : null,
           ),
           const SizedBox(height: 8),
           Text(
@@ -45,6 +62,20 @@ class IndividualSponsorCard extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ],
+      ),
+    );
+
+    final sns =
+        sponsor.snsAccounts.firstWhereOrNull((sns) => sns.type == SnsType.x);
+    if (sns == null) {
+      return image;
+    }
+    return Link(
+      uri: sns.uri,
+      builder: (context, followLink) => InkWell(
+        borderRadius: BorderRadius.circular(16),
+        onTap: followLink,
+        child: image,
       ),
     );
   }

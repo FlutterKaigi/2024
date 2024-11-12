@@ -1,6 +1,4 @@
-import 'package:collection/collection.dart';
 import 'package:common_data/profile.dart';
-import 'package:conference_2024_website/core/extension/iterable_ex.dart';
 import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/feature/sponsor/data/individual_sponsor_notifier.dart';
 import 'package:conference_2024_website/feature/sponsor/ui/components/individual_sponsor_card.dart';
@@ -50,45 +48,12 @@ class _IndividualSponsorCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isMobile = MediaQuery.sizeOf(context).isMobile;
-    return LayoutBuilder(
-      builder: (context, constrains) {
-        final cardInRowCount = _calculateCardInRowCount(constrains, isMobile);
-
-        return Column(
-          children: <Widget>[
-            for (final sponsorsInRow in sponsors.slices(cardInRowCount))
-              IntrinsicHeight(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: sponsorsInRow
-                      .map<Widget>(
-                        (sponsor) => IndividualSponsorCard(sponsor: sponsor),
-                      )
-                      .intersperse(
-                        SizedBox(
-                          width: IndividualSponsorCard.margin(
-                            isMobile: isMobile,
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-          ]
-              .intersperse(
-                Gap(IndividualSponsorCard.margin(isMobile: isMobile)),
-              )
-              .toList(),
-        );
-      },
+    return Wrap(
+      runSpacing: IndividualSponsorCard.margin(isMobile: isMobile),
+      alignment: WrapAlignment.center,
+      children: sponsors
+          .map((sponsor) => IndividualSponsorCard(sponsor: sponsor))
+          .toList(),
     );
-  }
-
-  int _calculateCardInRowCount(BoxConstraints constraints, bool isMobile) {
-    final maxWidth = constraints.maxWidth;
-    final x = (maxWidth - IndividualSponsorCard.margin(isMobile: isMobile)) /
-        (IndividualSponsorCard.width(isMobile: isMobile) +
-            IndividualSponsorCard.margin(isMobile: isMobile));
-    return x.truncate();
   }
 }
