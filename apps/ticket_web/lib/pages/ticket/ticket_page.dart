@@ -9,7 +9,6 @@ import 'package:ticket_web/core/components/site_scaffold.dart';
 import 'package:ticket_web/core/router/router.dart';
 import 'package:ticket_web/feature/profile/ui/app_bar_avatar.dart';
 import 'package:ticket_web/feature/ticket/data/ticket_notifier.dart';
-import 'package:ticket_web/pages/ticket/components/entrance_information_card.dart';
 import 'package:ticket_web/pages/ticket/components/thank_you_for_purchase_ticket.dart';
 import 'package:ticket_web/pages/ticket/components/ticket_qr_code_card.dart';
 
