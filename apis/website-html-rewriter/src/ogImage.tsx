@@ -347,7 +347,7 @@ async function getSponsorHtml({
 	url: URL;
 }): Promise<JSX.Element> {
 	const { data, error } = await supabase
-		.from("sponsors")
+		.from("sponsors_v2")
 		.select("*")
 		.eq("id", id)
 		.maybeSingle();
@@ -356,6 +356,9 @@ async function getSponsorHtml({
 	}
 	if (!data) {
 		return <div>Sponsor not found</div>;
+	}
+	if (!data.logo_name) {
+		throw new Error("Logo name is not found");
 	}
 
 	const sponsorImageUrl = await supabase.storage
