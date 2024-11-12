@@ -582,13 +582,6 @@ export type Database = {
             foreignKeyName: "tickets_section_id_fkey"
             columns: ["section_id"]
             isOneToOne: false
-            referencedRelation: "section_counts"
-            referencedColumns: ["section_id"]
-          },
-          {
-            foreignKeyName: "tickets_section_id_fkey"
-            columns: ["section_id"]
-            isOneToOne: false
             referencedRelation: "sections"
             referencedColumns: ["section_id"]
           },
@@ -651,14 +644,6 @@ export type Database = {
           name: string | null
           role: Database["public"]["Enums"]["role"] | null
           social_networking_services: Json | null
-        }
-        Relationships: []
-      }
-      section_counts: {
-        Row: {
-          current_count: number | null
-          max_capacity: number | null
-          section_id: string | null
         }
         Relationships: []
       }
@@ -736,13 +721,6 @@ export type Database = {
         }
         Relationships: []
       }
-      tickets_with_sections: {
-        Row: {
-          section: Json | null
-          ticket: Json | null
-        }
-        Relationships: []
-      }
     }
     Functions: {
       get_available_section: {
@@ -817,9 +795,6 @@ export type Database = {
         patch: number | null
         pre_release: string[] | null
         build_metadata: string[] | null
-      }
-      sns_account: {
-        name: string | null
       }
     }
   }
