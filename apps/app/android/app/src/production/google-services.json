@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "480158306427",
-    "project_id": "flutterkakgi-2024-conf",
-    "storage_bucket": "flutterkakgi-2024-conf.firebasestorage.app"
+    "project_number": "933597335521",
+    "project_id": "flutterkaigi-2024-conf-app",
+    "storage_bucket": "flutterkaigi-2024-conf-app.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:480158306427:android:ba114bb15cb56467ce12de",
+        "mobilesdk_app_id": "1:933597335521:android:ddea2067721fedcf850ca0",
         "android_client_info": {
           "package_name": "jp.flutterkaigi.conf2024"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD203BCmTQ6iLmIlsCBO63oPJJSS0ptNlQ"
+          "current_key": "AIzaSyB0a89OY_xPnAj0xZ0KQFQ2dYmcRFpOLiA"
         }
       ],
       "services": {
