@@ -104,7 +104,12 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         working-directory: apis/website-html-rewriter
-        run: pnpm install && pnpm run upload
+        run: |
+          pnpm install && \
+          pnpm run upload \
+            --branch ${{ github.ref_name }} \
+            --commit-hash ${{ github.sha }} \
+            --commit-message ${{ github.event.head_commit.message }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
