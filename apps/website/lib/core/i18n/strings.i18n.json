@@ -36,6 +36,9 @@
   },
   "sponsor": {
     "title": "Sponsor",
+    "individual": {
+      "title": "Individual Sponsors"
+    },
     "messages": [
       "FlutterKaigi 2024を一緒に盛り上げていただけるスポンサーさまを心からお待ちしております。",
       "この機会にあなたの企業や製品を、国内外のFlutterやDartに情熱を持つ技術者たちに紹介しませんか？",

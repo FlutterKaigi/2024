@@ -2,12 +2,14 @@ import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
+import 'package:conference_2024_website/feature/sponsor/ui/individual_sponsor_view.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/pages/sponsor/sponsor_page.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final class Sponsors extends HookConsumerWidget {
@@ -65,6 +67,8 @@ Widget sponsorsSection(
           return _sponsorListByLevel(theme, listByLevel.value, context);
         }).toList(),
       ),
+      const Gap(80),
+      const IndividualSponsorView(),
     ],
   );
 }
