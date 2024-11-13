@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 56
+/// Strings: 57
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -275,6 +275,8 @@ class _StringsSponsorJa {
 
   // Translations
   String get title => 'Sponsor';
+  late final _StringsSponsorIndividualJa individual =
+      _StringsSponsorIndividualJa._(_root);
   List<String> get messages => [
         'FlutterKaigi 2024を一緒に盛り上げていただけるスポンサーさまを心からお待ちしております。',
         'この機会にあなたの企業や製品を、国内外のFlutterやDartに情熱を持つ技術者たちに紹介しませんか？',
@@ -380,6 +382,16 @@ class _StringsLeadLocationJa {
   String get value => '有明セントラルタワー＆カンファレンス';
 }
 
+// Path: sponsor.individual
+class _StringsSponsorIndividualJa {
+  _StringsSponsorIndividualJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Individual Sponsors';
+}
+
 // Path: sponsors.levels
 class _StringsSponsorsLevelsJa {
   _StringsSponsorsLevelsJa._(this._root);
@@ -445,6 +457,8 @@ extension on Translations {
         return 'License';
       case 'sponsor.title':
         return 'Sponsor';
+      case 'sponsor.individual.title':
+        return 'Individual Sponsors';
       case 'sponsor.messages.0':
         return 'FlutterKaigi 2024を一緒に盛り上げていただけるスポンサーさまを心からお待ちしております。';
       case 'sponsor.messages.1':

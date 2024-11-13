@@ -41,7 +41,8 @@ VALUES
   ('asmz', 'starmAIne777.webp', 'Xの中の人として盛り上げたいです！'),
   ('katsummy', 'granoeste.webp', ''),
   ('jiyuujin', 'jiyuujin.webp', 'Flutterでワイワイしよう！'),
-  ('ssoejima', 'mightyfrog.webp', '');
+  ('ssoejima', 'mightyfrog.webp', ''),
+  ('TKMN', 'wtkmn.webp', '運営初参加です。よろしくお願いします！');
 
 -- staff_social_networking_services
 DO $$
@@ -502,6 +503,20 @@ BEGIN
         (temp_id, 'github', 'mightyfrog'),
         (temp_id, 'x', 'highballegg'),
         (temp_id, 'qiita', 'ssoejima');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'TKMN';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'wtkmn'),
+        (temp_id, 'x', 'w_tkmn'),
+        (temp_id, 'medium', 'tkmn'),
+        (temp_id, 'qiita', 'w_tkmn'),
+        (temp_id, 'zenn', 'w_tkmn'),
+        (temp_id, 'other', 'https://tkmn.notion.site');
 END $$;
 
 -- sponsors
