@@ -11,5 +11,17 @@
   "resetPreferences": "設定のリセット",
   "localizationMode": "言語設定",
   "localizationModeJa": "日本語",
-  "localizationModeEn": "English"
+  "localizationModeEn": "English",
+  "pushNotification": "プッシュ通知設定",
+  "pushNotificationPrompt": "プッシュ通知を許可することで、FlutterKaigiに関するお知らせを受け取れます",
+  "pushNotificationAuthorized": "許可",
+  "pushNotificationDenied": "不許可",
+  "pushNotificationProvisional": "仮設定",
+  "pushNotificationRestricted": "制限中",
+  "pushNotificationLimited": "制限中",
+  "pushNotificationPermanentlyDenied": "永久に拒否",
+  "pushNotificationMessageAuthorized": "プッシュ通知がの受信が許可されました！",
+  "pushNotificationMessageAlreadyAuthorized": "プッシュ通知は既に許可されています。",
+  "pushNotificationMessageDenied": "プッシュ通知が拒否されました。",
+  "pushNotificationMessageSettings": "プッシュ通知は一部許可されています"
 }

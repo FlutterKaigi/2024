@@ -4,6 +4,7 @@
     "Ariake",
     "designsystem",
     "dorny",
+    "Initilize",
     "IntelliJ",
     "Kaigi",
     "kuhnroyal",
@@ -26,5 +27,10 @@
     "YumNumm",
     "zenn"
   ],
-  "ignorePaths": ["**.sql", "**.lock", "pubspec.yaml", "package.json"]
+  "ignorePaths": [
+    "**.sql",
+    "**.lock",
+    "pubspec.yaml",
+    "package.json"
+  ]
 }

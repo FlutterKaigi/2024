@@ -41,4 +41,49 @@ class L10nSettingsEn extends L10nSettings {
 
   @override
   String get localizationModeEn => 'English';
+
+  @override
+  String get pushNotification => 'Push Notification';
+
+  @override
+  String get pushNotificationPrompt =>
+      'By allowing push notifications, you can receive notifications about FlutterKaigi.';
+
+  @override
+  String get pushNotificationAuthorized => 'Authorized';
+
+  @override
+  String get pushNotificationDenied => 'Denied';
+
+  @override
+  String get pushNotificationProvisional => 'Provisional';
+
+  @override
+  String get pushNotificationRestricted => 'Restricted';
+
+  @override
+  String get pushNotificationLimited => 'Limited';
+
+  @override
+  String get pushNotificationPermanentlyDenied => 'PermanentlyDenied';
+
+  @override
+  String get pushNotificationMessageAuthorized =>
+      'OK! Push notification is enabled.';
+
+  @override
+  String get pushNotificationMessageAlreadyAuthorized =>
+      'Push notification is already enabled.';
+
+  @override
+  String get pushNotificationMessageDenied =>
+      'Sorry, do not send push notifications';
+
+  @override
+  String get pushNotificationMessageNotDetermined =>
+      'Permission is not set. Please set it from the settings screen.';
+
+  @override
+  String get pushNotificationMessageSettings =>
+      'Permission is partially set. Please set it from the settings screen.';
 }

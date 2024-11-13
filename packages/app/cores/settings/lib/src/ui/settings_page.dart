@@ -1,10 +1,12 @@
 import 'package:app_cores_core/providers.dart';
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({
@@ -22,6 +24,7 @@ class SettingsPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
+              const _PushNotificationTile(),
               const _ThemeModeTile(),
               const _LocalizationModeTile(),
               const _FontFamilyTile(),
@@ -31,6 +34,103 @@ class SettingsPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _PushNotificationTile extends ConsumerWidget {
+  const _PushNotificationTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    final status = ref.watch(notificationPermissionProvider);
+
+    return switch (status) {
+      AsyncData(value: final type) => ListTile(
+          title: Text(l.pushNotification),
+          subtitle: Text(
+            switch (type) {
+              NotificationPermission.granted =>
+                l.pushNotificationAuthorized,
+              NotificationPermission.denied =>
+                l.pushNotificationDenied,
+              NotificationPermission.provisional =>
+                l.pushNotificationProvisional,
+              NotificationPermission.restricted =>
+                l.pushNotificationRestricted,
+              NotificationPermission.limited =>
+                l.pushNotificationLimited,
+              NotificationPermission.permanentlyDenied =>
+                l.pushNotificationPermanentlyDenied,
+            },
+          ),
+          onTap: () async {
+            final String message;
+            switch (type) {
+              case NotificationPermission.granted:
+                message = l.pushNotificationMessageAlreadyAuthorized;
+              case NotificationPermission.denied:
+                final shouldShowRequestRationale =
+                    await Permission.notification.shouldShowRequestRationale;
+                if (shouldShowRequestRationale) {
+                  if (!context.mounted) {
+                    return;
+                  }
+
+                  await showDialog<void>(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(l.pushNotificationPrompt),
+                      actions: [
+                        TextButton(
+                          child: Text(l.cancel),
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                final newPermission = await Permission.notification.request();
+                switch (newPermission) {
+                  case NotificationPermission.granted:
+                  case NotificationPermission.restricted:
+                  case NotificationPermission.limited:
+                  case NotificationPermission.provisional:
+                    message = l.pushNotificationMessageAuthorized;
+
+                    await subscribeTopics(ref);
+                  case NotificationPermission.denied:
+                  case NotificationPermission.permanentlyDenied:
+                    message = l.pushNotificationMessageDenied;
+                }
+
+                /// invalidate the providers to rebuild the UI
+                ref.invalidate(notificationPermissionProvider);
+
+              case NotificationPermission.restricted:
+              case NotificationPermission.limited:
+              case NotificationPermission.permanentlyDenied:
+              case NotificationPermission.provisional:
+                message = l.pushNotificationMessageSettings;
+            }
+
+            if (context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(message),
+                ),
+              );
+            }
+          },
+        ),
+      _ => const SizedBox(
+          height: 56,
+          child: Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
+        ),
+    };
   }
 }
 
