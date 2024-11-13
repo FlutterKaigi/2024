@@ -50,16 +50,12 @@ class _PushNotificationTile extends ConsumerWidget {
           title: Text(l.pushNotification),
           subtitle: Text(
             switch (type) {
-              NotificationPermission.granted =>
-                l.pushNotificationAuthorized,
-              NotificationPermission.denied =>
-                l.pushNotificationDenied,
+              NotificationPermission.granted => l.pushNotificationAuthorized,
+              NotificationPermission.denied => l.pushNotificationDenied,
               NotificationPermission.provisional =>
                 l.pushNotificationProvisional,
-              NotificationPermission.restricted =>
-                l.pushNotificationRestricted,
-              NotificationPermission.limited =>
-                l.pushNotificationLimited,
+              NotificationPermission.restricted => l.pushNotificationRestricted,
+              NotificationPermission.limited => l.pushNotificationLimited,
               NotificationPermission.permanentlyDenied =>
                 l.pushNotificationPermanentlyDenied,
             },
