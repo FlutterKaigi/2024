@@ -11,15 +11,15 @@ class OnInvitedPromotionCodeEnteredSponsorDialog extends HookConsumerWidget {
     super.key,
   });
 
-  final List<SponsorWithSessionV2> sponsors;
+  final List<SponsorWithSessionV3> sponsors;
   final String title;
 
-  static Future<SponsorWithSessionV2?> show({
+  static Future<SponsorWithSessionV3?> show({
     required BuildContext context,
-    required List<SponsorWithSessionV2> sponsors,
+    required List<SponsorWithSessionV3> sponsors,
     required String title,
   }) async =>
-      showDialog<SponsorWithSessionV2>(
+      showDialog<SponsorWithSessionV3>(
         barrierDismissible: false,
         context: context,
         builder: (context) => OnInvitedPromotionCodeEnteredSponsorDialog(
@@ -33,7 +33,7 @@ class OnInvitedPromotionCodeEnteredSponsorDialog extends HookConsumerWidget {
     final i18n =
         Translations.of(context).homePage.tickets.invitation.validation;
 
-    final selectedSession = useState<SponsorWithSessionV2?>(null);
+    final selectedSession = useState<SponsorWithSessionV3?>(null);
 
     return AlertDialog(
       title: Text(title),

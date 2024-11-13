@@ -16,7 +16,7 @@ class TimeSlotRow extends StatelessWidget {
 
   final DateTime startTime;
   final List<SessionsWithSessionVenue> sessions;
-  final List<SessionVenuesWithSessionsV2> sessionVenues;
+  final List<SessionVenuesWithSessionsV3> sessionVenues;
   final SpecialSession? specialSession;
 
   @override

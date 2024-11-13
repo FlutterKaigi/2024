@@ -59,6 +59,17 @@ class ProfileRepository {
     return toProfileWithSns(response);
   }
 
+  /// 個人スポンサーのプロフィールとそれに紐づくSNSアカウントを取得します
+  Future<List<ProfileWithSns>> fetchProfilesForIndividualSponsor() async {
+    final response = await _client
+        .from('profiles_with_sns_for_individual_sponsor')
+        .select()
+        .withConverter(
+          (data) => data.map(ProfileWithSnsView.fromJson).toList(),
+        );
+    return response.map(toProfileWithSns).toList();
+  }
+
   /// 自分のプロフィールとそれに紐づくSNSアカウントを取得する
   /// ログインしていない場合は`null`を返す
   Future<ProfileWithSns?> fetchMyProfileWithSns() async {

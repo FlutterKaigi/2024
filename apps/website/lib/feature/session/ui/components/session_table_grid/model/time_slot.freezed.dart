@@ -19,8 +19,8 @@ mixin _$TimeSlot {
   DateTime get time => throw _privateConstructorUsedError;
   List<
       ({
-        SessionsWithSpeakerSponsorV2 session,
-        SessionVenuesWithSessionsV2 sessionVenue
+        SessionsWithSpeakerSponsorV3 session,
+        SessionVenuesWithSessionsV3 sessionVenue
       })> get sessions => throw _privateConstructorUsedError;
   SpecialSession? get specialSession => throw _privateConstructorUsedError;
 
@@ -40,8 +40,8 @@ abstract class $TimeSlotCopyWith<$Res> {
       {DateTime time,
       List<
               ({
-                SessionsWithSpeakerSponsorV2 session,
-                SessionVenuesWithSessionsV2 sessionVenue
+                SessionsWithSpeakerSponsorV3 session,
+                SessionVenuesWithSessionsV3 sessionVenue
               })>
           sessions,
       SpecialSession? specialSession});
@@ -78,8 +78,8 @@ class _$TimeSlotCopyWithImpl<$Res, $Val extends TimeSlot>
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<
                   ({
-                    SessionsWithSpeakerSponsorV2 session,
-                    SessionVenuesWithSessionsV2 sessionVenue
+                    SessionsWithSpeakerSponsorV3 session,
+                    SessionVenuesWithSessionsV3 sessionVenue
                   })>,
       specialSession: freezed == specialSession
           ? _value.specialSession
@@ -115,8 +115,8 @@ abstract class _$$TimeSlotImplCopyWith<$Res>
       {DateTime time,
       List<
               ({
-                SessionsWithSpeakerSponsorV2 session,
-                SessionVenuesWithSessionsV2 sessionVenue
+                SessionsWithSpeakerSponsorV3 session,
+                SessionVenuesWithSessionsV3 sessionVenue
               })>
           sessions,
       SpecialSession? specialSession});
@@ -152,8 +152,8 @@ class __$$TimeSlotImplCopyWithImpl<$Res>
           : sessions // ignore: cast_nullable_to_non_nullable
               as List<
                   ({
-                    SessionsWithSpeakerSponsorV2 session,
-                    SessionVenuesWithSessionsV2 sessionVenue
+                    SessionsWithSpeakerSponsorV3 session,
+                    SessionVenuesWithSessionsV3 sessionVenue
                   })>,
       specialSession: freezed == specialSession
           ? _value.specialSession
@@ -170,8 +170,8 @@ class _$TimeSlotImpl implements _TimeSlot {
       {required this.time,
       required final List<
               ({
-                SessionsWithSpeakerSponsorV2 session,
-                SessionVenuesWithSessionsV2 sessionVenue
+                SessionsWithSpeakerSponsorV3 session,
+                SessionVenuesWithSessionsV3 sessionVenue
               })>
           sessions,
       this.specialSession})
@@ -181,14 +181,14 @@ class _$TimeSlotImpl implements _TimeSlot {
   final DateTime time;
   final List<
       ({
-        SessionsWithSpeakerSponsorV2 session,
-        SessionVenuesWithSessionsV2 sessionVenue
+        SessionsWithSpeakerSponsorV3 session,
+        SessionVenuesWithSessionsV3 sessionVenue
       })> _sessions;
   @override
   List<
       ({
-        SessionsWithSpeakerSponsorV2 session,
-        SessionVenuesWithSessionsV2 sessionVenue
+        SessionsWithSpeakerSponsorV3 session,
+        SessionVenuesWithSessionsV3 sessionVenue
       })> get sessions {
     if (_sessions is EqualUnmodifiableListView) return _sessions;
     // ignore: implicit_dynamic_type
@@ -232,8 +232,8 @@ abstract class _TimeSlot implements TimeSlot {
       {required final DateTime time,
       required final List<
               ({
-                SessionsWithSpeakerSponsorV2 session,
-                SessionVenuesWithSessionsV2 sessionVenue
+                SessionsWithSpeakerSponsorV3 session,
+                SessionVenuesWithSessionsV3 sessionVenue
               })>
           sessions,
       final SpecialSession? specialSession}) = _$TimeSlotImpl;
@@ -243,8 +243,8 @@ abstract class _TimeSlot implements TimeSlot {
   @override
   List<
       ({
-        SessionsWithSpeakerSponsorV2 session,
-        SessionVenuesWithSessionsV2 sessionVenue
+        SessionsWithSpeakerSponsorV3 session,
+        SessionVenuesWithSessionsV3 sessionVenue
       })> get sessions;
   @override
   SpecialSession? get specialSession;
