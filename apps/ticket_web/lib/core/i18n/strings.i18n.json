@@ -225,6 +225,16 @@
         "error": "プロフィール情報の更新に失敗しました"
       }
     },
+    "qrCode": {
+      "title": "チケットQRコード",
+      "description": "このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。",
+      "showWalletQr": "QRコードで別の端末にチケットを追加",
+      "walletQrTitle": "Walletに追加",
+      "walletQrDescription": "iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます",
+      "close": "閉じる",
+      "ticketId": "チケットID",
+      "sectionId": "ネームプレート 区画ID"
+    },
     "entrance_information": {
       "title": "入場時の情報",
       "description": [
