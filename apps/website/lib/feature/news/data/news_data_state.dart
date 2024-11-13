@@ -14,16 +14,6 @@ sealed class NewsDataState with _$NewsDataState {
   const factory NewsDataState.error() = NewsDataError;
 }
 
-extension LoadedDataExtension on NewsDataLoaded {
-  List<News> get availableNews => news
-      .where(
-        (news) =>
-            news.startedAt.isBefore(DateTime.now()) &&
-            (news.endedAt == null || news.endedAt!.isAfter(DateTime.now())),
-      )
-      .toList();
-}
-
 extension NewsExtension on News {
   String get startedAtString => '${startedAt.year}.'
       '${startedAt.month.toString().padLeft(2, '0')}.'
