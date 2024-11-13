@@ -77,8 +77,5 @@ class L10nSettingsJa extends L10nSettings {
   String get pushNotificationMessageDenied => 'プッシュ通知が拒否されました。';
 
   @override
-  String get pushNotificationMessageNotDetermined => 'プッシュ通知の設定は未設定です。';
-
-  @override
   String get pushNotificationMessageSettings => 'プッシュ通知は一部許可されています';
 }

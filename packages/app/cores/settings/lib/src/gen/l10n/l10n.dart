@@ -236,12 +236,6 @@ abstract class L10nSettings {
   /// **'プッシュ通知が拒否されました。'**
   String get pushNotificationMessageDenied;
 
-  /// No description provided for @pushNotificationMessageNotDetermined.
-  ///
-  /// In ja, this message translates to:
-  /// **'プッシュ通知の設定は未設定です。'**
-  String get pushNotificationMessageNotDetermined;
-
   /// No description provided for @pushNotificationMessageSettings.
   ///
   /// In ja, this message translates to:

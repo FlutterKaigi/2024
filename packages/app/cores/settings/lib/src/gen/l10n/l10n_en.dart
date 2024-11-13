@@ -80,10 +80,6 @@ class L10nSettingsEn extends L10nSettings {
       'Sorry, do not send push notifications';
 
   @override
-  String get pushNotificationMessageNotDetermined =>
-      'Permission is not set. Please set it from the settings screen.';
-
-  @override
   String get pushNotificationMessageSettings =>
       'Permission is partially set. Please set it from the settings screen.';
 }
