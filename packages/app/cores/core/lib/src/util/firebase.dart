@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:app_cores_core/src/providers/messaging.dart';
 import 'package:app_cores_core/src/providers/permission.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -51,10 +50,6 @@ Future<void> initFirebaseMessaging(WidgetRef ref) async {
     },
   );
 
-  if (kIsWeb) {
-    return;
-  }
-
   final currentStatus = await ref.read(notificationPermissionProvider.future);
   if (currentStatus == NotificationPermission.granted) {
     await subscribeTopics(ref);
@@ -62,11 +57,6 @@ Future<void> initFirebaseMessaging(WidgetRef ref) async {
 }
 
 Future<void> subscribeTopics(WidgetRef ref) async {
-  if (kIsWeb) {
-    /// subscribeToTopic is not supported on web.
-    return;
-  }
-
   final instance = ref.read(firebaseMessagingProvider);
 
   /// Since subscribeToTopic is only supported on mobile devices,
