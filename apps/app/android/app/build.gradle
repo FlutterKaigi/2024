@@ -42,6 +42,32 @@ if (keyPropertiesFile.exists()) {
     }
 }
 
+task selectGoogleServicesJson(type: Copy) {
+    def sourceFile = file("src/${dartDefines.FLAVOR}/google-services.json")
+    if (sourceFile.exists()) {
+        from sourceFile
+        into './'
+    } else {
+        logger.warn("Warning: google-services.json for flavor ${flavor} does not exist.")
+    }
+}
+
+def dependentTasks = [
+    'processDebugGoogleServices',
+    'processReleaseGoogleServices',
+    'compileFlutterBuildDebug',
+    'mergeDebugAssets',
+    'mergeDebugShaders',
+    'generateDebugResources',
+    'mergeDebugJniLibFolders'
+]
+
+afterEvaluate {
+    tasks.matching { task -> dependentTasks.contains(task.name) }.all { task ->
+        task.dependsOn selectGoogleServicesJson
+    }
+}
+
 android {
     namespace = "jp.flutterkaigi.conf2024"
     compileSdk = flutter.compileSdkVersion
