@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 281 (140 per locale)
+/// Strings: 297 (148 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -298,6 +298,8 @@ class _StringsTicketPageJa {
       '※FlutterKaigi 2024当日に配布するネームプレートのデザインは、変更される可能性があります。';
   late final _StringsTicketPageEditFieldsJa editFields =
       _StringsTicketPageEditFieldsJa._(_root);
+  late final _StringsTicketPageQrCodeJa qrCode =
+      _StringsTicketPageQrCodeJa._(_root);
   late final _StringsTicketPageEntranceInformationJa entranceInformation =
       _StringsTicketPageEntranceInformationJa._(_root);
 }
@@ -491,6 +493,25 @@ class _StringsTicketPageEditFieldsJa {
       _StringsTicketPageEditFieldsIsAdultJa._(_root);
   late final _StringsTicketPageEditFieldsResultsJa results =
       _StringsTicketPageEditFieldsResultsJa._(_root);
+}
+
+// Path: ticketPage.qrCode
+class _StringsTicketPageQrCodeJa {
+  _StringsTicketPageQrCodeJa._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'チケットQRコード';
+  String get description =>
+      'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
+  String get showWalletQr => 'QRコードで別の端末にチケットを追加';
+  String get walletQrTitle => 'Walletに追加';
+  String get walletQrDescription =>
+      'iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます';
+  String get close => '閉じる';
+  String get ticketId => 'チケットID';
+  String get sectionId => 'ネームプレート 区画ID';
 }
 
 // Path: ticketPage.entranceInformation
@@ -1024,6 +1045,9 @@ class _StringsTicketPageEn extends _StringsTicketPageJa {
   late final _StringsTicketPageEditFieldsEn editFields =
       _StringsTicketPageEditFieldsEn._(_root);
   @override
+  late final _StringsTicketPageQrCodeEn qrCode =
+      _StringsTicketPageQrCodeEn._(_root);
+  @override
   late final _StringsTicketPageEntranceInformationEn entranceInformation =
       _StringsTicketPageEntranceInformationEn._(_root);
 }
@@ -1317,6 +1341,36 @@ class _StringsTicketPageEditFieldsEn extends _StringsTicketPageEditFieldsJa {
   @override
   late final _StringsTicketPageEditFieldsResultsEn results =
       _StringsTicketPageEditFieldsResultsEn._(_root);
+}
+
+// Path: ticketPage.qrCode
+class _StringsTicketPageQrCodeEn extends _StringsTicketPageQrCodeJa {
+  _StringsTicketPageQrCodeEn._(_StringsEn root)
+      : this._root = root,
+        super._(root);
+
+  @override
+  final _StringsEn _root; // ignore: unused_field
+
+  // Translations
+  @override
+  String get title => 'Ticket QR Code';
+  @override
+  String get description =>
+      'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
+  @override
+  String get showWalletQr => 'Add ticket to another mobile device with QR Code';
+  @override
+  String get walletQrTitle => 'Add to Wallet';
+  @override
+  String get walletQrDescription =>
+      'Scan this QR code with your iPhone/Android to add the ticket to your wallet app';
+  @override
+  String get close => 'Close';
+  @override
+  String get ticketId => 'Ticket ID';
+  @override
+  String get sectionId => 'Name Plate Section ID';
 }
 
 // Path: ticketPage.entranceInformation
@@ -2085,6 +2139,22 @@ extension on Translations {
         return 'プロフィール情報を更新しました';
       case 'ticketPage.editFields.results.error':
         return 'プロフィール情報の更新に失敗しました';
+      case 'ticketPage.qrCode.title':
+        return 'チケットQRコード';
+      case 'ticketPage.qrCode.description':
+        return 'このQRコードは、FlutterKaigi 2024当日の受付で使用します。\n当日は、このQRコードをスタッフにご提示ください。';
+      case 'ticketPage.qrCode.showWalletQr':
+        return 'QRコードで別の端末にチケットを追加';
+      case 'ticketPage.qrCode.walletQrTitle':
+        return 'Walletに追加';
+      case 'ticketPage.qrCode.walletQrDescription':
+        return 'iPhone/AndroidでこのQRコードを読み取ると、ウォレットアプリにチケットを追加できます';
+      case 'ticketPage.qrCode.close':
+        return '閉じる';
+      case 'ticketPage.qrCode.ticketId':
+        return 'チケットID';
+      case 'ticketPage.qrCode.sectionId':
+        return 'ネームプレート 区画ID';
       case 'ticketPage.entranceInformation.title':
         return '入場時の情報';
       case 'ticketPage.entranceInformation.description.0':
@@ -2370,6 +2440,22 @@ extension on _StringsEn {
         return 'Profile information updated successfully';
       case 'ticketPage.editFields.results.error':
         return 'Profile information update failed';
+      case 'ticketPage.qrCode.title':
+        return 'Ticket QR Code';
+      case 'ticketPage.qrCode.description':
+        return 'This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.';
+      case 'ticketPage.qrCode.showWalletQr':
+        return 'Add ticket to another mobile device with QR Code';
+      case 'ticketPage.qrCode.walletQrTitle':
+        return 'Add to Wallet';
+      case 'ticketPage.qrCode.walletQrDescription':
+        return 'Scan this QR code with your iPhone/Android to add the ticket to your wallet app';
+      case 'ticketPage.qrCode.close':
+        return 'Close';
+      case 'ticketPage.qrCode.ticketId':
+        return 'Ticket ID';
+      case 'ticketPage.qrCode.sectionId':
+        return 'Name Plate Section ID';
       case 'ticketPage.entranceInformation.title':
         return 'Entrance Information';
       case 'ticketPage.entranceInformation.description.0':

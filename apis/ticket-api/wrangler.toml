@@ -5,6 +5,11 @@ main = "./src/index.ts"
 
 placement = { mode = "smart" }
 
+compatibility_flags = ["nodejs_compat_v2"]
+rules = [
+  { type = "Data", globs = ["**/*.png"], fallthrough = true }
+]
+
 [observability]
 enabled = true
 

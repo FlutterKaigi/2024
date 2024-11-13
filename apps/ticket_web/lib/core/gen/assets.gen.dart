@@ -41,6 +41,10 @@ class $AssetsFontsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/add_to_apple_wallet.webp
+  AssetGenImage get addToAppleWallet =>
+      const AssetGenImage('assets/images/add_to_apple_wallet.webp');
+
   /// File path: assets/images/icon.webp
   AssetGenImage get icon => const AssetGenImage('assets/images/icon.webp');
 
@@ -54,7 +58,7 @@ class $AssetsImagesGen {
   String get path => 'assets/images';
 
   /// List of all assets
-  List<AssetGenImage> get values => [icon];
+  List<AssetGenImage> get values => [addToAppleWallet, icon];
 }
 
 class $AssetsFontsNotoSansJPGen {
