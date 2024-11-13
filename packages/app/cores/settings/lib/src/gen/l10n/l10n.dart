@@ -169,6 +169,12 @@ abstract class L10nSettings {
   /// In ja, this message translates to:
   /// **'English'**
   String get localizationModeEn;
+
+  /// No description provided for @semanticsSettingsButtonLabel.
+  ///
+  /// In ja, this message translates to:
+  /// **'設定ボタン'**
+  String get semanticsSettingsButtonLabel;
 }
 
 class _L10nSettingsDelegate extends LocalizationsDelegate<L10nSettings> {

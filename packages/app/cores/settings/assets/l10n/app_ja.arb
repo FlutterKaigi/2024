@@ -11,5 +11,6 @@
   "resetPreferences": "設定のリセット",
   "localizationMode": "言語設定",
   "localizationModeJa": "日本語",
-  "localizationModeEn": "English"
+  "localizationModeEn": "English",
+  "semanticsSettingsButtonLabel": "設定ボタン"
 }

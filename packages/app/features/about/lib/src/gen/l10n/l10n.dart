@@ -258,6 +258,12 @@ abstract class L10nAbout {
   /// In ja, this message translates to:
   /// **'{count} contributions'**
   String contributionsCount(Object count);
+
+  /// No description provided for @semanticsMainLogoLabel.
+  ///
+  /// In ja, this message translates to:
+  /// **'Flutter Kaigiロゴ'**
+  String get semanticsMainLogoLabel;
 }
 
 class _L10nAboutDelegate extends LocalizationsDelegate<L10nAbout> {

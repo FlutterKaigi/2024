@@ -41,4 +41,7 @@ class L10nSettingsEn extends L10nSettings {
 
   @override
   String get localizationModeEn => 'English';
+
+  @override
+  String get semanticsSettingsButtonLabel => 'Settings Button';
 }

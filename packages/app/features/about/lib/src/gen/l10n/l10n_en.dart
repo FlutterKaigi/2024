@@ -94,4 +94,7 @@ class L10nAboutEn extends L10nAbout {
   String contributionsCount(Object count) {
     return '$count contributions';
   }
+
+  @override
+  String get semanticsMainLogoLabel => 'Flutter Kaigi logo';
 }
