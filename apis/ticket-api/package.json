@@ -15,14 +15,15 @@
     "@supabase/supabase-js": "^2.45.4",
     "hono": "^4.6.5",
     "hono-rate-limiter": "^0.4.0",
+    "passkit-generator": "^3.2.0",
     "stripe": "^16.12.0",
-    "valibot": "^0.41.0",
-    "supabase-types": "workspace:*"
+    "supabase-types": "workspace:*",
+    "valibot": "^0.41.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@cloudflare/workers-types": "^4.20241011.0",
-    "wrangler": "^3.80.4",
-    "configs": "workspace:*"
+    "configs": "workspace:*",
+    "wrangler": "^3.80.4"
   }
 }

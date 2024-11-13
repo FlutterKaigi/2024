@@ -32,7 +32,8 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "yaml.schemas": {
-    "https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yaml"
+    "https://json.schemastore.org/github-issue-config.json": ".github/ISSUE_TEMPLATE/config.yaml",
+    "https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json": "melos.yaml"
   },
   "[sql]": {
     "editor.defaultFormatter": "ReneSaarsoo.sql-formatter-vsc"

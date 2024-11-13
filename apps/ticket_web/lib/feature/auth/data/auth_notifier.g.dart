@@ -6,6 +6,24 @@ part of 'auth_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$supabaseAccessTokenHash() =>
+    r'35eb4e980fbac6f93c1623802aae1eb256f2201a';
+
+/// See also [supabaseAccessToken].
+@ProviderFor(supabaseAccessToken)
+final supabaseAccessTokenProvider = Provider<String?>.internal(
+  supabaseAccessToken,
+  name: r'supabaseAccessTokenProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$supabaseAccessTokenHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef SupabaseAccessTokenRef = ProviderRef<String?>;
 String _$authNotifierHash() => r'dbed5fed29890d615c75a05058860b9148960fcc';
 
 /// See also [AuthNotifier].

@@ -177,6 +177,13 @@ export type Database = {
             referencedRelation: "profiles_with_sns"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "profile_social_networking_services_id_fkey"
+            columns: ["id"]
+            isOneToOne: false
+            referencedRelation: "profiles_with_sns_for_individual_sponsor"
+            referencedColumns: ["id"]
+          },
         ]
       }
       profiles: {
@@ -215,6 +222,24 @@ export type Database = {
         }
         Relationships: []
       }
+      sections: {
+        Row: {
+          id: number
+          max_capacity: number | null
+          section_id: string
+        }
+        Insert: {
+          id?: number
+          max_capacity?: number | null
+          section_id: string
+        }
+        Update: {
+          id?: number
+          max_capacity?: number | null
+          section_id?: string
+        }
+        Relationships: []
+      }
       session_speakers: {
         Row: {
           session_id: string
@@ -248,6 +273,13 @@ export type Database = {
             columns: ["speaker_id"]
             isOneToOne: false
             referencedRelation: "profiles_with_sns"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "session_speakers_speaker_id_fkey"
+            columns: ["speaker_id"]
+            isOneToOne: false
+            referencedRelation: "profiles_with_sns_for_individual_sponsor"
             referencedColumns: ["id"]
           },
         ]
@@ -518,6 +550,7 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
+          section_id: string | null
           session_id: string | null
           sponsor_id: number | null
           stripe_checkout_session_id: string | null
@@ -527,6 +560,7 @@ export type Database = {
         Insert: {
           created_at?: string | null
           id?: string
+          section_id?: string | null
           session_id?: string | null
           sponsor_id?: number | null
           stripe_checkout_session_id?: string | null
@@ -536,6 +570,7 @@ export type Database = {
         Update: {
           created_at?: string | null
           id?: string
+          section_id?: string | null
           session_id?: string | null
           sponsor_id?: number | null
           stripe_checkout_session_id?: string | null
@@ -543,6 +578,13 @@ export type Database = {
           user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "tickets_section_id_fkey"
+            columns: ["section_id"]
+            isOneToOne: false
+            referencedRelation: "sections"
+            referencedColumns: ["section_id"]
+          },
           {
             foreignKeyName: "tickets_session_id_fkey"
             columns: ["session_id"]
@@ -587,6 +629,21 @@ export type Database = {
           name: string | null
           role: Database["public"]["Enums"]["role"] | null
           sns_accounts: Json | null
+        }
+        Relationships: []
+      }
+      profiles_with_sns_for_individual_sponsor: {
+        Row: {
+          avatar_name: string | null
+          avatar_url: string | null
+          comment: string | null
+          created_at: string | null
+          id: string | null
+          is_adult: boolean | null
+          is_published: boolean | null
+          name: string | null
+          role: Database["public"]["Enums"]["role"] | null
+          social_networking_services: Json | null
         }
         Relationships: []
       }
@@ -666,6 +723,18 @@ export type Database = {
       }
     }
     Functions: {
+      get_available_section: {
+        Args: {
+          created_at_time: string
+        }
+        Returns: string
+      }
+      is_profile_published_as_individual_sponsor: {
+        Args: {
+          search_user_id: string
+        }
+        Returns: boolean
+      }
       replace_contributors: {
         Args: {
           contributors: Json
