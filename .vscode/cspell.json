@@ -27,10 +27,5 @@
     "YumNumm",
     "zenn"
   ],
-  "ignorePaths": [
-    "**.sql",
-    "**.lock",
-    "pubspec.yaml",
-    "package.json"
-  ]
+  "ignorePaths": ["**.sql", "**.lock", "pubspec.yaml", "package.json"]
 }
