@@ -197,7 +197,7 @@
 			buildPhases = (
 				1060E6BB51CBC57D07E79AE0 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
-				C39652792CE4F33A00034C6F /* Select GoogleService-Info.plist */,
+				C39652792CE4F33A00034C6F /* Set google_service_info by env */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
@@ -387,7 +387,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
-		C39652792CE4F33A00034C6F /* Select GoogleService-Info.plist */ = {
+		C39652792CE4F33A00034C6F /* Set google_service_info by env */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -396,14 +396,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Select GoogleService-Info.plist";
+			name = "Set google_service_info by env";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n\necho \"★★★\"\necho \"-----${CONFIGURATION}-----\"\necho \"-----${SRCROOT}-----\"\necho \"-----${BUILT_PRODUCTS_DIR}-----\"\necho \"-----${PRODUCT_NAME}-----\"\necho \"-----${PRODUCT_BUNDLE_IDENTIFIER}-----\"\n\nif [ \"${PRODUCT_BUNDLE_IDENTIFIER}\" = \"jp.flutterkaigi.conf2024.dev\" ]  ; then\n  cp \"$SRCROOT/Config/dev/GoogleService-Info-dev.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n  echo \"Development GoogleService-Info copied.\"\nelse\n  cp \"$SRCROOT/Config/prod/GoogleService-Info-prod.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n  echo \"Production GoogleService-Info copied.\"\nfi\n";
+			shellScript = "${SRCROOT}/scripts/set_google_service_info_by_env.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
