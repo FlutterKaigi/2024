@@ -19,16 +19,81 @@ class SessionsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l = L10nSession.of(context);
     final showingDate = useState(SessionDate.day1);
-    final scrollController = useScrollController();
+
+    final day1ScrollController = useScrollController();
+    final day2ScrollController = useScrollController();
+    final scrollController =
+        showingDate.value.isDay1 ? day1ScrollController : day2ScrollController;
+
+    final pageStorageKey =
+        PageStorageKey(showingDate.value.isDay1 ? 'day1' : 'day2');
 
     final sessions = ref.watch(sessionTimelineProvider);
 
+    return _BaseSessionWidget(
+      scrollController: scrollController,
+      pageStorageKey: pageStorageKey,
+      current: showingDate,
+      sliver: sessions.when(
+        data: (data) {
+          final sessions = data.where(
+            (e) => SessionDate.fromDateTime(e.startsAt) == showingDate.value,
+          );
+          return SliverList.builder(
+            itemCount: sessions.length,
+            itemBuilder: (context, index) {
+              final item = sessions.elementAt(index);
+              final isDateVisible = index == 0 ||
+                  item.startsAt != sessions.elementAt(index - 1).startsAt;
+              return TimelineItemView(
+                item: item,
+                isDateVisible: isDateVisible,
+                onTap: item.map(
+                  event: (_) => null,
+                  session: (session) => () async =>
+                      SessionPageRoute(sessionId: session.id).push(context),
+                ),
+              );
+            },
+          );
+        },
+        loading: () => const SliverFillRemaining(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
+        error: (error, _) => SliverFillRemaining(
+          child: Center(
+            child: Text(error.toString()),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _BaseSessionWidget extends StatelessWidget {
+  const _BaseSessionWidget({
+    required this.current,
+    required this.scrollController,
+    required this.pageStorageKey,
+    required this.sliver,
+  });
+
+  final ValueNotifier<SessionDate> current;
+  final ScrollController scrollController;
+  final PageStorageKey<String> pageStorageKey;
+  final Widget sliver;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = L10nSession.of(context);
     return Scaffold(
       body: Stack(
         children: [
           CustomScrollView(
+            key: pageStorageKey,
             controller: scrollController,
             slivers: [
               SliverAppBar.large(
@@ -46,53 +111,38 @@ class SessionsPage extends HookConsumerWidget {
                   const SettingsButton(),
                 ],
               ),
-              sessions.when(
-                data: (data) {
-                  final sessions = data.where(
-                    (e) =>
-                        SessionDate.fromDateTime(e.startsAt) ==
-                        showingDate.value,
-                  );
-                  return SliverList.builder(
-                    itemCount: sessions.length,
-                    itemBuilder: (context, index) {
-                      final item = sessions.elementAt(index);
-                      final isDateVisible = index == 0 ||
-                          item.startsAt !=
-                              sessions.elementAt(index - 1).startsAt;
-                      return TimelineItemView(
-                        item: item,
-                        isDateVisible: isDateVisible,
-                        onTap: item.map(
-                          event: (_) => null,
-                          session: (session) => () async =>
-                              SessionPageRoute(sessionId: session.id)
-                                  .push(context),
-                        ),
-                      );
-                    },
-                  );
-                },
-                loading: () => const SliverFillRemaining(
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-                error: (error, _) => SliverFillRemaining(
-                  child: Center(
-                    child: Text(error.toString()),
-                  ),
-                ),
-              ),
+              sliver,
             ],
           ),
           _FloatingSwitcher(
-            current: showingDate,
+            current: current,
             scrollController: scrollController,
           ),
         ],
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(
+        DiagnosticsProperty<ScrollController>(
+          'scrollController',
+          scrollController,
+        ),
+      )
+      ..add(
+        DiagnosticsProperty<PageStorageKey<String>>(
+          'pageStorageKey',
+          pageStorageKey,
+        ),
+      )
+      ..add(
+        DiagnosticsProperty<ValueNotifier<SessionDate>>('current', current),
+      )
+      ..add(DiagnosticsProperty<Widget>('sliver', sliver));
   }
 }
 
@@ -125,7 +175,7 @@ class _FloatingSwitcher extends HookWidget {
         scrollController.addListener(listener);
         return () => scrollController.removeListener(listener);
       },
-      [],
+      [current.value],
     );
 
     return AnimatedPositioned(
