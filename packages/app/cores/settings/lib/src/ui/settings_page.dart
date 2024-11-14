@@ -48,10 +48,14 @@ class _PushNotificationTile extends ConsumerWidget {
     return switch (status) {
       AsyncData(value: final type) => ListTile(
           title: Text(l.pushNotification),
-           subtitle: Text(_getPermissionStatusText(type, l)),
-          onTap: () async =>
-              _handleNotificationPermissionChange(context, ref, type, l,),
-      ),
+          subtitle: Text(_getPermissionStatusText(type, l)),
+          onTap: () async => _handleNotificationPermissionChange(
+            context,
+            ref,
+            type,
+            l,
+          ),
+        ),
       _ => const SizedBox(
           height: 56,
           child: Center(
@@ -79,10 +83,10 @@ class _PushNotificationTile extends ConsumerWidget {
   }
 
   Future<void> _handleNotificationPermissionChange(
-      BuildContext context,
-      WidgetRef ref,
-      NotificationPermission type,
-      L10nSettings l,
+    BuildContext context,
+    WidgetRef ref,
+    NotificationPermission type,
+    L10nSettings l,
   ) async {
     final String message;
 
@@ -108,9 +112,9 @@ class _PushNotificationTile extends ConsumerWidget {
   }
 
   Future<String> _handlePermissionDenied(
-      BuildContext context,
-      WidgetRef ref,
-      L10nSettings l,
+    BuildContext context,
+    WidgetRef ref,
+    L10nSettings l,
   ) async {
     final shouldShowRequestRationale =
         await Permission.notification.shouldShowRequestRationale;
@@ -138,8 +142,8 @@ class _PushNotificationTile extends ConsumerWidget {
   }
 
   Future<void> _showRequestRationaleDialog(
-      BuildContext context,
-      L10nSettings l,
+    BuildContext context,
+    L10nSettings l,
   ) async {
     await showDialog<void>(
       context: context,
@@ -156,8 +160,8 @@ class _PushNotificationTile extends ConsumerWidget {
   }
 
   String _getNewPermissionMessage(
-      NotificationPermission newPermission,
-      L10nSettings l,
+    NotificationPermission newPermission,
+    L10nSettings l,
   ) {
     switch (newPermission) {
       case NotificationPermission.granted:
