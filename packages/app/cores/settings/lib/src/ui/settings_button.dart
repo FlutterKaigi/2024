@@ -14,7 +14,7 @@ class SettingsButton extends StatelessWidget {
     final router = GoRouter.of(context);
     return IconButton(
       icon: Semantics(
-        label: l.semanticsSettingsButtonLabel,
+        label: l.settingsPageTitle,
         child: const Icon(Icons.settings),
       ),
       onPressed: () => unawaited(
