@@ -77,7 +77,7 @@ class L10nSettingsEn extends L10nSettings {
 
   @override
   String get pushNotificationMessageDenied =>
-      'Sorry, do not send push notifications';
+      'Sorry, do not send push notifications.';
 
   @override
   String get pushNotificationMessageSettings =>

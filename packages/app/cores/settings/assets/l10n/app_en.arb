@@ -22,6 +22,6 @@
   "pushNotificationPermanentlyDenied": "PermanentlyDenied",
   "pushNotificationMessageAuthorized": "OK! Push notification is enabled.",
   "pushNotificationMessageAlreadyAuthorized": "Push notification is already enabled.",
-  "pushNotificationMessageDenied": "Sorry, do not send push notifications",
+  "pushNotificationMessageDenied": "Sorry, do not send push notifications.",
   "pushNotificationMessageSettings": "Permission is partially set. Please set it from the settings screen."
 }
