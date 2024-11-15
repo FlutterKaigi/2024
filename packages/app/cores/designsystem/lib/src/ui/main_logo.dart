@@ -18,10 +18,12 @@ class MainLogo extends StatelessWidget {
       Brightness.light => CommonAssets.logo.mainLogoLight.svg(
           width: size,
           height: size,
+          excludeFromSemantics: true,
         ),
       Brightness.dark => CommonAssets.logo.mainLogoDark.svg(
           width: size,
           height: size,
+          excludeFromSemantics: true,
         ),
     };
   }
