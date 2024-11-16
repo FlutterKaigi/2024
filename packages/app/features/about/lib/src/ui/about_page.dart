@@ -218,6 +218,7 @@ class AboutPage extends ConsumerWidget {
                         child: XLogo(),
                       ),
                     ),
+                    const SizedBox(width: 8),
                     InkWell(
                       onTap: () async {
                         await launchInExternalApp(
@@ -227,6 +228,7 @@ class AboutPage extends ConsumerWidget {
                       customBorder: const CircleBorder(),
                       child: const MediumLogo(),
                     ),
+                    const SizedBox(width: 8),
                     InkWell(
                       onTap: () async {
                         await launchInExternalApp(
