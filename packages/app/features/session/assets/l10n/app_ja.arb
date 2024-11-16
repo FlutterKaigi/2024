@@ -4,5 +4,17 @@
   "registerToCalendar": "スケジュールをカレンダーに登録する",
   "sessionPageTitle": "Session",
   "sessionsPageTitle": "Sessions",
-  "shareOnX": "Xで共有する"
+  "shareOnX": "Xで共有する",
+  "feedback": "フィードバック",
+  "sendFeedback": "フィードバックを送信する",
+  "feedbackFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0AO8cZTt3pkBI1OjU5YUUzP_nXg6rSSz1r01ts6GJXPVymw/viewform?usp=pp_url&entry.628975551={sessionId}",
+  "@feedbackFormUrl": {
+    "placeholders": {
+      "sessionId": {
+        "type": "String",
+        "description": "Session ID",
+        "example": "a1ba9bfd-87c8-47b2-b5af-a50e0c64c300"
+      }
+    }
+  }
 }
