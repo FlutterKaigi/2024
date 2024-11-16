@@ -31,7 +31,7 @@ VALUES
   ('shimizu', 'j1522158.webp', ''),
   ('cardseditor', 'cardseditor.webp', ''),
   ('yuta-ike', 'yuta-ike.webp', ''),
-  ('萩尾 亮斗', 'akeybako.webp', ''),
+  ('akeybako', 'akeybako.webp', ''),
   ('kikuchy', 'kikuchy.webp', '楽しいFlutterKaigiにするぞ！'),
   ('haru', 'Haru-Kobayashi073.webp', 'さじ1杯分程、Web開発に携わりました!'),
   ('kuno', 'kno3a87.webp', 'わいわい'),
@@ -383,7 +383,7 @@ DO $$
 DECLARE
     temp_id INT;
 BEGIN
-    SELECT id INTO temp_id FROM staffs WHERE name = '萩尾 亮斗';
+    SELECT id INTO temp_id FROM staffs WHERE name = 'akeybako';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
         (temp_id, 'github', 'akeybako'),
         (temp_id, 'x', 'a_key_bako'),
