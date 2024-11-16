@@ -174,7 +174,12 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                   child: ListTile(
                     title: Text(l.sendFeedback),
                     trailing: const Icon(Icons.arrow_outward),
-                    onTap: () {},
+                    onTap: () {
+                      final formUrl = Uri.parse(l.feedbackFormUrl(sessionId));
+                      unawaited(
+                        launchInExternalApp(formUrl),
+                      );
+                    },
                   ),
                 ),
                 const Gap(64),
