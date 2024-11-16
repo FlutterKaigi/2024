@@ -79,6 +79,14 @@ scripts:
     exec: flutter build appbundle --dart-define-from-file=defines/production.env
     packageFilters:
       scope: conference_2024_app
+  pod:install:
+    exec: cd ios && pod install
+    packageFilters:
+      fileExists: ios/Podfile
+  pod:repo:update:
+    exec: cd ios && pod repo update
+    packageFilters:
+      fileExists: ios/Podfile
 
 ide:
   intellij:
