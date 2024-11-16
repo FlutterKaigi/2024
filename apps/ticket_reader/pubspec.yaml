@@ -1,19 +1,23 @@
 name: ticket_reader
-description: "A new Flutter project."
-publish_to: 'none'
-version: 0.1.0
+description: "FlutterKaigi 2024 Ticket Reader Application"
+publish_to: "none"
+version: 0.1.0+1
 
 environment:
   sdk: ^3.6.0-216.1.beta
+  flutter: ^3.26.0-0.1.pre
 
 dependencies:
   flutter:
     sdk: flutter
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
 
 flutter:
   uses-material-design: true
+dev_dependencies:
+  riverpod_generator: ^2.6.2
+  build_runner: ^2.4.13
+  custom_lint: ^0.7.0
+  riverpod_lint: ^2.6.2
