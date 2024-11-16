@@ -25,5 +25,6 @@
   "openGoogleMap": "Open the Google Map",
   "copyAddress": "Copy the address",
   "theAddressHasBeenCopied": "The address has been copied",
-  "contributionsCount": "{count} contributions"
+  "contributionsCount": "{count} contributions",
+  "semanticsMainLogoLabel": "Flutter Kaigi logo"
 }
