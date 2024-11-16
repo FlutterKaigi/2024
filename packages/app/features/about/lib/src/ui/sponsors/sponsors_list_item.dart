@@ -227,23 +227,20 @@ class _SponsorImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Semantics(
-      label: _semanticLabel,
-      child: Image.network(
-        _imageUrl,
-        frameBuilder: (context, child, _, __) => ColoredBox(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: child,
-          ),
+    return Image.network(
+      _imageUrl,
+      frameBuilder: (context, child, _, __) => ColoredBox(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: child,
         ),
-        errorBuilder: (context, error, stackTrace) => const Center(
-          child: Icon(Icons.error_outline),
-        ),
-        semanticLabel: _semanticLabel,
-        fit: BoxFit.contain,
       ),
+      errorBuilder: (context, error, stackTrace) => const Center(
+        child: Icon(Icons.error_outline),
+      ),
+      semanticLabel: _semanticLabel,
+      fit: BoxFit.contain,
     );
   }
 }
