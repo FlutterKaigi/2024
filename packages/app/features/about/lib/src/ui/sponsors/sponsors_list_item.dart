@@ -133,16 +133,20 @@ class SponsorsListItem extends StatelessWidget {
           children: [
             Positioned.fill(
               child: _WhiteBackgroundImage(
-                semanticLabel: _sponsor.name,
                 imageUrl: _sponsor.logoUrl.toString(),
                 sponsorRank: _sponsor.type,
               ),
             ),
             Positioned.fill(
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: onTap,
+              child: Semantics(
+                container: true,
+                button: true,
+                label: _sponsor.name,
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: onTap,
+                  ),
                 ),
               ),
             ),
@@ -155,14 +159,11 @@ class SponsorsListItem extends StatelessWidget {
 
 class _WhiteBackgroundImage extends StatelessWidget {
   const _WhiteBackgroundImage({
-    required String semanticLabel,
     required String imageUrl,
     required SponsorType sponsorRank,
   })  : _imageUrl = imageUrl,
-        _semanticLabel = semanticLabel,
         _sponsorRank = sponsorRank;
 
-  final String _semanticLabel;
   final String _imageUrl;
   final SponsorType _sponsorRank;
 
@@ -183,7 +184,7 @@ class _WhiteBackgroundImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
         child: _SponsorImage(
           imageUrl: _imageUrl,
-          semanticLabel: _semanticLabel,
+          excludeFromSemantics: true,
         ),
       ),
     );
@@ -218,12 +219,15 @@ List<Color> _getColors(SponsorType sponsorRank) {
 class _SponsorImage extends StatelessWidget {
   const _SponsorImage({
     required String imageUrl,
-    required String semanticLabel,
+    String? semanticLabel,
+    bool excludeFromSemantics = false,
   })  : _imageUrl = imageUrl,
-        _semanticLabel = semanticLabel;
+        _semanticLabel = semanticLabel,
+        _excludeFromSemantics = excludeFromSemantics;
 
   final String _imageUrl;
-  final String _semanticLabel;
+  final String? _semanticLabel;
+  final bool _excludeFromSemantics;
 
   @override
   Widget build(BuildContext context) {
@@ -240,6 +244,7 @@ class _SponsorImage extends StatelessWidget {
         child: Icon(Icons.error_outline),
       ),
       semanticLabel: _semanticLabel,
+      excludeFromSemantics: _excludeFromSemantics,
       fit: BoxFit.contain,
     );
   }
