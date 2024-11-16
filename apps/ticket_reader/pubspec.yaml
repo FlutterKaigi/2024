@@ -8,6 +8,9 @@ environment:
   flutter: ^3.26.0-0.1.pre
 
 dependencies:
+  collection: ^1.19.0
+  common_data:
+    path: ../../packages/common/data
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
@@ -28,3 +31,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
