@@ -12,6 +12,7 @@ related/ticket:
   - changed-files:
       - any-glob-to-any-file:
           - "apps/ticket_web/**"
+          - "apps/ticket_reader/**"
           - "packages/common/ticket_api/**"
 related/data:
   - changed-files:
