@@ -169,6 +169,78 @@ abstract class L10nSettings {
   /// In ja, this message translates to:
   /// **'English'**
   String get localizationModeEn;
+
+  /// No description provided for @pushNotification.
+  ///
+  /// In ja, this message translates to:
+  /// **'プッシュ通知設定'**
+  String get pushNotification;
+
+  /// No description provided for @pushNotificationPrompt.
+  ///
+  /// In ja, this message translates to:
+  /// **'プッシュ通知を許可することで、FlutterKaigiに関するお知らせを受け取れます'**
+  String get pushNotificationPrompt;
+
+  /// No description provided for @pushNotificationAuthorized.
+  ///
+  /// In ja, this message translates to:
+  /// **'許可'**
+  String get pushNotificationAuthorized;
+
+  /// No description provided for @pushNotificationDenied.
+  ///
+  /// In ja, this message translates to:
+  /// **'不許可'**
+  String get pushNotificationDenied;
+
+  /// No description provided for @pushNotificationProvisional.
+  ///
+  /// In ja, this message translates to:
+  /// **'仮設定'**
+  String get pushNotificationProvisional;
+
+  /// No description provided for @pushNotificationRestricted.
+  ///
+  /// In ja, this message translates to:
+  /// **'制限中'**
+  String get pushNotificationRestricted;
+
+  /// No description provided for @pushNotificationLimited.
+  ///
+  /// In ja, this message translates to:
+  /// **'制限中'**
+  String get pushNotificationLimited;
+
+  /// No description provided for @pushNotificationPermanentlyDenied.
+  ///
+  /// In ja, this message translates to:
+  /// **'永久に拒否'**
+  String get pushNotificationPermanentlyDenied;
+
+  /// No description provided for @pushNotificationMessageAuthorized.
+  ///
+  /// In ja, this message translates to:
+  /// **'プッシュ通知がの受信が許可されました！'**
+  String get pushNotificationMessageAuthorized;
+
+  /// No description provided for @pushNotificationMessageAlreadyAuthorized.
+  ///
+  /// In ja, this message translates to:
+  /// **'プッシュ通知は既に許可されています。'**
+  String get pushNotificationMessageAlreadyAuthorized;
+
+  /// No description provided for @pushNotificationMessageDenied.
+  ///
+  /// In ja, this message translates to:
+  /// **'プッシュ通知が拒否されました。'**
+  String get pushNotificationMessageDenied;
+
+  /// No description provided for @pushNotificationMessageSettings.
+  ///
+  /// In ja, this message translates to:
+  /// **'プッシュ通知は一部許可されています'**
+  String get pushNotificationMessageSettings;
 }
 
 class _L10nSettingsDelegate extends LocalizationsDelegate<L10nSettings> {

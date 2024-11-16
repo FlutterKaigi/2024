@@ -57,9 +57,12 @@ class AboutPage extends ConsumerWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 16),
-                      CommonAssets.logo.mainLogo.svg(
-                        width: 96,
-                        height: 96,
+                      Semantics(
+                        label: l.semanticsMainLogoLabel,
+                        child: CommonAssets.logo.mainLogo.svg(
+                          width: 96,
+                          height: 96,
+                        ),
                       ),
                       const SizedBox(height: 16),
                       Padding(

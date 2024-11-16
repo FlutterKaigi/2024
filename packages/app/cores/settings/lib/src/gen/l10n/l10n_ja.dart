@@ -41,4 +41,41 @@ class L10nSettingsJa extends L10nSettings {
 
   @override
   String get localizationModeEn => 'English';
+
+  @override
+  String get pushNotification => 'プッシュ通知設定';
+
+  @override
+  String get pushNotificationPrompt =>
+      'プッシュ通知を許可することで、FlutterKaigiに関するお知らせを受け取れます';
+
+  @override
+  String get pushNotificationAuthorized => '許可';
+
+  @override
+  String get pushNotificationDenied => '不許可';
+
+  @override
+  String get pushNotificationProvisional => '仮設定';
+
+  @override
+  String get pushNotificationRestricted => '制限中';
+
+  @override
+  String get pushNotificationLimited => '制限中';
+
+  @override
+  String get pushNotificationPermanentlyDenied => '永久に拒否';
+
+  @override
+  String get pushNotificationMessageAuthorized => 'プッシュ通知がの受信が許可されました！';
+
+  @override
+  String get pushNotificationMessageAlreadyAuthorized => 'プッシュ通知は既に許可されています。';
+
+  @override
+  String get pushNotificationMessageDenied => 'プッシュ通知が拒否されました。';
+
+  @override
+  String get pushNotificationMessageSettings => 'プッシュ通知は一部許可されています';
 }

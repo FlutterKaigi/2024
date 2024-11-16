@@ -11,5 +11,17 @@
   "resetPreferences": "Reset settings",
   "localizationMode": "Language",
   "localizationModeJa": "日本語",
-  "localizationModeEn": "English"
+  "localizationModeEn": "English",
+  "pushNotification": "Push Notification",
+  "pushNotificationPrompt": "By allowing push notifications, you can receive notifications about FlutterKaigi.",
+  "pushNotificationAuthorized": "Authorized",
+  "pushNotificationDenied": "Denied",
+  "pushNotificationProvisional": "Provisional",
+  "pushNotificationRestricted": "Restricted",
+  "pushNotificationLimited": "Limited",
+  "pushNotificationPermanentlyDenied": "PermanentlyDenied",
+  "pushNotificationMessageAuthorized": "OK! Push notification is enabled.",
+  "pushNotificationMessageAlreadyAuthorized": "Push notification is already enabled.",
+  "pushNotificationMessageDenied": "Sorry, do not send push notifications.",
+  "pushNotificationMessageSettings": "Permission is partially set. Please set it from the settings screen."
 }

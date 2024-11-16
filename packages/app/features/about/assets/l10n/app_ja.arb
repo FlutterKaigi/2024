@@ -25,5 +25,6 @@
   "openGoogleMap": "Googleマップを開く",
   "copyAddress": "住所をコピー",
   "theAddressHasBeenCopied": "住所をコピーしました ",
-  "contributionsCount": "{count} contributions"
+  "contributionsCount": "{count} contributions",
+  "semanticsMainLogoLabel": "Flutter Kaigiロゴ"
 }
