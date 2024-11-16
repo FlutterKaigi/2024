@@ -216,7 +216,10 @@ class AboutPage extends ConsumerWidget {
                         );
                       },
                       customBorder: const CircleBorder(),
-                      child: const XLogo(),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: XLogo(),
+                      ),
                     ),
                     const SizedBox(width: 8),
                     InkWell(
@@ -226,7 +229,10 @@ class AboutPage extends ConsumerWidget {
                         );
                       },
                       customBorder: const CircleBorder(),
-                      child: const MediumLogo(),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: MediumLogo(),
+                      ),
                     ),
                     const SizedBox(width: 8),
                     InkWell(
@@ -236,7 +242,10 @@ class AboutPage extends ConsumerWidget {
                         );
                       },
                       customBorder: const CircleBorder(),
-                      child: const GithubLogo(),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: GithubLogo(),
+                      ),
                     ),
                   ],
                 ),
