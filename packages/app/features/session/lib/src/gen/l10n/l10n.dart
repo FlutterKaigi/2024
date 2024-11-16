@@ -133,6 +133,18 @@ abstract class L10nSession {
   /// In ja, this message translates to:
   /// **'Xで共有する'**
   String get shareOnX;
+
+  /// No description provided for @feedback.
+  ///
+  /// In ja, this message translates to:
+  /// **'フィードバック'**
+  String get feedback;
+
+  /// No description provided for @sendFeedback.
+  ///
+  /// In ja, this message translates to:
+  /// **'フィードバックを送信する'**
+  String get sendFeedback;
 }
 
 class _L10nSessionDelegate extends LocalizationsDelegate<L10nSession> {

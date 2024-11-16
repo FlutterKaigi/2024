@@ -23,4 +23,10 @@ class L10nSessionEn extends L10nSession {
 
   @override
   String get shareOnX => 'Share on X';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get sendFeedback => 'Send feedback';
 }

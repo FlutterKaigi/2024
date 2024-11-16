@@ -4,5 +4,7 @@
   "registerToCalendar": "Register schedule to calendar",
   "sessionPageTitle": "Session",
   "sessionsPageTitle": "Sessions",
-  "shareOnX": "Share on X"
+  "shareOnX": "Share on X",
+  "feedback": "Feedback",
+  "sendFeedback": "Send feedback"
 }

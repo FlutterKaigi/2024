@@ -4,5 +4,7 @@
   "registerToCalendar": "スケジュールをカレンダーに登録する",
   "sessionPageTitle": "Session",
   "sessionsPageTitle": "Sessions",
-  "shareOnX": "Xで共有する"
+  "shareOnX": "Xで共有する",
+  "feedback": "フィードバック",
+  "sendFeedback": "フィードバックを送信する"
 }
