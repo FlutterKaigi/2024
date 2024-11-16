@@ -6,5 +6,6 @@
   "sessionsPageTitle": "Sessions",
   "shareOnX": "Share on X",
   "feedback": "Feedback",
-  "sendFeedback": "Send feedback"
+  "sendFeedback": "Send feedback",
+  "feedbackFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdBMjh96tcQlzdghbdveGSOJJujsv1X3OnJ7jm52Npv9KGc6A/viewform?usp=pp_url&entry.628975551={sessionId}"
 }

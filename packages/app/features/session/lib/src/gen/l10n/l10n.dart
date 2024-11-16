@@ -145,6 +145,12 @@ abstract class L10nSession {
   /// In ja, this message translates to:
   /// **'フィードバックを送信する'**
   String get sendFeedback;
+
+  /// No description provided for @feedbackFormUrl.
+  ///
+  /// In ja, this message translates to:
+  /// **'https://docs.google.com/forms/d/e/1FAIpQLSd0AO8cZTt3pkBI1OjU5YUUzP_nXg6rSSz1r01ts6GJXPVymw/viewform?usp=pp_url&entry.628975551={sessionId}'**
+  String feedbackFormUrl(String sessionId);
 }
 
 class _L10nSessionDelegate extends LocalizationsDelegate<L10nSession> {
