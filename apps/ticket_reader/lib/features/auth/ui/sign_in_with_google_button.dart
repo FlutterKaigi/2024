@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SignInWithGoogleButton extends StatelessWidget {
   const SignInWithGoogleButton({
@@ -10,11 +11,11 @@ class SignInWithGoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final svgImage = Assets.images.svg.signInWithGoogleSvg.svg();
-
     return Stack(
       children: [
-        svgImage,
+        SvgPicture.asset(
+          'assets/sign_in_with_google.svg',
+        ),
         Positioned.fill(
           child: Material(
             color: Colors.transparent,
