@@ -226,7 +226,10 @@ class AboutPage extends ConsumerWidget {
                         );
                       },
                       customBorder: const CircleBorder(),
-                      child: const MediumLogo(),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: MediumLogo(),
+                      ),
                     ),
                     const SizedBox(width: 8),
                     InkWell(
