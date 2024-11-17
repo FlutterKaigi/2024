@@ -26,7 +26,7 @@ final supabaseAccessTokenProvider = Provider<String?>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SupabaseAccessTokenRef = ProviderRef<String?>;
-String _$authNotifierHash() => r'32326cb8bb4ea899d6a03d0c5c084110013340d4';
+String _$authNotifierHash() => r'e4bcd7f9199db398879c63e3f766bd0bd0a7ac23';
 
 /// See also [AuthNotifier].
 @ProviderFor(AuthNotifier)
@@ -35,8 +35,8 @@ final authNotifierProvider = NotifierProvider<AuthNotifier, User?>.internal(
   name: r'authNotifierProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$authNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 typedef _$AuthNotifier = Notifier<User?>;

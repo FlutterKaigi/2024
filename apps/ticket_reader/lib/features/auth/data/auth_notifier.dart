@@ -6,7 +6,7 @@ import 'package:ticket_reader/features/auth/data/on_auth_state_change_provider.d
 
 part 'auth_notifier.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [])
 class AuthNotifier extends _$AuthNotifier {
   @override
   User? build() {
