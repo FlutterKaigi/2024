@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class ErrorCard extends StatelessWidget {
@@ -10,6 +12,7 @@ class ErrorCard extends StatelessWidget {
     this.title,
     this.padding = const EdgeInsets.all(16),
     this.margin = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    this.onReload,
   });
 
   final Object error;
@@ -21,6 +24,9 @@ class ErrorCard extends StatelessWidget {
 
   /// DioExceptionで、StatusCodeがある時に　エラーメッセージを上書きする
   final String? Function(int statusCode)? onDioExceptionStatusOverride;
+
+  /// 再読み込み
+  final FutureOr<void> Function()? onReload;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +78,13 @@ class ErrorCard extends StatelessWidget {
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onErrorContainer,
                 ),
+              ),
+            ],
+            if (onReload != null) ...[
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: onReload,
+                child: const Text('再読み込み'),
               ),
             ],
           ],
