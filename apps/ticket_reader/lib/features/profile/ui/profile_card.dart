@@ -26,7 +26,7 @@ class ProfileCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTile(
-              leading: ProfileAvatar(
+              leading: ProfileAvatar.profileWithSns(
                 profile: profile,
                 size: 48,
               ),

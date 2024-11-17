@@ -7,6 +7,7 @@ import 'package:ticket_reader/features/profile/data/profile_notifier.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
 import 'package:ticket_reader/features/profile/ui/profile_card.dart';
 import 'package:ticket_reader/pages/ticket_reader_page.dart';
+import 'package:ticket_reader/pages/user_search_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -49,7 +50,7 @@ class _Drawer extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Row(),
-                    ProfileAvatar(
+                    ProfileAvatar.profileWithSns(
                       profile: profile.valueOrNull!,
                       size: 64,
                     ),
@@ -70,9 +71,12 @@ class _Drawer extends ConsumerWidget {
             ListTile(
               title: const Text('QR Scanner'),
               leading: const Icon(Icons.qr_code_scanner),
-              onTap: () {
-                const ReaderRoute().go(context);
-              },
+              onTap: () => const ReaderRoute().go(context),
+            ),
+            ListTile(
+              title: const Text('User Search'),
+              leading: const Icon(Icons.search),
+              onTap: () => const UserSearchRoute().go(context),
             ),
             const Spacer(),
             const Divider(),
