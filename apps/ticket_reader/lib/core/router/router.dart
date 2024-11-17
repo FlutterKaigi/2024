@@ -9,7 +9,7 @@ import 'package:ticket_reader/pages/login_page.dart';
 
 part 'router.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [AuthNotifier])
 GoRouter router(Ref ref) {
   final isLoggedIn =
       ref.watch(authNotifierProvider.select((notifier) => notifier != null));

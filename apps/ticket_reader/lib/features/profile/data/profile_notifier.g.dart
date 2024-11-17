@@ -8,7 +8,7 @@ part of 'profile_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileNotifierHash() => r'e04db79515f3170c4f89ca4dac628d5175eb4e05';
+String _$profileNotifierHash() => r'84e5c9bb4e202776d0878dde0e44a76fb9c2a8e7';
 
 /// See also [ProfileNotifier].
 @ProviderFor(ProfileNotifier)
@@ -19,8 +19,11 @@ final profileNotifierProvider =
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$profileNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: <ProviderOrFamily>[authNotifierProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    authNotifierProvider,
+    ...?authNotifierProvider.allTransitiveDependencies
+  },
 );
 
 typedef _$ProfileNotifier = AsyncNotifier<ProfileWithSns?>;

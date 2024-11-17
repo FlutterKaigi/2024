@@ -6,7 +6,7 @@ import 'package:ticket_reader/features/profile/data/profile_notifier.dart';
 
 part 'user_avatar_image_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [ProfileNotifier])
 Future<Uint8List?> userAvatarImage(Ref ref) async {
   final profile = ref.watch(profileNotifierProvider);
   return switch (profile) {

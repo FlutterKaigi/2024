@@ -7,7 +7,7 @@ import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 
 part 'profile_notifier.g.dart';
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [AuthNotifier])
 class ProfileNotifier extends _$ProfileNotifier {
   @override
   Future<ProfileWithSns?> build() async {

@@ -8,7 +8,7 @@ part of 'user_avatar_image_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userAvatarImageHash() => r'41367d97ce827c7f57bbd32e87959091ba8636fc';
+String _$userAvatarImageHash() => r'17fdf21aaae2059664c77f4b9fd18102dd3d06a7';
 
 /// See also [userAvatarImage].
 @ProviderFor(userAvatarImage)
@@ -18,8 +18,11 @@ final userAvatarImageProvider = FutureProvider<Uint8List?>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$userAvatarImageHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: <ProviderOrFamily>[profileNotifierProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    profileNotifierProvider,
+    ...?profileNotifierProvider.allTransitiveDependencies
+  },
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
