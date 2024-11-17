@@ -111,23 +111,26 @@ class _KeyNoteDetail extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    session.speakerTitle!,
-                    style: textTheme.availableFonts.notoSansJp.bold.copyWith(
-                      fontSize: 16,
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      session.speakerTitle!,
+                      style: textTheme.availableFonts.notoSansJp.bold.copyWith(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  Text(
-                    session.speaker!.name,
-                    style: textTheme.availableFonts.notoSansJp.regular.copyWith(
-                      fontSize: 16,
+                    Text(
+                      session.speaker!.name,
+                      style:
+                          textTheme.availableFonts.notoSansJp.regular.copyWith(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
