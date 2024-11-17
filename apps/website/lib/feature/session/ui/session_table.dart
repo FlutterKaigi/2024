@@ -101,7 +101,7 @@ class _Body extends StatelessWidget {
     required this.selectedDate,
   });
 
-  final List<SessionVenuesWithSessionsV2> sessionVenues;
+  final List<SessionVenuesWithSessionsV3> sessionVenues;
   final EventDate selectedDate;
   @override
   Widget build(BuildContext context) {

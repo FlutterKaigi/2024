@@ -12,8 +12,11 @@ import {
 } from "../../features/coupon/coupon";
 import { authorizationSchema } from "../../util/authorizationSchema";
 import { getUser, getUserWithProfile } from "../../util/user";
+import wallet from "./wallet";
 
 const v1 = new Hono<{ Bindings: Bindings }>();
+
+v1.route("/wallet", wallet);
 
 const verifyPurchaseSchema = v.object({
 	stripe_session_id: v.string(),

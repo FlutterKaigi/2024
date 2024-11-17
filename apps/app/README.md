@@ -51,7 +51,7 @@
 | `app_cores_settings` | アプリの設定関連機能を提供 |
 | `app_features_about` | アプリについての説明関連機能を提供 |
 | `app_features_debug` | アプリのデバッグ機能を提供 |
-| `app_features_news` | アプリのニュース関連機能を提供 |
+| `app_features_news` | アプリのお知らせ関連機能を提供 |
 | `app_features_session` | アプリのセッション関連機能を提供 |
 | `app_features_venue` | アプリの会場関連機能を提供 |
 | `common_data` | プロジェクト全体で共通して使用するデータ関連機能を提供 |
@@ -151,7 +151,7 @@ graph TD
     │   └── features/
     │       ├── about/         # アプリについての説明関連機能を提供
     │       ├── debug/         # アプリのデバッグ機能を提供
-    │       ├── news/          # アプリのニュース関連機能を提供
+    │       ├── news/          # アプリのお知らせ関連機能を提供
     │       ├── session/       # アプリのセッション関連機能を提供
     │       └── venue/         # アプリの会場関連機能を提供
     └── common/

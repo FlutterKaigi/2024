@@ -16,4 +16,6 @@ enum SessionDate {
     }
     return null;
   }
+
+  bool get isDay1 => this == day1;
 }

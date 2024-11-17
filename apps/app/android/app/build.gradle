@@ -1,5 +1,6 @@
 plugins {
     id "com.android.application"
+    id 'com.google.gms.google-services'
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
@@ -41,12 +42,40 @@ if (keyPropertiesFile.exists()) {
     }
 }
 
+task selectGoogleServicesJson(type: Copy) {
+    def sourceFile = file("src/${dartDefines.FLAVOR}/google-services.json")
+    if (sourceFile.exists()) {
+        from sourceFile
+        into './'
+    } else {
+        logger.warn("Warning: google-services.json for flavor ${flavor} does not exist.")
+    }
+}
+
+def dependentTasks = [
+    'processDebugGoogleServices',
+    'processReleaseGoogleServices',
+    'compileFlutterBuildDebug',
+    'mergeDebugAssets',
+    'mergeDebugShaders',
+    'generateDebugResources',
+    'mergeDebugJniLibFolders'
+]
+
+afterEvaluate {
+    tasks.matching { task -> dependentTasks.contains(task.name) }.all { task ->
+        task.dependsOn selectGoogleServicesJson
+    }
+}
+
 android {
     namespace = "jp.flutterkaigi.conf2024"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -88,6 +117,10 @@ android {
             }
         }
     }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 }
 
 flutter {

@@ -12,12 +12,16 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/floor_map.webp
-  AssetGenImage get floorMap =>
-      const AssetGenImage('assets/images/floor_map.webp');
+  /// File path: assets/images/floor_map_en.webp
+  AssetGenImage get floorMapEn =>
+      const AssetGenImage('assets/images/floor_map_en.webp');
+
+  /// File path: assets/images/floor_map_ja.webp
+  AssetGenImage get floorMapJa =>
+      const AssetGenImage('assets/images/floor_map_ja.webp');
 
   /// List of all assets
-  List<AssetGenImage> get values => [floorMap];
+  List<AssetGenImage> get values => [floorMapEn, floorMapJa];
 }
 
 class Assets {

@@ -31,7 +31,7 @@ VALUES
   ('shimizu', 'j1522158.webp', ''),
   ('cardseditor', 'cardseditor.webp', ''),
   ('yuta-ike', 'yuta-ike.webp', ''),
-  ('萩尾 亮斗', 'akeybako.webp', ''),
+  ('akeybako', 'akeybako.webp', ''),
   ('kikuchy', 'kikuchy.webp', '楽しいFlutterKaigiにするぞ！'),
   ('haru', 'Haru-Kobayashi073.webp', 'さじ1杯分程、Web開発に携わりました!'),
   ('kuno', 'kno3a87.webp', 'わいわい'),
@@ -41,7 +41,8 @@ VALUES
   ('asmz', 'starmAIne777.webp', 'Xの中の人として盛り上げたいです！'),
   ('katsummy', 'granoeste.webp', ''),
   ('jiyuujin', 'jiyuujin.webp', 'Flutterでワイワイしよう！'),
-  ('ssoejima', 'mightyfrog.webp', '');
+  ('ssoejima', 'mightyfrog.webp', ''),
+  ('TKMN', 'wtkmn.webp', '運営初参加です。よろしくお願いします！');
 
 -- staff_social_networking_services
 DO $$
@@ -382,7 +383,7 @@ DO $$
 DECLARE
     temp_id INT;
 BEGIN
-    SELECT id INTO temp_id FROM staffs WHERE name = '萩尾 亮斗';
+    SELECT id INTO temp_id FROM staffs WHERE name = 'akeybako';
     INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
         (temp_id, 'github', 'akeybako'),
         (temp_id, 'x', 'a_key_bako'),
@@ -502,6 +503,20 @@ BEGIN
         (temp_id, 'github', 'mightyfrog'),
         (temp_id, 'x', 'highballegg'),
         (temp_id, 'qiita', 'ssoejima');
+END $$;
+
+DO $$
+DECLARE
+    temp_id INT;
+BEGIN
+    SELECT id INTO temp_id FROM staffs WHERE name = 'TKMN';
+    INSERT INTO staff_social_networking_services (staff_id, type, value) VALUES
+        (temp_id, 'github', 'wtkmn'),
+        (temp_id, 'x', 'w_tkmn'),
+        (temp_id, 'medium', 'tkmn'),
+        (temp_id, 'qiita', 'w_tkmn'),
+        (temp_id, 'zenn', 'w_tkmn'),
+        (temp_id, 'other', 'https://tkmn.notion.site');
 END $$;
 
 -- sponsors
@@ -2194,3 +2209,32 @@ INSERT INTO
   public.session_speakers_v2
 VALUES
   ('a1ba9bfd-87c8-47b2-b5af-a50e0c64c300', '5d252897-2c14-4232-b51d-8f9bfa47fae3');
+
+-- special_sponsors
+INSERT INTO
+  public.special_sponsors
+VALUES
+  (
+    27,
+    'DroidKaigi Association',
+    '1cbc8ff6-882d-4df5-8fab-e3f2ff294149.webp',
+    'DroidKaigiは主にAndroidを対象にしたカンファレンスです。Flutterのターゲットプラットフォームのひとつでもあり、非常に親しく感じています。
+ITコミュニティとして一緒にモバイル業界を盛り上げていきましょう！',
+    'https://droidkaigi.jp',
+    'community',
+    27
+  );
+
+INSERT INTO
+  public.special_sponsors
+VALUES
+  (
+    28,
+    'ポケトーク株式会社',
+    'dd6f30c4-fc43-4ccc-b48d-04991a3482a3.webp',
+    'AI翻訳技術の革新で「言葉の壁をなくす」ことをスローガンに掲げているスタートアップ企業です。
+本イベントでは登壇者の公演をAI同時通訳するポケトークカンファレンスというサービスにて、イベント運営をサポートいたします。',
+    'https://pocketalk.jp/?utm_source=google&utm_medium=cpc&utm_campaign=lsj_search&gad_source=1&gclid=Cj0KCQjwyL24BhCtARIsALo0fSAzUcKusFvIvUi-tlFGqp1BT4JveSlZHzce5-bVmNH--d33Rvy1WvcaAk-NEALw_wcB',
+    'translation',
+    28
+  );

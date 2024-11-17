@@ -215,6 +215,23 @@
         "success": "Profile information updated successfully",
         "error": "Profile information update failed"
       }
+    },
+    "qrCode": {
+      "title": "Ticket QR Code",
+      "description": "This QR code will be used at the reception on the day of FlutterKaigi 2024.\nPlease show this QR code to the staff on the day of the event.",
+      "showWalletQr": "Add ticket to another mobile device with QR Code",
+      "walletQrTitle": "Add to Wallet",
+      "walletQrDescription": "Scan this QR code with your iPhone/Android to add the ticket to your wallet app",
+      "close": "Close",
+      "ticketId": "Ticket ID",
+      "sectionId": "Name Plate Section ID"
+    },
+    "entrance_information": {
+      "title": "Entrance Information",
+      "description": [
+        "A QR code for entry will be displayed on this page before FlutterKaigi 2024.",
+        "Please show the QR code to staff at the entrance."
+      ]
     }
   }
 }

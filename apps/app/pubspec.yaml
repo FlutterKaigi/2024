@@ -1,7 +1,7 @@
 name: conference_2024_app
 description: "FlutterKaigi 2024 official application."
 publish_to: "none"
-version: 0.2.0+2
+version: 0.3.0+7
 
 environment:
   sdk: ^3.6.0-216.1.beta
@@ -28,14 +28,18 @@ dependencies:
   common_data:
     path: ../../packages/common/data
   dynamic_color: ^1.7.0
+  firebase_core: ^3.7.0
+  firebase_messaging: ^15.1.4
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
+  flutter_local_notifications: ^18.0.1
   flutter_localizations:
     sdk: flutter
   go_router: ^14.2.7
   hooks_riverpod: ^2.6.1
   intl: ^0.19.0
+  permission_handler: ^11.3.1
   pub_semver: ^2.1.4
   riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5

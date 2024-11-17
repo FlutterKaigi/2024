@@ -2,12 +2,14 @@ import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
+import 'package:conference_2024_website/feature/sponsor/ui/individual_sponsor_view.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/pages/sponsor/sponsor_page.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final class Sponsors extends HookConsumerWidget {
@@ -27,7 +29,7 @@ final class Sponsors extends HookConsumerWidget {
           i18n,
           textTheme,
         ),
-      AsyncData<List<SponsorWithSessionV2>>(:final value) => sponsorsSection(
+      AsyncData<List<SponsorWithSessionV3>>(:final value) => sponsorsSection(
           value,
           theme,
           context,
@@ -38,7 +40,7 @@ final class Sponsors extends HookConsumerWidget {
 }
 
 Widget sponsorsSection(
-  List<SponsorWithSessionV2> sponsors,
+  List<SponsorWithSessionV3> sponsors,
   ThemeData theme,
   BuildContext context,
 ) {
@@ -65,13 +67,15 @@ Widget sponsorsSection(
           return _sponsorListByLevel(theme, listByLevel.value, context);
         }).toList(),
       ),
+      const Gap(80),
+      const IndividualSponsorView(),
     ],
   );
 }
 
 Widget _sponsorListByLevel(
   ThemeData theme,
-  List<SponsorWithSessionV2> sponsors,
+  List<SponsorWithSessionV3> sponsors,
   BuildContext context,
 ) {
   assert(
@@ -89,26 +93,39 @@ Widget _sponsorListByLevel(
       title: i18n.sponsors.levels.platinum,
       cardSize: (maxSize: 250, minSize: 250),
       wrapSpacing: (maxWrapSpacing: 48, minWrapSpacing: 48),
-      type: SponsorType.platinum,
+      type: SponsorTypeV2.platinum,
     ),
     SponsorLevelData(
       title: i18n.sponsors.levels.gold,
       cardSize: (maxSize: 180, minSize: 144),
       wrapSpacing: (maxWrapSpacing: 40, minWrapSpacing: 20),
-      type: SponsorType.gold,
+      type: SponsorTypeV2.gold,
       isLeftAlign: false,
     ),
     SponsorLevelData(
       title: i18n.sponsors.levels.silver,
       cardSize: (maxSize: 148, minSize: 96),
       wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
-      type: SponsorType.silver,
+      type: SponsorTypeV2.silver,
     ),
     SponsorLevelData(
       title: i18n.sponsors.levels.bronze,
       cardSize: (maxSize: 120, minSize: 96),
       wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
-      type: SponsorType.bronze,
+      type: SponsorTypeV2.bronze,
+      isLeftAlign: false,
+    ),
+    SponsorLevelData(
+      title: i18n.sponsors.levels.community,
+      cardSize: (maxSize: 120, minSize: 96),
+      wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
+      type: SponsorTypeV2.community,
+    ),
+    SponsorLevelData(
+      title: i18n.sponsors.levels.translation,
+      cardSize: (maxSize: 120, minSize: 96),
+      wrapSpacing: (maxWrapSpacing: 28, minWrapSpacing: 12),
+      type: SponsorTypeV2.translation,
       isLeftAlign: false,
     ),
   ];
@@ -171,7 +188,7 @@ class _SponsorCard extends ConsumerWidget {
     required this.size,
   });
 
-  final SponsorWithSessionV2 sponsor;
+  final SponsorWithSessionV3 sponsor;
   final double size;
 
   @override
@@ -212,7 +229,7 @@ class _SponsorCard extends ConsumerWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty<SponsorWithSessionV2>('sponsor', sponsor));
+        .add(DiagnosticsProperty<SponsorWithSessionV3>('sponsor', sponsor));
     properties.add(DoubleProperty('size', size));
   }
 }
@@ -256,7 +273,7 @@ final class SponsorLevelData {
   final CardSize cardSize;
   final WrapSpacing wrapSpacing;
   final bool isLeftAlign;
-  final SponsorType type;
+  final SponsorTypeV2 type;
 }
 
 typedef CardSize = ({double maxSize, double minSize});

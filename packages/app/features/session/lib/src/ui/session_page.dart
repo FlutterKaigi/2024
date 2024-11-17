@@ -160,6 +160,29 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                     },
                   ),
                 ),
+                const Gap(16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    l.feedback,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                const Gap(8),
+                Tooltip(
+                  message: l.sendFeedback,
+                  child: ListTile(
+                    title: Text(l.sendFeedback),
+                    trailing: const Icon(Icons.arrow_outward),
+                    onTap: () {
+                      final formUrl = Uri.parse(l.feedbackFormUrl(sessionId));
+                      unawaited(
+                        launchInExternalApp(formUrl),
+                      );
+                    },
+                  ),
+                ),
+                const Gap(64),
               ],
             ),
           ],

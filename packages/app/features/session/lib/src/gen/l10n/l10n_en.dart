@@ -23,4 +23,15 @@ class L10nSessionEn extends L10nSession {
 
   @override
   String get shareOnX => 'Share on X';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get sendFeedback => 'Send feedback';
+
+  @override
+  String feedbackFormUrl(String sessionId) {
+    return 'https://docs.google.com/forms/d/e/1FAIpQLSdBMjh96tcQlzdghbdveGSOJJujsv1X3OnJ7jm52Npv9KGc6A/viewform?usp=pp_url&entry.628975551=$sessionId';
+  }
 }

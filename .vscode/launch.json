@@ -116,6 +116,24 @@
       "type": "dart"
     },
     {
+      "name": "website-staging-canvaskit-wasm-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--web-renderer",
+        // 何も指定してない場合 skwasm が指定されるが、なぜか開発環境だとリンクが期待通りに動作しない不具合が発生する
+        // そのため、現状 canvaskit を指定している
+        "canvaskit",
+        "--wasm",
+        "--dart-define-from-file=defines/staging.env"
+      ],
+      "type": "dart"
+    },
+
+    {
       "name": "website-production-canvaskit-wasm-debug",
       "cwd": "apps/website",
       "request": "launch",
@@ -142,6 +160,20 @@
         "--web-port",
         "8080",
         "--dart-define-from-file=defines/development.env",
+        "-d",
+        "macos"
+      ]
+    },
+    {
+      "name": "website-staging-debug",
+      "cwd": "apps/website",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": [
+        "--web-port",
+        "8080",
+        "--dart-define-from-file=defines/staging.env",
         "-d",
         "macos"
       ]

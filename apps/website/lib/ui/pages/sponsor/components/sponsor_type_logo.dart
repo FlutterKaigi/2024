@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class SponsorTypeLogo extends StatelessWidget {
-  factory SponsorTypeLogo.withText(SponsorType type) => SponsorTypeLogo._(
+  factory SponsorTypeLogo.withText(SponsorTypeV2 type) => SponsorTypeLogo._(
         type: type,
         showText: true,
       );
 
-  factory SponsorTypeLogo.withoutText(SponsorType type) => SponsorTypeLogo._(
+  factory SponsorTypeLogo.withoutText(SponsorTypeV2 type) => SponsorTypeLogo._(
         type: type,
         showText: false,
       );
@@ -20,7 +20,7 @@ class SponsorTypeLogo extends StatelessWidget {
     required this.showText,
   });
 
-  final SponsorType type;
+  final SponsorTypeV2 type;
   final bool showText;
 
   @override
@@ -29,43 +29,59 @@ class SponsorTypeLogo extends StatelessWidget {
     final textTheme = theme.customThemeExtension.textTheme;
 
     final gradient = switch (type) {
-      SponsorType.platinum => const LinearGradient(
+      SponsorTypeV2.platinum => const LinearGradient(
           colors: [
             Color(0xFFE1ECFF),
             Color(0xFF8AB1E7),
           ],
         ),
-      SponsorType.gold => const LinearGradient(
+      SponsorTypeV2.gold => const LinearGradient(
           colors: [
             Color(0xFFFFF200),
             Color(0xFFE19651),
           ],
         ),
-      SponsorType.silver => const LinearGradient(
+      SponsorTypeV2.silver => const LinearGradient(
           colors: [
             Color(0xFFD3D3D4),
             Color(0xFFABABAB),
           ],
         ),
-      SponsorType.bronze => const LinearGradient(
+      SponsorTypeV2.bronze => const LinearGradient(
           colors: [
             Color(0xFFCD8237),
             Color(0xFF8D5A26),
           ],
         ),
+      SponsorTypeV2.community => const LinearGradient(
+          colors: [
+            Color(0xFF7AEFB0),
+            Color(0xFF40C9AD),
+          ],
+        ),
+      SponsorTypeV2.translation => const LinearGradient(
+          colors: [
+            Color(0xFFEF7AD8),
+            Color(0xFFC94053),
+          ],
+        ),
     };
     final textColor = switch (type) {
-      SponsorType.platinum => const Color(0xFF1E3C6E),
-      SponsorType.gold => const Color(0xFF6E1E1E),
-      SponsorType.silver => const Color(0xFF6D6D6D),
-      SponsorType.bronze => const Color(0xFF4E3115),
+      SponsorTypeV2.platinum => const Color(0xFF1E3C6E),
+      SponsorTypeV2.gold => const Color(0xFF6E1E1E),
+      SponsorTypeV2.silver => const Color(0xFF6D6D6D),
+      SponsorTypeV2.bronze => const Color(0xFF4E3115),
+      SponsorTypeV2.community => const Color(0xFF066442),
+      SponsorTypeV2.translation => const Color(0xFF6A0758),
     };
 
     final prefix = switch (type) {
-      SponsorType.platinum => 'P',
-      SponsorType.gold => 'G',
-      SponsorType.silver => 'S',
-      SponsorType.bronze => 'B',
+      SponsorTypeV2.platinum => 'P',
+      SponsorTypeV2.gold => 'G',
+      SponsorTypeV2.silver => 'S',
+      SponsorTypeV2.bronze => 'B',
+      SponsorTypeV2.community => 'C',
+      SponsorTypeV2.translation => 'T',
     };
 
     return Row(
@@ -94,10 +110,12 @@ class SponsorTypeLogo extends StatelessWidget {
           const Gap(8),
           Text(
             switch (type) {
-              SponsorType.platinum => 'Platinum',
-              SponsorType.gold => 'Gold',
-              SponsorType.silver => 'Silver',
-              SponsorType.bronze => 'Bronze',
+              SponsorTypeV2.platinum => 'Platinum',
+              SponsorTypeV2.gold => 'Gold',
+              SponsorTypeV2.silver => 'Silver',
+              SponsorTypeV2.bronze => 'Bronze',
+              SponsorTypeV2.community => 'Community',
+              SponsorTypeV2.translation => 'Translation',
             },
             style: textTheme.availableFonts.poppins.regular.copyWith(
               color: textColor,
@@ -112,7 +130,7 @@ class SponsorTypeLogo extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(EnumProperty<SponsorType>('type', type));
+    properties.add(EnumProperty<SponsorTypeV2>('type', type));
     properties.add(DiagnosticsProperty<bool>('showText', showText));
   }
 }

@@ -1,10 +1,12 @@
 import 'package:app_cores_core/providers.dart';
+import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/providers.dart';
 import 'package:app_cores_settings/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({
@@ -22,6 +24,7 @@ class SettingsPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
+              const _PushNotificationTile(),
               const _ThemeModeTile(),
               const _LocalizationModeTile(),
               const _FontFamilyTile(),
@@ -31,6 +34,145 @@ class SettingsPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _PushNotificationTile extends ConsumerWidget {
+  const _PushNotificationTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSettings.of(context);
+    final status = ref.watch(notificationPermissionProvider);
+
+    return switch (status) {
+      AsyncData(value: final type) => ListTile(
+          title: Text(l.pushNotification),
+          subtitle: Text(_getPermissionStatusText(type, l)),
+          onTap: () async => _handleNotificationPermissionChange(
+            context,
+            ref,
+            type,
+            l,
+          ),
+        ),
+      _ => const SizedBox(
+          height: 56,
+          child: Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
+        ),
+    };
+  }
+
+  String _getPermissionStatusText(NotificationPermission type, L10nSettings l) {
+    switch (type) {
+      case NotificationPermission.granted:
+        return l.pushNotificationAuthorized;
+      case NotificationPermission.denied:
+        return l.pushNotificationDenied;
+      case NotificationPermission.provisional:
+        return l.pushNotificationProvisional;
+      case NotificationPermission.restricted:
+        return l.pushNotificationRestricted;
+      case NotificationPermission.limited:
+        return l.pushNotificationLimited;
+      case NotificationPermission.permanentlyDenied:
+        return l.pushNotificationPermanentlyDenied;
+    }
+  }
+
+  Future<void> _handleNotificationPermissionChange(
+    BuildContext context,
+    WidgetRef ref,
+    NotificationPermission type,
+    L10nSettings l,
+  ) async {
+    final String message;
+
+    switch (type) {
+      case NotificationPermission.granted:
+        message = l.pushNotificationMessageAlreadyAuthorized;
+      case NotificationPermission.denied:
+        message = await _handlePermissionDenied(context, ref, l);
+      case NotificationPermission.restricted:
+      case NotificationPermission.limited:
+      case NotificationPermission.provisional:
+      case NotificationPermission.permanentlyDenied:
+        message = l.pushNotificationMessageSettings;
+    }
+
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+        ),
+      );
+    }
+  }
+
+  Future<String> _handlePermissionDenied(
+    BuildContext context,
+    WidgetRef ref,
+    L10nSettings l,
+  ) async {
+    final shouldShowRequestRationale =
+        await Permission.notification.shouldShowRequestRationale;
+
+    if (shouldShowRequestRationale) {
+      if (!context.mounted) {
+        return '';
+      }
+      await _showRequestRationaleDialog(context, l);
+    }
+
+    final newPermission = await Permission.notification.request();
+    final message = _getNewPermissionMessage(newPermission, l);
+
+    ref.invalidate(notificationPermissionProvider);
+
+    if (newPermission == NotificationPermission.granted ||
+        newPermission == NotificationPermission.restricted ||
+        newPermission == NotificationPermission.limited ||
+        newPermission == NotificationPermission.provisional) {
+      await subscribeTopics(ref);
+    }
+
+    return message;
+  }
+
+  Future<void> _showRequestRationaleDialog(
+    BuildContext context,
+    L10nSettings l,
+  ) async {
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.pushNotificationPrompt),
+        actions: [
+          TextButton(
+            child: Text(l.cancel),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _getNewPermissionMessage(
+    NotificationPermission newPermission,
+    L10nSettings l,
+  ) {
+    switch (newPermission) {
+      case NotificationPermission.granted:
+      case NotificationPermission.restricted:
+      case NotificationPermission.limited:
+      case NotificationPermission.provisional:
+        return l.pushNotificationMessageAuthorized;
+      case NotificationPermission.denied:
+      case NotificationPermission.permanentlyDenied:
+        return l.pushNotificationMessageDenied;
+    }
   }
 }
 

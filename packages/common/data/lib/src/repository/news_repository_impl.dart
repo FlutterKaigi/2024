@@ -14,9 +14,12 @@ final class NewsRepositoryImpl implements NewsRepository {
 
   @override
   Future<List<News>> getNews() async {
+    final now = DateTime.now().toIso8601String();
     final result = await _supabaseClient
         .from('news')
         .select()
+        .lte('started_at', now)
+        .or('ended_at.is.null,ended_at.gt.$now')
         .order('started_at', ascending: false)
         .withConverter(
           (json) => json.map(NewsTable.fromJson).toList(),

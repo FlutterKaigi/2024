@@ -2,8 +2,10 @@
   "words": [
     "appbundle",
     "Ariake",
+    "codesign",
     "designsystem",
     "dorny",
+    "Initilize",
     "IntelliJ",
     "Kaigi",
     "kuhnroyal",
@@ -23,6 +25,9 @@
     "textlint",
     "unawaited",
     "webp",
+    "xcarchive",
+    "xcodebuild",
+    "xcworkspace",
     "YumNumm",
     "zenn"
   ],

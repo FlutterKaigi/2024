@@ -79,6 +79,42 @@ scripts:
     exec: flutter build appbundle --dart-define-from-file=defines/production.env
     packageFilters:
       scope: conference_2024_app
+  app:build:ipa:production:
+    exec: |
+      # 署名なしでビルド
+      flutter build ios --release --no-codesign \
+        --dart-define-from-file=defines/production.env
+      # 署名なしで .xcarchive を作成
+      xcodebuild archive \
+        CODE_SIGNING_REQUIRED=NO \
+        CODE_SIGNING_ALLOWED=NO \
+        -workspace ./ios/Runner.xcworkspace \
+        -scheme Runner \
+        -configuration Release \
+        -archivePath ./build/ios/Runner.xcarchive
+      # Entitlements 情報を付与
+      # codesign --entitlements $ENTITLEMENTS_FILE_PATH \
+      #   -s $IDENTIFIER_TOKEN \
+      #   ./build/ios/Runner.xcarchive/Products/Applications/Runner.app
+      # 署名ありで .ipa を作成
+      xcodebuild -exportArchive \
+        -archivePath ./build/ios/Runner.xcarchive \
+        -exportPath ./build/ios/ipa \
+        -exportOptionsPlist ./ios/Runner/ExportOptions.plist \
+        -allowProvisioningUpdates \
+        -authenticationKeyID $APP_STORE_CONNECT_API_KEY_ID \
+        -authenticationKeyIssuerID $APP_STORE_CONNECT_API_KEY_ISSUER_ID \
+        -authenticationKeyPath $MELOS_ROOT_PATH/apps/app/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_ID.p8
+    packageFilters:
+      scope: conference_2024_app
+  pod:install:
+    exec: cd ios && pod install
+    packageFilters:
+      fileExists: ios/Podfile
+  pod:repo:update:
+    exec: cd ios && pod repo update
+    packageFilters:
+      fileExists: ios/Podfile
 
 ide:
   intellij:

@@ -43,3 +43,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Flavor
+# Ignore these to use per-flavor files.
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json
+
+# App Store Connect related
+*.p8
