@@ -99,6 +99,30 @@
       ]
     },
     {
+      "name": "ticket-reader-staging-debug",
+      "cwd": "apps/ticket_reader",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": ["--dart-define-from-file=defines/staging.env"]
+    },
+    {
+      "name": "ticket-reader-development-debug",
+      "cwd": "apps/ticket_reader",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": ["--dart-define-from-file=defines/development.env"]
+    },
+    {
+      "name": "ticket-reader-production-debug",
+      "cwd": "apps/ticket_reader",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "type": "dart",
+      "args": ["--dart-define-from-file=defines/production.env"]
+    },
+    {
       "name": "website-development-canvaskit-wasm-debug",
       "cwd": "apps/website",
       "request": "launch",
@@ -132,7 +156,6 @@
       ],
       "type": "dart"
     },
-
     {
       "name": "website-production-canvaskit-wasm-debug",
       "cwd": "apps/website",

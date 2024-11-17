@@ -69,5 +69,6 @@ final class AuthRepository {
       _client.auth.signInWithOAuth(
         sb.OAuthProvider.google,
         redirectTo: redirectTo,
+        authScreenLaunchMode: sb.LaunchMode.externalApplication,
       );
 }
