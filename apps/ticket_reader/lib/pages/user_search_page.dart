@@ -56,6 +56,8 @@ class UserSearchPage extends HookConsumerWidget {
         data: (data) => ProfileTable(
           profiles: data.data,
           totalCount: data.totalCount,
+          onRefresh: () async => ref.refresh(provider),
+          onLoadMore: () async => ref.read(provider.notifier).fetchNextPage(),
         ),
         error: (error, stackTrace) => ErrorCard(
           error: error,

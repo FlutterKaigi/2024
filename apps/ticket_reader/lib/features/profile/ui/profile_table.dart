@@ -13,12 +13,15 @@ class ProfileTable extends StatelessWidget {
   const ProfileTable({
     required this.profiles,
     required this.totalCount,
+    required this.onLoadMore,
+    required this.onRefresh,
     super.key,
   });
 
   final List<ProfileWithTicketAndEntryLog> profiles;
   final int totalCount;
-
+  final void Function() onLoadMore;
+  final FutureOr<void> Function() onRefresh;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -87,85 +90,100 @@ class ProfileTable extends StatelessWidget {
         Expanded(
           child: Card(
             child: RefreshIndicator.adaptive(
-              onRefresh: () async {},
-              child: TableView.builder(
-                verticalDetails: const ScrollableDetails(
-                  direction: AxisDirection.down,
-                  physics: AlwaysScrollableScrollPhysics(),
-                ),
-                columnBuilder: (index) {
-                  final column = _Column.values[index];
-                  return TableSpan(
-                    foregroundDecoration: index == 0 ? borderDecoration : null,
-                    extent: FixedTableSpanExtent(column.width),
-                  );
+              onRefresh: () async => onRefresh,
+              child: NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  // 全体の90%以上スクロールしたらリフレッシュ
+                  if (notification.metrics.pixels >
+                      notification.metrics.maxScrollExtent * 0.9) {
+                    onLoadMore();
+                    return true;
+                  }
+                  return true;
                 },
-                rowBuilder: (index) {
-                  return TableSpan(
-                    foregroundDecoration: index == 0 ? borderDecoration : null,
-                    extent: const FixedTableSpanExtent(50),
-                  );
-                },
-                cellBuilder: (context, vicinity) {
-                  final column = _Column.values[vicinity.column];
+                child: TableView.builder(
+                  verticalDetails: const ScrollableDetails(
+                    direction: AxisDirection.down,
+                    physics: AlwaysScrollableScrollPhysics(),
+                  ),
+                  columnBuilder: (index) {
+                    final column = _Column.values[index];
+                    return TableSpan(
+                      foregroundDecoration:
+                          index == 0 ? borderDecoration : null,
+                      extent: FixedTableSpanExtent(column.width),
+                    );
+                  },
+                  rowBuilder: (index) {
+                    return TableSpan(
+                      foregroundDecoration:
+                          index == 0 ? borderDecoration : null,
+                      extent: const FixedTableSpanExtent(50),
+                    );
+                  },
+                  cellBuilder: (context, vicinity) {
+                    final column = _Column.values[vicinity.column];
 
-                  if (vicinity.row == 0) {
-                    return TableViewCell(
-                      child: Center(
-                        child: Text(
-                          column.label,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
+                    if (vicinity.row == 0) {
+                      return TableViewCell(
+                        child: Center(
+                          child: Text(
+                            column.label,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              fontFamily:
+                                  GoogleFonts.jetBrainsMono().fontFamily,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+
+                    final profile = profiles[vicinity.row - 1];
+
+                    final child = InkWell(
+                      onTap: () async {
+                        unawaited(
+                          Clipboard.setData(
+                            ClipboardData(text: profile.id),
+                          ),
+                        );
+                        unawaited(
+                          HapticFeedback.lightImpact(),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('クリップボードにコピーしました')),
+                        );
+                      },
+                      onDoubleTap: () async {
+                        // TODO(YumNumm): プロフィール画面に遷移する
+                      },
+                      child: ColoredBox(
+                        color: column
+                                .colorAccessor(profile)
+                                ?.withValues(alpha: 0.5) ??
+                            theme.colorScheme.surfaceContainer,
+                        child: Center(
+                          child: Text(
+                            vicinity.row == 0
+                                ? column.label
+                                : column.accessor(profile),
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              fontFamily:
+                                  GoogleFonts.jetBrainsMono().fontFamily,
+                            ),
                           ),
                         ),
                       ),
                     );
-                  }
-
-                  final profile = profiles[vicinity.row - 1];
-
-                  final child = InkWell(
-                    onTap: () async {
-                      unawaited(
-                        Clipboard.setData(
-                          ClipboardData(text: profile.id),
-                        ),
-                      );
-                      unawaited(
-                        HapticFeedback.lightImpact(),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('クリップボードにコピーしました')),
-                      );
-                    },
-                    onDoubleTap: () async {
-                      // TODO(YumNumm): プロフィール画面に遷移する
-                    },
-                    child: ColoredBox(
-                      color: column
-                              .colorAccessor(profile)
-                              ?.withValues(alpha: 0.5) ??
-                          theme.colorScheme.surfaceContainer,
-                      child: Center(
-                        child: Text(
-                          vicinity.row == 0
-                              ? column.label
-                              : column.accessor(profile),
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                  return TableViewCell(
-                    child: child,
-                  );
-                },
-                rowCount: profiles.length + 1,
-                columnCount: _Column.values.length,
-                pinnedRowCount: 1,
-                primary: true,
+                    return TableViewCell(
+                      child: child,
+                    );
+                  },
+                  rowCount: profiles.length + 1,
+                  columnCount: _Column.values.length,
+                  pinnedRowCount: 1,
+                  primary: true,
+                ),
               ),
             ),
           ),
