@@ -1,8 +1,8 @@
 {
   "dart.projectSearchDepth": 3,
   "dart.runPubGetOnPubspecChanges": "never",
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
-  "dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
+//   "dart.flutterSdkPath": ".fvm/flutter_sdk",
+//   "dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
   "search.exclude": {
     "**/.fvm": true
   },
