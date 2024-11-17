@@ -29,8 +29,8 @@ dependencies:
   package_info_plus: ^8.0.0
   riverpod: ^2.6.1
   riverpod_annotation: ^2.3.5
-  slang: ^3.31.0
-  slang_flutter: ^3.31.0
+  slang: ^4.2.1
+  slang_flutter: ^4.2.0
   theme_tailor_annotation: ^3.0.1
   url_launcher: ^6.2.6
   vector_graphics: ^1.1.11+1
@@ -44,7 +44,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   riverpod_generator: ^2.6.1
   riverpod_lint: ^2.6.1
-  slang_build_runner: ^3.31.0
+  slang_build_runner: ^4.2.0
   theme_tailor: ^3.0.1
   vector_graphics_compiler: ^1.1.11+1
 
