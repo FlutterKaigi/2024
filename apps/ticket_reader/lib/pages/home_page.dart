@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticket_reader/core/router/router.dart';
+import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
+import 'package:ticket_reader/features/profile/data/profile_notifier.dart';
+import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
+import 'package:ticket_reader/features/profile/ui/profile_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,6 +15,90 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
+      drawer: const _Drawer(),
+      body: const _Body(),
     );
+  }
+}
+
+class _Drawer extends ConsumerWidget {
+  const _Drawer();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authNotifierProvider);
+    final profile = ref.watch(profileNotifierProvider);
+
+    final profileValue = profile.valueOrNull;
+
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
+    return Drawer(
+      child: SafeArea(
+        child: Column(
+          children: [
+            if (profileValue != null)
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.secondaryContainer,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(),
+                    ProfileAvatar(
+                      profile: profile.valueOrNull!,
+                      size: 64,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      authState?.email ?? '',
+                      style: textTheme.titleMedium,
+                    ),
+                    Text(
+                      profile.value?.name ?? '',
+                      style: textTheme.titleSmall,
+                    ),
+                  ],
+                ),
+              ),
+            const Spacer(),
+            const Divider(),
+            ListTile(
+              title: const Text('Sign out'),
+              onTap: () async {
+                await ref.read(authNotifierProvider.notifier).signOut();
+                if (context.mounted) {
+                  const LoginRoute().go(context);
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Body extends ConsumerWidget {
+  const _Body();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final profile = ref.watch(profileNotifierProvider);
+
+    return switch (profile) {
+      AsyncValue(:final value) when value != null => Column(
+          children: [
+            ProfileCard(profile: value),
+          ],
+        ),
+      AsyncLoading() => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
+      AsyncError(:final error) => Text('Error: $error'),
+      _ => const SizedBox.shrink(),
+    };
   }
 }

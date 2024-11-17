@@ -21,9 +21,8 @@ class AuthNotifier extends _$AuthNotifier {
 
   Future<bool> signInWithGoogle() async =>
       ref.read(authRepositoryProvider).signInWithGoogle(
-            redirectTo: kIsWeb
-                ? null
-                : 'jp.flutterkaigi.ticket_reader://login-callback',
+            redirectTo:
+                kIsWeb ? null : 'jp.flutterkaigi.ticketReader://login-callback',
           );
 
   Future<void> signOut() async => ref.read(authRepositoryProvider).signOut();
