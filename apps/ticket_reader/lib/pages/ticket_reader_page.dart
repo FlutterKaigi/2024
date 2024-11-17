@@ -24,7 +24,7 @@ class ReaderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reader'),
+        title: const Text('QR Scanner'),
       ),
       body: const _Body(),
     );
@@ -50,9 +50,9 @@ class _Body extends HookConsumerWidget {
         }
       },
       controller: controller,
-      errorBuilder: (p0, p1, p2) {
+      errorBuilder: (_, exception, __) {
         return Center(
-          child: Text('Error: $p1'),
+          child: Text('Error: $exception'),
         );
       },
     );
