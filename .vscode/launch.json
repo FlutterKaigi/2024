@@ -7,9 +7,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/development.env"
-      ]
+      "args": ["--dart-define-from-file=defines/development.env"]
     },
     {
       "name": "app-production-debug",
@@ -17,9 +15,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/production.env"
-      ]
+      "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
       "name": "ticket-web-development-debug-wasm",
@@ -108,9 +104,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/staging.env"
-      ]
+      "args": ["--dart-define-from-file=defines/staging.env"]
     },
     {
       "name": "ticket-reader-development-debug",
@@ -118,9 +112,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/development.env"
-      ]
+      "args": ["--dart-define-from-file=defines/development.env"]
     },
     {
       "name": "ticket-reader-production-debug",
@@ -128,9 +120,7 @@
       "request": "launch",
       "program": "lib/main.dart",
       "type": "dart",
-      "args": [
-        "--dart-define-from-file=defines/production.env"
-      ]
+      "args": ["--dart-define-from-file=defines/production.env"]
     },
     {
       "name": "website-development-canvaskit-wasm-debug",
