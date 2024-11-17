@@ -2,6 +2,7 @@ import 'package:conference_2024_website/feature/session/data/model/special_sessi
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/link.dart';
 
 class SpecialSessionCard extends StatelessWidget {
   const SpecialSessionCard({
@@ -44,6 +45,8 @@ class SpecialSessionCard extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
+            if (SpecialSessionType.keynote == session.type)
+              _KeyNoteDetail(session: session),
             if (session.endsAt != null)
               Text(
                 '${timeFormatter.format(session.startsAt.toLocal())} - '
@@ -74,5 +77,62 @@ class SpecialSessionCard extends StatelessWidget {
       SpecialSessionType.closing => theme.colorScheme.surfaceContainerHighest,
       SpecialSessionType.party => theme.colorScheme.tertiaryContainer,
     };
+  }
+}
+
+class _KeyNoteDetail extends StatelessWidget {
+  const _KeyNoteDetail({
+    required this.session,
+  });
+  final SpecialSession session;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.customThemeExtension.textTheme;
+
+    return Link(
+      uri: Uri.parse('${session.speaker!.xUri}'),
+      builder: (context, followUri) => InkWell(
+        onTap: followUri,
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ClipOval(
+                child: Image.asset(
+                  session.imagePath.toString(),
+                  fit: BoxFit.cover,
+                  width: 64,
+                  height: 64,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    session.speakerTitle!,
+                    style: textTheme.availableFonts.notoSansJp.bold.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    session.speaker!.name,
+                    style: textTheme.availableFonts.notoSansJp.regular.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
