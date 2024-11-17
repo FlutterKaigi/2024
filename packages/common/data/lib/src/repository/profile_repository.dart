@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:common_data/session.dart';
 import 'package:common_data/src/model/profile.dart';
 import 'package:common_data/src/model/view/profile_with_sns.dart';
+import 'package:common_data/src/model/view/profile_with_tickets_and_entry_log.dart';
 import 'package:common_data/supabase_client.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -123,6 +124,34 @@ class ProfileRepository {
     return PagingResult(
       data: result.data.map(toProfileWithSns).toList(),
       totalCount: result.count,
+    );
+  }
+
+  /// プロフィールとそれに紐づくチケットと入場履歴を取得します
+  Future<PagingResult<List<ProfileWithTicketsAndEntryLog>>>
+      fetchProfilesWithTicketsAndEntryLogs({
+    int limit = 10,
+    int offset = 0,
+  }) async {
+    final result = await _client
+        .from('profile_with_tickets_and_entry_log')
+        .select()
+        .range(offset, offset + limit)
+        .count(CountOption.exact)
+        .withConverter(
+          (e) => e.map(ProfileWithTicketsAndEntryLogView.fromJson).toList(),
+        );
+    return PagingResult(
+      totalCount: result.count,
+      data: result.data
+          .map(
+            (e) => ProfileWithTicketsAndEntryLog(
+              profile: toProfile(e.profile),
+              ticket: e.ticket,
+              entryLog: e.entryLog,
+            ),
+          )
+          .toList(),
     );
   }
 
