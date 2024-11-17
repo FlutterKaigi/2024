@@ -1,3 +1,4 @@
+import 'package:common_data/constant.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -261,7 +262,7 @@ final class _SnsLinks extends StatelessWidget {
               width: 30,
             ),
           ), // X icon
-          url: 'https://x.com/FlutterKaigi',
+          url: OfficialSocialUrls.x,
         ),
         const Gap(40),
         _buildIconButton(
@@ -271,7 +272,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://github.com/FlutterKaigi/2024',
+          url: OfficialSocialUrls.github,
         ),
         const Gap(40),
         _buildIconButton(
@@ -281,7 +282,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://discord.com/invite/Nr7H8JTJSF',
+          url: OfficialSocialUrls.discord,
         ),
         const Gap(40),
         _buildIconButton(
@@ -291,7 +292,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://medium.com/flutterkaigi',
+          url: OfficialSocialUrls.medium,
         ),
       ],
     );

@@ -41,7 +41,7 @@ final class SiteHeader extends StatelessWidget implements PreferredSizeWidget {
                 showHeaderNavigation: showHeaderNavigation,
               ),
         actions: [
-          if (isMobile) const _DrawerButton(),
+          if (isMobile && showHeaderNavigation) const _DrawerButton(),
         ],
       ),
     );
