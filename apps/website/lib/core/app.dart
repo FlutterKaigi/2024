@@ -14,7 +14,7 @@ class App extends ConsumerWidget {
     final router = ref.watch(goRouteProvider);
 
     return MaterialApp.router(
-      title: '${i18n.title} ${i18n.year}',
+      title: '${i18n.title} ${i18n.year} (akaboshinit)',
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
