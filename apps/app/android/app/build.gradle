@@ -56,10 +56,15 @@ def dependentTasks = [
     'processDebugGoogleServices',
     'processReleaseGoogleServices',
     'compileFlutterBuildDebug',
+    'compileFlutterBuildRelease',
     'mergeDebugAssets',
     'mergeDebugShaders',
+    'mergeReleaseAssets',
+    'mergeReleaseShaders',
     'generateDebugResources',
-    'mergeDebugJniLibFolders'
+    'generateReleaseResources',
+    'mergeDebugJniLibFolders',
+    'mergeReleaseJniLibFolders'
 ]
 
 afterEvaluate {
