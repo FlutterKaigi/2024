@@ -1,12 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:common_data/sponsor.dart';
-import 'package:conference_2024_website/core/extension/size_ex.dart';
 import 'package:conference_2024_website/core/router/router.dart';
 import 'package:conference_2024_website/feature/sponsor/data/sponsor_notifier.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/contents_margin/contents_margin.dart';
 import 'package:conference_2024_website/ui/components/footer/site_footer.dart';
-import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart';
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
 import 'package:conference_2024_website/ui/pages/sponsor/components/sponsor_view.dart';
@@ -64,7 +62,6 @@ class SponsorPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = MediaQuery.sizeOf(context).isMobile;
     final scrollController = useScrollController();
 
     return SelectionArea(
@@ -96,7 +93,6 @@ class SponsorPage extends HookWidget {
             ),
           ],
         ),
-        endDrawer: isMobile ? const HamburgerMenu() : null,
       ),
     );
   }

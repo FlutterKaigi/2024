@@ -1,3 +1,4 @@
+import 'package:common_data/constant.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -45,7 +46,7 @@ class Sponsor extends StatelessWidget {
                   child: AppButton.secondaryLink(
                     label: Text(i18n.sponsor.apply),
                     link: Uri.parse(
-                      'https://medium.com/flutterkaigi/flutterkaigi-2024-%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E5%8B%9F%E9%9B%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-ca53d4693580',
+                      '${OfficialSocialUrls.medium}/flutterkaigi-2024-%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E5%8B%9F%E9%9B%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-ca53d4693580',
                     ),
                   ),
                 ),

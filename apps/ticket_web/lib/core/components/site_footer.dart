@@ -1,3 +1,4 @@
+import 'package:common_data/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_web/core/components/responsive_content_container.dart';
 import 'package:ticket_web/core/gen/assets.gen.dart';
@@ -192,7 +193,7 @@ class _SnsLinks extends StatelessWidget {
               width: 30,
             ),
           ), // X icon
-          url: 'https://x.com/FlutterKaigi',
+          url: OfficialSocialUrls.x,
         ),
         _buildIconButton(
           icon: Assets.images.sns.githubSvg.svg(
@@ -200,7 +201,7 @@ class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://github.com/FlutterKaigi/2024',
+          url: OfficialSocialUrls.github,
         ),
         _buildIconButton(
           icon: Assets.images.sns.discordSvg.svg(
@@ -208,7 +209,7 @@ class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://discord.com/invite/Nr7H8JTJSF',
+          url: OfficialSocialUrls.discord,
         ),
         _buildIconButton(
           icon: Assets.images.sns.mediumSvg.svg(
@@ -216,7 +217,7 @@ class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: 'https://medium.com/flutterkaigi',
+          url: OfficialSocialUrls.medium,
         ),
       ],
     );
