@@ -5,7 +5,7 @@
 	<key>compileBitcode</key>
 	<false/>
 	<key>destination</key>
-	<string>upload</string>
+	<string>export</string>
 	<key>manageAppVersionAndBuildNumber</key>
 	<true/>
 	<key>method</key>
