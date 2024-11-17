@@ -22,13 +22,13 @@ flutter precache --ios
 # Install Flutter dependencies.
 flutter pub get
 
-# Update the project configuration without performing a build.
-flutter build ios --config-only \
-    --dart-define-from-file=defines/production.env
-
 # Install CocoaPods using Homebrew.
 HOMEBREW_NO_AUTO_UPDATE=1 # disable homebrew's automatic updates.
 brew install cocoapods
+
+# Update the project configuration without performing a build.
+flutter build ios --config-only \
+    --dart-define-from-file=defines/production.env
 
 # Install CocoaPods dependencies.
 cd ios && pod install # run `pod install` in the `ios` directory.
