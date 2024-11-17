@@ -140,7 +140,7 @@ class ProfileRepository {
           params: argument.toJson(),
         )
         .select()
-        .range(offset, offset + limit)
+        .range(offset, offset + limit - 1)
         .count(CountOption.exact)
         .withConverter(
           (e) => e.map(ProfileWithTicketAndEntryLogView.fromJson).toList(),

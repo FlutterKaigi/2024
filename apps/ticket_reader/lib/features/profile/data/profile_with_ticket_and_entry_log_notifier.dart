@@ -10,11 +10,16 @@ class ProfileWithTicketAndEntryLogNotifier
   @override
   Future<PagingResult<List<ProfileWithTicketAndEntryLog>>> build({
     ProfileWithTicketAndEntryLogArgument? argument,
-  }) async =>
-      ref.read(profileRepositoryProvider).fetchProfilesWithTicketAndEntryLog(
-            argument: argument ?? const ProfileWithTicketAndEntryLogArgument(),
-            limit: _pageSize,
-          );
+  }) async {
+    final result = await ref
+        .read(profileRepositoryProvider)
+        .fetchProfilesWithTicketAndEntryLog(
+          argument: argument ?? const ProfileWithTicketAndEntryLogArgument(),
+          limit: _pageSize,
+          
+        );
+    return result;
+  }
 
   Future<void> fetchNextPage() async {
     // 読み込み中の場合は何もしない

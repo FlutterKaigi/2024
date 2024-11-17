@@ -18,6 +18,7 @@ class ProfileTable extends StatelessWidget {
 
   final List<ProfileWithTicketAndEntryLog> profiles;
   final int totalCount;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -107,7 +108,21 @@ class ProfileTable extends StatelessWidget {
                 },
                 cellBuilder: (context, vicinity) {
                   final column = _Column.values[vicinity.column];
-                  final profile = profiles[vicinity.row];
+
+                  if (vicinity.row == 0) {
+                    return TableViewCell(
+                      child: Center(
+                        child: Text(
+                          column.label,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+
+                  final profile = profiles[vicinity.row - 1];
 
                   final child = InkWell(
                     onTap: () async {
@@ -128,9 +143,9 @@ class ProfileTable extends StatelessWidget {
                     },
                     child: ColoredBox(
                       color: column
-                              .colorAccessor(profiles[vicinity.row])
+                              .colorAccessor(profile)
                               ?.withValues(alpha: 0.5) ??
-                          Colors.transparent,
+                          theme.colorScheme.surfaceContainer,
                       child: Center(
                         child: Text(
                           vicinity.row == 0
@@ -147,7 +162,7 @@ class ProfileTable extends StatelessWidget {
                     child: child,
                   );
                 },
-                rowCount: profiles.length,
+                rowCount: profiles.length + 1,
                 columnCount: _Column.values.length,
                 pinnedRowCount: 1,
                 primary: true,
