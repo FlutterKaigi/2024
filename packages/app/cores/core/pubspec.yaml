@@ -6,8 +6,8 @@ homepage: |
   https://github.com/FlutterKaigi/2024/tree/main/packages/app/cores/core
 
 environment:
-  sdk: ^3.6.0-216.1.beta
-  flutter: ^3.26.0-0.1.pre
+  sdk: ^3.6.0-334.4.beta
+  flutter: ^3.27.0-0.2.pre
 
 dependencies:
   firebase_core: ^3.7.0
