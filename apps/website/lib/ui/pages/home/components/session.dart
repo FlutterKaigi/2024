@@ -46,8 +46,10 @@ class SessionSection extends StatelessWidget {
                   width: 480,
                   child: AppButton.secondary(
                     label: Text(i18n.session.link),
-                    onPressed: () async =>
-                        const SessionRoute().push<void>(context),
+                    onPressed: () async {
+                      await const SessionRoute().push<void>(context);
+                      throw UnimplementedError();
+                    },
                   ),
                 ),
               ],
