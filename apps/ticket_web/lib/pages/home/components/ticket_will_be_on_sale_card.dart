@@ -1,3 +1,4 @@
+import 'package:common_data/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ticket_web/core/theme/extension/theme_extension.dart';
@@ -15,7 +16,7 @@ class TicketWillBeOnSaleCard extends HookWidget {
     final textTheme = theme.textTheme;
 
     final uri = useMemoized(
-      () => Uri.parse('https://x.com/FlutterKaigi'),
+      () => Uri.parse(OfficialSocialUrls.x),
     );
     final gradientTheme = theme.customThemeExtension.gradientTheme;
 

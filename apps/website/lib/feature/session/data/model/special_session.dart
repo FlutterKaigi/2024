@@ -1,3 +1,4 @@
+import 'package:common_data/speaker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'special_session.freezed.dart';
@@ -10,6 +11,9 @@ class SpecialSession with _$SpecialSession {
     required DateTime startsAt,
     required SpecialSessionType type,
     DateTime? endsAt,
+    Speaker? speaker,
+    String? imagePath,
+    String? speakerTitle,
     String? venueId,
   }) = _SpecialSession;
 

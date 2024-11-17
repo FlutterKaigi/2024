@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:add_2_calendar/add_2_calendar.dart';
-import 'package:app_cores_core/constants.dart';
 import 'package:app_cores_core/providers.dart';
 import 'package:app_cores_core/util.dart';
 import 'package:app_cores_designsystem/common_assets.dart';
@@ -13,6 +12,7 @@ import 'package:app_features_about/src/ui/contributors/contributors_page.dart';
 import 'package:app_features_about/src/ui/map/map_item_widget.dart';
 import 'package:app_features_about/src/ui/sponsors/sponsors_page.dart';
 import 'package:app_features_about/src/ui/staff/staff_page.dart';
+import 'package:common_data/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
