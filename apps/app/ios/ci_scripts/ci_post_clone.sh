@@ -13,6 +13,9 @@ FLUTTER_VERSION=$(cat .fvmrc | grep "flutter" | cut -d '"' -f 4 | sed 's/@.*//')
 git clone https://github.com/flutter/flutter.git --depth 1 -b $FLUTTER_VERSION $HOME/flutter
 export PATH="$PATH:$HOME/flutter/bin"
 
+# Change working directory to the app directory.
+cd apps/app
+
 # Install Flutter artifacts for iOS (--ios), or macOS (--macos) platforms.
 flutter precache --ios
 
