@@ -61,7 +61,7 @@ extension $LoginRouteExtension on LoginRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'67532003cb11d38a4de3a19a3b7534a52136e061';
+String _$routerHash() => r'b63a4572f1e43b79b05aa42eef833dc781ba10f9';
 
 /// See also [router].
 @ProviderFor(router)
@@ -70,11 +70,8 @@ final routerProvider = Provider<GoRouter>.internal(
   name: r'routerProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$routerHash,
-  dependencies: <ProviderOrFamily>[authNotifierProvider],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    authNotifierProvider,
-    ...?authNotifierProvider.allTransitiveDependencies
-  },
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
