@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
+import 'package:ticket_reader/core/provider/environment.dart';
 import 'package:ticket_reader/core/router/router.dart';
 import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 
@@ -108,22 +109,38 @@ class _LoginButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 16,
-      ),
-      child: InkWell(
-        onTap: () async {
-          final authNotifier = ref.read(authNotifierProvider.notifier);
-          final result = await authNotifier.signInWithGoogle();
-          if (result && context.mounted) {
-            const HomeRoute().go(context);
-          }
-        },
-        child: SvgPicture.asset(
-          'assets/sign_in_with_google.svg',
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
+    final environment = ref.watch(environmentProvider);
+    final flavor = environment.environmentType;
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 16,
+          ),
+          child: InkWell(
+            onTap: () async {
+              final authNotifier = ref.read(authNotifierProvider.notifier);
+              final result = await authNotifier.signInWithGoogle();
+              if (result && context.mounted) {
+                const HomeRoute().go(context);
+              }
+            },
+            child: SvgPicture.asset(
+              'assets/sign_in_with_google.svg',
+            ),
+          ),
         ),
-      ),
+        Text(
+          'You are using ${flavor.name.toUpperCase()} environment',
+          style: textTheme.bodySmall?.copyWith(
+            color: theme.colorScheme.inverseSurface.withValues(alpha: 0.7),
+          ),
+        ),
+      ],
     );
   }
 }

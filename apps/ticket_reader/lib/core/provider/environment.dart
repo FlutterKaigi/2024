@@ -24,12 +24,17 @@ class Environment with _$Environment {
   const factory Environment({
     required String supabaseUrl,
     required String supabaseAnonKey,
+    required EnvironmentType environmentType,
   }) = _Environment;
 
   factory Environment.fromEnvironmentValues() {
-    const result = Environment(
-      supabaseUrl: String.fromEnvironment('SUPABASE_URL'),
-      supabaseAnonKey: String.fromEnvironment('SUPABASE_ANON_KEY'),
+    final result = Environment(
+      supabaseUrl: const String.fromEnvironment('SUPABASE_URL'),
+      supabaseAnonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
+      environmentType: EnvironmentType.values.firstWhere(
+        (e) =>
+            e.name == const String.fromEnvironment('ENVIRONMENT').toLowerCase(),
+      ),
     );
 
     assert(result.supabaseUrl.isNotEmpty, 'SUPABASE_URL is empty');

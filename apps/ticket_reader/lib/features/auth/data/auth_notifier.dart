@@ -30,7 +30,7 @@ class AuthNotifier extends _$AuthNotifier {
   String? accessToken() => ref.read(authRepositoryProvider).accessToken;
 }
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: true, dependencies: [AuthNotifier])
 String? supabaseAccessToken(Ref ref) {
   final authNotifier = ref.watch(authNotifierProvider.notifier);
   return authNotifier.accessToken();

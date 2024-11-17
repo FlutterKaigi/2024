@@ -9,7 +9,7 @@ part of 'auth_notifier.dart';
 // **************************************************************************
 
 String _$supabaseAccessTokenHash() =>
-    r'35eb4e980fbac6f93c1623802aae1eb256f2201a';
+    r'3ef951631c94a0967882182f9aeac5963f4be5b0';
 
 /// See also [supabaseAccessToken].
 @ProviderFor(supabaseAccessToken)
@@ -19,8 +19,11 @@ final supabaseAccessTokenProvider = Provider<String?>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$supabaseAccessTokenHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: <ProviderOrFamily>[authNotifierProvider],
+  allTransitiveDependencies: <ProviderOrFamily>{
+    authNotifierProvider,
+    ...?authNotifierProvider.allTransitiveDependencies
+  },
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
