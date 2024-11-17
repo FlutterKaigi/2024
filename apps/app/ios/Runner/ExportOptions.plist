@@ -7,7 +7,7 @@
 	<key>destination</key>
 	<string>export</string>
 	<key>manageAppVersionAndBuildNumber</key>
-	<true/>
+	<false/>
 	<key>method</key>
 	<string>app-store-connect</string>
 	<key>signingStyle</key>
