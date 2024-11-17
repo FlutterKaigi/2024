@@ -33,6 +33,7 @@ class ReaderPage extends StatelessWidget {
 
 class _Body extends HookConsumerWidget {
   const _Body();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = useMemoized(
@@ -40,6 +41,7 @@ class _Body extends HookConsumerWidget {
         detectionSpeed: DetectionSpeed.noDuplicates,
       ),
     );
+
     return MobileScanner(
       onDetect: (barcodes) {
         log('Detected: ${barcodes.barcodes}');
