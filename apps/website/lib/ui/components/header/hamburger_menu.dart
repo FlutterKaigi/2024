@@ -203,7 +203,7 @@ final class _SocialIcons extends StatelessWidget {
           loader: AssetBytesLoader('assets/svg/products/github.svg'),
           colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
         ),
-        url: OfficialSocialUrls.github2024,
+        url: OfficialSocialUrls.github,
       ),
       const _SocialIconData(
         icon: VectorGraphic(

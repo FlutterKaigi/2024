@@ -201,7 +201,7 @@ class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: OfficialSocialUrls.github2024,
+          url: OfficialSocialUrls.github,
         ),
         _buildIconButton(
           icon: Assets.images.sns.discordSvg.svg(

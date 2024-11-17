@@ -272,7 +272,7 @@ final class _SnsLinks extends StatelessWidget {
             width: 40,
             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
           ),
-          url: OfficialSocialUrls.github2024,
+          url: OfficialSocialUrls.github,
         ),
         const Gap(40),
         _buildIconButton(
