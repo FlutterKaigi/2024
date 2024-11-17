@@ -24,6 +24,9 @@ mixin _$SpecialSession {
   DateTime get startsAt => throw _privateConstructorUsedError;
   SpecialSessionType get type => throw _privateConstructorUsedError;
   DateTime? get endsAt => throw _privateConstructorUsedError;
+  Speaker? get speaker => throw _privateConstructorUsedError;
+  String? get imagePath => throw _privateConstructorUsedError;
+  String? get speakerTitle => throw _privateConstructorUsedError;
   String? get venueId => throw _privateConstructorUsedError;
 
   /// Serializes this SpecialSession to a JSON map.
@@ -47,7 +50,12 @@ abstract class $SpecialSessionCopyWith<$Res> {
       DateTime startsAt,
       SpecialSessionType type,
       DateTime? endsAt,
+      Speaker? speaker,
+      String? imagePath,
+      String? speakerTitle,
       String? venueId});
+
+  $SpeakerCopyWith<$Res>? get speaker;
 }
 
 /// @nodoc
@@ -69,6 +77,9 @@ class _$SpecialSessionCopyWithImpl<$Res, $Val extends SpecialSession>
     Object? startsAt = null,
     Object? type = null,
     Object? endsAt = freezed,
+    Object? speaker = freezed,
+    Object? imagePath = freezed,
+    Object? speakerTitle = freezed,
     Object? venueId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -88,11 +99,37 @@ class _$SpecialSessionCopyWithImpl<$Res, $Val extends SpecialSession>
           ? _value.endsAt
           : endsAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      speaker: freezed == speaker
+          ? _value.speaker
+          : speaker // ignore: cast_nullable_to_non_nullable
+              as Speaker?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      speakerTitle: freezed == speakerTitle
+          ? _value.speakerTitle
+          : speakerTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
       venueId: freezed == venueId
           ? _value.venueId
           : venueId // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  /// Create a copy of SpecialSession
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SpeakerCopyWith<$Res>? get speaker {
+    if (_value.speaker == null) {
+      return null;
+    }
+
+    return $SpeakerCopyWith<$Res>(_value.speaker!, (value) {
+      return _then(_value.copyWith(speaker: value) as $Val);
+    });
   }
 }
 
@@ -109,7 +146,13 @@ abstract class _$$SpecialSessionImplCopyWith<$Res>
       DateTime startsAt,
       SpecialSessionType type,
       DateTime? endsAt,
+      Speaker? speaker,
+      String? imagePath,
+      String? speakerTitle,
       String? venueId});
+
+  @override
+  $SpeakerCopyWith<$Res>? get speaker;
 }
 
 /// @nodoc
@@ -129,6 +172,9 @@ class __$$SpecialSessionImplCopyWithImpl<$Res>
     Object? startsAt = null,
     Object? type = null,
     Object? endsAt = freezed,
+    Object? speaker = freezed,
+    Object? imagePath = freezed,
+    Object? speakerTitle = freezed,
     Object? venueId = freezed,
   }) {
     return _then(_$SpecialSessionImpl(
@@ -148,6 +194,18 @@ class __$$SpecialSessionImplCopyWithImpl<$Res>
           ? _value.endsAt
           : endsAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      speaker: freezed == speaker
+          ? _value.speaker
+          : speaker // ignore: cast_nullable_to_non_nullable
+              as Speaker?,
+      imagePath: freezed == imagePath
+          ? _value.imagePath
+          : imagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
+      speakerTitle: freezed == speakerTitle
+          ? _value.speakerTitle
+          : speakerTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
       venueId: freezed == venueId
           ? _value.venueId
           : venueId // ignore: cast_nullable_to_non_nullable
@@ -164,6 +222,9 @@ class _$SpecialSessionImpl implements _SpecialSession {
       required this.startsAt,
       required this.type,
       this.endsAt,
+      this.speaker,
+      this.imagePath,
+      this.speakerTitle,
       this.venueId});
 
   factory _$SpecialSessionImpl.fromJson(Map<String, dynamic> json) =>
@@ -178,11 +239,17 @@ class _$SpecialSessionImpl implements _SpecialSession {
   @override
   final DateTime? endsAt;
   @override
+  final Speaker? speaker;
+  @override
+  final String? imagePath;
+  @override
+  final String? speakerTitle;
+  @override
   final String? venueId;
 
   @override
   String toString() {
-    return 'SpecialSession(title: $title, startsAt: $startsAt, type: $type, endsAt: $endsAt, venueId: $venueId)';
+    return 'SpecialSession(title: $title, startsAt: $startsAt, type: $type, endsAt: $endsAt, speaker: $speaker, imagePath: $imagePath, speakerTitle: $speakerTitle, venueId: $venueId)';
   }
 
   @override
@@ -195,13 +262,18 @@ class _$SpecialSessionImpl implements _SpecialSession {
                 other.startsAt == startsAt) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.endsAt, endsAt) || other.endsAt == endsAt) &&
+            (identical(other.speaker, speaker) || other.speaker == speaker) &&
+            (identical(other.imagePath, imagePath) ||
+                other.imagePath == imagePath) &&
+            (identical(other.speakerTitle, speakerTitle) ||
+                other.speakerTitle == speakerTitle) &&
             (identical(other.venueId, venueId) || other.venueId == venueId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, startsAt, type, endsAt, venueId);
+  int get hashCode => Object.hash(runtimeType, title, startsAt, type, endsAt,
+      speaker, imagePath, speakerTitle, venueId);
 
   /// Create a copy of SpecialSession
   /// with the given fields replaced by the non-null parameter values.
@@ -226,6 +298,9 @@ abstract class _SpecialSession implements SpecialSession {
       required final DateTime startsAt,
       required final SpecialSessionType type,
       final DateTime? endsAt,
+      final Speaker? speaker,
+      final String? imagePath,
+      final String? speakerTitle,
       final String? venueId}) = _$SpecialSessionImpl;
 
   factory _SpecialSession.fromJson(Map<String, dynamic> json) =
@@ -239,6 +314,12 @@ abstract class _SpecialSession implements SpecialSession {
   SpecialSessionType get type;
   @override
   DateTime? get endsAt;
+  @override
+  Speaker? get speaker;
+  @override
+  String? get imagePath;
+  @override
+  String? get speakerTitle;
   @override
   String? get venueId;
 

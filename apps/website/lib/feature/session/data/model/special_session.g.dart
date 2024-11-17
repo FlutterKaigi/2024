@@ -21,6 +21,13 @@ _$SpecialSessionImpl _$$SpecialSessionImplFromJson(Map<String, dynamic> json) =>
               'type', (v) => $enumDecode(_$SpecialSessionTypeEnumMap, v)),
           endsAt: $checkedConvert(
               'ends_at', (v) => v == null ? null : DateTime.parse(v as String)),
+          speaker: $checkedConvert(
+              'speaker',
+              (v) => v == null
+                  ? null
+                  : Speaker.fromJson(v as Map<String, dynamic>)),
+          imagePath: $checkedConvert('image_path', (v) => v as String?),
+          speakerTitle: $checkedConvert('speaker_title', (v) => v as String?),
           venueId: $checkedConvert('venue_id', (v) => v as String?),
         );
         return val;
@@ -28,6 +35,8 @@ _$SpecialSessionImpl _$$SpecialSessionImplFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {
         'startsAt': 'starts_at',
         'endsAt': 'ends_at',
+        'imagePath': 'image_path',
+        'speakerTitle': 'speaker_title',
         'venueId': 'venue_id'
       },
     );
@@ -39,6 +48,9 @@ Map<String, dynamic> _$$SpecialSessionImplToJson(
       'starts_at': instance.startsAt.toIso8601String(),
       'type': _$SpecialSessionTypeEnumMap[instance.type]!,
       'ends_at': instance.endsAt?.toIso8601String(),
+      'speaker': instance.speaker,
+      'image_path': instance.imagePath,
+      'speaker_title': instance.speakerTitle,
       'venue_id': instance.venueId,
     };
 
