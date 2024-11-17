@@ -1,3 +1,4 @@
+import 'package:common_data/constant.dart';
 import 'package:conference_2024_website/gen/i18n/strings.g.dart';
 import 'package:conference_2024_website/ui/components/button/app_button.dart';
 import 'package:conference_2024_website/ui/theme/extension/theme_extension.dart';
@@ -43,7 +44,7 @@ class Lead extends StatelessWidget {
               width: 480,
               child: AppButton.primaryLink(
                 label: Text(i18n.lead.xAccount),
-                link: Uri.parse('https://x.com/FlutterKaigi'),
+                link: Uri.parse(OfficialSocialUrls.x),
                 leading: const VectorGraphic(
                   loader: AssetBytesLoader('assets/svg/products/x.svg'),
                   height: 24,

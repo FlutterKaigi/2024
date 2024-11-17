@@ -48,3 +48,6 @@ app.*.map.json
 # Ignore these to use per-flavor files.
 ios/Runner/GoogleService-Info.plist
 android/app/google-services.json
+
+# App Store Connect related
+*.p8
