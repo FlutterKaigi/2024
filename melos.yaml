@@ -90,6 +90,7 @@ scripts:
         CODE_SIGNING_ALLOWED=NO \
         -workspace ./ios/Runner.xcworkspace \
         -scheme Runner \
+        -destination 'generic/platform=iOS' \
         -configuration Release \
         -archivePath ./build/ios/Runner.xcarchive
       # Entitlements 情報を付与
