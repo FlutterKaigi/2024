@@ -19,7 +19,6 @@ class NoEntryLogCard extends StatelessWidget {
   final String userId;
   final String ticketId;
 
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

@@ -73,7 +73,8 @@ class PaymentRefundModal extends HookConsumerWidget {
                       : () async {
                           isLoading.value = true;
                           try {
-                            final repository = ref.read(paymentRepositoryProvider);
+                            final repository =
+                                ref.read(paymentRepositoryProvider);
                             final result = await repository.refundPayment(
                               paymentIntent: paymentIntent,
                               userId: userId,
