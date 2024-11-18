@@ -9,6 +9,7 @@ import 'package:ticket_reader/core/router/router.dart';
 import 'package:ticket_reader/features/profile/data/profile_with_ticket_and_entry_log_provider.dart';
 import 'package:ticket_reader/features/profile/ui/entry_log_view.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
+import 'package:ticket_reader/features/profile/ui/user_qr_dialog.dart';
 import 'package:ticket_reader/pages/payment_search_page.dart';
 
 class UserCard extends ConsumerWidget {
@@ -131,13 +132,32 @@ class UserCard extends ConsumerWidget {
           const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: FilledButton.icon(
-              onPressed: () async => PaymentSearchRoute(
-                email: profile.email,
-                userId: profile.id,
-              ).push(context),
-              icon: const Icon(Icons.search),
-              label: const Text('決済を検索する'),
+            child: Row(
+              children: [
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: () async => PaymentSearchRoute(
+                      email: profile.email,
+                      userId: profile.id,
+                    ).push(context),
+                    icon: const Icon(Icons.search),
+                    label: const Text('決済を検索する'),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: FilledButton.icon(
+                    onPressed: () async {
+                      await showDialog<void>(
+                        context: context,
+                        builder: (context) => UserQrDialog(userId: profile.id),
+                      );
+                    },
+                    icon: const Icon(Icons.qr_code),
+                    label: const Text('QRコードを表示する'),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 4),
