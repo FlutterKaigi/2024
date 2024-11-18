@@ -39,22 +39,22 @@ SELECT * FROM profile_with_ticket_and_entry_log
 END;
 $$ language plpgsql stable;
 
-CREATE FUNCTION profile_with_ticket_and_entry_log_search_by_id (id text) returns setof profile_with_ticket_and_entry_log security definer AS $$
+CREATE FUNCTION profile_with_ticket_and_entry_log_search_by_id (target_uid UUID) returns setof profile_with_ticket_and_entry_log security definer AS $$
 BEGIN
-IF (role() != 'admin' OR auth.uid() != $1) THEN
+IF (role() != 'admin' AND auth.uid()::uuid != target_uid) THEN
   RAISE EXCEPTION 'You are not authorized to access this resource. Ask admin to grant you access. (role: %)', role();
 END IF;
 RETURN QUERY
-SELECT * FROM profile_with_ticket_and_entry_log WHERE id = $1;
+SELECT * FROM profile_with_ticket_and_entry_log WHERE id = target_uid LIMIT 1;
 END;
 $$ language plpgsql stable;
 
-CREATE FUNCTION profile_with_ticket_and_entry_log_search_by_ticket_id (ticket_id text) returns setof profile_with_ticket_and_entry_log security definer AS $$
+CREATE FUNCTION profile_with_ticket_and_entry_log_search_by_ticket_id (ticket_id UUID) returns setof profile_with_ticket_and_entry_log security definer AS $$
 BEGIN
 IF role() != 'admin' THEN
   RAISE EXCEPTION 'You are not authorized to access this resource. Ask admin to grant you access. (role: %)', role();
 END IF;
 RETURN QUERY
-SELECT * FROM profile_with_ticket_and_entry_log WHERE ticket->id = $1;
+SELECT * FROM profile_with_ticket_and_entry_log WHERE ticket->id = $1 LIMIT 1;
 END;
 $$ language plpgsql stable;

@@ -138,12 +138,17 @@ class ProfileRepository {
       'userId and ticketId must not be null at the same time',
     );
 
-    var query = _client.from('profiles_with_ticket_and_entry_log').select();
+    final PostgrestFilterBuilder<ProfileWithTicketAndEntryLogView> query;
     if (userId != null) {
-      query = query.eq('id', userId);
-    }
-    if (ticketId != null) {
-      query = query.eq('ticket->id', ticketId);
+      query = _client.rpc<ProfileWithTicketAndEntryLogView>(
+        'profile_with_ticket_and_entry_log_search_by_id',
+        params: {'target_uid': userId},
+      );
+    } else {
+      query = _client.rpc<ProfileWithTicketAndEntryLogView>(
+        'profile_with_ticket_and_entry_log_search_by_ticket_id',
+        params: {'ticket_id': ticketId},
+      );
     }
     final result = await query.maybeSingle().withConverter(
           (r) =>
