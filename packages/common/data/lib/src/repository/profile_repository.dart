@@ -127,6 +127,40 @@ class ProfileRepository {
     );
   }
 
+  /// 特定の検索条件を用いてプロフィールとそれに紐づくチケットと入場履歴を取得します
+  Future<ProfileWithTicketAndEntryLog?> fetchProfileWithTicketAndEntryLog({
+    String? userId,
+    String? ticketId,
+  }) async {
+    // どちらかは必須
+    assert(
+      userId != null || ticketId != null,
+      'userId and ticketId must not be null at the same time',
+    );
+
+    var query = _client.from('profiles_with_ticket_and_entry_log').select();
+    if (userId != null) {
+      query = query.eq('id', userId);
+    }
+    if (ticketId != null) {
+      query = query.eq('ticket->id', ticketId);
+    }
+    final result = await query.maybeSingle().withConverter(
+          (r) =>
+              r != null ? ProfileWithTicketAndEntryLogView.fromJson(r) : null,
+        );
+    if (result == null) {
+      return null;
+    }
+    return ProfileWithTicketAndEntryLog(
+      id: result.id,
+      email: result.email,
+      profile: toProfile(result.profile),
+      ticket: result.ticket,
+      entryLog: result.entryLog,
+    );
+  }
+
   /// プロフィールとそれに紐づくチケットと入場履歴を取得します
   Future<PagingResult<List<ProfileWithTicketAndEntryLog>>>
       fetchProfilesWithTicketAndEntryLog({
