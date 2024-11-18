@@ -1,6 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ticket_api/ticket_api.dart';
 
 class ErrorCard extends StatelessWidget {
   const ErrorCard({
@@ -69,6 +72,7 @@ class ErrorCard extends StatelessWidget {
               message,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onErrorContainer,
+                fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
               ),
             ),
             if (suffixMessage != null) ...[
@@ -77,6 +81,7 @@ class ErrorCard extends StatelessWidget {
                 suffixMessage!,
                 style: theme.textTheme.bodyMedium?.copyWith(
                   color: theme.colorScheme.onErrorContainer,
+                  fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
                 ),
               ),
             ],
@@ -95,6 +100,36 @@ class ErrorCard extends StatelessWidget {
   }
 
   String _buildErrorMessage() {
+    if (error is DioException) {
+      if (error case DioException(:final response) when response != null) {
+        final advancedErrorMessage = switch (response.data) {
+          {'error': final String errorMsg} => errorMsg,
+          _ => 'エラーが発生しました',
+        };
+        final statusCode = response.statusCode;
+        if (statusCode != null) {
+          final baseMessage = onDioExceptionStatusOverride?.call(statusCode) ??
+              switch (statusCode) {
+                400 => '不正なリクエストです',
+                403 => 'アクセスが拒否されました',
+                404 => 'リソースが見つかりません',
+                500 => 'サーバーエラーが発生しました',
+                503 => 'サービスが利用できません',
+                _ => 'エラーが発生しました',
+              };
+          final data = response.data;
+          if (data is Map<String, dynamic>) {
+            return '$baseMessage\n'
+                '$advancedErrorMessage\n'
+                '${const JsonEncoder.withIndent(' ').convert(data)}';
+          }
+          return '$baseMessage\n'
+              '$advancedErrorMessage\n'
+              '${response.data}';
+        }
+        return advancedErrorMessage;
+      }
+    }
     return 'エラーが発生しました\n($error)';
   }
 }
