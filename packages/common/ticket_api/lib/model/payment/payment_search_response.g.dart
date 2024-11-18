@@ -37,18 +37,22 @@ _$PaymentResultImpl _$$PaymentResultImplFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$PaymentResultImpl(
-          paymentIntent: $checkedConvert('paymentIntent', (v) => v as String),
+          paymentIntent: $checkedConvert('payment_intent', (v) => v as String),
           amount: $checkedConvert('amount', (v) => (v as num).toInt()),
           createdAt:
-              $checkedConvert('createdAt', (v) => DateTime.parse(v as String)),
+              $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
         );
         return val;
+      },
+      fieldKeyMap: const {
+        'paymentIntent': 'payment_intent',
+        'createdAt': 'created_at'
       },
     );
 
 Map<String, dynamic> _$$PaymentResultImplToJson(_$PaymentResultImpl instance) =>
     <String, dynamic>{
-      'paymentIntent': instance.paymentIntent,
+      'payment_intent': instance.paymentIntent,
       'amount': instance.amount,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'created_at': instance.createdAt.toIso8601String(),
     };

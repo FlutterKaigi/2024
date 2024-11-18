@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Environment {
   String get supabaseUrl => throw _privateConstructorUsedError;
   String get supabaseAnonKey => throw _privateConstructorUsedError;
+  String get ticketApiBaseUrl => throw _privateConstructorUsedError;
   EnvironmentType get environmentType => throw _privateConstructorUsedError;
 
   /// Create a copy of Environment
@@ -36,6 +37,7 @@ abstract class $EnvironmentCopyWith<$Res> {
   $Res call(
       {String supabaseUrl,
       String supabaseAnonKey,
+      String ticketApiBaseUrl,
       EnvironmentType environmentType});
 }
 
@@ -56,6 +58,7 @@ class _$EnvironmentCopyWithImpl<$Res, $Val extends Environment>
   $Res call({
     Object? supabaseUrl = null,
     Object? supabaseAnonKey = null,
+    Object? ticketApiBaseUrl = null,
     Object? environmentType = null,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +69,10 @@ class _$EnvironmentCopyWithImpl<$Res, $Val extends Environment>
       supabaseAnonKey: null == supabaseAnonKey
           ? _value.supabaseAnonKey
           : supabaseAnonKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      ticketApiBaseUrl: null == ticketApiBaseUrl
+          ? _value.ticketApiBaseUrl
+          : ticketApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       environmentType: null == environmentType
           ? _value.environmentType
@@ -86,6 +93,7 @@ abstract class _$$EnvironmentImplCopyWith<$Res>
   $Res call(
       {String supabaseUrl,
       String supabaseAnonKey,
+      String ticketApiBaseUrl,
       EnvironmentType environmentType});
 }
 
@@ -104,6 +112,7 @@ class __$$EnvironmentImplCopyWithImpl<$Res>
   $Res call({
     Object? supabaseUrl = null,
     Object? supabaseAnonKey = null,
+    Object? ticketApiBaseUrl = null,
     Object? environmentType = null,
   }) {
     return _then(_$EnvironmentImpl(
@@ -114,6 +123,10 @@ class __$$EnvironmentImplCopyWithImpl<$Res>
       supabaseAnonKey: null == supabaseAnonKey
           ? _value.supabaseAnonKey
           : supabaseAnonKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      ticketApiBaseUrl: null == ticketApiBaseUrl
+          ? _value.ticketApiBaseUrl
+          : ticketApiBaseUrl // ignore: cast_nullable_to_non_nullable
               as String,
       environmentType: null == environmentType
           ? _value.environmentType
@@ -129,6 +142,7 @@ class _$EnvironmentImpl implements _Environment {
   const _$EnvironmentImpl(
       {required this.supabaseUrl,
       required this.supabaseAnonKey,
+      required this.ticketApiBaseUrl,
       required this.environmentType});
 
   @override
@@ -136,11 +150,13 @@ class _$EnvironmentImpl implements _Environment {
   @override
   final String supabaseAnonKey;
   @override
+  final String ticketApiBaseUrl;
+  @override
   final EnvironmentType environmentType;
 
   @override
   String toString() {
-    return 'Environment(supabaseUrl: $supabaseUrl, supabaseAnonKey: $supabaseAnonKey, environmentType: $environmentType)';
+    return 'Environment(supabaseUrl: $supabaseUrl, supabaseAnonKey: $supabaseAnonKey, ticketApiBaseUrl: $ticketApiBaseUrl, environmentType: $environmentType)';
   }
 
   @override
@@ -152,13 +168,15 @@ class _$EnvironmentImpl implements _Environment {
                 other.supabaseUrl == supabaseUrl) &&
             (identical(other.supabaseAnonKey, supabaseAnonKey) ||
                 other.supabaseAnonKey == supabaseAnonKey) &&
+            (identical(other.ticketApiBaseUrl, ticketApiBaseUrl) ||
+                other.ticketApiBaseUrl == ticketApiBaseUrl) &&
             (identical(other.environmentType, environmentType) ||
                 other.environmentType == environmentType));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, supabaseUrl, supabaseAnonKey, environmentType);
+  int get hashCode => Object.hash(runtimeType, supabaseUrl, supabaseAnonKey,
+      ticketApiBaseUrl, environmentType);
 
   /// Create a copy of Environment
   /// with the given fields replaced by the non-null parameter values.
@@ -173,12 +191,15 @@ abstract class _Environment implements Environment {
   const factory _Environment(
       {required final String supabaseUrl,
       required final String supabaseAnonKey,
+      required final String ticketApiBaseUrl,
       required final EnvironmentType environmentType}) = _$EnvironmentImpl;
 
   @override
   String get supabaseUrl;
   @override
   String get supabaseAnonKey;
+  @override
+  String get ticketApiBaseUrl;
   @override
   EnvironmentType get environmentType;
 

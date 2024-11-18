@@ -6,6 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 import 'package:ticket_reader/pages/home_page.dart';
 import 'package:ticket_reader/pages/login_page.dart';
+import 'package:ticket_reader/pages/payment_search_page.dart';
 import 'package:ticket_reader/pages/ticket_reader_page.dart';
 import 'package:ticket_reader/pages/user_search_page.dart';
 
@@ -36,6 +37,7 @@ GoRouter router(Ref ref) {
   routes: [
     TypedGoRoute<ReaderRoute>(path: '/reader'),
     TypedGoRoute<UserSearchRoute>(path: '/user-search'),
+    TypedGoRoute<PaymentSearchRoute>(path: '/payment-search'),
   ],
 )
 class HomeRoute extends GoRouteData {

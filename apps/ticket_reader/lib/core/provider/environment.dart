@@ -24,6 +24,7 @@ class Environment with _$Environment {
   const factory Environment({
     required String supabaseUrl,
     required String supabaseAnonKey,
+    required String ticketApiBaseUrl,
     required EnvironmentType environmentType,
   }) = _Environment;
 
@@ -31,6 +32,7 @@ class Environment with _$Environment {
     final result = Environment(
       supabaseUrl: const String.fromEnvironment('SUPABASE_URL'),
       supabaseAnonKey: const String.fromEnvironment('SUPABASE_ANON_KEY'),
+      ticketApiBaseUrl: const String.fromEnvironment('TICKET_API_BASE_URL'),
       environmentType: EnvironmentType.values.firstWhere(
         (e) =>
             e.name == const String.fromEnvironment('ENVIRONMENT').toLowerCase(),
@@ -39,6 +41,7 @@ class Environment with _$Environment {
 
     assert(result.supabaseUrl.isNotEmpty, 'SUPABASE_URL is empty');
     assert(result.supabaseAnonKey.isNotEmpty, 'SUPABASE_ANON_KEY is empty');
+    assert(result.ticketApiBaseUrl.isNotEmpty, 'TICKET_API_BASE_URL is empty');
     return result;
   }
 }
