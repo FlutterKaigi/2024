@@ -27,7 +27,7 @@ CREATE FUNCTION profile_with_ticket_and_entry_log_search (has_ticket boolean, ha
 BEGIN
 -- role() != 'admin'の場合は、エラー
 IF role() != 'admin' THEN
-  RAISE EXCEPTION 'You are not authorized to access this resource';
+  RAISE EXCEPTION 'You are not authorized to access this resource. Ask admin to grant you access. (role: %)', role();
 END IF;
 
 RETURN QUERY
@@ -36,5 +36,25 @@ SELECT * FROM profile_with_ticket_and_entry_log
   AND (has_entry_log IS NULL OR entry_log IS NOT NULL = $2)
   AND (user_id_contains IS NULL OR id::text ~ $3)
   AND (email_contains IS NULL OR email ~ $4);
+END;
+$$ language plpgsql stable;
+
+CREATE FUNCTION profile_with_ticket_and_entry_log_search_by_id (id text) returns setof profile_with_ticket_and_entry_log security definer AS $$
+BEGIN
+IF (role() != 'admin' OR auth.uid() != $1) THEN
+  RAISE EXCEPTION 'You are not authorized to access this resource. Ask admin to grant you access. (role: %)', role();
+END IF;
+RETURN QUERY
+SELECT * FROM profile_with_ticket_and_entry_log WHERE id = $1;
+END;
+$$ language plpgsql stable;
+
+CREATE FUNCTION profile_with_ticket_and_entry_log_search_by_ticket_id (ticket_id text) returns setof profile_with_ticket_and_entry_log security definer AS $$
+BEGIN
+IF role() != 'admin' THEN
+  RAISE EXCEPTION 'You are not authorized to access this resource. Ask admin to grant you access. (role: %)', role();
+END IF;
+RETURN QUERY
+SELECT * FROM profile_with_ticket_and_entry_log WHERE ticket->id = $1;
 END;
 $$ language plpgsql stable;
