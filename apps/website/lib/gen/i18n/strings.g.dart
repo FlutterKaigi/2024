@@ -379,7 +379,7 @@ class _StringsLeadLocationJa {
 
   // Translations
   String get prefix => '会場';
-  String get value => '有明セントラルタワー＆カンファレンス';
+  String get value => '有明セントラルタワーホール＆カンファレンス';
 }
 
 // Path: sponsor.individual
@@ -434,7 +434,7 @@ extension on Translations {
       case 'lead.location.prefix':
         return '会場';
       case 'lead.location.value':
-        return '有明セントラルタワー＆カンファレンス';
+        return '有明セントラルタワーホール＆カンファレンス';
       case 'header.sponsors':
         return 'Sponsors';
       case 'header.staff':
