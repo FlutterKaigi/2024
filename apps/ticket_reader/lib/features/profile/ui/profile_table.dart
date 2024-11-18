@@ -5,8 +5,10 @@ import 'package:common_data/ticket.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:ticket_reader/core/extension/ticket.dart';
+import 'package:ticket_reader/features/profile/ui/user_card.dart';
 import 'package:two_dimensional_scrollables/two_dimensional_scrollables.dart';
 
 class ProfileTable extends StatelessWidget {
@@ -22,6 +24,7 @@ class ProfileTable extends StatelessWidget {
   final int totalCount;
   final void Function() onLoadMore;
   final FutureOr<void> Function() onRefresh;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -29,10 +32,10 @@ class ProfileTable extends StatelessWidget {
     if (profiles.isEmpty) {
       return Center(
         child: Card(
-          color: theme.colorScheme.primaryContainer,
+          color: theme.colorScheme.errorContainer,
           child: DefaultTextStyle.merge(
             style: theme.textTheme.titleMedium!.copyWith(
-              color: theme.colorScheme.onPrimaryContainer,
+              color: theme.colorScheme.onErrorContainer,
               fontWeight: FontWeight.bold,
             ),
             child: Padding(
@@ -43,22 +46,28 @@ class ProfileTable extends StatelessWidget {
                   Icon(
                     Icons.info,
                     size: 36,
-                    color: theme.colorScheme.onPrimaryContainer,
+                    color: theme.colorScheme.onErrorContainer,
                   ),
                   const SizedBox(width: 8),
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Flexible(
+                      Flexible(
                         child: Text(
                           'データがありません',
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: theme.colorScheme.onErrorContainer,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Flexible(
                         child: Text(
                           '他の検索条件を試してみてください',
-                          style: theme.textTheme.bodySmall,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onErrorContainer,
+                          ),
                         ),
                       ),
                     ],
@@ -93,11 +102,13 @@ class ProfileTable extends StatelessWidget {
               onRefresh: () async => onRefresh,
               child: NotificationListener<ScrollNotification>(
                 onNotification: (notification) {
-                  // 全体の90%以上スクロールしたらリフレッシュ
-                  if (notification.metrics.pixels >
-                      notification.metrics.maxScrollExtent * 0.9) {
-                    onLoadMore();
-                    return true;
+                  if (notification.metrics.axis == Axis.vertical) {
+                    // 全体の90%以上スクロールしたらリフレッシュ
+                    if (notification.metrics.pixels >
+                        notification.metrics.maxScrollExtent * 0.9) {
+                      onLoadMore();
+                      return true;
+                    }
                   }
                   return true;
                 },
@@ -140,36 +151,41 @@ class ProfileTable extends StatelessWidget {
 
                     final profile = profiles[vicinity.row - 1];
 
-                    final child = InkWell(
-                      onTap: () async {
-                        unawaited(
-                          Clipboard.setData(
-                            ClipboardData(text: profile.id),
-                          ),
-                        );
-                        unawaited(
-                          HapticFeedback.lightImpact(),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('クリップボードにコピーしました')),
-                        );
-                      },
-                      onDoubleTap: () async {
-                        // TODO(YumNumm): プロフィール画面に遷移する
-                      },
-                      child: ColoredBox(
-                        color: column
-                                .colorAccessor(profile)
-                                ?.withValues(alpha: 0.5) ??
-                            theme.colorScheme.surfaceContainer,
-                        child: Center(
-                          child: Text(
-                            vicinity.row == 0
-                                ? column.label
-                                : column.accessor(profile),
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              fontFamily:
-                                  GoogleFonts.jetBrainsMono().fontFamily,
+                    final child = Consumer(
+                      builder: (context, ref, child) => InkWell(
+                        onTap: () async {
+                          unawaited(
+                            Clipboard.setData(
+                              ClipboardData(text: profile.id),
+                            ),
+                          );
+                          unawaited(
+                            HapticFeedback.lightImpact(),
+                          );
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('クリップボードにコピーしました')),
+                            );
+                          }
+                        },
+                        onDoubleTap: () async => UserCard.show(
+                          context,
+                          userId: profile.id,
+                        ),
+                        child: ColoredBox(
+                          color: column
+                                  .colorAccessor(profile)
+                                  ?.withValues(alpha: 0.5) ??
+                              theme.colorScheme.surfaceContainer,
+                          child: Center(
+                            child: Text(
+                              vicinity.row == 0
+                                  ? column.label
+                                  : column.accessor(profile),
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                fontFamily:
+                                    GoogleFonts.jetBrainsMono().fontFamily,
+                              ),
                             ),
                           ),
                         ),

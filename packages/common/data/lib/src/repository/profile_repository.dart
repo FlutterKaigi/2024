@@ -127,6 +127,45 @@ class ProfileRepository {
     );
   }
 
+  /// 特定の検索条件を用いてプロフィールとそれに紐づくチケットと入場履歴を取得します
+  Future<ProfileWithTicketAndEntryLog?> fetchProfileWithTicketAndEntryLog({
+    String? userId,
+    String? ticketId,
+  }) async {
+    // どちらかは必須
+    assert(
+      userId != null || ticketId != null,
+      'userId and ticketId must not be null at the same time',
+    );
+
+    final PostgrestFilterBuilder<ProfileWithTicketAndEntryLogView> query;
+    if (userId != null) {
+      query = _client.rpc<ProfileWithTicketAndEntryLogView>(
+        'profile_with_ticket_and_entry_log_search_by_id',
+        params: {'target_uid': userId},
+      );
+    } else {
+      query = _client.rpc<ProfileWithTicketAndEntryLogView>(
+        'profile_with_ticket_and_entry_log_search_by_ticket_id',
+        params: {'ticket_id': ticketId},
+      );
+    }
+    final result = await query.maybeSingle().withConverter(
+          (r) =>
+              r != null ? ProfileWithTicketAndEntryLogView.fromJson(r) : null,
+        );
+    if (result == null) {
+      return null;
+    }
+    return ProfileWithTicketAndEntryLog(
+      id: result.id,
+      email: result.email,
+      profile: toProfile(result.profile),
+      ticket: result.ticket,
+      entryLog: result.entryLog,
+    );
+  }
+
   /// プロフィールとそれに紐づくチケットと入場履歴を取得します
   Future<PagingResult<List<ProfileWithTicketAndEntryLog>>>
       fetchProfilesWithTicketAndEntryLog({
@@ -134,12 +173,20 @@ class ProfileRepository {
     int limit = 10,
     int offset = 0,
   }) async {
-    final result = await _client
+    var query = _client
         .rpc<List<ProfileWithTicketAndEntryLogView>>(
           'profile_with_ticket_and_entry_log_search',
           params: argument.toJson(),
         )
-        .select()
+        .select();
+    final sortBy = argument.sortBy;
+    final order = argument.sortOrder;
+    query = query.order(
+      sortBy.order,
+      ascending: order == SortOrder.asc,
+    );
+
+    final result = await query
         .range(offset, offset + limit - 1)
         .count(CountOption.exact)
         .withConverter(

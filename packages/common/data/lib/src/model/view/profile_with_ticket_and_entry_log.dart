@@ -28,11 +28,37 @@ class ProfileWithTicketAndEntryLogArgument
     bool? hasEntryLog,
     String? userIdContains,
     String? emailContains,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(ProfileWithTicketAndEntryLogSort.id)
+    ProfileWithTicketAndEntryLogSort sortBy,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    @Default(SortOrder.asc)
+    SortOrder sortOrder,
   }) = _ProfileWithTicketAndEntryLogArgument;
 
   factory ProfileWithTicketAndEntryLogArgument.fromJson(
-          Map<String, dynamic> json) =>
+    Map<String, dynamic> json,
+  ) =>
       _$ProfileWithTicketAndEntryLogArgumentFromJson(json);
+}
+
+enum ProfileWithTicketAndEntryLogSort {
+  id('id'),
+  email('email'),
+  createdAt('ticket->>created_at'),
+  ticketType('ticket->>type'),
+  entryLog('entry_log->>created_at'),
+  ;
+
+  const ProfileWithTicketAndEntryLogSort(this.order);
+
+  final String order;
+}
+
+enum SortOrder {
+  asc,
+  desc,
+  ;
 }
 
 @freezed
