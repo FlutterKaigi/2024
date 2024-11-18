@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ticket_reader/core/components/error/error_card.dart';
 import 'package:ticket_reader/core/components/full_screen_loading.dart';
+import 'package:ticket_reader/core/router/router.dart';
 import 'package:ticket_reader/features/profile/data/profile_with_ticket_and_entry_log_provider.dart';
 import 'package:ticket_reader/features/profile/ui/entry_log_view.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
+import 'package:ticket_reader/pages/payment_search_page.dart';
 
 class UserCard extends ConsumerWidget {
   const UserCard({
@@ -79,16 +82,27 @@ class UserCard extends ConsumerWidget {
       'userId or ticketId is required',
     );
 
-    final profileState = ref.watch(
-      userId != null
-          ? profileWithTicketAndEntryLogUserIdProvider(userId!)
-          : profileWithTicketAndEntryLogTicketIdProvider(ticketId!),
-    );
+    final provider = userId != null
+        ? profileWithTicketAndEntryLogUserIdProvider(userId!)
+        : profileWithTicketAndEntryLogTicketIdProvider(ticketId!);
+    final profileState = ref.watch(provider);
 
     final profile = profileState.valueOrNull;
 
     if (profileState is AsyncLoading) {
       return const FullScreenCircularProgressIndicator();
+    }
+    if (profileState case AsyncError(:final error)) {
+      return Expanded(
+        child: SingleChildScrollView(
+          child: ErrorCard(
+            error: error,
+            onReload: () async => ref.refresh(
+              provider,
+            ),
+          ),
+        ),
+      );
     }
     if (profile == null) {
       return const SizedBox.shrink();
@@ -112,6 +126,18 @@ class UserCard extends ConsumerWidget {
             ),
             subtitle: CopyableText(
               text: profile.id,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FilledButton.icon(
+              onPressed: () async => PaymentSearchRoute(
+                email: profile.email,
+                userId: profile.id,
+              ).push(context),
+              icon: const Icon(Icons.search),
+              label: const Text('決済を検索する'),
             ),
           ),
           const SizedBox(height: 4),

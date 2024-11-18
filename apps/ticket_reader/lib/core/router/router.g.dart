@@ -25,6 +25,10 @@ RouteBase get $homeRoute => GoRouteData.$route(
           path: '/user-search',
           factory: $UserSearchRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: '/payment-search',
+          factory: $PaymentSearchRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -68,6 +72,31 @@ extension $UserSearchRouteExtension on UserSearchRoute {
 
   String get location => GoRouteData.$location(
         '/user-search',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $PaymentSearchRouteExtension on PaymentSearchRoute {
+  static PaymentSearchRoute _fromState(GoRouterState state) =>
+      PaymentSearchRoute(
+        email: state.uri.queryParameters['email'],
+        userId: state.uri.queryParameters['user-id'],
+      );
+
+  String get location => GoRouteData.$location(
+        '/payment-search',
+        queryParams: {
+          if (email != null) 'email': email,
+          if (userId != null) 'user-id': userId,
+        },
       );
 
   void go(BuildContext context) => context.go(location);

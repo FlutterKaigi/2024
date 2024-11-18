@@ -6,6 +6,7 @@ import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 import 'package:ticket_reader/features/profile/data/profile_notifier.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
 import 'package:ticket_reader/features/profile/ui/user_card.dart';
+import 'package:ticket_reader/pages/payment_search_page.dart';
 import 'package:ticket_reader/pages/ticket_reader_page.dart';
 import 'package:ticket_reader/pages/user_search_page.dart';
 
@@ -78,6 +79,11 @@ class _Drawer extends ConsumerWidget {
               leading: const Icon(Icons.search),
               onTap: () => const UserSearchRoute().go(context),
             ),
+            ListTile(
+              title: const Text('Payment Search'),
+              leading: const Icon(Icons.payment),
+              onTap: () => const PaymentSearchRoute().go(context),
+            ),
             const Spacer(),
             const Divider(),
             ListTile(
@@ -104,12 +110,14 @@ class _Body extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userId = ref.watch(authNotifierProvider)!.id;
 
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          UserCard.asCard(userId: userId),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            UserCard.asCard(userId: userId),
+          ],
+        ),
       ),
     );
   }
