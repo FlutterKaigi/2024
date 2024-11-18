@@ -11,7 +11,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_reader/core/components/error/error_card.dart';
-import 'package:ticket_reader/features/profile/data/profile_with_ticket_and_entry_log_notifier.dart';
+import 'package:ticket_reader/features/profile/data/profile_with_ticket_and_entry_logs_search_notifier.dart';
 import 'package:ticket_reader/features/profile/ui/profile_table.dart';
 import 'package:ticket_reader/pages/components/user_search/user_search_parameter.dart';
 
@@ -30,9 +30,9 @@ class UserSearchPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final argument = useState(const ProfileWithTicketAndEntryLogArgument());
-    final sortType = useState(ProfileWithTicketAndEntryLogSort.id);
-    final provider =
-        profileWithTicketAndEntryLogNotifierProvider(argument: argument.value);
+    final provider = profileWithTicketAndEntryLogSearchNotifierProvider(
+      argument: argument.value,
+    );
     final state = ref.watch(provider);
 
     return Scaffold(
@@ -69,9 +69,11 @@ class UserSearchPage extends HookConsumerWidget {
                 onLoadMore: () async =>
                     ref.read(provider.notifier).fetchNextPage(),
               ),
-              error: (error, stackTrace) => ErrorCard(
-                error: error,
-                onReload: () async => ref.refresh(provider),
+              error: (error, stackTrace) => Center(
+                child: ErrorCard(
+                  error: error,
+                  onReload: () async => ref.refresh(provider),
+                ),
               ),
               loading: () => const Center(
                 child: CircularProgressIndicator.adaptive(),

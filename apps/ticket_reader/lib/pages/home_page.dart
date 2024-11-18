@@ -5,7 +5,7 @@ import 'package:ticket_reader/core/router/router.dart';
 import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 import 'package:ticket_reader/features/profile/data/profile_notifier.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
-import 'package:ticket_reader/features/profile/ui/profile_card.dart';
+import 'package:ticket_reader/features/profile/ui/user_card.dart';
 import 'package:ticket_reader/pages/ticket_reader_page.dart';
 import 'package:ticket_reader/pages/user_search_page.dart';
 
@@ -102,19 +102,15 @@ class _Body extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(profileNotifierProvider);
+    final userId = ref.watch(authNotifierProvider)!.id;
 
-    return switch (profile) {
-      AsyncValue(:final value) when value != null => Column(
-          children: [
-            ProfileCard(profile: value),
-          ],
-        ),
-      AsyncLoading() => const Center(
-          child: CircularProgressIndicator.adaptive(),
-        ),
-      AsyncError(:final error) => Text('Error: $error'),
-      _ => const SizedBox.shrink(),
-    };
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        children: [
+          UserCard.asCard(userId: userId),
+        ],
+      ),
+    );
   }
 }
