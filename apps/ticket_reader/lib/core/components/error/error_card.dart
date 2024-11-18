@@ -82,9 +82,10 @@ class ErrorCard extends StatelessWidget {
             ],
             if (onReload != null) ...[
               const SizedBox(height: 8),
-              ElevatedButton(
+              FilledButton.tonalIcon(
                 onPressed: onReload,
-                child: const Text('再読み込み'),
+                icon: const Icon(Icons.refresh),
+                label: const Text('再読み込み'),
               ),
             ],
           ],
