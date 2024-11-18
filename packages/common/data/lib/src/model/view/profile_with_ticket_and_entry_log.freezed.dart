@@ -322,6 +322,11 @@ mixin _$ProfileWithTicketAndEntryLogArgument {
   bool? get hasEntryLog => throw _privateConstructorUsedError;
   String? get userIdContains => throw _privateConstructorUsedError;
   String? get emailContains => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ProfileWithTicketAndEntryLogSort get sortBy =>
+      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  SortOrder get sortOrder => throw _privateConstructorUsedError;
 
   /// Serializes this ProfileWithTicketAndEntryLogArgument to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -346,7 +351,11 @@ abstract class $ProfileWithTicketAndEntryLogArgumentCopyWith<$Res> {
       {bool? hasTicket,
       bool? hasEntryLog,
       String? userIdContains,
-      String? emailContains});
+      String? emailContains,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      ProfileWithTicketAndEntryLogSort sortBy,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      SortOrder sortOrder});
 }
 
 /// @nodoc
@@ -369,6 +378,8 @@ class _$ProfileWithTicketAndEntryLogArgumentCopyWithImpl<$Res,
     Object? hasEntryLog = freezed,
     Object? userIdContains = freezed,
     Object? emailContains = freezed,
+    Object? sortBy = null,
+    Object? sortOrder = null,
   }) {
     return _then(_value.copyWith(
       hasTicket: freezed == hasTicket
@@ -387,6 +398,14 @@ class _$ProfileWithTicketAndEntryLogArgumentCopyWithImpl<$Res,
           ? _value.emailContains
           : emailContains // ignore: cast_nullable_to_non_nullable
               as String?,
+      sortBy: null == sortBy
+          ? _value.sortBy
+          : sortBy // ignore: cast_nullable_to_non_nullable
+              as ProfileWithTicketAndEntryLogSort,
+      sortOrder: null == sortOrder
+          ? _value.sortOrder
+          : sortOrder // ignore: cast_nullable_to_non_nullable
+              as SortOrder,
     ) as $Val);
   }
 }
@@ -404,7 +423,11 @@ abstract class _$$ProfileWithTicketAndEntryLogArgumentImplCopyWith<$Res>
       {bool? hasTicket,
       bool? hasEntryLog,
       String? userIdContains,
-      String? emailContains});
+      String? emailContains,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      ProfileWithTicketAndEntryLogSort sortBy,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      SortOrder sortOrder});
 }
 
 /// @nodoc
@@ -426,6 +449,8 @@ class __$$ProfileWithTicketAndEntryLogArgumentImplCopyWithImpl<$Res>
     Object? hasEntryLog = freezed,
     Object? userIdContains = freezed,
     Object? emailContains = freezed,
+    Object? sortBy = null,
+    Object? sortOrder = null,
   }) {
     return _then(_$ProfileWithTicketAndEntryLogArgumentImpl(
       hasTicket: freezed == hasTicket
@@ -444,6 +469,14 @@ class __$$ProfileWithTicketAndEntryLogArgumentImplCopyWithImpl<$Res>
           ? _value.emailContains
           : emailContains // ignore: cast_nullable_to_non_nullable
               as String?,
+      sortBy: null == sortBy
+          ? _value.sortBy
+          : sortBy // ignore: cast_nullable_to_non_nullable
+              as ProfileWithTicketAndEntryLogSort,
+      sortOrder: null == sortOrder
+          ? _value.sortOrder
+          : sortOrder // ignore: cast_nullable_to_non_nullable
+              as SortOrder,
     ));
   }
 }
@@ -456,7 +489,11 @@ class _$ProfileWithTicketAndEntryLogArgumentImpl
       {this.hasTicket,
       this.hasEntryLog,
       this.userIdContains,
-      this.emailContains});
+      this.emailContains,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.sortBy = ProfileWithTicketAndEntryLogSort.id,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.sortOrder = SortOrder.asc});
 
   factory _$ProfileWithTicketAndEntryLogArgumentImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -470,10 +507,16 @@ class _$ProfileWithTicketAndEntryLogArgumentImpl
   final String? userIdContains;
   @override
   final String? emailContains;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final ProfileWithTicketAndEntryLogSort sortBy;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final SortOrder sortOrder;
 
   @override
   String toString() {
-    return 'ProfileWithTicketAndEntryLogArgument(hasTicket: $hasTicket, hasEntryLog: $hasEntryLog, userIdContains: $userIdContains, emailContains: $emailContains)';
+    return 'ProfileWithTicketAndEntryLogArgument(hasTicket: $hasTicket, hasEntryLog: $hasEntryLog, userIdContains: $userIdContains, emailContains: $emailContains, sortBy: $sortBy, sortOrder: $sortOrder)';
   }
 
   @override
@@ -488,13 +531,16 @@ class _$ProfileWithTicketAndEntryLogArgumentImpl
             (identical(other.userIdContains, userIdContains) ||
                 other.userIdContains == userIdContains) &&
             (identical(other.emailContains, emailContains) ||
-                other.emailContains == emailContains));
+                other.emailContains == emailContains) &&
+            (identical(other.sortBy, sortBy) || other.sortBy == sortBy) &&
+            (identical(other.sortOrder, sortOrder) ||
+                other.sortOrder == sortOrder));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, hasTicket, hasEntryLog, userIdContains, emailContains);
+  int get hashCode => Object.hash(runtimeType, hasTicket, hasEntryLog,
+      userIdContains, emailContains, sortBy, sortOrder);
 
   /// Create a copy of ProfileWithTicketAndEntryLogArgument
   /// with the given fields replaced by the non-null parameter values.
@@ -517,11 +563,14 @@ class _$ProfileWithTicketAndEntryLogArgumentImpl
 abstract class _ProfileWithTicketAndEntryLogArgument
     implements ProfileWithTicketAndEntryLogArgument {
   const factory _ProfileWithTicketAndEntryLogArgument(
-          {final bool? hasTicket,
-          final bool? hasEntryLog,
-          final String? userIdContains,
-          final String? emailContains}) =
-      _$ProfileWithTicketAndEntryLogArgumentImpl;
+      {final bool? hasTicket,
+      final bool? hasEntryLog,
+      final String? userIdContains,
+      final String? emailContains,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final ProfileWithTicketAndEntryLogSort sortBy,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final SortOrder sortOrder}) = _$ProfileWithTicketAndEntryLogArgumentImpl;
 
   factory _ProfileWithTicketAndEntryLogArgument.fromJson(
           Map<String, dynamic> json) =
@@ -535,6 +584,12 @@ abstract class _ProfileWithTicketAndEntryLogArgument
   String? get userIdContains;
   @override
   String? get emailContains;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  ProfileWithTicketAndEntryLogSort get sortBy;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  SortOrder get sortOrder;
 
   /// Create a copy of ProfileWithTicketAndEntryLogArgument
   /// with the given fields replaced by the non-null parameter values.

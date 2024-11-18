@@ -64,7 +64,6 @@ class ProfileAvatar extends HookConsumerWidget {
       // ignore: discarded_futures
       final userAvatarFuture = useMemoized(userAvatarFetch, [profile]);
       final userAvatarState = useFuture(userAvatarFuture);
-
       child = switch (userAvatarState.connectionState) {
         ConnectionState.none ||
         ConnectionState.waiting ||

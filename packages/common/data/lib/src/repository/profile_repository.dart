@@ -134,12 +134,20 @@ class ProfileRepository {
     int limit = 10,
     int offset = 0,
   }) async {
-    final result = await _client
+    var query = _client
         .rpc<List<ProfileWithTicketAndEntryLogView>>(
           'profile_with_ticket_and_entry_log_search',
           params: argument.toJson(),
         )
-        .select()
+        .select();
+    final sortBy = argument.sortBy;
+    final order = argument.sortOrder;
+    query = query.order(
+      sortBy.order,
+      ascending: order == SortOrder.asc,
+    );
+
+    final result = await query
         .range(offset, offset + limit - 1)
         .count(CountOption.exact)
         .withConverter(
