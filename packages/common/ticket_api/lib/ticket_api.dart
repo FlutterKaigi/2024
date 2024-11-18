@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:ticket_api/model/payment/payment_refund_response.dart';
+import 'package:ticket_api/model/payment/payment_search_response.dart';
 import 'package:ticket_api/model/ticket/get_promotion_response.dart';
 import 'package:ticket_api/model/ticket/post_promotion_request.dart';
 import 'package:ticket_api/model/ticket/post_promotion_response.dart';
@@ -50,5 +52,18 @@ abstract class TicketApiClient {
   Future<PostPromotionResponse> postPromotion({
     @Header('Authorization') required String authorization,
     @Body() required PostPromotionRequest body,
+  });
+
+  @GET('/v1/payment/search')
+  Future<PaymentSearchResponse> searchPayments({
+    @Query('email') required String email,
+    @Header('Authorization') required String authorization,
+  });
+
+  @POST('/v1/payment/refund')
+  Future<PaymentRefundResponse> refundPayment({
+    @Query('payment_intent') required String paymentIntent,
+    @Query('user_id') required String userId,
+    @Header('Authorization') required String authorization,
   });
 }

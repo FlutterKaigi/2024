@@ -49,7 +49,7 @@ app.get(
 		const results = payments.map((payment) => ({
 			payment_intent: payment.id,
 			amount: payment.amount,
-			created: payment.created,
+			created_at: new Date(payment.created * 1000).toISOString(),
 		}));
 		return c.json({ results });
 	},
