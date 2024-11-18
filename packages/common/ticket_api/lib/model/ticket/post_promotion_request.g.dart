@@ -18,15 +18,16 @@ _$PostPromotionRequestImpl _$$PostPromotionRequestImplFromJson(
           metadata: $checkedConvert('metadata',
               (v) => PromotionMetadata.fromJson(v as Map<String, dynamic>)),
           maxRedemptions:
-              $checkedConvert('maxRedemptions', (v) => (v as num).toInt()),
+              $checkedConvert('max_redemptions', (v) => (v as num).toInt()),
         );
         return val;
       },
+      fieldKeyMap: const {'maxRedemptions': 'max_redemptions'},
     );
 
 Map<String, dynamic> _$$PostPromotionRequestImplToJson(
         _$PostPromotionRequestImpl instance) =>
     <String, dynamic>{
       'metadata': instance.metadata,
-      'maxRedemptions': instance.maxRedemptions,
+      'max_redemptions': instance.maxRedemptions,
     };
