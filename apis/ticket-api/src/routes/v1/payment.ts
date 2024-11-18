@@ -169,7 +169,7 @@ app.post(
 					],
 				}),
 			});
-			return c.json({ refund });
+			return c.json({ refund: refund.id });
 		} catch (e) {
 			await fetch(c.env.SLACK_WEBHOOK_URL, {
 				method: "POST",
