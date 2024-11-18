@@ -6,6 +6,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 import 'package:ticket_reader/pages/home_page.dart';
 import 'package:ticket_reader/pages/login_page.dart';
+import 'package:ticket_reader/pages/ticket_reader_page.dart';
+import 'package:ticket_reader/pages/user_search_page.dart';
 
 part 'router.g.dart';
 
@@ -31,6 +33,10 @@ GoRouter router(Ref ref) {
 
 @TypedGoRoute<HomeRoute>(
   path: '/',
+  routes: [
+    TypedGoRoute<ReaderRoute>(path: '/reader'),
+    TypedGoRoute<UserSearchRoute>(path: '/user-search'),
+  ],
 )
 class HomeRoute extends GoRouteData {
   const HomeRoute();

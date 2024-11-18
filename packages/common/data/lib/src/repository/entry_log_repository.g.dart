@@ -2,31 +2,29 @@
 
 // ignore_for_file: type=lint, duplicate_ignore
 
-part of 'user_avatar_image_provider.dart';
+part of 'entry_log_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userAvatarImageHash() => r'17fdf21aaae2059664c77f4b9fd18102dd3d06a7';
+String _$entryLogRepositoryHash() =>
+    r'6da045bbb0885fbdd51700ef40ec1599d87d9007';
 
-/// See also [userAvatarImage].
-@ProviderFor(userAvatarImage)
-final userAvatarImageProvider = FutureProvider<Uint8List?>.internal(
-  userAvatarImage,
-  name: r'userAvatarImageProvider',
+/// See also [entryLogRepository].
+@ProviderFor(entryLogRepository)
+final entryLogRepositoryProvider = Provider<EntryLogRepository>.internal(
+  entryLogRepository,
+  name: r'entryLogRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$userAvatarImageHash,
-  dependencies: <ProviderOrFamily>[profileNotifierProvider],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    profileNotifierProvider,
-    ...?profileNotifierProvider.allTransitiveDependencies
-  },
+      : _$entryLogRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef UserAvatarImageRef = FutureProviderRef<Uint8List?>;
+typedef EntryLogRepositoryRef = ProviderRef<EntryLogRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
