@@ -9,7 +9,7 @@ import 'package:ticket_reader/core/router/router.dart';
 import 'package:ticket_reader/features/profile/data/profile_with_ticket_and_entry_log_provider.dart';
 import 'package:ticket_reader/features/profile/ui/entry_log_view.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
-import 'package:ticket_reader/features/profile/ui/user_qr_dialog.dart';
+import 'package:ticket_reader/features/profile/ui/ticket_qr_dialog.dart';
 import 'package:ticket_reader/pages/payment_search_page.dart';
 
 class UserCard extends ConsumerWidget {
@@ -59,11 +59,9 @@ class UserCard extends ConsumerWidget {
                     ),
                   ),
                 ),
-                SingleChildScrollView(
-                  child: UserCard(
-                    userId: userId,
-                    ticketId: ticketId,
-                  ),
+                UserCard(
+                  userId: userId,
+                  ticketId: ticketId,
                 ),
                 SizedBox(height: bottomPadding),
               ],
@@ -94,14 +92,10 @@ class UserCard extends ConsumerWidget {
       return const FullScreenCircularProgressIndicator();
     }
     if (profileState case AsyncError(:final error)) {
-      return Expanded(
-        child: SingleChildScrollView(
-          child: ErrorCard(
-            error: error,
-            onReload: () async => ref.refresh(
-              provider,
-            ),
-          ),
+      return ErrorCard(
+        error: error,
+        onReload: () async => ref.refresh(
+          provider,
         ),
       );
     }
@@ -132,31 +126,29 @@ class UserCard extends ConsumerWidget {
           const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
+            child: Wrap(
               children: [
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: () async => PaymentSearchRoute(
-                      email: profile.email,
-                      userId: profile.id,
-                    ).push(context),
-                    icon: const Icon(Icons.search),
-                    label: const Text('決済を検索する'),
-                  ),
+                FilledButton.icon(
+                  onPressed: () async => PaymentSearchRoute(
+                    email: profile.email,
+                    userId: profile.id,
+                  ).push(context),
+                  icon: const Icon(Icons.search),
+                  label: const Text('決済を検索する'),
                 ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: FilledButton.icon(
+                if (profile.ticket != null) ...[
+                  FilledButton.icon(
                     onPressed: () async {
                       await showDialog<void>(
                         context: context,
-                        builder: (context) => UserQrDialog(userId: profile.id),
+                        builder: (context) =>
+                            TicketQrDialog(ticketId: profile.ticket!.id),
                       );
                     },
                     icon: const Icon(Icons.qr_code),
                     label: const Text('QRコードを表示する'),
                   ),
-                ),
+                ],
               ],
             ),
           ),
@@ -170,10 +162,12 @@ class UserCard extends ConsumerWidget {
           Divider(
             color: colorScheme.onSurfaceVariant,
           ),
-          EntryLogView(
-            entryLog: profile.entryLog,
-            userId: profile.id,
-          ),
+          if (profile.ticket != null)
+            EntryLogView(
+              entryLog: profile.entryLog,
+              userId: profile.id,
+              ticketId: profile.ticket!.id,
+            ),
         ],
       ),
     );

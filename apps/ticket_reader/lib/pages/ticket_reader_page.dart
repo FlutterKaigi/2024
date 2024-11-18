@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:ticket_reader/features/profile/ui/user_card.dart';
 
 class ReaderRoute extends GoRouteData {
   const ReaderRoute();
@@ -43,12 +43,18 @@ class _Body extends HookConsumerWidget {
     );
 
     return MobileScanner(
-      onDetect: (barcodes) {
+      onDetect: (barcodes) async {
         log('Detected: ${barcodes.barcodes}');
         final rawValue = barcodes.barcodes.first.rawValue;
         log('Detected: ${rawValue?.length}');
         if (rawValue != null && rawValue.length == 36) {
-          unawaited(HapticFeedback.lightImpact());
+          await HapticFeedback.lightImpact();
+          if (context.mounted) {
+            await UserCard.show(
+              context,
+              ticketId: rawValue,
+            );
+          }
         }
       },
       controller: controller,

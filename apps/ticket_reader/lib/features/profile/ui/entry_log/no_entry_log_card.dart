@@ -11,11 +11,14 @@ class NoEntryLogCard extends StatelessWidget {
   const NoEntryLogCard({
     required this.entryLog,
     required this.userId,
+    required this.ticketId,
     super.key,
   });
 
   final EntryLog? entryLog;
   final String userId;
+  final String ticketId;
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +76,7 @@ class NoEntryLogCard extends StatelessWidget {
       );
       await HapticFeedback.heavyImpact();
       ref.invalidate(profileWithTicketAndEntryLogUserIdProvider(userId));
+      ref.invalidate(profileWithTicketAndEntryLogTicketIdProvider(ticketId));
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
