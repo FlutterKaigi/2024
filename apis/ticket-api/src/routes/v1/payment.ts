@@ -171,6 +171,7 @@ app.post(
 			});
 			return c.json({ refund: refund.id });
 		} catch (e) {
+			console.error(e);
 			await fetch(c.env.SLACK_WEBHOOK_URL, {
 				method: "POST",
 				body: JSON.stringify({
@@ -181,6 +182,13 @@ app.post(
 							text: {
 								type: "plain_text",
 								text: "返金に失敗しました",
+							},
+						},
+						{
+							type: "section",
+							text: {
+								type: "mrkdwn",
+								text: `Error: \n\`\`\`${e}\`\`\``,
 							},
 						},
 					],
