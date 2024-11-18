@@ -2,11 +2,14 @@ import 'package:common_data/entry_log.dart';
 import 'package:common_data/profile.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'profile_with_ticket_and_entry_log_notifier.g.dart';
+part 'profile_with_ticket_and_entry_logs_search_notifier.g.dart';
 
+/// プロフィールとそれに紐づくチケットと入場履歴を取得するためのNotifier
+/// 検索条件を指定することで フィルターをかけることができます
+/// [_pageSize] はページングのサイズを表します
 @Riverpod(keepAlive: true)
-class ProfileWithTicketAndEntryLogNotifier
-    extends _$ProfileWithTicketAndEntryLogNotifier {
+class ProfileWithTicketAndEntryLogSearchNotifier
+    extends _$ProfileWithTicketAndEntryLogSearchNotifier {
   @override
   Future<PagingResult<List<ProfileWithTicketAndEntryLog>>> build({
     ProfileWithTicketAndEntryLogArgument? argument,
@@ -16,7 +19,6 @@ class ProfileWithTicketAndEntryLogNotifier
         .fetchProfilesWithTicketAndEntryLog(
           argument: argument ?? const ProfileWithTicketAndEntryLogArgument(),
           limit: _pageSize,
-          
         );
     return result;
   }
