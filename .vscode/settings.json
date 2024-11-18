@@ -43,5 +43,8 @@
   "SQL-Formatter-VSCode.keywordCase": "upper",
   "SQL-Formatter-VSCode.dataTypeCase": "lower",
   "SQL-Formatter-VSCode.functionCase": "lower",
-  "SQL-Formatter-VSCode.identifierCase": "lower"
+  "SQL-Formatter-VSCode.identifierCase": "lower",
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }
