@@ -55,6 +55,6 @@ IF role() != 'admin' THEN
   RAISE EXCEPTION 'You are not authorized to access this resource. Ask admin to grant you access. (role: %)', role();
 END IF;
 RETURN QUERY
-SELECT * FROM profile_with_ticket_and_entry_log WHERE ticket->id = $1 LIMIT 1;
+SELECT * FROM profile_with_ticket_and_entry_log WHERE ticket IS NOT NULL AND ticket->'id' = $1 LIMIT 1;
 END;
 $$ language plpgsql stable;

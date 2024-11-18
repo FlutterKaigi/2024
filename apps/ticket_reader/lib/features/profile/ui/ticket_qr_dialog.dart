@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class UserQrDialog extends StatelessWidget {
-  const UserQrDialog({
-    required this.userId,
+class TicketQrDialog extends StatelessWidget {
+  const TicketQrDialog({
+    required this.ticketId,
     super.key,
   });
 
-  final String userId;
+  final String ticketId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +21,23 @@ class UserQrDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'ユーザーQRコード',
+              'チケットQRコード',
               style: theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 16),
             QrImageView(
-              data: userId,
+              data: ticketId,
               size: 250,
               backgroundColor: Colors.white,
             ),
             const SizedBox(height: 16),
             Text(
-              'U-${userId.split('-')[0]}',
-              style: theme.textTheme.bodyLarge,
+              'T-${ticketId.split('-')[0]}',
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
+              ),
             ),
             const SizedBox(height: 24),
             TextButton(

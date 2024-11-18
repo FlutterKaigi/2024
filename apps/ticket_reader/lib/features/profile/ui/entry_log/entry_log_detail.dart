@@ -12,12 +12,13 @@ class EntryLogDetail extends StatelessWidget {
   const EntryLogDetail({
     required this.entryLog,
     required this.userId,
+    required this.ticketId,
     super.key,
   });
 
   final EntryLog entryLog;
   final String userId;
-
+  final String ticketId;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -54,7 +55,10 @@ class EntryLogDetail extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         // 入場取り消しボタン
-        _DeleteEntryLogButton(userId: userId),
+        _DeleteEntryLogButton(
+          userId: userId,
+          ticketId: ticketId,
+        ),
       ],
     );
   }
@@ -71,10 +75,11 @@ class EntryLogDetail extends StatelessWidget {
 class _DeleteEntryLogButton extends ConsumerWidget {
   const _DeleteEntryLogButton({
     required this.userId,
+    required this.ticketId,
   });
 
   final String userId;
-
+  final String ticketId;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
@@ -125,6 +130,7 @@ class _DeleteEntryLogButton extends ConsumerWidget {
             ref.read(entryLogRepositoryProvider).deleteEntryLog(userId: userId),
       );
       ref.invalidate(profileWithTicketAndEntryLogUserIdProvider(userId));
+      ref.invalidate(profileWithTicketAndEntryLogTicketIdProvider(ticketId));
       if (context.mounted) {
         unawaited(HapticFeedback.lightImpact());
         ScaffoldMessenger.of(context).showSnackBar(

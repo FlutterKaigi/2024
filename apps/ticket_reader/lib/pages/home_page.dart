@@ -79,11 +79,6 @@ class _Drawer extends ConsumerWidget {
               leading: const Icon(Icons.search),
               onTap: () => const UserSearchRoute().go(context),
             ),
-            ListTile(
-              title: const Text('Payment Search'),
-              leading: const Icon(Icons.payment),
-              onTap: () => const PaymentSearchRoute().go(context),
-            ),
             const Spacer(),
             const Divider(),
             ListTile(

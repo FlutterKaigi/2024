@@ -8,11 +8,13 @@ class EntryLogView extends StatelessWidget {
   const EntryLogView({
     required this.entryLog,
     required this.userId,
+    required this.ticketId,
     super.key,
   });
 
   final EntryLog? entryLog;
   final String userId;
+  final String ticketId;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -36,10 +38,12 @@ class EntryLogView extends StatelessWidget {
           ? EntryLogDetail(
               entryLog: entryLog!,
               userId: userId,
+              ticketId: ticketId,
             )
           : NoEntryLogCard(
               entryLog: entryLog,
               userId: userId,
+              ticketId: ticketId,
             ),
     );
   }
