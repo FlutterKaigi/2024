@@ -11,6 +11,8 @@ dependencies:
   collection: ^1.19.0
   common_data:
     path: ../../packages/common/data
+  ticket_api:
+    path: ../../packages/common/ticket_api
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
