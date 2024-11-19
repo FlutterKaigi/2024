@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ticket_reader/core/components/full_screen_loading.dart';
 import 'package:ticket_reader/features/profile/data/profile_with_ticket_and_entry_log_provider.dart';
-import 'package:ticket_reader/features/profile/ui/user_card.dart';
 
 class EntryLogDetail extends StatelessWidget {
   const EntryLogDetail({
@@ -28,24 +27,12 @@ class EntryLogDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 8),
-        // Entry Log ID
-        Row(
-          children: [
-            const Text('Entry Log ID: '),
-            Expanded(
-              child: CopyableText(
-                text: entryLog.id,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 4),
         // 入場日時
         Row(
           children: [
             const Text('入場日時: '),
             Text(
-              _formatDateTime(entryLog.createdAt),
+              _formatDateTime(entryLog.createdAt.toLocal()),
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: colorScheme.onSurfaceVariant,
                 fontWeight: FontWeight.bold,

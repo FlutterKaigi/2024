@@ -8,8 +8,8 @@ part 'payment_notifier.g.dart';
 @riverpod
 Future<PaymentSearchResponse> paymentSearch(
   Ref ref,
-  String email,
+  String userId,
 ) async {
   final repository = ref.watch(paymentRepositoryProvider);
-  return repository.searchPayments(email);
+  return repository.searchPayments(userId);
 }

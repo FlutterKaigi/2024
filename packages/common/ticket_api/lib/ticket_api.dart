@@ -56,7 +56,7 @@ abstract class TicketApiClient {
 
   @GET('/v1/payment/search')
   Future<PaymentSearchResponse> searchPayments({
-    @Query('email') required String email,
+    @Query('id') required String userId,
     @Header('Authorization') required String authorization,
   });
 

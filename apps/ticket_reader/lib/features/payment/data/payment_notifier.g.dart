@@ -8,7 +8,7 @@ part of 'payment_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$paymentSearchHash() => r'c63bfb5a196baf9a05bfd124b27eff7a087dbb55';
+String _$paymentSearchHash() => r'bc23d98eb4ab1126657c95989132a99cccc00338';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,10 +42,10 @@ class PaymentSearchFamily extends Family<AsyncValue<PaymentSearchResponse>> {
 
   /// See also [paymentSearch].
   PaymentSearchProvider call(
-    String email,
+    String userId,
   ) {
     return PaymentSearchProvider(
-      email,
+      userId,
     );
   }
 
@@ -54,7 +54,7 @@ class PaymentSearchFamily extends Family<AsyncValue<PaymentSearchResponse>> {
     covariant PaymentSearchProvider provider,
   ) {
     return call(
-      provider.email,
+      provider.userId,
     );
   }
 
@@ -78,11 +78,11 @@ class PaymentSearchProvider
     extends AutoDisposeFutureProvider<PaymentSearchResponse> {
   /// See also [paymentSearch].
   PaymentSearchProvider(
-    String email,
+    String userId,
   ) : this._internal(
           (ref) => paymentSearch(
             ref as PaymentSearchRef,
-            email,
+            userId,
           ),
           from: paymentSearchProvider,
           name: r'paymentSearchProvider',
@@ -93,7 +93,7 @@ class PaymentSearchProvider
           dependencies: PaymentSearchFamily._dependencies,
           allTransitiveDependencies:
               PaymentSearchFamily._allTransitiveDependencies,
-          email: email,
+          userId: userId,
         );
 
   PaymentSearchProvider._internal(
@@ -103,10 +103,10 @@ class PaymentSearchProvider
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.email,
+    required this.userId,
   }) : super.internal();
 
-  final String email;
+  final String userId;
 
   @override
   Override overrideWith(
@@ -121,7 +121,7 @@ class PaymentSearchProvider
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        email: email,
+        userId: userId,
       ),
     );
   }
@@ -133,13 +133,13 @@ class PaymentSearchProvider
 
   @override
   bool operator ==(Object other) {
-    return other is PaymentSearchProvider && other.email == email;
+    return other is PaymentSearchProvider && other.userId == userId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, email.hashCode);
+    hash = _SystemHash.combine(hash, userId.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -148,8 +148,8 @@ class PaymentSearchProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin PaymentSearchRef on AutoDisposeFutureProviderRef<PaymentSearchResponse> {
-  /// The parameter `email` of this provider.
-  String get email;
+  /// The parameter `userId` of this provider.
+  String get userId;
 }
 
 class _PaymentSearchProviderElement
@@ -158,7 +158,7 @@ class _PaymentSearchProviderElement
   _PaymentSearchProviderElement(super.provider);
 
   @override
-  String get email => (origin as PaymentSearchProvider).email;
+  String get userId => (origin as PaymentSearchProvider).userId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

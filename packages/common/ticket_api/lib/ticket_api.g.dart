@@ -139,11 +139,11 @@ class _TicketApiClient implements TicketApiClient {
 
   @override
   Future<PaymentSearchResponse> searchPayments({
-    required String email,
+    required String userId,
     required String authorization,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'email': email};
+    final queryParameters = <String, dynamic>{r'id': userId};
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
