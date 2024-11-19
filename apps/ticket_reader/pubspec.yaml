@@ -1,7 +1,7 @@
 name: ticket_reader
 description: "FlutterKaigi 2024 Ticket Reader Application"
 publish_to: "none"
-version: 0.1.0+7
+version: 0.1.1+8
 
 environment:
   sdk: ^3.6.0-216.1.beta
