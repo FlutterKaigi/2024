@@ -6,21 +6,13 @@ part 'payment_search_response.g.dart';
 @freezed
 class PaymentSearchResponse with _$PaymentSearchResponse {
   const factory PaymentSearchResponse({
-    required List<PaymentResult> results,
+    required String id,
+    required int amount,
+    required String currency,
+    required DateTime createdAt,
+    String? cardLast4,
   }) = _PaymentSearchResponse;
 
   factory PaymentSearchResponse.fromJson(Map<String, dynamic> json) =>
       _$PaymentSearchResponseFromJson(json);
-}
-
-@freezed
-class PaymentResult with _$PaymentResult {
-  const factory PaymentResult({
-    required String paymentIntent,
-    required int amount,
-    required DateTime createdAt,
-  }) = _PaymentResult;
-
-  factory PaymentResult.fromJson(Map<String, dynamic> json) =>
-      _$PaymentResultFromJson(json);
 }

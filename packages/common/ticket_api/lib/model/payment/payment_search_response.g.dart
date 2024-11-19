@@ -15,44 +15,24 @@ _$PaymentSearchResponseImpl _$$PaymentSearchResponseImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$PaymentSearchResponseImpl(
-          results: $checkedConvert(
-              'results',
-              (v) => (v as List<dynamic>)
-                  .map((e) => PaymentResult.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          id: $checkedConvert('id', (v) => v as String),
+          amount: $checkedConvert('amount', (v) => (v as num).toInt()),
+          currency: $checkedConvert('currency', (v) => v as String),
+          createdAt:
+              $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
+          cardLast4: $checkedConvert('card_last4', (v) => v as String?),
         );
         return val;
       },
+      fieldKeyMap: const {'createdAt': 'created_at', 'cardLast4': 'card_last4'},
     );
 
 Map<String, dynamic> _$$PaymentSearchResponseImplToJson(
         _$PaymentSearchResponseImpl instance) =>
     <String, dynamic>{
-      'results': instance.results,
-    };
-
-_$PaymentResultImpl _$$PaymentResultImplFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$PaymentResultImpl',
-      json,
-      ($checkedConvert) {
-        final val = _$PaymentResultImpl(
-          paymentIntent: $checkedConvert('payment_intent', (v) => v as String),
-          amount: $checkedConvert('amount', (v) => (v as num).toInt()),
-          createdAt:
-              $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
-        );
-        return val;
-      },
-      fieldKeyMap: const {
-        'paymentIntent': 'payment_intent',
-        'createdAt': 'created_at'
-      },
-    );
-
-Map<String, dynamic> _$$PaymentResultImplToJson(_$PaymentResultImpl instance) =>
-    <String, dynamic>{
-      'payment_intent': instance.paymentIntent,
+      'id': instance.id,
       'amount': instance.amount,
+      'currency': instance.currency,
       'created_at': instance.createdAt.toIso8601String(),
+      'card_last4': instance.cardLast4,
     };

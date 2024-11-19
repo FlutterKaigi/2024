@@ -21,7 +21,11 @@ PaymentSearchResponse _$PaymentSearchResponseFromJson(
 
 /// @nodoc
 mixin _$PaymentSearchResponse {
-  List<PaymentResult> get results => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  int get amount => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  String? get cardLast4 => throw _privateConstructorUsedError;
 
   /// Serializes this PaymentSearchResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,7 +43,12 @@ abstract class $PaymentSearchResponseCopyWith<$Res> {
           $Res Function(PaymentSearchResponse) then) =
       _$PaymentSearchResponseCopyWithImpl<$Res, PaymentSearchResponse>;
   @useResult
-  $Res call({List<PaymentResult> results});
+  $Res call(
+      {String id,
+      int amount,
+      String currency,
+      DateTime createdAt,
+      String? cardLast4});
 }
 
 /// @nodoc
@@ -58,13 +67,33 @@ class _$PaymentSearchResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? results = null,
+    Object? id = null,
+    Object? amount = null,
+    Object? currency = null,
+    Object? createdAt = null,
+    Object? cardLast4 = freezed,
   }) {
     return _then(_value.copyWith(
-      results: null == results
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<PaymentResult>,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      cardLast4: freezed == cardLast4
+          ? _value.cardLast4
+          : cardLast4 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +107,12 @@ abstract class _$$PaymentSearchResponseImplCopyWith<$Res>
       __$$PaymentSearchResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PaymentResult> results});
+  $Res call(
+      {String id,
+      int amount,
+      String currency,
+      DateTime createdAt,
+      String? cardLast4});
 }
 
 /// @nodoc
@@ -95,13 +129,33 @@ class __$$PaymentSearchResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? results = null,
+    Object? id = null,
+    Object? amount = null,
+    Object? currency = null,
+    Object? createdAt = null,
+    Object? cardLast4 = freezed,
   }) {
     return _then(_$PaymentSearchResponseImpl(
-      results: null == results
-          ? _value._results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<PaymentResult>,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      cardLast4: freezed == cardLast4
+          ? _value.cardLast4
+          : cardLast4 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -110,23 +164,29 @@ class __$$PaymentSearchResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PaymentSearchResponseImpl implements _PaymentSearchResponse {
   const _$PaymentSearchResponseImpl(
-      {required final List<PaymentResult> results})
-      : _results = results;
+      {required this.id,
+      required this.amount,
+      required this.currency,
+      required this.createdAt,
+      this.cardLast4});
 
   factory _$PaymentSearchResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaymentSearchResponseImplFromJson(json);
 
-  final List<PaymentResult> _results;
   @override
-  List<PaymentResult> get results {
-    if (_results is EqualUnmodifiableListView) return _results;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
+  final String id;
+  @override
+  final int amount;
+  @override
+  final String currency;
+  @override
+  final DateTime createdAt;
+  @override
+  final String? cardLast4;
 
   @override
   String toString() {
-    return 'PaymentSearchResponse(results: $results)';
+    return 'PaymentSearchResponse(id: $id, amount: $amount, currency: $currency, createdAt: $createdAt, cardLast4: $cardLast4)';
   }
 
   @override
@@ -134,13 +194,20 @@ class _$PaymentSearchResponseImpl implements _PaymentSearchResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSearchResponseImpl &&
-            const DeepCollectionEquality().equals(other._results, _results));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.cardLast4, cardLast4) ||
+                other.cardLast4 == cardLast4));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_results));
+      Object.hash(runtimeType, id, amount, currency, createdAt, cardLast4);
 
   /// Create a copy of PaymentSearchResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -161,14 +228,25 @@ class _$PaymentSearchResponseImpl implements _PaymentSearchResponse {
 
 abstract class _PaymentSearchResponse implements PaymentSearchResponse {
   const factory _PaymentSearchResponse(
-          {required final List<PaymentResult> results}) =
-      _$PaymentSearchResponseImpl;
+      {required final String id,
+      required final int amount,
+      required final String currency,
+      required final DateTime createdAt,
+      final String? cardLast4}) = _$PaymentSearchResponseImpl;
 
   factory _PaymentSearchResponse.fromJson(Map<String, dynamic> json) =
       _$PaymentSearchResponseImpl.fromJson;
 
   @override
-  List<PaymentResult> get results;
+  String get id;
+  @override
+  int get amount;
+  @override
+  String get currency;
+  @override
+  DateTime get createdAt;
+  @override
+  String? get cardLast4;
 
   /// Create a copy of PaymentSearchResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -176,194 +254,4 @@ abstract class _PaymentSearchResponse implements PaymentSearchResponse {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSearchResponseImplCopyWith<_$PaymentSearchResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-PaymentResult _$PaymentResultFromJson(Map<String, dynamic> json) {
-  return _PaymentResult.fromJson(json);
-}
-
-/// @nodoc
-mixin _$PaymentResult {
-  String get paymentIntent => throw _privateConstructorUsedError;
-  int get amount => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-
-  /// Serializes this PaymentResult to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of PaymentResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaymentResultCopyWith<PaymentResult> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PaymentResultCopyWith<$Res> {
-  factory $PaymentResultCopyWith(
-          PaymentResult value, $Res Function(PaymentResult) then) =
-      _$PaymentResultCopyWithImpl<$Res, PaymentResult>;
-  @useResult
-  $Res call({String paymentIntent, int amount, DateTime createdAt});
-}
-
-/// @nodoc
-class _$PaymentResultCopyWithImpl<$Res, $Val extends PaymentResult>
-    implements $PaymentResultCopyWith<$Res> {
-  _$PaymentResultCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PaymentResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? paymentIntent = null,
-    Object? amount = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_value.copyWith(
-      paymentIntent: null == paymentIntent
-          ? _value.paymentIntent
-          : paymentIntent // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PaymentResultImplCopyWith<$Res>
-    implements $PaymentResultCopyWith<$Res> {
-  factory _$$PaymentResultImplCopyWith(
-          _$PaymentResultImpl value, $Res Function(_$PaymentResultImpl) then) =
-      __$$PaymentResultImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String paymentIntent, int amount, DateTime createdAt});
-}
-
-/// @nodoc
-class __$$PaymentResultImplCopyWithImpl<$Res>
-    extends _$PaymentResultCopyWithImpl<$Res, _$PaymentResultImpl>
-    implements _$$PaymentResultImplCopyWith<$Res> {
-  __$$PaymentResultImplCopyWithImpl(
-      _$PaymentResultImpl _value, $Res Function(_$PaymentResultImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PaymentResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? paymentIntent = null,
-    Object? amount = null,
-    Object? createdAt = null,
-  }) {
-    return _then(_$PaymentResultImpl(
-      paymentIntent: null == paymentIntent
-          ? _value.paymentIntent
-          : paymentIntent // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as int,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$PaymentResultImpl implements _PaymentResult {
-  const _$PaymentResultImpl(
-      {required this.paymentIntent,
-      required this.amount,
-      required this.createdAt});
-
-  factory _$PaymentResultImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaymentResultImplFromJson(json);
-
-  @override
-  final String paymentIntent;
-  @override
-  final int amount;
-  @override
-  final DateTime createdAt;
-
-  @override
-  String toString() {
-    return 'PaymentResult(paymentIntent: $paymentIntent, amount: $amount, createdAt: $createdAt)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PaymentResultImpl &&
-            (identical(other.paymentIntent, paymentIntent) ||
-                other.paymentIntent == paymentIntent) &&
-            (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, paymentIntent, amount, createdAt);
-
-  /// Create a copy of PaymentResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PaymentResultImplCopyWith<_$PaymentResultImpl> get copyWith =>
-      __$$PaymentResultImplCopyWithImpl<_$PaymentResultImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PaymentResultImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _PaymentResult implements PaymentResult {
-  const factory _PaymentResult(
-      {required final String paymentIntent,
-      required final int amount,
-      required final DateTime createdAt}) = _$PaymentResultImpl;
-
-  factory _PaymentResult.fromJson(Map<String, dynamic> json) =
-      _$PaymentResultImpl.fromJson;
-
-  @override
-  String get paymentIntent;
-  @override
-  int get amount;
-  @override
-  DateTime get createdAt;
-
-  /// Create a copy of PaymentResult
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaymentResultImplCopyWith<_$PaymentResultImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
