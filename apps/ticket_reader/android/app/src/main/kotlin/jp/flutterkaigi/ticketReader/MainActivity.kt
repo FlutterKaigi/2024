@@ -1,4 +1,4 @@
-package jp.flutterkaigi.ticket_reader
+package jp.flutterkaigi.ticketReader
 
 import io.flutter.embedding.android.FlutterActivity
 

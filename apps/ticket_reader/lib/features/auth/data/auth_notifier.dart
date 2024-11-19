@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:common_data/auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -21,8 +23,11 @@ class AuthNotifier extends _$AuthNotifier {
 
   Future<bool> signInWithGoogle() async =>
       ref.read(authRepositoryProvider).signInWithGoogle(
-            redirectTo:
-                kIsWeb ? null : 'jp.flutterkaigi.ticketReader://login-callback',
+            redirectTo: kIsWeb
+                ? null
+                : Platform.isAndroid
+                    ? 'ticket-reader://login-callback'
+                    : 'jp.flutterkaigi.ticketReader://login-callback',
           );
 
   Future<void> signOut() async => ref.read(authRepositoryProvider).signOut();

@@ -36,37 +36,24 @@ class UserCard extends ConsumerWidget {
     String? userId,
     String? ticketId,
   }) async =>
-      showBottomSheet(
+      showModalBottomSheet(
+        isScrollControlled: true,
+        showDragHandle: true,
+        useSafeArea: true,
         context: context,
         builder: (context) => DraggableScrollableSheet(
-          initialChildSize: 0.9,
-          minChildSize: 0.9,
+          initialChildSize: 0.8,
+          minChildSize: 0.4,
+          snap: true,
+          snapSizes: const [0.4, 0.8],
           expand: false,
-          builder: (context, controller) {
-            final bottomPadding = MediaQuery.paddingOf(context).bottom;
-            final theme = Theme.of(context);
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: SizedBox(
-                    width: 36,
-                    height: 4,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ),
-                ),
-                UserCard(
-                  userId: userId,
-                  ticketId: ticketId,
-                ),
-                SizedBox(height: bottomPadding),
-              ],
-            );
-          },
+          builder: (context, controller) => SingleChildScrollView(
+            controller: controller,
+            child: UserCard(
+              userId: userId,
+              ticketId: ticketId,
+            ),
+          ),
         ),
       );
 
@@ -127,6 +114,8 @@ class UserCard extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Wrap(
+              spacing: 4,
+              runSpacing: 4,
               children: [
                 FilledButton.icon(
                   onPressed: () async => PaymentSearchRoute(
@@ -235,7 +224,7 @@ class _TicketView extends StatelessWidget {
             Row(
               children: [
                 const Text('スポンサーID: '),
-                Expanded(
+                Flexible(
                   child: Text(
                     ticket.sponsorId.toString(),
                     style: theme.textTheme.bodyMedium?.copyWith(
@@ -254,12 +243,14 @@ class _TicketView extends StatelessWidget {
             Row(
               children: [
                 const Text('Session ID: '),
-                Text(
-                  ticket.sessionId.toString(),
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.onSurfaceVariant,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
+                Flexible(
+                  child: Text(
+                    ticket.sessionId.toString(),
+                    style: theme.textTheme.bodyMedium?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: GoogleFonts.jetBrainsMono().fontFamily,
+                    ),
                   ),
                 ),
               ],
@@ -276,6 +267,32 @@ class _TicketView extends StatelessWidget {
             ),
             backgroundColor: ticket.type.backgroundColor(colorScheme),
           ),
+          if (ticket.type != TicketType.general) ...[
+            const SizedBox(height: 4),
+            Card(
+              color: colorScheme.errorContainer,
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.info,
+                      size: 32,
+                      color: colorScheme.onErrorContainer,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      '${ticket.type.name}です!',
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: colorScheme.onErrorContainer,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );
