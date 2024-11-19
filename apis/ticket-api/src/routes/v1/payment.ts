@@ -15,43 +15,68 @@ app.get(
 	vValidator(
 		"query",
 		v.object({
-			email: v.pipe(v.string(), v.email()),
+			id: v.string(),
 		}),
 	),
 	vValidator("header", authorizationSchema),
 	async (c) => {
-		const { email } = c.req.valid("query");
-		const { authorization } = c.req.valid("header");
-		const supabase = createClient<Database>(
-			c.env.SUPABASE_URL,
-			c.env.SUPABASE_KEY,
-		);
-		const invoker = await getUserWithProfile(authorization, supabase);
-		if (!invoker.success) {
-			return c.json({ error: "Unauthorized" }, 401);
-		}
-		if (invoker.profile.role !== "admin") {
-			return c.json({ error: "Unauthorized" }, 401);
-		}
+		try {
+			const { id } = c.req.valid("query");
+			const { authorization } = c.req.valid("header");
+			const supabase = createClient<Database>(
+				c.env.SUPABASE_URL,
+				c.env.SUPABASE_KEY,
+			);
+			const invoker = await getUserWithProfile(authorization, supabase);
+			if (!invoker.success) {
+				return c.json({ error: "Unauthorized" }, 401);
+			}
+			if (invoker.profile.role !== "admin") {
+				return c.json({ error: "Unauthorized" }, 401);
+			}
 
-		const stripe = new Stripe(c.env.STRIPE_KEY);
-		const customers = await stripe.customers.search({
-			query: `email:\'${email}\'`,
-			limit: 100,
-		});
-		const payments = [];
-		for (const customer of customers.data) {
-			const paymentIntents = await stripe.paymentIntents.search({
-				query: `customer:\'${customer.id}\'`,
+			const ticket = await supabase
+				.from("tickets")
+				.select("*")
+				.eq("user_id", id)
+				.maybeSingle();
+			const sessionId = ticket.data?.stripe_checkout_session_id;
+			if (ticket.error || sessionId === undefined || sessionId === null) {
+				return c.json({ error: "Ticket not found" }, 404);
+			}
+
+			const stripe = new Stripe(c.env.STRIPE_KEY);
+
+			const checkoutSessions = await stripe.checkout.sessions.retrieve(sessionId, {
+				expand: ["payment_intent.payment_method"],
 			});
-			payments.push(...paymentIntents.data);
+			const paymentIntent = checkoutSessions.payment_intent;
+			if (paymentIntent === null || typeof paymentIntent === "string") {
+				return c.json({ error: "Payment intent not found" }, 404);
+			}
+			const paymentIntentId = paymentIntent.id;
+			if (
+				paymentIntent.payment_method !== null &&
+				typeof paymentIntent.payment_method !== "string"
+			) {
+				const result = {
+					id: paymentIntentId,
+					amount: paymentIntent.amount,
+					currency: paymentIntent.currency,
+					created_at: new Date(paymentIntent.created * 1000).toISOString(),
+					card_last4: paymentIntent.payment_method.card?.last4 ?? null,
+				};
+
+				return c.json(result);
+			}
+			return c.json({ error: "Payment method not found" }, 404);
+		} catch (e) {
+			console.error(JSON.stringify(e, null, 2));
+			if (e instanceof Stripe.errors.StripeInvalidRequestError) {
+				return c.json({ error: e.message }, 500);
+			}
+			return c.json({ error: e }, 500);
 		}
-		const results = payments.map((payment) => ({
-			payment_intent: payment.id,
-			amount: payment.amount,
-			created_at: new Date(payment.created * 1000).toISOString(),
-		}));
-		return c.json({ results });
 	},
 );
 
