@@ -29,7 +29,7 @@ final supabaseAccessTokenProvider = Provider<String?>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SupabaseAccessTokenRef = ProviderRef<String?>;
-String _$authNotifierHash() => r'183d87bc5eb364e6ac80b367fe31ab9c6e8e248e';
+String _$authNotifierHash() => r'aca1bbc187ee0baa66c4e992be7d84863a3ceb9f';
 
 /// See also [AuthNotifier].
 @ProviderFor(AuthNotifier)

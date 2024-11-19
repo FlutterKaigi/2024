@@ -119,7 +119,6 @@ class UserCard extends ConsumerWidget {
               children: [
                 FilledButton.icon(
                   onPressed: () async => PaymentSearchRoute(
-                    email: profile.email,
                     userId: profile.id,
                   ).push(context),
                   icon: const Icon(Icons.search),

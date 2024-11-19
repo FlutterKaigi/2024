@@ -29,9 +29,9 @@ class PaymentRepository {
   final TicketApiClient client;
   final String token;
 
-  Future<PaymentSearchResponse> searchPayments(String email) async {
+  Future<PaymentSearchResponse> searchPayments(String userId) async {
     return client.searchPayments(
-      email: email,
+      userId: userId,
       authorization: 'Bearer $token',
     );
   }

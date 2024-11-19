@@ -6,7 +6,6 @@ import 'package:ticket_reader/features/auth/data/auth_notifier.dart';
 import 'package:ticket_reader/features/profile/data/profile_notifier.dart';
 import 'package:ticket_reader/features/profile/ui/profile_avatar.dart';
 import 'package:ticket_reader/features/profile/ui/user_card.dart';
-import 'package:ticket_reader/pages/payment_search_page.dart';
 import 'package:ticket_reader/pages/ticket_reader_page.dart';
 import 'package:ticket_reader/pages/user_search_page.dart';
 

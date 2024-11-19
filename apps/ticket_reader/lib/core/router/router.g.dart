@@ -87,15 +87,13 @@ extension $UserSearchRouteExtension on UserSearchRoute {
 extension $PaymentSearchRouteExtension on PaymentSearchRoute {
   static PaymentSearchRoute _fromState(GoRouterState state) =>
       PaymentSearchRoute(
-        email: state.uri.queryParameters['email'],
-        userId: state.uri.queryParameters['user-id'],
+        userId: state.uri.queryParameters['user-id']!,
       );
 
   String get location => GoRouteData.$location(
         '/payment-search',
         queryParams: {
-          if (email != null) 'email': email,
-          if (userId != null) 'user-id': userId,
+          'user-id': userId,
         },
       );
 
