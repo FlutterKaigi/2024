@@ -881,6 +881,19 @@ VALUES
   );
 
 INSERT INTO
+  public.sponsors
+VALUES
+  (
+    29,
+    'Flutter',
+    '9a86a7c7-991e-4ba4-b481-b14e7f15237e.webp',
+    'Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications. Transform your app development process to launch faster with less resources by building, testing, and deploying from a single codebase.',
+    'https://flutter.dev/',
+    'platinum',
+    27
+  );
+
+INSERT INTO
   public.session_venues
 VALUES
   ('d6432c3c-3ef9-44ef-aa69-78f5e4dd867d', 'A Dash');
