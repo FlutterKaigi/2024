@@ -29,10 +29,17 @@ app.get(
 			);
 			const invoker = await getUserWithProfile(authorization, supabase);
 			if (!invoker.success) {
-				return c.json({ error: "Unauthorized" }, 401);
+				console.error(invoker.error);
+				return c.json(
+					{
+						error: "Unauthorized: error while fetching invoker information",
+						log: invoker.error,
+					},
+					401,
+				);
 			}
 			if (invoker.profile.role !== "admin") {
-				return c.json({ error: "Unauthorized" }, 401);
+				return c.json({ error: "Unauthorized: invoker role is not admin" }, 401);
 			}
 
 			const ticket = await supabase
