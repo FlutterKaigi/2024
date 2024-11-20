@@ -1,4 +1,5 @@
 import 'package:common_data/src/model/entry_log.dart';
+import 'package:common_data/src/model/view/entry_log_summary.dart';
 import 'package:common_data/src/supabase_client.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -47,5 +48,10 @@ class EntryLogRepository {
           .maybeSingle()
           .withConverter(
             (r) => r != null ? EntryLog.fromJson(r) : null,
+          );
+
+  Future<EntryLogSummary> getEntryLogSummary() async =>
+      _client.from('entry_log_summary').select().single().withConverter(
+            EntryLogSummary.fromJson,
           );
 }
