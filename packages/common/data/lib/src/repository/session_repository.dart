@@ -2,6 +2,7 @@ import 'package:common_data/profile.dart';
 import 'package:common_data/session.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_v2_view.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_v3_view.dart';
+import 'package:common_data/src/model/view/session_venues_with_sessions_v4_view.dart';
 import 'package:common_data/src/model/view/session_venues_with_sessions_view.dart';
 import 'package:common_data/src/repository/speaker_repository.dart';
 import 'package:common_data/src/repository/sponsor_repository.dart';
@@ -48,7 +49,7 @@ class SessionRepository {
   final SponsorRepository _sponsorRepository;
   final SpeakerRepository _speakerRepository;
 
-  @Deprecated('Use fetchSessionVenuesWithSessionsV2 instead')
+  @Deprecated('Use fetchSessionVenuesWithSessionsV4 instead')
   Future<List<SessionVenuesWithSessions>>
       fetchSessionVenuesWithSessions() async {
     final result = await _client
@@ -90,7 +91,7 @@ class SessionRepository {
         .toList();
   }
 
-  @Deprecated('Use fetchSessionVenuesWithSessionsV3 instead')
+  @Deprecated('Use fetchSessionVenuesWithSessionsV4 instead')
   Future<List<SessionVenuesWithSessionsV2>>
       fetchSessionVenuesWithSessionsV2() async {
     final result = await _client
@@ -102,6 +103,7 @@ class SessionRepository {
     return result.map(toSessionVenuesWithSessionsV2).toList();
   }
 
+  @Deprecated('Use fetchSessionVenuesWithSessionsV4 instead')
   Future<List<SessionVenuesWithSessionsV3>>
       fetchSessionVenuesWithSessionsV3() async {
     final result = await _client
@@ -111,6 +113,17 @@ class SessionRepository {
           (list) => list.map(SessionVenuesWithSessionsV3View.fromJson).toList(),
         );
     return result.map(toSessionVenuesWithSessionsV3).toList();
+  }
+
+  Future<List<SessionVenuesWithSessionsV4>>
+      fetchSessionVenuesWithSessionsV4() async {
+    final result = await _client
+        .from('session_venues_with_sessions_v4')
+        .select()
+        .withConverter(
+          (list) => list.map(SessionVenuesWithSessionsV4View.fromJson).toList(),
+        );
+    return result.map(toSessionVenuesWithSessionsV4).toList();
   }
 
   Future<List<Session>> fetchSessions() async =>
@@ -199,6 +212,36 @@ class SessionRepository {
             .map(_speakerRepository.toSpeaker)
             .toList(),
         sponsors: sessionsWithSpeakerSponsorV3View.sponsors
+            .map(_sponsorRepository.toSponsorV2)
+            .toList(),
+      );
+
+  SessionVenuesWithSessionsV4 toSessionVenuesWithSessionsV4(
+    SessionVenuesWithSessionsV4View sessionVenuesWithSessionsV4View,
+  ) =>
+      SessionVenuesWithSessionsV4(
+        id: sessionVenuesWithSessionsV4View.id,
+        name: sessionVenuesWithSessionsV4View.name,
+        sessions: sessionVenuesWithSessionsV4View.sessions
+            .map(_toSessionsWithSpeakerSponsorV4View)
+            .toList(),
+      );
+
+  SessionsWithSpeakerSponsorV4 _toSessionsWithSpeakerSponsorV4View(
+    SessionsWithSpeakerSponsorV4View sessionsWithSpeakerSponsorV4View,
+  ) =>
+      SessionsWithSpeakerSponsorV4(
+        id: sessionsWithSpeakerSponsorV4View.id,
+        title: sessionsWithSpeakerSponsorV4View.title,
+        description: sessionsWithSpeakerSponsorV4View.description,
+        startsAt: sessionsWithSpeakerSponsorV4View.startsAt,
+        endsAt: sessionsWithSpeakerSponsorV4View.endsAt,
+        isLightningTalk: sessionsWithSpeakerSponsorV4View.isLightningTalk,
+        videoUrl: sessionsWithSpeakerSponsorV4View.videoUrl,
+        speakers: sessionsWithSpeakerSponsorV4View.speakers
+            .map(_speakerRepository.toSpeaker)
+            .toList(),
+        sponsors: sessionsWithSpeakerSponsorV4View.sponsors
             .map(_sponsorRepository.toSponsorV2)
             .toList(),
       );
