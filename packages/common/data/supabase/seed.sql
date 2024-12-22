@@ -920,7 +920,8 @@ Aiming to expand knowledge of FFI & Pigeon for native platform integration.',
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.126095+09'
+    '2024-10-24 00:35:45.126095+09',
+    'https://www.youtube.com/watch?v=O_wD6Q_FWV4'
   );
 
 INSERT INTO
@@ -946,7 +947,8 @@ Dart の新機能であるマクロ（Dart macros）の登場により、Flutter
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.211708+09'
+    '2024-10-24 00:35:45.211708+09',
+    'https://www.youtube.com/watch?v=Xitie4TrnPo'
   );
 
 INSERT INTO
@@ -971,7 +973,8 @@ Flutter SDK は、Google の Material Design と Apple の Human Interface Guide
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.354058+09'
+    '2024-10-24 00:35:45.354058+09',
+    'https://www.youtube.com/watch?v=7RB2YTnbukI'
   );
 
 INSERT INTO
@@ -999,7 +1002,8 @@ Figma Dev Modeの活用がFlutterの開発体験をどれだけ向上される�
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.727621+09'
+    '2024-10-24 00:35:45.727621+09',
+    'https://www.youtube.com/watch?v=qHpcyQy7bYw'
   );
 
 INSERT INTO
@@ -1027,7 +1031,8 @@ WINTICKETアプリは2021年からトランクベース開発をFeatureFlagを�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.035295+09'
+    '2024-10-24 00:35:46.035295+09',
+    'https://www.youtube.com/watch?v=9Zgqaj8jnug'
   );
 
 INSERT INTO
@@ -1061,7 +1066,8 @@ Flutterの全面採用は、アプリ開発では勿論、API-GWの開発でも�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.113082+09'
+    '2024-10-24 00:35:46.113082+09',
+    'https://www.youtube.com/watch?v=lV86cyGFHyI'
   );
 
 INSERT INTO
@@ -1087,7 +1093,8 @@ Flutter でのアニメーション実装は、簡易に実装できてアプリ
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.200971+09'
+    '2024-10-24 00:35:46.200971+09',
+    'https://www.youtube.com/watch?v=gRS1gc1A5VU'
   );
 
 INSERT INTO
@@ -1110,7 +1117,8 @@ Dart/Flutter でアプリやパッケージ開発をする方全般
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     TRUE,
-    '2024-10-24 00:35:46.568367+09'
+    '2024-10-24 00:35:46.568367+09',
+    'https://www.youtube.com/watch?v=z1ExeImA2MM'
   );
 
 INSERT INTO
@@ -1146,7 +1154,8 @@ VALUES
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.645872+09'
+    '2024-10-24 00:35:46.645872+09',
+    'https://www.youtube.com/watch?v=iG6ZYrDBuDk'
   );
 
 INSERT INTO
@@ -1172,7 +1181,8 @@ Flutter on the WebのWasmサポートで何が変わるか興味がある方',
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.805656+09'
+    '2024-10-24 00:35:46.805656+09',
+    'https://www.youtube.com/watch?v=YvWAAlLHg5Q'
   );
 
 INSERT INTO
@@ -1210,7 +1220,8 @@ Flutterプロジェクトにおける品質保証とテスト効率のバラン�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     TRUE,
-    '2024-10-24 00:35:45.580524+09'
+    '2024-10-24 00:35:45.580524+09',
+    'https://www.youtube.com/watch?v=2VBGCfNxqMo'
   );
 
 INSERT INTO
@@ -1233,7 +1244,8 @@ FlutterはありがたいことにOSSでこの魔法のような技術がどう�
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.650257+09'
+    '2024-10-24 00:35:45.650257+09',
+    'https://www.youtube.com/watch?v=9eGo1IClarw'
   );
 
 INSERT INTO
@@ -1252,7 +1264,8 @@ App developers/founders',
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     16,
     FALSE,
-    '2024-10-24 00:59:45.255258+09'
+    '2024-10-24 00:59:45.255258+09',
+    'https://www.youtube.com/watch?v=O_wD6Q_FWV4'
   );
 
 INSERT INTO
@@ -1275,7 +1288,8 @@ VALUES
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     TRUE,
-    '2024-10-24 00:35:45.290723+09'
+    '2024-10-24 00:35:45.290723+09',
+    'https://www.youtube.com/watch?v=ZEpcXKXSIyI'
   );
 
 INSERT INTO
@@ -1302,7 +1316,8 @@ DevTools を独自にカスタマイズすることで、ログの表示制御�
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.420406+09'
+    '2024-10-24 00:35:45.420406+09',
+    'https://www.youtube.com/watch?v=BPb1PQ_EW9A'
   );
 
 INSERT INTO
@@ -1331,7 +1346,8 @@ VALUES
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.497072+09'
+    '2024-10-24 00:35:45.497072+09',
+    'https://www.youtube.com/watch?v=IXEgISM5-N8'
   );
 
 INSERT INTO
@@ -1361,7 +1377,8 @@ VALUES
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.875048+09'
+    '2024-10-24 00:35:45.875048+09',
+    'https://www.youtube.com/watch?v=PVpx24S-PPo'
   );
 
 INSERT INTO
@@ -1389,7 +1406,8 @@ Mobile向けに開発したものをWebや他のDesktopプラットフォーム�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.952528+09'
+    '2024-10-24 00:35:45.952528+09',
+    'https://www.youtube.com/watch?v=GcrbW2RrU3M'
   );
 
 INSERT INTO
@@ -1431,7 +1449,8 @@ Flutterの活用は、開発効率を上げる有効な手段の１つですが�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.280365+09'
+    '2024-10-24 00:35:46.280365+09',
+    'https://www.youtube.com/watch?v=a4cxyE9zKSE'
   );
 
 INSERT INTO
@@ -1455,7 +1474,8 @@ VALUES
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.351841+09'
+    '2024-10-24 00:35:46.351841+09',
+    'https://www.youtube.com/watch?v=9hl9COiE83I'
   );
 
 INSERT INTO
@@ -1488,7 +1508,8 @@ Dartでは、非同期処理と並行処理を効率的に行うためのキー�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     TRUE,
-    '2024-10-24 00:35:46.422751+09'
+    '2024-10-24 00:35:46.422751+09',
+    'https://www.youtube.com/watch?v=ev9s_O5l-zA'
   );
 
 INSERT INTO
@@ -1526,7 +1547,8 @@ CustomScrollView、Sliverの利用はよく採用される解決策です。
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.495017+09'
+    '2024-10-24 00:35:46.495017+09',
+    'https://www.youtube.com/watch?v=wvU6Cu0x7dg'
   );
 
 INSERT INTO
@@ -1557,7 +1579,8 @@ VALUES
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     18,
     FALSE,
-    '2024-10-24 00:35:47.037072+09'
+    '2024-10-24 00:35:47.037072+09',
+    'https://www.youtube.com/watch?v=oynN52DSw-0'
   );
 
 INSERT INTO
@@ -1583,7 +1606,8 @@ VALUES
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     4,
     FALSE,
-    '2024-10-24 00:43:06.725172+09'
+    '2024-10-24 00:43:06.725172+09',
+    'https://www.youtube.com/watch?v=5I9L05bBv6Q'
   );
 
 INSERT INTO
@@ -1609,7 +1633,8 @@ FlutterはAndroid・iOSをはじめとして多くのプラットフォームで
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     NULL,
     FALSE,
-    '2024-10-24 00:35:46.725781+09'
+    '2024-10-24 00:35:46.725781+09',
+    'https://www.youtube.com/watch?v=x2jMRJe_bSY'
   );
 
 INSERT INTO
@@ -1644,7 +1669,8 @@ iOS・Android 両プラットフォームの古いコードベースが抱える
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     21,
     FALSE,
-    '2024-10-24 00:35:46.950989+09'
+    '2024-10-24 00:35:46.950989+09',
+    'https://www.youtube.com/watch?v=-G4bqRTlrhA'
   );
 
 INSERT INTO
@@ -1669,7 +1695,8 @@ APIとの通信は完了したのにローディング表示が消えない、�
     'f6ee9501-0698-44ea-ad21-eb051ee94a8e',
     20,
     FALSE,
-    '2024-10-24 00:51:14.944577+09'
+    '2024-10-24 00:51:14.944577+09',
+    'https://www.youtube.com/watch?v=nfL9ffl8ajs'
   );
 
 INSERT INTO
@@ -1708,7 +1735,8 @@ SLI/SLOはSREでよく使われる概念ですが、モバイルアプリ開発�
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     NULL,
     FALSE,
-    '2024-10-24 00:35:45.804363+09'
+    '2024-10-24 00:35:45.804363+09',
+    'https://www.youtube.com/watch?v=LX5_9WOWWZs'
   );
 
 INSERT INTO
@@ -1741,7 +1769,8 @@ Swift Concurrency や Kotlin Coroutine のキャンセルを、 Method Channel �
     'd6432c3c-3ef9-44ef-aa69-78f5e4dd867d',
     17,
     FALSE,
-    '2024-10-24 00:35:46.876345+09'
+    '2024-10-24 00:35:46.876345+09',
+    'https://www.youtube.com/watch?v=beD681HhPjs'
   );
 
 -- ジョブボード
