@@ -34,7 +34,7 @@ mixin _$TimelineItem {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)
+            List<SponsorV2> sponsors)
         session,
   }) =>
       throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ mixin _$TimelineItem {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)?
+            List<SponsorV2> sponsors)?
         session,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,7 +70,7 @@ mixin _$TimelineItem {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)?
+            List<SponsorV2> sponsors)?
         session,
     required TResult orElse(),
   }) =>
@@ -285,7 +285,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)
+            List<SponsorV2> sponsors)
         session,
   }) {
     return event(title, startsAt, endsAt, venue);
@@ -306,7 +306,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)?
+            List<SponsorV2> sponsors)?
         session,
   }) {
     return event?.call(title, startsAt, endsAt, venue);
@@ -327,7 +327,7 @@ class _$TimelineItemEventImpl implements TimelineItemEvent {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)?
+            List<SponsorV2> sponsors)?
         session,
     required TResult orElse(),
   }) {
@@ -410,7 +410,7 @@ abstract class _$$TimelineItemSessionImplCopyWith<$Res>
       bool isLightningTalk,
       SessionVenue venue,
       List<Speaker> speakers,
-      List<Sponsor> sponsors});
+      List<SponsorV2> sponsors});
 
   @override
   $SessionVenueCopyWith<$Res> get venue;
@@ -475,7 +475,7 @@ class __$$TimelineItemSessionImplCopyWithImpl<$Res>
       sponsors: null == sponsors
           ? _value._sponsors
           : sponsors // ignore: cast_nullable_to_non_nullable
-              as List<Sponsor>,
+              as List<SponsorV2>,
     ));
   }
 
@@ -502,7 +502,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
       required this.isLightningTalk,
       required this.venue,
       required final List<Speaker> speakers,
-      required final List<Sponsor> sponsors})
+      required final List<SponsorV2> sponsors})
       : _speakers = speakers,
         _sponsors = sponsors;
 
@@ -528,9 +528,9 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
     return EqualUnmodifiableListView(_speakers);
   }
 
-  final List<Sponsor> _sponsors;
+  final List<SponsorV2> _sponsors;
   @override
-  List<Sponsor> get sponsors {
+  List<SponsorV2> get sponsors {
     if (_sponsors is EqualUnmodifiableListView) return _sponsors;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_sponsors);
@@ -597,7 +597,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)
+            List<SponsorV2> sponsors)
         session,
   }) {
     return session(id, title, description, startsAt, endsAt, isLightningTalk,
@@ -619,7 +619,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)?
+            List<SponsorV2> sponsors)?
         session,
   }) {
     return session?.call(id, title, description, startsAt, endsAt,
@@ -641,7 +641,7 @@ class _$TimelineItemSessionImpl implements TimelineItemSession {
             bool isLightningTalk,
             SessionVenue venue,
             List<Speaker> speakers,
-            List<Sponsor> sponsors)?
+            List<SponsorV2> sponsors)?
         session,
     required TResult orElse(),
   }) {
@@ -694,7 +694,7 @@ abstract class TimelineItemSession implements TimelineItem {
       required final bool isLightningTalk,
       required final SessionVenue venue,
       required final List<Speaker> speakers,
-      required final List<Sponsor> sponsors}) = _$TimelineItemSessionImpl;
+      required final List<SponsorV2> sponsors}) = _$TimelineItemSessionImpl;
 
   String get id;
   @override
@@ -708,7 +708,7 @@ abstract class TimelineItemSession implements TimelineItem {
   @override
   SessionVenue get venue;
   List<Speaker> get speakers;
-  List<Sponsor> get sponsors;
+  List<SponsorV2> get sponsors;
 
   /// Create a copy of TimelineItem
   /// with the given fields replaced by the non-null parameter values.

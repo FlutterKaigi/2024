@@ -10,7 +10,7 @@ part 'session_timeline.g.dart';
 Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
   final repository = ref.watch(sessionRepositoryProvider);
   final sessionVenuesWithSessions =
-      await repository.fetchSessionVenuesWithSessionsV2();
+      await repository.fetchSessionVenuesWithSessionsV4();
   final events = ref.watch(timelineEventsProvider);
 
   final timelineItems = <TimelineItem>[];
