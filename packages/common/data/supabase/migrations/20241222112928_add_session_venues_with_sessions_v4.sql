@@ -1,4 +1,3 @@
--- 差分が分かりやすいように session_venues_with_sessions_v3 の内容をコミットしておく
 CREATE VIEW public.session_venues_with_sessions_v4
 WITH
     (security_invoker = TRUE) AS
@@ -40,6 +39,10 @@ WITH
                     s.ends_at,
                     'is_lightning_talk',
                     s.is_lightning_talk,
+                    -- session_venues_with_sessions_v3との変更点
+                    -- video_urlを追加
+                    'video_url',
+                    s.video_url,
                     'speakers',
                     coalesce(sd.speakers, '[]'::json),
                     'sponsors',
