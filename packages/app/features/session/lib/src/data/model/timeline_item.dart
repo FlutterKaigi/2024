@@ -21,6 +21,7 @@ class TimelineItem with _$TimelineItem {
     required DateTime startsAt,
     required DateTime endsAt,
     required bool isLightningTalk,
+    required Uri? videoUrl,
     required SessionVenue venue,
     required List<Speaker> speakers,
     required List<SponsorV2> sponsors,

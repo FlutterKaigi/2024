@@ -34,6 +34,7 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
           startsAt: session.startsAt.toLocal(),
           endsAt: session.endsAt.toLocal(),
           isLightningTalk: session.isLightningTalk,
+          videoUrl: session.videoUrl,
           venue: venue,
           speakers: session.speakers,
           sponsors: session.sponsors,
