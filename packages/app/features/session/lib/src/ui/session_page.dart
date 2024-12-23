@@ -9,13 +9,16 @@ import 'package:app_features_session/src/data/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';
+import 'package:app_features_session/src/utils/youtube_player_controller_hook.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 final _dateFormatter = intl.DateFormat.Md();
 final _timeFormatter = intl.DateFormat.Hm();
@@ -85,6 +88,12 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
             ),
             SliverList.list(
               children: [
+                if (session.videoUrl != null) ...[
+                  _SessionVideoView(
+                    videoUrl: session.videoUrl!,
+                  ),
+                  const Gap(16),
+                ],
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Wrap(
@@ -218,6 +227,58 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
     final startTime = _timeFormatter.format(startsAt);
     final endTime = _timeFormatter.format(endsAt);
     return '$startDate $startTime~$endTime';
+  }
+}
+
+class _SessionVideoView extends HookWidget {
+  const _SessionVideoView({
+    required Uri videoUrl,
+  }) : _videoUrl = videoUrl;
+
+  final Uri _videoUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    final videoId = _videoUrl.queryParameters['v'];
+    if (videoId == null) {
+      return const SizedBox.shrink();
+    }
+
+    final controller = useYoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+      ),
+    );
+
+    return YoutubePlayer(
+      controller: controller,
+      showVideoProgressIndicator: true,
+      topActions: [
+        const Spacer(),
+        IconButton(
+          icon: const Icon(
+            Icons.open_in_new,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            unawaited(launchInExternalApp(_videoUrl));
+          },
+        ),
+      ],
+      bottomActions: const [
+        SizedBox(width: 4),
+        CurrentPosition(),
+        SizedBox(width: 4),
+        ProgressBar(
+          isExpanded: true,
+          colors: ProgressBarColors(),
+        ),
+        RemainingDuration(),
+        PlaybackSpeedButton(),
+        SizedBox(width: 4),
+      ],
+    );
   }
 }
 
