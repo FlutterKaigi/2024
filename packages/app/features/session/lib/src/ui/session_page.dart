@@ -9,6 +9,7 @@ import 'package:app_features_session/src/data/providers/session_timeline.dart';
 import 'package:app_features_session/src/ui/session_room_chip.dart';
 import 'package:app_features_session/src/ui/session_speaker_icon.dart';
 import 'package:app_features_session/src/ui/session_type_chip.dart';
+import 'package:app_features_session/src/utils/youtube_player_controller_hook.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,13 +17,14 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 final _dateFormatter = intl.DateFormat.Md();
 final _timeFormatter = intl.DateFormat.Hm();
 final _googleCalendarDateFormatter = intl.DateFormat("yyyyMMdd'T'HHmmss'Z'");
 
-class SessionPage extends ConsumerWidget with SessionPageMixin {
-  SessionPage({
+class SessionPage extends HookConsumerWidget {
+  const SessionPage({
     required this.sessionId,
     super.key,
   });
@@ -31,8 +33,6 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l = L10nSession.of(context);
-    final isBookmarked = ref.watch(isBookmarkedProvider(sessionId: sessionId));
     final item = ref.watch(
       sessionTimelineProvider.select(
         (value) => value.valueOrNull?.firstWhereOrNull(
@@ -40,8 +40,8 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
         ),
       ),
     );
-    final session = item as TimelineItemSession?;
 
+    final session = item as TimelineItemSession?;
     if (session == null) {
       return const Scaffold(
         body: Center(
@@ -50,15 +50,88 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
       );
     }
 
+    final videoUrl = session.videoUrl;
+    if (videoUrl == null) {
+      return _SessionLayout(
+        session: session,
+        player: null,
+      );
+    }
+
+    final videoId = videoUrl.queryParameters['v'];
+    if (videoId == null) {
+      return _SessionLayout(
+        session: session,
+        player: null,
+      );
+    }
+
+    final controller = useYoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+      ),
+    );
+
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(
+        controller: controller,
+        showVideoProgressIndicator: true,
+        topActions: [
+          const Spacer(),
+          IconButton(
+            icon: const Icon(
+              Icons.open_in_new,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              unawaited(launchInExternalApp(videoUrl));
+            },
+          ),
+        ],
+      ),
+      builder: (context, player) {
+        return _SessionLayout(
+          session: session,
+          player: player,
+        );
+      },
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('sessionId', sessionId));
+  }
+}
+
+class _SessionLayout extends ConsumerWidget with SessionPageMixin {
+  _SessionLayout({
+    required TimelineItemSession session,
+    required Widget? player,
+  })  : _session = session,
+        _player = player;
+
+  final TimelineItemSession _session;
+
+  final Widget? _player;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l = L10nSession.of(context);
+    final isBookmarked =
+        ref.watch(isBookmarkedProvider(sessionId: _session.id));
+
     return Scaffold(
       body: SafeArea(
         top: false,
         child: CustomScrollView(
           slivers: [
             SliverAppBar.large(
-              title: Text(session.title),
+              title: Text(_session.title),
               expandedHeight: getExpandedHeight(
-                title: session.title,
+                title: _session.title,
                 context: context,
               ),
               actions: [
@@ -70,9 +143,9 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                       'x.com',
                       'intent/tweet',
                       {
-                        'text': session.title,
+                        'text': _session.title,
                         'url':
-                            'https://2024.flutterkaigi.jp/session/$sessionId',
+                            'https://2024.flutterkaigi.jp/session/${_session.id}',
                         'hashtags': 'FlutterKaigi2024',
                         'via': 'FlutterKaigi',
                       },
@@ -85,6 +158,11 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
             ),
             SliverList.list(
               children: [
+                if (_player != null) ...[
+                  const Gap(16),
+                  _player,
+                  const Gap(16),
+                ],
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Wrap(
@@ -93,19 +171,19 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                     children: [
                       IntrinsicWidth(
                         child: SessionRoomChip(
-                          venue: session.venue,
+                          venue: _session.venue,
                         ),
                       ),
                       IntrinsicWidth(
                         child: SessionTypeChip(
-                          session: session,
+                          session: _session,
                         ),
                       ),
                     ],
                   ),
                 ),
                 const Gap(8),
-                for (final speaker in session.speakers) ...[
+                for (final speaker in _session.speakers) ...[
                   Tooltip(
                     message: l.openSpeakersLink,
                     child: ListTile(
@@ -131,7 +209,7 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: MarkdownBody(
-                    data: session.description,
+                    data: _session.description,
                   ),
                 ),
                 const Gap(8),
@@ -139,14 +217,14 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                   message: l.registerToCalendar,
                   child: ListTile(
                     title: Text(
-                      _buildSchedule(session.startsAt, session.endsAt),
+                      _buildSchedule(_session.startsAt, _session.endsAt),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     leading: const Icon(Icons.event_outlined),
                     onTap: () async {
                       switch (defaultTargetPlatform) {
                         case TargetPlatform.iOS:
-                          final event = _createIosEvent(session);
+                          final event = _createIosEvent(_session);
                           await Add2Calendar.addEvent2Cal(event);
                         case TargetPlatform.macOS:
                         case TargetPlatform.android:
@@ -154,7 +232,7 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                         case TargetPlatform.linux:
                         case TargetPlatform.windows:
                           await launchInExternalApp(
-                            _createGoogleCalendarUrl(session),
+                            _createGoogleCalendarUrl(_session),
                           );
                       }
                     },
@@ -175,7 +253,7 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
                     title: Text(l.sendFeedback),
                     trailing: const Icon(Icons.arrow_outward),
                     onTap: () {
-                      final formUrl = Uri.parse(l.feedbackFormUrl(sessionId));
+                      final formUrl = Uri.parse(l.feedbackFormUrl(_session.id));
                       unawaited(
                         launchInExternalApp(formUrl),
                       );
@@ -192,11 +270,11 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
         onPressed: () {
           if (isBookmarked) {
             ref.read(bookmarkedSessionsProvider.notifier).remove(
-                  sessionId: sessionId,
+                  sessionId: _session.id,
                 );
           } else {
             ref.read(bookmarkedSessionsProvider.notifier).save(
-                  sessionId: sessionId,
+                  sessionId: _session.id,
                 );
           }
         },
@@ -205,12 +283,6 @@ class SessionPage extends ConsumerWidget with SessionPageMixin {
             : const Icon(Icons.bookmark_outline),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('sessionId', sessionId));
   }
 
   String _buildSchedule(DateTime startsAt, DateTime endsAt) {

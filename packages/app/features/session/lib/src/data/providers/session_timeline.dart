@@ -10,7 +10,7 @@ part 'session_timeline.g.dart';
 Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
   final repository = ref.watch(sessionRepositoryProvider);
   final sessionVenuesWithSessions =
-      await repository.fetchSessionVenuesWithSessionsV2();
+      await repository.fetchSessionVenuesWithSessionsV4();
   final events = ref.watch(timelineEventsProvider);
 
   final timelineItems = <TimelineItem>[];
@@ -34,6 +34,7 @@ Future<List<TimelineItem>> sessionTimeline(Ref ref) async {
           startsAt: session.startsAt.toLocal(),
           endsAt: session.endsAt.toLocal(),
           isLightningTalk: session.isLightningTalk,
+          videoUrl: session.videoUrl,
           venue: venue,
           speakers: session.speakers,
           sponsors: session.sponsors,
