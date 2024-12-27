@@ -326,19 +326,20 @@ class _ListSelectionDialog<T> extends HookWidget {
     final currentSelection = useState<T?>(initialValue);
     return AlertDialog(
       title: Text(title),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (final value in values)
-            RadioListTile<T>(
-              title: tileTitleBuilder(value),
-              value: value,
-              groupValue: currentSelection.value,
-              onChanged: (value) {
-                currentSelection.value = value;
-              },
-            ),
-        ],
+      content: SingleChildScrollView(
+        child: ListBody(
+          children: [
+            for (final value in values)
+              RadioListTile<T>(
+                title: tileTitleBuilder(value),
+                value: value,
+                groupValue: currentSelection.value,
+                onChanged: (value) {
+                  currentSelection.value = value;
+                },
+              ),
+          ],
+        ),
       ),
       actions: [
         TextButton(
