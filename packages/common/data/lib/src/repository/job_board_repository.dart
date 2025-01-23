@@ -10,18 +10,14 @@ part 'job_board_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 JobBoardRepository jobBoardRepository(Ref ref) => JobBoardRepository(
-      client: ref.watch(supabaseClientProvider),
       storageFileApi: ref.watch(jobBoardStorageFileApiProvider),
     );
 
 class JobBoardRepository {
   JobBoardRepository({
-    required SupabaseClient client,
     required StorageFileApi storageFileApi,
-  })  : _client = client,
-        _storageFileApi = storageFileApi;
+  }) : _storageFileApi = storageFileApi;
 
-  final SupabaseClient _client;
   final StorageFileApi _storageFileApi;
 
   Future<List<JobBoard>> fetchJobBoards() async {
