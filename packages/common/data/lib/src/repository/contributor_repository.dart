@@ -1,27 +1,18 @@
 import 'dart:convert';
 
 import 'package:common_data/src/model/contributor.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'contributor_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 ContributorRepository contributorRepository(Ref ref) {
-  final supabaseClient = ref.watch(supabaseClientProvider);
-  return ContributorRepository(
-    supabaseClient: supabaseClient,
-  );
+  return ContributorRepository();
 }
 
 final class ContributorRepository {
-  ContributorRepository({
-    required SupabaseClient supabaseClient,
-  }) : _supabaseClient = supabaseClient;
-
-  final SupabaseClient _supabaseClient;
+  ContributorRepository();
 
   Future<List<Contributor>> fetchContributors() async {
     final json = jsonDecode(_jsonContent) as List<dynamic>;
