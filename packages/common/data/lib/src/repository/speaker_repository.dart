@@ -8,27 +8,15 @@ part 'speaker_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 SpeakerRepository speakerRepository(Ref ref) => SpeakerRepository(
-      client: ref.watch(supabaseClientProvider),
       speakerStorageFileApi: ref.watch(speakerStorageFileApiProvider),
     );
 
 class SpeakerRepository {
   SpeakerRepository({
-    required SupabaseClient client,
     required StorageFileApi speakerStorageFileApi,
-  })  : _client = client,
-        _speakerStorageFileApi = speakerStorageFileApi;
+  }) : _speakerStorageFileApi = speakerStorageFileApi;
 
-  final SupabaseClient _client;
   final StorageFileApi _speakerStorageFileApi;
-
-  Future<List<Speaker>> fetchSpeakers() async {
-    final response = await _client
-        .from('speakers')
-        .select()
-        .withConverter((json) => json.map(SpeakerTable.fromJson).toList());
-    return response.map(toSpeaker).toList();
-  }
 
   Speaker toSpeaker(SpeakerTable speakerTable) => Speaker(
         id: speakerTable.id,
