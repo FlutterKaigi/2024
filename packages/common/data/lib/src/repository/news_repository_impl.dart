@@ -2,17 +2,12 @@ import 'dart:convert';
 
 import 'package:common_data/news.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'news_repository_impl.freezed.dart';
 part 'news_repository_impl.g.dart';
 
 final class NewsRepositoryImpl implements NewsRepository {
-  NewsRepositoryImpl({
-    required SupabaseClient supabaseClient,
-  }) : _supabaseClient = supabaseClient;
-
-  final SupabaseClient _supabaseClient;
+  NewsRepositoryImpl();
 
   @override
   Future<List<News>> getNews() async {
