@@ -39,44 +39,6 @@ final class SponsorRepository {
     return result.map(toSponsor).toList();
   }
 
-  Future<List<SponsorV2>> fetchSponsorsV2() async {
-    final result =
-        await _supabaseClient.from('sponsors_v2').select().withConverter(
-              (json) => json.map(SponsorV2Table.fromJson).toList(),
-            );
-    return result.map(toSponsorV2).toList();
-  }
-
-  @Deprecated('Use fetchSponsorWithSessionsV3 instead')
-  Future<List<SponsorWithSession>> fetchSponsorWithSessions() async {
-    final result = await _supabaseClient
-        .from('sponsor_with_sessions')
-        .select()
-        .withConverter(
-          (json) => json.map(SponsorWithSessionView.fromJson).toList(),
-        );
-
-    return result
-        .map(
-          toSponsorWithSession,
-        )
-        .toList();
-  }
-
-  /// スポンサーとそれに紐づくセッションを取得する
-  /// スポンサーはsort_idの昇順に並び替えられています
-  @Deprecated('Use fetchSponsorWithSessionsV3 instead')
-  Future<List<SponsorWithSessionV2>> fetchSponsorWithSessionsV2() async {
-    final result = await _supabaseClient
-        .from('sponsor_with_sessions_v2')
-        .select()
-        .order('sort_id', ascending: true)
-        .withConverter(
-          (json) => json.map(SponsorWithSessionV2View.fromJson).toList(),
-        );
-    return result.map(toSponsorWithSessionV2).toList();
-  }
-
   /// スポンサーとそれに紐づくセッションを取得する
   /// スポンサーはsort_idの昇順に並び替えられています
   Future<List<SponsorWithSessionV3>> fetchSponsorWithSessionsV3() async {
@@ -112,57 +74,6 @@ final class SponsorRepository {
             ? Uri.tryParse(sponsorV2Table.url!)
             : null,
         type: sponsorV2Table.type,
-      );
-
-  @Deprecated('Use toSponsorWithSessionV2 instead')
-  SponsorWithSession toSponsorWithSession(
-    SponsorWithSessionView sponsorWithSessionView,
-  ) =>
-      SponsorWithSession(
-        id: sponsorWithSessionView.id,
-        name: sponsorWithSessionView.name,
-        logoUrl: Uri.parse(
-          _sponsorStorageFileApi.getPublicUrl(sponsorWithSessionView.logoName),
-        ),
-        description: sponsorWithSessionView.description,
-        url: sponsorWithSessionView.url,
-        type: sponsorWithSessionView.type,
-        sessions: sponsorWithSessionView.sessions,
-      );
-
-  SponsorWithSessionV2 toSponsorWithSessionV2(
-    SponsorWithSessionV2View sponsorWithSessionV2View,
-  ) =>
-      SponsorWithSessionV2(
-        id: sponsorWithSessionV2View.id,
-        name: sponsorWithSessionV2View.name,
-        logoUrl: Uri.parse(
-          _sponsorStorageFileApi
-              .getPublicUrl(sponsorWithSessionV2View.logoName),
-        ),
-        sortId: sponsorWithSessionV2View.sortId,
-        description: sponsorWithSessionV2View.description,
-        url: sponsorWithSessionV2View.url,
-        type: sponsorWithSessionV2View.type,
-        sessions: sponsorWithSessionV2View.sessions
-            .map(_toSponsorWithSessionV2Session)
-            .toList(),
-      );
-
-  SponsorWithSessionV2Session _toSponsorWithSessionV2Session(
-    SponsorWithSessionV2ViewSession sponsorWithSessionV2ViewSession,
-  ) =>
-      SponsorWithSessionV2Session(
-        id: sponsorWithSessionV2ViewSession.id,
-        title: sponsorWithSessionV2ViewSession.title,
-        description: sponsorWithSessionV2ViewSession.description,
-        startsAt: sponsorWithSessionV2ViewSession.startsAt,
-        endsAt: sponsorWithSessionV2ViewSession.endsAt,
-        isLightningTalk: sponsorWithSessionV2ViewSession.isLightningTalk,
-        speakers: sponsorWithSessionV2ViewSession.speakers
-            .map(_speakerRepository.toSpeaker)
-            .toList(),
-        venue: sponsorWithSessionV2ViewSession.venue,
       );
 
   SponsorWithSessionV3 toSponsorWithSessionV3(
