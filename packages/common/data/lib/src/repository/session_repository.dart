@@ -5,30 +5,24 @@ import 'package:common_data/src/model/view/session_venues_with_sessions_v3_view.
 import 'package:common_data/src/model/view/session_venues_with_sessions_v4_view.dart';
 import 'package:common_data/src/repository/speaker_repository.dart';
 import 'package:common_data/src/repository/sponsor_repository.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide Session;
 
 part 'session_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 SessionRepository sessionRepository(Ref ref) => SessionRepository(
-      client: ref.watch(supabaseClientProvider),
       sponsorRepository: ref.watch(sponsorRepositoryProvider),
       speakerRepository: ref.watch(speakerRepositoryProvider),
     );
 
 class SessionRepository {
   SessionRepository({
-    required SupabaseClient client,
     required SponsorRepository sponsorRepository,
     required SpeakerRepository speakerRepository,
-  })  : _client = client,
-        _sponsorRepository = sponsorRepository,
+  })  : _sponsorRepository = sponsorRepository,
         _speakerRepository = speakerRepository;
 
-  final SupabaseClient _client;
   final SponsorRepository _sponsorRepository;
   final SpeakerRepository _speakerRepository;
 
