@@ -13,22 +13,17 @@ part 'staff_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 StaffRepository staffRepository(Ref ref) {
-  final supabaseClient = ref.watch(supabaseClientProvider);
   final staffsStorageFileApi = ref.watch(staffsStorageFileApiProvider);
   return StaffRepository(
-    supabaseClient: supabaseClient,
     staffsStorageFileApi: staffsStorageFileApi,
   );
 }
 
 final class StaffRepository {
   StaffRepository({
-    required SupabaseClient supabaseClient,
     required StorageFileApi staffsStorageFileApi,
-  })  : _supabaseClient = supabaseClient,
-        _staffsStorageFileApi = staffsStorageFileApi;
+  }) : _staffsStorageFileApi = staffsStorageFileApi;
 
-  final SupabaseClient _supabaseClient;
   final StorageFileApi _staffsStorageFileApi;
 
   Future<List<Staff>> fetchStaffMembers() async {
