@@ -14,21 +14,17 @@ part 'sponsor_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 SponsorRepository sponsorRepository(Ref ref) => SponsorRepository(
-      supabaseClient: ref.watch(supabaseClientProvider),
       sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
       speakerRepository: ref.watch(speakerRepositoryProvider),
     );
 
 final class SponsorRepository {
   SponsorRepository({
-    required SupabaseClient supabaseClient,
     required StorageFileApi sponsorStorageFileApi,
     required SpeakerRepository speakerRepository,
-  })  : _supabaseClient = supabaseClient,
-        _sponsorStorageFileApi = sponsorStorageFileApi,
+  })  : _sponsorStorageFileApi = sponsorStorageFileApi,
         _speakerRepository = speakerRepository;
 
-  final SupabaseClient _supabaseClient;
   final StorageFileApi _sponsorStorageFileApi;
   final SpeakerRepository _speakerRepository;
 
