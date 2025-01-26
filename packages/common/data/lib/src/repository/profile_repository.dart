@@ -25,23 +25,6 @@ class ProfileRepository {
 
   final SupabaseClient _client;
 
-  /// プロフィールを取得します
-  /// [userId] はユーザーID
-  /// `role`が`admin`以外の場合は、自分のプロフィールしか取得できません
-  /// 取得可能なプロフィールがない場合は`null`を返します
-  Future<Profile?> fetchProfileByUserId(String userId) async {
-    final response = await _client
-        .from('profiles')
-        .select()
-        .eq('id', userId)
-        .maybeSingle()
-        .withConverter((e) => e != null ? ProfileTable.fromJson(e) : null);
-    if (response == null) {
-      return null;
-    }
-    return toProfile(response);
-  }
-
   /// プロフィールとそれに紐づくSNSアカウントを取得します
   /// [userId] はユーザーID
   /// `role`が`admin`以外の場合は、自分のプロフィールしか取得できません
@@ -79,52 +62,6 @@ class ProfileRepository {
       return null;
     }
     return fetchProfileWithSnsByUserId(user.id);
-  }
-
-  /// プロフィールを取得します
-  /// [limit] は取得する件数
-  /// [offset] は取得する位置
-  /// `role`が`admin`の場合は全てのプロフィールを取得できますが、
-  /// それ以外の場合は自分のプロフィールしか取得できません
-  Future<PagingResult<List<Profile>>> fetchProfiles({
-    int limit = 10,
-    int offset = 0,
-  }) async {
-    final result = await _client
-        .from('profiles')
-        .select()
-        .range(offset, offset + limit)
-        .count(CountOption.exact)
-        .withConverter(
-          (e) => e.map(ProfileTable.fromJson).toList(),
-        );
-
-    return PagingResult(
-      data: result.data.map(toProfile).toList(),
-      totalCount: result.count,
-    );
-  }
-
-  /// プロフィールとそれに紐づくSNSアカウントを全て取得します
-  /// [limit] は取得する件数
-  /// [offset] は取得する位置
-  /// `role`が`admin`の場合は全てのプロフィールを取得できますが、
-  /// それ以外の場合は自分のプロフィールしか取得できません
-  Future<PagingResult<List<ProfileWithSns>>> fetchProfilesWithSns({
-    int limit = 10,
-    int offset = 0,
-  }) async {
-    final result = await _client
-        .from('profiles')
-        .select()
-        .range(offset, offset + limit)
-        .count(CountOption.exact)
-        .withConverter((e) => e.map(ProfileWithSnsView.fromJson).toList());
-
-    return PagingResult(
-      data: result.data.map(toProfileWithSns).toList(),
-      totalCount: result.count,
-    );
   }
 
   /// 特定の検索条件を用いてプロフィールとそれに紐づくチケットと入場履歴を取得します
