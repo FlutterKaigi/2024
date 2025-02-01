@@ -8,7 +8,7 @@ part of 'speaker_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$speakerRepositoryHash() => r'027c633166dff1fbb879302d5a673a9b570d9d56';
+String _$speakerRepositoryHash() => r'905eb27afcade8295ec2b63c9042a85f0fa8dd52';
 
 /// See also [speakerRepository].
 @ProviderFor(speakerRepository)
