@@ -213,11 +213,13 @@ class _SponsorCard extends ConsumerWidget {
             ],
           ),
           child: sponsor.logoUrl.toString().endsWith('.svg')
-              ? SvgPicture.network(
+              ? SvgPicture.asset(
                   sponsor.logoUrl.toString(),
+                  package: 'common_data',
                 )
-              : Image.network(
+              : Image.asset(
                   sponsor.logoUrl.toString(),
+                  package: 'common_data',
                   fit: BoxFit.contain,
                 ),
         ),
