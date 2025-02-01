@@ -65,7 +65,7 @@ Map<String, dynamic> _$$StaffsViewSnsAccountImplToJson(
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staffRepositoryHash() => r'6e8ece9ddaf01254ca9d539f95375d816fb18237';
+String _$staffRepositoryHash() => r'9acdf02dbebdd7ca0ab57d54fffec0c14dce1b9c';
 
 /// See also [staffRepository].
 @ProviderFor(staffRepository)
