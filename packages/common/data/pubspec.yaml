@@ -29,3 +29,10 @@ dev_dependencies:
   riverpod_lint: ^2.6.1
   shared_preferences: ^2.2.3
   test: ^1.24.0
+
+flutter:
+  assets:
+    - supabase/seed-storage/job_boards/
+    - supabase/seed-storage/speakers/
+    - supabase/seed-storage/sponsors/
+    - supabase/seed-storage/staffs/
