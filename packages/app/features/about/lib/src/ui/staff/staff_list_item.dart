@@ -26,8 +26,9 @@ class StaffListItem extends StatelessWidget {
         );
         await launchInExternalApp(githubAccount.link);
       },
-      leading: Image.network(
+      leading: Image.asset(
         staff.iconUrl.toString(),
+        package: 'common_data',
         width: _imageSize,
         height: _imageSize,
         cacheWidth: _imageSize.toInt(),

@@ -42,8 +42,8 @@ final class StaffRepository {
           link: link,
         );
       }).toList();
-      final iconUrl = Uri.parse(
-        _staffsStorageFileApi.getPublicUrl(staffView.iconName),
+      final iconUrl = Uri.file(
+        'supabase/seed-storage/staffs/${staffView.iconName}',
       );
       return Staff(
         name: staffView.name,
