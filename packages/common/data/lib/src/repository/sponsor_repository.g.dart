@@ -87,7 +87,7 @@ const _$SponsorTypeV2EnumMap = {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sponsorRepositoryHash() => r'2e2845e4f66ad8b5414daac6bee4ab178267e05d';
+String _$sponsorRepositoryHash() => r'95288453ebbdecf9b42cac391d7cc0bb81d08701';
 
 /// See also [sponsorRepository].
 @ProviderFor(sponsorRepository)
