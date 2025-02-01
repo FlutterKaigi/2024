@@ -18,21 +18,3 @@ SupabaseClient supabaseClient(Ref ref) {
   ref.onDispose(() async => supabaseClient.dispose());
   return supabaseClient;
 }
-
-@Riverpod(keepAlive: true)
-StorageFileApi staffsStorageFileApi(Ref ref) {
-  final supabaseClient = ref.watch(supabaseClientProvider);
-  return supabaseClient.storage.from('staffs');
-}
-
-@Riverpod(keepAlive: true)
-StorageFileApi sponsorStorageFileApi(Ref ref) =>
-    ref.watch(supabaseClientProvider).storage.from('sponsors');
-
-@Riverpod(keepAlive: true)
-StorageFileApi jobBoardStorageFileApi(Ref ref) =>
-    ref.watch(supabaseClientProvider).storage.from('job_boards');
-
-@Riverpod(keepAlive: true)
-StorageFileApi speakerStorageFileApi(Ref ref) =>
-    ref.watch(supabaseClientProvider).storage.from('speakers');
