@@ -3,29 +3,23 @@ import 'dart:convert';
 import 'package:common_data/src/model/sponsor.dart';
 import 'package:common_data/src/model/view/sponsor_with_session.dart';
 import 'package:common_data/src/repository/speaker_repository.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sponsor_repository.freezed.dart';
 part 'sponsor_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 SponsorRepository sponsorRepository(Ref ref) => SponsorRepository(
-      sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
       speakerRepository: ref.watch(speakerRepositoryProvider),
     );
 
 final class SponsorRepository {
   SponsorRepository({
-    required StorageFileApi sponsorStorageFileApi,
     required SpeakerRepository speakerRepository,
-  })  : _sponsorStorageFileApi = sponsorStorageFileApi,
-        _speakerRepository = speakerRepository;
+  }) : _speakerRepository = speakerRepository;
 
-  final StorageFileApi _sponsorStorageFileApi;
   final SpeakerRepository _speakerRepository;
 
   @Deprecated('Use fetchSponsorsV2 instead')
