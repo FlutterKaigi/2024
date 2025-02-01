@@ -31,8 +31,9 @@ class JobBoardRepository {
             id: jobBoard.id,
             uri: Uri.parse(jobBoard.url),
             altText: jobBoard.altText,
-            imageUri:
-                Uri.parse(_storageFileApi.getPublicUrl(jobBoard.imageName)),
+            imageUri: Uri.file(
+              'supabase/seed-storage/job_boards/${jobBoard.imageName}',
+            ),
           ),
         )
         .toList();
