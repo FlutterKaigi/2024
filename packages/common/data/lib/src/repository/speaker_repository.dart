@@ -21,8 +21,8 @@ class SpeakerRepository {
   Speaker toSpeaker(SpeakerTable speakerTable) => Speaker(
         id: speakerTable.id,
         name: speakerTable.name,
-        avatarUri: Uri.parse(
-          _speakerStorageFileApi.getPublicUrl(speakerTable.avatarName),
+        avatarUri: Uri.file(
+          'supabase/seed-storage/speakers/${speakerTable.avatarName}',
         ),
         xUri: speakerTable.xId != null
             ? Uri.parse(
