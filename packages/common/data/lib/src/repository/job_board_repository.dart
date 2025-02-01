@@ -1,24 +1,16 @@
 import 'dart:convert';
 
 import 'package:common_data/src/model/job_board.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'job_board_repository.g.dart';
 
 @Riverpod(keepAlive: true)
-JobBoardRepository jobBoardRepository(Ref ref) => JobBoardRepository(
-      storageFileApi: ref.watch(jobBoardStorageFileApiProvider),
-    );
+JobBoardRepository jobBoardRepository(Ref ref) => JobBoardRepository();
 
 class JobBoardRepository {
-  JobBoardRepository({
-    required StorageFileApi storageFileApi,
-  }) : _storageFileApi = storageFileApi;
-
-  final StorageFileApi _storageFileApi;
+  JobBoardRepository();
 
   Future<List<JobBoard>> fetchJobBoards() async {
     final json = jsonDecode(_jsonContent) as List<dynamic>;
