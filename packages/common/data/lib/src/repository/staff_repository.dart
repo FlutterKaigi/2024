@@ -2,29 +2,20 @@ import 'dart:convert';
 
 import 'package:common_data/src/model/sns.dart';
 import 'package:common_data/src/model/staff.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'staff_repository.freezed.dart';
 part 'staff_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 StaffRepository staffRepository(Ref ref) {
-  final staffsStorageFileApi = ref.watch(staffsStorageFileApiProvider);
-  return StaffRepository(
-    staffsStorageFileApi: staffsStorageFileApi,
-  );
+  return StaffRepository();
 }
 
 final class StaffRepository {
-  StaffRepository({
-    required StorageFileApi staffsStorageFileApi,
-  }) : _staffsStorageFileApi = staffsStorageFileApi;
-
-  final StorageFileApi _staffsStorageFileApi;
+  StaffRepository();
 
   Future<List<Staff>> fetchStaffMembers() async {
     final json = jsonDecode(_jsonContent) as List<dynamic>;
