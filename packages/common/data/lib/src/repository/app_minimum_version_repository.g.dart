@@ -9,7 +9,7 @@ part of 'app_minimum_version_repository.dart';
 // **************************************************************************
 
 String _$appMinimumVersionRepositoryHash() =>
-    r'bd123d561a917ca2a9fd3792dd2a810f2a5ae5f5';
+    r'62a01a67c1373bd17315a816fd6b474bae209779';
 
 /// See also [appMinimumVersionRepository].
 @ProviderFor(appMinimumVersionRepository)
