@@ -97,10 +97,6 @@ class _Body extends StatelessWidget {
             ),
             const Gap(40),
             ContentsMargin.narrow(
-              child: const Ticket(),
-            ),
-            const Gap(40),
-            ContentsMargin.narrow(
               child: const JobBoardSection(),
             ),
             const Gap(40),
@@ -112,10 +108,6 @@ class _Body extends StatelessWidget {
             const Gap(80),
             ContentsMargin.narrow(
               child: const StaffView(),
-            ),
-            const Gap(128),
-            ContentsMargin.narrow(
-              child: const ComingSoon(),
             ),
           ],
         ),
