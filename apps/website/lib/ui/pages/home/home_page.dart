@@ -6,12 +6,10 @@ import 'package:conference_2024_website/ui/components/header/hamburger_menu.dart
 import 'package:conference_2024_website/ui/components/header/site_header.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_bottom.dart';
 import 'package:conference_2024_website/ui/pages/home/components/background/background_top.dart';
-import 'package:conference_2024_website/ui/pages/home/components/coming_soon.dart';
 import 'package:conference_2024_website/ui/pages/home/components/job_board.dart';
 import 'package:conference_2024_website/ui/pages/home/components/lead.dart';
 import 'package:conference_2024_website/ui/pages/home/components/session.dart';
 import 'package:conference_2024_website/ui/pages/home/components/sponsors.dart';
-import 'package:conference_2024_website/ui/pages/home/components/ticket.dart';
 import 'package:conference_2024_website/ui/pages/home/components/title_and_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
