@@ -28,8 +28,9 @@ class ProfileAvatar extends StatelessWidget {
     );
 
     return ClipOval(
-      child: Image.network(
+      child: Image.asset(
         profile.avatarUri.toString(),
+        package: 'common_data',
         fit: BoxFit.cover,
         width: size,
         height: size,

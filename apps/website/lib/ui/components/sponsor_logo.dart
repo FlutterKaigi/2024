@@ -33,8 +33,9 @@ class SponsorLogo extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
-      child: Image.network(
+      child: Image.asset(
         sponsor.logoUrl.toString(),
+        package: 'common_data',
         height: height,
         fit: BoxFit.contain,
         errorBuilder: (context, error, stackTrace) => errorLogo,

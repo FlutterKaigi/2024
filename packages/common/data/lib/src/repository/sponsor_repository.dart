@@ -3,29 +3,23 @@ import 'dart:convert';
 import 'package:common_data/src/model/sponsor.dart';
 import 'package:common_data/src/model/view/sponsor_with_session.dart';
 import 'package:common_data/src/repository/speaker_repository.dart';
-import 'package:common_data/src/supabase_client.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sponsor_repository.freezed.dart';
 part 'sponsor_repository.g.dart';
 
 @Riverpod(keepAlive: true)
 SponsorRepository sponsorRepository(Ref ref) => SponsorRepository(
-      sponsorStorageFileApi: ref.watch(sponsorStorageFileApiProvider),
       speakerRepository: ref.watch(speakerRepositoryProvider),
     );
 
 final class SponsorRepository {
   SponsorRepository({
-    required StorageFileApi sponsorStorageFileApi,
     required SpeakerRepository speakerRepository,
-  })  : _sponsorStorageFileApi = sponsorStorageFileApi,
-        _speakerRepository = speakerRepository;
+  }) : _speakerRepository = speakerRepository;
 
-  final StorageFileApi _sponsorStorageFileApi;
   final SpeakerRepository _speakerRepository;
 
   @Deprecated('Use fetchSponsorsV2 instead')
@@ -52,8 +46,8 @@ final class SponsorRepository {
   Sponsor toSponsor(SponsorTable sponsorTable) => Sponsor(
         id: sponsorTable.id,
         name: sponsorTable.name,
-        logoUrl: Uri.parse(
-          _sponsorStorageFileApi.getPublicUrl(sponsorTable.logoName),
+        logoUrl: Uri.file(
+          'supabase/seed-storage/sponsors/${sponsorTable.logoName}',
         ),
         description: sponsorTable.description,
         url: sponsorTable.url != null ? Uri.tryParse(sponsorTable.url!) : null,
@@ -63,8 +57,8 @@ final class SponsorRepository {
   SponsorV2 toSponsorV2(SponsorV2Table sponsorV2Table) => SponsorV2(
         id: sponsorV2Table.id,
         name: sponsorV2Table.name,
-        logoUrl: Uri.parse(
-          _sponsorStorageFileApi.getPublicUrl(sponsorV2Table.logoName),
+        logoUrl: Uri.file(
+          'supabase/seed-storage/sponsors/${sponsorV2Table.logoName}',
         ),
         description: sponsorV2Table.description,
         url: sponsorV2Table.url != null
@@ -79,9 +73,8 @@ final class SponsorRepository {
       SponsorWithSessionV3(
         id: sponsorWithSessionV3View.id,
         name: sponsorWithSessionV3View.name,
-        logoUrl: Uri.parse(
-          _sponsorStorageFileApi
-              .getPublicUrl(sponsorWithSessionV3View.logoName),
+        logoUrl: Uri.file(
+          'supabase/seed-storage/sponsors/${sponsorWithSessionV3View.logoName}',
         ),
         sortId: sponsorWithSessionV3View.sortId,
         description: sponsorWithSessionV3View.description,

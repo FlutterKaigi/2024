@@ -9,7 +9,7 @@ part of 'job_board_repository.dart';
 // **************************************************************************
 
 String _$jobBoardRepositoryHash() =>
-    r'4e0505cc8d82422fd53b69319ebff7e1f4c900f5';
+    r'9d17d295dc28438e27a113e9f509d184396a01e7';
 
 /// See also [jobBoardRepository].
 @ProviderFor(jobBoardRepository)

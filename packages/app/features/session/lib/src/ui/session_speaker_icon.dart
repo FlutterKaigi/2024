@@ -28,7 +28,7 @@ class SessionSpeakerIcon extends StatelessWidget {
     }
 
     return _buildContents(
-      NetworkImage(avatarUri.toString()),
+      AssetImage(avatarUri.toString(), package: 'common_data'),
       theme,
     );
   }

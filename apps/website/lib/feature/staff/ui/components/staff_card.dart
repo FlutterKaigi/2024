@@ -65,8 +65,9 @@ class StaffCard extends StatelessWidget {
             children: [
               ClipOval(
                 // width: imageSize = 90 or 120
-                child: Image.network(
+                child: Image.asset(
                   staff.iconUrl.toString(),
+                  package: 'common_data',
                   fit: BoxFit.cover,
                   height: imageSize,
                   width: imageSize,
