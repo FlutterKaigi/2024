@@ -62,7 +62,7 @@ jobs:
               environments+=("${{ github.event.inputs.environment }}")
             fi
           elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            environments+=("production")
+            # environments+=("production") # MEMO(YumNumm): 本番環境のデプロイを停止します。 手動でリダイレクト用のindex.htmlに更新済み
             environments+=("staging")
           else
             echo "他の条件に一致しないため、stagingにデプロイします"
