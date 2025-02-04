@@ -231,8 +231,9 @@ class _SponsorImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
+    return Image.asset(
       _imageUrl,
+      package: 'common_data',
       frameBuilder: (context, child, _, __) => ColoredBox(
         color: Colors.white,
         child: Padding(

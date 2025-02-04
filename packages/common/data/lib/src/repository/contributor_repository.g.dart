@@ -9,7 +9,7 @@ part of 'contributor_repository.dart';
 // **************************************************************************
 
 String _$contributorRepositoryHash() =>
-    r'96f4318e0392d17bc0589263a6b6ac11beb1f600';
+    r'5652e453c8d5cc07a5fdafc11f6666dd652b94cd';
 
 /// See also [contributorRepository].
 @ProviderFor(contributorRepository)

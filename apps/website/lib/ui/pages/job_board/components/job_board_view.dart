@@ -64,8 +64,9 @@ class JobBoardCard extends StatelessWidget {
         ),
         child: InkWell(
           onTap: followLink,
-          child: Image.network(
+          child: Image.asset(
             jobBoard.imageUri.toString(),
+            package: 'common_data',
             fit: BoxFit.contain,
             width: 340,
             height: 191,

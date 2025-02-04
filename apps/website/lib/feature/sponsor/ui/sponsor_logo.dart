@@ -19,8 +19,9 @@ class SponsorLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
+    return Image.asset(
       logoUri.toString(),
+      package: 'common_data',
       width: width,
       height: height,
       fit: BoxFit.contain,
