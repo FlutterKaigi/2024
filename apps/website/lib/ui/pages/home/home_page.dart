@@ -107,6 +107,7 @@ class _Body extends StatelessWidget {
             ContentsMargin.narrow(
               child: const StaffView(),
             ),
+            const Gap(40),
           ],
         ),
       ],
