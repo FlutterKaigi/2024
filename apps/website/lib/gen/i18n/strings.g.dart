@@ -232,7 +232,7 @@ class _StringsLeadJa {
 
   // Translations
   String get message =>
-      '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
+      '皆様のご協力により、FlutterKaigi 2024を無事開催することができました。\nありがとうございました。\n\n今後のイベントのお知らせは、イベント公式X(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください!';
   String get xAccount => '@FlutterKaigi';
   late final _StringsLeadDateJa date = _StringsLeadDateJa._(_root);
   late final _StringsLeadLocationJa location = _StringsLeadLocationJa._(_root);
@@ -424,7 +424,7 @@ extension on Translations {
       case 'titleAndLogo.location':
         return '有明セントラルタワーホール&カンファレンス';
       case 'lead.message':
-        return '昨年に引き続き、FlutterKaigi 2024を開催いたします！\nオフライン会場またはオンライン視聴からお選びください。\n詳細はイベント公式Ｘ(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください！';
+        return '皆様のご協力により、FlutterKaigi 2024を無事開催することができました。\nありがとうございました。\n\n今後のイベントのお知らせは、イベント公式X(旧Twitter)アカウントにて随時発表していますので、ぜひチェックしてください!';
       case 'lead.xAccount':
         return '@FlutterKaigi';
       case 'lead.date.prefix':
