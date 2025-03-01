@@ -84,13 +84,13 @@ jobs:
           run_install: true
 
       - name: Download Artifacts (Website)
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
         with:
           name: website-flutter-web
           path: ./artifacts-website
 
       - name: Download Artifacts (Website HTML Rewriter API)
-        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
         with:
           name: website-html-rewriter-api
           path: ./artifacts-website-html-rewriter
