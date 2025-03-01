@@ -9,6 +9,8 @@ environment:
   sdk: ^3.6.0-216.1.beta
 
 dependencies:
+  flutter:
+    sdk: flutter
   freezed_annotation: ^2.4.4
   hooks_riverpod: ^2.6.1
   json_annotation: ^4.9.0
@@ -36,3 +38,4 @@ flutter:
     - supabase/seed-storage/speakers/
     - supabase/seed-storage/sponsors/
     - supabase/seed-storage/staffs/
+    - assets/profile_avatars/
