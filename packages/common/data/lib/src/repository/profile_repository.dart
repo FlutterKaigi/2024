@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:common_data/session.dart';
 import 'package:common_data/src/model/profile.dart';
 import 'package:common_data/src/model/view/profile_with_sns.dart';
 import 'package:common_data/src/model/view/profile_with_ticket_and_entry_log.dart';
 import 'package:common_data/supabase_client.dart';
+import 'package:flutter/services.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -269,10 +269,18 @@ class ProfileRepository {
   /// プロフィールのアバターのバイナリデータを取得する関数を返す
   /// [userId] はユーザーID
   /// ファイルが存在しない場合は`null`を返す
-  Future<Uint8List?> _getProfileAvatarFetch(String userId, String avatarName) {
-    return _client.storage
-        .from('profile_avatars')
-        .download('$userId/$avatarName');
+  Future<Uint8List?> _getProfileAvatarFetch(
+    String userId,
+    String avatarName,
+  ) async {
+    // Assetから読み込む
+    final asset = 'packages/common_data/assets/profile_avatars/$userId.png';
+    final bytes = await rootBundle.load(asset);
+    return bytes.buffer.asUint8List();
+
+    // return _client.storage
+    //     .from('profile_avatars')
+    //     .download('$userId/$avatarName');
   }
 
   Profile toProfile(ProfileTable profileTable) => Profile(
